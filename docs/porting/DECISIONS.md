@@ -2343,3 +2343,19 @@ Monster/Shopkeeper share a C callback address but retain distinct data sizes, an
 both replaceable monster handlers remain resolved at invocation. All 208 roots per
 profile and fresh production/scenarios pass. This reversible design follows the
 standing authorization; see LIFECYCLE_REGISTRY.md for evidence and fixture corrections.
+
+
+## Preserve collision argument and return conventions
+
+Collision registration binds complete existing export wrappers with callback-specific
+argument conversions. The public integer-word CallCollide API remains; queue/trace
+owners use CallCollideWith with real object/normal pointers, explicit raw fallback
+and KeepAlive. Compiler escape diagnostics and stack-growth/GC contracts qualify
+the conversion. The UndeadKiller third word remains a nonzero condition; normal
+consumers keep their existing pointer interpretations. Three default aliases keep
+one callback identity and distinct per-name data sizes.
+
+The temporaryMagicMissile owner consumes an integer return and stays raw rather
+than receiving an invented result from a void API. Two damage-sound callbacks are
+also deferred for their own nil-default contract. These reversible scope decisions
+follow standing authorization. See COLLISION_REGISTRY.md for all qualification.

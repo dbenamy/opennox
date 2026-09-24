@@ -1466,9 +1466,28 @@ func (obj *Object) CallUpdate() {
 }
 
 func (obj *Object) CallCollide(a2, a3 int) {
-	if obj.Collide != nil {
+	if obj.Collide == nil {
+		return
+	}
+	if fnc := objectCollideGoFuncs[obj.Collide]; fnc != nil {
+		fnc(obj, uintptr(a2), uintptr(a3))
+	} else {
 		ccall.CallVoidUPtr3(obj.Collide, uintptr(obj.CObj()), uintptr(a2), uintptr(a3))
 	}
+	runtime.KeepAlive(obj)
+}
+
+// CallCollideWith requires a configured callback. Pointer arguments remain live
+// through dispatch; the raw fallback retains its three-pointer calling convention.
+func (obj *Object) CallCollideWith(target *Object, normal *types.Pointf) {
+	if fnc := objectCollideGoFuncs[obj.Collide]; fnc != nil {
+		fnc(obj, uintptr(unsafe.Pointer(target)), uintptr(unsafe.Pointer(normal)))
+	} else {
+		ccall.CallVoidPtr3(obj.Collide, obj.CObj(), unsafe.Pointer(target), unsafe.Pointer(normal))
+	}
+	runtime.KeepAlive(obj)
+	runtime.KeepAlive(target)
+	runtime.KeepAlive(normal)
 }
 
 func (obj *Object) SetPickup(cfnc unsafe.Pointer) {

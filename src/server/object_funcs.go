@@ -153,6 +153,15 @@ func RegisterObjectUpdateParse(name string, fnc ObjectParseFunc) {
 	updateParseFuncs[name] = fnc
 }
 
+type CollideFunc func(obj *Object, a2, a3 uintptr)
+
+var objectCollideGoFuncs = make(map[unsafe.Pointer]CollideFunc)
+
+func RegisterObjectCollideGo(name string, cfnc unsafe.Pointer, fnc CollideFunc, sz uintptr) {
+	RegisterObjectCollide(name, cfnc, sz)
+	objectCollideGoFuncs[cfnc] = fnc
+}
+
 func RegisterObjectCollide(name string, fnc unsafe.Pointer, sz uintptr) {
 	if _, ok := collideFuncs[name]; ok {
 		panic("already registered")

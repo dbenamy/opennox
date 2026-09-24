@@ -14,15 +14,14 @@
 
 ## Current status
 
-Eight creation and twelve initialization registrations now dispatch through Go,
-preserving callback identities, data sizes, replaceable handlers and both raw
-calling conventions. All 208 roots/profile, 352 frozen owner observations, safe/static,
-production/ABI, exact known-suite comparison and headless creation/save-load pass.
-See [LIFECYCLE_REGISTRY.md](docs/porting/LIFECYCLE_REGISTRY.md).
+All 53 collision registrations now dispatch through Go, preserving callback
+identities, aliases, data sizes, raw calling conventions and replaceable handlers.
+All 257 affected roots/profile, 4,116 frozen observations, pointer escape/lifetime
+checks, safe/static, fresh production/ABI, exact known-suite comparison and headless
+creation/save-load pass. See [COLLISION_REGISTRY.md](docs/porting/COLLISION_REGISTRY.md).
 **Standalone C remains zero; production C preamble bodies remain 79.**
-The next collision baseline is qualified: 257 roots/profile and 4,116 frozen owner
-observations, plus raw/dynamic-handler contracts. Production conversion is pending
-compiler escape checks for its pointer API. See [COLLISION_REGISTRY.md](docs/porting/COLLISION_REGISTRY.md).
+Next: review the remaining transfer and damage-sound registry owners and their
+return/default contracts. The integer-returning collision caller remains raw.
 
 ### Earlier checkpoints
 

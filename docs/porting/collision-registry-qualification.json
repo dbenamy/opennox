@@ -1,0 +1,2108 @@
+{
+  "status": "qualified typed Go collision registry dispatch",
+  "preceding_revision": "ee9ab4d0766516ddf29d529d79bb9c9bd96a3f96",
+  "changed_source_sha256": {
+    "src/legacy/collision_core_queues.go": "81e5656d2dcf5ad6d45b2a08349732554c325e929fb4885a5f0eee14a70ee880",
+    "src/legacy/object_collide.go": "9ba62da3b3f49395388dca256a64a4865c0472ed149329d95844a74bd304a2a8",
+    "src/legacy/world_motion_trace.go": "ac93fe7b0e671a171060097a59af8f880301dce312a064c677424cb10a3b5d70",
+    "src/server/collision_registry_porttest.go": "fe0873256713fceea044e695c171174cba1d614eca672356b76e438b671b3166",
+    "src/server/object.go": "8780a8aa35db857b42c9eee6877358c897caba9a1f9e79d09e76d78b822a23b9",
+    "src/server/object_funcs.go": "3bf2d420f1fd4142f88a114ef8047e78e597f630dfd4c3b9cde62ae0cefe0842"
+  },
+  "baseline": {
+    "status": "qualified original collision registry baseline",
+    "revision": "72b9c14f38167e2f6665690d78fe5ef62f1e9da3",
+    "phase": {
+      "batch": "collision-registry",
+      "phase": "contracts",
+      "success": true,
+      "steps": [
+        {
+          "name": "default",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/collision-registry-tests.txt",
+            "--tags",
+            "porttest",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-collision-registry/baseline/default.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-collision-registry/baseline/default-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 109.13908004714176
+        },
+        {
+          "name": "server",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/collision-registry-tests.txt",
+            "--tags",
+            "porttest,server",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-collision-registry/baseline/server.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-collision-registry/baseline/server-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 181.86640965286642
+        },
+        {
+          "name": "highres",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/collision-registry-tests.txt",
+            "--tags",
+            "porttest,highres",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-collision-registry/baseline/highres.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-collision-registry/baseline/highres-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 109.80827583908103
+        }
+      ],
+      "revision": "72b9c14f38167e2f6665690d78fe5ef62f1e9da3",
+      "source_unchanged": true,
+      "wall_seconds": 401.39079737407155,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "contracts": {
+      "default": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "1536MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 257,
+        "selected_root_tests": 257,
+        "exit": 0,
+        "started_tests": 257,
+        "completed_tests": 257,
+        "started_root_tests": 257,
+        "completed_root_tests": 257,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 109.03575155092403
+      },
+      "server": {
+        "tags": "porttest,server",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "1536MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 257,
+        "selected_root_tests": 257,
+        "exit": 0,
+        "started_tests": 257,
+        "completed_tests": 257,
+        "started_root_tests": 257,
+        "completed_root_tests": 257,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 181.7703626791481
+      },
+      "highres": {
+        "tags": "porttest,highres",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "1536MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 257,
+        "selected_root_tests": 257,
+        "exit": 0,
+        "started_tests": 257,
+        "completed_tests": 257,
+        "started_root_tests": 257,
+        "completed_root_tests": 257,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 109.70972127001733
+      }
+    },
+    "captures": {
+      "collision-registry-spell-award": {
+        "cases": 120,
+        "sha256": "2a2ba357c95b24b9b0d8548aba29bcae92b26a79e8e90e6fcc85c23acb726741",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-spell-award.json"
+      },
+      "collision-registry-objectives-ball-pickup": {
+        "cases": 144,
+        "sha256": "a7c48f6cac89cdc32d264e9d7f80f14c4cc25aa5aef3cee2bdaf560a09d9fa08",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-objectives-ball-pickup.json"
+      },
+      "collision-registry-objectives-crown-dispatch": {
+        "cases": 48,
+        "sha256": "c16fc1336e61c1a3169eccf0dad3e9294532b0a462e9e2f9add6213f651ee325",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-objectives-crown-dispatch.json"
+      },
+      "collision-registry-objectives-flag-pickup": {
+        "cases": 64,
+        "sha256": "040aa0d0e738401e3ff9cb4c970a4cfd9c83af0fd46dc9e3c3128c3f391d0162",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-objectives-flag-pickup.json"
+      },
+      "collision-registry-objectives-home-score": {
+        "cases": 72,
+        "sha256": "b5d9d1e7524578a21f1a2c0664205ed67262a94bdd6d539faa51665c2785e40f",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-objectives-home-score.json"
+      },
+      "collision-registry-objectives-positive": {
+        "cases": 5,
+        "sha256": "719eeeaea002ca25bb327e9412b6abb8ce5eeb9b4baaf9aaab0718a039ec7d81",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-objectives-positive.json"
+      },
+      "collision-registry-pickup": {
+        "cases": 4,
+        "sha256": "d960decbf8d058cb1dd8a5e1d79f179563347453b241e8bfe0106358b03cfa4b",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-pickup.json"
+      },
+      "collision-registry-state-40": {
+        "cases": 18,
+        "sha256": "4f409adaf8e7b1620ec98b6dd01bdb56a0e0c4d2f64441190251b7674d78dda9",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-state-40.json"
+      },
+      "collision-registry-state-41": {
+        "cases": 18,
+        "sha256": "48593cb7d5f15c89ae42dc6e3a92690459846489cd53e017490651ebce79568f",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-state-41.json"
+      },
+      "collision-registry-state-42": {
+        "cases": 18,
+        "sha256": "6e8439f3e88273d4313bb48462240ee6586a5c97b8f7b6d165e1b7839804f1b1",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-state-42.json"
+      },
+      "collision-registry-trigger": {
+        "cases": 432,
+        "sha256": "afe829f8057a68e7b1e132ba5e902432e9530e238f71a3a32c859bca66f7c388",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-trigger.json"
+      },
+      "collision-registry-world-ankh-history": {
+        "cases": 96,
+        "sha256": "5a8075de055bcbab01d162400c32f4522ce528e861520e6a30198893ae4baca9",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-world-ankh-history.json"
+      },
+      "collision-registry-world-chest-contents": {
+        "cases": 80,
+        "sha256": "78da915780f503688296b92367d629f4290ffb0059da4c2e4a4fee6ab7e8fc06",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-world-chest-contents.json"
+      },
+      "collision-registry-world-chest-key": {
+        "cases": 16,
+        "sha256": "ba76f6791f72e9594cb80a051718e25988cf2c8a14a502aad658a4f206c49e5c",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-world-chest-key.json"
+      },
+      "collision-registry-world-clock-throttle": {
+        "cases": 168,
+        "sha256": "d58bc83c541e2bf0a765aa9d100848a498590eef2ccf4b424db812c526efa55b",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-world-clock-throttle.json"
+      },
+      "collision-registry-world-door-keys": {
+        "cases": 64,
+        "sha256": "64ab2d4e3b6894ab846f90fd72e98ea3f9648105ff96dc038d58d541558d4c30",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-world-door-keys.json"
+      },
+      "collision-registry-world-door-magic": {
+        "cases": 180,
+        "sha256": "d41231ffbd2e616fd150710374198423df217da8601731f7b778f215ab346cde",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-world-door-magic.json"
+      },
+      "collision-registry-world-door-missing-key": {
+        "cases": 8,
+        "sha256": "ede7ef606d68833b7202b8a7af85698c7da6fc3e26cd26c6ff1c9b16e97727d5",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-world-door-missing-key.json"
+      },
+      "collision-registry-world-exit-admission": {
+        "cases": 30,
+        "sha256": "1ea73cdff61c3f25fbd3abb773a7b8fff5372bfb3862df2f915002985907cb80",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-world-exit-admission.json"
+      },
+      "collision-registry-world-quest-exit": {
+        "cases": 8,
+        "sha256": "82478c13ff1a911963f5cae944622e47690f2792bc02210186a321079d2448c5",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-world-quest-exit.json"
+      },
+      "collision-registry-world-coop-exit-save": {
+        "cases": 9,
+        "sha256": "1f0bc07575e272375bd4c0b2638cd38d3b7d6b030f744f38224870c1cba1abb7",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-world-coop-exit-save.json"
+      },
+      "collision-registry-world-exit-glyphs": {
+        "cases": 24,
+        "sha256": "2333be7981f9345ab7a40a408a745706355e6eacfe75fde09a3937e28c305ee2",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-world-exit-glyphs.json"
+      },
+      "collision-registry-world-trap-geometry": {
+        "cases": 240,
+        "sha256": "373a3d97827b104b69663daf050ab41fe3fb9424fecb1550064f264af12df6ed",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-world-trap-geometry.json"
+      },
+      "collision-registry-world-spell-projectile": {
+        "cases": 96,
+        "sha256": "f2e8d2910d41d5b1658ce2200cd8161d6607744c251574aab8f4375b5cd6272b",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-world-spell-projectile.json"
+      },
+      "collision-registry-world-spell-wall": {
+        "cases": 6,
+        "sha256": "45c7b106a44784966fa0fc49057ff5d0c8ed6ae674ad86a195136a9c542536ac",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-world-spell-wall.json"
+      },
+      "collision-registry-world-soul-gate": {
+        "cases": 480,
+        "sha256": "b4fe0e9b7260639b8c3fd4e37f697a3a3b525b8456fd194609d5a3e8a25b5b15",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-world-soul-gate.json"
+      },
+      "collision-registry-world-undead-damage": {
+        "cases": 128,
+        "sha256": "d392885370f8910928f5673916e451a59125292fc830de9ef8d35f22978285d5",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-world-undead-damage.json"
+      },
+      "collision-registry-projectile-basic-00": {
+        "cases": 16,
+        "sha256": "fd58bfa5381475f5c24bdbc1a0f780c2498338d69adec6bd80cac6311e57fee5",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-basic-00.json"
+      },
+      "collision-registry-projectile-basic-01": {
+        "cases": 16,
+        "sha256": "486a9e2c2226aeaa5643e8853ae0073c99b8172960221ab19b6dd9189389c985",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-basic-01.json"
+      },
+      "collision-registry-projectile-basic-02": {
+        "cases": 16,
+        "sha256": "c45cf4736175bc6fe5601e926af18ea5a272b3ecc6c45f8102a9f37af7a75275",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-basic-02.json"
+      },
+      "collision-registry-projectile-basic-03": {
+        "cases": 16,
+        "sha256": "f36dceed6dfdf8f84ded7cc1947a0201403771989c91e750fe69dc60710a6e83",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-basic-03.json"
+      },
+      "collision-registry-projectile-basic-06": {
+        "cases": 16,
+        "sha256": "82f6ee8efa3f820600299f3e6c7efe26ebfe20550d95b966be6e8f10c8df18e8",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-basic-06.json"
+      },
+      "collision-registry-projectile-basic-09": {
+        "cases": 16,
+        "sha256": "23cc0165b0b0e8ae9fa8817260dc3e484cb8a23c1cfb395adbddd1c943345ded",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-basic-09.json"
+      },
+      "collision-registry-projectile-basic-10": {
+        "cases": 16,
+        "sha256": "84d2c2c96edddfaa95f1369d02486f5a82ba1857db5554420e3cf83327d261a1",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-basic-10.json"
+      },
+      "collision-registry-projectile-basic-11": {
+        "cases": 16,
+        "sha256": "46994269c469cfb324e4307de838057ad6d18c333612f3e8600b36d0190e51f2",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-basic-11.json"
+      },
+      "collision-registry-projectile-basic-12": {
+        "cases": 16,
+        "sha256": "2a547eb505b4750dcaf50219fade4977eb957c093ab043ca8bede74050e7c2c7",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-basic-12.json"
+      },
+      "collision-registry-projectile-basic-13": {
+        "cases": 16,
+        "sha256": "e03e592fb7122158ed63176a99425595c272273d165a099ff950b6f1d96ddd70",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-basic-13.json"
+      },
+      "collision-registry-projectile-basic-14": {
+        "cases": 16,
+        "sha256": "b2f910b9bde78ffede9dae5ff52f4bc3a660ae7338b579a79c0dec03571064b9",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-basic-14.json"
+      },
+      "collision-registry-projectile-basic-15": {
+        "cases": 16,
+        "sha256": "23cc0165b0b0e8ae9fa8817260dc3e484cb8a23c1cfb395adbddd1c943345ded",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-basic-15.json"
+      },
+      "collision-registry-projectile-basic-16": {
+        "cases": 16,
+        "sha256": "f48c8516c7ce9926b5c372ad150b239026382d8a998c3c21b462a0f9389b67aa",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-basic-16.json"
+      },
+      "collision-registry-projectile-basic-17": {
+        "cases": 16,
+        "sha256": "d64c6561b28653ce58aeaed6ca14321db31fc399cecf69ebcfaa8782c6f9100a",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-basic-17.json"
+      },
+      "collision-registry-projectile-basic-18": {
+        "cases": 16,
+        "sha256": "fde322a90af59da1b9e9edea6a2095f48e555142695c0b7fcc2d4c7f85d653ed",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-basic-18.json"
+      },
+      "collision-registry-projectile-basic-23": {
+        "cases": 16,
+        "sha256": "60fc9f8741637c0b5363a3c79bff2913ce82178ca8b10b5abd17c65fed59d8f4",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-basic-23.json"
+      },
+      "collision-registry-projectile-basic-24": {
+        "cases": 16,
+        "sha256": "d55820ca0f862d0c2522454c5c75f02936498c5eb18f3d2eb87c20fcefc53fcc",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-basic-24.json"
+      },
+      "collision-registry-projectile-basic-25": {
+        "cases": 16,
+        "sha256": "e77e437d295f754ddec930060b39e76fdd3235177e88118e685c4c5108de4fd9",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-basic-25.json"
+      },
+      "collision-registry-projectile-basic-26": {
+        "cases": 16,
+        "sha256": "66200f608be755d71eecb3e3c2542a84861d286f93145c9c035b7fdb808b742a",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-basic-26.json"
+      },
+      "collision-registry-projectile-normal-01": {
+        "cases": 12,
+        "sha256": "3d05a9f2edd2bb62722b9269b7bca2639c4cd94f2f05ccdcf56fd12d3f17ea7b",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-normal-01.json"
+      },
+      "collision-registry-projectile-normal-05": {
+        "cases": 12,
+        "sha256": "7175ea0dba63fc9265bca0af38621439e33a0b49d17fcaa94161a1e8cde1eeeb",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-normal-05.json"
+      },
+      "collision-registry-projectile-normal-09": {
+        "cases": 12,
+        "sha256": "2f5b7ad4649204f92f044fe76c3cec7ced9075b4e5a7d6baeacc73092d887977",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-normal-09.json"
+      },
+      "collision-registry-projectile-normal-10": {
+        "cases": 12,
+        "sha256": "c028f3711eb3d679ab8f377b13f1b52d15e70f612e243c57296c680e6e4e4eff",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-normal-10.json"
+      },
+      "collision-registry-projectile-normal-11": {
+        "cases": 12,
+        "sha256": "3bafcb9ccf10d9081ba2e190e27baa5de0c3b315ad11e871f98aa955cc80ed16",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-normal-11.json"
+      },
+      "collision-registry-projectile-normal-12": {
+        "cases": 12,
+        "sha256": "b164b5ab7cee831d2b023daade6ffcb92211f69d9d0362cfa25b4777a37dee81",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-normal-12.json"
+      },
+      "collision-registry-projectile-normal-13": {
+        "cases": 12,
+        "sha256": "2f5b7ad4649204f92f044fe76c3cec7ced9075b4e5a7d6baeacc73092d887977",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-normal-13.json"
+      },
+      "collision-registry-projectile-normal-15": {
+        "cases": 12,
+        "sha256": "2f5b7ad4649204f92f044fe76c3cec7ced9075b4e5a7d6baeacc73092d887977",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-normal-15.json"
+      },
+      "collision-registry-projectile-buffs-05": {
+        "cases": 60,
+        "sha256": "4d2bd05dcf4f57bda20e5aaabb6d96b7fa6f5546db5151f014fd43e598449dd1",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-buffs-05.json"
+      },
+      "collision-registry-projectile-buffs-08": {
+        "cases": 60,
+        "sha256": "ec12a673a654ff81ae5cad3b8a09a912a4856f25da23d743265a7756a2f41ea1",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-buffs-08.json"
+      },
+      "collision-registry-projectile-buffs-12": {
+        "cases": 60,
+        "sha256": "eda20dfe39bedf76677d843113c40988beb53c483b67a0f20d82376d72494386",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-buffs-12.json"
+      },
+      "collision-registry-projectile-buffs-16": {
+        "cases": 60,
+        "sha256": "e08ad412edb54e30f1049877727210139b2913ba82793857155b9aa484f125aa",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-buffs-16.json"
+      },
+      "collision-registry-projectile-buffs-18": {
+        "cases": 60,
+        "sha256": "829259713cfff516461d24fd7bccf1b82f4a8881a62161ba75f246732511623b",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-buffs-18.json"
+      },
+      "collision-registry-projectile-buffs-25": {
+        "cases": 60,
+        "sha256": "ea50faa02c3c2921816768bc564c905d68648714fe9abbc3721214cfdcc4bf24",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-buffs-25.json"
+      },
+      "collision-registry-projectile-buffs-26": {
+        "cases": 60,
+        "sha256": "a39440a7e942adbac7ce34ca54c557d8978d02932cc25c56e605ccb87ee0669e",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-buffs-26.json"
+      },
+      "collision-registry-projectile-chakram": {
+        "cases": 96,
+        "sha256": "e8a0e4177e0c6a127b46e5edb7162f1bec6f47cdd9e0afba4b875dfaace16465",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-chakram.json"
+      },
+      "collision-registry-projectile-bomb": {
+        "cases": 24,
+        "sha256": "0983c79b62342f546554bd4492df95e4f0759221f0723e939daba9d92b7d25e8",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-bomb.json"
+      },
+      "collision-registry-projectile-arrow-modifiers": {
+        "cases": 100,
+        "sha256": "d0ca525209c43f16ea2092c0cec754b337e01125581cad2121cec22a5811346d",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-arrow-modifiers.json"
+      },
+      "collision-registry-projectile-positive": {
+        "cases": 8,
+        "sha256": "f976096fb1a974940a6f7eb840b1ad9392e396360847cfea1afad61006b10c61",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-positive.json"
+      },
+      "collision-registry-projectile-damage-clock": {
+        "cases": 120,
+        "sha256": "c406efa01ca507029d1344d8db31022fb42a1d74a6d17d8b86391a54bac7a289",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-damage-clock.json"
+      },
+      "collision-registry-projectile-mana-clock": {
+        "cases": 108,
+        "sha256": "513b5d98f58604edb6be71b4904152769bc5b1df23fdef10ba313ea147176812",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-mana-clock.json"
+      },
+      "collision-registry-projectile-named-damage": {
+        "cases": 84,
+        "sha256": "2b8ff32d5e1f00f0e2434938130c426c0631a5afc10b2f1ce85627e906d5b6f0",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-named-damage.json"
+      },
+      "collision-registry-projectile-death": {
+        "cases": 24,
+        "sha256": "ecaa58153a297c10373c5b2af0b69a8720b8b18a055011130bee79561ffaa7c8",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-death.json"
+      },
+      "collision-registry-projectile-arrow-kinds": {
+        "cases": 96,
+        "sha256": "930eb0b839a789b8be1bef431890b29c6766ac065be3fe2dc98a70c56a3091b1",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-arrow-kinds.json"
+      },
+      "collision-registry-projectile-splash": {
+        "cases": 48,
+        "sha256": "80722f4708ecf4ac24e675237c5fea1b77455d68c2374820604061b0088a0c4a",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-splash.json"
+      },
+      "collision-registry-projectile-chakram-owner": {
+        "cases": 12,
+        "sha256": "c45f0ff1c07832d116c1747eef59ca4e60b90e14370efa6b374b972a57629b12",
+        "capture": "build/port-collision-registry/original-v2-collision-registry-projectile-chakram-owner.json"
+      }
+    },
+    "owner_capture_cases": 4116,
+    "registered_execution_counts": {
+      "AwardSpellCollide": 121,
+      "DefaultCollide": 6,
+      "ElevatorCollide": 6,
+      "TelekinesisCollide": 6,
+      "BallCollide": 145,
+      "CrownCollide": 24,
+      "FlagCollide": 56,
+      "HomeBaseCollide": 24,
+      "PickupCollide": 4,
+      "MonsterCollide": 18,
+      "MimicCollide": 18,
+      "PlayerCollide": 18,
+      "TriggerCollide": 432,
+      "AnkhCollide": 97,
+      "ChestCollide": 180,
+      "DoorCollide": 336,
+      "ExitCollide": 71,
+      "TrapDoorCollide": 240,
+      "SpellProjectileCollide": 103,
+      "SoulGateCollide": 480,
+      "UndeadKillerCollide": 130,
+      "ProjectileCollide": 102,
+      "ProjectileSparkCollide": 28,
+      "DamageCollide": 136,
+      "ManaDrainCollide": 233,
+      "DieCollide": 40,
+      "WallReflectCollide": 28,
+      "YellowStarShotCollide": 28,
+      "DeathBallFragmentCollide": 28,
+      "PixieCollide": 88,
+      "WallReflectSparkCollide": 29,
+      "OwnCollide": 16,
+      "SparkCollide": 28,
+      "SpiderSpitCollide": 77,
+      "FistCollide": 16,
+      "TeleportWakeCollide": 76,
+      "ArrowCollide": 212,
+      "MonsterArrowCollide": 16,
+      "BearTrapCollide": 77,
+      "PoisonGasTrapCollide": 77,
+      "BoomCollide": 96,
+      "SparkExplosionCollide": 84,
+      "ChakramInMotionCollide": 109,
+      "BombCollide": 24
+    },
+    "registered_names": 53,
+    "retained_callback_exports": [
+      "nox_objectCollideDefault",
+      "nox_xxx_collideAnkhQuest_4EBF40",
+      "nox_xxx_collideArrow_4EB490",
+      "nox_xxx_collideBall_4EBA00",
+      "nox_xxx_collideBearTrap_4EB890",
+      "nox_xxx_collideBomb_4E96F0",
+      "nox_xxx_collideBoom_4E9770",
+      "nox_xxx_collideChakram_4EAF00",
+      "nox_xxx_collideChest_4E9C40",
+      "nox_xxx_collideDamage_4E9430",
+      "nox_xxx_collideDeathBallFragment_4E9FE0",
+      "nox_xxx_collideDeathBall_4E9E90",
+      "nox_xxx_collideDie_4E99B0",
+      "nox_xxx_collideDoor_4E8AC0",
+      "nox_xxx_collideExit_4E9090",
+      "nox_xxx_collideFist_4EADF0",
+      "nox_xxx_collideGlyph_4E9A00",
+      "nox_xxx_collideHarpoon_4EB6A0",
+      "nox_xxx_collideHomeBase_4EBB80",
+      "nox_xxx_collideManadrain_4E9490",
+      "nox_xxx_collideMimic_4E83D0",
+      "nox_xxx_collideMonsterArrow_4EB800",
+      "nox_xxx_collideMonsterEventProc_4E83B0",
+      "nox_xxx_collideMonsterGen_4EBE10",
+      "nox_xxx_collidePentagram_4EAB20",
+      "nox_xxx_collidePickup_4E8DF0",
+      "nox_xxx_collidePixie_4EA080",
+      "nox_xxx_collidePlayer_4E8460",
+      "nox_xxx_collidePoisonGasTrap_4EB910",
+      "nox_xxx_collideProjectileGeneric_4E87B0",
+      "nox_xxx_collideProjectileSpark_4E8880",
+      "nox_xxx_collideSign_4EAB40",
+      "nox_xxx_collideSpark_4EA300",
+      "nox_xxx_collideSpellPedestal_4EAD20",
+      "nox_xxx_collideSulphurShot2_4E9D80",
+      "nox_xxx_collideSulphurShot_4E9E50",
+      "nox_xxx_collideTeleportWake_4EAE30",
+      "nox_xxx_collideTrapDoor_4EAB60",
+      "nox_xxx_collideTrigger_54FCD0",
+      "nox_xxx_collideUndeadKiller_4EBD40",
+      "nox_xxx_collideWallReflectSpark_4EA200",
+      "nox_xxx_collideWebbing_4EA380",
+      "nox_xxx_fireballCollide_4E9AC0",
+      "nox_xxx_spellFlyCollide_4E9500",
+      "sub_4EA2C0",
+      "sub_4EA400",
+      "sub_4EAAA0",
+      "sub_4EAAD0",
+      "sub_4EACA0",
+      "sub_4EBB50",
+      "sub_4EBE40"
+    ],
+    "raw_contracts": [
+      "nil/cleared CallCollide",
+      "25 exact raw integer word pairs",
+      "six raw pointer argument combinations",
+      "same-address default/elevator/telekinesis aliases with distinct sizes"
+    ],
+    "dynamic_contracts": [
+      "DeathBall/Harpoon/Glyph replaced twice across nil/self/other targets and both generic and pointer dispatch",
+      "stack-growth/GC in handlers; normal pointer identity and mutation"
+    ],
+    "production_reuse": "19 new porttest files and three existing porttest adapters only. All other source/dependency fingerprints and all four preceding binary hashes match. Three profiles repeat 72 frozen groups and exact registered call counts.",
+    "reused_qualification": "lifecycle-registry-qualification.json",
+    "binary_sha256": {
+      "safe": "cbec0b0bd64b90c2dfc7ac5aeb9c8882693ff8b5781ff2d06e9ccb3ae13efe89",
+      "opennox": "96c799f3f3891ea2b9f41bc6833d390217b90588a95946e0120b04a5fd67c3a2",
+      "opennox-hd": "bc2790d84bcbd8b166f73323ee69f17d34efb968eacb6ac1513829d04c0d5c4e",
+      "opennox-server": "7464bd09774491eac18a354a9b36c582c9ae85d579e3a774545d9d8defa2c60a"
+    },
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    },
+    "production_c_preamble_bodies": 79,
+    "fixture_corrections": [
+      "Primary accidentally added a second SpellWall counter drain; first run15368 failed that accounting check after successful state assertions. Removed duplicate check only; corrected46948 passed43 roots; all72 capture hashes and4163 counts match the first run.",
+      "Luna projectile Positive sibling initially used the old map and bypassed new count helper. Primary fixed before compilation; 23 mapping identities and14 sibling bodies independently checked."
+    ],
+    "scope_limits": [
+      "Production conversion not installed; integer-returning temporaryMagicMissile and damage sound deferred.",
+      "Pointer API compiler escape proof required during conversion; baseline bridge calls original raw3 directly.",
+      "Dynamic replacement contracts are dispatch tests; existing full algorithm tests remain separately selected."
+    ]
+  },
+  "phases": {
+    "contracts": {
+      "batch": "collision-registry",
+      "phase": "contracts",
+      "success": true,
+      "steps": [
+        {
+          "name": "default",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/collision-registry-tests.txt",
+            "--tags",
+            "porttest",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-collision-registry/contracts/default.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-collision-registry/contracts/default-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 188.49169685901143
+        },
+        {
+          "name": "server",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/collision-registry-tests.txt",
+            "--tags",
+            "porttest,server",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-collision-registry/contracts/server.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-collision-registry/contracts/server-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 183.57867647497915
+        },
+        {
+          "name": "highres",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/collision-registry-tests.txt",
+            "--tags",
+            "porttest,highres",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-collision-registry/contracts/highres.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-collision-registry/contracts/highres-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 109.86741482908837
+        }
+      ],
+      "revision": "ee9ab4d0766516ddf29d529d79bb9c9bd96a3f96",
+      "source_unchanged": true,
+      "wall_seconds": 482.45944641320966,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "safe": {
+      "batch": "collision-registry",
+      "phase": "safe",
+      "success": true,
+      "steps": [
+        {
+          "name": "build",
+          "command": [
+            "env",
+            "GOMEMLIMIT=1536MiB",
+            "go",
+            "build",
+            "-p",
+            "2",
+            "-tags",
+            "safe",
+            "-o",
+            "/root/src/opennox/build/port-collision-registry/safe/opennox-safe",
+            "./cmd/opennox"
+          ],
+          "exit": 0,
+          "wall_seconds": 68.73506290093064
+        },
+        {
+          "name": "static",
+          "command": [
+            "go",
+            "test",
+            "./common/memmap/nox",
+            "-run",
+            "^TestCodeStatic$",
+            "-count=1"
+          ],
+          "exit": 0,
+          "wall_seconds": 1.10275200009346
+        }
+      ],
+      "revision": "ee9ab4d0766516ddf29d529d79bb9c9bd96a3f96",
+      "source_unchanged": true,
+      "wall_seconds": 70.24310438102111,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "preflight": {
+      "batch": "collision-registry",
+      "phase": "preflight",
+      "success": true,
+      "steps": [
+        {
+          "name": "build",
+          "command": [
+            "env",
+            "GOMEMLIMIT=1536MiB",
+            "go",
+            "build",
+            "-p",
+            "2",
+            "-o",
+            "/root/src/opennox/build/port-collision-registry/preflight/opennox",
+            "./cmd/opennox"
+          ],
+          "exit": 0,
+          "wall_seconds": 62.271683224942535
+        },
+        {
+          "name": "scenario",
+          "command": [
+            "env",
+            "OPENNOX_DISPLAY_BINARY=/root/src/opennox/build/port-collision-registry/preflight/opennox",
+            "OPENNOX_DISPLAY_IMPLEMENTATION=Typed Go collision callback dispatch",
+            "OPENNOX_UI_SCENARIO=/root/src/opennox/docs/porting/character-creation.yaml",
+            "NOX_DEV=true",
+            "python3",
+            "/root/src/opennox/tools/porting/run_scenario.py",
+            "collision-registry",
+            "compare",
+            "/root/src/opennox/build/baseline/runs/entry-classifiers-c"
+          ],
+          "exit": 0,
+          "wall_seconds": 63.017659700941294
+        }
+      ],
+      "revision": "ee9ab4d0766516ddf29d529d79bb9c9bd96a3f96",
+      "source_unchanged": true,
+      "wall_seconds": 125.7120241750963,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "production": {
+      "batch": "collision-registry",
+      "phase": "production",
+      "success": true,
+      "steps": [
+        {
+          "name": "production",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/qualify_production.py",
+            "/root/src/opennox/docs/porting/collision-registry-batch.json",
+            "--out",
+            "/root/src/opennox/build/port-collision-registry/production/production"
+          ],
+          "exit": 0,
+          "wall_seconds": 175.3400598471053
+        }
+      ],
+      "revision": "ee9ab4d0766516ddf29d529d79bb9c9bd96a3f96",
+      "source_unchanged": true,
+      "wall_seconds": 175.61704445211217,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    }
+  },
+  "contracts": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 257,
+      "selected_root_tests": 257,
+      "exit": 0,
+      "started_tests": 257,
+      "completed_tests": 257,
+      "started_root_tests": 257,
+      "completed_root_tests": 257,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 188.3942735590972
+    },
+    "server": {
+      "tags": "porttest,server",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 257,
+      "selected_root_tests": 257,
+      "exit": 0,
+      "started_tests": 257,
+      "completed_tests": 257,
+      "started_root_tests": 257,
+      "completed_root_tests": 257,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 183.47247534198686
+    },
+    "highres": {
+      "tags": "porttest,highres",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 257,
+      "selected_root_tests": 257,
+      "exit": 0,
+      "started_tests": 257,
+      "completed_tests": 257,
+      "started_root_tests": 257,
+      "completed_root_tests": 257,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 109.78784975106828
+    }
+  },
+  "captures": {
+    "default": {
+      "collision-registry-spell-award": {
+        "cases": 120,
+        "sha256": "2a2ba357c95b24b9b0d8548aba29bcae92b26a79e8e90e6fcc85c23acb726741"
+      },
+      "collision-registry-objectives-ball-pickup": {
+        "cases": 144,
+        "sha256": "a7c48f6cac89cdc32d264e9d7f80f14c4cc25aa5aef3cee2bdaf560a09d9fa08"
+      },
+      "collision-registry-objectives-crown-dispatch": {
+        "cases": 48,
+        "sha256": "c16fc1336e61c1a3169eccf0dad3e9294532b0a462e9e2f9add6213f651ee325"
+      },
+      "collision-registry-objectives-flag-pickup": {
+        "cases": 64,
+        "sha256": "040aa0d0e738401e3ff9cb4c970a4cfd9c83af0fd46dc9e3c3128c3f391d0162"
+      },
+      "collision-registry-objectives-home-score": {
+        "cases": 72,
+        "sha256": "b5d9d1e7524578a21f1a2c0664205ed67262a94bdd6d539faa51665c2785e40f"
+      },
+      "collision-registry-objectives-positive": {
+        "cases": 5,
+        "sha256": "719eeeaea002ca25bb327e9412b6abb8ce5eeb9b4baaf9aaab0718a039ec7d81"
+      },
+      "collision-registry-pickup": {
+        "cases": 4,
+        "sha256": "d960decbf8d058cb1dd8a5e1d79f179563347453b241e8bfe0106358b03cfa4b"
+      },
+      "collision-registry-state-40": {
+        "cases": 18,
+        "sha256": "4f409adaf8e7b1620ec98b6dd01bdb56a0e0c4d2f64441190251b7674d78dda9"
+      },
+      "collision-registry-state-41": {
+        "cases": 18,
+        "sha256": "48593cb7d5f15c89ae42dc6e3a92690459846489cd53e017490651ebce79568f"
+      },
+      "collision-registry-state-42": {
+        "cases": 18,
+        "sha256": "6e8439f3e88273d4313bb48462240ee6586a5c97b8f7b6d165e1b7839804f1b1"
+      },
+      "collision-registry-trigger": {
+        "cases": 432,
+        "sha256": "afe829f8057a68e7b1e132ba5e902432e9530e238f71a3a32c859bca66f7c388"
+      },
+      "collision-registry-world-ankh-history": {
+        "cases": 96,
+        "sha256": "5a8075de055bcbab01d162400c32f4522ce528e861520e6a30198893ae4baca9"
+      },
+      "collision-registry-world-chest-contents": {
+        "cases": 80,
+        "sha256": "78da915780f503688296b92367d629f4290ffb0059da4c2e4a4fee6ab7e8fc06"
+      },
+      "collision-registry-world-chest-key": {
+        "cases": 16,
+        "sha256": "ba76f6791f72e9594cb80a051718e25988cf2c8a14a502aad658a4f206c49e5c"
+      },
+      "collision-registry-world-clock-throttle": {
+        "cases": 168,
+        "sha256": "d58bc83c541e2bf0a765aa9d100848a498590eef2ccf4b424db812c526efa55b"
+      },
+      "collision-registry-world-door-keys": {
+        "cases": 64,
+        "sha256": "64ab2d4e3b6894ab846f90fd72e98ea3f9648105ff96dc038d58d541558d4c30"
+      },
+      "collision-registry-world-door-magic": {
+        "cases": 180,
+        "sha256": "d41231ffbd2e616fd150710374198423df217da8601731f7b778f215ab346cde"
+      },
+      "collision-registry-world-door-missing-key": {
+        "cases": 8,
+        "sha256": "ede7ef606d68833b7202b8a7af85698c7da6fc3e26cd26c6ff1c9b16e97727d5"
+      },
+      "collision-registry-world-exit-admission": {
+        "cases": 30,
+        "sha256": "1ea73cdff61c3f25fbd3abb773a7b8fff5372bfb3862df2f915002985907cb80"
+      },
+      "collision-registry-world-quest-exit": {
+        "cases": 8,
+        "sha256": "82478c13ff1a911963f5cae944622e47690f2792bc02210186a321079d2448c5"
+      },
+      "collision-registry-world-coop-exit-save": {
+        "cases": 9,
+        "sha256": "1f0bc07575e272375bd4c0b2638cd38d3b7d6b030f744f38224870c1cba1abb7"
+      },
+      "collision-registry-world-exit-glyphs": {
+        "cases": 24,
+        "sha256": "2333be7981f9345ab7a40a408a745706355e6eacfe75fde09a3937e28c305ee2"
+      },
+      "collision-registry-world-trap-geometry": {
+        "cases": 240,
+        "sha256": "373a3d97827b104b69663daf050ab41fe3fb9424fecb1550064f264af12df6ed"
+      },
+      "collision-registry-world-spell-projectile": {
+        "cases": 96,
+        "sha256": "f2e8d2910d41d5b1658ce2200cd8161d6607744c251574aab8f4375b5cd6272b"
+      },
+      "collision-registry-world-spell-wall": {
+        "cases": 6,
+        "sha256": "45c7b106a44784966fa0fc49057ff5d0c8ed6ae674ad86a195136a9c542536ac"
+      },
+      "collision-registry-world-soul-gate": {
+        "cases": 480,
+        "sha256": "b4fe0e9b7260639b8c3fd4e37f697a3a3b525b8456fd194609d5a3e8a25b5b15"
+      },
+      "collision-registry-world-undead-damage": {
+        "cases": 128,
+        "sha256": "d392885370f8910928f5673916e451a59125292fc830de9ef8d35f22978285d5"
+      },
+      "collision-registry-projectile-basic-00": {
+        "cases": 16,
+        "sha256": "fd58bfa5381475f5c24bdbc1a0f780c2498338d69adec6bd80cac6311e57fee5"
+      },
+      "collision-registry-projectile-basic-01": {
+        "cases": 16,
+        "sha256": "486a9e2c2226aeaa5643e8853ae0073c99b8172960221ab19b6dd9189389c985"
+      },
+      "collision-registry-projectile-basic-02": {
+        "cases": 16,
+        "sha256": "c45cf4736175bc6fe5601e926af18ea5a272b3ecc6c45f8102a9f37af7a75275"
+      },
+      "collision-registry-projectile-basic-03": {
+        "cases": 16,
+        "sha256": "f36dceed6dfdf8f84ded7cc1947a0201403771989c91e750fe69dc60710a6e83"
+      },
+      "collision-registry-projectile-basic-06": {
+        "cases": 16,
+        "sha256": "82f6ee8efa3f820600299f3e6c7efe26ebfe20550d95b966be6e8f10c8df18e8"
+      },
+      "collision-registry-projectile-basic-09": {
+        "cases": 16,
+        "sha256": "23cc0165b0b0e8ae9fa8817260dc3e484cb8a23c1cfb395adbddd1c943345ded"
+      },
+      "collision-registry-projectile-basic-10": {
+        "cases": 16,
+        "sha256": "84d2c2c96edddfaa95f1369d02486f5a82ba1857db5554420e3cf83327d261a1"
+      },
+      "collision-registry-projectile-basic-11": {
+        "cases": 16,
+        "sha256": "46994269c469cfb324e4307de838057ad6d18c333612f3e8600b36d0190e51f2"
+      },
+      "collision-registry-projectile-basic-12": {
+        "cases": 16,
+        "sha256": "2a547eb505b4750dcaf50219fade4977eb957c093ab043ca8bede74050e7c2c7"
+      },
+      "collision-registry-projectile-basic-13": {
+        "cases": 16,
+        "sha256": "e03e592fb7122158ed63176a99425595c272273d165a099ff950b6f1d96ddd70"
+      },
+      "collision-registry-projectile-basic-14": {
+        "cases": 16,
+        "sha256": "b2f910b9bde78ffede9dae5ff52f4bc3a660ae7338b579a79c0dec03571064b9"
+      },
+      "collision-registry-projectile-basic-15": {
+        "cases": 16,
+        "sha256": "23cc0165b0b0e8ae9fa8817260dc3e484cb8a23c1cfb395adbddd1c943345ded"
+      },
+      "collision-registry-projectile-basic-16": {
+        "cases": 16,
+        "sha256": "f48c8516c7ce9926b5c372ad150b239026382d8a998c3c21b462a0f9389b67aa"
+      },
+      "collision-registry-projectile-basic-17": {
+        "cases": 16,
+        "sha256": "d64c6561b28653ce58aeaed6ca14321db31fc399cecf69ebcfaa8782c6f9100a"
+      },
+      "collision-registry-projectile-basic-18": {
+        "cases": 16,
+        "sha256": "fde322a90af59da1b9e9edea6a2095f48e555142695c0b7fcc2d4c7f85d653ed"
+      },
+      "collision-registry-projectile-basic-23": {
+        "cases": 16,
+        "sha256": "60fc9f8741637c0b5363a3c79bff2913ce82178ca8b10b5abd17c65fed59d8f4"
+      },
+      "collision-registry-projectile-basic-24": {
+        "cases": 16,
+        "sha256": "d55820ca0f862d0c2522454c5c75f02936498c5eb18f3d2eb87c20fcefc53fcc"
+      },
+      "collision-registry-projectile-basic-25": {
+        "cases": 16,
+        "sha256": "e77e437d295f754ddec930060b39e76fdd3235177e88118e685c4c5108de4fd9"
+      },
+      "collision-registry-projectile-basic-26": {
+        "cases": 16,
+        "sha256": "66200f608be755d71eecb3e3c2542a84861d286f93145c9c035b7fdb808b742a"
+      },
+      "collision-registry-projectile-normal-01": {
+        "cases": 12,
+        "sha256": "3d05a9f2edd2bb62722b9269b7bca2639c4cd94f2f05ccdcf56fd12d3f17ea7b"
+      },
+      "collision-registry-projectile-normal-05": {
+        "cases": 12,
+        "sha256": "7175ea0dba63fc9265bca0af38621439e33a0b49d17fcaa94161a1e8cde1eeeb"
+      },
+      "collision-registry-projectile-normal-09": {
+        "cases": 12,
+        "sha256": "2f5b7ad4649204f92f044fe76c3cec7ced9075b4e5a7d6baeacc73092d887977"
+      },
+      "collision-registry-projectile-normal-10": {
+        "cases": 12,
+        "sha256": "c028f3711eb3d679ab8f377b13f1b52d15e70f612e243c57296c680e6e4e4eff"
+      },
+      "collision-registry-projectile-normal-11": {
+        "cases": 12,
+        "sha256": "3bafcb9ccf10d9081ba2e190e27baa5de0c3b315ad11e871f98aa955cc80ed16"
+      },
+      "collision-registry-projectile-normal-12": {
+        "cases": 12,
+        "sha256": "b164b5ab7cee831d2b023daade6ffcb92211f69d9d0362cfa25b4777a37dee81"
+      },
+      "collision-registry-projectile-normal-13": {
+        "cases": 12,
+        "sha256": "2f5b7ad4649204f92f044fe76c3cec7ced9075b4e5a7d6baeacc73092d887977"
+      },
+      "collision-registry-projectile-normal-15": {
+        "cases": 12,
+        "sha256": "2f5b7ad4649204f92f044fe76c3cec7ced9075b4e5a7d6baeacc73092d887977"
+      },
+      "collision-registry-projectile-buffs-05": {
+        "cases": 60,
+        "sha256": "4d2bd05dcf4f57bda20e5aaabb6d96b7fa6f5546db5151f014fd43e598449dd1"
+      },
+      "collision-registry-projectile-buffs-08": {
+        "cases": 60,
+        "sha256": "ec12a673a654ff81ae5cad3b8a09a912a4856f25da23d743265a7756a2f41ea1"
+      },
+      "collision-registry-projectile-buffs-12": {
+        "cases": 60,
+        "sha256": "eda20dfe39bedf76677d843113c40988beb53c483b67a0f20d82376d72494386"
+      },
+      "collision-registry-projectile-buffs-16": {
+        "cases": 60,
+        "sha256": "e08ad412edb54e30f1049877727210139b2913ba82793857155b9aa484f125aa"
+      },
+      "collision-registry-projectile-buffs-18": {
+        "cases": 60,
+        "sha256": "829259713cfff516461d24fd7bccf1b82f4a8881a62161ba75f246732511623b"
+      },
+      "collision-registry-projectile-buffs-25": {
+        "cases": 60,
+        "sha256": "ea50faa02c3c2921816768bc564c905d68648714fe9abbc3721214cfdcc4bf24"
+      },
+      "collision-registry-projectile-buffs-26": {
+        "cases": 60,
+        "sha256": "a39440a7e942adbac7ce34ca54c557d8978d02932cc25c56e605ccb87ee0669e"
+      },
+      "collision-registry-projectile-chakram": {
+        "cases": 96,
+        "sha256": "e8a0e4177e0c6a127b46e5edb7162f1bec6f47cdd9e0afba4b875dfaace16465"
+      },
+      "collision-registry-projectile-bomb": {
+        "cases": 24,
+        "sha256": "0983c79b62342f546554bd4492df95e4f0759221f0723e939daba9d92b7d25e8"
+      },
+      "collision-registry-projectile-arrow-modifiers": {
+        "cases": 100,
+        "sha256": "d0ca525209c43f16ea2092c0cec754b337e01125581cad2121cec22a5811346d"
+      },
+      "collision-registry-projectile-positive": {
+        "cases": 8,
+        "sha256": "f976096fb1a974940a6f7eb840b1ad9392e396360847cfea1afad61006b10c61"
+      },
+      "collision-registry-projectile-damage-clock": {
+        "cases": 120,
+        "sha256": "c406efa01ca507029d1344d8db31022fb42a1d74a6d17d8b86391a54bac7a289"
+      },
+      "collision-registry-projectile-mana-clock": {
+        "cases": 108,
+        "sha256": "513b5d98f58604edb6be71b4904152769bc5b1df23fdef10ba313ea147176812"
+      },
+      "collision-registry-projectile-named-damage": {
+        "cases": 84,
+        "sha256": "2b8ff32d5e1f00f0e2434938130c426c0631a5afc10b2f1ce85627e906d5b6f0"
+      },
+      "collision-registry-projectile-death": {
+        "cases": 24,
+        "sha256": "ecaa58153a297c10373c5b2af0b69a8720b8b18a055011130bee79561ffaa7c8"
+      },
+      "collision-registry-projectile-arrow-kinds": {
+        "cases": 96,
+        "sha256": "930eb0b839a789b8be1bef431890b29c6766ac065be3fe2dc98a70c56a3091b1"
+      },
+      "collision-registry-projectile-splash": {
+        "cases": 48,
+        "sha256": "80722f4708ecf4ac24e675237c5fea1b77455d68c2374820604061b0088a0c4a"
+      },
+      "collision-registry-projectile-chakram-owner": {
+        "cases": 12,
+        "sha256": "c45f0ff1c07832d116c1747eef59ca4e60b90e14370efa6b374b972a57629b12"
+      }
+    },
+    "server": {
+      "collision-registry-spell-award": {
+        "cases": 120,
+        "sha256": "2a2ba357c95b24b9b0d8548aba29bcae92b26a79e8e90e6fcc85c23acb726741"
+      },
+      "collision-registry-objectives-ball-pickup": {
+        "cases": 144,
+        "sha256": "a7c48f6cac89cdc32d264e9d7f80f14c4cc25aa5aef3cee2bdaf560a09d9fa08"
+      },
+      "collision-registry-objectives-crown-dispatch": {
+        "cases": 48,
+        "sha256": "c16fc1336e61c1a3169eccf0dad3e9294532b0a462e9e2f9add6213f651ee325"
+      },
+      "collision-registry-objectives-flag-pickup": {
+        "cases": 64,
+        "sha256": "040aa0d0e738401e3ff9cb4c970a4cfd9c83af0fd46dc9e3c3128c3f391d0162"
+      },
+      "collision-registry-objectives-home-score": {
+        "cases": 72,
+        "sha256": "b5d9d1e7524578a21f1a2c0664205ed67262a94bdd6d539faa51665c2785e40f"
+      },
+      "collision-registry-objectives-positive": {
+        "cases": 5,
+        "sha256": "719eeeaea002ca25bb327e9412b6abb8ce5eeb9b4baaf9aaab0718a039ec7d81"
+      },
+      "collision-registry-pickup": {
+        "cases": 4,
+        "sha256": "d960decbf8d058cb1dd8a5e1d79f179563347453b241e8bfe0106358b03cfa4b"
+      },
+      "collision-registry-state-40": {
+        "cases": 18,
+        "sha256": "4f409adaf8e7b1620ec98b6dd01bdb56a0e0c4d2f64441190251b7674d78dda9"
+      },
+      "collision-registry-state-41": {
+        "cases": 18,
+        "sha256": "48593cb7d5f15c89ae42dc6e3a92690459846489cd53e017490651ebce79568f"
+      },
+      "collision-registry-state-42": {
+        "cases": 18,
+        "sha256": "6e8439f3e88273d4313bb48462240ee6586a5c97b8f7b6d165e1b7839804f1b1"
+      },
+      "collision-registry-trigger": {
+        "cases": 432,
+        "sha256": "afe829f8057a68e7b1e132ba5e902432e9530e238f71a3a32c859bca66f7c388"
+      },
+      "collision-registry-world-ankh-history": {
+        "cases": 96,
+        "sha256": "5a8075de055bcbab01d162400c32f4522ce528e861520e6a30198893ae4baca9"
+      },
+      "collision-registry-world-chest-contents": {
+        "cases": 80,
+        "sha256": "78da915780f503688296b92367d629f4290ffb0059da4c2e4a4fee6ab7e8fc06"
+      },
+      "collision-registry-world-chest-key": {
+        "cases": 16,
+        "sha256": "ba76f6791f72e9594cb80a051718e25988cf2c8a14a502aad658a4f206c49e5c"
+      },
+      "collision-registry-world-clock-throttle": {
+        "cases": 168,
+        "sha256": "d58bc83c541e2bf0a765aa9d100848a498590eef2ccf4b424db812c526efa55b"
+      },
+      "collision-registry-world-door-keys": {
+        "cases": 64,
+        "sha256": "64ab2d4e3b6894ab846f90fd72e98ea3f9648105ff96dc038d58d541558d4c30"
+      },
+      "collision-registry-world-door-magic": {
+        "cases": 180,
+        "sha256": "d41231ffbd2e616fd150710374198423df217da8601731f7b778f215ab346cde"
+      },
+      "collision-registry-world-door-missing-key": {
+        "cases": 8,
+        "sha256": "ede7ef606d68833b7202b8a7af85698c7da6fc3e26cd26c6ff1c9b16e97727d5"
+      },
+      "collision-registry-world-exit-admission": {
+        "cases": 30,
+        "sha256": "1ea73cdff61c3f25fbd3abb773a7b8fff5372bfb3862df2f915002985907cb80"
+      },
+      "collision-registry-world-quest-exit": {
+        "cases": 8,
+        "sha256": "82478c13ff1a911963f5cae944622e47690f2792bc02210186a321079d2448c5"
+      },
+      "collision-registry-world-coop-exit-save": {
+        "cases": 9,
+        "sha256": "1f0bc07575e272375bd4c0b2638cd38d3b7d6b030f744f38224870c1cba1abb7"
+      },
+      "collision-registry-world-exit-glyphs": {
+        "cases": 24,
+        "sha256": "2333be7981f9345ab7a40a408a745706355e6eacfe75fde09a3937e28c305ee2"
+      },
+      "collision-registry-world-trap-geometry": {
+        "cases": 240,
+        "sha256": "373a3d97827b104b69663daf050ab41fe3fb9424fecb1550064f264af12df6ed"
+      },
+      "collision-registry-world-spell-projectile": {
+        "cases": 96,
+        "sha256": "f2e8d2910d41d5b1658ce2200cd8161d6607744c251574aab8f4375b5cd6272b"
+      },
+      "collision-registry-world-spell-wall": {
+        "cases": 6,
+        "sha256": "45c7b106a44784966fa0fc49057ff5d0c8ed6ae674ad86a195136a9c542536ac"
+      },
+      "collision-registry-world-soul-gate": {
+        "cases": 480,
+        "sha256": "b4fe0e9b7260639b8c3fd4e37f697a3a3b525b8456fd194609d5a3e8a25b5b15"
+      },
+      "collision-registry-world-undead-damage": {
+        "cases": 128,
+        "sha256": "d392885370f8910928f5673916e451a59125292fc830de9ef8d35f22978285d5"
+      },
+      "collision-registry-projectile-basic-00": {
+        "cases": 16,
+        "sha256": "fd58bfa5381475f5c24bdbc1a0f780c2498338d69adec6bd80cac6311e57fee5"
+      },
+      "collision-registry-projectile-basic-01": {
+        "cases": 16,
+        "sha256": "486a9e2c2226aeaa5643e8853ae0073c99b8172960221ab19b6dd9189389c985"
+      },
+      "collision-registry-projectile-basic-02": {
+        "cases": 16,
+        "sha256": "c45cf4736175bc6fe5601e926af18ea5a272b3ecc6c45f8102a9f37af7a75275"
+      },
+      "collision-registry-projectile-basic-03": {
+        "cases": 16,
+        "sha256": "f36dceed6dfdf8f84ded7cc1947a0201403771989c91e750fe69dc60710a6e83"
+      },
+      "collision-registry-projectile-basic-06": {
+        "cases": 16,
+        "sha256": "82f6ee8efa3f820600299f3e6c7efe26ebfe20550d95b966be6e8f10c8df18e8"
+      },
+      "collision-registry-projectile-basic-09": {
+        "cases": 16,
+        "sha256": "23cc0165b0b0e8ae9fa8817260dc3e484cb8a23c1cfb395adbddd1c943345ded"
+      },
+      "collision-registry-projectile-basic-10": {
+        "cases": 16,
+        "sha256": "84d2c2c96edddfaa95f1369d02486f5a82ba1857db5554420e3cf83327d261a1"
+      },
+      "collision-registry-projectile-basic-11": {
+        "cases": 16,
+        "sha256": "46994269c469cfb324e4307de838057ad6d18c333612f3e8600b36d0190e51f2"
+      },
+      "collision-registry-projectile-basic-12": {
+        "cases": 16,
+        "sha256": "2a547eb505b4750dcaf50219fade4977eb957c093ab043ca8bede74050e7c2c7"
+      },
+      "collision-registry-projectile-basic-13": {
+        "cases": 16,
+        "sha256": "e03e592fb7122158ed63176a99425595c272273d165a099ff950b6f1d96ddd70"
+      },
+      "collision-registry-projectile-basic-14": {
+        "cases": 16,
+        "sha256": "b2f910b9bde78ffede9dae5ff52f4bc3a660ae7338b579a79c0dec03571064b9"
+      },
+      "collision-registry-projectile-basic-15": {
+        "cases": 16,
+        "sha256": "23cc0165b0b0e8ae9fa8817260dc3e484cb8a23c1cfb395adbddd1c943345ded"
+      },
+      "collision-registry-projectile-basic-16": {
+        "cases": 16,
+        "sha256": "f48c8516c7ce9926b5c372ad150b239026382d8a998c3c21b462a0f9389b67aa"
+      },
+      "collision-registry-projectile-basic-17": {
+        "cases": 16,
+        "sha256": "d64c6561b28653ce58aeaed6ca14321db31fc399cecf69ebcfaa8782c6f9100a"
+      },
+      "collision-registry-projectile-basic-18": {
+        "cases": 16,
+        "sha256": "fde322a90af59da1b9e9edea6a2095f48e555142695c0b7fcc2d4c7f85d653ed"
+      },
+      "collision-registry-projectile-basic-23": {
+        "cases": 16,
+        "sha256": "60fc9f8741637c0b5363a3c79bff2913ce82178ca8b10b5abd17c65fed59d8f4"
+      },
+      "collision-registry-projectile-basic-24": {
+        "cases": 16,
+        "sha256": "d55820ca0f862d0c2522454c5c75f02936498c5eb18f3d2eb87c20fcefc53fcc"
+      },
+      "collision-registry-projectile-basic-25": {
+        "cases": 16,
+        "sha256": "e77e437d295f754ddec930060b39e76fdd3235177e88118e685c4c5108de4fd9"
+      },
+      "collision-registry-projectile-basic-26": {
+        "cases": 16,
+        "sha256": "66200f608be755d71eecb3e3c2542a84861d286f93145c9c035b7fdb808b742a"
+      },
+      "collision-registry-projectile-normal-01": {
+        "cases": 12,
+        "sha256": "3d05a9f2edd2bb62722b9269b7bca2639c4cd94f2f05ccdcf56fd12d3f17ea7b"
+      },
+      "collision-registry-projectile-normal-05": {
+        "cases": 12,
+        "sha256": "7175ea0dba63fc9265bca0af38621439e33a0b49d17fcaa94161a1e8cde1eeeb"
+      },
+      "collision-registry-projectile-normal-09": {
+        "cases": 12,
+        "sha256": "2f5b7ad4649204f92f044fe76c3cec7ced9075b4e5a7d6baeacc73092d887977"
+      },
+      "collision-registry-projectile-normal-10": {
+        "cases": 12,
+        "sha256": "c028f3711eb3d679ab8f377b13f1b52d15e70f612e243c57296c680e6e4e4eff"
+      },
+      "collision-registry-projectile-normal-11": {
+        "cases": 12,
+        "sha256": "3bafcb9ccf10d9081ba2e190e27baa5de0c3b315ad11e871f98aa955cc80ed16"
+      },
+      "collision-registry-projectile-normal-12": {
+        "cases": 12,
+        "sha256": "b164b5ab7cee831d2b023daade6ffcb92211f69d9d0362cfa25b4777a37dee81"
+      },
+      "collision-registry-projectile-normal-13": {
+        "cases": 12,
+        "sha256": "2f5b7ad4649204f92f044fe76c3cec7ced9075b4e5a7d6baeacc73092d887977"
+      },
+      "collision-registry-projectile-normal-15": {
+        "cases": 12,
+        "sha256": "2f5b7ad4649204f92f044fe76c3cec7ced9075b4e5a7d6baeacc73092d887977"
+      },
+      "collision-registry-projectile-buffs-05": {
+        "cases": 60,
+        "sha256": "4d2bd05dcf4f57bda20e5aaabb6d96b7fa6f5546db5151f014fd43e598449dd1"
+      },
+      "collision-registry-projectile-buffs-08": {
+        "cases": 60,
+        "sha256": "ec12a673a654ff81ae5cad3b8a09a912a4856f25da23d743265a7756a2f41ea1"
+      },
+      "collision-registry-projectile-buffs-12": {
+        "cases": 60,
+        "sha256": "eda20dfe39bedf76677d843113c40988beb53c483b67a0f20d82376d72494386"
+      },
+      "collision-registry-projectile-buffs-16": {
+        "cases": 60,
+        "sha256": "e08ad412edb54e30f1049877727210139b2913ba82793857155b9aa484f125aa"
+      },
+      "collision-registry-projectile-buffs-18": {
+        "cases": 60,
+        "sha256": "829259713cfff516461d24fd7bccf1b82f4a8881a62161ba75f246732511623b"
+      },
+      "collision-registry-projectile-buffs-25": {
+        "cases": 60,
+        "sha256": "ea50faa02c3c2921816768bc564c905d68648714fe9abbc3721214cfdcc4bf24"
+      },
+      "collision-registry-projectile-buffs-26": {
+        "cases": 60,
+        "sha256": "a39440a7e942adbac7ce34ca54c557d8978d02932cc25c56e605ccb87ee0669e"
+      },
+      "collision-registry-projectile-chakram": {
+        "cases": 96,
+        "sha256": "e8a0e4177e0c6a127b46e5edb7162f1bec6f47cdd9e0afba4b875dfaace16465"
+      },
+      "collision-registry-projectile-bomb": {
+        "cases": 24,
+        "sha256": "0983c79b62342f546554bd4492df95e4f0759221f0723e939daba9d92b7d25e8"
+      },
+      "collision-registry-projectile-arrow-modifiers": {
+        "cases": 100,
+        "sha256": "d0ca525209c43f16ea2092c0cec754b337e01125581cad2121cec22a5811346d"
+      },
+      "collision-registry-projectile-positive": {
+        "cases": 8,
+        "sha256": "f976096fb1a974940a6f7eb840b1ad9392e396360847cfea1afad61006b10c61"
+      },
+      "collision-registry-projectile-damage-clock": {
+        "cases": 120,
+        "sha256": "c406efa01ca507029d1344d8db31022fb42a1d74a6d17d8b86391a54bac7a289"
+      },
+      "collision-registry-projectile-mana-clock": {
+        "cases": 108,
+        "sha256": "513b5d98f58604edb6be71b4904152769bc5b1df23fdef10ba313ea147176812"
+      },
+      "collision-registry-projectile-named-damage": {
+        "cases": 84,
+        "sha256": "2b8ff32d5e1f00f0e2434938130c426c0631a5afc10b2f1ce85627e906d5b6f0"
+      },
+      "collision-registry-projectile-death": {
+        "cases": 24,
+        "sha256": "ecaa58153a297c10373c5b2af0b69a8720b8b18a055011130bee79561ffaa7c8"
+      },
+      "collision-registry-projectile-arrow-kinds": {
+        "cases": 96,
+        "sha256": "930eb0b839a789b8be1bef431890b29c6766ac065be3fe2dc98a70c56a3091b1"
+      },
+      "collision-registry-projectile-splash": {
+        "cases": 48,
+        "sha256": "80722f4708ecf4ac24e675237c5fea1b77455d68c2374820604061b0088a0c4a"
+      },
+      "collision-registry-projectile-chakram-owner": {
+        "cases": 12,
+        "sha256": "c45f0ff1c07832d116c1747eef59ca4e60b90e14370efa6b374b972a57629b12"
+      }
+    },
+    "highres": {
+      "collision-registry-spell-award": {
+        "cases": 120,
+        "sha256": "2a2ba357c95b24b9b0d8548aba29bcae92b26a79e8e90e6fcc85c23acb726741"
+      },
+      "collision-registry-objectives-ball-pickup": {
+        "cases": 144,
+        "sha256": "a7c48f6cac89cdc32d264e9d7f80f14c4cc25aa5aef3cee2bdaf560a09d9fa08"
+      },
+      "collision-registry-objectives-crown-dispatch": {
+        "cases": 48,
+        "sha256": "c16fc1336e61c1a3169eccf0dad3e9294532b0a462e9e2f9add6213f651ee325"
+      },
+      "collision-registry-objectives-flag-pickup": {
+        "cases": 64,
+        "sha256": "040aa0d0e738401e3ff9cb4c970a4cfd9c83af0fd46dc9e3c3128c3f391d0162"
+      },
+      "collision-registry-objectives-home-score": {
+        "cases": 72,
+        "sha256": "b5d9d1e7524578a21f1a2c0664205ed67262a94bdd6d539faa51665c2785e40f"
+      },
+      "collision-registry-objectives-positive": {
+        "cases": 5,
+        "sha256": "719eeeaea002ca25bb327e9412b6abb8ce5eeb9b4baaf9aaab0718a039ec7d81"
+      },
+      "collision-registry-pickup": {
+        "cases": 4,
+        "sha256": "d960decbf8d058cb1dd8a5e1d79f179563347453b241e8bfe0106358b03cfa4b"
+      },
+      "collision-registry-state-40": {
+        "cases": 18,
+        "sha256": "4f409adaf8e7b1620ec98b6dd01bdb56a0e0c4d2f64441190251b7674d78dda9"
+      },
+      "collision-registry-state-41": {
+        "cases": 18,
+        "sha256": "48593cb7d5f15c89ae42dc6e3a92690459846489cd53e017490651ebce79568f"
+      },
+      "collision-registry-state-42": {
+        "cases": 18,
+        "sha256": "6e8439f3e88273d4313bb48462240ee6586a5c97b8f7b6d165e1b7839804f1b1"
+      },
+      "collision-registry-trigger": {
+        "cases": 432,
+        "sha256": "afe829f8057a68e7b1e132ba5e902432e9530e238f71a3a32c859bca66f7c388"
+      },
+      "collision-registry-world-ankh-history": {
+        "cases": 96,
+        "sha256": "5a8075de055bcbab01d162400c32f4522ce528e861520e6a30198893ae4baca9"
+      },
+      "collision-registry-world-chest-contents": {
+        "cases": 80,
+        "sha256": "78da915780f503688296b92367d629f4290ffb0059da4c2e4a4fee6ab7e8fc06"
+      },
+      "collision-registry-world-chest-key": {
+        "cases": 16,
+        "sha256": "ba76f6791f72e9594cb80a051718e25988cf2c8a14a502aad658a4f206c49e5c"
+      },
+      "collision-registry-world-clock-throttle": {
+        "cases": 168,
+        "sha256": "d58bc83c541e2bf0a765aa9d100848a498590eef2ccf4b424db812c526efa55b"
+      },
+      "collision-registry-world-door-keys": {
+        "cases": 64,
+        "sha256": "64ab2d4e3b6894ab846f90fd72e98ea3f9648105ff96dc038d58d541558d4c30"
+      },
+      "collision-registry-world-door-magic": {
+        "cases": 180,
+        "sha256": "d41231ffbd2e616fd150710374198423df217da8601731f7b778f215ab346cde"
+      },
+      "collision-registry-world-door-missing-key": {
+        "cases": 8,
+        "sha256": "ede7ef606d68833b7202b8a7af85698c7da6fc3e26cd26c6ff1c9b16e97727d5"
+      },
+      "collision-registry-world-exit-admission": {
+        "cases": 30,
+        "sha256": "1ea73cdff61c3f25fbd3abb773a7b8fff5372bfb3862df2f915002985907cb80"
+      },
+      "collision-registry-world-quest-exit": {
+        "cases": 8,
+        "sha256": "82478c13ff1a911963f5cae944622e47690f2792bc02210186a321079d2448c5"
+      },
+      "collision-registry-world-coop-exit-save": {
+        "cases": 9,
+        "sha256": "1f0bc07575e272375bd4c0b2638cd38d3b7d6b030f744f38224870c1cba1abb7"
+      },
+      "collision-registry-world-exit-glyphs": {
+        "cases": 24,
+        "sha256": "2333be7981f9345ab7a40a408a745706355e6eacfe75fde09a3937e28c305ee2"
+      },
+      "collision-registry-world-trap-geometry": {
+        "cases": 240,
+        "sha256": "373a3d97827b104b69663daf050ab41fe3fb9424fecb1550064f264af12df6ed"
+      },
+      "collision-registry-world-spell-projectile": {
+        "cases": 96,
+        "sha256": "f2e8d2910d41d5b1658ce2200cd8161d6607744c251574aab8f4375b5cd6272b"
+      },
+      "collision-registry-world-spell-wall": {
+        "cases": 6,
+        "sha256": "45c7b106a44784966fa0fc49057ff5d0c8ed6ae674ad86a195136a9c542536ac"
+      },
+      "collision-registry-world-soul-gate": {
+        "cases": 480,
+        "sha256": "b4fe0e9b7260639b8c3fd4e37f697a3a3b525b8456fd194609d5a3e8a25b5b15"
+      },
+      "collision-registry-world-undead-damage": {
+        "cases": 128,
+        "sha256": "d392885370f8910928f5673916e451a59125292fc830de9ef8d35f22978285d5"
+      },
+      "collision-registry-projectile-basic-00": {
+        "cases": 16,
+        "sha256": "fd58bfa5381475f5c24bdbc1a0f780c2498338d69adec6bd80cac6311e57fee5"
+      },
+      "collision-registry-projectile-basic-01": {
+        "cases": 16,
+        "sha256": "486a9e2c2226aeaa5643e8853ae0073c99b8172960221ab19b6dd9189389c985"
+      },
+      "collision-registry-projectile-basic-02": {
+        "cases": 16,
+        "sha256": "c45cf4736175bc6fe5601e926af18ea5a272b3ecc6c45f8102a9f37af7a75275"
+      },
+      "collision-registry-projectile-basic-03": {
+        "cases": 16,
+        "sha256": "f36dceed6dfdf8f84ded7cc1947a0201403771989c91e750fe69dc60710a6e83"
+      },
+      "collision-registry-projectile-basic-06": {
+        "cases": 16,
+        "sha256": "82f6ee8efa3f820600299f3e6c7efe26ebfe20550d95b966be6e8f10c8df18e8"
+      },
+      "collision-registry-projectile-basic-09": {
+        "cases": 16,
+        "sha256": "23cc0165b0b0e8ae9fa8817260dc3e484cb8a23c1cfb395adbddd1c943345ded"
+      },
+      "collision-registry-projectile-basic-10": {
+        "cases": 16,
+        "sha256": "84d2c2c96edddfaa95f1369d02486f5a82ba1857db5554420e3cf83327d261a1"
+      },
+      "collision-registry-projectile-basic-11": {
+        "cases": 16,
+        "sha256": "46994269c469cfb324e4307de838057ad6d18c333612f3e8600b36d0190e51f2"
+      },
+      "collision-registry-projectile-basic-12": {
+        "cases": 16,
+        "sha256": "2a547eb505b4750dcaf50219fade4977eb957c093ab043ca8bede74050e7c2c7"
+      },
+      "collision-registry-projectile-basic-13": {
+        "cases": 16,
+        "sha256": "e03e592fb7122158ed63176a99425595c272273d165a099ff950b6f1d96ddd70"
+      },
+      "collision-registry-projectile-basic-14": {
+        "cases": 16,
+        "sha256": "b2f910b9bde78ffede9dae5ff52f4bc3a660ae7338b579a79c0dec03571064b9"
+      },
+      "collision-registry-projectile-basic-15": {
+        "cases": 16,
+        "sha256": "23cc0165b0b0e8ae9fa8817260dc3e484cb8a23c1cfb395adbddd1c943345ded"
+      },
+      "collision-registry-projectile-basic-16": {
+        "cases": 16,
+        "sha256": "f48c8516c7ce9926b5c372ad150b239026382d8a998c3c21b462a0f9389b67aa"
+      },
+      "collision-registry-projectile-basic-17": {
+        "cases": 16,
+        "sha256": "d64c6561b28653ce58aeaed6ca14321db31fc399cecf69ebcfaa8782c6f9100a"
+      },
+      "collision-registry-projectile-basic-18": {
+        "cases": 16,
+        "sha256": "fde322a90af59da1b9e9edea6a2095f48e555142695c0b7fcc2d4c7f85d653ed"
+      },
+      "collision-registry-projectile-basic-23": {
+        "cases": 16,
+        "sha256": "60fc9f8741637c0b5363a3c79bff2913ce82178ca8b10b5abd17c65fed59d8f4"
+      },
+      "collision-registry-projectile-basic-24": {
+        "cases": 16,
+        "sha256": "d55820ca0f862d0c2522454c5c75f02936498c5eb18f3d2eb87c20fcefc53fcc"
+      },
+      "collision-registry-projectile-basic-25": {
+        "cases": 16,
+        "sha256": "e77e437d295f754ddec930060b39e76fdd3235177e88118e685c4c5108de4fd9"
+      },
+      "collision-registry-projectile-basic-26": {
+        "cases": 16,
+        "sha256": "66200f608be755d71eecb3e3c2542a84861d286f93145c9c035b7fdb808b742a"
+      },
+      "collision-registry-projectile-normal-01": {
+        "cases": 12,
+        "sha256": "3d05a9f2edd2bb62722b9269b7bca2639c4cd94f2f05ccdcf56fd12d3f17ea7b"
+      },
+      "collision-registry-projectile-normal-05": {
+        "cases": 12,
+        "sha256": "7175ea0dba63fc9265bca0af38621439e33a0b49d17fcaa94161a1e8cde1eeeb"
+      },
+      "collision-registry-projectile-normal-09": {
+        "cases": 12,
+        "sha256": "2f5b7ad4649204f92f044fe76c3cec7ced9075b4e5a7d6baeacc73092d887977"
+      },
+      "collision-registry-projectile-normal-10": {
+        "cases": 12,
+        "sha256": "c028f3711eb3d679ab8f377b13f1b52d15e70f612e243c57296c680e6e4e4eff"
+      },
+      "collision-registry-projectile-normal-11": {
+        "cases": 12,
+        "sha256": "3bafcb9ccf10d9081ba2e190e27baa5de0c3b315ad11e871f98aa955cc80ed16"
+      },
+      "collision-registry-projectile-normal-12": {
+        "cases": 12,
+        "sha256": "b164b5ab7cee831d2b023daade6ffcb92211f69d9d0362cfa25b4777a37dee81"
+      },
+      "collision-registry-projectile-normal-13": {
+        "cases": 12,
+        "sha256": "2f5b7ad4649204f92f044fe76c3cec7ced9075b4e5a7d6baeacc73092d887977"
+      },
+      "collision-registry-projectile-normal-15": {
+        "cases": 12,
+        "sha256": "2f5b7ad4649204f92f044fe76c3cec7ced9075b4e5a7d6baeacc73092d887977"
+      },
+      "collision-registry-projectile-buffs-05": {
+        "cases": 60,
+        "sha256": "4d2bd05dcf4f57bda20e5aaabb6d96b7fa6f5546db5151f014fd43e598449dd1"
+      },
+      "collision-registry-projectile-buffs-08": {
+        "cases": 60,
+        "sha256": "ec12a673a654ff81ae5cad3b8a09a912a4856f25da23d743265a7756a2f41ea1"
+      },
+      "collision-registry-projectile-buffs-12": {
+        "cases": 60,
+        "sha256": "eda20dfe39bedf76677d843113c40988beb53c483b67a0f20d82376d72494386"
+      },
+      "collision-registry-projectile-buffs-16": {
+        "cases": 60,
+        "sha256": "e08ad412edb54e30f1049877727210139b2913ba82793857155b9aa484f125aa"
+      },
+      "collision-registry-projectile-buffs-18": {
+        "cases": 60,
+        "sha256": "829259713cfff516461d24fd7bccf1b82f4a8881a62161ba75f246732511623b"
+      },
+      "collision-registry-projectile-buffs-25": {
+        "cases": 60,
+        "sha256": "ea50faa02c3c2921816768bc564c905d68648714fe9abbc3721214cfdcc4bf24"
+      },
+      "collision-registry-projectile-buffs-26": {
+        "cases": 60,
+        "sha256": "a39440a7e942adbac7ce34ca54c557d8978d02932cc25c56e605ccb87ee0669e"
+      },
+      "collision-registry-projectile-chakram": {
+        "cases": 96,
+        "sha256": "e8a0e4177e0c6a127b46e5edb7162f1bec6f47cdd9e0afba4b875dfaace16465"
+      },
+      "collision-registry-projectile-bomb": {
+        "cases": 24,
+        "sha256": "0983c79b62342f546554bd4492df95e4f0759221f0723e939daba9d92b7d25e8"
+      },
+      "collision-registry-projectile-arrow-modifiers": {
+        "cases": 100,
+        "sha256": "d0ca525209c43f16ea2092c0cec754b337e01125581cad2121cec22a5811346d"
+      },
+      "collision-registry-projectile-positive": {
+        "cases": 8,
+        "sha256": "f976096fb1a974940a6f7eb840b1ad9392e396360847cfea1afad61006b10c61"
+      },
+      "collision-registry-projectile-damage-clock": {
+        "cases": 120,
+        "sha256": "c406efa01ca507029d1344d8db31022fb42a1d74a6d17d8b86391a54bac7a289"
+      },
+      "collision-registry-projectile-mana-clock": {
+        "cases": 108,
+        "sha256": "513b5d98f58604edb6be71b4904152769bc5b1df23fdef10ba313ea147176812"
+      },
+      "collision-registry-projectile-named-damage": {
+        "cases": 84,
+        "sha256": "2b8ff32d5e1f00f0e2434938130c426c0631a5afc10b2f1ce85627e906d5b6f0"
+      },
+      "collision-registry-projectile-death": {
+        "cases": 24,
+        "sha256": "ecaa58153a297c10373c5b2af0b69a8720b8b18a055011130bee79561ffaa7c8"
+      },
+      "collision-registry-projectile-arrow-kinds": {
+        "cases": 96,
+        "sha256": "930eb0b839a789b8be1bef431890b29c6766ac065be3fe2dc98a70c56a3091b1"
+      },
+      "collision-registry-projectile-splash": {
+        "cases": 48,
+        "sha256": "80722f4708ecf4ac24e675237c5fea1b77455d68c2374820604061b0088a0c4a"
+      },
+      "collision-registry-projectile-chakram-owner": {
+        "cases": 12,
+        "sha256": "c45f0ff1c07832d116c1747eef59ca4e60b90e14370efa6b374b972a57629b12"
+      }
+    }
+  },
+  "owner_capture_cases": 4116,
+  "registered_execution_counts": {
+    "AwardSpellCollide": 121,
+    "DefaultCollide": 6,
+    "ElevatorCollide": 6,
+    "TelekinesisCollide": 6,
+    "BallCollide": 145,
+    "CrownCollide": 24,
+    "FlagCollide": 56,
+    "HomeBaseCollide": 24,
+    "PickupCollide": 4,
+    "MonsterCollide": 18,
+    "MimicCollide": 18,
+    "PlayerCollide": 18,
+    "TriggerCollide": 432,
+    "AnkhCollide": 97,
+    "ChestCollide": 180,
+    "DoorCollide": 336,
+    "ExitCollide": 71,
+    "TrapDoorCollide": 240,
+    "SpellProjectileCollide": 103,
+    "SoulGateCollide": 480,
+    "UndeadKillerCollide": 130,
+    "ProjectileCollide": 102,
+    "ProjectileSparkCollide": 28,
+    "DamageCollide": 136,
+    "ManaDrainCollide": 233,
+    "DieCollide": 40,
+    "WallReflectCollide": 28,
+    "YellowStarShotCollide": 28,
+    "DeathBallFragmentCollide": 28,
+    "PixieCollide": 88,
+    "WallReflectSparkCollide": 29,
+    "OwnCollide": 16,
+    "SparkCollide": 28,
+    "SpiderSpitCollide": 77,
+    "FistCollide": 16,
+    "TeleportWakeCollide": 76,
+    "ArrowCollide": 212,
+    "MonsterArrowCollide": 16,
+    "BearTrapCollide": 77,
+    "PoisonGasTrapCollide": 77,
+    "BoomCollide": 96,
+    "SparkExplosionCollide": 84,
+    "ChakramInMotionCollide": 109,
+    "BombCollide": 24
+  },
+  "escape_check": {
+    "success": true,
+    "command": [
+      "go",
+      "build",
+      "-p",
+      "2",
+      "-gcflags=github.com/opennox/opennox/v1/server=-m=2",
+      "./server"
+    ],
+    "wall_seconds": 3.4282193079125136,
+    "function_line": 1482,
+    "evidence": [
+      "server/object.go:1482:7: parameter obj leaks to {heap} for (*Object).CallCollideWith with derefs=0:",
+      "server/object.go:1482:7: parameter obj leaks to {heap} for ObjectExt.CallCollideWith with derefs=0:",
+      "server/object.go:1482:7: parameter obj leaks to {heap} for (*ObjectExt).CallCollideWith with derefs=1:",
+      "server/object.go:1482:36: parameter target leaks to {heap} for (*Object).CallCollideWith with derefs=0:",
+      "server/object.go:1482:36: parameter target leaks to {heap} for ObjectExt.CallCollideWith with derefs=0:",
+      "server/object.go:1482:36: parameter target leaks to {heap} for (*ObjectExt).CallCollideWith with derefs=0:",
+      "server/object.go:1482:52: parameter normal leaks to {heap} for (*Object).CallCollideWith with derefs=0:",
+      "server/object.go:1482:52: parameter normal leaks to {heap} for ObjectExt.CallCollideWith with derefs=0:",
+      "server/object.go:1482:52: parameter normal leaks to {heap} for (*ObjectExt).CallCollideWith with derefs=0:"
+    ],
+    "source_sha256": {
+      "src/server/object.go": "8780a8aa35db857b42c9eee6877358c897caba9a1f9e79d09e76d78b822a23b9",
+      "src/server/object_funcs.go": "3bf2d420f1fd4142f88a114ef8047e78e597f630dfd4c3b9cde62ae0cefe0842",
+      "src/legacy/common/ccall/ccall.go": "945a4ac0558953ab770e6af2abc13f1913b8a48530ecc1074ca113309f7ccbee",
+      "src/legacy/collision_core_queues.go": "81e5656d2dcf5ad6d45b2a08349732554c325e929fb4885a5f0eee14a70ee880",
+      "src/legacy/world_motion_trace.go": "ac93fe7b0e671a171060097a59af8f880301dce312a064c677424cb10a3b5d70"
+    },
+    "toolchain": "go version go1.26.0 linux/amd64",
+    "target": [
+      "386",
+      "sse2",
+      "1"
+    ],
+    "log_sha256": "5211a835aeed240ecc2ac755f88002a8a7174298313793eac85076c9dffd17c7",
+    "interpretation": "Object, target and normal escape to heap through the method. KeepAlive retains pointed storage through word conversion/dispatch. Existing raw integer API keeps its caller-managed argument contract; its current production arguments are C-backed objects or zero."
+  },
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 4.176069339970127,
+        "sha256": "f5000f02e096b523358e61e180f3fdef4c2a17498157e3efdbf8ffd8e9372e15",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.956510982941836,
+        "sha256": "bafdf2a93fabaf6c24dd43ebef5753ae5a714c3ccd1036b8f66cb18da8d32ea6",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 62.47727673314512,
+        "sha256": "d18bc0f0ee5709c60b329f7a2cdf33c1343583abcd2837bd4372e98a6375e65a",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "collision-registry-save": {
+        "exit": 0,
+        "wall_seconds": 47.26055291015655,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 46.72344685019925,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c-save",
+          "binary_sha256": "f5000f02e096b523358e61e180f3fdef4c2a17498157e3efdbf8ffd8e9372e15",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-collision-registry/production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/collision-registry-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Typed Go collision callback dispatch",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "fa8f26a143da9a6ce6df9406a555a435c0acf5b779745b718863cefd480e7ddb"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 44.9649216379039,
+      "failure_entries": 304,
+      "packages": {
+        "skip": 32,
+        "pass": 17,
+        "fail": 2
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "preflight": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 62.38271460100077,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c",
+    "binary_sha256": "f5000f02e096b523358e61e180f3fdef4c2a17498157e3efdbf8ffd8e9372e15",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-collision-registry/preflight/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/collision-registry/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Typed Go collision callback dispatch",
+    "isolated_network": false,
+    "removed_maps": 0
+  },
+  "binary_sha256": {
+    "safe": "07d7382fd9c7615efd93be4f60ac2d89c9663ac96ad9b0fd28da31655a6ded0f",
+    "opennox": "f5000f02e096b523358e61e180f3fdef4c2a17498157e3efdbf8ffd8e9372e15",
+    "opennox-hd": "bafdf2a93fabaf6c24dd43ebef5753ae5a714c3ccd1036b8f66cb18da8d32ea6",
+    "opennox-server": "d18bc0f0ee5709c60b329f7a2cdf33c1343583abcd2837bd4372e98a6375e65a"
+  },
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 0,
+      "lines": 0
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "production_c_preamble_bodies": 79,
+  "limits": [
+    "53 named collision registrations/51 original callback identities, raw fallbacks and three replaceable handlers retained.",
+    "Only void collision owners converted. temporaryMagicMissile consumes an integer return and remains raw; damage sound deferred.",
+    "Configured 386/SSE2/CGO target. No64-bit support or measured performance claim."
+  ]
+}

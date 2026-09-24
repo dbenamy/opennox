@@ -25,59 +25,145 @@ var (
 )
 
 func init() {
-	server.RegisterObjectCollide("DefaultCollide", C.nox_objectCollideDefault, 0)
-	server.RegisterObjectCollide("MonsterCollide", C.nox_xxx_collideMonsterEventProc_4E83B0, 0)
-	server.RegisterObjectCollide("PlayerCollide", C.nox_xxx_collidePlayer_4E8460, 0)
-	server.RegisterObjectCollide("ProjectileCollide", C.nox_xxx_collideProjectileGeneric_4E87B0, 8)
-	server.RegisterObjectCollide("ProjectileSparkCollide", C.nox_xxx_collideProjectileSpark_4E8880, 8)
-	server.RegisterObjectCollide("DoorCollide", C.nox_xxx_collideDoor_4E8AC0, 0)
-	server.RegisterObjectCollide("PickupCollide", C.nox_xxx_collidePickup_4E8DF0, 0)
-	server.RegisterObjectCollide("ExitCollide", C.nox_xxx_collideExit_4E9090, 88)
-	server.RegisterObjectCollide("DamageCollide", C.nox_xxx_collideDamage_4E9430, 8)
-	server.RegisterObjectCollide("ManaDrainCollide", C.nox_xxx_collideManadrain_4E9490, 8)
-	server.RegisterObjectCollide("BombCollide", C.nox_xxx_collideBomb_4E96F0, 8)
-	server.RegisterObjectCollide("SparkExplosionCollide", C.nox_xxx_fireballCollide_4E9AC0, 1)
-	server.RegisterObjectCollide("ChestCollide", C.nox_xxx_collideChest_4E9C40, 0)
-	server.RegisterObjectCollide("WallReflectCollide", C.nox_xxx_collideSulphurShot2_4E9D80, 8)
-	server.RegisterObjectCollide("WallReflectSparkCollide", C.nox_xxx_collideWallReflectSpark_4EA200, 8)
-	server.RegisterObjectCollide("PixieCollide", C.nox_xxx_collidePixie_4EA080, 8)
-	server.RegisterObjectCollide("OwnCollide", C.sub_4EA2C0, 0)
-	server.RegisterObjectCollide("SparkCollide", C.nox_xxx_collideSpark_4EA300, 8)
-	server.RegisterObjectCollide("BarrelCollide", C.sub_4EAAA0, 0)
-	server.RegisterObjectCollide("AudioEventCollide", C.sub_4EAAD0, 4)
-	server.RegisterObjectCollide("TriggerCollide", C.nox_xxx_collideTrigger_54FCD0, 0)
-	server.RegisterObjectCollide("TeleportCollide", C.sub_4EACA0, 8)
-	server.RegisterObjectCollide("ElevatorCollide", C.nox_objectCollideDefault, 8)
-	server.RegisterObjectCollide("AwardSpellCollide", C.nox_xxx_collideSpellPedestal_4EAD20, 4)
-	server.RegisterObjectCollide("DieCollide", C.nox_xxx_collideDie_4E99B0, 0)
-	server.RegisterObjectCollide("GlyphCollide", C.nox_xxx_collideGlyph_4E9A00, 0)
-	server.RegisterObjectCollide("SpellProjectileCollide", C.nox_xxx_spellFlyCollide_4E9500, 0)
-	server.RegisterObjectCollide("BoomCollide", C.nox_xxx_collideBoom_4E9770, 0)
-	server.RegisterObjectCollide("SignCollide", C.nox_xxx_collideSign_4EAB40, 0)
-	server.RegisterObjectCollide("PentagramCollide", C.nox_xxx_collidePentagram_4EAB20, 0)
-	server.RegisterObjectCollide("SpiderSpitCollide", C.nox_xxx_collideWebbing_4EA380, 0)
-	server.RegisterObjectCollide("DeathBallCollide", C.nox_xxx_collideDeathBall_4E9E90, 0)
-	server.RegisterObjectCollide("DeathBallFragmentCollide", C.nox_xxx_collideDeathBallFragment_4E9FE0, 0)
-	server.RegisterObjectCollide("TelekinesisCollide", C.nox_objectCollideDefault, 0)
-	server.RegisterObjectCollide("FistCollide", C.nox_xxx_collideFist_4EADF0, 0)
-	server.RegisterObjectCollide("TeleportWakeCollide", C.nox_xxx_collideTeleportWake_4EAE30, 8)
-	server.RegisterObjectCollide("FlagCollide", C.sub_4EA400, 0)
-	server.RegisterObjectCollide("ChakramInMotionCollide", C.nox_xxx_collideChakram_4EAF00, 0)
-	server.RegisterObjectCollide("ArrowCollide", C.nox_xxx_collideArrow_4EB490, 8)
-	server.RegisterObjectCollide("MonsterArrowCollide", C.nox_xxx_collideMonsterArrow_4EB800, 8)
-	server.RegisterObjectCollide("BearTrapCollide", C.nox_xxx_collideBearTrap_4EB890, 0)
-	server.RegisterObjectCollide("PoisonGasTrapCollide", C.nox_xxx_collidePoisonGasTrap_4EB910, 0)
-	server.RegisterObjectCollide("TrapDoorCollide", C.nox_xxx_collideTrapDoor_4EAB60, 28)
-	server.RegisterObjectCollide("BallCollide", C.nox_xxx_collideBall_4EBA00, 0)
-	server.RegisterObjectCollide("HomeBaseCollide", C.nox_xxx_collideHomeBase_4EBB80, 0)
-	server.RegisterObjectCollide("CrownCollide", C.sub_4EBB50, 0)
-	server.RegisterObjectCollide("UndeadKillerCollide", C.nox_xxx_collideUndeadKiller_4EBD40, 4)
-	server.RegisterObjectCollide("YellowStarShotCollide", C.nox_xxx_collideSulphurShot_4E9E50, 8)
-	server.RegisterObjectCollide("MimicCollide", C.nox_xxx_collideMimic_4E83D0, 0)
-	server.RegisterObjectCollide("HarpoonCollide", C.nox_xxx_collideHarpoon_4EB6A0, 8)
-	server.RegisterObjectCollide("MonsterGeneratorCollide", C.nox_xxx_collideMonsterGen_4EBE10, 0)
-	server.RegisterObjectCollide("SoulGateCollide", C.sub_4EBE40, 4)
-	server.RegisterObjectCollide("AnkhCollide", C.nox_xxx_collideAnkhQuest_4EBF40, 0)
+	server.RegisterObjectCollideGo("DefaultCollide", C.nox_objectCollideDefault, func(u *server.Object, a2, a3 uintptr) {
+		nox_objectCollideDefault(C.int(uintptr(u.CObj())), C.int(a2), (*C.float)(unsafe.Pointer(a3)))
+	}, 0)
+	server.RegisterObjectCollideGo("MonsterCollide", C.nox_xxx_collideMonsterEventProc_4E83B0, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideMonsterEventProc_4E83B0(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 0)
+	server.RegisterObjectCollideGo("PlayerCollide", C.nox_xxx_collidePlayer_4E8460, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collidePlayer_4E8460(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 0)
+	server.RegisterObjectCollideGo("ProjectileCollide", C.nox_xxx_collideProjectileGeneric_4E87B0, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideProjectileGeneric_4E87B0(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 8)
+	server.RegisterObjectCollideGo("ProjectileSparkCollide", C.nox_xxx_collideProjectileSpark_4E8880, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideProjectileSpark_4E8880(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 8)
+	server.RegisterObjectCollideGo("DoorCollide", C.nox_xxx_collideDoor_4E8AC0, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideDoor_4E8AC0(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 0)
+	server.RegisterObjectCollideGo("PickupCollide", C.nox_xxx_collidePickup_4E8DF0, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collidePickup_4E8DF0(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 0)
+	server.RegisterObjectCollideGo("ExitCollide", C.nox_xxx_collideExit_4E9090, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideExit_4E9090(C.int(uintptr(u.CObj())), C.int(a2), C.int(a3))
+	}, 88)
+	server.RegisterObjectCollideGo("DamageCollide", C.nox_xxx_collideDamage_4E9430, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideDamage_4E9430(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 8)
+	server.RegisterObjectCollideGo("ManaDrainCollide", C.nox_xxx_collideManadrain_4E9490, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideManadrain_4E9490(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 8)
+	server.RegisterObjectCollideGo("BombCollide", C.nox_xxx_collideBomb_4E96F0, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideBomb_4E96F0(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 8)
+	server.RegisterObjectCollideGo("SparkExplosionCollide", C.nox_xxx_fireballCollide_4E9AC0, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_fireballCollide_4E9AC0(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 1)
+	server.RegisterObjectCollideGo("ChestCollide", C.nox_xxx_collideChest_4E9C40, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideChest_4E9C40((*C.uint32_t)(u.CObj()), C.int(a2))
+	}, 0)
+	server.RegisterObjectCollideGo("WallReflectCollide", C.nox_xxx_collideSulphurShot2_4E9D80, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideSulphurShot2_4E9D80(C.int(uintptr(u.CObj())), C.int(a2), (*C.float)(unsafe.Pointer(a3)))
+	}, 8)
+	server.RegisterObjectCollideGo("WallReflectSparkCollide", C.nox_xxx_collideWallReflectSpark_4EA200, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideWallReflectSpark_4EA200(C.int(uintptr(u.CObj())), C.int(a2), (*C.float2)(unsafe.Pointer(a3)))
+	}, 8)
+	server.RegisterObjectCollideGo("PixieCollide", C.nox_xxx_collidePixie_4EA080, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collidePixie_4EA080(C.int(uintptr(u.CObj())), C.int(a2), (*C.float)(unsafe.Pointer(a3)))
+	}, 8)
+	server.RegisterObjectCollideGo("OwnCollide", C.sub_4EA2C0, func(u *server.Object, a2, a3 uintptr) { sub_4EA2C0(C.int(uintptr(u.CObj())), C.int(a2)) }, 0)
+	server.RegisterObjectCollideGo("SparkCollide", C.nox_xxx_collideSpark_4EA300, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideSpark_4EA300(C.int(uintptr(u.CObj())), C.int(a2), (*C.float)(unsafe.Pointer(a3)))
+	}, 8)
+	server.RegisterObjectCollideGo("BarrelCollide", C.sub_4EAAA0, func(u *server.Object, a2, a3 uintptr) { sub_4EAAA0(C.int(uintptr(u.CObj()))) }, 0)
+	server.RegisterObjectCollideGo("AudioEventCollide", C.sub_4EAAD0, func(u *server.Object, a2, a3 uintptr) { sub_4EAAD0(C.int(uintptr(u.CObj())), C.int(a2)) }, 4)
+	server.RegisterObjectCollideGo("TriggerCollide", C.nox_xxx_collideTrigger_54FCD0, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideTrigger_54FCD0(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 0)
+	server.RegisterObjectCollideGo("TeleportCollide", C.sub_4EACA0, func(u *server.Object, a2, a3 uintptr) { sub_4EACA0(C.int(uintptr(u.CObj())), C.int(a2)) }, 8)
+	server.RegisterObjectCollideGo("ElevatorCollide", C.nox_objectCollideDefault, func(u *server.Object, a2, a3 uintptr) {
+		nox_objectCollideDefault(C.int(uintptr(u.CObj())), C.int(a2), (*C.float)(unsafe.Pointer(a3)))
+	}, 8)
+	server.RegisterObjectCollideGo("AwardSpellCollide", C.nox_xxx_collideSpellPedestal_4EAD20, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideSpellPedestal_4EAD20(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 4)
+	server.RegisterObjectCollideGo("DieCollide", C.nox_xxx_collideDie_4E99B0, func(u *server.Object, a2, a3 uintptr) { nox_xxx_collideDie_4E99B0(C.int(uintptr(u.CObj())), C.int(a2)) }, 0)
+	server.RegisterObjectCollideGo("GlyphCollide", C.nox_xxx_collideGlyph_4E9A00, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideGlyph_4E9A00((*nox_object_t)(u.CObj()), (*nox_object_t)(unsafe.Pointer(a2)))
+	}, 0)
+	server.RegisterObjectCollideGo("SpellProjectileCollide", C.nox_xxx_spellFlyCollide_4E9500, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_spellFlyCollide_4E9500(C.int(uintptr(u.CObj())), C.int(a2), (*C.float)(unsafe.Pointer(a3)))
+	}, 0)
+	server.RegisterObjectCollideGo("BoomCollide", C.nox_xxx_collideBoom_4E9770, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideBoom_4E9770(C.int(uintptr(u.CObj())), C.int(a2), (*C.float)(unsafe.Pointer(a3)))
+	}, 0)
+	server.RegisterObjectCollideGo("SignCollide", C.nox_xxx_collideSign_4EAB40, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideSign_4EAB40(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 0)
+	server.RegisterObjectCollideGo("PentagramCollide", C.nox_xxx_collidePentagram_4EAB20, func(u *server.Object, a2, a3 uintptr) { nox_xxx_collidePentagram_4EAB20(C.int(uintptr(u.CObj()))) }, 0)
+	server.RegisterObjectCollideGo("SpiderSpitCollide", C.nox_xxx_collideWebbing_4EA380, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideWebbing_4EA380(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 0)
+	server.RegisterObjectCollideGo("DeathBallCollide", C.nox_xxx_collideDeathBall_4E9E90, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideDeathBall_4E9E90((*nox_object_t)(u.CObj()), (*nox_object_t)(unsafe.Pointer(a2)), (*C.float)(unsafe.Pointer(a3)))
+	}, 0)
+	server.RegisterObjectCollideGo("DeathBallFragmentCollide", C.nox_xxx_collideDeathBallFragment_4E9FE0, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideDeathBallFragment_4E9FE0(C.int(uintptr(u.CObj())), C.int(a2), (*C.float)(unsafe.Pointer(a3)))
+	}, 0)
+	server.RegisterObjectCollideGo("TelekinesisCollide", C.nox_objectCollideDefault, func(u *server.Object, a2, a3 uintptr) {
+		nox_objectCollideDefault(C.int(uintptr(u.CObj())), C.int(a2), (*C.float)(unsafe.Pointer(a3)))
+	}, 0)
+	server.RegisterObjectCollideGo("FistCollide", C.nox_xxx_collideFist_4EADF0, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideFist_4EADF0(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 0)
+	server.RegisterObjectCollideGo("TeleportWakeCollide", C.nox_xxx_collideTeleportWake_4EAE30, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideTeleportWake_4EAE30(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 8)
+	server.RegisterObjectCollideGo("FlagCollide", C.sub_4EA400, func(u *server.Object, a2, a3 uintptr) { sub_4EA400(C.int(uintptr(u.CObj())), C.int(a2)) }, 0)
+	server.RegisterObjectCollideGo("ChakramInMotionCollide", C.nox_xxx_collideChakram_4EAF00, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideChakram_4EAF00(C.int(uintptr(u.CObj())), C.int(a2), (*C.float)(unsafe.Pointer(a3)))
+	}, 0)
+	server.RegisterObjectCollideGo("ArrowCollide", C.nox_xxx_collideArrow_4EB490, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideArrow_4EB490(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 8)
+	server.RegisterObjectCollideGo("MonsterArrowCollide", C.nox_xxx_collideMonsterArrow_4EB800, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideMonsterArrow_4EB800(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 8)
+	server.RegisterObjectCollideGo("BearTrapCollide", C.nox_xxx_collideBearTrap_4EB890, func(u *server.Object, a2, a3 uintptr) { nox_xxx_collideBearTrap_4EB890((*C.int)(u.CObj()), C.int(a2)) }, 0)
+	server.RegisterObjectCollideGo("PoisonGasTrapCollide", C.nox_xxx_collidePoisonGasTrap_4EB910, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collidePoisonGasTrap_4EB910((*C.int)(u.CObj()), C.int(a2))
+	}, 0)
+	server.RegisterObjectCollideGo("TrapDoorCollide", C.nox_xxx_collideTrapDoor_4EAB60, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideTrapDoor_4EAB60(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 28)
+	server.RegisterObjectCollideGo("BallCollide", C.nox_xxx_collideBall_4EBA00, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideBall_4EBA00(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 0)
+	server.RegisterObjectCollideGo("HomeBaseCollide", C.nox_xxx_collideHomeBase_4EBB80, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideHomeBase_4EBB80(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 0)
+	server.RegisterObjectCollideGo("CrownCollide", C.sub_4EBB50, func(u *server.Object, a2, a3 uintptr) { sub_4EBB50(C.int(uintptr(u.CObj())), C.int(a2)) }, 0)
+	server.RegisterObjectCollideGo("UndeadKillerCollide", C.nox_xxx_collideUndeadKiller_4EBD40, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideUndeadKiller_4EBD40(C.int(uintptr(u.CObj())), C.int(a2), C.int(a3))
+	}, 4)
+	server.RegisterObjectCollideGo("YellowStarShotCollide", C.nox_xxx_collideSulphurShot_4E9E50, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideSulphurShot_4E9E50(C.int(uintptr(u.CObj())), C.int(a2), C.int(a3))
+	}, 8)
+	server.RegisterObjectCollideGo("MimicCollide", C.nox_xxx_collideMimic_4E83D0, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideMimic_4E83D0(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 0)
+	server.RegisterObjectCollideGo("HarpoonCollide", C.nox_xxx_collideHarpoon_4EB6A0, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideHarpoon_4EB6A0((*nox_object_t)(u.CObj()), (*nox_object_t)(unsafe.Pointer(a2)))
+	}, 8)
+	server.RegisterObjectCollideGo("MonsterGeneratorCollide", C.nox_xxx_collideMonsterGen_4EBE10, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideMonsterGen_4EBE10(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 0)
+	server.RegisterObjectCollideGo("SoulGateCollide", C.sub_4EBE40, func(u *server.Object, a2, a3 uintptr) { sub_4EBE40(C.int(uintptr(u.CObj())), C.int(a2)) }, 4)
+	server.RegisterObjectCollideGo("AnkhCollide", C.nox_xxx_collideAnkhQuest_4EBF40, func(u *server.Object, a2, a3 uintptr) {
+		nox_xxx_collideAnkhQuest_4EBF40(C.int(uintptr(u.CObj())), C.int(a2))
+	}, 0)
 
 	server.RegisterObjectCollideParse("ProjectileCollide", resourceObjectParser("collide", "projectile"))
 	server.RegisterObjectCollideParse("ProjectileSparkCollide", resourceObjectParser("collide", "projectile"))

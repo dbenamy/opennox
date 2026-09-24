@@ -3,11 +3,9 @@ package legacy
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"image"
 	"math"
-	"unsafe"
 )
 
 func motionTrace(u *server.Object, target *uint32, normal *types.Pointf) int8 {
@@ -94,11 +92,11 @@ func motionProjectileDispatch(u *server.Object) {
 			}
 		}
 	}
-	ccall.CallVoidPtr3(u.Collide, u.CObj(), unsafe.Pointer(t), unsafe.Pointer(&normal))
+	u.CallCollideWith(t, &normal)
 	dword_5d4594_2488620 = 0
 	if t != nil {
 		normal.X = -normal.X
 		normal.Y = -normal.Y
-		ccall.CallVoidPtr3(t.Collide, t.CObj(), u.CObj(), unsafe.Pointer(&normal))
+		t.CallCollideWith(u, &normal)
 	}
 }

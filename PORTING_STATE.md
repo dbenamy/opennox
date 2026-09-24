@@ -7,36 +7,40 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — collision original baseline qualified
+## Current — collision conversion qualified
 
-All 257 affected roots pass in default/server/highres with no skips. The 72 frozen
-capture groups retain 4,116 observations and exactly 4,163 calls across 44 names;
-three replaceable-handler contracts plus existing registered tests cover the other
-names. All 53 registry identities/sizes and 51 retained exports checked.
-19 new and three modified porttest files only; all other source/dependency and four
-preceding lifecycle binary fingerprints match. Production qualification reused only
-for this test-only baseline. See COLLISION_REGISTRY.md and collision-registry-c-qualification.json.
+All 53 named collision registrations now bind complete existing Go wrappers.
+Five production files and one test-only pointer bridge changed. Generic CallCollide
+keeps nil/raw integer-word behavior; CallCollideWith keeps the four queue/projectile
+owners' raw pointer ABI and configured-slot precondition. Alias identities/sizes,
+parser order and three replaceable handlers retained. Compiler evidence verifies
+pointer arguments escape; GC/stack-growth, identity and normal mutation checks pass.
 
-No production collision changes installed yet. Ignored build/port-collision-registry/production.patch
-contains five production files and one test-only pointer-API bridge switch.
-Review/apply after baseline commit/push, format, prove normal/target escape from
-CallCollideWith with compiler diagnostics, then run contracts and qualify-remaining.sh.
-Do not fabricate escape-check.json: record exact diagnostic/source evidence.
-The integer-returning temporaryMagicMissile caller and damage-sound callbacks stay
-for separate qualification. C: zero standalone files/lines; 79 preamble bodies.
+All 257 roots/profile and 72 groups / 4,116 frozen observations pass; 4,163 counted
+calls across 44 names repeat, with remaining names covered by dynamic contracts or
+existing registered tests. Safe/static, four fresh 386/SSE2/CGO binaries, retained
+Go-backed exports, exact known-suite 304 events and 17 pass/2 fail/32 skip package
+outcomes, headless creation and explicit save/load/resume all pass. See
+COLLISION_REGISTRY.md and collision-registry-qualification.json. Check Git for
+conversion commit/push. C: zero standalone files/lines; 79 preamble bodies.
+Current binaries: build/port-collision-registry/{safe/opennox-safe,production/production/bin}.
 
-Original15368 completed43 roots but primary redundant SpellWall counter drain failed;
-only duplicate accounting removed. Corrected46948 passed; every capture hash and
-count repeated. Luna projectile Positive hash/count helper fixed before compilation.
-Primary corrected coverage audit: ObjectStateOwnership does select default op43.
-Rejected logs and report erratum retained. No original algorithm golden changed.
-Baseline finalizers consumed after completion; no Go jobs active at this checkpoint.
+The integer-returning temporaryMagicMissile collision owner remains raw. Damage
+sound was deferred for its own nil-default contract. Next xfer/sound read-only
+inventory is under build/port-collision-registry; primary scope/API/test review
+pending. No next implementation installed. One Luna helper; no Go jobs active at
+this checkpoint. Completed finalizers consumed; don't rerun against later sources.
 
-Cleanup93707 removed30 old reproducible repo archives (1,297,507,410 bytes) with
-strict pre-22:00 cutoff/stat/hash/header/module and host fd/exe/map checks while no
-Go active. Plan/removal records and consumed script in build/port-collision-registry.
-Source, modules, assets, qualified binaries and evidence retained. Old rebuilds may
-be slower. One Luna helper; next xfer/sound read-only inventory may be in progress.
+Original run 15368 failed primary duplicate SpellWall counter drain only; corrected run 46948
+passed all 43 roots with unchanged captures/counts. Primary fixed Luna's Positive
+capture-map/count helper before compilation and its missed state-op43 audit entry.
+Original algorithm expectations unchanged; rejected artifacts/erratum retained.
+
+Cleanup run 93707 reclaimed 1,297,507,410 bytes from 30 old reproducible repo archives
+with strict cutoff/stat/hash/header/module and host-use checks, no Go active.
+Source/modules/assets/binaries/evidence retained. Completed run assets deduplicated
+only by original hashes; deduplicate-preflight/save.py --restore and per-run
+manifests remain available. Current production binaries remain uncompressed.
 
 ## Earlier — lifecycle conversion qualified
 

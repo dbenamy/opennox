@@ -10,7 +10,6 @@ import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
@@ -81,7 +80,7 @@ func collisionDispatch() {
 		h := collisionHitAt(p)
 		if h.B > 6 || h.B == 0 {
 			a := collisionObjectAt(h.A)
-			ccall.CallVoidPtr3(a.Collide, a.CObj(), unsafe.Pointer(uintptr(h.B)), unsafe.Pointer(&h.Normal))
+			a.CallCollideWith(collisionObjectAt(h.B), &h.Normal)
 			if h.B != 0 {
 				spellLifeCollide(collisionObjectAt(h.A), collisionObjectAt(h.B))
 			}
@@ -92,7 +91,7 @@ func collisionDispatch() {
 		} else if h.B != 0 {
 			normal := types.Pointf{-h.Normal.X, -h.Normal.Y}
 			b := collisionObjectAt(h.B)
-			ccall.CallVoidPtr3(b.Collide, b.CObj(), unsafe.Pointer(uintptr(h.A)), unsafe.Pointer(&normal))
+			b.CallCollideWith(collisionObjectAt(h.A), &normal)
 			spellLifeCollide(collisionObjectAt(h.B), collisionObjectAt(h.A))
 			if collisionObjectAt(h.A).ObjFlags&8 != 0 {
 				collisionActivate(collisionObjectAt(h.B))
