@@ -5,13 +5,7 @@ package legacy
 /*
 #include "GAME3_2.h"
 #include "GAME3_3.h"
-int nox_objectCollideDefault(int,int,float*);
-static void* stateFunction(int id){switch(id){
-case 40:return (void*)nox_xxx_collideMonsterEventProc_4E83B0;
-case 41:return (void*)nox_xxx_collideMimic_4E83D0;
-case 42:return (void*)nox_xxx_collidePlayer_4E8460;
-case 43:return (void*)nox_objectCollideDefault;
-default:return 0;}}
+
 */
 import "C"
 
@@ -145,7 +139,7 @@ func (p *portTestShopPools) objectStateItems() {
 		u.HealthData = hp
 	}
 	for i := 0; i < 44; i++ {
-		if fn := C.stateFunction(C.int(i)); fn != nil {
+		if fn := portTestStateFunction(i); fn != nil {
 			p.identify(fn, 89000+uint32(i))
 		}
 	}
@@ -303,4 +297,19 @@ func (p *portTestShopPools) objectStateSnapshot(out []uint32) []uint32 {
 		out = append(out, p.normalize(*memmap.PtrUint32(0x5d4594, off)))
 	}
 	return out
+}
+
+func portTestStateFunction(id int) unsafe.Pointer {
+	switch id {
+	case 40:
+		return collisionKey(collisionIdentityMonster)
+	case 41:
+		return collisionKey(collisionIdentityMimic)
+	case 42:
+		return collisionKey(collisionIdentityPlayer)
+	case 43:
+		return collisionKey(collisionIdentityDefault)
+	default:
+		return nil
+	}
 }

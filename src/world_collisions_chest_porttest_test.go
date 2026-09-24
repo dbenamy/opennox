@@ -34,7 +34,7 @@ func TestWorldCollisionsChestContents(t *testing.T) {
 	a.Shape.Kind = server.ShapeKindCircle
 	a.Shape.Circle.R = 10
 	a.Shape.Circle.R2 = 100
-	a.Death, _ = server.PortTestWorldCollisionRegistry("PentagramCollide")
+	a.Death = server.PortTestWorldChestDeath()
 	var items []*server.Object
 	for i := 0; i < 4; i++ {
 		it := newObjectXferSimple(t, o.s)
@@ -148,7 +148,7 @@ func TestWorldCollisionsChestKey(t *testing.T) {
 	a := newObjectXferSimple(t, o.s)
 	b := &o.units[1]
 	a.UpdateData = o.record(t, 8)
-	a.Death, _ = server.PortTestWorldCollisionRegistry("PentagramCollide")
+	a.Death = server.PortTestWorldChestDeath()
 	t.Cleanup(func() { a.UpdateData = nil; b.InvFirstItem = nil; o.s.Objs.DeletedList = nil })
 	var rows []struct {
 		Name            string

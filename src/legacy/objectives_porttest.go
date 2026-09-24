@@ -10,32 +10,28 @@ package legacy
 int sub_417F50(int a1);
 void nox_xxx_pickupFlagCtf_4EA490(int a1, int a2);
 int sub_4EB9B0(int a1, int a2);
-void nox_xxx_collideBall_4EBA00(int a1, int a2);
-int sub_4EBB50(int a1, int a2);
-short nox_xxx_collideHomeBase_4EBB80(int a1, int a2);
 int sub_4ECBD0(int a1);
 int sub_4ECC00(char** a1);
 signed int nox_xxx_updateObelisk_53C580(int a1);
 int nox_xxx_updateFlag_53DDF0(int a1);
 void nox_xxx_updateGameBall_53DF40(int a3);
 void nox_xxx_updateCrown_53E1D0(int a1);
-void sub_4EA400(int a1, int a2);
 int sub_4EA7A0(int a1);
 short sub_4EA800(int a1, int a2);
 static void* objectiveFunction(int id){switch(id){
 case 0:return (void*)sub_417F50;
 case 1:return (void*)nox_xxx_pickupFlagCtf_4EA490;
 case 2:return (void*)sub_4EB9B0;
-case 3:return (void*)nox_xxx_collideBall_4EBA00;
-case 4:return (void*)sub_4EBB50;
-case 5:return (void*)nox_xxx_collideHomeBase_4EBB80;
+
+
+
 case 6:return (void*)sub_4ECBD0;
 case 7:return (void*)sub_4ECC00;
 case 8:return (void*)nox_xxx_updateObelisk_53C580;
 case 9:return (void*)nox_xxx_updateFlag_53DDF0;
 case 10:return (void*)nox_xxx_updateGameBall_53DF40;
 case 11:return (void*)nox_xxx_updateCrown_53E1D0;
-case 12:return (void*)sub_4EA400;
+
 case 13:return (void*)sub_4EA7A0;
 case 14:return (void*)sub_4EA800;
 default:return 0;}}
@@ -43,16 +39,16 @@ static uint32_t objectiveCall(int id,nox_object_t* u,nox_object_t* target,int va
 case 0: return (uint32_t)sub_417F50(value?(int)u:0);
 case 1: nox_xxx_pickupFlagCtf_4EA490((int)u,(int)target);return 0;
 case 2: return (uint32_t)sub_4EB9B0((int)u,(int)target);
-case 3: nox_xxx_collideBall_4EBA00((int)u,(int)target);return 0;
-case 4: return (uint32_t)sub_4EBB50((int)u,(int)target);
-case 5: return (uint32_t)nox_xxx_collideHomeBase_4EBB80((int)u,(int)target);
+
+
+
 case 6: return (uint32_t)sub_4ECBD0((int)u);
 case 7: return (uint32_t)sub_4ECC00(*(char***)(*(char**)((char*)u+692)+4));
 case 8: return (uint32_t)nox_xxx_updateObelisk_53C580((int)u);
 case 9: return (uint32_t)nox_xxx_updateFlag_53DDF0((int)u);
 case 10: nox_xxx_updateGameBall_53DF40((int)u);return 0;
 case 11: nox_xxx_updateCrown_53E1D0((int)u);return 0;
-case 12: sub_4EA400((int)u,(int)target);return 0;
+
 case 13: return (uint32_t)sub_4EA7A0((int)target);
 case 14: return (uint32_t)sub_4EA800((int)u,(int)target);
 default:return 0;}}
@@ -60,6 +56,7 @@ default:return 0;}}
 import "C"
 import (
 	"bytes"
+	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
@@ -136,7 +133,7 @@ func (p *portTestShopPools) objectivesPrepare() func() {
 	}
 	p.temporary.world.objectives = &portTestObjectives{}
 	core := p.proxy.core
-	restoreTypes := core.PortTestObjectiveTypes(C.objectiveFunction(10), C.objectiveFunction(3), sp.MissingTypes)
+	restoreTypes := core.PortTestObjectiveTypes(portTestObjectiveFunction(10), portTestObjectiveFunction(3), sp.MissingTypes)
 	setSpells, restoreSpells := core.PortTestAISpellDefs()
 	if len(sp.SpellDefinitions) != 0 {
 		setSpells(sp.SpellDefinitions)
@@ -260,7 +257,7 @@ func (p *portTestShopPools) objectivesItems() {
 	}
 	r := p.temporary.world.objectives
 	for i := 0; i < 15; i++ {
-		p.identify(C.objectiveFunction(C.int(i)), 81000+uint32(i))
+		p.identify(portTestObjectiveFunction(i), 81000+uint32(i))
 	}
 	for i := range p.proxy.core.Teams.Arr {
 		p.identify(p.proxy.core.Teams.Arr[i].C(), 82000+uint32(i))
@@ -331,7 +328,7 @@ func (p *portTestShopPools) objectivesAction(a PortTestShopAction) uint32 {
 			return 0
 		}
 	}
-	p.temporary.result = uint32(C.objectiveCall(C.int(a.Op-800), asObjectC(p.items[a.Item].u), asObjectC(p.temporaryRef(sp.Target)), C.int(a.Value)))
+	p.temporary.result = portTestObjectiveCall(int(a.Op-800), p.items[a.Item].u, p.temporaryRef(sp.Target), nil, int(a.Value))
 	return p.temporary.result
 }
 func (p *portTestShopPools) objectivesSnapshot(out []uint32) []uint32 {
@@ -374,4 +371,34 @@ func (p *portTestShopPools) objectivesSnapshot(out []uint32) []uint32 {
 	}
 	out = append(out, math.Float32bits(p.proxy.core.Players.Mult.Warrior.Mana), math.Float32bits(p.proxy.core.Players.Mult.Wizard.Mana), math.Float32bits(p.proxy.core.Players.Mult.Conjurer.Mana))
 	return p.attackSnapshot(out)
+}
+
+func portTestObjectiveFunction(id int) unsafe.Pointer {
+	switch id {
+	case 3:
+		return collisionKey(collisionIdentityBall)
+	case 4:
+		return collisionKey(collisionIdentityCrown)
+	case 5:
+		return collisionKey(collisionIdentityHomeBase)
+	case 12:
+		return collisionKey(collisionIdentityFlag)
+	default:
+		return C.objectiveFunction(C.int(id))
+	}
+}
+
+func portTestObjectiveCall(id int, u, target *server.Object, normal *types.Pointf, value int) uint32 {
+	switch id {
+	case 3:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityBall), u, target, normal)
+	case 4:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityCrown), u, target, normal)
+	case 5:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityHomeBase), u, target, normal)
+	case 12:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityFlag), u, target, normal)
+	default:
+		return uint32(C.objectiveCall(C.int(id), asObjectC(u), asObjectC(target), C.int(value)))
+	}
 }

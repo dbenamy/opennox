@@ -6,66 +6,67 @@ package legacy
 #include "GAME3_3.h"
 #include "GAME4_3.h"
 static void* projectileCollisionFunction(int id){switch(id){
-case 0: return (void*)nox_xxx_collideProjectileGeneric_4E87B0;
-case 1: return (void*)nox_xxx_collideProjectileSpark_4E8880;
-case 2: return (void*)nox_xxx_collideDamage_4E9430;
-case 3: return (void*)nox_xxx_collideManadrain_4E9490;
-case 4: return (void*)nox_xxx_collideBomb_4E96F0;
-case 5: return (void*)nox_xxx_collideBoom_4E9770;
-case 6: return (void*)nox_xxx_collideDie_4E99B0;
+
+
+
+
+
+
+
 case 7: return (void*)sub_4E9A30;
-case 8: return (void*)nox_xxx_fireballCollide_4E9AC0;
-case 9: return (void*)nox_xxx_collideSulphurShot2_4E9D80;
-case 10: return (void*)nox_xxx_collideSulphurShot_4E9E50;
-case 11: return (void*)nox_xxx_collideDeathBallFragment_4E9FE0;
-case 12: return (void*)nox_xxx_collidePixie_4EA080;
-case 13: return (void*)nox_xxx_collideWallReflectSpark_4EA200;
-case 14: return (void*)sub_4EA2C0;
-case 15: return (void*)nox_xxx_collideSpark_4EA300;
-case 16: return (void*)nox_xxx_collideWebbing_4EA380;
-case 17: return (void*)nox_xxx_collideFist_4EADF0;
-case 18: return (void*)nox_xxx_collideTeleportWake_4EAE30;
-case 19: return (void*)nox_xxx_collideChakram_4EAF00;
+
+
+
+
+
+
+
+
+
+
+
+
 case 20: return (void*)sub_4EB250;
 case 21: return (void*)sub_4EB340;
 case 22: return (void*)sub_4EB3E0;
-case 23: return (void*)nox_xxx_collideArrow_4EB490;
-case 24: return (void*)nox_xxx_collideMonsterArrow_4EB800;
-case 25: return (void*)nox_xxx_collideBearTrap_4EB890;
-case 26: return (void*)nox_xxx_collidePoisonGasTrap_4EB910;
+
+
+
+
 default:return 0;}}
 static uint32_t projectileCollisionCall(int id,int u,int t,void* normal){switch(id){
-case 0: nox_xxx_collideProjectileGeneric_4E87B0(u,t);return 0;
-case 1: nox_xxx_collideProjectileSpark_4E8880(u,t);return 0;
-case 2: nox_xxx_collideDamage_4E9430(u,t);return 0;
-case 3: nox_xxx_collideManadrain_4E9490(u,t);return 0;
-case 4: nox_xxx_collideBomb_4E96F0(u,t);return 0;
-case 5: nox_xxx_collideBoom_4E9770(u,t,(float*)normal);return 0;
-case 6: nox_xxx_collideDie_4E99B0(u,t);return 0;
+
+
+
+
+
+
+
 case 7: return sub_4E9A30((nox_object_t*)u,(nox_object_t*)t);
-case 8: nox_xxx_fireballCollide_4E9AC0(u,t);return 0;
-case 9: nox_xxx_collideSulphurShot2_4E9D80(u,t,(float*)normal);return 0;
-case 10: nox_xxx_collideSulphurShot_4E9E50(u,t,(int)normal);return 0;
-case 11: nox_xxx_collideDeathBallFragment_4E9FE0(u,t,(float*)normal);return 0;
-case 12: nox_xxx_collidePixie_4EA080(u,t,(float*)normal);return 0;
-case 13: nox_xxx_collideWallReflectSpark_4EA200(u,t,(float2*)normal);return 0;
-case 14: sub_4EA2C0(u,t);return 0;
-case 15: nox_xxx_collideSpark_4EA300(u,t,(float*)normal);return 0;
-case 16: nox_xxx_collideWebbing_4EA380(u,t);return 0;
-case 17: nox_xxx_collideFist_4EADF0(u,t);return 0;
-case 18: nox_xxx_collideTeleportWake_4EAE30(u,t);return 0;
-case 19: nox_xxx_collideChakram_4EAF00(u,t,(float*)normal);return 0;
+
+
+
+
+
+
+
+
+
+
+
+
 case 20: return sub_4EB250(u);
 case 21: sub_4EB340((float*)t,u+56);return 0;
 case 22: sub_4EB3E0(u);return 0;
-case 23: nox_xxx_collideArrow_4EB490(u,t);return 0;
-case 24: nox_xxx_collideMonsterArrow_4EB800(u,t);return 0;
-case 25: nox_xxx_collideBearTrap_4EB890((int*)u,t);return 0;
-case 26: nox_xxx_collidePoisonGasTrap_4EB910((int*)u,t);return 0;
+
+
+
+
 default:return 0;}}
 */
 import "C"
 import (
+	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 
 	"github.com/opennox/libs/types"
@@ -138,7 +139,7 @@ func (p *portTestShopPools) projectileCollisionItems() {
 		d.TypeInd = uint32(p.temporaryRef(id).TypeInd)
 	}
 	for i := 0; i < 27; i++ {
-		p.identify(C.projectileCollisionFunction(C.int(i)), 87000+uint32(i))
+		p.identify(portTestProjectileCollisionFunction(i), 87000+uint32(i))
 	}
 	for _, id := range []int{1, 2, 100, 101, 102} {
 		if u := p.temporaryRef(id); u != nil {
@@ -184,7 +185,7 @@ func (p *portTestShopPools) projectileCollisionAction(a PortTestShopAction) uint
 			return p.temporary.result
 		}
 	}
-	p.temporary.result = uint32(C.projectileCollisionCall(C.int(a.Op-1000), C.int(inventoryInt(p.temporaryRef(sp.Actor))), C.int(inventoryInt(p.temporaryRef(tmp.Target))), normal))
+	p.temporary.result = portTestProjectileCollisionCall(int(a.Op-1000), p.temporaryRef(sp.Actor), p.temporaryRef(tmp.Target), (*types.Pointf)(normal))
 	return p.temporary.result
 }
 
@@ -199,4 +200,110 @@ func (p *portTestShopPools) projectileCollisionSnapshot(out []uint32) []uint32 {
 		out = append(out, unsafe.Slice((*uint32)(n), 2)...)
 	}
 	return append(out, p.normalize(uint32(dword_5d4594_1567928)), uint32(dword_5d4594_2488620))
+}
+
+func portTestProjectileCollisionFunction(id int) unsafe.Pointer {
+	switch id {
+	case 0:
+		return collisionKey(collisionIdentityProjectile)
+	case 1:
+		return collisionKey(collisionIdentityProjectileSpark)
+	case 2:
+		return collisionKey(collisionIdentityDamage)
+	case 3:
+		return collisionKey(collisionIdentityManaDrain)
+	case 4:
+		return collisionKey(collisionIdentityBomb)
+	case 5:
+		return collisionKey(collisionIdentityBoom)
+	case 6:
+		return collisionKey(collisionIdentityDie)
+	case 8:
+		return collisionKey(collisionIdentitySparkExplosion)
+	case 9:
+		return collisionKey(collisionIdentityWallReflect)
+	case 10:
+		return collisionKey(collisionIdentityYellowStarShot)
+	case 11:
+		return collisionKey(collisionIdentityDeathBallFragment)
+	case 12:
+		return collisionKey(collisionIdentityPixie)
+	case 13:
+		return collisionKey(collisionIdentityWallReflectSpark)
+	case 14:
+		return collisionKey(collisionIdentityOwn)
+	case 15:
+		return collisionKey(collisionIdentitySpark)
+	case 16:
+		return collisionKey(collisionIdentitySpiderSpit)
+	case 17:
+		return collisionKey(collisionIdentityFist)
+	case 18:
+		return collisionKey(collisionIdentityTeleportWake)
+	case 19:
+		return collisionKey(collisionIdentityChakramInMotion)
+	case 23:
+		return collisionKey(collisionIdentityArrow)
+	case 24:
+		return collisionKey(collisionIdentityMonsterArrow)
+	case 25:
+		return collisionKey(collisionIdentityBearTrap)
+	case 26:
+		return collisionKey(collisionIdentityPoisonGasTrap)
+	default:
+		return C.projectileCollisionFunction(C.int(id))
+	}
+}
+
+func portTestProjectileCollisionCall(id int, u, target *server.Object, normal *types.Pointf) uint32 {
+	switch id {
+	case 0:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityProjectile), u, target, normal)
+	case 1:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityProjectileSpark), u, target, normal)
+	case 2:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityDamage), u, target, normal)
+	case 3:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityManaDrain), u, target, normal)
+	case 4:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityBomb), u, target, normal)
+	case 5:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityBoom), u, target, normal)
+	case 6:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityDie), u, target, normal)
+	case 8:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentitySparkExplosion), u, target, normal)
+	case 9:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityWallReflect), u, target, normal)
+	case 10:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityYellowStarShot), u, target, normal)
+	case 11:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityDeathBallFragment), u, target, normal)
+	case 12:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityPixie), u, target, normal)
+	case 13:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityWallReflectSpark), u, target, normal)
+	case 14:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityOwn), u, target, normal)
+	case 15:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentitySpark), u, target, normal)
+	case 16:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentitySpiderSpit), u, target, normal)
+	case 17:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityFist), u, target, normal)
+	case 18:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityTeleportWake), u, target, normal)
+	case 19:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityChakramInMotion), u, target, normal)
+	case 23:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityArrow), u, target, normal)
+	case 24:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityMonsterArrow), u, target, normal)
+	case 25:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityBearTrap), u, target, normal)
+	case 26:
+		return server.PortTestCollisionResult(collisionKey(collisionIdentityPoisonGasTrap), u, target, normal)
+	default:
+		return uint32(C.projectileCollisionCall(C.int(id), C.int(inventoryInt(u)), C.int(inventoryInt(target)), unsafe.Pointer(normal)))
+	}
 }

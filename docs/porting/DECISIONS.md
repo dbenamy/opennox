@@ -2640,3 +2640,19 @@ lost. Add rain-orb creation boundary/failure/RNG contracts before conversion.
 Explicit int32 conversion preserves map-cycle C-int results. No candidate has an
 address registration, so identity reservations need no adjustment. All gates pass.
 See [CATALOG_EFFECT_OWNERS.md](CATALOG_EFFECT_OWNERS.md).
+
+
+## Native collision identities and result dispatch
+
+Use distinct nonzero-sized static Go slots for all 51 registered collision keys,
+retaining 53 names, aliases, data sizes and late-bound handlers. The existing object
+layout remains 32-bit. One registry handles void and optional uint32 results;
+magic-missile expiry preserves declared native results and exact raw C fallback.
+Native void owners explicitly return zero when asked for an integer result: the
+previous mismatched C invocation had no defined integer result, and production
+update dispatch discards the enclosing return. Activation retains the low byte of
+the current key, not a linker-specific address value. These are reversible choices.
+Pin fixture pointer arguments across uintptr transport and nested Go calls.
+Chest fixtures deliberately reuse a collision owner as Death; register that
+fixture-only typed route explicitly rather than executing a native data address.
+See [COLLISION_IDENTITIES.md](COLLISION_IDENTITIES.md) for qualification and scope.

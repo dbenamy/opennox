@@ -211,11 +211,6 @@ func nox_xxx_dieGlyph_54DF30(a1 *nox_object_t) {
 	Nox_xxx_dieGlyph_54DF30(asObjectS(a1))
 }
 
-//export nox_xxx_collideGlyph_4E9A00
-func nox_xxx_collideGlyph_4E9A00(a1, a2 *nox_object_t) {
-	Nox_xxx_collideGlyph_4E9A00(asObjectS(a1), asObjectS(a2))
-}
-
 func nox_xxx_unitSetXStatus_4E4800(a1 *nox_object_t, a2 uint32) {
 	asObjectS(a1).SetXStatus(a2)
 }

@@ -149,7 +149,7 @@ func projectileSulphur(u, t *server.Object, n *types.Pointf) {
 			return
 		}
 		damage := int32(*equipmentWord(u.CollideData, 0))
-		if noxflags.HasGame(4096) && u.Collide == C.nox_xxx_collideSulphurShot_4E9E50 {
+		if noxflags.HasGame(4096) && u.Collide == collisionKey(collisionIdentityYellowStarShot) {
 			damage *= 3
 		}
 		if projectileDamage(t, u.FindOwnerChainPlayer(), u, damage, 11) != 0 {

@@ -1,15 +1,10 @@
 package legacy
 
-/*
-int nox_xxx_collidePentagram_4EAB20(int);
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/sound"
 	"github.com/opennox/opennox/v1/server"
 	"image"
-	"unsafe"
 )
 
 func collisionRetained(u, v *server.Object) int32 {
@@ -28,7 +23,7 @@ func collisionEligible(a, b *server.Object) int32 {
 		collisionPowder = uint32(types.IndByID("BlackPowder"))
 		collisionHand = uint32(types.IndByID("TelekinesisHand"))
 	}
-	if a.Collide == unsafe.Pointer(C.nox_xxx_collidePentagram_4EAB20) && uint32(b.TypeInd) == collisionHand || b.Collide == unsafe.Pointer(C.nox_xxx_collidePentagram_4EAB20) && uint32(a.TypeInd) == collisionHand {
+	if a.Collide == collisionKey(collisionIdentityPentagram) && uint32(b.TypeInd) == collisionHand || b.Collide == collisionKey(collisionIdentityPentagram) && uint32(a.TypeInd) == collisionHand {
 		return 0
 	}
 	ac, bc, af, bf := a.ObjClass, b.ObjClass, a.ObjFlags, b.ObjFlags

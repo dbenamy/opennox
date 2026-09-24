@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "GAME4.h"
-void nox_xxx_collideFist_4EADF0(int,int);
-void nox_xxx_collideUndeadKiller_4EBD40(int,int,int);
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
@@ -115,7 +108,7 @@ func collisionActivate(u *server.Object) int8 {
 		spike := GetServer().S().Types.IndByID("Spike")
 		result = uint32(GetServer().S().Types.IndByID("PeriodicSpike"))
 		cls = u.ObjClass
-		allow = cls&0xE080 != 0 || u.Collide == unsafe.Pointer(C.nox_xxx_collideFist_4EADF0) || u.Collide == unsafe.Pointer(C.nox_xxx_collideUndeadKiller_4EBD40) || uint32(u.TypeInd) == uint32(spike) || uint32(u.TypeInd) == result
+		allow = cls&0xE080 != 0 || u.Collide == collisionKey(collisionIdentityFist) || u.Collide == collisionKey(collisionIdentityUndeadKiller) || uint32(u.TypeInd) == uint32(spike) || uint32(u.TypeInd) == result
 	}
 	if allow && u.ObjFlags&4 != 0 {
 		if cls&0x2008 != 0 {

@@ -19,19 +19,18 @@ import (
 	"unsafe"
 )
 
-// Primitive entry dispatch only; the production C callbacks perform the work.
+// Primitive entry dispatch through native collision owners and retained C helpers.
 // Object-valued returns are represented by fixture identities 1 and 2.
 func PortTestWorldCollision(op int, a, b *server.Object, normal *types.Pointf) uint32 {
 	ai, bi := C.int(uintptr(unsafe.Pointer(a))), C.int(uintptr(unsafe.Pointer(b)))
-	p := (*C.float)(unsafe.Pointer(normal))
 	var rv uint32
 	switch op {
 	case 0:
 		worldCollideMass(a, b)
 	case 1:
-		C.nox_xxx_collideDoor_4E8AC0(ai, bi)
+		rv = server.PortTestCollisionResult(collisionKey(collisionIdentityDoor), a, b, normal)
 	case 2:
-		rv = uint32(C.nox_xxx_collidePickup_4E8DF0(ai, bi))
+		rv = server.PortTestCollisionResult(collisionKey(collisionIdentityPickup), a, b, normal)
 	case 3:
 		if unsafe.Pointer(C.sub_4E8E50()) != memmap.PtrOff(0x5D4594, 1567844) {
 			panic("pending map buffer")
@@ -45,33 +44,33 @@ func PortTestWorldCollision(op int, a, b *server.Object, normal *types.Pointf) u
 	case 6:
 		rv = uint32(C.sub_4E9010())
 	case 7:
-		C.nox_xxx_collideExit_4E9090(ai, bi, C.int(uintptr(unsafe.Pointer(normal))))
+		rv = server.PortTestCollisionResult(collisionKey(collisionIdentityExit), a, b, normal)
 	case 8:
-		C.nox_xxx_spellFlyCollide_4E9500(ai, bi, p)
+		rv = server.PortTestCollisionResult(collisionKey(collisionIdentitySpellProjectile), a, b, normal)
 	case 9:
-		C.nox_xxx_collideChest_4E9C40((*C.uint32_t)(unsafe.Pointer(a)), bi)
+		rv = server.PortTestCollisionResult(collisionKey(collisionIdentityChest), a, b, normal)
 	case 10:
-		C.sub_4EAAA0(ai)
+		rv = server.PortTestCollisionResult(collisionKey(collisionIdentityBarrel), a, b, normal)
 	case 11:
-		C.sub_4EAAD0(ai, bi)
+		rv = server.PortTestCollisionResult(collisionKey(collisionIdentityAudioEvent), a, b, normal)
 	case 12:
-		rv = uint32(C.nox_xxx_collidePentagram_4EAB20(ai))
+		rv = server.PortTestCollisionResult(collisionKey(collisionIdentityPentagram), a, b, normal)
 	case 13:
-		C.nox_xxx_collideSign_4EAB40(ai, bi)
+		rv = server.PortTestCollisionResult(collisionKey(collisionIdentitySign), a, b, normal)
 	case 14:
-		C.nox_xxx_collideTrapDoor_4EAB60(ai, bi)
+		rv = server.PortTestCollisionResult(collisionKey(collisionIdentityTrapDoor), a, b, normal)
 	case 15:
-		C.sub_4EACA0(ai, bi)
+		rv = server.PortTestCollisionResult(collisionKey(collisionIdentityTeleport), a, b, normal)
 	case 16:
-		rv = uint32(C.nox_xxx_collideSpellPedestal_4EAD20(ai, bi))
+		rv = server.PortTestCollisionResult(collisionKey(collisionIdentityAwardSpell), a, b, normal)
 	case 17:
-		C.nox_xxx_collideUndeadKiller_4EBD40(ai, bi, C.int(uintptr(unsafe.Pointer(normal))))
+		rv = server.PortTestCollisionResult(collisionKey(collisionIdentityUndeadKiller), a, b, normal)
 	case 18:
-		C.nox_xxx_collideMonsterGen_4EBE10(ai, bi)
+		rv = server.PortTestCollisionResult(collisionKey(collisionIdentityMonsterGenerator), a, b, normal)
 	case 19:
-		C.sub_4EBE40(ai, bi)
+		rv = server.PortTestCollisionResult(collisionKey(collisionIdentitySoulGate), a, b, normal)
 	case 20:
-		C.nox_xxx_collideAnkhQuest_4EBF40(ai, bi)
+		rv = server.PortTestCollisionResult(collisionKey(collisionIdentityAnkh), a, b, normal)
 	default:
 		panic("world collision operation")
 	}

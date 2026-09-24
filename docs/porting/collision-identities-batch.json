@@ -73,6 +73,29 @@
           "{out}/production"
         ]
       }
+    ],
+    "corpus": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest",
+          "--test-binary",
+          "{root}/build/port-collision-identities/contracts-fixed/profiles/default.test",
+          "--binary-record",
+          "{root}/build/port-collision-identities/contracts-fixed/profiles/default-binary.json",
+          "--log",
+          "{out}/default.jsonl",
+          "--result",
+          "{out}/default-result.json",
+          "--timeout-seconds",
+          "3600"
+        ]
+      }
     ]
   },
   "production": {

@@ -1469,7 +1469,7 @@ func (obj *Object) CallCollide(a2, a3 int) {
 	if obj.Collide == nil {
 		return
 	}
-	if fnc := objectCollideGoFuncs[obj.Collide]; fnc != nil {
+	if fnc := objectCollideGoFuncs[obj.Collide].call; fnc != nil {
 		fnc(obj, uintptr(a2), uintptr(a3))
 	} else {
 		ccall.CallVoidUPtr3(obj.Collide, uintptr(obj.CObj()), uintptr(a2), uintptr(a3))
@@ -1477,10 +1477,24 @@ func (obj *Object) CallCollide(a2, a3 int) {
 	runtime.KeepAlive(obj)
 }
 
+// CallCollideResult requires a configured callback, as the original integer
+// callback path did. Native identities must never enter the raw C dispatcher.
+// Raw callbacks retain their exact integer result and argument-bit transport.
+func (obj *Object) CallCollideResult(a2, a3 uintptr) uint32 {
+	var result uint32
+	if fnc := objectCollideGoFuncs[obj.Collide].result; fnc != nil {
+		result = fnc(obj, a2, a3)
+	} else {
+		result = uint32(ccall.CallIntUPtr3(obj.Collide, uintptr(obj.CObj()), a2, a3))
+	}
+	runtime.KeepAlive(obj)
+	return result
+}
+
 // CallCollideWith requires a configured callback. Pointer arguments remain live
 // through dispatch; the raw fallback retains its three-pointer calling convention.
 func (obj *Object) CallCollideWith(target *Object, normal *types.Pointf) {
-	if fnc := objectCollideGoFuncs[obj.Collide]; fnc != nil {
+	if fnc := objectCollideGoFuncs[obj.Collide].call; fnc != nil {
 		fnc(obj, uintptr(unsafe.Pointer(target)), uintptr(unsafe.Pointer(normal)))
 	} else {
 		ccall.CallVoidPtr3(obj.Collide, obj.CObj(), unsafe.Pointer(target), unsafe.Pointer(normal))

@@ -57,7 +57,6 @@ char nox_xxx_updateMonsterGenerator_54E930(uint32_t* a1);
 void nox_xxx_updateHarpoon_54F380(nox_object_t* a1);
 void nox_xxx_unitUpdateMover_54F740(int a1);
 int nox_xxx_updateShootingTrap_54F9A0(int a1);
-void nox_xxx_collideTrigger_54FCD0(int a1, int a2);
 float* nox_xxx_createSpark_54FD80(float a1, float a2, int a3, int a4, float a5, float a6, float a7, int a8);
 
 #endif // NOX_PORT_GAME5

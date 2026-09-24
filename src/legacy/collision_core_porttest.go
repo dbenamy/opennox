@@ -6,7 +6,6 @@ package legacy
 #include "GAME4_1.h"
 #include "GAME4_3.h"
 #include "GAME5.h"
-int nox_xxx_collidePentagram_4EAB20(int a1);
 static uint32_t coreContacts[1024];
 static unsigned coreContactCount;
 // This is an observation callback, not a collision implementation. Alignment
@@ -26,7 +25,6 @@ static void coreRadialObserve(int obj, uint32_t code) {
 }
 static void* coreRadialCallback(void) {return coreRadialObserve;}
 static uint32_t* coreRadialData(void) {return coreRadialResult;}
-static void* corePentagramPtr(void){return nox_xxx_collidePentagram_4EAB20;}
 */
 import "C"
 
@@ -124,7 +122,7 @@ func PortTestCollisionCoreObserver() (unsafe.Pointer, func(), func(map[unsafe.Po
 	}
 	return C.coreContactPtr(), reset, snapshot, func() { copy(data, old); *count = oldN }
 }
-func PortTestCollisionCorePentagram() unsafe.Pointer { return C.corePentagramPtr() }
+func PortTestCollisionCorePentagram() unsafe.Pointer { return collisionKey(collisionIdentityPentagram) }
 func PortTestCollisionCoreGlobals() (map[string]*uint32, func()) {
 	words := map[string]*uint32{"trigger": &collisionTrigger, "powder": &collisionPowder, "hand": &collisionHand, "small": &collisionSmallFist, "medium": &collisionMediumFist, "large": &collisionLargeFist, "meteor": &collisionMeteor, "ready": &collisionTypesReady}
 	old := map[string]uint32{}

@@ -115,3 +115,9 @@ explicit save/load/resume pass. See [conversion qualification](collision-registr
 Known-suite outcomes remain 304 failure events and 17 pass/2 fail/32 skip packages.
 The configured target remains 386/SSE2/CGO; no 64-bit or performance claim is made.
 Standalone C stays zero files/lines; 79 production preamble bodies remain.
+
+
+The later [native collision identity batch](COLLISION_IDENTITIES.md) adds a typed
+result route and migrates `temporaryMagicMissile` through it. Declared native
+return bits and the existing independent raw-C return contracts are preserved;
+the earlier requirement to leave this caller raw is superseded.

@@ -5,7 +5,6 @@ import (
 	"github.com/opennox/libs/spell"
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"math"
 	"unsafe"
@@ -211,7 +210,7 @@ func temporaryMagicMissile(u *server.Object) uint32 {
 	ud := u.UpdateData
 	caster := *temporaryRefWord(ud, 0)
 	if caster.ObjFlags&0x20 != 0 || core.Frame()-u.Field32 > 3*uint32(core.TickRate()) {
-		return uint32(ccall.CallIntUPtr3(u.Collide, uintptr(u.CObj()), 0, 0))
+		return u.CallCollideResult(0, 0)
 	}
 	target := temporaryRefWord(ud, 4)
 	if *target != nil && (*target).ObjFlags&0x8020 != 0 {

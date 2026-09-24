@@ -155,11 +155,33 @@ func RegisterObjectUpdateParse(name string, fnc ObjectParseFunc) {
 
 type CollideFunc func(obj *Object, a2, a3 uintptr)
 
-var objectCollideGoFuncs = make(map[unsafe.Pointer]CollideFunc)
+// CollideResultFunc preserves the declared result bits of a native collision
+// owner. Owners whose original callback was void return zero.
+type CollideResultFunc func(obj *Object, a2, a3 uintptr) uint32
+
+type objectCollideGoEntry struct {
+	call   CollideFunc
+	result CollideResultFunc
+}
+
+var objectCollideGoFuncs = make(map[unsafe.Pointer]objectCollideGoEntry)
 
 func RegisterObjectCollideGo(name string, cfnc unsafe.Pointer, fnc CollideFunc, sz uintptr) {
 	RegisterObjectCollide(name, cfnc, sz)
-	objectCollideGoFuncs[cfnc] = fnc
+	objectCollideGoFuncs[cfnc] = objectCollideGoEntry{call: fnc}
+}
+
+// RegisterObjectCollideNative binds a stable, non-executable identity to its Go
+// owner. The caller owns the identity's lifetime, including all stored copies.
+func RegisterObjectCollideNative(name string, key unsafe.Pointer, fnc CollideResultFunc, sz uintptr) {
+	if key == nil || fnc == nil {
+		panic("nil native collision identity or function")
+	}
+	RegisterObjectCollide(name, key, sz)
+	objectCollideGoFuncs[key] = objectCollideGoEntry{
+		call:   func(obj *Object, a2, a3 uintptr) { fnc(obj, a2, a3) },
+		result: fnc,
+	}
 }
 
 func RegisterObjectCollide(name string, fnc unsafe.Pointer, sz uintptr) {
