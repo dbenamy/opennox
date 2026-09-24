@@ -2482,5 +2482,17 @@ Reject a separate follow-on object-state export proposal whose inventory missed
 native calls inside a test preamble. C preambles are active code despite Go's
 comment syntax. Narrow helper work to explicit edit spans and inspect whole C
 selectors: the subsequent scalar draft initially changed the suffix but retained
-C prefixes. Primary corrected it while reconstructing the draft; it is still
-uninstalled and must pass original storage contracts and fresh qualification.
+C prefixes. Primary corrected it while reconstructing the draft; original storage contracts
+and fresh qualification remain the conversion gates.
+
+## Safe scalar contracts and the raw-blob fixture boundary
+
+Qualify all 395 scalar owners under safe in addition to default/server/highres.
+The optional original safe attempt at the separate raw-storage fixture correctly
+tripped the runtime mapped-address guard: that fixture deliberately probes
+registered offsets whose owners were extracted to Go. Preserve its original
+failure evidence, guard and expectations; retain its raw-alias coverage in normal
+profiles and run the scalar contract alone under safe. The latter passes the
+existing frozen capture. This is an explicit fixture/profile boundary, not a
+conversion regression or a claim of complete safe runtime qualification. See
+GO_SCALAR_STORAGE.md and go-scalar-storage-baseline.json.

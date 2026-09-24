@@ -29,8 +29,11 @@ Go types, preserving storage, initial bits, signedness, address aliases and C
 interface conversions. Existing legacy-package contracts cover every owner with
 139 patterns (54,905 cases), separately from root tests. The uninstalled draft is
 `build/port-go-scalar-storage/reviewed/`; primary span/AST/binding review passes,
-with 27 production/eight test C-import removals proposed. Baseline storage captures,
-remaining compiler/boundary fixes and all post-conversion qualification remain.
+with 27 production/eight test C-import removals proposed. Baseline captures now match existing frozen hashes in
+default/repeat/server/highres, with the scalar contract also passing safe. The raw
+fixture intentionally crosses addresses rejected by safe; its failed original
+attempt is retained and its coverage stays in normal profiles. Compiler/boundary
+fixes and all post-conversion qualification remain. See [GO_SCALAR_STORAGE.md](docs/porting/GO_SCALAR_STORAGE.md).
 The earlier `draft/` mistakenly retained C prefixes; use the reviewed copy.
 
 All three complete `^Test` root sweeps, safe/static, fresh production/ABI, exact
@@ -139,6 +142,8 @@ do not rerun them or infer deletion safety from age alone.
 | Completed scenario data: `go-memory-save`, `raw-allocation-save`, `string-boundary-save`, `unused-exports-save` | Only SHA256-identical original-asset copies were removed. Saves/comparisons remain. Follow each run's `deduplicated-assets.json`; shared restore tool: `build/port-artifact-cleanup/restore-recent-scenario.py`. |
 | Large historical captures in `port-game-messages`, `port-map-sections`, `port-client-interaction`, `port-session-dialogs` | Restore with `gzip -dk` and verify hashes against `build/port-artifact-cleanup/large-historical-20260924/`. Its 116 discarded text logs are not recoverable from these archives. |
 | Initial complete-corpus default/server logs | Losslessly compressed; restore commands and hashes in `build/port-complete-corpus/initial-log-archive.json`. Keep the server failure evidence. |
+| Latest 265-export full-corpus logs | Losslessly compressed after qualification/commit; restore commands and SHA256s: `build/port-go-only-exports/contract-log-archive.json`. |
+| Remaining old project cache archives | 26 verified old root/legacy archives removed after host checks, reclaiming 1,614,089,922 bytes; rebuild normally. Plan/journal: `build/port-artifact-cleanup/go-scalar-storage-cache-{plan,removed}.json`. |
 | 378-export full-corpus logs | Losslessly compressed after qualification/commit; restore commands and SHA256s: `build/port-remaining-unused-exports/contract-log-archive.json`. |
 | Additional obsolete project cache archives | 31 old root/legacy archives removed after host checks, reclaiming 2,017,688,956 bytes; rebuild normally. Plan/journal: `build/port-artifact-cleanup/go-only-exports-cache-{plan,removed}.json`. |
 | Qualified complete-corpus logs | Losslessly compressed; restore commands/hashes: `build/port-complete-corpus/qualified-log-archive.json`. |
