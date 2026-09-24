@@ -49,9 +49,11 @@ are performed by the inventory.
    This reduces directly cgo-using project packages from six to three, without
    claiming the server is cgo-free. Review further empty-import candidates separately.
 2. **Allocation and libc ownership.** Inventory every direct allocation/free pair,
-   including calls outside `alloc`. First centralize ownership and specify exact
-   contracts; then replace libc memory/string helpers and allocation in coherent
-   batches. Do not substitute Go heap storage indiscriminately: raw 32-bit address
+   including calls outside `alloc`. The six bounded memory/string helpers are
+   now Go (see [GO_MEMORY.md](GO_MEMORY.md)), without changing allocation ownership.
+   Next centralize remaining allocation calls while preserving normal/raw versus
+   safe/tracked domains; then replace the allocator behind that boundary with
+   explicit lifetime and failure contracts. Do not substitute Go heap storage indiscriminately: raw 32-bit address
    words can outlive Go references, and pointer-containing layouts interact with GC.
    A stable non-Go-heap allocator is a candidate to evaluate, not an accepted design.
    Preserve failure behavior or record a justified correction before conversion.

@@ -315,6 +315,7 @@ target build selection and linker evidence.
 | Route 53 collision registrations and four pointer-call owners through Go; preamble bodies remain 79 | 0 | 0 | 0 | 0 |
 | Route 28 transfer and two damage-sound registrations through Go; preamble bodies remain 79 | 0 | 0 | 0 | 0 |
 | Remove 34 leaf cgo dependencies; direct project packages 6→3, selected cgo files 463→429; preamble bodies remain 79 | 0 | 0 | 0 | 0 |
+| Six libc memory/string helpers to Go; allocator ownership unchanged; selected cgo files remain 429 and preamble bodies 79 | 0 | 0 | 0 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

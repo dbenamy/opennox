@@ -10,24 +10,23 @@ The original **142,665 physical lines of standalone C have been ported or
 retired**. Production and test-reference `.c` files now both count zero.
 The Go MP3 decoder is integrated and its C implementation header is retired.
 The legacy algorithm-port milestone is complete; the engine still requires cgo.
-Recent chunks remove redundant **Go → C → Go** callback routes.
+Current work removes libc helpers and redundant **Go → C → Go** callback routes.
 
-Latest qualified implementation: **`2db93f68` — leaf engine C-glue cleanup**, following
-original baseline `a28bdba7`. See [CGO_LEAVES.md](docs/porting/CGO_LEAVES.md).
-It removes 33 unused C imports/preambles and the Linux socket constant's C-header
-dependency, with production and integration qualification complete.
+Latest qualified implementation: **Go memory/string helpers (this commit)**,
+following original baselines `5cc27785` and `58f37c6c`.
+See [GO_MEMORY.md](docs/porting/GO_MEMORY.md). Six libc helper calls are replaced;
+allocation/free ownership and external native bindings are unchanged.
 
-The user resumed chunk-by-chunk work, with one Luna helper, qualification,
-commit/push and recorded reversible decisions. Stop at the milestone or for a
-substantial question. Next: qualify and replace six libc memory/string helpers;
-allocator ownership remains a separate batch. Original memory-helper contracts and safe bridges are qualified, with comparison-ordering
-hashes frozen from three original-libc runs (raw magnitudes are libc-dependent); production helper code is unchanged.
-See [GO_MEMORY.md](docs/porting/GO_MEMORY.md) and `build/port-go-memory/`.
-The implementation draft remains under `build/port-cgo-leaves/next-memory-draft/`.
+Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
+recorded reversible decisions. Stop at the milestone or for a substantial question.
+Immediate diversion requested by the user: clean the C_LOC table separators and
+stale tail notes, then continue allocation-call centralization. Reviewed ignored
+drafts and original-path contract drafts are under `build/port-go-memory/`;
+they are not installed or qualified.
 
 ## What remains
 
-Counts below describe the qualified leaf-glue cleanup. Zero `.c` lines is
+Counts below describe the qualified Go memory-helper conversion. Zero `.c` lines is
 not a count of all C dependencies or a measure of remaining engineering effort.
 
 | Area | Remaining work or dependency |
@@ -46,16 +45,17 @@ not reduce the 79-body count because they retain the shared fallback machinery.
 
 ## Latest qualification and evidence
 
-- Six socket/handshake roots pass three times against the original path and again
-  with cgo disabled after conversion.
-- All 32 unchanged parser/audio consumer roots pass in default/server/highres.
+- Direct memory/string and allocator-class contracts pass in all three profiles.
+- Safe memory bridges and shop loading pass without skips.
+- Accumulated roots: 1,280 default, 1,276 server and 1,280 highres complete, with
+  no failures and only the allowed map-population diagnostic skip in each.
 - Safe build/static checks and three fresh production binaries/ABI checks pass.
 - Headless character creation and explicit save/load/resume pass.
 - Full-suite results match the known baseline exactly: 304 failure events,
   with 17 passing, two failing and 32 skipped packages.
 
-Report: [CGO_LEAVES.md](docs/porting/CGO_LEAVES.md).
-Evidence: [qualification](docs/porting/cgo-leaves-qualification.json).
+Report: [GO_MEMORY.md](docs/porting/GO_MEMORY.md).
+Evidence: [qualification](docs/porting/go-memory-qualification.json).
 Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expected-suite.jsonl).
 
 ## Goal, next work and open review items
@@ -91,10 +91,14 @@ The Go MP3 decoder remains slower than C in the recorded bounded benchmarks
 has not been established. See [the performance report](docs/porting/MP3_SYNTHESIS_PERFORMANCE.md).
 Other behavior/compatibility findings are recorded in [DECISIONS.md](docs/porting/DECISIONS.md).
 
-Luna drafted the socket contracts; primary review prompted readiness/direct-call
-coverage corrections before the original baseline. Luna also reviewed the next
-memory-contract draft and caught missing high-byte copy coverage. No measured
-cost/time saving is claimed. See [delegation rules](PORT.md#subagent-use).
+Luna drafted the six helpers and reviewed primary contracts. Primary corrected
+nonportable libc comparison expectations by restoring and recapturing the original
+path, and replaced the slow fill loop after measurement. See the batch report.
+The next allocation draft centralizes 49 calls across 21 files, preserving profile
+semantics. Primary caught unused imports before integration; the draft is corrected
+but unqualified. New domain/string ownership contracts and a 96-existing-root owner
+selection await baseline qualification, including two additional existing free-owner
+tests absent from prior selectors. See `build/port-go-memory/raw-*`.
 
 ## Resume and artifact recovery
 
@@ -106,8 +110,8 @@ The current Go toolchain is `/usr/lib/go-1.26/bin`. Follow the
 [build environment instructions](PORT.md#build-and-test-environment), including
 sourcing `build/baseline/env.sh` in every Go shell.
 
-Latest local artifacts are under `build/port-cgo-leaves/`:
-`baseline/`, `socket-baseline/`, `socket-native/`, `contracts/`, `safe/opennox-safe`, and
+Latest local artifacts are under `build/port-go-memory/`:
+`helpers/`, `safe-contracts/`, `contracts/`, `safe/opennox-safe`, and
 `production/production/bin/{opennox,opennox-hd,opennox-server}`.
 Source, tests, reports and qualification metadata are committed; ignored local
 binaries/logs/drafts are not backed up by pushing Git. Completed finalizers are

@@ -2395,3 +2395,11 @@ commit `5cc27785`; the original implementations were restored before capturing
 normalized ordering three times and freezing the revised contracts. This is a
 deliberate reversible compatibility choice, not an unchanged exact-return claim.
 See GO_MEMORY.md and go-memory-c-qualification.json.
+
+## Go memory-helper performance boundary
+
+Keep Go copy/clear and a doubling-copy nonzero fill. The production direct callers
+use 60-byte copies and 32-byte zero fills, both faster in the measured VM; larger
+Go copies regress in the bounded 386 microbenchmarks. No current large production
+consumer was found. Record the limitation and revisit if a real workload warrants
+a specialized implementation; do not claim a whole-game speedup. See GO_MEMORY.md.

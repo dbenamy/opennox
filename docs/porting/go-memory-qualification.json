@@ -1,0 +1,1375 @@
+{
+  "baseline_commit": "58f37c6c",
+  "raw_comparison_baseline_commit": "5cc27785",
+  "helpers": {
+    "batch": "go-memory",
+    "phase": "helpers",
+    "success": true,
+    "steps": [
+      {
+        "name": "default",
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-count=1",
+          "-v",
+          "./legacy/common/alloc"
+        ],
+        "exit": 0,
+        "wall_seconds": 1.073419164866209
+      },
+      {
+        "name": "server",
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-count=1",
+          "-v",
+          "-tags",
+          "server",
+          "./legacy/common/alloc"
+        ],
+        "exit": 0,
+        "wall_seconds": 1.1680150150787085
+      },
+      {
+        "name": "highres",
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-count=1",
+          "-v",
+          "-tags",
+          "highres",
+          "./legacy/common/alloc"
+        ],
+        "exit": 0,
+        "wall_seconds": 1.013493771897629
+      }
+    ],
+    "revision": "58f37c6cca6fa9b1bd42b8cc799fdc98f497121a",
+    "source_unchanged": true,
+    "wall_seconds": 3.8059936759527773,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "safe-contracts": {
+    "batch": "go-memory",
+    "phase": "safe-contracts",
+    "success": true,
+    "steps": [
+      {
+        "name": "safe-contracts",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/safe-bridges-tests.txt",
+          "--tags",
+          "safe,porttest",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-go-memory/safe-contracts/safe.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-go-memory/safe-contracts/safe-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 125.1048761070706
+      }
+    ],
+    "revision": "58f37c6cca6fa9b1bd42b8cc799fdc98f497121a",
+    "source_unchanged": true,
+    "wall_seconds": 125.41145392507315,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "contracts": {
+    "batch": "go-memory",
+    "phase": "contracts",
+    "success": true,
+    "steps": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-go-memory/contracts/default.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-go-memory/contracts/default-result.json",
+          "--timeout-seconds",
+          "1800"
+        ],
+        "exit": 0,
+        "wall_seconds": 932.3118430890609
+      },
+      {
+        "name": "default-skip-check",
+        "command": [
+          "python3",
+          "-c",
+          "import json,sys; d=json.load(open(sys.argv[1])); assert d['success']; assert all(x == ['github.com/opennox/opennox/v1', 'TestMapPopulationPrerequisiteProbe'] for x in d['skipped_tests']), d['skipped_tests']",
+          "/root/src/opennox/build/port-go-memory/contracts/default-result.json"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.052004405995830894
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-go-memory/contracts/server.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-go-memory/contracts/server-result.json",
+          "--timeout-seconds",
+          "1800"
+        ],
+        "exit": 0,
+        "wall_seconds": 913.3956558378413
+      },
+      {
+        "name": "server-skip-check",
+        "command": [
+          "python3",
+          "-c",
+          "import json,sys; d=json.load(open(sys.argv[1])); assert d['success']; assert all(x == ['github.com/opennox/opennox/v1', 'TestMapPopulationPrerequisiteProbe'] for x in d['skipped_tests']), d['skipped_tests']",
+          "/root/src/opennox/build/port-go-memory/contracts/server-result.json"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.03301525907590985
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-go-memory/contracts/highres.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-go-memory/contracts/highres-result.json",
+          "--timeout-seconds",
+          "1800"
+        ],
+        "exit": 0,
+        "wall_seconds": 863.684154072078
+      },
+      {
+        "name": "highres-skip-check",
+        "command": [
+          "python3",
+          "-c",
+          "import json,sys; d=json.load(open(sys.argv[1])); assert d['success']; assert all(x == ['github.com/opennox/opennox/v1', 'TestMapPopulationPrerequisiteProbe'] for x in d['skipped_tests']), d['skipped_tests']",
+          "/root/src/opennox/build/port-go-memory/contracts/highres-result.json"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.04576007090508938
+      }
+    ],
+    "revision": "58f37c6cca6fa9b1bd42b8cc799fdc98f497121a",
+    "source_unchanged": true,
+    "wall_seconds": 2710.554807381006,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "safe": {
+    "batch": "go-memory",
+    "phase": "safe",
+    "success": true,
+    "steps": [
+      {
+        "name": "build",
+        "command": [
+          "env",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-tags",
+          "safe",
+          "-o",
+          "/root/src/opennox/build/port-go-memory/safe/opennox-safe",
+          "./cmd/opennox"
+        ],
+        "exit": 0,
+        "wall_seconds": 68.25294409994967
+      },
+      {
+        "name": "static",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ],
+        "exit": 0,
+        "wall_seconds": 1.0012163689825684
+      }
+    ],
+    "revision": "58f37c6cca6fa9b1bd42b8cc799fdc98f497121a",
+    "source_unchanged": true,
+    "wall_seconds": 69.6990920829121,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "production": {
+    "batch": "go-memory",
+    "phase": "production",
+    "success": true,
+    "steps": [
+      {
+        "name": "production",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/qualify_production.py",
+          "/root/src/opennox/docs/porting/go-memory-batch.json",
+          "--out",
+          "/root/src/opennox/build/port-go-memory/production/production"
+        ],
+        "exit": 0,
+        "wall_seconds": 230.17294553481042
+      }
+    ],
+    "revision": "58f37c6cca6fa9b1bd42b8cc799fdc98f497121a",
+    "source_unchanged": true,
+    "wall_seconds": 230.4662007249426,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "contract_selections": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 1800,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 1280,
+      "selected_root_tests": 1280,
+      "exit": 0,
+      "started_tests": 1280,
+      "completed_tests": 1280,
+      "started_root_tests": 1280,
+      "completed_root_tests": 1280,
+      "skipped_tests": [
+        [
+          "github.com/opennox/opennox/v1",
+          "TestMapPopulationPrerequisiteProbe"
+        ]
+      ],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 932.208167827921
+    },
+    "server": {
+      "tags": "porttest,server",
+      "success": true,
+      "timeout_seconds": 1800,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 1276,
+      "selected_root_tests": 1276,
+      "exit": 0,
+      "started_tests": 1276,
+      "completed_tests": 1276,
+      "started_root_tests": 1276,
+      "completed_root_tests": 1276,
+      "skipped_tests": [
+        [
+          "github.com/opennox/opennox/v1",
+          "TestMapPopulationPrerequisiteProbe"
+        ]
+      ],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 913.2998023040127
+    },
+    "highres": {
+      "tags": "porttest,highres",
+      "success": true,
+      "timeout_seconds": 1800,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 1280,
+      "selected_root_tests": 1280,
+      "exit": 0,
+      "started_tests": 1280,
+      "completed_tests": 1280,
+      "started_root_tests": 1280,
+      "completed_root_tests": 1280,
+      "skipped_tests": [
+        [
+          "github.com/opennox/opennox/v1",
+          "TestMapPopulationPrerequisiteProbe"
+        ]
+      ],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 863.6224283641204
+    }
+  },
+  "frozen_tests_unchanged": true,
+  "benchmark_comparison": {
+    "original": {
+      "BenchmarkMemoryFill/bytes32/value0-2": [
+        {
+          "ns_op": 102.3,
+          "mb_s": 312.77,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 82.92,
+          "mb_s": 385.93,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 85.84,
+          "mb_s": 372.78,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes32/value172-2": [
+        {
+          "ns_op": 87.55,
+          "mb_s": 365.49,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 114.1,
+          "mb_s": 280.45,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 123.6,
+          "mb_s": 258.85,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes256/value0-2": [
+        {
+          "ns_op": 111.8,
+          "mb_s": 2289.83,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 93.54,
+          "mb_s": 2736.81,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 103.4,
+          "mb_s": 2475.81,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes256/value172-2": [
+        {
+          "ns_op": 122.3,
+          "mb_s": 2093.34,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 88.65,
+          "mb_s": 2887.65,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 90.0,
+          "mb_s": 2844.33,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes1024/value0-2": [
+        {
+          "ns_op": 92.65,
+          "mb_s": 11052.48,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 123.1,
+          "mb_s": 8318.65,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 122.0,
+          "mb_s": 8390.97,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes1024/value172-2": [
+        {
+          "ns_op": 92.07,
+          "mb_s": 11121.92,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 90.61,
+          "mb_s": 11301.62,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 98.2,
+          "mb_s": 10427.91,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes4096/value0-2": [
+        {
+          "ns_op": 159.9,
+          "mb_s": 25611.85,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 204.2,
+          "mb_s": 20054.7,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 158.9,
+          "mb_s": 25770.43,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes4096/value172-2": [
+        {
+          "ns_op": 165.9,
+          "mb_s": 24684.23,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 151.6,
+          "mb_s": 27027.35,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 211.3,
+          "mb_s": 19381.69,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes65536/value0-2": [
+        {
+          "ns_op": 1515.0,
+          "mb_s": 43266.77,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 1598.0,
+          "mb_s": 41004.37,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 2211.0,
+          "mb_s": 29639.62,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes65536/value172-2": [
+        {
+          "ns_op": 2934.0,
+          "mb_s": 22340.05,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 1842.0,
+          "mb_s": 35578.58,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 1685.0,
+          "mb_s": 38891.48,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryCopy/bytes60-2": [
+        {
+          "ns_op": 119.9,
+          "mb_s": 500.37,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 108.0,
+          "mb_s": 555.31,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 110.3,
+          "mb_s": 543.76,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryCopy/bytes256-2": [
+        {
+          "ns_op": 144.6,
+          "mb_s": 1770.04,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 158.5,
+          "mb_s": 1614.64,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 130.5,
+          "mb_s": 1962.3,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryCopy/bytes4096-2": [
+        {
+          "ns_op": 182.3,
+          "mb_s": 22466.52,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 248.9,
+          "mb_s": 16457.91,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 172.0,
+          "mb_s": 23810.51,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryCopy/bytes65536-2": [
+        {
+          "ns_op": 2656.0,
+          "mb_s": 24677.24,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 3619.0,
+          "mb_s": 18110.35,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 2709.0,
+          "mb_s": 24190.24,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ]
+    },
+    "native-loop": {
+      "BenchmarkMemoryFill/bytes32/value0-2": [
+        {
+          "ns_op": 9.508,
+          "mb_s": 3365.66,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 8.565,
+          "mb_s": 3736.23,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 8.373,
+          "mb_s": 3821.65,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes32/value172-2": [
+        {
+          "ns_op": 20.8,
+          "mb_s": 1538.1,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 18.01,
+          "mb_s": 1777.15,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 18.66,
+          "mb_s": 1714.64,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes256/value0-2": [
+        {
+          "ns_op": 10.56,
+          "mb_s": 24241.62,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 11.87,
+          "mb_s": 21559.19,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 13.73,
+          "mb_s": 18644.71,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes256/value172-2": [
+        {
+          "ns_op": 205.4,
+          "mb_s": 1246.46,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 136.8,
+          "mb_s": 1871.36,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 128.4,
+          "mb_s": 1994.04,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes1024/value0-2": [
+        {
+          "ns_op": 33.8,
+          "mb_s": 30296.69,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 37.52,
+          "mb_s": 27293.88,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 29.96,
+          "mb_s": 34182.55,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes1024/value172-2": [
+        {
+          "ns_op": 387.9,
+          "mb_s": 2639.61,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 362.9,
+          "mb_s": 2822.04,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 383.7,
+          "mb_s": 2668.84,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes4096/value0-2": [
+        {
+          "ns_op": 136.3,
+          "mb_s": 30059.78,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 106.6,
+          "mb_s": 38411.97,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 101.3,
+          "mb_s": 40447.21,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes4096/value172-2": [
+        {
+          "ns_op": 1684.0,
+          "mb_s": 2432.51,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 1404.0,
+          "mb_s": 2917.33,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 2503.0,
+          "mb_s": 1636.22,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes65536/value0-2": [
+        {
+          "ns_op": 1649.0,
+          "mb_s": 39736.12,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 1368.0,
+          "mb_s": 47893.91,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 1357.0,
+          "mb_s": 48295.31,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes65536/value172-2": [
+        {
+          "ns_op": 28377.0,
+          "mb_s": 2309.48,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 24791.0,
+          "mb_s": 2643.55,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 27177.0,
+          "mb_s": 2411.46,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryCopy/bytes60-2": [
+        {
+          "ns_op": 14.16,
+          "mb_s": 4238.4,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 12.33,
+          "mb_s": 4865.96,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 12.18,
+          "mb_s": 4927.51,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryCopy/bytes256-2": [
+        {
+          "ns_op": 39.93,
+          "mb_s": 6411.96,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 34.24,
+          "mb_s": 7476.6,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 33.69,
+          "mb_s": 7599.07,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryCopy/bytes4096-2": [
+        {
+          "ns_op": 497.0,
+          "mb_s": 8241.57,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 500.2,
+          "mb_s": 8188.63,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 538.9,
+          "mb_s": 7600.95,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryCopy/bytes65536-2": [
+        {
+          "ns_op": 10577.0,
+          "mb_s": 6196.01,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 10054.0,
+          "mb_s": 6518.37,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 7876.0,
+          "mb_s": 8320.64,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ]
+    },
+    "native-doubling": {
+      "BenchmarkMemoryFill/bytes32/value0-2": [
+        {
+          "ns_op": 8.226,
+          "mb_s": 3890.15,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 8.367,
+          "mb_s": 3824.46,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 9.225,
+          "mb_s": 3468.72,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes32/value172-2": [
+        {
+          "ns_op": 27.36,
+          "mb_s": 1169.45,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 31.02,
+          "mb_s": 1031.7,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 26.62,
+          "mb_s": 1202.04,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes256/value0-2": [
+        {
+          "ns_op": 13.52,
+          "mb_s": 18932.92,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 12.04,
+          "mb_s": 21261.12,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 11.0,
+          "mb_s": 23274.09,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes256/value172-2": [
+        {
+          "ns_op": 43.59,
+          "mb_s": 5872.26,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 73.66,
+          "mb_s": 3475.47,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 46.95,
+          "mb_s": 5452.23,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes1024/value0-2": [
+        {
+          "ns_op": 31.62,
+          "mb_s": 32387.79,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 29.66,
+          "mb_s": 34526.04,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 27.96,
+          "mb_s": 36621.41,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes1024/value172-2": [
+        {
+          "ns_op": 116.6,
+          "mb_s": 8784.08,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 111.8,
+          "mb_s": 9160.65,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 98.42,
+          "mb_s": 10404.32,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes4096/value0-2": [
+        {
+          "ns_op": 115.1,
+          "mb_s": 35577.45,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 94.15,
+          "mb_s": 43504.67,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 116.3,
+          "mb_s": 35224.34,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes4096/value172-2": [
+        {
+          "ns_op": 302.2,
+          "mb_s": 13554.42,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 209.5,
+          "mb_s": 19555.96,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 208.9,
+          "mb_s": 19603.01,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes65536/value0-2": [
+        {
+          "ns_op": 1480.0,
+          "mb_s": 44292.41,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 1375.0,
+          "mb_s": 47660.96,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 1540.0,
+          "mb_s": 42563.76,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryFill/bytes65536/value172-2": [
+        {
+          "ns_op": 1486.0,
+          "mb_s": 44099.89,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 1315.0,
+          "mb_s": 49849.71,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 1578.0,
+          "mb_s": 41526.77,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryCopy/bytes60-2": [
+        {
+          "ns_op": 11.64,
+          "mb_s": 5156.04,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 11.4,
+          "mb_s": 5262.23,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 10.82,
+          "mb_s": 5543.21,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryCopy/bytes256-2": [
+        {
+          "ns_op": 44.53,
+          "mb_s": 5748.68,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 49.07,
+          "mb_s": 5216.95,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 46.28,
+          "mb_s": 5531.99,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryCopy/bytes4096-2": [
+        {
+          "ns_op": 565.4,
+          "mb_s": 7244.17,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 652.8,
+          "mb_s": 6274.12,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 622.8,
+          "mb_s": 6576.29,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ],
+      "BenchmarkMemoryCopy/bytes65536-2": [
+        {
+          "ns_op": 10462.0,
+          "mb_s": 6264.24,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 11294.0,
+          "mb_s": 5802.68,
+          "bytes_op": 0,
+          "allocs_op": 0
+        },
+        {
+          "ns_op": 8466.0,
+          "mb_s": 7740.82,
+          "bytes_op": 0,
+          "allocs_op": 0
+        }
+      ]
+    },
+    "native_over_original_median_ratio": {
+      "BenchmarkMemoryFill/bytes32/value0-2": 0.09747204100652378,
+      "BenchmarkMemoryFill/bytes32/value172-2": 0.23978965819456619,
+      "BenchmarkMemoryFill/bytes256/value0-2": 0.11644100580270791,
+      "BenchmarkMemoryFill/bytes256/value172-2": 0.5216666666666667,
+      "BenchmarkMemoryFill/bytes1024/value0-2": 0.24311475409836067,
+      "BenchmarkMemoryFill/bytes1024/value172-2": 1.2142934723579886,
+      "BenchmarkMemoryFill/bytes4096/value0-2": 0.7198248905565978,
+      "BenchmarkMemoryFill/bytes4096/value172-2": 1.262808921036769,
+      "BenchmarkMemoryFill/bytes65536/value0-2": 0.9261576971214017,
+      "BenchmarkMemoryFill/bytes65536/value172-2": 0.8067318132464713,
+      "BenchmarkMemoryCopy/bytes60-2": 0.10335448776065277,
+      "BenchmarkMemoryCopy/bytes256-2": 0.3200553250345782,
+      "BenchmarkMemoryCopy/bytes4096-2": 3.416346681294569,
+      "BenchmarkMemoryCopy/bytes65536-2": 3.861941675895164
+    }
+  },
+  "production_detail": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 62.15454527619295,
+        "sha256": "f9bfaa59923cbe5f7cc88e7c5956a942fb8eceaf63c87db8243b99bb4d6978e7",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 10.164508125046268,
+        "sha256": "5f3856f16d6a5e80153f2be03c7d88d7219d9c0537ca8d359811a7212cfdbbe4",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 61.034885950153694,
+        "sha256": "7e3a812f9a45d75f20a5d2e7be56ff8e4d24428a6bdad9ab7e4f753edc4695ec",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "go-memory-save": {
+        "exit": 0,
+        "wall_seconds": 45.231433019042015,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 44.69178056716919,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c-save",
+          "binary_sha256": "f9bfaa59923cbe5f7cc88e7c5956a942fb8eceaf63c87db8243b99bb4d6978e7",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-go-memory/production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/go-memory-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Go memory and string helpers with unchanged allocator ownership",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1368,
+                "sha256": "aa29857f5933c06e091af34d783d452b2c831ab946422e4700fcfa2b5894edec"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 44.5567445110064,
+      "failure_entries": 304,
+      "packages": {
+        "skip": 32,
+        "pass": 17,
+        "fail": 2
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "selected_cgo_files": 429,
+  "direct_project_cgo_packages": 3,
+  "production_c_preamble_bodies": 79,
+  "removed_libc_helper_calls": 6
+}
