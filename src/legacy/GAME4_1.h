@@ -8,9 +8,6 @@ void* nox_xxx_monsterPushAction_50A260_impl(nox_object_t* a1p, int a2, char* fil
 void nox_xxx_monsterClearActionStack_50A3A0(nox_object_t* a1);
 void nox_xxx_unitUpdateMonster_50A5C0(nox_object_t* a1);
 void sub_50E140(int a1);
-int nox_xxx_shopGetItemCost_50E3D0(int a1, int a2, float a3);
-void nox_xxx_shopCancelSession_510DC0(void* a1);
-void sub_510E20(int a1);
 signed int nox_xxx_updateSentryGlobe_510E60(int a1);
 int sub_51D2C0(int a1, int a2);
 int sub_51D300(int a1, int a2, char a3);

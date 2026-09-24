@@ -2,17 +2,6 @@
 
 package legacy
 
-/*
-#include <string.h>
-#include "GAME4_1.h"
-static int portTestShopPrice(int mode, int session, void* obj) {
-	float bits;
-	memcpy(&bits, &obj, sizeof(bits));
-	return nox_xxx_shopGetItemCost_50E3D0(mode, session, bits);
-}
-*/
-import "C"
-
 import (
 	"bytes"
 	"encoding/binary"
@@ -196,13 +185,13 @@ func portTestShopCall(proxy *portTestRoamOwnerServer) uint32 {
 	s := proxy.callbacks.shop
 	sp := s.spec
 	u := s.item().CObj()
-	session := C.int(uintptr(s.ptr(2)))
+	session := (*shopSession)(s.ptr(2))
 	switch sp.Op {
 	case 0:
 		if sp.Session == 0 {
-			session = 0
+			session = nil
 		}
-		return uint32(C.portTestShopPrice(C.int(sp.Mode), session, u))
+		return uint32(shopPrice(int(int32(sp.Mode)), session, s.item()))
 	case 1:
 		entry := unsafe.Add(s.ptr(3), 4+28*sp.Entry)
 		if sp.NilItem {

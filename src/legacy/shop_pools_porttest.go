@@ -2,15 +2,6 @@
 
 package legacy
 
-/*
-#include <string.h>
-#include "GAME4_1.h"
-
-
-
-*/
-import "C"
-
 import (
 	"bytes"
 	"crypto/sha256"
@@ -413,30 +404,30 @@ func (p *portTestShopPools) run() {
 		case PortTestShopBalance:
 			rv = shopBalance((*shopSession)(q))
 		case PortTestShopPacket:
-			player := C.int(words[2+a.Side])
-			item := C.int(uintptr(s.item().CObj()))
+			player := objectFromWord(words[2+a.Side])
+			item := s.item()
 			switch a.Item {
 			case 0:
-				rv = shopSendCode(objectFromInt(player), objectFromInt(item), 2505)
+				rv = shopSendCode(player, item, 2505)
 			case 1:
-				rv = shopSendItem(objectFromInt(player), (*shopItem)(s.ptr(9)))
+				rv = shopSendItem(player, (*shopItem)(s.ptr(9)))
 			case 2:
-				rv = uint32(shopSendShort(objectFromInt(player), 457, 0))
+				rv = uint32(shopSendShort(player, 457, 0))
 			case 3:
-				rv = uint32(shopSendShort(objectFromInt(player), 713, 1))
+				rv = uint32(shopSendShort(player, 713, 1))
 			case 4:
-				rv = uint32(shopSendShort(objectFromInt(player), 1993, 1))
+				rv = uint32(shopSendShort(player, 1993, 1))
 			case 5:
-				rv = shopSendAcceptance(objectFromInt(player), (*shopSession)(q))
+				rv = shopSendAcceptance(player, (*shopSession)(q))
 			case 6:
-				rv = shopSendGold(objectFromInt(player), (*shopSession)(q))
+				rv = shopSendGold(player, (*shopSession)(q))
 			case 7:
-				rv = uint32(shopSendCode(objectFromInt(player), objectFromInt(item), 1481))
+				rv = uint32(shopSendCode(player, item, 1481))
 			default:
 				panic("shop fixture packet")
 			}
 		case PortTestShopWithdraw:
-			rv = uint32(nox_xxx_tradeP2PAddOfferMB_50FE20(C.int(uintptr(q)), C.int(a.Value)))
+			rv = shopWithdraw((*shopSession)(q), a.Value)
 		case PortTestShopInventory:
 			owner := (*server.Object)(shopTestPointer(words[2+a.Side]))
 			it := p.items[a.Item].u
@@ -446,13 +437,13 @@ func (p *portTestShopPools) run() {
 			}
 			owner.InvFirstItem = it
 		case PortTestShopRepairQuote:
-			rv = uint32(uintptr(unsafe.Pointer(sub_5108D0(C.int(words[2+a.Side]), C.int(uintptr(q)), C.int(a.Value)))))
+			rv = shopRepairQuote(objectFromWord(words[2+a.Side]), (*shopSession)(q), a.Value)
 		case PortTestShopRepair:
-			rv = uint32(uintptr(unsafe.Pointer(sub_510AE0((*C.int)(shopTestPointer(words[2+a.Side])), C.int(uintptr(q)), (*C.uint32_t)(shopTestPointer(a.Value))))))
+			rv = shopRepair((*server.Object)(shopTestPointer(words[2+a.Side])), (*shopSession)(q), a.Value)
 		case PortTestShopSell:
-			sub_510D10((*C.int)(shopTestPointer(words[2+a.Side])), C.int(uintptr(q)), C.int(a.Item), C.uint(a.Value))
+			shopSell((*server.Object)(shopTestPointer(words[2+a.Side])), (*shopSession)(q), int32(a.Item), a.Value)
 		case PortTestShopLookup:
-			rv = uint32(sub_510DE0(C.int(words[2+a.Side]), C.int(a.Value)))
+			rv = shopLookup(objectFromWord(words[2+a.Side]), a.Value)
 		case PortTestShopDetach:
 			rv = uint32(shopDetach((*shopSession)(q), (*server.Object)(shopTestPointer(words[2+a.Side]))))
 		case PortTestShopLoad:
@@ -487,9 +478,9 @@ func (p *portTestShopPools) run() {
 				n = w[2]
 			}
 			if a.Op == PortTestShopAccept {
-				nox_xxx_tradeAccept_50F5A0(C.int(uintptr(q)), C.int(words[2+a.Side]))
+				shopAccept((*shopSession)(q), objectFromWord(words[2+a.Side]))
 			} else {
-				C.nox_xxx_shopCancelSession_510DC0(q)
+				shopCancel((*shopSession)(q))
 			}
 			live := false
 			for n := uint32(dword_5d4594_2386500); n != 0; n = shopTestWords(shopTestPointer(n), 16)[14] {
@@ -518,7 +509,7 @@ func (p *portTestShopPools) run() {
 					}
 				}
 			}
-			C.sub_510E20(C.int(a.Item))
+			shopPlayerCleanup(int(int32(a.Item)))
 		default:
 			if a.Op >= 1800 {
 				rv = p.gameplayReportsAction(a)

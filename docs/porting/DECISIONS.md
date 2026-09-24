@@ -2593,3 +2593,14 @@ as before. The retired functions have no fixture address registrations, so no
 identity reservation change is needed. Independent C modifier/drop/death observers
 remain. All three profiles and production gates pass without changing expectations.
 See [INVENTORY_RESOURCE_OWNERS.md](INVENTORY_RESOURCE_OWNERS.md).
+
+
+## Shop/trade transport-only adapters
+
+Remove the obsolete shop price pointer-through-float transport and code/count
+pointer roundtrips when calling existing Go owners. Those adapters do no float
+arithmetic or dereferencing; native pointers and raw uint32 values preserve the
+386 input words. Keep signed input narrowing and nil session handling. The native
+public cancel API and independent trade-pickup observer remain. The same frozen
+33-root profile selection and all production gates pass. See
+[SHOP_TRADE_OWNERS.md](SHOP_TRADE_OWNERS.md).

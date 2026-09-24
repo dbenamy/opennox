@@ -329,6 +329,7 @@ target build selection and linker evidence.
 | Native owners/constants and callers; selected cgo files 236→230, exports remain 1,179 and preamble bodies 78 | 0 | 0 | 0 | 0 |
 | Native object-state owners and test dispatch; selected cgo files remain 230, exports 1,179→1,142, preamble bodies remain 78 | 0 | 0 | 0 | 0 |
 | Native equipment/inventory/resource owners; selected cgo files 230→229, exports 1,142→1,081, preamble bodies remain 78 | 0 | 0 | 0 | 0 |
+| Native shop/trade fixture owners; selected cgo files 229→228, exports 1,081→1,078, preamble bodies remain 78 | 0 | 0 | 0 | 0 |
 
 The 33 checksum test-reference lines were retired after differential validation;
 their original source remains recoverable at `66fa7bd4`.
