@@ -44,6 +44,7 @@ int  nox_server_loadMapFile_4CF5F0(char* a1, int a2);
 import "C"
 import (
 	"context"
+	"github.com/opennox/opennox/v1/common/memmap"
 	"image"
 	"unsafe"
 
@@ -189,7 +190,7 @@ func Nox_server_testTwoPointsAndDirection_4E6E50(p1 types.Pointf, dir int16, p2 
 	cp2, free2 := alloc.New(types.Pointf{})
 	defer free2()
 	*cp1, *cp2 = p1, p2
-	return int(nox_server_testTwoPointsAndDirection_4E6E50((*C.float2)(unsafe.Pointer(cp1)), C.int(dir), (*C.float2)(unsafe.Pointer(cp2))))
+	return int(stateFront(cp1, int32(dir), cp2))
 }
 
 func Nox_xxx_mapLoadOrSaveMB_4DCC70(v int) {
@@ -452,7 +453,7 @@ func Sub_465DE0(a1 int) {
 	uiInventorySetWindowLevel(a1)
 }
 func Sub_4E79B0(a1 int) {
-	sub_4E79B0(C.int(a1))
+	*memmap.PtrUint32(0x5d4594, 1567712) = uint32(a1)
 }
 func Nox_xxx_playerMakeDefItems_4EF7D0(a1 *server.Object, a2 int, a3 int) {
 	nox_xxx_playerMakeDefItems_4EF7D0(C.int(uintptr(a1.CObj())), C.int(a2), C.int(a3))
@@ -512,19 +513,19 @@ func Sub_4DBA30(a1 bool) {
 	orchestrationRestore(int32(bool2int(a1)))
 }
 func Nox_xxx_isUnit_4E5B50(a1 *server.Object) int {
-	return int(nox_xxx_isUnit_4E5B50(asObjectC(a1)))
+	return bool2int(stateIsUnit(a1))
 }
 func Sub_4E5B80(a1 *server.Object) int {
-	return int(sub_4E5B80(asObjectC(a1)))
+	return bool2int(stateIsPixie(a1))
 }
 func Sub_4E81D0(a1 *server.Object) {
-	sub_4E81D0(asObjectC(a1))
+	stateResetPixie(a1)
 }
 func Sub_4D71E0(a1 int) {
 	questRuntimeSetSoulFrame(uint32(a1))
 }
 func Nox_xxx_calcDistance_4E6C00(a1 *server.Object, a2 *server.Object) float32 {
-	return float32(nox_xxx_calcDistance_4E6C00(asObjectC(a1), asObjectC(a2)))
+	return float32(stateDistance(a1, a2))
 }
 func Get_nox_game_switchStates_43C0A0() unsafe.Pointer {
 	return C.nox_game_switchStates_43C0A0

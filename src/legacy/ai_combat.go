@@ -105,7 +105,7 @@ func combatChoose(u, t *server.Object) {
 		return
 	}
 	if monsterCanShoot(u) {
-		if monsterCanMelee(u) && float64(nox_xxx_calcDistance_4E6C00(asObjectC(u), asObjectC(t))) < float64(u.UpdateDataMonster().MonsterDef.MissileAttackRange212)*.5 {
+		if monsterCanMelee(u) && float64(stateDistance(u, t)) < float64(u.UpdateDataMonster().MonsterDef.MissileAttackRange212)*.5 {
 			combatMeleeChain(u, t)
 		} else {
 			combatMissileChain(u, t)

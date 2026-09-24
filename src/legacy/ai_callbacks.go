@@ -201,10 +201,10 @@ func monsterAreaCandidate(t, u *server.Object) {
 	if t == u {
 		return
 	}
-	if nox_server_testTwoPointsAndDirection_4E6E50((*C.float2)(unsafe.Pointer(&u.PosVec)), C.int(int16(u.Direction1)), (*C.float2)(unsafe.Pointer(&t.PosVec)))&1 == 0 {
+	if stateFront(&u.PosVec, int32(int16(u.Direction1)), &t.PosVec)&1 == 0 {
 		return
 	}
-	if !(float64(nox_xxx_calcDistance_4E6C00(asObjectC(u), asObjectC(t))) <= float64(ud.MonsterDef.MeleeAttackRange112)) {
+	if !(float64(stateDistance(u, t)) <= float64(ud.MonsterDef.MeleeAttackRange112)) {
 		return
 	}
 	if !GetServer().S().MapTraceRay(u.PosVec, t.PosVec, 5) {

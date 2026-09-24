@@ -35,7 +35,7 @@ func spellEffectInform(u *server.Object) {
 	}
 }
 func spellEffectAlert(source, target *server.Object) {
-	sub_4E7540(asObjectC(source), asObjectC(target))
+	stateRememberAttacker(source, target)
 }
 func spellEffectGlyphType() uint32 {
 	if dword_5d4594_2487712 == 0 {

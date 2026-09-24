@@ -189,7 +189,7 @@ func monsterMainAI(u *server.Object) {
 	}
 	if !monsterAggressionRetreat(u) && monsterMoving(u) && !monsterCastBusy(u) && !u.HasEnchant(3) && !monsterMoveAttempt(u) {
 		if enemy := ud.CurrentEnemy; enemy != nil {
-			dist := float64(nox_xxx_calcDistance_4E6C00(asObjectC(u), asObjectC(enemy)))
+			dist := float64(stateDistance(u, enemy))
 			if dist < float64(ud.FleeRange) {
 				if ud.StatusFlags&0x20 != 0 && ud.Field376 != 0 && !u.HasEnchant(29) && core.Frame() >= ud.Field371 && float64(ud.FleeRange)*.5 > float64(float32(dist)) {
 					// The retained spell engine passes this buffer back through Go.

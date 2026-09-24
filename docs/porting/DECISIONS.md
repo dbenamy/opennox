@@ -2568,3 +2568,17 @@ helper proposals to include actual AI policy and message-drawing routes. All
 three focused profiles, safe/static, fresh production/ABI, known-suite and headless
 save/load gates pass without changing frozen expectations. See
 [GO_NATIVE_OWNER_CONSTANTS.md](GO_NATIVE_OWNER_CONSTANTS.md).
+
+
+## Object-state fixture identities and exports
+
+Retire the 37 object-state exports used only by fixture dispatch/address maps;
+keep four live collision callbacks. Before removal, two instrumented original
+processes covered all 44 operations with zero consumed function-address IDs.
+Audit shared map aliases and indirect raw-word normalization, not only the local
+fixture normalizer. Reserve the 37 removed entries in reservedFunctionIDs so
+map-size-dependent generated IDs keep their existing formula. Original raw map
+sizes vary at three loot snapshots; frozen outputs and generated-ID counters
+match and remain the acceptance boundary. Do not regenerate expectations to
+hide a difference. All conversion gates pass. See
+[OBJECT_STATE_OWNERS.md](OBJECT_STATE_OWNERS.md).

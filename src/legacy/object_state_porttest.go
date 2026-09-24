@@ -3,105 +3,27 @@
 package legacy
 
 /*
-#include <string.h>
 #include "GAME3_2.h"
 #include "GAME3_3.h"
 int nox_objectCollideDefault(int,int,float*);
 static void* stateFunction(int id){switch(id){
-case 0:return (void*)nox_xxx_unitNeedSync_4E44F0;
-case 1:return (void*)sub_4E4500;
-case 2:return (void*)nox_xxx_unitSetOnOff_4E4670;
-case 3:return (void*)nox_xxx_unitRaise_4E46F0;
-case 4:return (void*)nox_xxx_servMarkObjAnimFrame_4E4880;
-case 5:return (void*)nox_xxx_setUnitBuffFlags_4E48F0;
-case 6:return (void*)nox_xxx_modifSetItemAttrs_4E4990;
-case 7:return (void*)nox_xxx_objectGetMass_4E4A70;
-case 8:return (void*)nox_xxx_playerRemoveSpawnedStuff_4E5AD0;
-case 9:return (void*)nox_xxx_isUnit_4E5B50;
-case 10:return (void*)sub_4E5B80;
-case 11:return (void*)sub_4E5BF0;
-case 12:return (void*)sub_4E6BD0;
-case 13:return (void*)nox_xxx_calcDistance_4E6C00;
-case 14:return (void*)sub_4E6CE0;
-case 15:return (void*)nox_server_testTwoPointsAndDirection_4E6E50;
-case 16:return (void*)nox_xxx_teleportToMB_4E7190;
-case 17:return (void*)nox_xxx_objectUnkUpdateCoords_4E7290;
-case 18:return (void*)nox_xxx_spawnSomeBarrel_4E7470;
-case 19:return (void*)sub_4E7540;
-case 20:return (void*)nox_xxx_objectSetOn_4E75B0;
-case 21:return (void*)nox_xxx_objectSetOff_4E7600;
-case 25:return (void*)sub_4E79B0;
-case 26:return (void*)nox_xxx_unitFreeze_4E79C0;
-case 27:return (void*)nox_xxx_unitUnFreeze_4E7A60;
-case 28:return (void*)nox_xxx_unitBecomePet_4E7B00;
-case 29:return (void*)nox_xxx_monsterRemoveMonitors_4E7B60;
-case 30:return (void*)sub_4E7BC0;
-case 31:return (void*)nox_xxx_unitIsCrown_4E7BE0;
-case 32:return (void*)nox_xxx_unitIsGameball_4E7C30;
-case 33:return (void*)nox_xxx_unitCountSlaves_4E7CF0;
-case 34:return (void*)sub_4E7DE0;
-case 35:return (void*)nox_xxx_unitPostCreateNotify_4E7F10;
-case 36:return (void*)sub_4E8110;
-case 37:return (void*)sub_4E81D0;
-case 38:return (void*)nox_xxx_fnFindCloseDoors_4E8340;
-case 39:return (void*)sub_4E8390;
 case 40:return (void*)nox_xxx_collideMonsterEventProc_4E83B0;
 case 41:return (void*)nox_xxx_collideMimic_4E83D0;
 case 42:return (void*)nox_xxx_collidePlayer_4E8460;
 case 43:return (void*)nox_objectCollideDefault;
-default:return 0;}}
-static uint64_t stateCall(int id,nox_object_t* u,nox_object_t* t,int x,int y,int z,uint32_t bits,void* record){float f;memcpy(&f,&bits,4);switch(id){
-case 0:{nox_xxx_unitNeedSync_4E44F0(u);return 0;}
-case 1:{return (uint32_t)sub_4E4500(u,x,y,z);}
-case 2:{return (uint32_t)nox_xxx_unitSetOnOff_4E4670((int)u,x);}
-case 3:{nox_xxx_unitRaise_4E46F0(u,f);return 0;}
-case 4:{return (uint32_t)nox_xxx_servMarkObjAnimFrame_4E4880((int)u,x);}
-case 5:{return (uint32_t)nox_xxx_setUnitBuffFlags_4E48F0((int)u,x);}
-case 6:{return (uint32_t)nox_xxx_modifSetItemAttrs_4E4990(u,(int*)record);}
-case 7:{double d=nox_xxx_objectGetMass_4E4A70((int)u);uint64_t raw;memcpy(&raw,&d,8);return raw;}
-case 8:{nox_xxx_playerRemoveSpawnedStuff_4E5AD0(u);return 0;}
-case 9:{return (uint32_t)nox_xxx_isUnit_4E5B50(u);}
-case 10:{return (uint32_t)sub_4E5B80(u);}
-case 11:{sub_4E5BF0(x);return 0;}
-case 12:{return (uint32_t)sub_4E6BD0((int)u);}
-case 13:{double d=nox_xxx_calcDistance_4E6C00(u,t);uint64_t raw;memcpy(&raw,&d,8);return raw;}
-case 14:{return (uint32_t)sub_4E6CE0((float2*)((char*)u+56),(float2*)record);}
-case 15:{return (uint32_t)nox_server_testTwoPointsAndDirection_4E6E50((float2*)((char*)u+56),x,(float2*)record);}
-case 16:{nox_xxx_teleportToMB_4E7190((uint8_t*)u,(float*)record);return 0;}
-case 17:{return (uint32_t)nox_xxx_objectUnkUpdateCoords_4E7290(u);}
-case 18:{nox_xxx_spawnSomeBarrel_4E7470((int)u,(int)record);return 0;}
-case 19:{sub_4E7540(u,t);return 0;}
-case 20:{return (uint32_t)nox_xxx_objectSetOn_4E75B0(u);}
-case 21:{return (uint32_t)nox_xxx_objectSetOff_4E7600(u);}
-case 25:{return (uint32_t)sub_4E79B0(x);}
-case 26:{return (uint32_t)nox_xxx_unitFreeze_4E79C0(u,x);}
-case 27:{return (uint32_t)nox_xxx_unitUnFreeze_4E7A60(u,x);}
-case 28:{nox_xxx_unitBecomePet_4E7B00((int)u,(int)t);return 0;}
-case 29:{nox_xxx_monsterRemoveMonitors_4E7B60(u,t);return 0;}
-case 30:{return (uint32_t)sub_4E7BC0((int)u);}
-case 31:{return (uint32_t)nox_xxx_unitIsCrown_4E7BE0((int)u);}
-case 32:{return (uint32_t)nox_xxx_unitIsGameball_4E7C30((int)u);}
-case 33:{return (uint32_t)nox_xxx_unitCountSlaves_4E7CF0((int)u,x,y);}
-case 34:{return (uint32_t)sub_4E7DE0((int)u,t);}
-case 35:{return (uint32_t)nox_xxx_unitPostCreateNotify_4E7F10(u);}
-case 36:{return (uint32_t)sub_4E8110(x);}
-case 37:{return (uint32_t)sub_4E81D0(u);}
-case 38:{nox_xxx_fnFindCloseDoors_4E8340((float*)u,(int)record);return 0;}
-case 39:{return (uint32_t)sub_4E8390((int)u);}
-case 40:{return (uint32_t)nox_xxx_collideMonsterEventProc_4E83B0((int)u,(int)t);}
-case 41:{return (uint32_t)nox_xxx_collideMimic_4E83D0((int)u,(int)t);}
-case 42:{nox_xxx_collidePlayer_4E8460((int)u,(int)t);return 0;}
-case 43:{return (uint32_t)nox_objectCollideDefault((int)u,(int)t,(float*)record);}
 default:return 0;}}
 */
 import "C"
 
 import (
 	"bytes"
+	"math"
+	"unsafe"
+
+	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/common/memmap/nox/blobdata"
 	"github.com/opennox/opennox/v1/server"
-	"unsafe"
 )
 
 type PortTestObjectStateSpec struct {
@@ -200,7 +122,7 @@ func (p *portTestShopPools) objectStateItems() {
 	if sp == nil {
 		return
 	}
-	p.reservedFunctionIDs += 2
+	p.reservedFunctionIDs += 39 // retain two previous reservations and reserve 37 removed callback slots.
 	if sp.ActorName != "" {
 		u := p.temporaryRef(p.proxy.callbacks.shop.spec.TemporaryUpdates.World.Objectives.Attack.Actor)
 		u.IDPtr = p.objectiveString(sp.ActorName)
@@ -240,6 +162,100 @@ func (p *portTestShopPools) objectStateItems() {
 		p.proxy.core.Objs.MissileList = u
 	}
 }
+func objectStateCall(id int, u, t *server.Object, x, y, z int32, bits uint32, record unsafe.Pointer) uint64 {
+	switch id {
+	case 0:
+		u.NeedSync()
+	case 1:
+		u.Sub_4E4500(uint32(x), uint32(y), z != 0)
+		return uint64(uint32(uintptr(stateSyncEnd(u))))
+	case 2:
+		return uint64(uint32(uintptr(stateOnOff(u, x != 0))))
+	case 3:
+		stateRaise(u, math.Float32frombits(bits))
+	case 4:
+		return uint64(uint32(uintptr(stateAnimation(u, uint32(x)))))
+	case 5:
+		return uint64(uint32(uintptr(stateBuffs(u, uint32(x)))))
+	case 6:
+		return uint64(uint32(uintptr(stateAttributes(u, record))))
+	case 7:
+		return math.Float64bits(float64(u.Mass))
+	case 8:
+		stateRemoveSpawned(u)
+	case 9:
+		return uint64(uint32(bool2int(stateIsUnit(u))))
+	case 10:
+		return uint64(uint32(bool2int(stateIsPixie(u))))
+	case 11:
+		stateCleanup(x)
+	case 12:
+		return uint64(uint32(bool2int(u.HealthData != nil && GetServer().S().Frame()-u.Frame134 <= 1)))
+	case 13:
+		return math.Float64bits(stateDistance(u, t))
+	case 14:
+		return uint64(uint32(stateDirection((*types.Pointf)(unsafe.Add(u.CObj(), 56)), (*types.Pointf)(record))))
+	case 15:
+		return uint64(uint32(stateFront((*types.Pointf)(unsafe.Add(u.CObj(), 56)), x, (*types.Pointf)(record))))
+	case 16:
+		stateTeleport(u, (*types.Pointf)(record))
+	case 17:
+		u.Nox_xxx_objectUnkUpdateCoords_4E7290()
+		return uint64(uint32(uintptr(unsafe.Pointer(u))))
+	case 18:
+		stateLoot(u, (*types.Pointf)(record))
+	case 19:
+		stateRememberAttacker(u, t)
+	case 20:
+		return uint64(uint32(int32(stateOn(u))))
+	case 21:
+		return uint64(uint32(stateOff(u)))
+	case 25:
+		*memmap.PtrUint32(0x5d4594, 1567712) = uint32(x)
+		return uint64(uint32(x))
+	case 26:
+		return uint64(uint32(int32(stateFreeze(u, x))))
+	case 27:
+		return uint64(uint32(int32(stateUnfreeze(u, x))))
+	case 28:
+		statePet(u, t)
+	case 29:
+		stateRemoveMonitors(u, t)
+	case 30:
+		if u == nil {
+			return 0
+		}
+		return uint64(uint32(u.ObjClass) >> 2 & 1)
+	case 31:
+		return uint64(uint32(bool2int(stateOwns(u, 1567716, "Crown"))))
+	case 32:
+		return uint64(uint32(bool2int(stateOwns(u, 1567720, "GameBall"))))
+	case 33:
+		return uint64(uint32(stateCount(u, uint32(x), uint32(y))))
+	case 34:
+		return uint64(uint32(bool2int(stateEqual(u, t))))
+	case 35:
+		statePostCreate(u)
+	case 36:
+		statePlayerVisibility(x)
+	case 37:
+		return uint64(uint32(stateResetPixie(u)))
+	case 38:
+		stateCloseDoor(u, record)
+	case 39:
+		return uint64(uint32(stateDoorNotify(u)))
+	case 40:
+		return uint64(uint32(uintptr(stateMonsterCollision(u, t))))
+	case 41:
+		return uint64(uint32(uintptr(stateMimicCollision(u, t))))
+	case 42:
+		statePlayerCollision(u, t)
+	case 43:
+		return 0
+	}
+	return 0
+}
+
 func (p *portTestShopPools) objectStateAction(a PortTestShopAction) uint32 {
 	attack := p.proxy.callbacks.shop.spec.TemporaryUpdates.World.Objectives.Attack
 	sp := attack.State
@@ -257,7 +273,7 @@ func (p *portTestShopPools) objectStateAction(a PortTestShopAction) uint32 {
 	} else if a.Op == 1224 {
 		state.state.result = uint64(uint32(nox_xxx_inventoryGetNext_4E7990(C.int(uintptr(u.CObj())))))
 	} else {
-		state.state.result = uint64(C.stateCall(C.int(a.Op-1200), asObjectC(p.temporaryRef(attack.Actor)), asObjectC(p.temporaryRef(sp.Target)), C.int(sp.X), C.int(sp.Y), C.int(sp.Z), C.uint32_t(sp.FloatBits), state.record))
+		state.state.result = objectStateCall(int(a.Op-1200), p.temporaryRef(attack.Actor), p.temporaryRef(sp.Target), sp.X, sp.Y, sp.Z, sp.FloatBits, state.record)
 	}
 	// Freeze's char return truncates the C-owned action-stack pointer. Check the
 	// actual byte before replacing the address-dependent value with its identity.

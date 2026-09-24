@@ -193,7 +193,7 @@ func Nox_xxx_playerDoSchedSpellQueue_4FB1D0(a1 *server.Object, a2 *server.Object
 	controlScheduledSpell(a1, a2, true)
 }
 func Sub_4E7540(a1 *server.Object, a2 *server.Object) {
-	sub_4E7540(asObjectC(a1), asObjectC(a2))
+	stateRememberAttacker(a1, a2)
 }
 func Nox_xxx_playerCheckStrength_4F3180(a1 *server.Object, a2 *server.Object) bool {
 	return equipmentCheckStrength(a1, a2)

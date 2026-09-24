@@ -296,7 +296,7 @@ func damageSkeleton(u, source, weapon *server.Object, amount, kind int32) int32 
 		if actual == nil {
 			actual = source
 		}
-		if nox_server_testTwoPointsAndDirection_4E6E50((*C.float2)(unsafe.Pointer(&u.PosVec)), C.int(int16(u.Direction1)), (*C.float2)(unsafe.Pointer(&actual.PrevPos)))&1 != 0 && monsterControlHead(u) == 21 && uint32(*(*byte)(unsafe.Add(u.UpdateData, 481))) > uint32(*(*byte)(unsafe.Add(u.UpdateData, 480))>>1) {
+		if stateFront(&u.PosVec, int32(int16(u.Direction1)), &actual.PrevPos)&1 != 0 && monsterControlHead(u) == 21 && uint32(*(*byte)(unsafe.Add(u.UpdateData, 481))) > uint32(*(*byte)(unsafe.Add(u.UpdateData, 480))>>1) {
 			inventorySound(878, u, 0, 0)
 			return 1
 		}

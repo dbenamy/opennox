@@ -39,7 +39,7 @@ func projectileFX(code byte, u *server.Object) {
 	visibilityFXPoint(byte(code), u.PosVec)
 }
 func projectileFront(t, u *server.Object) bool {
-	return nox_server_testTwoPointsAndDirection_4E6E50((*C.float2)(unsafe.Pointer(&t.PosVec)), C.int(int16(t.Direction1)), (*C.float2)(unsafe.Pointer(&u.PosVec)))&1 != 0
+	return stateFront(&t.PosVec, int32(int16(t.Direction1)), &u.PosVec)&1 != 0
 }
 func projectileGeneric(u, t *server.Object) {
 	stone, imp := memmap.PtrUint32(0x5d4594, 1567948), memmap.PtrUint32(0x5d4594, 1567952)
@@ -242,7 +242,7 @@ func projectileTeleportWake(u, t *server.Object) {
 		projectileFX(138, t)
 	}
 	inventorySound(147, t, 0, 0)
-	nox_xxx_teleportToMB_4E7190((*C.uint8_t)(t.CObj()), (*C.float)(u.CollideData))
+	stateTeleport(t, (*types.Pointf)(u.CollideData))
 	if !t.HasEnchant(0) {
 		projectileFX(137, t)
 	}

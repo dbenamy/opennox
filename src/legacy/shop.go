@@ -173,7 +173,7 @@ func shopExit(s *shopSession) {
 	if player.ObjClass&4 == 0 {
 		player = s.Units[1]
 	}
-	nox_xxx_unitUnFreeze_4E7A60(asObjectC(player), 0)
+	stateUnfreeze(player, 0)
 	shopSendShort(player, 713, 1)
 	if noxflags.HasGame(noxflags.GameModeQuest) {
 		shopCached()[uint8(player.UpdateDataPlayer().Player.PlayerInd)] = s

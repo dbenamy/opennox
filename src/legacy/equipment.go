@@ -132,7 +132,8 @@ func equipmentNPCSync(u, it *server.Object, value int) unsafe.Pointer {
 		*p &^= bits
 	}
 	if u.ObjClass&0x20400004 == 0 {
-		return unsafe.Pointer(sub_4E4500(asObjectC(u), 0x4000000, 1024, 1))
+		u.Sub_4E4500(0x4000000, 1024, true)
+		return stateSyncEnd(u)
 	}
 	for i := 0; i < 32; i++ {
 		v := equipmentWord(u.CObj(), 560+i*4)

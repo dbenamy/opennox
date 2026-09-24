@@ -94,7 +94,7 @@ func generatorPick(u *server.Object, out *types.Pointf, descriptor *server.Objec
 			continue
 		}
 		flags := *(*uint32)(unsafe.Add(u.UpdateData, 92))
-		dist := float64(nox_xxx_calcDistance_4E6C00((*C.nox_object_t)(u.CObj()), (*C.nox_object_t)(p.CObj())))
+		dist := float64(stateDistance(u, p))
 		if flags&1 != 0 {
 			if dist <= 300 {
 				return generatorPlace(u, out, nil, descriptor)

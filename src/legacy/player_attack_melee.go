@@ -63,7 +63,7 @@ func attackHit(t *server.Object, r *attackRecord) {
 		return
 	}
 	u := r.Owner
-	if byte(nox_server_testTwoPointsAndDirection_4E6E50((*C.float2)(unsafe.Pointer(&u.PosVec)), C.int(int16(u.Direction1)), (*C.float2)(unsafe.Pointer(&t.PosVec))))&r.Front == 0 {
+	if byte(stateFront(&u.PosVec, int32(int16(u.Direction1)), &t.PosVec))&r.Front == 0 {
 		return
 	}
 	if t.ObjFlags&0x8040 != 0 || (r.HitStatic == 0 && t.ObjFlags&8 != 0) {

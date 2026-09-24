@@ -239,7 +239,7 @@ func effectsVampirism(m *server.ModifierEff, u, target *server.Object, damage in
 	resourceAdjustHP(u, v)
 }
 func effectsPoison(m *server.ModifierEff, u, target *server.Object) {
-	if target.ObjClass&4 != 0 && *(*byte)(unsafe.Add(target.UpdateData, 88)) == 16 && nox_server_testTwoPointsAndDirection_4E6E50((*C.float2)(unsafe.Pointer(&target.PosVec)), C.int(int16(target.Direction1)), (*C.float2)(unsafe.Pointer(&u.PosVec)))&1 != 0 {
+	if target.ObjClass&4 != 0 && *(*byte)(unsafe.Add(target.UpdateData, 88)) == 16 && stateFront(&target.PosVec, int32(int16(target.Direction1)), &u.PosVec)&1 != 0 {
 		return
 	}
 	if target.ObjClass&6 != 0 && resourcePoison(target, 1, m.AttackPreDmg64.Val) && target.ObjClass&4 != 0 {

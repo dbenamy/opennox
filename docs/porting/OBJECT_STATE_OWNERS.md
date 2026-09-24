@@ -4,7 +4,7 @@
 
 Qualified starting revision: `6274a6f3`. Candidate: retire 37 object-state C
 exports after moving their fixture and 19 production Go caller files to native
-owners. Four live collision exports remain. Conversion is not installed yet.
+owners. Four live collision exports remain. The conversion is fully qualified.
 
 The original fixture registers 41 C function addresses. A temporary opt-in probe
 observed all raw-word normalization paths, including the outer AI fixture's map
@@ -33,7 +33,7 @@ with `OPENNOX_OBJECT_STATE_IDENTITY_PROBE` pointing to a fresh JSONL output.
 Local build/command/binary records are in `build/port-object-state-owners/identity-original/`.
 The temporary probe is test-only; production source was unchanged.
 
-## Pending qualification
+## Qualification
 
 The next affected-owner selection includes 283 roots in each profile: object
 state, collision registries, AI combat/callback/main/monster state, damage,
@@ -47,4 +47,25 @@ after conversion qualifies.
 All three fresh original-profile baselines pass exactly 283 roots with no skips.
 Source fingerprints match qualified `6274a6f3`. See the
 [baseline](object-state-owners-baseline.json), [commands](object-state-owners-batch.json)
-and [test selection](object-state-owners-tests.txt). Conversion qualification remains pending.
+and [test selection](object-state-owners-tests.txt). Conversion qualification passes with the same exact root sets and no skips.
+
+All converted gates pass: 283 roots in each profile, safe build/static checks,
+three production builds/ABI checks, exact known-suite comparison, and headless
+creation/save/load/resume. All 37 retired C symbols are absent; the four live
+collision exports remain. Every phase has identical source fingerprints and all
+1,654 original asset hashes remain unchanged. No frozen expectations changed.
+
+The final change spans 22 files and removes 37 exports/prototypes plus the
+test-only C stateCall dispatcher. Selected cgo files stay 230 (233/463 eliminated);
+C exports fall from 1,179 to 1,142 (748/1,890 retired). Production C callback bodies
+stay 78. Headers remain 157 files, now 3,865 physical lines. Standalone production
+and test-reference C lines remain zero. See
+[qualification](object-state-owners-qualification.json) and
+[inventory](object-state-owners-inventory-after.json).
+
+Primary reconstructed all 22 files from exact edits/diffs. Review corrected a
+fixture draft's Pointf import and explicit float32-to-float64 mass widening before
+installation. Public wrapper signatures, temporary point allocations, signed
+char results and callback identities are preserved. The equipment sync caller
+uses Sub_4E4500(..., true) plus stateSyncEnd; stateSync is not interchangeable
+because it computes its boolean argument differently.
