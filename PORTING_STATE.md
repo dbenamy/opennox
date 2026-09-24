@@ -27,10 +27,11 @@ captures pass unchanged. Final qualification includes that regression in all
 profiles. No engine behavior or golden expectation changed for this repair.
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Next candidate: the 31 files whose imports still
-serve C-typed Go adapters or scalar fields, with connected helper/caller changes.
-Primary review notes and Luna's exact caller plans are under
-`build/port-go-primitive-interfaces/next-*`; they are planning, not installed edits.
+recorded reversible decisions. Active: original baseline accepted from `78ff20f9`
+for the 31 remaining primitive-adapter caller files and their connected helpers
+and fields. Luna is drafting 17 callers; primary owns the other callers, exact
+helper extractions, field writers and acceptance. Drafts are not installed.
+See [GO_NATIVE_CALL_BOUNDARIES.md](docs/porting/GO_NATIVE_CALL_BOUNDARIES.md).
 Stop at the milestone or for a substantial question.
 
 Latest artifacts: `build/port-go-primitive-interfaces/`.
@@ -162,3 +163,12 @@ Initial primitive-interface root logs are losslessly archived under
 `gzip -dk FILE.jsonl.gz`. The hash/size manifest is
 `build/port-go-primitive-interfaces/contract-log-archive.json` (306,057,005 bytes
 reclaimed). Failure captures and result metadata remain directly readable.
+
+Final primitive-interface root logs are also losslessly archived under
+`contracts-final/profiles/*.jsonl.gz`; `final-contract-log-archive.json` records
+hashes and restore commands (306,065,024 bytes reclaimed). Original asset copies
+in `go-scalar-storage-save` and `go-primitive-interfaces-save` were removed only
+after byte/hash and host-use checks: 3,308 duplicates / 1,119,789,056 allocated
+bytes. Saves, changed files and results remain. Restore either scenario with
+`python3 build/port-artifact-cleanup/restore-recent-scenario.py` followed by its
+`build/baseline/runs/SCENARIO/deduplicated-assets.json` path.

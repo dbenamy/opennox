@@ -1,0 +1,22 @@
+{
+  "source_revision": "78ff20f904f4db947e9b182c5d7be3a87e7e5d1a",
+  "original_qualification": "docs/porting/go-primitive-interfaces-qualification.json",
+  "source_identity_verified_for": [
+    "storage",
+    "contracts",
+    "safe",
+    "production"
+  ],
+  "source_fingerprint_sha256": "f7a5705b09c55892729f278c6fb4f3c991be297faf3d2d7fbeba13ea0319c940",
+  "candidate_file_count": 31,
+  "candidate_selectors": 99,
+  "private_signature_candidates": [
+    "nox_xxx_spritePickup_461660",
+    "sub_461A80",
+    "nox_xxx_send2ServInvenFail_461630",
+    "nox_wol_servers_sortBtnHandler_4A0290",
+    "sub_438DD0"
+  ],
+  "status": "Original baseline accepted; implementation not installed",
+  "acceptance": "Reuse just-qualified exact source with frozen owner captures and complete profiles; review each adapter conversion and connected callers. Keep C exports and external bindings unchanged."
+}
