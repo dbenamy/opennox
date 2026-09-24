@@ -21,8 +21,10 @@ unchanged. Live transfer callbacks and floating-point control-word fixtures stay
 See [MAP_ROOM_PAINT_OWNERS.md](docs/porting/MAP_ROOM_PAINT_OWNERS.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Next-candidate audit: `build/port-after-map-room-paint/`;
-primary review is required before accepting its scope. Stop at the milestone or
+recorded reversible decisions. Active next batch: catalog/effect fixture adapters, `build/port-catalog-effect-owners/`.
+The original baseline passes (57 client roots, 56 server roots), including a new rain-creation
+contract; conversion and final qualification remain pending. See
+[CATALOG_EFFECT_OWNERS.md](docs/porting/CATALOG_EFFECT_OWNERS.md). Stop at the milestone or
 for a substantial question.
 
 Latest artifacts: `build/port-map-room-paint-owners/`.
@@ -121,6 +123,8 @@ do not rerun them or infer deletion safety from age alone.
 
 | Artifact | Recovery or current location |
 | --- | --- |
+| Superseded inventory/resource, shop/trade and spell/reward binaries | Removed 21 verified, unused executables; 1,183,252,480 allocated bytes reclaimed. Rebuild revisions `9dac58bf`, `279e7867`, `b5d7ee16` with retained commands. Latest map-room/painting replacements remain. Source/hash/host-use checks and deletion journal: `build/port-catalog-effect-owners/cleanup-{approved.json,deleted.jsonl}`. |
+| Completed map-room/painting scenario assets | Removed 1,654 verified original-asset duplicates; 559,882,240 allocated bytes reclaimed. Originals, saves and results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/map-room-paint-owners-save/deduplicated-assets.json`. Plan/result: `build/port-post-map-room-paint-cleanup/`. |
 | Completed shop/trade and spell/reward scenario assets | Removed 3,308 verified original-asset duplicates; 1,119,744,000 allocated bytes reclaimed. Saves/results and originals remain. Restore each with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/SCENARIO/deduplicated-assets.json` for `shop-trade-owners-save` or `spell-reward-owners-save`. Plan/result: `build/port-post-spell-reward-cleanup/`. |
 | Obsolete pre-shop/trade Go cache archives | Removed 37 regular root/legacy archives after hash/stat/cutoff and host-use checks; 2,235,387,904 allocated bytes reclaimed. Rebuild normally; source, binaries and current cache retained. Plan/journal: `build/port-spell-reward-owners/cache-cleanup-{approved.json,deleted.jsonl}`. |
 | Completed inventory/resource scenario assets | Removed 1,654 verified duplicate assets; 559,857,664 allocated bytes reclaimed. Saves/results and originals retained. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/inventory-resource-owners-save/deduplicated-assets.json`. Plan/result: `build/port-post-inventory-resource-cleanup/`. |
