@@ -21,8 +21,9 @@ All 18 changed/deleted files qualify with frozen expectations unchanged.
 See [INVENTORY_RESOURCE_OWNERS.md](docs/porting/INVENTORY_RESOURCE_OWNERS.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Next-candidate audit:
-`build/port-after-inventory-resource/`; candidate findings require primary review.
+recorded reversible decisions. Current batch: shop/trade fixture owners;
+33 original roots/profile reuse identical freshly qualified source. Draft review
+and installation are pending. See [SHOP_TRADE_OWNERS.md](docs/porting/SHOP_TRADE_OWNERS.md).
 Stop at the milestone or for a substantial question.
 
 Latest artifacts: `build/port-inventory-resource-owners/`.
