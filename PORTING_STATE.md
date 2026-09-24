@@ -31,7 +31,7 @@ not a count of all C dependencies or a measure of remaining engineering effort.
 | Callback routes | Some Go implementations still call each other through C-compatible addresses. More direct Go dispatch is possible; shared raw fallbacks remain until their users and compatibility requirements are resolved. |
 | Declarations and C types | 157 tracked headers / 4,548 physical lines; 469 non-porttest Go files import C across build profiles. These counts mostly reflect interface/layout machinery, not unported algorithms. |
 | Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Removing them requires ownership/layout changes beyond function translation. |
-| External libraries | Native dependencies such as SDL and OpenAL remain; their cgo bindings must be replaced or removed for the agreed build goal. |
+| External libraries | SDL2, OpenGL, OpenAL and similar native dependencies and their cgo bindings stay for this phase; their future is a subsequent discussion. |
 | Portability and release validation | Qualified target is Linux 386/SSE2 with cgo. The complete engine is not qualified as cgo-free, 64-bit, native macOS or browser/WebAssembly. Physical display and audible playback remain manual release checks. |
 
 See [C_LOC.md](docs/porting/C_LOC.md) for the exact standalone-line metric and
@@ -59,12 +59,21 @@ Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expec
 
 ## Goal, next work and open review items
 
-The [agreed goal and scope](PORT.md#goal-and-target) are cgo-free client/server
-builds with x86/32-bit assumptions allowed. Current qualified builds still require
-cgo; direct callback dispatch is an intermediate step.
-When implementation resumes, inventory the complete build's cgo dependencies and
-sequence their removal, including client rendering/audio backends. Implementation
-remains paused for the user's review.
+The [immediate goal](PORT.md#goal-and-target) is removal of the engine's internal
+C glue, retaining external native-library bindings and x86/32-bit assumptions.
+Whole-build `CGO_ENABLED=0` is deferred for subsequent discussion.
+When implementation resumes, finish the internal-dependency removal order;
+client rendering/audio backend replacement is outside this phase. Implementation
+remains paused.
+
+The interrupted dependency audit left an untracked draft at
+`tools/porting/cgo_inventory.py` and local metadata under `build/port-cgo-audit/`.
+Production metadata identifies six project packages directly using cgo in all
+three profiles, plus OpenGL/SDL2/OpenAL bindings in the clients. Metadata discovery
+is not compilation or qualification. The helper's external-review draft is not
+accepted evidence: its suggestion that go-gl is residue is contradicted by the
+actual dependency graph (`libs/client/seat/opengl` imports it). No production
+source or dependencies were changed by the audit.
 
 A preliminary candidate is 26 monster callbacks: 11 strike, five die and ten dead.
 Their production owners are `combatMelee`, `lifecycleDyingStart` and

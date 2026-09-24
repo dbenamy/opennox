@@ -18,15 +18,23 @@ and Git, not in this guide.
 
 ## Goal and target
 
-Replace OpenNox's remaining C implementation with Go while preserving observable
-behavior. Qualify the actual Linux x86 client, high-resolution client and server.
-The agreed endpoint is a **cgo-free build of all three with `CGO_ENABLED=0`**.
-The currently qualified target is **386/SSE2 with CGO**; support for older CPUs is
-unnecessary. Keeping x86/32-bit-specific behavior, layouts and assumptions is
-acceptable. Removing internal C glue and addressing native dependencies that
-require cgo are in scope; general layout modernization, 64-bit, native macOS and
-browser/WebAssembly support are not requirements for this milestone. Preserve
-behavior as dependencies are replaced; a successful build alone is insufficient.
+The immediate goal is to **remove the engine's internal C glue** while preserving
+observable behavior. This includes engine-owned C calls, callback dispatchers,
+export bridges, C type/header dependencies and libc allocation/string/memory
+helpers. Qualify the actual Linux x86 client, high-resolution client and server.
+
+Keep SDL2, OpenGL, OpenAL and similar external native libraries and their bindings
+for this phase. Their use of cgo is allowed; `CGO_ENABLED=0` for the complete build
+is not an acceptance requirement for this milestone. After the internal glue is
+removed, discuss whether and how to eliminate cgo from external bindings. Do not
+replace native backends merely to meet the earlier whole-build cgo-free goal.
+
+The target remains **386/SSE2**; support for older CPUs is unnecessary. Keeping
+x86/32-bit-specific behavior, layouts and assumptions is acceptable. Change memory
+ownership/layout only where needed to remove internal C dependencies correctly;
+general layout modernization, 64-bit, native macOS and browser/WebAssembly support
+are outside this milestone. Preserve behavior throughout; a successful build alone
+is insufficient.
 
 Use headless X for window/input integration and deterministic software rendering.
 A local screen is unnecessary. OpenAL's null backend exercises audio initialization;
