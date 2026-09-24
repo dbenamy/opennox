@@ -30,15 +30,9 @@ static uint64_t invCall(int op,nox_object_t* u,nox_object_t* it,int value,int ar
  case 3: return (uint32_t)(uintptr_t)nox_xxx_dropTrap_4ED580(up,ip,pos);
  case 4: return (uint32_t)(uintptr_t)nox_xxx_dropCrown_4ED5E0(up,ip,(int*)pos);
  case 5: return (uint32_t)(uintptr_t)nox_xxx_dropTreasure_4ED710(up,ip,(int*)pos);
- case 7: return (uint32_t)(uintptr_t)nox_xxx_drop_4ED810(up,ip,(float*)pos);
- case 8: return (uint32_t)(uintptr_t)nox_xxx_invForceDropItem_4ED930(up,(uint32_t*)it);
- case 9: return (uint32_t)(uintptr_t)sub_4ED970(radius,(float2*)((char*)u+56),pos);
- case 10: return (uint32_t)(uintptr_t)nox_xxx_dropAllItems_4EDA40((uint32_t*)u);
  case 12: return (uint32_t)(uintptr_t)sub_4EDDE0(up,(uint32_t*)it,(int*)pos);
  case 13: return (uint32_t)(uintptr_t)nox_xxx_dropFood_4EDE50(up,ip,(int*)pos);
- case 14: nox_xxx_chest_4EDF00(up,ip);return 0;
  case 16: return (uint32_t)(uintptr_t)nox_xxx_dropAnkhTradable_4EE370(up,ip,(int*)pos);
- case 17: nox_xxx_inventoryPutImpl_4F3070(u,it,value);return 0;
  case 18: return (uint32_t)(uintptr_t)nox_xxx_pickupFood_4F3350(up,ip,value);
  case 19: return (uint32_t)(uintptr_t)sub_4F3400(up,ip,value);
  case 20: return (uint32_t)(uintptr_t)nox_xxx_pickupUse_4F34D0(up,ip,value);
@@ -53,7 +47,6 @@ static uint64_t invCall(int op,nox_object_t* u,nox_object_t* it,int value,int ar
  case 29: return (uint32_t)(uintptr_t)nox_xxx_dropWeapon_53AB10(up,(uint32_t*)it,(int*)pos);
  case 30: return (uint32_t)(uintptr_t)nox_xxx_pickupArmor_53E7F0(up,ip,value,arg);
  case 31: return (uint32_t)(uintptr_t)nox_xxx_dropArmor_53EB70(up,(uint32_t*)it,(int*)pos);
- case 32: return (uint32_t)(uintptr_t)nox_xxx_ItemIsDroppable_53EBF0(ip);
  }
  return 0;
 }
@@ -235,7 +228,7 @@ func (p *portTestShopPools) inventoryPrepare() func() {
 		p.inventory.calls = append(p.inventory.calls, 3, p.normalize(uint32(uintptr(u.CObj()))), p.normalize(uint32(uintptr(it.CObj()))), uint32(a3), uint32(a4))
 		result := p.proxy.callbacks.shop.spec.Resources.PickupResult
 		if result && sp.PickupInsert {
-			C.nox_xxx_inventoryPutImpl_4F3070(asObjectC(u), asObjectC(it), C.int(a3))
+			inventoryInsert(u, it, int(int32(a3)))
 		}
 		return result
 	}
@@ -443,7 +436,26 @@ func (p *portTestShopPools) inventoryAction(a PortTestShopAction) uint32 {
 	case PortTestInventory4EE2A0:
 		out = math.Float64bits(inventoryShapeRadius(u))
 	default:
-		out = uint64(C.invCall(C.int(a.Op-300), asObjectC(u), asObjectC(it), C.int(a.Value), C.int(a.Side), C.float(sp.Radius), pos))
+		switch a.Op - 300 {
+		case 7:
+			out = uint64(uint32(inventoryTargetDrop(u, it, (*types.Pointf)(unsafe.Pointer(pos)))))
+		case 8:
+			out = uint64(uint32(inventoryForceDrop(u, it)))
+		case 9:
+			origin := (*types.Pointf)(unsafe.Add(unsafe.Pointer(u), 56))
+			inventoryRandomPlacement(float32(sp.Radius), origin, (*types.Pointf)(unsafe.Pointer(pos)))
+			out = uint64(uint32(uintptr(unsafe.Pointer(pos))))
+		case 10:
+			out = uint64(inventoryDropAll(u))
+		case 14:
+			inventoryChest(u, it)
+		case 17:
+			inventoryInsert(u, it, int(int32(a.Value)))
+		case 32:
+			out = uint64(bool2int(inventoryDroppable(it)))
+		default:
+			out = uint64(C.invCall(C.int(a.Op-300), asObjectC(u), asObjectC(it), C.int(a.Value), C.int(a.Side), C.float(sp.Radius), pos))
+		}
 	}
 	p.inventory.result = out
 	if a.Op == PortTestInventory4ED970 {

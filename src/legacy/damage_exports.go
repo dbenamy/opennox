@@ -41,7 +41,7 @@ func nox_xxx_itemApplyPreDamageEffect_4E13B0(a, b, c, d C.int) C.int {
 
 //export sub_4E1400
 func sub_4E1400(a C.int, b *C.uint32_t) C.int {
-	return C.int(bool2int(damageMelee(objectFromInt(a), equipmentObject(b))))
+	return C.int(bool2int(damageMelee(objectFromInt(a), equipmentObject(unsafe.Pointer(b)))))
 }
 
 //export sub_4E1470
@@ -67,7 +67,7 @@ func nox_xxx_playerDamageWeapon_4E1560(a, b, c, d C.int, e C.float, f C.int) {
 
 //export nox_xxx_itemDestroyed_4E1650
 func nox_xxx_itemDestroyed_4E1650(a C.int, b *C.uint32_t, c, d C.ushort) C.int {
-	return C.int(damageItemReport(int32(a), equipmentObject(b), uint16(c), uint16(d)))
+	return C.int(damageItemReport(int32(a), equipmentObject(unsafe.Pointer(b)), uint16(c), uint16(d)))
 }
 
 //export nox_xxx_equipDamage_4E16D0

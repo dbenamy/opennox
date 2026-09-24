@@ -13,11 +13,6 @@ func inventoryPos(p unsafe.Pointer) *types.Pointf { return (*types.Pointf)(p) }
 
 func sub_4ED0C0(u, it *nox_object_t) { inventoryRemove(asObjectS(u), asObjectS(it)) }
 
-//export nox_xxx_inventoryPutImpl_4F3070
-func nox_xxx_inventoryPutImpl_4F3070(u, it *nox_object_t, arg C.int) {
-	inventoryInsert(asObjectS(u), asObjectS(it), int(arg))
-}
-
 //export nox_xxx_dropDefault_4ED290
 func nox_xxx_dropDefault_4ED290(u, it *nox_object_t, p *C.float2) C.int {
 	return C.int(inventoryDefaultDrop(asObjectS(u), asObjectS(it), inventoryPos(unsafe.Pointer(p))))
@@ -47,27 +42,6 @@ func nox_xxx_drop_4ED790(u, it *nox_object_t, p *C.float2) C.int {
 	return C.int(inventoryDrop(asObjectS(u), asObjectS(it), inventoryPos(unsafe.Pointer(p))))
 }
 
-//export nox_xxx_drop_4ED810
-func nox_xxx_drop_4ED810(u, it C.int, p *C.float) C.int {
-	return C.int(inventoryTargetDrop(objectFromInt(u), objectFromInt(it), inventoryPos(unsafe.Pointer(p))))
-}
-
-//export nox_xxx_invForceDropItem_4ED930
-func nox_xxx_invForceDropItem_4ED930(u C.int, it *C.uint32_t) C.int {
-	return C.int(inventoryForceDrop(objectFromInt(u), asObjectS((*nox_object_t)(unsafe.Pointer(it)))))
-}
-
-//export sub_4ED970
-func sub_4ED970(radius C.float, origin, p *C.float2) *C.float2 {
-	inventoryRandomPlacement(float32(radius), inventoryPos(unsafe.Pointer(origin)), inventoryPos(unsafe.Pointer(p)))
-	return p
-}
-
-//export nox_xxx_dropAllItems_4EDA40
-func nox_xxx_dropAllItems_4EDA40(u *C.uint32_t) *C.uint32_t {
-	return resourceReturnPointer(inventoryDropAll(asObjectS((*nox_object_t)(unsafe.Pointer(u)))))
-}
-
 //export sub_4EDDE0
 func sub_4EDDE0(u C.int, it *C.uint32_t, p *C.int) C.int {
 	return C.int(inventoryPotionDrop(objectFromInt(u), asObjectS((*nox_object_t)(unsafe.Pointer(it))), inventoryPos(unsafe.Pointer(p))))
@@ -77,9 +51,6 @@ func sub_4EDDE0(u C.int, it *C.uint32_t, p *C.int) C.int {
 func nox_xxx_dropFood_4EDE50(u, it C.int, p *C.int) C.int {
 	return C.int(inventoryFoodDrop(objectFromInt(u), objectFromInt(it), inventoryPos(unsafe.Pointer(p))))
 }
-
-//export nox_xxx_chest_4EDF00
-func nox_xxx_chest_4EDF00(u, it C.int) { inventoryChest(objectFromInt(u), objectFromInt(it)) }
 
 //export nox_xxx_pickupFood_4F3350
 func nox_xxx_pickupFood_4F3350(u, it, arg C.int) C.int {
@@ -149,11 +120,6 @@ func nox_xxx_pickupArmor_53E7F0(u, it, arg, equip C.int) C.int {
 //export nox_xxx_dropArmor_53EB70
 func nox_xxx_dropArmor_53EB70(u C.int, it *C.uint32_t, p *C.int) C.int {
 	return C.int(inventoryEquipmentDrop(objectFromInt(u), asObjectS((*nox_object_t)(unsafe.Pointer(it))), inventoryPos(unsafe.Pointer(p)), true))
-}
-
-//export nox_xxx_ItemIsDroppable_53EBF0
-func nox_xxx_ItemIsDroppable_53EBF0(it C.int) C.int {
-	return C.int(bool2int(inventoryDroppable(objectFromInt(it))))
 }
 
 //export nox_xxx_dropAnkhTradable_4EE370

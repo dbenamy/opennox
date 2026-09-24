@@ -51,9 +51,11 @@ func nox_xxx_shootApplyEffects_539F40(a, b, c C.int) C.int {
 }
 
 //export sub_539FB0
-func sub_539FB0(a *C.uint32_t) C.int { return C.int(attackReload(equipmentObject(a), 128)) }
+func sub_539FB0(a *C.uint32_t) C.int {
+	return C.int(attackReload(equipmentObject(unsafe.Pointer(a)), 128))
+}
 
 //export nox_xxx_playerTryReloadQuiver_539FF0
 func nox_xxx_playerTryReloadQuiver_539FF0(a *C.uint32_t) C.int {
-	return C.int(attackReload(equipmentObject(a), 2))
+	return C.int(attackReload(equipmentObject(unsafe.Pointer(a)), 2))
 }

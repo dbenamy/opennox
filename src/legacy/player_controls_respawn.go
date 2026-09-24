@@ -84,7 +84,7 @@ func controlDefaultItems(u *server.Object, refresh, keep int32) int8 {
 	} else {
 		for it := u.InvFirstItem; it != nil; {
 			next := it.InvNextItem
-			if sub_53E2D0(C.int(inventoryInt(it))) != 0 || it.ObjFlags&0x100 == 0 || it.ObjClass&0x2000000 != 0 && nox_xxx_unitArmorInventoryEquipFlags_415C70((*C.nox_object_t)(it.CObj()))&0x808 != 0 {
+			if equipmentArmorMask(it) != 0 || it.ObjFlags&0x100 == 0 || it.ObjClass&0x2000000 != 0 && nox_xxx_unitArmorInventoryEquipFlags_415C70((*C.nox_object_t)(it.CObj()))&0x808 != 0 {
 				GetServer().DelayedDelete(it)
 			}
 			it = next

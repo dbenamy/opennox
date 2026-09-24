@@ -2582,3 +2582,14 @@ sizes vary at three loot snapshots; frozen outputs and generated-ID counters
 match and remain the acceptance boundary. Do not regenerate expectations to
 hide a difference. All conversion gates pass. See
 [OBJECT_STATE_OWNERS.md](OBJECT_STATE_OWNERS.md).
+
+
+## Equipment, inventory and resource fixture routes
+
+Retire 61 wrappers whose remaining routes can use existing Go owners, preserving
+22 inventory callbacks and the gold-pickup callback still used by C. Keep C-int
+narrowing, signed short results, unsigned gold and raw 32-bit return words exactly
+as before. The retired functions have no fixture address registrations, so no
+identity reservation change is needed. Independent C modifier/drop/death observers
+remain. All three profiles and production gates pass without changing expectations.
+See [INVENTORY_RESOURCE_OWNERS.md](INVENTORY_RESOURCE_OWNERS.md).

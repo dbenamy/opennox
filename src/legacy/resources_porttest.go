@@ -226,33 +226,33 @@ func (p *portTestShopPools) resourceAction(a PortTestShopAction) uint32 {
 	value := C.int(a.Value)
 	switch a.Op {
 	case PortTestResourceSetHP:
-		return uint32(C.nox_xxx_unitSetHP_4E4560(asObjectC(u), C.ushort(a.Value)))
+		return uint32(resourceSetHP(u, uint16(a.Value)))
 	case PortTestResourceAdjustHP:
-		C.nox_xxx_unitAdjustHP_4EE460(asObjectC(u), value)
+		resourceAdjustHP(u, int32(value))
 	case PortTestResourceInformOwner:
 		resourceInformOwner(u)
 	case PortTestResourceDamage:
-		C.nox_xxx_unitDamageClear_4EE5E0(asObjectC(u), value)
+		resourceDamage(u, int32(value))
 	case PortTestResourceRestoreHP:
-		C.nox_xxx_unitHPsetOnMax_4EE6F0(unit)
+		resourceRestoreHP(u)
 	case PortTestResourceHPHistory:
-		C.nox_xxx_playerHP_4EE730(unit)
+		resourceHPHistory(u)
 	case PortTestResourceGetHP:
-		return uint32(C.nox_xxx_unitGetHP_4EE780(asObjectC(u)))
+		return uint32(resourceGetHP(u))
 	case PortTestResourceGetMaxHP:
-		return uint32(C.nox_xxx_unitGetMaxHP_4EE7A0(unit))
+		return uint32(resourceGetMaxHP(u))
 	case PortTestResourceSetMaxHP:
-		return uint32(C.nox_xxx_unitSetMaxHP_4EE7C0(unit, C.short(a.Value)))
+		return uint32(resourceSetMaxHP(u, uint16(a.Value)))
 	case PortTestResourcePoison:
-		return uint32(C.nox_xxx_activatePoison_4EE7E0(unit, value, C.int(a.Item)))
+		return uint32(bool2int(resourcePoison(u, int32(value), int32(a.Item))))
 	case PortTestResourcePoisonReduce:
-		C.nox_xxx_updatePoison_4EE8F0(asObjectC(u), value)
+		resourceReducePoison(u, int32(value))
 	case PortTestResourcePoisonRemove:
-		C.nox_xxx_removePoison_4EE9D0(asObjectC(u))
+		resourceRemovePoison(u)
 	case PortTestResourcePoisonSet:
-		C.nox_xxx_setSomePoisonData_4EEA90(unit, value)
+		resourceSetPoison(u, int32(value))
 	case PortTestResourceManaAdd:
-		out := uint32(C.nox_xxx_playerManaAdd_4EEB80(asObjectC(u), C.short(a.Value)))
+		out := uint32(resourceAddMana(u, int16(a.Value)))
 		// The unsupported nonplayer path returns the low sixteen pointer bits.
 		if u != nil && u.ObjClass&4 == 0 {
 			if out != uint32(uint16(uintptr(ptr))) {
@@ -262,25 +262,25 @@ func (p *portTestShopPools) resourceAction(a PortTestShopAction) uint32 {
 		}
 		return out
 	case PortTestResourceManaSub:
-		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_playerManaSub_4EEBF0(unit, value))))
+		return resourceSubMana(u, int32(value))
 	case PortTestResourceGetMana:
-		return uint32(C.nox_xxx_unitGetOldMana_4EEC80(unit))
+		return uint32(resourceGetMana(u))
 	case PortTestResourceGetMaxMana:
-		return uint32(C.nox_xxx_playerGetMaxMana_4EECB0(unit))
+		return uint32(resourceGetMaxMana(u))
 	case PortTestResourceSetMaxMana:
-		return uint32(C.nox_xxx_playerSetMaxMana_4EECD0(unit, C.short(a.Value)))
+		return uint32(resourceSetMaxMana(u, uint16(a.Value)))
 	case PortTestResourceManaRefresh:
-		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_playerManaRefresh_4EECF0(unit))))
+		return resourceRefreshMana(u)
 	case PortTestResourceGoldAdd:
-		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_playerAddGold_4FA590(unit, value))))
+		return resourceAddGold(u, uint32(value))
 	case PortTestResourceGoldSub:
-		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_playerSubGold_4FA5D0(unit, C.uint(a.Value)))))
+		return resourceSubGold(u, uint32(a.Value))
 	case PortTestResourceGoldSet:
 		resourceSetGold(u, int32(value))
 	case PortTestResourceGetGold:
-		return uint32(C.nox_xxx_playerGetGold_4FA6B0(unit))
+		return uint32(resourceGetGold(u))
 	case PortTestResourceObjectGold:
-		return uint32(C.nox_object_getGold_4FA6D0(asObjectC(u)))
+		return uint32(resourceObjectGold(u))
 	case PortTestResourceGoldPickup:
 		item := p.items[a.Item].u
 		*(*uint32)(item.InitData) = p.proxy.callbacks.shop.spec.Resources.GoldItem

@@ -61,17 +61,17 @@ func sub_4DFE10(a1 C.int, a2 C.int) { effectsDisengageFlag(objectFromInt(a2), 2,
 
 //export nox_xxx_checkFireProtect_4DFE40
 func nox_xxx_checkFireProtect_4DFE40(a1 *C.uint32_t) C.double {
-	return C.double(effectsProtection(equipmentObject(a1), C.sub_4DFD10, 17, "FireSpellProtection", .5, .60000002))
+	return C.double(effectsProtection(equipmentObject(unsafe.Pointer(a1)), C.sub_4DFD10, 17, "FireSpellProtection", .5, .60000002))
 }
 
 //export nox_xxx_checkElectrProtect_4DFF40
 func nox_xxx_checkElectrProtect_4DFF40(a1 *C.uint32_t) C.double {
-	return C.double(effectsProtection(equipmentObject(a1), C.nox_xxx_buff_4DFD80, 20, "ElectricitySpellProtection", .5, .60000002))
+	return C.double(effectsProtection(equipmentObject(unsafe.Pointer(a1)), C.nox_xxx_buff_4DFD80, 20, "ElectricitySpellProtection", .5, .60000002))
 }
 
 //export nox_xxx_getPoisonDmg_4E0040
 func nox_xxx_getPoisonDmg_4E0040(a1 *C.uint32_t) C.double {
-	return C.double(effectsProtection(equipmentObject(a1), C.nox_xxx_checkPoisonProtectEnch_4DFDE0, 18, "PoisonSpellProtection", .69999999, .89999998))
+	return C.double(effectsProtection(equipmentObject(unsafe.Pointer(a1)), C.nox_xxx_checkPoisonProtectEnch_4DFDE0, 18, "PoisonSpellProtection", .69999999, .89999998))
 }
 
 //export sub_4E0140
@@ -92,7 +92,7 @@ func nox_xxx_effectRegeneration_4E01D0(a1 C.int, a2 C.int) {
 
 //export nox_xxx_attribContinualReplen_4E02C0
 func nox_xxx_attribContinualReplen_4E02C0(a1 C.int, a2 *C.uint32_t) {
-	effectsReplenish(effectsMod(a1), equipmentObject(a2))
+	effectsReplenish(effectsMod(a1), equipmentObject(unsafe.Pointer(a2)))
 }
 
 //export sub_4E0370
@@ -202,12 +202,12 @@ func nox_xxx_rechargeItem_53C520(a1 C.int, a2 C.int) C.int {
 
 //export nox_xxx_getRechargeRate_53C940
 func nox_xxx_getRechargeRate_53C940(a1 *C.uint32_t) C.int {
-	return C.int(effectsRechargeRate(equipmentObject(a1)))
+	return C.int(effectsRechargeRate(equipmentObject(unsafe.Pointer(a1))))
 }
 
 //export nox_xxx_useLesserFireballStaff_53F290
 func nox_xxx_useLesserFireballStaff_53F290(a1 C.int, a2 *C.uint32_t) C.int {
-	return C.int(effectsLesserFireball(objectFromInt(a1), equipmentObject(a2)))
+	return C.int(effectsLesserFireball(objectFromInt(a1), equipmentObject(unsafe.Pointer(a2))))
 }
 
 //export nox_xxx_wandShot_53F480
@@ -217,7 +217,7 @@ func nox_xxx_wandShot_53F480(a1 C.int, a2 C.int, a3 *C.int, a4 *C.uint32_t) *C.u
 
 //export nox_xxx_useWandCastSpell_53F4F0
 func nox_xxx_useWandCastSpell_53F4F0(a1 C.int, a2 *C.uint32_t) C.int {
-	return C.int(effectsWandCast(objectFromInt(a1), equipmentObject(a2)))
+	return C.int(effectsWandCast(objectFromInt(a1), equipmentObject(unsafe.Pointer(a2))))
 }
 
 //export nox_xxx_useFireWand_53F670

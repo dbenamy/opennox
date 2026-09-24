@@ -14,7 +14,6 @@ int* nox_xxx_wallDestroyedByWallid_410520(short a1);
 void* nox_xxx_wallGetFirstBreakableCli_410870();
 int nox_xxx_wallGetNextBreakableCli_410880(int* a1);
 int sub_411490(int a1, int a2);
-double nox_xxx_itemApplyDefendEffect_415C00(int a1);
 char* nox_xxx_cliGamedataGet_416590(int a1);
 char* sub_4165B0();
 void* sub_416640();

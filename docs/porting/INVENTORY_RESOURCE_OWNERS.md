@@ -33,7 +33,18 @@ whitespace and removal of an unnecessary C object conversion in the position
 calculation; both were corrected before acceptance. This bounded delegation was
 useful; no cost savings are inferred from it.
 
-Conversion qualification is pending: the same exact three-profile root-name sets,
-safe/static checks, three fresh production binaries and ABI checks, exact known
-full-suite comparison, headless character creation/save/load/resume and original
-asset hashes. Local artifacts: `build/port-inventory-resource-owners/`.
+Qualification passes: all 263 roots in each profile without skips, safe/static
+checks, three fresh production binaries and ABI checks, exact known full-suite
+comparison, headless character creation/save/load/resume and all 1,654 original
+asset hashes. The known suite retains its existing 304 failure events (17 passing,
+two failing and 32 skipped packages); this is not a wholly green project suite.
+All phases have identical source fingerprints; all 18 converted files match the
+reviewed bytes, and frozen expectations remain unchanged.
+
+Selected cgo files fall from 230 to 229 (234/463 eliminated on net); selected
+legacy C exports fall from 1,142 to 1,081 (809/1,890 retired). The 78 production
+C callback bodies remain. Headers remain 157 files, now 3,804 physical lines.
+Standalone production/test-reference C lines remain zero. External native-library
+bindings are unchanged. See [qualification](inventory-resource-owners-qualification.json)
+and [inventory](inventory-resource-owners-inventory-after.json).
+Local artifacts: `build/port-inventory-resource-owners/`.

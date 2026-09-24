@@ -28,44 +28,7 @@ static void eqDefend(void* mod,void* u,int a,void* it,int b,float* value){
 static void* eqEngagePtr(void){return eqEngage;}
 static void* eqDisengagePtr(void){return eqDisengage;}
 static void* eqDefendPtr(void){return eqDefend;}
-static uint64_t eqCall(int op,nox_object_t* u,nox_object_t* it,int value,int side){
- int up=(int)(uintptr_t)u,ip=(int)(uintptr_t)it;
- switch(op){
- case 0:return (uint32_t)nox_xxx_equipWeaponNPC_53A030(up,ip);
- case 1:sub_53A0F0(up,value,side);return 0;
- case 2:return (uint32_t)nox_xxx_playerDequipWeapon_53A140((uint32_t*)u,it,value,side);
- case 3:return (uint32_t)nox_xxx_NPCEquipWeapon_53A2C0(up,it);
- case 4:sub_53A3D0((uint32_t*)u);return 0;
- case 5:return (uint32_t)nox_xxx_playerEquipWeapon_53A420((uint32_t*)u,it,value,side);
- case 6:return (uint32_t)sub_53A680(up);
- case 7:sub_53A6C0(up,it);return 0;
- case 8:sub_53AAB0(ip);return 0;
- case 10:return (uint32_t)sub_53E2D0(ip);
- case 11:return (uint32_t)nox_xxx_recalculateArmorVal_53E300((uint32_t*)u);
- case 12:return (uint32_t)sub_53E3A0(up,it);
- case 13:return (uint32_t)sub_53E430((uint32_t*)u,it,value,side);
- case 14:return (uint32_t)nox_xxx_NPCEquipArmor_53E520(up,(uint32_t*)it);
- case 15:sub_53E600((uint32_t*)u);return 0;
- case 16:return (uint32_t)nox_xxx_playerEquipArmor_53E650((uint32_t*)u,it,value,side);
- case 17:return (uint32_t)(uintptr_t)nox_xxx_armorHaveSameSubclass_53E7B0(up,ip);
- case 18:sub_53EAE0(ip);return 0;
- case 19:return (uint32_t)(uintptr_t)sub_53EC40();
- case 20:return (uint32_t)sub_53EC80(ip,value);
- case 21:return (uint32_t)(uintptr_t)nox_xxx_npcSetItemEquipFlags_4E4B20(up,it,value);
- case 22:return (uint32_t)nox_xxx_inventoryCountObjects_4E7D30(up,value);
- case 23:return (uint32_t)sub_4E7EC0(up,it);
- case 24:return (uint32_t)nox_xxx_playerTryEquip_4F2F70(u,it);
- case 25:return (uint32_t)nox_xxx_playerTryDequip_4F2FB0(u,it);
- case 26:return (uint32_t)nox_xxx_itemApplyEngageEffect_4F2FF0(it,up);
- case 27:return (uint32_t)nox_xxx_itemApplyDisengageEffect_4F3030(it,up);
- case 28:return (uint32_t)nox_xxx_playerCheckStrength_4F3180(u,it);
- case 29:sub_980523(u);return 0;
- case 30:return (uint32_t)(uintptr_t)sub_9805EB(u);
- case 31:{double value=nox_xxx_itemApplyDefendEffect_415C00(ip);uint64_t bits;memcpy(&bits,&value,8);return bits;}
- case 32:return (uint32_t)nox_xxx_unitGetStrength_4F9FD0(up);
- }
- return 0;
-}
+
 */
 import "C"
 
@@ -256,6 +219,78 @@ func (p *portTestShopPools) equipmentItems() {
 		*(*uint32)(unsafe.Add(unsafe.Pointer(u.UpdateDataPlayer().Player), 2500)) = ptr(sp.SavedShield)
 	}
 }
+
+// equipmentFixtureCall mirrors eqCall while routing fixture operations to the Go owners.
+func equipmentFixtureCall(op int, u, it *server.Object, value, side int32) uint64 {
+	switch op {
+	case 0:
+		return uint64(uint32(equipmentNPCDequipWeapon(u, it)))
+	case 1:
+		equipmentDequipAmmo(u, int(value), int(side))
+	case 2:
+		return uint64(uint32(equipmentDequipWeapon(u, it, int(value), int(side))))
+	case 3:
+		return uint64(uint32(equipmentNPCEquipWeapon(u, it)))
+	case 4:
+		equipmentRemoveShields(u)
+	case 5:
+		return uint64(uint32(equipmentEquipWeapon(u, it, int(value), int(side))))
+	case 6:
+		return uint64(uint32(equipmentEquipBow(u)))
+	case 7:
+		equipmentPickupSound(u, it)
+	case 8:
+		equipmentDropSound(it)
+	case 10:
+		return uint64(uint32(equipmentArmorMask(it)))
+	case 11:
+		return uint64(uint32(equipmentRecalculate(u)))
+	case 12:
+		return uint64(uint32(equipmentNPCDequipArmor(u, it)))
+	case 13:
+		return uint64(uint32(equipmentDequipArmor(u, it, int(value), int(side))))
+	case 14:
+		return uint64(uint32(equipmentNPCEquipArmor(u, it)))
+	case 15:
+		equipmentRemoveWeapons(u)
+	case 16:
+		return uint64(uint32(equipmentEquipArmor(u, it, int(value), int(side))))
+	case 17:
+		return uint64(uint32(uintptr(unsafe.Pointer(equipmentSameArmor(u, it)))))
+	case 18:
+		equipmentArmorDropSound(it)
+	case 19:
+		equipmentInitDropTable()
+	case 20:
+		return uint64(uint32(equipmentDropPolicy(it, int(value))))
+	case 21:
+		return uint64(uint32(uintptr(equipmentNPCSync(u, it, int(value)))))
+	case 22:
+		return uint64(uint32(equipmentCount(u, int(value))))
+	case 23:
+		return uint64(uint32(equipmentDuplicate(u, it)))
+	case 24:
+		return uint64(uint32(equipmentTryEquip(u, it)))
+	case 25:
+		return uint64(uint32(equipmentTryDequip(u, it)))
+	case 26:
+		return uint64(uint32(equipmentEffects(it, u, true)))
+	case 27:
+		return uint64(uint32(equipmentEffects(it, u, false)))
+	case 28:
+		return uint64(bool2int(equipmentCheckStrength(u, it)))
+	case 29:
+		equipmentSaveShield(u)
+	case 30:
+		return uint64(uint32(uintptr(unsafe.Pointer(equipmentFindShield(u)))))
+	case 31:
+		return math.Float64bits(equipmentDefend(it))
+	case 32:
+		return uint64(uint32(equipmentStrength(u)))
+	}
+	return 0
+}
+
 func (p *portTestShopPools) equipmentAction(a PortTestShopAction) uint32 {
 	sp := p.proxy.callbacks.shop.spec
 	u := p.resources.unit
@@ -270,7 +305,7 @@ func (p *portTestShopPools) equipmentAction(a PortTestShopAction) uint32 {
 		equipmentSecondary(u, it)
 		p.equipment.result = 0
 	} else {
-		p.equipment.result = uint64(C.eqCall(C.int(a.Op-400), asObjectC(u), asObjectC(it), C.int(a.Value), C.int(a.Side)))
+		p.equipment.result = equipmentFixtureCall(a.Op-400, u, it, int32(a.Value), int32(a.Side))
 	}
 	return uint32(p.equipment.result)
 }

@@ -9,6 +9,8 @@ import (
 	"unsafe"
 )
 
+func equipmentObject(u unsafe.Pointer) *server.Object { return (*server.Object)(u) }
+
 func equipmentWord(p unsafe.Pointer, off int) *uint32 { return (*uint32)(unsafe.Add(p, off)) }
 func equipmentPlayer(u *server.Object) unsafe.Pointer {
 	return unsafe.Pointer(u.UpdateDataPlayer().Player)

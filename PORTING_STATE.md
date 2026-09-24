@@ -7,38 +7,36 @@ superseded status when updating it. The workflow and delegation rules live in
 ## Status: resumed; internal C-glue removal
 
 **Progress: 142,665/142,665 original standalone C lines ported or retired;
-internal glue: 233/463 cgo files eliminated on net (230 remain).**
-Selected legacy C export bridges: **748/1,890 retired (1,142 remain)**.
+internal glue: 234/463 cgo files eliminated on net (229 remain).**
+Selected legacy C export bridges: **809/1,890 retired (1,081 remain)**.
 
 These are selected project files in each Linux 386 production profile, not equal
 units of effort. Three project packages directly use cgo; 78 embedded C callback
 bodies remain. Production and test-reference standalone `.c` files both remain zero.
 
-Latest qualified chunk retires 37 fixture-only object-state C exports and
-prototypes, moves 19 production caller files to native owners, and replaces the
-fixture's C dispatcher. Four live collision callbacks retain their identities.
-All 22 changed files qualify with frozen expectations unchanged.
-See [OBJECT_STATE_OWNERS.md](docs/porting/OBJECT_STATE_OWNERS.md).
+Latest qualified chunk retires 61 equipment/inventory/resource C exports and
+prototypes, moves fixture dispatch and one respawn caller to native owners, and
+removes one production cgo file. The 23 live inventory/gold callbacks remain.
+All 18 changed/deleted files qualify with frozen expectations unchanged.
+See [INVENTORY_RESOURCE_OWNERS.md](docs/porting/INVENTORY_RESOURCE_OWNERS.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Current batch: equipment/inventory/resource owners; the original 263-root
-baseline passes in all three profiles. The reviewed 18-file conversion retires
-61 exports and is awaiting installation/qualification. See
-[INVENTORY_RESOURCE_OWNERS.md](docs/porting/INVENTORY_RESOURCE_OWNERS.md). Stop at the milestone or
-for a substantial question.
+recorded reversible decisions. Next-candidate audit:
+`build/port-after-inventory-resource/`; candidate findings require primary review.
+Stop at the milestone or for a substantial question.
 
-Latest artifacts: `build/port-object-state-owners/`.
+Latest artifacts: `build/port-inventory-resource-owners/`.
 
 ## What remains
 
-Counts below describe the qualified object-state conversion. Zero `.c` lines is
+Counts below describe the qualified equipment/inventory/resource conversion. Zero `.c` lines is
 not a count of all C dependencies or a measure of remaining engineering effort.
 
 | Area | Remaining work or dependency |
 | --- | --- |
 | Embedded C callback glue | 78 production function bodies in Go preambles: 76 generic function-pointer dispatchers and two specialized adapters. |
 | Callback routes | Some Go implementations still call each other through C-compatible addresses. More direct Go dispatch is possible; shared raw fallbacks remain until their users and compatibility requirements are resolved. |
-| Declarations and C types | 157 tracked headers / 3,865 physical lines; each production profile selects 230 cgo files in three project packages (alloc, ccall, legacy). Selected-build counts replace the earlier whole-tree text count. These are mostly interface/layout machinery, not unported algorithms. |
+| Declarations and C types | 157 tracked headers / 3,804 physical lines; each production profile selects 229 cgo files in three project packages (alloc, ccall, legacy). Selected-build counts replace the earlier whole-tree text count. These are mostly interface/layout machinery, not unported algorithms. |
 | Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Removing them requires ownership/layout changes beyond function translation. |
 | External libraries | SDL2, OpenGL, OpenAL and similar native dependencies and their cgo bindings stay for this phase; their future is a subsequent discussion. |
 | Portability and release validation | Qualified target is Linux 386/SSE2 with cgo. The complete engine is not qualified as cgo-free, 64-bit, native macOS or browser/WebAssembly. Physical display and audible playback remain manual release checks. |
@@ -50,22 +48,19 @@ machinery remains until its live callers are migrated.
 
 ## Latest qualification and evidence
 
-- Exact focused root-name sets pass: 283 each in default/server/highres, no skips.
+- Exact focused root-name sets pass: 263 each in default/server/highres, no skips.
 - Safe build/static checks and three fresh production binaries/ABI checks pass.
-  All 37 retired C symbols are absent; the four live callbacks remain.
+  All 61 retired C symbols are absent; retained callback signatures are unchanged.
 - Headless character creation and explicit save/load/resume pass.
 - Full-suite results match the known baseline exactly: 304 failure events,
   with 17 passing, two failing and 32 skipped packages.
-- All phases use identical source fingerprints. All 22 changed files match the
-  reviewed draft; assertions, frozen expectations and 1,654 asset hashes are unchanged.
-- Before conversion, two identity probes exercised all 44 object-state operations
-  without consuming a registered state-function address. Existing reservation
-  accounting preserves snapshot IDs after 37 address registrations are removed.
+- All phases use identical source fingerprints. All 18 changed/deleted files match
+  the reviewed draft; assertions, frozen expectations and 1,654 asset hashes are unchanged.
 - The preceding shared-record milestone passed all seven storage captures and the
   complete root corpus (2,426 client / 2,415 server passes plus one expected skip).
 
-Report: [OBJECT_STATE_OWNERS.md](docs/porting/OBJECT_STATE_OWNERS.md).
-Evidence: [qualification](docs/porting/object-state-owners-qualification.json).
+Report: [INVENTORY_RESOURCE_OWNERS.md](docs/porting/INVENTORY_RESOURCE_OWNERS.md).
+Evidence: [qualification](docs/porting/inventory-resource-owners-qualification.json).
 Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expected-suite.jsonl).
 
 ## Goal, next work and open review items
@@ -78,7 +73,7 @@ removal order and completion criteria. Client rendering/audio backend replacemen
 is outside this phase.
 
 The dependency inventory tool is `tools/porting/cgo_inventory.py`; the current
-qualified inventory is [object-state-owners-inventory-after.json](docs/porting/object-state-owners-inventory-after.json).
+qualified inventory is [inventory-resource-owners-inventory-after.json](docs/porting/inventory-resource-owners-inventory-after.json).
 The original phase baseline is under `build/port-cgo-leaves/inventory-before/`.
 The completed leaf cleanup leaves three project packages directly using cgo in
 all profiles, plus OpenGL/SDL2/OpenAL bindings in the clients. Metadata discovery
@@ -112,7 +107,7 @@ The current Go toolchain is `/usr/lib/go-1.26/bin`. Follow the
 [build environment instructions](PORT.md#build-and-test-environment), including
 sourcing `build/baseline/env.sh` in every Go shell.
 
-Latest local artifacts are under `build/port-object-state-owners/`:
+Latest local artifacts are under `build/port-inventory-resource-owners/`:
 `contracts/`, `safe/opennox-safe`, and
 `production/production/bin/{opennox,opennox-hd,opennox-server}`.
 Source, tests, reports and qualification metadata are committed; ignored local
@@ -137,7 +132,7 @@ do not rerun them or infer deletion safety from age alone.
 | Completed layout-boundary scenario assets | Removed only 1,654 verified original-asset duplicates, reclaiming 559,890,432 allocated bytes. Saves/results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/go-layout-boundaries-save/deduplicated-assets.json`. |
 | Completed native-boundary scenario assets | Removed only 1,654 verified original-asset duplicates, reclaiming 559,943,680 allocated bytes. Saves/results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/go-native-call-boundaries-save/deduplicated-assets.json`. |
 | Superseded native-boundary binaries | Seven executables removed after committed-source/replacement/hash and host-use checks; 395,464,704 allocated bytes reclaimed. Old phase fingerprints match `4214ea8f`, replacements match `fe44bab3`; recorded build HEADs are earlier baseline commits. Rebuild those qualified revisions. Plan/journal: `build/port-go-native-record-storage/cleanup-native-{approved.json,deleted.jsonl}`. |
-| Current qualified production/safe binaries | Retained under `build/port-object-state-owners/`; preceding native-owner, native-record and layout-boundary binaries also remain. |
+| Current qualified production/safe binaries | Retained under `build/port-inventory-resource-owners/`; preceding qualified binaries also remain. |
 | Superseded primitive-interface binaries | Seven executables removed after source/replacement/hash and host-use checks; 395,362,304 allocated bytes reclaimed. All 3,062 source fingerprints match `78ff20f9`; current qualified replacements match `4214ea8f`. Rebuild the old revision using retained phase commands. Plan/journal: `build/port-go-layout-boundaries/cleanup-primitive-{approved.json,deleted.jsonl}`. |
 | Superseded scalar-storage binaries | Seven executables removed after source/replacement/hash and host-use checks; 395,452,416 allocated bytes reclaimed. All 3,062 source fingerprints match `e64ff24e`; qualified replacements match `78ff20f9`. Rebuild the old revision using retained phase commands. Plan/journal: `build/port-go-native-call-boundaries/cleanup-scalar-{approved.json,deleted.jsonl}`. |
 | Completed scenario data: `go-memory-save`, `raw-allocation-save`, `string-boundary-save`, `unused-exports-save`, `remaining-unused-exports-save`, `go-only-exports-save` | Only SHA256-identical original-asset copies were removed. Saves/comparisons remain. Follow each run's `deduplicated-assets.json`; shared restore tool: `build/port-artifact-cleanup/restore-recent-scenario.py`. |

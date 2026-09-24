@@ -4,6 +4,7 @@ package legacy
 #include "defs.h"
 */
 import "C"
+import "unsafe"
 
 //export nox_xxx_unitSparkInit_4F0390
 func nox_xxx_unitSparkInit_4F0390(a C.int) *C.uint32_t {
@@ -22,7 +23,7 @@ func nox_xxx_initChest_4F0400(a C.int) *C.int {
 
 //export nox_xxx_unitBoulderInit_4F0420
 func nox_xxx_unitBoulderInit_4F0420(a *C.uint32_t) *C.uint32_t {
-	u := equipmentObject(a)
+	u := equipmentObject(unsafe.Pointer(a))
 	u.Pos39 = u.PosVec
 	return a
 }
