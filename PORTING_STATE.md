@@ -22,10 +22,11 @@ no root fixture or frozen expectation changed. See
 [GO_NATIVE_CALL_BOUNDARIES.md](docs/porting/GO_NATIVE_CALL_BOUNDARIES.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Next candidates: retire newly orphaned private
-adapter wrappers after complete reference review, then normalize connected
-remaining C state/type dependencies. Read-only candidate audits are under
-`build/port-go-native-call-boundaries/next-*`; they are not accepted deletions.
+recorded reversible decisions. Active: the native geometry/shared-state batch
+has an accepted original baseline from `4214ea8f`, including target layout probes.
+No conversion is installed yet. Review the full caller set around the initial
+23 files, 26 remaining state scalar fields and 132 orphan-wrapper candidates.
+See [GO_LAYOUT_BOUNDARIES.md](docs/porting/GO_LAYOUT_BOUNDARIES.md).
 Stop at the milestone or for a substantial question.
 
 Latest artifacts: `build/port-go-native-call-boundaries/`.
@@ -132,6 +133,8 @@ do not rerun them or infer deletion safety from age alone.
 | --- | --- |
 | Superseded Go-only-export binaries | Seven test/safe/production executables removed after primary source/replacement/hash and host-use checks; 395,526,144 allocated bytes reclaimed. Five source maps (3,062 unique files) match `12bc387d`; retain phase commands and rebuild that revision. Plan/journal: `build/port-go-primitive-interfaces/cleanup-go-only-{approved.json,deleted.jsonl}`. |
 | Superseded 378-export root test binaries | Three executables removed after host-use, inode and hash checks; 204,169,216 allocated bytes reclaimed. All 3,090 recorded source fingerprints match `f6f5ee4c`; rebuild that revision with the retained profile commands. Plan/journal: `build/port-go-primitive-interfaces/cleanup-binaries-{approved-plan.json,deleted.jsonl}`. |
+| Native-boundary full-corpus logs | Losslessly compressed; restore with `gzip -dk`. Hashes and commands: `build/port-go-native-call-boundaries/contract-log-archive.json`; 306,065,119 bytes reclaimed. |
+| Completed native-boundary scenario assets | Removed only 1,654 verified original-asset duplicates, reclaiming 559,943,680 allocated bytes. Saves/results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/go-native-call-boundaries-save/deduplicated-assets.json`. |
 | Current qualified production/safe binaries | Retained under `build/port-go-native-call-boundaries/`; preceding qualified primitive-interface binaries also remain. |
 | Superseded scalar-storage binaries | Seven executables removed after source/replacement/hash and host-use checks; 395,452,416 allocated bytes reclaimed. All 3,062 source fingerprints match `e64ff24e`; qualified replacements match `78ff20f9`. Rebuild the old revision using retained phase commands. Plan/journal: `build/port-go-native-call-boundaries/cleanup-scalar-{approved.json,deleted.jsonl}`. |
 | Completed scenario data: `go-memory-save`, `raw-allocation-save`, `string-boundary-save`, `unused-exports-save`, `remaining-unused-exports-save`, `go-only-exports-save` | Only SHA256-identical original-asset copies were removed. Saves/comparisons remain. Follow each run's `deduplicated-assets.json`; shared restore tool: `build/port-artifact-cleanup/restore-recent-scenario.py`. |

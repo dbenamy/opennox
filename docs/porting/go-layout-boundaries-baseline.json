@@ -1,0 +1,74 @@
+{
+  "source_revision": "4214ea8f8f7e4972eda27703958a219e9e5adf60",
+  "original_qualification": "docs/porting/go-native-call-boundaries-qualification.json",
+  "source_identity_verified_for": [
+    "storage",
+    "contracts",
+    "safe",
+    "production"
+  ],
+  "source_fingerprint_sha256": "7b4ca78405f5a1477ab02c154560f4c3aaa484698ff2b65b5f8fa35a2c786261",
+  "source_files": 3062,
+  "status": "Original baseline accepted; implementation not installed",
+  "candidate_scope": {
+    "type_only_caller_files": 23,
+    "c_selectors": 224,
+    "private_orphan_functions": 132,
+    "remaining_state_scalar_fields": 26,
+    "field_aggregates": [
+      "browserUI",
+      "legacyGlobalStorage"
+    ],
+    "connected_signature_callers": "Complete owning-package caller review required; 23 files is not an integration count.",
+    "cgo_import_removal_count": "Not yet established; qualified baseline selects 271 project files."
+  },
+  "acceptance": "Reuse just-qualified identical source and frozen owner captures. Preserve actual C exports, original scalar widths/layouts, raw pointer aliases, nil/return conventions and evaluation order. Keep external native-library bindings. Independently reconstruct and qualify the connected conversion.",
+  "target_layout_probe": {
+    "path": "build/port-go-layout-boundaries/original-layout.json",
+    "sha256": "0b20d941ad3d3b83d240dff65d1ee736ad6ac778497edd268eed11558c0f4bb6",
+    "result": {
+      "bool_kind": "bool",
+      "rows": [
+        {
+          "Name": "int2/[2]int32",
+          "CSize": 8,
+          "CAlign": 4,
+          "GoSize": 8,
+          "GoAlign": 4
+        },
+        {
+          "Name": "float2/types.Pointf",
+          "CSize": 8,
+          "CAlign": 4,
+          "GoSize": 8,
+          "GoAlign": 4
+        },
+        {
+          "Name": "int4/[4]int32",
+          "CSize": 16,
+          "CAlign": 4,
+          "GoSize": 16,
+          "GoAlign": 4
+        },
+        {
+          "Name": "float4/[4]float32",
+          "CSize": 16,
+          "CAlign": 4,
+          "GoSize": 16,
+          "GoAlign": 4
+        },
+        {
+          "Name": "bool",
+          "CSize": 1,
+          "CAlign": 1,
+          "GoSize": 1,
+          "GoAlign": 1
+        }
+      ],
+      "second_point_field_offset": 4,
+      "success": true,
+      "target": "linux/386/SSE2"
+    },
+    "command": "source /root/src/opennox/build/baseline/env.sh; PATH=/usr/lib/go-1.26/bin:$PATH; from src: go run ../build/port-go-layout-boundaries/layout_probe.go"
+  }
+}
