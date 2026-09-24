@@ -304,6 +304,10 @@ Reconsider the tests as the behavior and failure modes become clearer.
   environment settings override it and the effective settings are recorded.
   Independent target sweeps may run concurrently when their output directories
   and fixtures are isolated and total CPU/memory fit this VM.
+  Compare each qualified owner-name set with the accumulated selector and add
+  missing roots explicitly. Do not assume copied historical patterns are complete.
+  Audit that selector against actual compiled porttest inventories at milestones,
+  documenting intentional exclusions separately from accidental omissions.
 - **Static memory accesses:** run `go test ./common/memmap/nox -run
   '^TestCodeStatic$' -count=1` from `src` when adding or changing fixtures that
   touch mapped state. This inexpensive preflight also scans porttest files.

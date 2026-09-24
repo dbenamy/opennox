@@ -22,11 +22,12 @@ unused string wrappers are retired. Live string/allocation behavior is unchanged
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
 recorded reversible decisions. Stop at the milestone or for a substantial question.
-Next: unused export bridges. Luna's draft is under
-`build/port-string-boundary/next-export-audit.*`. Primary requested inclusion of
-C preamble/header-body references and correction of a live logger in a proposed
-whole-file removal. Do not accept the initial candidate counts without those
-checks. Source/build review has found no supported external C library interface.
+Active batch: retire 65 unused export bridges, preserving all live owners and
+the logger/allocator sentinel beside two retired sets. Primary's complete cohort
+scan includes C preambles and header bodies. All 164 original owner roots pass
+per profile; allocator/server package checks pass too. Draft reviewed, not installed.
+See [UNUSED_EXPORTS.md](docs/porting/UNUSED_EXPORTS.md). A systematic accumulated
+selector audit is also underway after finding more missing existing owner roots.
 
 ## What remains
 
@@ -152,3 +153,9 @@ Before string-boundary qualification, 25 unopened old Go-cache archives were
 removed after host process checks, reclaiming 1.43 GiB. They are rebuildable;
 source, assets, production binaries and reports are retained. Journal:
 `build/port-artifact-cleanup/string-boundary-cache-removed.jsonl`.
+
+Original-asset duplicates in the completed `go-memory-save`, `raw-allocation-save`
+and `string-boundary-save` scenario data trees were removed after host-use and
+SHA256 checks, reclaiming 1.55 GiB. Saves and comparison outputs remain. Restore
+data before replay using the command in each run's `deduplicated-assets.json`;
+the shared script is `build/port-artifact-cleanup/restore-recent-scenario.py`.

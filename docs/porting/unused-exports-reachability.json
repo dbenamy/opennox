@@ -1,0 +1,1429 @@
+{
+  "source_revision": "92029ddd",
+  "files": [
+    "src/legacy/binfile.go",
+    "src/legacy/client_ui_entry_exports.go",
+    "src/legacy/client_ui_listbox_exports.go",
+    "src/legacy/item_respawn_exports.go",
+    "src/legacy/monster_control_exports.go",
+    "src/legacy/map_polygons_exports.go",
+    "src/legacy/map_population_exports.go",
+    "src/legacy/match_roster_exports.go",
+    "src/legacy/quest_progress_exports.go",
+    "src/legacy/spatial_exports.go",
+    "src/legacy/script_cgo.go",
+    "src/legacy/world_geometry_exports.go",
+    "src/legacy/spell_lightning.go",
+    "src/legacy/alloc_classes.go"
+  ],
+  "symbols": {
+    "nox_binfile_open_408CC0": "src/legacy/binfile.go",
+    "nox_binfile_close_408D90": "src/legacy/binfile.go",
+    "nox_binfile_ftell_426A50": "src/legacy/binfile.go",
+    "nox_binfile_lastErr_409370": "src/legacy/binfile.go",
+    "nox_binfile_cryptSet_408D40": "src/legacy/binfile.go",
+    "nox_binfile_fread_408E40": "src/legacy/binfile.go",
+    "nox_binfile_fread_raw_40ADD0": "src/legacy/binfile.go",
+    "nox_binfile_fread_align_408FE0": "src/legacy/binfile.go",
+    "nox_binfile_skipLine_409520": "src/legacy/binfile.go",
+    "nox_binfile_fseek_409050": "src/legacy/binfile.go",
+    "nox_xxx_wndEditProc_487D70": "src/legacy/client_ui_entry_exports.go",
+    "nox_xxx_wndEditDrawNoImage_488160": "src/legacy/client_ui_entry_exports.go",
+    "nox_xxx_wndListboxProcWithoutData10_4A28E0": "src/legacy/client_ui_listbox_exports.go",
+    "nox_xxx_wndListboxProcPre_4A30D0": "src/legacy/client_ui_listbox_exports.go",
+    "sub_4A4800": "src/legacy/client_ui_listbox_exports.go",
+    "nox_gui_newScrollListBox_4A4310": "src/legacy/client_ui_listbox_exports.go",
+    "sub_4ED050": "src/legacy/item_respawn_exports.go",
+    "sub_516FC0": "src/legacy/monster_control_exports.go",
+    "sub_420DA0": "src/legacy/map_polygons_exports.go",
+    "sub_4211D0": "src/legacy/map_polygons_exports.go",
+    "sub_4214D0": "src/legacy/map_polygons_exports.go",
+    "nox_xxx_polygonIsPlayerInPolygon_4217B0": "src/legacy/map_polygons_exports.go",
+    "sub_421990": "src/legacy/map_polygons_exports.go",
+    "sub_421B10": "src/legacy/map_polygons_exports.go",
+    "sub_422140": "src/legacy/map_polygons_exports.go",
+    "nox_xxx_mapGenSpellIdByName_51E1D0": "src/legacy/map_population_exports.go",
+    "nox_xxx_mapgen_522340": "src/legacy/map_population_exports.go",
+    "nox_xxx_mapGenFinishPopulate_5228B0_mapgen_populate": "src/legacy/map_population_exports.go",
+    "sub_522C80": "src/legacy/map_population_exports.go",
+    "sub_522D30": "src/legacy/map_population_exports.go",
+    "nox_xxx_mapGenTryNextRoom_522F40": "src/legacy/map_population_exports.go",
+    "nox_xxx_mapGenSetFlags_5235F0": "src/legacy/map_population_exports.go",
+    "sub_5259F0": "src/legacy/map_population_exports.go",
+    "sub_525AF0": "src/legacy/map_population_exports.go",
+    "nox_xxx_mapGen_InPrefab1_525D20": "src/legacy/map_population_exports.go",
+    "nox_xxx_mapGen_InPrefab2_5266F0": "src/legacy/map_population_exports.go",
+    "nox_xxx_mapGenPlacePrefabs_526830": "src/legacy/map_population_exports.go",
+    "sub_526950": "src/legacy/map_population_exports.go",
+    "nox_xxx_netGuiGameSettings_4DD9B0": "src/legacy/match_roster_exports.go",
+    "nox_xxx_netGameSettings_4DEF00": "src/legacy/match_roster_exports.go",
+    "nox_xxx_newPlayerSendAllPlayers_4DE300": "src/legacy/match_roster_exports.go",
+    "nox_xxx_sendAllPlayerIDs_4DE270": "src/legacy/match_roster_exports.go",
+    "nox_xxx_servMinimapRevealFlag_4DE380": "src/legacy/match_roster_exports.go",
+    "nox_xxx_netSendSimpleObject2_4DF360": "src/legacy/match_roster_exports.go",
+    "sub_4DF2E0": "src/legacy/match_roster_exports.go",
+    "sub_4E8310": "src/legacy/match_roster_exports.go",
+    "sub_4E8320": "src/legacy/match_roster_exports.go",
+    "sub_5095E0": "src/legacy/match_roster_exports.go",
+    "sub_5007E0": "src/legacy/quest_progress_exports.go",
+    "sub_500A60": "src/legacy/quest_progress_exports.go",
+    "sub_500B70": "src/legacy/quest_progress_exports.go",
+    "nox_xxx_traceRay_5374B0": "src/legacy/spatial_exports.go",
+    "nox_script_event_playerLeave": "src/legacy/script_cgo.go",
+    "nox_xxx_wallMath_427F30": "src/legacy/world_geometry_exports.go",
+    "sub_428170": "src/legacy/world_geometry_exports.go",
+    "nox_xxx_pointInRect_4281F0": "src/legacy/world_geometry_exports.go",
+    "sub_4D3E30": "src/legacy/world_geometry_exports.go",
+    "nox_xxx_math_509EA0": "src/legacy/world_geometry_exports.go",
+    "nox_xxx_lightningSpellDuration_52FFD0": "src/legacy/spell_lightning.go",
+    "nox_new_alloc_class": "src/legacy/alloc_classes.go",
+    "nox_new_alloc_class_dynamic": "src/legacy/alloc_classes.go",
+    "nox_free_alloc_class": "src/legacy/alloc_classes.go",
+    "nox_alloc_class_new_obj_zero": "src/legacy/alloc_classes.go",
+    "nox_alloc_class_free_obj_first": "src/legacy/alloc_classes.go",
+    "nox_alloc_class_free_all": "src/legacy/alloc_classes.go"
+  },
+  "references": {
+    "nox_binfile_open_408CC0": [
+      {
+        "path": "src/legacy/binfile.go",
+        "line": 15,
+        "kind": "export-directive",
+        "text": "//export nox_binfile_open_408CC0"
+      },
+      {
+        "path": "src/legacy/binfile.go",
+        "line": 16,
+        "kind": "definition",
+        "text": "func nox_binfile_open_408CC0(cpath *C.char, cmode int) *C.FILE {"
+      },
+      {
+        "path": "src/legacy/common__binfile.h",
+        "line": 13,
+        "kind": "header-prototype",
+        "text": "FILE* nox_binfile_open_408CC0(char* path, int mode);"
+      }
+    ],
+    "nox_binfile_close_408D90": [
+      {
+        "path": "src/legacy/binfile.go",
+        "line": 27,
+        "kind": "export-directive",
+        "text": "//export nox_binfile_close_408D90"
+      },
+      {
+        "path": "src/legacy/binfile.go",
+        "line": 28,
+        "kind": "definition",
+        "text": "func nox_binfile_close_408D90(cfile *C.FILE) int {"
+      },
+      {
+        "path": "src/legacy/common__binfile.h",
+        "line": 14,
+        "kind": "header-prototype",
+        "text": "int nox_binfile_close_408D90(FILE* a1);"
+      }
+    ],
+    "nox_binfile_ftell_426A50": [
+      {
+        "path": "src/legacy/binfile.go",
+        "line": 34,
+        "kind": "export-directive",
+        "text": "//export nox_binfile_ftell_426A50"
+      },
+      {
+        "path": "src/legacy/binfile.go",
+        "line": 35,
+        "kind": "definition",
+        "text": "func nox_binfile_ftell_426A50(cfile *C.FILE) int {"
+      },
+      {
+        "path": "src/legacy/common__binfile.h",
+        "line": 11,
+        "kind": "header-prototype",
+        "text": "int nox_binfile_ftell_426A50(FILE* f);"
+      }
+    ],
+    "nox_binfile_lastErr_409370": [
+      {
+        "path": "src/legacy/binfile.go",
+        "line": 41,
+        "kind": "export-directive",
+        "text": "//export nox_binfile_lastErr_409370"
+      },
+      {
+        "path": "src/legacy/binfile.go",
+        "line": 42,
+        "kind": "definition",
+        "text": "func nox_binfile_lastErr_409370(cfile *C.FILE) int {"
+      },
+      {
+        "path": "src/legacy/common__binfile.h",
+        "line": 10,
+        "kind": "header-prototype",
+        "text": "int nox_binfile_lastErr_409370(FILE* f);"
+      }
+    ],
+    "nox_binfile_cryptSet_408D40": [
+      {
+        "path": "src/legacy/binfile.go",
+        "line": 50,
+        "kind": "export-directive",
+        "text": "//export nox_binfile_cryptSet_408D40"
+      },
+      {
+        "path": "src/legacy/binfile.go",
+        "line": 51,
+        "kind": "definition",
+        "text": "func nox_binfile_cryptSet_408D40(cfile *C.FILE, ckey int) int {"
+      },
+      {
+        "path": "src/legacy/common__binfile.h",
+        "line": 18,
+        "kind": "header-prototype",
+        "text": "int nox_binfile_cryptSet_408D40(FILE* f, int key);"
+      }
+    ],
+    "nox_binfile_fread_408E40": [
+      {
+        "path": "src/legacy/binfile.go",
+        "line": 62,
+        "kind": "export-directive",
+        "text": "//export nox_binfile_fread_408E40"
+      },
+      {
+        "path": "src/legacy/binfile.go",
+        "line": 63,
+        "kind": "definition",
+        "text": "func nox_binfile_fread_408E40(cbuf *C.char, sz, cnt int, cfile *C.FILE) int {"
+      },
+      {
+        "path": "src/legacy/common__binfile.h",
+        "line": 15,
+        "kind": "header-prototype",
+        "text": "int nox_binfile_fread_408E40(char* a1, int a2, int a3, FILE* a4);"
+      }
+    ],
+    "nox_binfile_fread_raw_40ADD0": [
+      {
+        "path": "src/legacy/binfile.go",
+        "line": 77,
+        "kind": "export-directive",
+        "text": "//export nox_binfile_fread_raw_40ADD0"
+      },
+      {
+        "path": "src/legacy/binfile.go",
+        "line": 78,
+        "kind": "definition",
+        "text": "func nox_binfile_fread_raw_40ADD0(cbuf *C.char, sz, cnt C.size_t, cfile *C.FILE) int {"
+      },
+      {
+        "path": "src/legacy/common__binfile.h",
+        "line": 20,
+        "kind": "header-prototype",
+        "text": "int nox_binfile_fread_raw_40ADD0(char* buf, size_t size, size_t count, FILE* file);"
+      }
+    ],
+    "nox_binfile_fread_align_408FE0": [
+      {
+        "path": "src/legacy/binfile.go",
+        "line": 89,
+        "kind": "export-directive",
+        "text": "//export nox_binfile_fread_align_408FE0"
+      },
+      {
+        "path": "src/legacy/binfile.go",
+        "line": 90,
+        "kind": "definition",
+        "text": "func nox_binfile_fread_align_408FE0(cbuf *C.char, sz, cnt int, cfile *C.FILE) int {"
+      },
+      {
+        "path": "src/legacy/common__binfile.h",
+        "line": 16,
+        "kind": "header-prototype",
+        "text": "int nox_binfile_fread_align_408FE0(char* a1, int a2, int a3, FILE* a4);"
+      }
+    ],
+    "nox_binfile_skipLine_409520": [
+      {
+        "path": "src/legacy/binfile.go",
+        "line": 107,
+        "kind": "export-directive",
+        "text": "//export nox_binfile_skipLine_409520"
+      },
+      {
+        "path": "src/legacy/binfile.go",
+        "line": 108,
+        "kind": "definition",
+        "text": "func nox_binfile_skipLine_409520(cfile *C.FILE) int {"
+      },
+      {
+        "path": "src/legacy/common__binfile.h",
+        "line": 19,
+        "kind": "header-prototype",
+        "text": "int nox_binfile_skipLine_409520(FILE* f);"
+      }
+    ],
+    "nox_binfile_fseek_409050": [
+      {
+        "path": "src/internal/binfile/binfile.go",
+        "line": 178,
+        "kind": "review",
+        "text": "\t\t// this is what nox_binfile_fseek_409050 does for some reason"
+      },
+      {
+        "path": "src/legacy/binfile.go",
+        "line": 117,
+        "kind": "export-directive",
+        "text": "//export nox_binfile_fseek_409050"
+      },
+      {
+        "path": "src/legacy/binfile.go",
+        "line": 118,
+        "kind": "definition",
+        "text": "func nox_binfile_fseek_409050(cfile *C.FILE, coff, cwhence int) int {"
+      },
+      {
+        "path": "src/legacy/common__binfile.h",
+        "line": 17,
+        "kind": "header-prototype",
+        "text": "int nox_binfile_fseek_409050(FILE* a1, int a2, int a3);"
+      }
+    ],
+    "nox_xxx_wndEditProc_487D70": [
+      {
+        "path": "src/legacy/GAME2_2.h",
+        "line": 44,
+        "kind": "header-prototype",
+        "text": "int nox_xxx_wndEditProc_487D70(nox_window* a1, int a2, int a3, int a4);"
+      },
+      {
+        "path": "src/legacy/client_ui_entry_exports.go",
+        "line": 12,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_wndEditProc_487D70"
+      },
+      {
+        "path": "src/legacy/client_ui_entry_exports.go",
+        "line": 13,
+        "kind": "definition",
+        "text": "func nox_xxx_wndEditProc_487D70(w *nox_window, code, a, b C.int) C.int {"
+      }
+    ],
+    "nox_xxx_wndEditDrawNoImage_488160": [
+      {
+        "path": "src/legacy/GAME2_2.h",
+        "line": 45,
+        "kind": "header-prototype",
+        "text": "int nox_xxx_wndEditDrawNoImage_488160(int a1, int a2);"
+      },
+      {
+        "path": "src/legacy/client_ui_entry_exports.go",
+        "line": 17,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_wndEditDrawNoImage_488160"
+      },
+      {
+        "path": "src/legacy/client_ui_entry_exports.go",
+        "line": 18,
+        "kind": "definition",
+        "text": "func nox_xxx_wndEditDrawNoImage_488160(w, d C.int) C.int {"
+      }
+    ],
+    "nox_xxx_wndListboxProcWithoutData10_4A28E0": [
+      {
+        "path": "src/legacy/GAME3.h",
+        "line": 10,
+        "kind": "header-prototype",
+        "text": "int nox_xxx_wndListboxProcWithoutData10_4A28E0(uint32_t* a1, int a2, unsigned int a3, int a4);"
+      },
+      {
+        "path": "src/legacy/client_ui_listbox_exports.go",
+        "line": 12,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_wndListboxProcWithoutData10_4A28E0"
+      },
+      {
+        "path": "src/legacy/client_ui_listbox_exports.go",
+        "line": 13,
+        "kind": "definition",
+        "text": "func nox_xxx_wndListboxProcWithoutData10_4A28E0(w *C.uint, code C.int, a C.uint, b C.int) C.int {"
+      }
+    ],
+    "nox_xxx_wndListboxProcPre_4A30D0": [
+      {
+        "path": "src/legacy/GAME3.h",
+        "line": 11,
+        "kind": "header-prototype",
+        "text": "int nox_xxx_wndListboxProcPre_4A30D0(nox_window* win, unsigned int a2, uint32_t a3, int a4);"
+      },
+      {
+        "path": "src/legacy/client_ui_listbox_exports.go",
+        "line": 17,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_wndListboxProcPre_4A30D0"
+      },
+      {
+        "path": "src/legacy/client_ui_listbox_exports.go",
+        "line": 18,
+        "kind": "definition",
+        "text": "func nox_xxx_wndListboxProcPre_4A30D0(w *nox_window, code, a C.uint, b C.int) C.int {"
+      }
+    ],
+    "sub_4A4800": [
+      {
+        "path": "src/legacy/GAME3.h",
+        "line": 12,
+        "kind": "header-prototype",
+        "text": "int sub_4A4800(int a1);"
+      },
+      {
+        "path": "src/legacy/client_ui_listbox_exports.go",
+        "line": 22,
+        "kind": "export-directive",
+        "text": "//export sub_4A4800"
+      },
+      {
+        "path": "src/legacy/client_ui_listbox_exports.go",
+        "line": 23,
+        "kind": "definition",
+        "text": "func sub_4A4800(d C.int) C.int {"
+      }
+    ],
+    "nox_gui_newScrollListBox_4A4310": [
+      {
+        "path": "src/legacy/client__gui__gadgets__listbox.h",
+        "line": 6,
+        "kind": "header-prototype",
+        "text": "nox_window* nox_gui_newScrollListBox_4A4310(nox_window* a1, int a2, int a3, int a4, int a5, int a6, int a7, nox_scrollListBox_data* opts);"
+      },
+      {
+        "path": "src/legacy/client_ui_listbox_exports.go",
+        "line": 27,
+        "kind": "export-directive",
+        "text": "//export nox_gui_newScrollListBox_4A4310"
+      },
+      {
+        "path": "src/legacy/client_ui_listbox_exports.go",
+        "line": 28,
+        "kind": "definition",
+        "text": "func nox_gui_newScrollListBox_4A4310(parent *nox_window, flags, x, y, width, height, draw C.int, opts *C.nox_scrollListBox_data) *nox_window {"
+      }
+    ],
+    "sub_4ED050": [
+      {
+        "path": "src/legacy/GAME3_3.h",
+        "line": 168,
+        "kind": "header-prototype",
+        "text": "void sub_4ED050(int a1, int a2);"
+      },
+      {
+        "path": "src/legacy/item_respawn_exports.go",
+        "line": 8,
+        "kind": "export-directive",
+        "text": "//export sub_4ED050"
+      },
+      {
+        "path": "src/legacy/item_respawn_exports.go",
+        "line": 9,
+        "kind": "definition",
+        "text": "func sub_4ED050(u, stamp C.int) { itemDropCrowns(objectFromInt(u), uint32(stamp)) }"
+      }
+    ],
+    "sub_516FC0": [
+      {
+        "path": "src/legacy/GAME4_1.h",
+        "line": 20,
+        "kind": "header-prototype",
+        "text": "void sub_516FC0();"
+      },
+      {
+        "path": "src/legacy/monster_control_exports.go",
+        "line": 8,
+        "kind": "export-directive",
+        "text": "//export sub_516FC0"
+      },
+      {
+        "path": "src/legacy/monster_control_exports.go",
+        "line": 9,
+        "kind": "definition",
+        "text": "func sub_516FC0() { monsterPendingResolve() }"
+      }
+    ],
+    "sub_420DA0": [
+      {
+        "path": "src/legacy/GAME1_1.h",
+        "line": 25,
+        "kind": "header-prototype",
+        "text": "unsigned int* sub_420DA0(float a1, float a2);"
+      },
+      {
+        "path": "src/legacy/map_polygons_exports.go",
+        "line": 9,
+        "kind": "export-directive",
+        "text": "//export sub_420DA0"
+      },
+      {
+        "path": "src/legacy/map_polygons_exports.go",
+        "line": 10,
+        "kind": "definition",
+        "text": "func sub_420DA0(x, y C.float) *C.uint {"
+      }
+    ],
+    "sub_4211D0": [
+      {
+        "path": "src/legacy/GAME1_1.h",
+        "line": 26,
+        "kind": "header-prototype",
+        "text": "int sub_4211D0(int a1);"
+      },
+      {
+        "path": "src/legacy/map_polygons_exports.go",
+        "line": 14,
+        "kind": "export-directive",
+        "text": "//export sub_4211D0"
+      },
+      {
+        "path": "src/legacy/map_polygons_exports.go",
+        "line": 15,
+        "kind": "definition",
+        "text": "func sub_4211D0(p C.int) C.int {"
+      }
+    ],
+    "sub_4214D0": [
+      {
+        "path": "src/legacy/GAME1_1.h",
+        "line": 27,
+        "kind": "header-prototype",
+        "text": "void sub_4214D0();"
+      },
+      {
+        "path": "src/legacy/map_polygons_exports.go",
+        "line": 19,
+        "kind": "export-directive",
+        "text": "//export sub_4214D0"
+      },
+      {
+        "path": "src/legacy/map_polygons_exports.go",
+        "line": 20,
+        "kind": "definition",
+        "text": "func sub_4214D0() { mapPolygonConstruct() }"
+      }
+    ],
+    "nox_xxx_polygonIsPlayerInPolygon_4217B0": [
+      {
+        "path": "src/legacy/GAME1_1.h",
+        "line": 28,
+        "kind": "header-prototype",
+        "text": "nox_player_polygon_check_data* nox_xxx_polygonIsPlayerInPolygon_4217B0(int2* a1, int a2);"
+      },
+      {
+        "path": "src/legacy/map_polygons_exports.go",
+        "line": 22,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_polygonIsPlayerInPolygon_4217B0"
+      },
+      {
+        "path": "src/legacy/map_polygons_exports.go",
+        "line": 23,
+        "kind": "definition",
+        "text": "func nox_xxx_polygonIsPlayerInPolygon_4217B0(point *C.int2, cached C.int) *C.nox_player_polygon_check_data {"
+      }
+    ],
+    "sub_421990": [
+      {
+        "path": "src/legacy/GAME1_1.h",
+        "line": 29,
+        "kind": "header-prototype",
+        "text": "int* sub_421990(int2* a1, float a2, int a3);"
+      },
+      {
+        "path": "src/legacy/map_polygons_exports.go",
+        "line": 27,
+        "kind": "export-directive",
+        "text": "//export sub_421990"
+      },
+      {
+        "path": "src/legacy/map_polygons_exports.go",
+        "line": 28,
+        "kind": "definition",
+        "text": "func sub_421990(point *C.int2, distance C.float, cached C.int) *C.int {"
+      }
+    ],
+    "sub_421B10": [
+      {
+        "path": "src/legacy/GAME1_1.h",
+        "line": 30,
+        "kind": "header-prototype",
+        "text": "uint32_t* sub_421B10();"
+      },
+      {
+        "path": "src/legacy/map_polygons_exports.go",
+        "line": 32,
+        "kind": "export-directive",
+        "text": "//export sub_421B10"
+      },
+      {
+        "path": "src/legacy/map_polygons_exports.go",
+        "line": 33,
+        "kind": "definition",
+        "text": "func sub_421B10() *C.uint32_t { return (*C.uint32_t)(mapPolygonReset()) }"
+      }
+    ],
+    "sub_422140": [
+      {
+        "path": "src/legacy/GAME1_1.h",
+        "line": 31,
+        "kind": "header-prototype",
+        "text": "int sub_422140(int a1);"
+      },
+      {
+        "path": "src/legacy/map_polygons_exports.go",
+        "line": 35,
+        "kind": "export-directive",
+        "text": "//export sub_422140"
+      },
+      {
+        "path": "src/legacy/map_polygons_exports.go",
+        "line": 36,
+        "kind": "definition",
+        "text": "func sub_422140(p C.int) C.int {"
+      }
+    ],
+    "nox_xxx_mapGenSpellIdByName_51E1D0": [
+      {
+        "path": "src/legacy/GAME4_2.h",
+        "line": 9,
+        "kind": "header-prototype",
+        "text": "int nox_xxx_mapGenSpellIdByName_51E1D0(char* a1);"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 10,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_mapGenSpellIdByName_51E1D0"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 11,
+        "kind": "definition",
+        "text": "func nox_xxx_mapGenSpellIdByName_51E1D0(a0 *C.char) C.int {"
+      }
+    ],
+    "nox_xxx_mapgen_522340": [
+      {
+        "path": "src/legacy/GAME4_2.h",
+        "line": 43,
+        "kind": "header-prototype",
+        "text": "void nox_xxx_mapgen_522340(int a1, int a2);"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 15,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_mapgen_522340"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 16,
+        "kind": "definition",
+        "text": "func nox_xxx_mapgen_522340(a0 C.int, a1 C.int) { mapPopulationRoom(uint32(a0), uint32(a1)) }"
+      }
+    ],
+    "nox_xxx_mapGenFinishPopulate_5228B0_mapgen_populate": [
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 18,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_mapGenFinishPopulate_5228B0_mapgen_populate"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 19,
+        "kind": "definition",
+        "text": "func nox_xxx_mapGenFinishPopulate_5228B0_mapgen_populate(a0 C.int) { mapPopulationFinish(uint32(a0)) }"
+      },
+      {
+        "path": "src/legacy/server__mapgen__generate__populate.h",
+        "line": 6,
+        "kind": "header-prototype",
+        "text": "void nox_xxx_mapGenFinishPopulate_5228B0_mapgen_populate(int a1);"
+      }
+    ],
+    "sub_522C80": [
+      {
+        "path": "src/legacy/GAME4_2.h",
+        "line": 45,
+        "kind": "header-prototype",
+        "text": "float* sub_522C80(float* a1);"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 21,
+        "kind": "export-directive",
+        "text": "//export sub_522C80"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 22,
+        "kind": "definition",
+        "text": "func sub_522C80(a0 *C.float) *C.float {"
+      }
+    ],
+    "sub_522D30": [
+      {
+        "path": "src/legacy/GAME4_2.h",
+        "line": 47,
+        "kind": "header-prototype",
+        "text": "float* sub_522D30(int a1);"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 26,
+        "kind": "export-directive",
+        "text": "//export sub_522D30"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 27,
+        "kind": "definition",
+        "text": "func sub_522D30(a0 C.int) *C.float {"
+      }
+    ],
+    "nox_xxx_mapGenTryNextRoom_522F40": [
+      {
+        "path": "src/legacy/GAME4_2.h",
+        "line": 48,
+        "kind": "header-prototype",
+        "text": "unsigned char* nox_xxx_mapGenTryNextRoom_522F40(uint32_t* a1);"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 31,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_mapGenTryNextRoom_522F40"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 32,
+        "kind": "definition",
+        "text": "func nox_xxx_mapGenTryNextRoom_522F40(a0 *C.uint32_t) *C.uchar {"
+      }
+    ],
+    "nox_xxx_mapGenSetFlags_5235F0": [
+      {
+        "path": "src/legacy/GAME4_2.h",
+        "line": 50,
+        "kind": "header-prototype",
+        "text": "void nox_xxx_mapGenSetFlags_5235F0(char a1);"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 36,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_mapGenSetFlags_5235F0"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 37,
+        "kind": "definition",
+        "text": "func nox_xxx_mapGenSetFlags_5235F0(a0 C.char) { mapPopulationProgress(byte(a0)) }"
+      }
+    ],
+    "sub_5259F0": [
+      {
+        "path": "src/legacy/GAME4_2.h",
+        "line": 67,
+        "kind": "header-prototype",
+        "text": "void sub_5259F0(int a1, int a2, float a3);"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 39,
+        "kind": "export-directive",
+        "text": "//export sub_5259F0"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 40,
+        "kind": "definition",
+        "text": "func sub_5259F0(a0 C.int, a1 C.int, a2 C.float) {"
+      }
+    ],
+    "sub_525AF0": [
+      {
+        "path": "src/legacy/GAME4_2.h",
+        "line": 68,
+        "kind": "header-prototype",
+        "text": "float* sub_525AF0(int a1);"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 44,
+        "kind": "export-directive",
+        "text": "//export sub_525AF0"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 45,
+        "kind": "definition",
+        "text": "func sub_525AF0(a0 C.int) *C.float {"
+      }
+    ],
+    "nox_xxx_mapGen_InPrefab1_525D20": [
+      {
+        "path": "src/legacy/GAME4_2.h",
+        "line": 69,
+        "kind": "header-prototype",
+        "text": "int nox_xxx_mapGen_InPrefab1_525D20(int a1);"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 49,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_mapGen_InPrefab1_525D20"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 50,
+        "kind": "definition",
+        "text": "func nox_xxx_mapGen_InPrefab1_525D20(a0 C.int) C.int {"
+      }
+    ],
+    "nox_xxx_mapGen_InPrefab2_5266F0": [
+      {
+        "path": "src/legacy/GAME4_2.h",
+        "line": 70,
+        "kind": "header-prototype",
+        "text": "int nox_xxx_mapGen_InPrefab2_5266F0(int a1);"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 54,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_mapGen_InPrefab2_5266F0"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 55,
+        "kind": "definition",
+        "text": "func nox_xxx_mapGen_InPrefab2_5266F0(a0 C.int) C.int {"
+      }
+    ],
+    "nox_xxx_mapGenPlacePrefabs_526830": [
+      {
+        "path": "src/legacy/GAME4_2.h",
+        "line": 71,
+        "kind": "header-prototype",
+        "text": "int nox_xxx_mapGenPlacePrefabs_526830(int a1);"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 59,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_mapGenPlacePrefabs_526830"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 60,
+        "kind": "definition",
+        "text": "func nox_xxx_mapGenPlacePrefabs_526830(a0 C.int) C.int {"
+      }
+    ],
+    "sub_526950": [
+      {
+        "path": "src/legacy/GAME4_2.h",
+        "line": 72,
+        "kind": "header-prototype",
+        "text": "char* sub_526950();"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 64,
+        "kind": "export-directive",
+        "text": "//export sub_526950"
+      },
+      {
+        "path": "src/legacy/map_population_exports.go",
+        "line": 65,
+        "kind": "definition",
+        "text": "func sub_526950() *C.char { return (*C.char)(mapRoomPointer(mapPopulationMetadataInit())) }"
+      }
+    ],
+    "nox_xxx_netGuiGameSettings_4DD9B0": [
+      {
+        "path": "src/legacy/GAME3_2.h",
+        "line": 113,
+        "kind": "header-prototype",
+        "text": "int nox_xxx_netGuiGameSettings_4DD9B0(char a1, const void* a2, int a3);"
+      },
+      {
+        "path": "src/legacy/match_roster_exports.go",
+        "line": 11,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_netGuiGameSettings_4DD9B0"
+      },
+      {
+        "path": "src/legacy/match_roster_exports.go",
+        "line": 12,
+        "kind": "definition",
+        "text": "func nox_xxx_netGuiGameSettings_4DD9B0(mode C.char, data *C.match_roster_const_data, to C.int) C.int {"
+      }
+    ],
+    "nox_xxx_netGameSettings_4DEF00": [
+      {
+        "path": "src/legacy/GAME3_2.h",
+        "line": 120,
+        "kind": "header-prototype",
+        "text": "int nox_xxx_netGameSettings_4DEF00();"
+      },
+      {
+        "path": "src/legacy/match_roster_exports.go",
+        "line": 16,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_netGameSettings_4DEF00"
+      },
+      {
+        "path": "src/legacy/match_roster_exports.go",
+        "line": 17,
+        "kind": "definition",
+        "text": "func nox_xxx_netGameSettings_4DEF00() C.int { return C.int(matchRosterSettings()) }"
+      }
+    ],
+    "nox_xxx_newPlayerSendAllPlayers_4DE300": [
+      {
+        "path": "src/legacy/GAME3_2.h",
+        "line": 116,
+        "kind": "header-prototype",
+        "text": "char* nox_xxx_newPlayerSendAllPlayers_4DE300(int a1);"
+      },
+      {
+        "path": "src/legacy/match_roster_exports.go",
+        "line": 19,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_newPlayerSendAllPlayers_4DE300"
+      },
+      {
+        "path": "src/legacy/match_roster_exports.go",
+        "line": 20,
+        "kind": "definition",
+        "text": "func nox_xxx_newPlayerSendAllPlayers_4DE300(to C.int) *C.char {"
+      }
+    ],
+    "nox_xxx_sendAllPlayerIDs_4DE270": [
+      {
+        "path": "src/legacy/GAME3_2.h",
+        "line": 115,
+        "kind": "header-prototype",
+        "text": "int nox_xxx_sendAllPlayerIDs_4DE270(int a1);"
+      },
+      {
+        "path": "src/legacy/match_roster_exports.go",
+        "line": 25,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_sendAllPlayerIDs_4DE270"
+      },
+      {
+        "path": "src/legacy/match_roster_exports.go",
+        "line": 26,
+        "kind": "definition",
+        "text": "func nox_xxx_sendAllPlayerIDs_4DE270(pl C.int) C.int {"
+      }
+    ],
+    "nox_xxx_servMinimapRevealFlag_4DE380": [
+      {
+        "path": "src/legacy/GAME3_2.h",
+        "line": 117,
+        "kind": "header-prototype",
+        "text": "int nox_xxx_servMinimapRevealFlag_4DE380(int a1);"
+      },
+      {
+        "path": "src/legacy/match_roster_exports.go",
+        "line": 30,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_servMinimapRevealFlag_4DE380"
+      },
+      {
+        "path": "src/legacy/match_roster_exports.go",
+        "line": 31,
+        "kind": "definition",
+        "text": "func nox_xxx_servMinimapRevealFlag_4DE380(to C.int) C.int { return C.int(matchRosterMinimap(int(to))) }"
+      }
+    ],
+    "nox_xxx_netSendSimpleObject2_4DF360": [
+      {
+        "path": "src/legacy/GAME3_2.h",
+        "line": 122,
+        "kind": "header-prototype",
+        "text": "int nox_xxx_netSendSimpleObject2_4DF360(int a1, nox_object_t* a2);"
+      },
+      {
+        "path": "src/legacy/match_roster_exports.go",
+        "line": 33,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_netSendSimpleObject2_4DF360"
+      },
+      {
+        "path": "src/legacy/match_roster_exports.go",
+        "line": 34,
+        "kind": "definition",
+        "text": "func nox_xxx_netSendSimpleObject2_4DF360(to C.int, u *nox_object_t) C.int {"
+      }
+    ],
+    "sub_4DF2E0": [
+      {
+        "path": "src/legacy/GAME3_2.h",
+        "line": 121,
+        "kind": "header-prototype",
+        "text": "void sub_4DF2E0(int a1);"
+      },
+      {
+        "path": "src/legacy/match_roster_exports.go",
+        "line": 38,
+        "kind": "export-directive",
+        "text": "//export sub_4DF2E0"
+      },
+      {
+        "path": "src/legacy/match_roster_exports.go",
+        "line": 39,
+        "kind": "definition",
+        "text": "func sub_4DF2E0(to C.int) { matchRosterTeamRoster(int(to)) }"
+      }
+    ],
+    "sub_4E8310": [
+      {
+        "path": "src/legacy/GAME3_3.h",
+        "line": 94,
+        "kind": "header-prototype",
+        "text": "char* sub_4E8310();"
+      },
+      {
+        "path": "src/legacy/match_roster_exports.go",
+        "line": 41,
+        "kind": "export-directive",
+        "text": "//export sub_4E8310"
+      },
+      {
+        "path": "src/legacy/match_roster_exports.go",
+        "line": 42,
+        "kind": "definition",
+        "text": "func sub_4E8310() *C.char { return (*C.char)(matchRosterFlagBase()) }"
+      }
+    ],
+    "sub_4E8320": [
+      {
+        "path": "src/legacy/GAME3_3.h",
+        "line": 95,
+        "kind": "header-prototype",
+        "text": "unsigned char* sub_4E8320(unsigned char a1);"
+      },
+      {
+        "path": "src/legacy/match_roster_exports.go",
+        "line": 44,
+        "kind": "export-directive",
+        "text": "//export sub_4E8320"
+      },
+      {
+        "path": "src/legacy/match_roster_exports.go",
+        "line": 45,
+        "kind": "definition",
+        "text": "func sub_4E8320(index C.uchar) *C.uchar { return (*C.uchar)(matchRosterFlagRecord(byte(index))) }"
+      }
+    ],
+    "sub_5095E0": [
+      {
+        "path": "src/legacy/GAME4.h",
+        "line": 100,
+        "kind": "header-prototype",
+        "text": "int sub_5095E0();"
+      },
+      {
+        "path": "src/legacy/match_roster_exports.go",
+        "line": 47,
+        "kind": "export-directive",
+        "text": "//export sub_5095E0"
+      },
+      {
+        "path": "src/legacy/match_roster_exports.go",
+        "line": 48,
+        "kind": "definition",
+        "text": "func sub_5095E0() C.int { return C.int(matchRosterWinner(true)) }"
+      }
+    ],
+    "sub_5007E0": [
+      {
+        "path": "src/legacy/GAME4.h",
+        "line": 72,
+        "kind": "header-prototype",
+        "text": "char* sub_5007E0(char* a1);"
+      },
+      {
+        "path": "src/legacy/quest_progress_exports.go",
+        "line": 8,
+        "kind": "export-directive",
+        "text": "//export sub_5007E0"
+      },
+      {
+        "path": "src/legacy/quest_progress_exports.go",
+        "line": 9,
+        "kind": "definition",
+        "text": "func sub_5007E0(name *C.char) *C.char { questProgressReset(GoString(name)); return nil }"
+      }
+    ],
+    "sub_500A60": [
+      {
+        "path": "src/legacy/GAME4.h",
+        "line": 73,
+        "kind": "header-prototype",
+        "text": "int sub_500A60();"
+      },
+      {
+        "path": "src/legacy/quest_progress_exports.go",
+        "line": 11,
+        "kind": "export-directive",
+        "text": "//export sub_500A60"
+      },
+      {
+        "path": "src/legacy/quest_progress_exports.go",
+        "line": 12,
+        "kind": "definition",
+        "text": "func sub_500A60() C.int { return C.int(questProgressWrite()) }"
+      }
+    ],
+    "sub_500B70": [
+      {
+        "path": "src/legacy/GAME4.h",
+        "line": 74,
+        "kind": "header-prototype",
+        "text": "int sub_500B70();"
+      },
+      {
+        "path": "src/legacy/quest_progress_exports.go",
+        "line": 14,
+        "kind": "export-directive",
+        "text": "//export sub_500B70"
+      },
+      {
+        "path": "src/legacy/quest_progress_exports.go",
+        "line": 15,
+        "kind": "definition",
+        "text": "func sub_500B70() C.int { return C.int(questProgressRead()) }"
+      }
+    ],
+    "nox_xxx_traceRay_5374B0": [
+      {
+        "path": "src/legacy/GAME4_3.h",
+        "line": 55,
+        "kind": "header-prototype",
+        "text": "int nox_xxx_traceRay_5374B0(float4* a1);"
+      },
+      {
+        "path": "src/legacy/spatial_exports.go",
+        "line": 9,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_traceRay_5374B0"
+      },
+      {
+        "path": "src/legacy/spatial_exports.go",
+        "line": 10,
+        "kind": "definition",
+        "text": "func nox_xxx_traceRay_5374B0(ray *C.float4) C.int {"
+      },
+      {
+        "path": "src/server/wall.go",
+        "line": 890,
+        "kind": "review",
+        "text": "func (s *Server) MapTraceRay9(p1, p2 types.Pointf) bool { // nox_xxx_traceRay_5374B0"
+      }
+    ],
+    "nox_script_event_playerLeave": [
+      {
+        "path": "src/legacy/script_cgo.go",
+        "line": 14,
+        "kind": "export-directive",
+        "text": "//export nox_script_event_playerLeave"
+      },
+      {
+        "path": "src/legacy/script_cgo.go",
+        "line": 15,
+        "kind": "definition",
+        "text": "func nox_script_event_playerLeave(pl *nox_playerInfo) {"
+      }
+    ],
+    "nox_xxx_wallMath_427F30": [
+      {
+        "path": "src/legacy/GAME1_2.h",
+        "line": 6,
+        "kind": "header-prototype",
+        "text": "int nox_xxx_wallMath_427F30(int2* a1, int* a2);"
+      },
+      {
+        "path": "src/legacy/world_geometry_exports.go",
+        "line": 15,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_wallMath_427F30"
+      },
+      {
+        "path": "src/legacy/world_geometry_exports.go",
+        "line": 16,
+        "kind": "definition",
+        "text": "func nox_xxx_wallMath_427F30(p *C.int2, r *C.int) C.int {"
+      }
+    ],
+    "sub_428170": [
+      {
+        "path": "src/legacy/GAME1_2.h",
+        "line": 7,
+        "kind": "header-prototype",
+        "text": "int sub_428170(void* a1, int4* a2);"
+      },
+      {
+        "path": "src/legacy/world_geometry_exports.go",
+        "line": 20,
+        "kind": "export-directive",
+        "text": "//export sub_428170"
+      },
+      {
+        "path": "src/legacy/world_geometry_exports.go",
+        "line": 21,
+        "kind": "definition",
+        "text": "func sub_428170(p unsafe.Pointer, r *C.int4) C.int {"
+      }
+    ],
+    "nox_xxx_pointInRect_4281F0": [
+      {
+        "path": "src/gui.go",
+        "line": 78,
+        "kind": "review",
+        "text": "func nox_xxx_pointInRect_4281F0(p image.Point, r image.Rectangle) bool {"
+      },
+      {
+        "path": "src/legacy/GAME1_2.h",
+        "line": 8,
+        "kind": "header-prototype",
+        "text": "int nox_xxx_pointInRect_4281F0(int2* a1, int4* a2);"
+      },
+      {
+        "path": "src/legacy/world_geometry_exports.go",
+        "line": 25,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_pointInRect_4281F0"
+      },
+      {
+        "path": "src/legacy/world_geometry_exports.go",
+        "line": 26,
+        "kind": "definition",
+        "text": "func nox_xxx_pointInRect_4281F0(p *C.int2, r *C.int4) C.int {"
+      }
+    ],
+    "sub_4D3E30": [
+      {
+        "path": "src/legacy/GAME3_2.h",
+        "line": 23,
+        "kind": "header-prototype",
+        "text": "int sub_4D3E30(float2* a1, float2* a2);"
+      },
+      {
+        "path": "src/legacy/world_geometry_exports.go",
+        "line": 30,
+        "kind": "export-directive",
+        "text": "//export sub_4D3E30"
+      },
+      {
+        "path": "src/legacy/world_geometry_exports.go",
+        "line": 31,
+        "kind": "definition",
+        "text": "func sub_4D3E30(p, out *C.float2) C.int {"
+      }
+    ],
+    "nox_xxx_math_509EA0": [
+      {
+        "path": "src/legacy/GAME4_1.h",
+        "line": 6,
+        "kind": "header-prototype",
+        "text": "int nox_xxx_math_509EA0(int a1);"
+      },
+      {
+        "path": "src/legacy/world_geometry_exports.go",
+        "line": 35,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_math_509EA0"
+      },
+      {
+        "path": "src/legacy/world_geometry_exports.go",
+        "line": 36,
+        "kind": "definition",
+        "text": "func nox_xxx_math_509EA0(index C.int) C.int { return C.int(geometryDirection4Index(int32(index))) }"
+      }
+    ],
+    "nox_xxx_lightningSpellDuration_52FFD0": [
+      {
+        "path": "src/legacy/spell_lightning.go",
+        "line": 10,
+        "kind": "export-directive",
+        "text": "//export nox_xxx_lightningSpellDuration_52FFD0"
+      },
+      {
+        "path": "src/legacy/spell_lightning.go",
+        "line": 11,
+        "kind": "definition",
+        "text": "func nox_xxx_lightningSpellDuration_52FFD0(a1 unsafe.Pointer, from, to *nox_object_t) {"
+      }
+    ],
+    "nox_new_alloc_class": [
+      {
+        "path": "src/legacy/alloc_classes.go",
+        "line": 15,
+        "kind": "export-directive",
+        "text": "//export nox_new_alloc_class"
+      },
+      {
+        "path": "src/legacy/alloc_classes.go",
+        "line": 16,
+        "kind": "definition",
+        "text": "func nox_new_alloc_class(name *C.char, size, cnt int) *C.nox_alloc_class {"
+      },
+      {
+        "path": "src/legacy/common/alloc/classes/alloc_class.h",
+        "line": 6,
+        "kind": "header-prototype",
+        "text": "nox_alloc_class* nox_new_alloc_class(char* name, int size, int cnt);"
+      }
+    ],
+    "nox_new_alloc_class_dynamic": [
+      {
+        "path": "src/legacy/alloc_classes.go",
+        "line": 20,
+        "kind": "export-directive",
+        "text": "//export nox_new_alloc_class_dynamic"
+      },
+      {
+        "path": "src/legacy/alloc_classes.go",
+        "line": 21,
+        "kind": "definition",
+        "text": "func nox_new_alloc_class_dynamic(name *C.char, size, cnt int) *C.nox_alloc_class {"
+      },
+      {
+        "path": "src/legacy/common/alloc/classes/alloc_class.h",
+        "line": 7,
+        "kind": "header-prototype",
+        "text": "nox_alloc_class* nox_new_alloc_class_dynamic(char* name, int size, int cnt);"
+      }
+    ],
+    "nox_free_alloc_class": [
+      {
+        "path": "src/legacy/alloc_classes.go",
+        "line": 25,
+        "kind": "export-directive",
+        "text": "//export nox_free_alloc_class"
+      },
+      {
+        "path": "src/legacy/alloc_classes.go",
+        "line": 26,
+        "kind": "definition",
+        "text": "func nox_free_alloc_class(p *C.nox_alloc_class) {"
+      },
+      {
+        "path": "src/legacy/common/alloc/classes/alloc_class.h",
+        "line": 8,
+        "kind": "review",
+        "text": "void nox_free_alloc_class(nox_alloc_class* p); // idb"
+      }
+    ],
+    "nox_alloc_class_new_obj_zero": [
+      {
+        "path": "src/legacy/alloc_classes.go",
+        "line": 30,
+        "kind": "export-directive",
+        "text": "//export nox_alloc_class_new_obj_zero"
+      },
+      {
+        "path": "src/legacy/alloc_classes.go",
+        "line": 31,
+        "kind": "definition",
+        "text": "func nox_alloc_class_new_obj_zero(p *C.nox_alloc_class) unsafe.Pointer {"
+      },
+      {
+        "path": "src/legacy/common/alloc/classes/alloc_class.h",
+        "line": 9,
+        "kind": "header-prototype",
+        "text": "void* nox_alloc_class_new_obj_zero(nox_alloc_class* p);"
+      }
+    ],
+    "nox_alloc_class_free_obj_first": [
+      {
+        "path": "src/legacy/alloc_classes.go",
+        "line": 35,
+        "kind": "export-directive",
+        "text": "//export nox_alloc_class_free_obj_first"
+      },
+      {
+        "path": "src/legacy/alloc_classes.go",
+        "line": 36,
+        "kind": "definition",
+        "text": "func nox_alloc_class_free_obj_first(p *C.nox_alloc_class, obj unsafe.Pointer) {"
+      },
+      {
+        "path": "src/legacy/common/alloc/classes/alloc_class.h",
+        "line": 11,
+        "kind": "header-prototype",
+        "text": "void nox_alloc_class_free_obj_first(nox_alloc_class* p, void* obj);"
+      }
+    ],
+    "nox_alloc_class_free_all": [
+      {
+        "path": "src/legacy/alloc_classes.go",
+        "line": 40,
+        "kind": "export-directive",
+        "text": "//export nox_alloc_class_free_all"
+      },
+      {
+        "path": "src/legacy/alloc_classes.go",
+        "line": 41,
+        "kind": "definition",
+        "text": "func nox_alloc_class_free_all(p *C.nox_alloc_class) {"
+      },
+      {
+        "path": "src/legacy/common/alloc/classes/alloc_class.h",
+        "line": 10,
+        "kind": "header-prototype",
+        "text": "void nox_alloc_class_free_all(nox_alloc_class* p);"
+      }
+    ]
+  },
+  "scan": "All tracked src Go/header/C/assembly text, including comments and C preambles; only exact export/definition and simple header prototype lines classified.",
+  "reviewed_nonruntime_occurrences": [
+    {
+      "symbol": "nox_binfile_fseek_409050",
+      "path": "src/internal/binfile/binfile.go",
+      "line": 178,
+      "kind": "review",
+      "text": "\t\t// this is what nox_binfile_fseek_409050 does for some reason",
+      "resolution": "historical source comment"
+    },
+    {
+      "symbol": "nox_xxx_traceRay_5374B0",
+      "path": "src/server/wall.go",
+      "line": 890,
+      "kind": "review",
+      "text": "func (s *Server) MapTraceRay9(p1, p2 types.Pointf) bool { // nox_xxx_traceRay_5374B0",
+      "resolution": "historical source comment"
+    },
+    {
+      "symbol": "nox_xxx_pointInRect_4281F0",
+      "path": "src/gui.go",
+      "line": 78,
+      "kind": "review",
+      "text": "func nox_xxx_pointInRect_4281F0(p image.Point, r image.Rectangle) bool {",
+      "resolution": "unrelated root-package private Go function, not this C export"
+    },
+    {
+      "symbol": "nox_free_alloc_class",
+      "path": "src/legacy/common/alloc/classes/alloc_class.h",
+      "line": 8,
+      "kind": "review",
+      "text": "void nox_free_alloc_class(nox_alloc_class* p); // idb",
+      "resolution": "simple prototype with trailing idb comment"
+    }
+  ]
+}
