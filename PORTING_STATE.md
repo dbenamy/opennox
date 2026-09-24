@@ -20,9 +20,10 @@ dispatch preserves native return widths and the raw C fallback. Three production
 cgo imports disappear. See [COLLISION_IDENTITIES.md](docs/porting/COLLISION_IDENTITIES.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Next candidate: object-death identities; audit under
-`build/port-death-identities/`. Production and fixture drafts are uninstalled;
-original identity-lifetime baseline is next.
+recorded reversible decisions. Active batch: 14 object-death identities under
+`build/port-death-identities/`. The 140-root original baseline, including a new
+stored-key lifetime/post-GC dispatch contract, passes in all profiles without skips.
+Conversion drafts remain uninstalled; see [DEATH_IDENTITIES.md](docs/porting/DEATH_IDENTITIES.md).
 Stop at the milestone or for a substantial question.
 
 Latest artifacts: `build/port-collision-identities/`.
@@ -142,6 +143,7 @@ do not rerun them or infer deletion safety from age alone.
 | Completed native-boundary scenario assets | Removed only 1,654 verified original-asset duplicates, reclaiming 559,943,680 allocated bytes. Saves/results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/go-native-call-boundaries-save/deduplicated-assets.json`. |
 | Superseded native-boundary binaries | Seven executables removed after committed-source/replacement/hash and host-use checks; 395,464,704 allocated bytes reclaimed. Old phase fingerprints match `4214ea8f`, replacements match `fe44bab3`; recorded build HEADs are earlier baseline commits. Rebuild those qualified revisions. Plan/journal: `build/port-go-native-record-storage/cleanup-native-{approved.json,deleted.jsonl}`. |
 | Superseded six-batch profile test binaries | Removed18 regular executables after exact committed-source, SHA256/stat and host fd/maps checks; 1,219,395,584 allocated bytes reclaimed. Rebuild qualified revisions `6274a6f3`, `b505e0ab`, `fe44bab3`, `f2088976`, `5bfa54b5`, `200d459b` using retained profile commands/source maps. Current collision contracts, original baseline and first-failure binaries retained. Plan/journal: `build/port-collision-identities/cleanup-next-{approved.json,deleted.jsonl}`. |
+| Completed collision scenario assets | Removed 1,654 SHA256-identical original-asset duplicates after host-use checks, reclaiming 559,841,280 allocated bytes; saves/results and originals remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/collision-identities-save/deduplicated-assets.json`. |
 | Current qualified production/safe binaries | Retained under `build/port-collision-identities/`; preceding catalog/effect production binaries also remain. |
 | Superseded primitive-interface binaries | Seven executables removed after source/replacement/hash and host-use checks; 395,362,304 allocated bytes reclaimed. All 3,062 source fingerprints match `78ff20f9`; current qualified replacements match `4214ea8f`. Rebuild the old revision using retained phase commands. Plan/journal: `build/port-go-layout-boundaries/cleanup-primitive-{approved.json,deleted.jsonl}`. |
 | Superseded scalar-storage binaries | Seven executables removed after source/replacement/hash and host-use checks; 395,452,416 allocated bytes reclaimed. All 3,062 source fingerprints match `e64ff24e`; qualified replacements match `78ff20f9`. Rebuild the old revision using retained phase commands. Plan/journal: `build/port-go-native-call-boundaries/cleanup-scalar-{approved.json,deleted.jsonl}`. |
