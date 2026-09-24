@@ -147,17 +147,5 @@ func nox_things_door_draw_parse(obj *C.nox_thing, f *C.nox_memfile, attr *C.char
 	return C.bool(o.DrawData != nil)
 }
 
-//export sub_4B9470
-func sub_4B9470(arg *C.objectDrawCString) C.int { return C.int(objectTeamColor(unsafe.Pointer(arg))) }
-
-//export sub_4B9650
-func sub_4B9650(typ C.int) *C.uint32_t {
-	return (*C.uint32_t)(unsafe.Pointer(uintptr(objectBaseMaterials(int(typ)))))
-}
-
-func sub_4BC720(p C.int) C.int {
-	return C.int(uintptr(objectGeneratorCountdown((*client.Drawable)(unsafe.Pointer(uintptr(uint32(p)))))))
-}
-
 //export nox_xxx_updDrawMonsterGen_4BC920
 func nox_xxx_updDrawMonsterGen_4BC920() C.int { return 1 }

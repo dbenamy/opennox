@@ -3,8 +3,6 @@
 
 #include "defs.h"
 
-int sub_4B9470(const char** a1);
-uint32_t* sub_4B9650(int a1);
 int nox_xxx_updDrawMonsterGen_4BC920();
 uint32_t* sub_4BD280(int a1, int a2);
 void sub_4BD2D0(void* lpMem);
@@ -24,7 +22,6 @@ int sub_4BDB20(int a1);
 int sub_4BDB30(int a1);
 int sub_4BDB40(int a2);
 void sub_4BDB90(uint32_t* a1, uint32_t* a2);
-void sub_4BEDE0(int2* a1, int2* a2, int2* a3, int2* a4, int a5, float a6, int a7, int a8);
 int nox_gui_itemAmountDialog_4C0430(wchar2_t* title, int x, int y, int a4, int a5, void* a6, int a7, int a8,
 									void* accept, void* cancel);
 int sub_4C05F0(int a1, int a2);

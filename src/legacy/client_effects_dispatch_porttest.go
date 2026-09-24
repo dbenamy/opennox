@@ -21,32 +21,32 @@ import (
 )
 
 // PortTestClientEffects exercises retained production C entry points and native private helpers. The caller
-// owns bounded input storage, drawable lists, renderer and RNG. Curve callback
-// recording has a separate typed fixture to preserve its external ABI.
+// owns bounded input storage, drawable lists, renderer and RNG. Curve segment
+// recording uses the guarded native-owner fixture below.
 func PortTestClientEffects(op int, vp *noxrender.Viewport, dr *client.Drawable, a [8]int32, data unsafe.Pointer) uint32 {
 	switch op {
 	case 45:
 		return uint32(effectPrepareLightning())
 	case 0:
-		sub_499490(C.int(a[0]), (*C.uint16_t)(data), C.int(a[1]), C.int(a[2]), C.char(a[3]), C.char(a[4]))
+		effectCreateOrb(int(a[0]), (*[4]uint16)(data), int(a[1]), int(a[2]), byte(a[3]), byte(a[4]))
 		return 0
 	case 1:
-		C.sub_499520(C.int(a[0]), (*C.short)(data), C.short(a[1]), C.char(a[2]), C.char(a[3]))
+		effectCreateOrbit(int(a[0]), (*[4]int16)(data), int16(a[1]), byte(a[2]), byte(a[3]))
 		return 0
 	case 2:
-		return uint32(nox_xxx_makePointFxCli_499610(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3]), C.int(a[4]), C.int(a[5])))
+		return uint32(effectCreatePointSparks(int(a[0]), int(a[1]), int(a[2]), int(a[3]), int(a[4]), int(a[5])))
 	case 3:
-		return uint32(nox_xxx_drawEnergyBolt_499710(C.int(a[0]), C.int(a[1]), C.short(a[2]), C.int(a[3])))
+		return uint32(effectCreateEnergySparks(int(a[0]), int(a[1]), int16(a[2]), int(a[3])))
 	case 4:
-		return uint32(C.sub_499950(C.int(a[0]), (*C.int2)(unsafe.Add(data, 0)), (*C.int2)(unsafe.Add(data, 8)), C.ushort(a[1]), C.char(a[2])))
+		return uint32(uintptr(unsafe.Pointer(effectCreateRainOrb(int(a[0]), AsPoint(data), AsPoint(unsafe.Add(data, 8)), uint16(a[1]), int8(a[2])))))
 	case 5:
-		return uint32(nox_xxx_makeLightningParticles_4999D0(C.int(a[0]), (*C.int2)(unsafe.Add(data, 0)), (*C.int2)(unsafe.Add(data, 8))))
+		return uint32(effectLightningParticles(int(a[0]), AsPoint(data), AsPoint(unsafe.Add(data, 8))))
 	case 6:
-		return uint32(C.nox_xxx_draw_499E70(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3]), C.int(a[4]), C.int(a[5]), C.int(a[6])))
+		return uint32(effectScreenParticles(int(a[0]), int(a[1]), int(a[2]), int(a[3]), int(a[4]), int(a[5]), int(a[6])))
 	case 7:
-		return uint32(sub_49A150((*C.int2)(unsafe.Add(data, 0)), C.int(a[0]), C.uchar(a[1])))
+		return uint32(effectSparkBurst(AsPoint(data), int(a[0]), byte(a[1])))
 	case 8:
-		return uint32(nox_xxx_netDrawRays_49BDD0((*C.uchar)(data)))
+		return uint32(effectDispatchRay((*[9]byte)(data)))
 	case 9:
 		return uint32(effectLightningStep(uint32(a[0]), uint32(a[1])))
 	case 10:

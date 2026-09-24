@@ -2627,3 +2627,16 @@ returns a pointer. Primary corrected both argument/result distinctions before
 compilation. Pass the existing grid-config pointer directly to native Go. All
 89 roots in three profiles and production gates pass with unchanged expectations.
 See [MAP_ROOM_PAINT_OWNERS.md](MAP_ROOM_PAINT_OWNERS.md).
+
+
+## Catalog/effect adapter retirement
+
+Retire eleven fixture-only production bridges and seven private C-typed wrappers;
+keep all live rendering/update callback routes and their C fixture coverage.
+The curve's specialized C body only transported calls to a Go test observer, so
+replace it with a local observer preserving ordered segments, opaque int32 tokens,
+input guards and frozen expectations. No independent C reference algorithm is
+lost. Add rain-orb creation boundary/failure/RNG contracts before conversion.
+Explicit int32 conversion preserves map-cycle C-int results. No candidate has an
+address registration, so identity reservations need no adjustment. All gates pass.
+See [CATALOG_EFFECT_OWNERS.md](CATALOG_EFFECT_OWNERS.md).

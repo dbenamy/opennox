@@ -88,8 +88,7 @@ func (f *PortTestMapCatalog) Add(v PortTestMapCatalogEntry) {
 	Nox_common_maplist_add_4D0760(p)
 }
 func (f *PortTestMapCatalog) Entries() (out []PortTestMapCatalogEntry) {
-	for p := C.nox_common_maplist_first_4D09B0(); p != nil; p = C.nox_common_maplist_next_4D09C0(p) {
-		v := (*Nox_map_list_item)(unsafe.Pointer(p))
+	for v := mapCatalogFirst(); v != nil; v = mapCatalogNext(v) {
 		out = append(out, PortTestMapCatalogEntry{GoStringP(unsafe.Pointer(&v.Name[0])), v.Field_6, v.Field_7, v.Field_8_2})
 	}
 	return
@@ -97,8 +96,8 @@ func (f *PortTestMapCatalog) Entries() (out []PortTestMapCatalogEntry) {
 func (f *PortTestMapCatalog) BuildQuest() int { return mapQuestBuild() }
 func (f *PortTestMapCatalog) ResetQuest()     { mapQuestReset() }
 func (f *PortTestMapCatalog) ChooseQuest() (string, int) {
-	p := C.nox_xxx_getQuestMapFile_4D0F60()
-	return GoString(p), f.core.Rand.Logic.Index()
+	p := mapQuestChoose()
+	return GoStringP(unsafe.Pointer(p)), f.core.Rand.Logic.Index()
 }
 func (f *PortTestMapCatalog) Played(name *string) {
 	if name == nil {
@@ -147,8 +146,8 @@ func PortTestMapCycleStrip(data []byte) []byte {
 }
 func PortTestMapCycleNext() string     { return GoStringP(unsafe.Pointer(mapCycleNext())) }
 func PortTestMapCycleLoad()            { mapCycleLoad() }
-func PortTestMapCycleEnabled() int     { return int(C.sub_4D0D70()) }
-func PortTestMapCycleEnable(v int) int { return int(C.sub_4D0D90(C.int(v))) }
+func PortTestMapCycleEnabled() int     { return int(int32(mapCycleEnabled())) }
+func PortTestMapCycleEnable(v int) int { return int(int32(mapCycleSetEnabled(uint32(v)))) }
 func PortTestMapCycleReset()           { mapCycleReset() }
 
 func PortTestMapCyclePath() string { return GoStringP(memmap.PtrOff(0x5D4594, 1524108)) }
@@ -158,4 +157,4 @@ func PortTestMapCycleOpenHandles() int {
 	return len(files.byHandle)
 }
 
-func PortTestMapCatalogNilNext() bool { return C.nox_common_maplist_next_4D09C0(nil) == nil }
+func PortTestMapCatalogNilNext() bool { return mapCatalogNext(nil) == nil }

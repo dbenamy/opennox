@@ -2,73 +2,18 @@ package legacy
 
 /*
 #include "defs.h"
-static void effectsCurveCall(void* fn, int2* from, int2* to, int token) {
- ((void (*)(int2*, int2*, int))fn)(from, to, token);
-}
 */
 import "C"
 
 import (
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/client/noxrender"
-	"image"
 	"unsafe"
 )
-
-func sub_499490(typ C.int, p *C.uint16_t, x, y C.int, speed, period C.char) {
-	effectCreateOrb(int(typ), (*[4]uint16)(unsafe.Pointer(p)), int(x), int(y), byte(speed), byte(period))
-}
-
-//export sub_499520
-func sub_499520(typ C.int, p *C.short, angle C.short, direction, period C.char) {
-	effectCreateOrbit(int(typ), (*[4]int16)(unsafe.Pointer(p)), int16(angle), byte(direction), byte(period))
-}
-
-func nox_xxx_makePointFxCli_499610(typ, count, speed, ttl, x, y C.int) C.int {
-	return C.int(effectCreatePointSparks(int(typ), int(count), int(speed), int(ttl), int(x), int(y)))
-}
-
-func nox_xxx_drawEnergyBolt_499710(x, y C.int, z C.short, typ C.int) C.int {
-	return C.int(effectCreateEnergySparks(int(x), int(y), int16(z), int(typ)))
-}
-
-//export sub_499950
-func sub_499950(typ C.int, from, to *C.int2, z C.ushort, velocity C.char) C.int {
-	dr := effectCreateRainOrb(int(typ), AsPoint(unsafe.Pointer(from)), AsPoint(unsafe.Pointer(to)), uint16(z), int8(velocity))
-	return C.int(uintptr(unsafe.Pointer(dr)))
-}
-
-func nox_xxx_makeLightningParticles_4999D0(typ C.int, from, to *C.int2) C.int {
-	return C.int(effectLightningParticles(int(typ), AsPoint(unsafe.Pointer(from)), AsPoint(unsafe.Pointer(to))))
-}
-
-//export nox_xxx_draw_499E70
-func nox_xxx_draw_499E70(kind, x, y, width, height, axis, direction C.int) C.int {
-	return C.int(effectScreenParticles(int(kind), int(x), int(y), int(width), int(height), int(axis), int(direction)))
-}
-
-func sub_49A150(pos *C.int2, typ C.int, amount C.uchar) C.int {
-	return C.int(effectSparkBurst(AsPoint(unsafe.Pointer(pos)), int(typ), byte(amount)))
-}
-
-func nox_xxx_netDrawRays_49BDD0(packet *C.uchar) C.int {
-	return C.int(effectDispatchRay((*[9]byte)(unsafe.Pointer(packet))))
-}
 
 //export sub_4CA720
 func sub_4CA720(unused, drawable C.int) C.int {
 	return C.int(effectOrbitUpdate((*client.Drawable)(unsafe.Pointer(uintptr(uint32(drawable))))))
-}
-
-//export sub_4BEDE0
-func sub_4BEDE0(a, b, c, d *C.int2, steps C.int, shift C.float, callback, token C.int) {
-	points := [4]image.Point{AsPoint(unsafe.Pointer(a)), AsPoint(unsafe.Pointer(b)), AsPoint(unsafe.Pointer(c)), AsPoint(unsafe.Pointer(d))}
-	fn := unsafe.Pointer(uintptr(uint32(callback)))
-	effectCurveSegments(points, int(steps), float32(shift), func(from, to image.Point) {
-		// Point pointers expose their lifetime to cgo; token is an opaque integer,
-		// even when its bits happen to coincide with an address in the Go heap.
-		C.effectsCurveCall(fn, (*C.int2)(unsafe.Pointer(&from)), (*C.int2)(unsafe.Pointer(&to)), token)
-	})
 }
 
 //export nox_thing_lightning_draw

@@ -60,3 +60,9 @@ sprite-iteration adapter after a complete reference review. **78 now remain:**
 No project-owned header function bodies remained in the reviewed inventory.
 These callback boundaries remain compatible with the current 386/SSE2 plus cgo
 target; retiring shared dispatch requires migrating its live callback identities.
+
+
+The [catalog/effect batch](CATALOG_EFFECT_OWNERS.md) subsequently retired the
+fixture-only curve-segment adapter. **77 production bodies now remain:**76 generic
+ccall dispatchers and the specialized spell adapter. The curve fixture records
+its Go owner's segments directly with unchanged token/guard assertions.

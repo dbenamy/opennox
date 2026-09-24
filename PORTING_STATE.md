@@ -7,38 +7,35 @@ superseded status when updating it. The workflow and delegation rules live in
 ## Status: resumed; internal C-glue removal
 
 **Progress: 142,665/142,665 original standalone C lines ported or retired;
-internal glue: 238/463 cgo files eliminated on net (225 remain).**
-Selected legacy C export bridges: **901/1,890 retired (989 remain)**.
+internal glue: 239/463 cgo files eliminated on net (224 remain).**
+Selected legacy C export bridges: **912/1,890 retired (978 remain)**.
 
 These are selected project files in each Linux 386 production profile, not equal
-units of effort. Three project packages directly use cgo; 78 embedded C callback
+units of effort. Three project packages directly use cgo; 77 embedded C callback
 bodies remain. Production and test-reference standalone `.c` files both remain zero.
 
-Latest qualified chunk retires 64 map-room/painting C exports and prototypes,
-replacing numeric fixture dispatch with existing Go owners. Two production cgo
-files disappear; ten changed/deleted files qualify with frozen expectations
-unchanged. Live transfer callbacks and floating-point control-word fixtures stay.
-See [MAP_ROOM_PAINT_OWNERS.md](docs/porting/MAP_ROOM_PAINT_OWNERS.md).
+Latest qualified chunk retires eleven catalog/effect C exports, seven private
+C-typed wrappers and the fixture-only curve C callback body. One production cgo
+file and one test cgo import disappear. Live rendering callback routes remain.
+See [CATALOG_EFFECT_OWNERS.md](docs/porting/CATALOG_EFFECT_OWNERS.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Active next batch: catalog/effect fixture adapters, `build/port-catalog-effect-owners/`.
-The original baseline passes (57 client roots, 56 server roots), including a new rain-creation
-contract; conversion and final qualification remain pending. See
-[CATALOG_EFFECT_OWNERS.md](docs/porting/CATALOG_EFFECT_OWNERS.md). Stop at the milestone or
+recorded reversible decisions. Next-candidate audit: `build/port-after-catalog-effect/`;
+primary review is required before accepting its scope. Stop at the milestone or
 for a substantial question.
 
-Latest artifacts: `build/port-map-room-paint-owners/`.
+Latest artifacts: `build/port-catalog-effect-owners/`.
 
 ## What remains
 
-Counts below describe the qualified map room/painting conversion. Zero `.c` lines is
+Counts below describe the qualified catalog/effect conversion. Zero `.c` lines is
 not a count of all C dependencies or a measure of remaining engineering effort.
 
 | Area | Remaining work or dependency |
 | --- | --- |
-| Embedded C callback glue | 78 production function bodies in Go preambles: 76 generic function-pointer dispatchers and two specialized adapters. |
+| Embedded C callback glue | 77 production function bodies in Go preambles: 76 generic function-pointer dispatchers and one specialized adapter. |
 | Callback routes | Some Go implementations still call each other through C-compatible addresses. More direct Go dispatch is possible; shared raw fallbacks remain until their users and compatibility requirements are resolved. |
-| Declarations and C types | 157 tracked headers / 3,712 physical lines; each production profile selects 225 cgo files in three project packages (alloc, ccall, legacy). Selected-build counts replace the earlier whole-tree text count. These are mostly interface/layout machinery, not unported algorithms. |
+| Declarations and C types | 157 tracked headers / 3,701 physical lines; each production profile selects 224 cgo files in three project packages (alloc, ccall, legacy). Selected-build counts replace the earlier whole-tree text count. These are mostly interface/layout machinery, not unported algorithms. |
 | Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Removing them requires ownership/layout changes beyond function translation. |
 | External libraries | SDL2, OpenGL, OpenAL and similar native dependencies and their cgo bindings stay for this phase; their future is a subsequent discussion. |
 | Portability and release validation | Qualified target is Linux 386/SSE2 with cgo. The complete engine is not qualified as cgo-free, 64-bit, native macOS or browser/WebAssembly. Physical display and audible playback remain manual release checks. |
@@ -50,9 +47,9 @@ machinery remains until its live callers are migrated.
 
 ## Latest qualification and evidence
 
-- Exact focused root-name sets pass: 89 each in default/server/highres, no skips.
+- Exact focused root-name sets pass: 57 each in default/highres and 56 in server, no skips.
 - Safe build/static checks and three fresh production binaries/ABI checks pass.
-  All 64 retired C symbols are absent; retained callback signatures are unchanged.
+  All eleven retired C symbols are absent; retained callback signatures are unchanged.
 - Headless character creation and explicit save/load/resume pass.
 - Full-suite results match the known baseline exactly: 304 failure events,
   with 17 passing, two failing and 32 skipped packages.
@@ -61,8 +58,8 @@ machinery remains until its live callers are migrated.
 - The preceding shared-record milestone passed all seven storage captures and the
   complete root corpus (2,426 client / 2,415 server passes plus one expected skip).
 
-Report: [MAP_ROOM_PAINT_OWNERS.md](docs/porting/MAP_ROOM_PAINT_OWNERS.md).
-Evidence: [qualification](docs/porting/map-room-paint-owners-qualification.json).
+Report: [CATALOG_EFFECT_OWNERS.md](docs/porting/CATALOG_EFFECT_OWNERS.md).
+Evidence: [qualification](docs/porting/catalog-effect-owners-qualification.json).
 Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expected-suite.jsonl).
 
 ## Goal, next work and open review items
@@ -75,7 +72,7 @@ removal order and completion criteria. Client rendering/audio backend replacemen
 is outside this phase.
 
 The dependency inventory tool is `tools/porting/cgo_inventory.py`; the current
-qualified inventory is [map-room-paint-owners-inventory-after.json](docs/porting/map-room-paint-owners-inventory-after.json).
+qualified inventory is [catalog-effect-owners-inventory-after.json](docs/porting/catalog-effect-owners-inventory-after.json).
 The original phase baseline is under `build/port-cgo-leaves/inventory-before/`.
 The completed leaf cleanup leaves three project packages directly using cgo in
 all profiles, plus OpenGL/SDL2/OpenAL bindings in the clients. Metadata discovery
@@ -109,7 +106,7 @@ The current Go toolchain is `/usr/lib/go-1.26/bin`. Follow the
 [build environment instructions](PORT.md#build-and-test-environment), including
 sourcing `build/baseline/env.sh` in every Go shell.
 
-Latest local artifacts are under `build/port-map-room-paint-owners/`:
+Latest local artifacts are under `build/port-catalog-effect-owners/`:
 `contracts/`, `safe/opennox-safe`, and
 `production/production/bin/{opennox,opennox-hd,opennox-server}`.
 Source, tests, reports and qualification metadata are committed; ignored local
@@ -139,7 +136,7 @@ do not rerun them or infer deletion safety from age alone.
 | Completed layout-boundary scenario assets | Removed only 1,654 verified original-asset duplicates, reclaiming 559,890,432 allocated bytes. Saves/results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/go-layout-boundaries-save/deduplicated-assets.json`. |
 | Completed native-boundary scenario assets | Removed only 1,654 verified original-asset duplicates, reclaiming 559,943,680 allocated bytes. Saves/results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/go-native-call-boundaries-save/deduplicated-assets.json`. |
 | Superseded native-boundary binaries | Seven executables removed after committed-source/replacement/hash and host-use checks; 395,464,704 allocated bytes reclaimed. Old phase fingerprints match `4214ea8f`, replacements match `fe44bab3`; recorded build HEADs are earlier baseline commits. Rebuild those qualified revisions. Plan/journal: `build/port-go-native-record-storage/cleanup-native-{approved.json,deleted.jsonl}`. |
-| Current qualified production/safe binaries | Retained under `build/port-map-room-paint-owners/`; preceding qualified binaries also remain. |
+| Current qualified production/safe binaries | Retained under `build/port-catalog-effect-owners/`; preceding map-room/painting binaries also remain. |
 | Superseded primitive-interface binaries | Seven executables removed after source/replacement/hash and host-use checks; 395,362,304 allocated bytes reclaimed. All 3,062 source fingerprints match `78ff20f9`; current qualified replacements match `4214ea8f`. Rebuild the old revision using retained phase commands. Plan/journal: `build/port-go-layout-boundaries/cleanup-primitive-{approved.json,deleted.jsonl}`. |
 | Superseded scalar-storage binaries | Seven executables removed after source/replacement/hash and host-use checks; 395,452,416 allocated bytes reclaimed. All 3,062 source fingerprints match `e64ff24e`; qualified replacements match `78ff20f9`. Rebuild the old revision using retained phase commands. Plan/journal: `build/port-go-native-call-boundaries/cleanup-scalar-{approved.json,deleted.jsonl}`. |
 | Completed scenario data: `go-memory-save`, `raw-allocation-save`, `string-boundary-save`, `unused-exports-save`, `remaining-unused-exports-save`, `go-only-exports-save` | Only SHA256-identical original-asset copies were removed. Saves/comparisons remain. Follow each run's `deduplicated-assets.json`; shared restore tool: `build/port-artifact-cleanup/restore-recent-scenario.py`. |
