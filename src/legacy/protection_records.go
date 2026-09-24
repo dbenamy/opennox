@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -28,12 +24,6 @@ var (
 
 func protectionHead() *protection.Record {
 	return *(**protection.Record)(unsafe.Pointer(&dword_5d4594_2516344))
-}
-
-//export sub_56F590
-func sub_56F590(id C.int) *C.uint32_t {
-	p := protection.Find(protectionHead(), uint32(dword_5d4594_2516348), uint32(id))
-	return (*C.uint32_t)(unsafe.Pointer(p))
 }
 
 func swapProtectionRecords(a, b *protection.Record) {

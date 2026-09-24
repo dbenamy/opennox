@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME5.h"
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"github.com/opennox/libs/object"
@@ -107,7 +102,7 @@ func portTestCreationPrepare(proxy *portTestRoamOwnerServer, u *server.Object, s
 func portTestCreationCall(u *server.Object, op int) uint32 {
 	switch op {
 	case 0:
-		return uint32(int32(C.nox_xxx_monsterAutoSpells_54C0C0(asObjectC(u))))
+		return uint32(int32(portTestInvoke_nox_xxx_monsterAutoSpells_54C0C0(asObjectC(u))))
 	case 1:
 		return uint32(createWeapon(u))
 	case 2:
@@ -166,4 +161,9 @@ func portTestCreationTrace(proxy *portTestRoamOwnerServer, normalize func(uint32
 	// captured by the parent fixture. Keep its unrelated duration/health guards.
 	proxy.spells.beforePermissions = append(proxy.spells.beforePermissions[:0], unsafe.Slice((*uint32)(unsafe.Add(u.UpdateData, 1492)), 136)...)
 	return r
+}
+
+// Fixture-native copies preserve the original wrapper ABI conversions.
+func portTestInvoke_nox_xxx_monsterAutoSpells_54C0C0(u *nox_object_t) int16 {
+	return int16(monsterAutoSpells(asObjectS(u)))
 }

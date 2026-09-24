@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-#include <stdlib.h>
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -26,15 +21,6 @@ func deleteProtectionRecord(id uint32) bool {
 	*memmap.PtrUint16(0x587000, 311204)--
 	legacyFree(unsafe.Pointer(r))
 	return true
-}
-
-//export sub_56F4F0
-func sub_56F4F0(id *C.int) C.int {
-	if deleteProtectionRecord(uint32(*id)) {
-		*id = 0
-		return 1
-	}
-	return 0
 }
 
 func freeProtectionRecords() {

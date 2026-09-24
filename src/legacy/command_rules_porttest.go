@@ -165,7 +165,7 @@ func PortTestCommandRules(spec PortTestCommandRulesSpec) (out PortTestCommandRul
 	case "map":
 		p := C.CString(spec.Map)
 		defer C.free(unsafe.Pointer(p))
-		out.Result = int(C.sub_57A950(p))
+		out.Result = int(portTestInvoke_sub_57A950(p))
 	case "wrapper":
 		Sub_4D0550(spec.Path)
 	default:
@@ -181,4 +181,9 @@ func PortTestCommandRules(spec PortTestCommandRulesSpec) (out PortTestCommandRul
 	out.HandlesUnchanged = len(files.byHandle) == handleCount
 	files.RUnlock()
 	return out, err
+}
+
+// Fixture-native copies preserve the original wrapper ABI conversions.
+func portTestInvoke_sub_57A950(name *C.char) C.int {
+	return C.int(commandRulesMap(GoString(name)))
 }

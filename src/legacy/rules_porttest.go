@@ -89,7 +89,7 @@ func PortTestRuleHeaders(values []uint16) []int {
 	defer restore()
 	out := make([]int, 0, len(values))
 	for _, v := range values {
-		p := unsafe.Pointer(C.sub_57A1B0(C.short(v)))
+		p := unsafe.Pointer(portTestInvoke_sub_57A1B0(C.short(v)))
 		index := -1
 		if p != nil {
 			index = -2
@@ -215,7 +215,7 @@ func PortTestRules(spec PortTestRulesSpec) (out PortTestRulesResult, err error) 
 		if spec.Wrapper {
 			Sub_57AAA0(spec.User, settings, unsafe.Pointer(head))
 		} else {
-			result = uint8(C.sub_57AAA0((*C.char)(unsafe.Pointer(name)), (*C.char)(unsafe.Pointer(settings)), (*C.int)(unsafe.Pointer(head))))
+			result = uint8(portTestInvoke_sub_57AAA0((*C.char)(unsafe.Pointer(name)), (*C.char)(unsafe.Pointer(settings)), (*C.int)(unsafe.Pointer(head))))
 		}
 		free()
 		out.Steps = append(out.Steps, snapshot(result))
@@ -232,7 +232,7 @@ func PortTestRules(spec PortTestRulesSpec) (out PortTestRulesResult, err error) 
 		if spec.Wrapper {
 			Sub_57A1E0(settings, spec.User, unsafe.Pointer(head), int(spec.Selection), noxflags.GameFlag(spec.Flags))
 		} else {
-			result = uint8(C.sub_57A1E0((*C.int)(unsafe.Pointer(settings)), user, (*C.int)(unsafe.Pointer(head)), C.char(spec.Selection), C.short(spec.Flags)))
+			result = uint8(portTestInvoke_sub_57A1E0((*C.int)(unsafe.Pointer(settings)), user, (*C.int)(unsafe.Pointer(head)), C.char(spec.Selection), C.short(spec.Flags)))
 		}
 		out.Steps = append(out.Steps, snapshot(result))
 	case "file":
@@ -272,4 +272,20 @@ func ruleTestPath(s string) string {
 		return s[:i]
 	}
 	return s
+}
+
+// Fixture-native copies preserve the original wrapper ABI conversions.
+func portTestInvoke_sub_57A1B0(a1 C.short) *C.char { return ruleHeader(uint16(a1)) }
+
+func portTestInvoke_sub_57A1E0(a1 *C.int, a2 *C.char, a3 *C.int, a4 C.char, a5 C.short) C.char {
+	st := (*server.Settings2)(unsafe.Pointer(a1))
+	name := "user.rul"
+	if a2 != nil {
+		name = GoString(a2)
+	}
+	return C.char(ruleLoad(st, name, (*C.nox_list_item_t)(unsafe.Pointer(a3)), byte(a4), uint16(a5)))
+}
+
+func portTestInvoke_sub_57AAA0(name *C.char, settings *C.char, list *C.int) C.char {
+	return C.char(ruleWrite(GoString(name), (*server.Settings2)(unsafe.Pointer(settings)), (*C.nox_list_item_t)(unsafe.Pointer(list))))
 }

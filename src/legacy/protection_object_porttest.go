@@ -2,10 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME5_2.h"
-*/
-import "C"
 import (
 	"bytes"
 	"unsafe"
@@ -86,9 +82,9 @@ func PortTestObjectProtection(initial [][2]uint32, key, sum, id uint32, spec Por
 		var result uint32
 		for i := 0; i < repeat; i++ {
 			if mode == 0 {
-				result = uint32(C.nox_xxx_protect_56FBF0(C.int(id), asObjectC(obj)))
+				result = uint32(portTestInvoke_nox_xxx_protect_56FBF0(int32(id), asObjectC(obj)))
 			} else {
-				result = uint32(C.nox_xxx_protect_56FC50(C.int(id), asObjectC(obj)))
+				result = uint32(portTestInvoke_nox_xxx_protect_56FC50(int32(id), asObjectC(obj)))
 			}
 			out.Results = append(out.Results, result)
 		}
@@ -98,4 +94,13 @@ func PortTestObjectProtection(initial [][2]uint32, key, sum, id uint32, spec Por
 		out.ObjectUnchanged = out.ObjectUnchanged && bytes.Equal(b, before[i])
 	}
 	return out
+}
+
+// Fixture-native copies preserve the original wrapper ABI conversions.
+func portTestInvoke_nox_xxx_protect_56FBF0(id int32, obj *nox_object_t) int32 {
+	return int32(toggleProtectionObject(int32(id), asObjectS(obj)))
+}
+
+func portTestInvoke_nox_xxx_protect_56FC50(id int32, obj *nox_object_t) int32 {
+	return int32(toggleProtectionObject(int32(id), asObjectS(obj)))
 }

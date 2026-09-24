@@ -2,21 +2,6 @@
 
 package legacy
 
-/*
-#include <stddef.h>
-#include <stdint.h>
-#include "GAME5_2.h"
-
-
-// Keeping the loop in C makes the exhaustive boundary fixture one cgo call.
-static void portTestDurabilityBatch(const uint16_t* current, const uint16_t* maximum, int* out, size_t n) {
-	for (size_t i = 0; i < n; i++) {
-		out[i] = sub_57B190(current[i], maximum[i]);
-	}
-}
-*/
-import "C"
-
 import (
 	"unsafe"
 
@@ -35,8 +20,8 @@ type PortTestDurabilitySnapshot struct {
 	AfterRestoreHalf, AfterRestoreQuarter uint64
 }
 
-// PortTestDurability invokes the live C ABI entry after replacing its two
-// threshold doubles by raw bits. It observes that C only reads them, then
+// PortTestDurability invokes the Go owner after replacing its two
+// threshold doubles by raw bits. It observes that the owner only reads them, then
 // restores both globals even on a test panic.
 func PortTestDurability(cases []PortTestDurabilityCase, halfBits, quarterBits uint64) (snap PortTestDurabilitySnapshot) {
 	if len(cases) == 0 {
@@ -54,15 +39,13 @@ func PortTestDurability(cases []PortTestDurabilityCase, halfBits, quarterBits ui
 
 	cur := make([]uint16, len(cases))
 	max := make([]uint16, len(cases))
-	out := make([]C.int, len(cases))
+	out := make([]int, len(cases))
 	for i, c := range cases {
 		cur[i], max[i] = c.Current, c.Maximum
 	}
-	C.portTestDurabilityBatch(
-		(*C.uint16_t)(unsafe.Pointer(unsafe.SliceData(cur))),
-		(*C.uint16_t)(unsafe.Pointer(unsafe.SliceData(max))),
-		(*C.int)(unsafe.Pointer(unsafe.SliceData(out))), C.size_t(len(out)),
-	)
+	for i := range out {
+		out[i] = durabilityBand(cur[i], max[i])
+	}
 	snap.AfterCallHalf, snap.AfterCallQuarter = *half, *quarter
 	snap.Results = make([]int, len(out))
 	for i, v := range out {

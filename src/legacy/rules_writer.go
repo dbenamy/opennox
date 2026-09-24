@@ -14,11 +14,6 @@ import (
 	"github.com/opennox/opennox/v1/server"
 )
 
-//export sub_57AAA0
-func sub_57AAA0(name *C.char, settings *C.char, list *C.int) C.char {
-	return C.char(ruleWrite(GoString(name), (*server.Settings2)(unsafe.Pointer(settings)), (*C.nox_list_item_t)(unsafe.Pointer(list))))
-}
-
 func ruleWrite(name string, st *server.Settings2, list *C.nox_list_item_t) byte {
 	if st.Field52&0x80 != 0 {
 		return byte(st.Field52)

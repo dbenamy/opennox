@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-*/
-import "C"
-
 import (
 	"bytes"
 	"fmt"
@@ -20,36 +14,36 @@ import (
 // Dispatch through retained C interfaces or directly into Go. Fixture pointer returns are
 // normalized independently from scalar returns by the caller-selected operation.
 func PortTestQuestRuntime(op string, u *server.Object, args [4]uint32) uint64 {
-	ai := C.int(uintptr(unsafe.Pointer(u)))
-	x := C.int(args[0])
+	ai := int32(uintptr(unsafe.Pointer(u)))
+	x := int32(args[0])
 	var rv uint32
 	pointerResult := false
 	switch op {
 	case "sub_4D6000":
-		rv = uint32(C.sub_4D6000(asObjectC(u)))
+		rv = uint32(portTestInvoke_sub_4D6000(asObjectC(u)))
 		pointerResult = true
 	case "sub_4D60E0":
-		rv = uint32(uintptr(unsafe.Pointer(C.sub_4D60E0(ai))))
+		rv = uint32(uintptr(unsafe.Pointer(portTestInvoke_sub_4D60E0(ai))))
 		pointerResult = true
 	case "sub_4D6130":
-		rv = uint32(C.sub_4D6130(ai))
+		rv = uint32(portTestInvoke_sub_4D6130(ai))
 		pointerResult = true
 	case "sub_4D6170":
 		rv = questRuntimeIncrement(u, 4664, 4)
 		pointerResult = true
 	case "sub_4D61F0":
-		rv = uint32(C.sub_4D61F0(ai))
+		rv = uint32(portTestInvoke_sub_4D61F0(ai))
 		pointerResult = true
 	case "sub_4D61B0":
 		questRuntimeIncrement(u, 4668, 8)
 	case "sub_4D60B0":
-		rv = uint32(C.sub_4D60B0())
+		rv = uint32(portTestInvoke_sub_4D60B0())
 	case "nox_xxx_isQuest_4D6F50":
-		rv = uint32(C.nox_xxx_isQuest_4D6F50())
+		rv = uint32(portTestInvoke_nox_xxx_isQuest_4D6F50())
 	case "sub_4D6F70":
-		rv = uint32(C.sub_4D6F70())
+		rv = uint32(portTestInvoke_sub_4D6F70())
 	case "sub_4D6FA0":
-		rv = uint32(C.sub_4D6FA0())
+		rv = uint32(portTestInvoke_sub_4D6FA0())
 	case "sub_4D7150":
 		rv = uint32(questRuntimeObserverDeadline())
 	case "sub_4D71F0":
@@ -59,7 +53,7 @@ func PortTestQuestRuntime(op string, u *server.Object, args [4]uint32) uint64 {
 	case "sub_4D7430":
 		rv = uint32(questRuntimeWord(1556116))
 	case "sub_4D75E0":
-		rv = uint32(C.sub_4D75E0())
+		rv = uint32(portTestInvoke_sub_4D75E0())
 	case "sub_4D76F0":
 		rv = uint32(questRuntimeWord(1556124))
 	case "sub_4D7A80":
@@ -67,23 +61,23 @@ func PortTestQuestRuntime(op string, u *server.Object, args [4]uint32) uint64 {
 	case "sub_4D7B40":
 		rv = uint32(questRuntimeDepartureReset())
 	case "nox_game_getQuestStage_4E3CC0":
-		rv = uint32(C.nox_game_getQuestStage_4E3CC0())
+		rv = uint32(portTestInvoke_nox_game_getQuestStage_4E3CC0())
 	case "nox_xxx_player_4E3CE0":
-		rv = uint32(C.nox_xxx_player_4E3CE0())
+		rv = uint32(portTestInvoke_nox_xxx_player_4E3CE0())
 	case "sub_4E3D50":
-		rv = uint32(C.sub_4E3D50())
+		rv = uint32(portTestInvoke_sub_4E3D50())
 	case "sub_4E4100":
 		rv = uint32(bool2int(questRuntimeRoom()))
 	case "sub_4D6540":
-		rv = uint32(C.sub_4D6540(x))
+		rv = uint32(portTestInvoke_sub_4D6540(x))
 	case "sub_4D6770":
 		rv = uint32(questRuntimeScoreboard(int(x)))
 	case "nox_game_sendQuestStage_4D6960":
 		rv = uint32(questRuntimeStageMessage(int(x), 14, 0))
 	case "nox_xxx_setQuest_4D6F60":
-		rv = uint32(C.nox_xxx_setQuest_4D6F60(x))
+		rv = uint32(portTestInvoke_nox_xxx_setQuest_4D6F60(x))
 	case "sub_4D6F80":
-		rv = uint32(C.sub_4D6F80(x))
+		rv = uint32(portTestInvoke_sub_4D6F80(x))
 	case "nox_xxx_bookCreatureTest_4D70C0":
 		rv = uint32(bool2int(questRuntimeBookAllowed(int(x), 37)))
 	case "sub_4D7100":
@@ -91,7 +85,7 @@ func PortTestQuestRuntime(op string, u *server.Object, args [4]uint32) uint64 {
 	case "sub_4D71E0":
 		rv = uint32(questRuntimeSetSoulFrame(uint32(x)))
 	case "sub_4D72D0":
-		rv = uint32(C.sub_4D72D0(x))
+		rv = uint32(portTestInvoke_sub_4D72D0(x))
 	case "sub_4D7440":
 		rv = uint32(questRuntimeSetWord(1556116, uint32(x)))
 	case "sub_4D7520":
@@ -99,9 +93,9 @@ func PortTestQuestRuntime(op string, u *server.Object, args [4]uint32) uint64 {
 	case "sub_4D75F0":
 		rv = uint32(questRuntimeSetWord(1556108, uint32(x)))
 	case "sub_4D76E0":
-		rv = uint32(C.sub_4D76E0(x))
+		rv = uint32(portTestInvoke_sub_4D76E0(x))
 	case "sub_4D7A60":
-		rv = uint32(C.sub_4D7A60(x))
+		rv = uint32(portTestInvoke_sub_4D7A60(x))
 	case "sub_4D66E0":
 		rv = uint32(questRuntimeScore(args[0], args[1], args[2], args[3]))
 	case "sub_4D6880":
@@ -111,7 +105,7 @@ func PortTestQuestRuntime(op string, u *server.Object, args [4]uint32) uint64 {
 	case "sub_4D7280":
 		rv = uint32(questRuntimeSharedMessage(int(x), byte(args[1])))
 	case "sub_4D7450":
-		rv = uint32(C.sub_4D7450(x, C.short(args[1])))
+		rv = uint32(portTestInvoke_sub_4D7450(x, int16(args[1])))
 	case "sub_4D79A0":
 		rv = uint32(questRuntimeSlotMask(args[0]))
 	case "sub_4D79C0":
@@ -121,9 +115,9 @@ func PortTestQuestRuntime(op string, u *server.Object, args [4]uint32) uint64 {
 	case "nox_server_checkWarpGate_4D7600":
 		questRuntimeWarpTick()
 	case "nox_game_setQuestStage_4E3CD0":
-		C.nox_game_setQuestStage_4E3CD0(x)
+		portTestInvoke_nox_game_setQuestStage_4E3CD0(x)
 	case "sub_4E3DD0":
-		C.sub_4E3DD0() // live Go caller ignores decompiler return
+		portTestInvoke_sub_4E3DD0() // live Go caller ignores decompiler return
 	case "sub_4E3CB0":
 		rv = uint32(questRuntimeSetDifficulty(math.Float32frombits(args[0])))
 	case "sub_4E4080":
@@ -131,7 +125,7 @@ func PortTestQuestRuntime(op string, u *server.Object, args [4]uint32) uint64 {
 	case "sub_4E40C0":
 		questRuntimeCap(202036, "SystemHealthCap", math.Float32frombits(args[0]))
 	case "sub_4E3CA0":
-		return math.Float64bits(float64(C.sub_4E3CA0()))
+		return math.Float64bits(float64(portTestInvoke_sub_4E3CA0()))
 	case "sub_4E40B0":
 		return math.Float64bits(float64(questRuntimeFloat(202032)))
 	case "sub_4E40F0":
@@ -199,3 +193,58 @@ func PortTestQuestRuntimeGlobals() (map[string]*uint32, func()) {
 
 // This char* is a settings record, not a terminated string.
 func PortTestQuestRuntimeSettings() unsafe.Pointer { return questRuntimeSettings() }
+
+// Fixture-native copies preserve the original wrapper ABI conversions.
+func portTestInvoke_nox_game_getQuestStage_4E3CC0() int32 { return int32(questRuntimeStage()) }
+
+func portTestInvoke_nox_game_setQuestStage_4E3CD0(a int32) { questRuntimeSetStage(uint32(a)) }
+
+func portTestInvoke_nox_xxx_isQuest_4D6F50() int32 { return int32(questRuntimeWord(1556160)) }
+
+func portTestInvoke_nox_xxx_player_4E3CE0() int32 { return int32(questRuntimeCount()) }
+
+func portTestInvoke_nox_xxx_setQuest_4D6F60(a int32) int32 {
+	return int32(questRuntimeSetWord(1556160, uint32(a)))
+}
+
+func portTestInvoke_sub_4D6000(a *nox_object_t) int32 { return int32(questRuntimeReset(asObjectS(a))) }
+
+func portTestInvoke_sub_4D60B0() int32 { return int32(questRuntimeResetAll()) }
+
+func portTestInvoke_sub_4D60E0(a int32) *uint32 {
+	return (*uint32)(unsafe.Pointer(uintptr(questRuntimeStageComplete(objectFromWord(uint32(a))))))
+}
+
+func portTestInvoke_sub_4D6130(a int32) int32 {
+	return int32(questRuntimeIncrement(objectFromWord(uint32(a)), 4660, 2))
+}
+
+func portTestInvoke_sub_4D61F0(a int32) int32 {
+	return int32(questRuntimeIncrement(objectFromWord(uint32(a)), 4672, 16))
+}
+
+func portTestInvoke_sub_4D6540(a int32) uint32 { return uint32(questRuntimePlayerScore(int(a))) }
+
+func portTestInvoke_sub_4D6F70() int32 { return int32(questRuntimeWord(1556164)) }
+
+func portTestInvoke_sub_4D6F80(a int32) int32 { return int32(questRuntimeSetWord(1556164, uint32(a))) }
+
+func portTestInvoke_sub_4D6FA0() int32 { return int32(questRuntimeWord(1556104)) }
+
+func portTestInvoke_sub_4D72D0(a int32) int32 { return int32(questRuntimePreviousStage(uint32(a))) }
+
+func portTestInvoke_sub_4D7450(a int32, b int16) int32 {
+	return int32(questRuntimeHighestMessage(int(a), uint16(b)))
+}
+
+func portTestInvoke_sub_4D75E0() int32 { return int32(questRuntimeWord(1556120)) }
+
+func portTestInvoke_sub_4D76E0(a int32) int32 { return int32(questRuntimeSetWord(1556124, uint32(a))) }
+
+func portTestInvoke_sub_4D7A60(a int32) int32 { return int32(questRuntimeDepartureStamp(int(a))) }
+
+func portTestInvoke_sub_4E3CA0() float64 { return float64(questRuntimeFloat(202024)) }
+
+func portTestInvoke_sub_4E3D50() int32 { return int32(questRuntimeDifficulty()) }
+
+func portTestInvoke_sub_4E3DD0() { questRuntimeScaleHealth() }

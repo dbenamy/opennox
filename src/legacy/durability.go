@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-#include "GAME5_2.h"
-*/
-import "C"
-
 import (
 	"math"
 
@@ -28,9 +22,4 @@ func durabilityBand(current, maximum uint16) int {
 		return 3
 	}
 	return 2
-}
-
-//export sub_57B190
-func sub_57B190(current, maximum C.ushort) C.int {
-	return C.int(durabilityBand(uint16(current), uint16(maximum)))
 }

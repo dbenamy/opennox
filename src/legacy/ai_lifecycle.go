@@ -1,18 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME2_3.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4_2.h"
-#include "GAME4_3.h"
-#include "server__object__health.h"
-*/
-import "C"
-
 import (
 	"math"
 	"unsafe"
@@ -229,20 +216,4 @@ func lifecycleFoodSearch(u *server.Object, radius float32, usable bool) *server.
 		return true
 	})
 	return lifecycleCandidate(candidateOff)
-}
-
-//export nox_xxx_mobSearchEdible_544A00
-func nox_xxx_mobSearchEdible_544A00(a1 *nox_object_t, r C.float) C.int {
-	if u := lifecycleFoodSearch(asObjectS(a1), float32(r), false); u != nil {
-		return C.int(uintptr(u.CObj()))
-	}
-	return 0
-}
-
-//export sub_544AE0
-func sub_544AE0(a1 C.int, r C.float) C.int {
-	if u := lifecycleFoodSearch(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(a1)))), float32(r), true); u != nil {
-		return C.int(uintptr(u.CObj()))
-	}
-	return 0
 }

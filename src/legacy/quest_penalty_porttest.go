@@ -2,10 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME5.h"
-*/
-import "C"
 import (
 	"bytes"
 	"encoding/binary"
@@ -184,7 +180,7 @@ func portTestPenaltyCall(proxy *portTestRoamOwnerServer, op int) uint32 {
 	u := &proxy.life.players[0]
 	switch op {
 	case 0:
-		C.sub_54CBD0(C.int(combatPtr(u)))
+		portTestInvoke_sub_54CBD0(int32(combatPtr(u)))
 	case 1:
 		questLoseWeapon(u)
 	case 2:
@@ -244,3 +240,6 @@ func portTestPenaltyTrace(proxy *portTestRoamOwnerServer, normalize func(uint32)
 	proxy.core.Objs.DeletedList = st.deleted
 	return r
 }
+
+// Fixture-native copies preserve the original wrapper ABI conversions.
+func portTestInvoke_sub_54CBD0(a int32) { questDeathPenalty(objectFromWord(uint32(a))) }

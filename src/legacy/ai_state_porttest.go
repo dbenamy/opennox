@@ -234,27 +234,27 @@ func portTestMonsterStateCall(proxy *portTestRoamOwnerServer, u *server.Object, 
 	}
 	switch sp.Op {
 	case 0:
-		return uint64(C.nox_xxx_mobActionToAnimation_533790(p))
+		return uint64(portTestInvoke_nox_xxx_mobActionToAnimation_533790(p))
 	case 1:
 		return uint64(bool2int(monsterCanMelee(u)))
 	case 2:
 		return uint64(bool2int(monsterCanShoot(u)))
 	case 3:
-		return uint64(C.nox_xxx_monsterHasShield_5342C0(p))
+		return uint64(portTestInvoke_nox_xxx_monsterHasShield_5342C0(p))
 	case 4:
-		return uint64(C.nox_xxx_monsterCanCast_534300((*C.nox_object_t)(u.CObj())))
+		return uint64(portTestInvoke_nox_xxx_monsterCanCast_534300((*C.nox_object_t)(u.CObj())))
 	case 5:
-		return uint64(C.nox_xxx_monsterIsMoveing_534320(p))
+		return uint64(portTestInvoke_nox_xxx_monsterIsMoveing_534320(p))
 	case 6:
-		return uint64(C.sub_534340(p))
+		return uint64(portTestInvoke_sub_534340(p))
 	case 7:
-		return uint64(C.nox_xxx_monsterCanAttackAtWill_534390((*C.nox_object_t)(u.CObj())))
+		return uint64(portTestInvoke_nox_xxx_monsterCanAttackAtWill_534390((*C.nox_object_t)(u.CObj())))
 	case 8:
-		return uint64(C.sub_5343C0(p))
+		return uint64(portTestInvoke_sub_5343C0(p))
 	case 9:
 		return uint64(bool2int(monsterAggressionLow(u)))
 	case 10:
-		return uint64(C.sub_534440(p))
+		return uint64(portTestInvoke_sub_534440(p))
 	case 11:
 		return math.Float64bits(float64(u.UpdateDataMonster().MonsterDef.MeleeAttackRange112))
 	case 12:
@@ -266,11 +266,11 @@ func portTestMonsterStateCall(proxy *portTestRoamOwnerServer, u *server.Object, 
 	case 15:
 		return uint64(bool2int(monsterHasFlag9(u)))
 	case 16:
-		return uint64(C.sub_5347C0(p))
+		return uint64(portTestInvoke_sub_5347C0(p))
 	case 17:
 		return uint64(bool2int(monsterPoisoned(u)))
 	case 18:
-		return uint64(C.nox_xxx_mobGetMoveAttemptTime_534810((*C.nox_object_t)(u.CObj())))
+		return uint64(portTestInvoke_nox_xxx_mobGetMoveAttemptTime_534810((*C.nox_object_t)(u.CObj())))
 	case 19:
 		return uint64(bool2int(monsterIsMimic(u)))
 	case 20:
@@ -303,7 +303,7 @@ func portTestMonsterStateCall(proxy *portTestRoamOwnerServer, u *server.Object, 
 		if sp.NilUnit {
 			p = 0
 		}
-		C.nox_xxx_mobCalcDir_533CC0(p, (*C.float)(unsafe.Pointer(point)))
+		portTestInvoke_nox_xxx_mobCalcDir_533CC0(p, (*C.float)(unsafe.Pointer(point)))
 	default:
 		panic("invalid monster-state operation")
 	}
@@ -337,4 +337,49 @@ func portTestMonsterStateTrace(proxy *portTestRoamOwnerServer, u *server.Object,
 		r.Caches[i] = *memmap.PtrUint32(0x5D4594, off)
 	}
 	return r
+}
+
+// Fixture-native copies preserve the original wrapper ABI conversions.
+func portTestInvoke_nox_xxx_mobActionToAnimation_533790(p C.int) C.int {
+	return C.int(monsterActionToAnimation(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p))))))
+}
+
+func portTestInvoke_nox_xxx_mobCalcDir_533CC0(p C.int, v *C.float) {
+	monsterCalcDir(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p)))), (*float32)(unsafe.Pointer(v)))
+}
+
+func portTestInvoke_nox_xxx_mobGetMoveAttemptTime_534810(p *nox_object_t) C.int {
+	return C.int(bool2int(monsterMoveAttempt(asObjectS(p))))
+}
+
+func portTestInvoke_nox_xxx_monsterCanAttackAtWill_534390(p *nox_object_t) C.int {
+	return C.int(bool2int(monsterAttackAtWill(asObjectS(p))))
+}
+
+func portTestInvoke_nox_xxx_monsterCanCast_534300(p *nox_object_t) C.int {
+	return C.int(bool2int(monsterCanCast(asObjectS(p))))
+}
+
+func portTestInvoke_nox_xxx_monsterHasShield_5342C0(p C.int) C.int {
+	return C.int(bool2int(monsterHasShield(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p)))))))
+}
+
+func portTestInvoke_nox_xxx_monsterIsMoveing_534320(p C.int) C.int {
+	return C.int(bool2int(monsterMoving(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p)))))))
+}
+
+func portTestInvoke_sub_534340(p C.int) C.int {
+	return C.int(bool2int(monsterCanBlockHead(objectFromInt(p))))
+}
+
+func portTestInvoke_sub_5343C0(p C.int) C.int {
+	return C.int(bool2int(monsterAggressionMid(objectFromInt(p))))
+}
+
+func portTestInvoke_sub_534440(p C.int) C.int {
+	return C.int(bool2int(monsterAggressionRetreat(objectFromInt(p))))
+}
+
+func portTestInvoke_sub_5347C0(p C.int) C.int {
+	return C.int(bool2int(monsterHasMissingHealth(objectFromInt(p))))
 }

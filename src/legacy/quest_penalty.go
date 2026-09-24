@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_3.h"
-#include "GAME4_1.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
@@ -220,6 +215,3 @@ func questLoseGems(u *server.Object) {
 		t = next
 	}
 }
-
-//export sub_54CBD0
-func sub_54CBD0(a C.int) { questDeathPenalty(objectFromInt(a)) }

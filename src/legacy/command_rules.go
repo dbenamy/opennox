@@ -109,8 +109,3 @@ func commandRulesMap(name string) int {
 	path := prefix[:len(prefix)-4] + "\\" + name
 	return commandRulesPath(&path)
 }
-
-//export sub_57A950
-func sub_57A950(name *C.char) C.int {
-	return C.int(commandRulesMap(GoString(name)))
-}

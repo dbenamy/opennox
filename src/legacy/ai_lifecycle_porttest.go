@@ -271,9 +271,9 @@ func portTestLifecycleCall(u *server.Object, sp *PortTestLifecycleSpec) int {
 	case 8:
 		lifecycleBurnDelete(u)
 	case 9:
-		return int(C.nox_xxx_mobSearchEdible_544A00(asObjectC(u), C.float(math.Float32frombits(sp.Range))))
+		return int(portTestInvoke_nox_xxx_mobSearchEdible_544A00(asObjectC(u), C.float(math.Float32frombits(sp.Range))))
 	case 10:
-		return int(C.sub_544AE0(p, C.float(math.Float32frombits(sp.Range))))
+		return int(portTestInvoke_sub_544AE0(p, C.float(math.Float32frombits(sp.Range))))
 	}
 	return 0
 }
@@ -349,4 +349,19 @@ func portTestLifecycleTrace(proxy *portTestRoamOwnerServer, h *server.HealthData
 		proxy.trace = append(proxy.trace, uint32(off), normalize(*memmap.PtrUint32(0x5D4594, off)))
 	}
 	return r
+}
+
+// Fixture-native copies preserve the original wrapper ABI conversions.
+func portTestInvoke_nox_xxx_mobSearchEdible_544A00(a1 *nox_object_t, r C.float) C.int {
+	if u := lifecycleFoodSearch(asObjectS(a1), float32(r), false); u != nil {
+		return C.int(uintptr(u.CObj()))
+	}
+	return 0
+}
+
+func portTestInvoke_sub_544AE0(a1 C.int, r C.float) C.int {
+	if u := lifecycleFoodSearch(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(a1)))), float32(r), true); u != nil {
+		return C.int(uintptr(u.CObj()))
+	}
+	return 0
 }

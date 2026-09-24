@@ -263,6 +263,12 @@ Apply these review rules learned from earlier batches:
   audit missed test-preamble calls by treating them as comments. Keep broad
   reachability algorithm design with the primary; prefer explicit edit manifests
   for helper coding tasks until those audits demonstrate reliable coverage.
+- When moving wrapper bodies into test fixtures, carry over the package imports
+  those bodies use and remove imports made obsolete in their old files. Matching
+  function bodies alone does not establish that the destination compiles. Prefer
+  exact-width Go types where the fixture no longer needs a C interface, and create
+  identity keys only for addresses with actual consumers. The server-fixture batch
+  needed these corrections before its first build.
 - Trace test selection through enclosing functions and fixture operation selectors.
   A captured callback slot does not prove a branch ran. Identify media by actual
   container/codec headers rather than filename extensions.

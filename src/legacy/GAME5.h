@@ -3,8 +3,6 @@
 
 #include "defs.h"
 
-void sub_548830(int a1);
-void sub_548860(int a1, short a2);
 int nox_xxx_strikeOgre_549220(float a1);
 int nox_xxx_strikeMonsterDefault_549380(float a1);
 int nox_xxx_strikeScorpion_5495B0(float a1);
@@ -31,8 +29,6 @@ int sub_54A850(int a1);
 int sub_54A890(int a1);
 int sub_54A900(int a1);
 int sub_54A950(int a1);
-short nox_xxx_monsterAutoSpells_54C0C0(nox_object_t* a1p);
-void sub_54CBD0(int a1);
 float* nox_xxx_createSpark_54FD80(float a1, float a2, int a3, int a4, float a5, float a6, float a7, int a8);
 
 #endif // NOX_PORT_GAME5

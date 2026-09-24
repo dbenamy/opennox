@@ -17,7 +17,6 @@ int sub_411490(int a1, int a2);
 char* nox_xxx_cliGamedataGet_416590(int a1);
 char* sub_4165B0();
 void* sub_416640();
-int sub_417F50(int a1);
 
 
 #endif // NOX_PORT_GAME1

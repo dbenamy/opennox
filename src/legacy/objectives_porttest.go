@@ -2,46 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME3_3.h"
-#include "GAME4_3.h"
-int sub_417F50(int a1);
-void nox_xxx_pickupFlagCtf_4EA490(int a1, int a2);
-int sub_4EB9B0(int a1, int a2);
-int sub_4ECBD0(int a1);
-int sub_4ECC00(char** a1);
-int sub_4EA7A0(int a1);
-short sub_4EA800(int a1, int a2);
-static void* objectiveFunction(int id){switch(id){
-case 0:return (void*)sub_417F50;
-case 1:return (void*)nox_xxx_pickupFlagCtf_4EA490;
-case 2:return (void*)sub_4EB9B0;
-
-
-
-case 6:return (void*)sub_4ECBD0;
-case 7:return (void*)sub_4ECC00;
-
-case 13:return (void*)sub_4EA7A0;
-case 14:return (void*)sub_4EA800;
-default:return 0;}}
-static uint32_t objectiveCall(int id,nox_object_t* u,nox_object_t* target,int value){switch(id){
-case 0: return (uint32_t)sub_417F50(value?(int)u:0);
-case 1: nox_xxx_pickupFlagCtf_4EA490((int)u,(int)target);return 0;
-case 2: return (uint32_t)sub_4EB9B0((int)u,(int)target);
-
-
-
-case 6: return (uint32_t)sub_4ECBD0((int)u);
-case 7: return (uint32_t)sub_4ECC00(*(char***)(*(char**)((char*)u+692)+4));
-
-case 13: return (uint32_t)sub_4EA7A0((int)target);
-case 14: return (uint32_t)sub_4EA800((int)u,(int)target);
-default:return 0;}}
-*/
-import "C"
 import (
 	"bytes"
 	"github.com/opennox/libs/types"
@@ -380,7 +340,24 @@ func portTestObjectiveFunction(id int) unsafe.Pointer {
 	case 12:
 		return collisionKey(collisionIdentityFlag)
 	default:
-		return C.objectiveFunction(C.int(id))
+		switch id {
+		case 0:
+			return portTestFixtureKey("sub_417F50")
+		case 1:
+			return portTestFixtureKey("nox_xxx_pickupFlagCtf_4EA490")
+		case 2:
+			return portTestFixtureKey("sub_4EB9B0")
+		case 6:
+			return portTestFixtureKey("sub_4ECBD0")
+		case 7:
+			return portTestFixtureKey("sub_4ECC00")
+		case 13:
+			return portTestFixtureKey("sub_4EA7A0")
+		case 14:
+			return portTestFixtureKey("sub_4EA800")
+		default:
+			return nil
+		}
 	}
 }
 
@@ -405,6 +382,55 @@ func portTestObjectiveCall(id int, u, target *server.Object, normal *types.Point
 	case 12:
 		return server.PortTestCollisionResult(collisionKey(collisionIdentityFlag), u, target, normal)
 	default:
-		return uint32(C.objectiveCall(C.int(id), asObjectC(u), asObjectC(target), C.int(value)))
+		switch id {
+		case 0:
+			var arg int32
+			if value != 0 {
+				arg = int32(uintptr(u.CObj()))
+			}
+			return uint32(portTestInvoke_sub_417F50(arg))
+		case 1:
+			portTestInvoke_nox_xxx_pickupFlagCtf_4EA490(int32(uintptr(u.CObj())), int32(uintptr(target.CObj())))
+		case 2:
+			return uint32(portTestInvoke_sub_4EB9B0(int32(uintptr(u.CObj())), int32(uintptr(target.CObj()))))
+		case 6:
+			return uint32(portTestInvoke_sub_4ECBD0(int32(uintptr(u.CObj()))))
+		case 7:
+			root := *(*unsafe.Pointer)(unsafe.Add(u.CObj(), 692))
+			arg := (**int8)(*(*unsafe.Pointer)(unsafe.Add(root, 4)))
+			return uint32(portTestInvoke_sub_4ECC00(arg))
+		case 13:
+			return uint32(portTestInvoke_sub_4EA7A0(int32(uintptr(target.CObj()))))
+		case 14:
+			return uint32(int32(int16(portTestInvoke_sub_4EA800(int32(uintptr(u.CObj())), int32(uintptr(target.CObj()))))))
+		}
+		return 0
 	}
 }
+
+// Fixture-native copies preserve the original wrapper ABI conversions.
+func portTestInvoke_nox_xxx_pickupFlagCtf_4EA490(a, b int32) {
+	objectiveCTFPickup(objectFromWord(uint32(a)), objectFromWord(uint32(b)))
+}
+
+func portTestInvoke_sub_417F50(a int32) int32 {
+	return int32(objectiveBallReset(objectFromWord(uint32(a))))
+}
+
+func portTestInvoke_sub_4EA7A0(a int32) int32 {
+	return int32(objectivePickupBuffs(objectFromWord(uint32(a))))
+}
+
+func portTestInvoke_sub_4EA800(a, b int32) int16 {
+	return int16(objectiveFlagBallScore(objectFromWord(uint32(a)), objectFromWord(uint32(b))))
+}
+
+func portTestInvoke_sub_4EB9B0(a, b int32) int32 {
+	return int32(inventoryInt(objectiveRememberOwner(objectFromWord(uint32(a)), objectFromWord(uint32(b)))))
+}
+
+func portTestInvoke_sub_4ECBD0(a int32) int32 {
+	return int32(objectiveFlagID(objectFromWord(uint32(a))))
+}
+
+func portTestInvoke_sub_4ECC00(a **int8) int32 { return int32(objectiveColor(unsafe.Pointer(a))) }

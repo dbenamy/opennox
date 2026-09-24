@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME3_3.h"
-*/
-import "C"
-
 import (
 	"fmt"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -256,7 +251,7 @@ func questEligibilityInvoke(op int, args [5]uint32) uint32 {
 	case 2:
 		value = questEligibilityAbility(args[0])
 	case 3:
-		return uint32(C.sub_4F2590(C.int(args[0])))
+		return uint32(portTestInvoke_sub_4F2590(int32(args[0])))
 	case 4:
 		value = questEligibilityBook(obj())
 	case 5, 9:
@@ -270,11 +265,11 @@ func questEligibilityInvoke(op int, args [5]uint32) uint32 {
 	case 10:
 		value = questEligibilitySpecial(obj())
 	case 11:
-		return uint32(C.sub_4F2C30(C.int(args[0])))
+		return uint32(portTestInvoke_sub_4F2C30(int32(args[0])))
 	case 12:
-		return uint32(C.nox_xxx_spell_4F2E70(C.int(args[0])))
+		return uint32(portTestInvoke_nox_xxx_spell_4F2E70(int32(args[0])))
 	case 13:
-		return uint32(C.sub_4F2EF0(C.int(args[0])))
+		return uint32(portTestInvoke_sub_4F2EF0(int32(args[0])))
 	}
 	return uint32(bool2int(value))
 }
@@ -303,4 +298,21 @@ func (p *portTestShopPools) eligibilitySnapshot() *PortTestQuestEligibilityResul
 		out.Tables = append(out.Tables, norm(unsafe.Pointer(&b[0]), len(b)/4))
 	}
 	return out
+}
+
+// Fixture-native copies preserve the original wrapper ABI conversions.
+func portTestInvoke_nox_xxx_spell_4F2E70(id int32) int32 {
+	return int32(bool2int(questEligibilitySpell(uint32(id))))
+}
+
+func portTestInvoke_sub_4F2590(ptr int32) int32 {
+	return int32(bool2int(questEligibilityItem((*server.Object)(unsafe.Pointer(uintptr(uint32(ptr)))))))
+}
+
+func portTestInvoke_sub_4F2C30(ptr int32) int32 {
+	return int32(bool2int(questEligibilityInventoryLimit((*server.Object)(unsafe.Pointer(uintptr(uint32(ptr)))))))
+}
+
+func portTestInvoke_sub_4F2EF0(id int32) int32 {
+	return int32(bool2int(questEligibilityBeast(uint32(id))))
 }

@@ -2,14 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include "GAME4_1.h"
-
-
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"unsafe"
@@ -275,7 +267,7 @@ func (f *portTestGeneratorSpawnPolicy) dispatch(gen *server.Object, spec PortTes
 	case PortTestGeneratorSpawnRegister:
 		return uint32(spawnPolicyRegister(gen, u))
 	case PortTestGeneratorSpawnRemove:
-		C.sub_50E140(C.int(uintptr(u.CObj())))
+		portTestInvoke_sub_50E140(int32(uintptr(u.CObj())))
 	case PortTestGeneratorSpawnNonZombieCleanup:
 		spawnPolicyDeathRelease(u)
 	case PortTestGeneratorSpawnGlyphCleanup:
@@ -481,3 +473,6 @@ func (f *portTestGeneratorSpawnPolicy) unindex() {
 		u.ObjFlags &^= object.FlagPartitioned
 	}
 }
+
+// Fixture-native copies preserve the original wrapper ABI conversions.
+func portTestInvoke_sub_50E140(a int32) { spawnPolicyRelease(objectFromWord(uint32(a))) }

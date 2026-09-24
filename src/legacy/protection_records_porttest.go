@@ -2,10 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME5_2.h"
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -37,11 +33,11 @@ func PortTestRecords(values [][2]uint32, key uint32, id, index, a, b int, counte
 		records, free = alloc.Make([][4]uint32{}, len(values))
 		defer free()
 	}
-	ptr := func(i int) *C.int {
+	ptr := func(i int) *int32 {
 		if i < 0 || i >= len(records) {
 			return nil
 		}
-		return (*C.int)(unsafe.Pointer(&records[i]))
+		return (*int32)(unsafe.Pointer(&records[i]))
 	}
 	for i, v := range values {
 		records[i] = [4]uint32{v[0], v[1], uint32(uintptr(unsafe.Pointer(ptr(i + 1)))), uint32(uintptr(unsafe.Pointer(ptr(i - 1))))}
@@ -62,7 +58,7 @@ func PortTestRecords(values [][2]uint32, key uint32, id, index, a, b int, counte
 		return -2 // invalid non-null result must not be confused with a miss
 	}
 	out := PortTestRecordResult{
-		Lookup: findIndex(unsafe.Pointer(C.sub_56F590(C.int(id)))),
+		Lookup: findIndex(unsafe.Pointer(portTestInvoke_sub_56F590(int32(id)))),
 		At:     findIndex(unsafe.Pointer(protection.At(protectionHead(), int32(index)))),
 	}
 	swapProtectionRecords((*protection.Record)(unsafe.Pointer(ptr(a))), (*protection.Record)(unsafe.Pointer(ptr(b))))
@@ -73,4 +69,10 @@ func PortTestRecords(values [][2]uint32, key uint32, id, index, a, b int, counte
 		out.LinksUnchanged = out.LinksUnchanged && r[2] == before[i][2] && r[3] == before[i][3]
 	}
 	return out
+}
+
+// Fixture-native copies preserve the original wrapper ABI conversions.
+func portTestInvoke_sub_56F590(id int32) *uint32 {
+	p := protection.Find(protectionHead(), uint32(dword_5d4594_2516348), uint32(id))
+	return (*uint32)(unsafe.Pointer(p))
 }

@@ -3,16 +3,7 @@
 package legacy
 
 /*
-#include "GAME4_3.h"
-#include "GAME5.h"
-void nox_xxx_fnElevatorShaft_53B410(int a1, int a2);
-void nox_xxx_elevatorAud_53B490(int a1, int a2);
-void nox_xxx_elevatorFn_53B750(int a1, int a2);
-void nox_xxx_fnPentagramTeleport_53C060(float* a1, int a2);
-void sub_53C140(float* a1, int a2);
-void sub_53C240(float* a1, int arg4);
-void sub_548830(int a1);
-void sub_548860(int a1, short a2);
+#include <stdint.h>
 // A retained char return can contain the low byte of the collision callback
 // address. Align this recorder so that byte is stable across builds and ASLR.
 static uint32_t worldCalls[256]; static int worldCount;
@@ -23,30 +14,11 @@ static void* worldCollidePtr(void){return worldCollide;}
 static void worldReset(void){worldCount=0;}
 static int worldN(void){return worldCount;}
 static uint32_t worldValue(int i){return worldCalls[i];}
-static void* worldFunction(int id) {switch(id){
-case 7: return (void*)nox_xxx_fnElevatorShaft_53B410;
-case 8: return (void*)nox_xxx_elevatorAud_53B490;
-case 10: return (void*)nox_xxx_elevatorFn_53B750;
-case 13: return (void*)nox_xxx_fnPentagramTeleport_53C060;
-case 15: return (void*)sub_53C140;
-case 17: return (void*)sub_53C240;
-case 19: return (void*)sub_548830;
-case 20: return (void*)sub_548860;
-default:return 0;}}
-static uint32_t worldCall(int id,nox_object_t* u,nox_object_t* target,int value){switch(id){
-case 7: nox_xxx_fnElevatorShaft_53B410((int)target,(int)u);return 0;
-case 8: nox_xxx_elevatorAud_53B490((int)u,value);return 0;
-case 10: nox_xxx_elevatorFn_53B750((int)target,(int)u);return 0;
-case 13: nox_xxx_fnPentagramTeleport_53C060((float*)target,(int)((char*)u+56));return 0;
-case 15: sub_53C140((float*)target,(int)((char*)u+56));return 0;
-case 17: sub_53C240((float*)target,(int)u);return 0;
-case 19: sub_548830((int)*(uint32_t*)((char*)u+748));return 0;
-case 20: sub_548860((int)u,(short)value);return 0;
-default:return 0;}}
 */
 import "C"
 import (
 	"github.com/opennox/libs/object"
+	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
@@ -195,7 +167,26 @@ func portTestWorldFunction(id int) unsafe.Pointer {
 	case 18:
 		return updateIdentityKey(updateIDTrapDoor)
 	default:
-		return C.worldFunction(C.int(id))
+		switch id {
+		case 7:
+			return portTestFixtureKey("nox_xxx_fnElevatorShaft_53B410")
+		case 8:
+			return portTestFixtureKey("nox_xxx_elevatorAud_53B490")
+		case 10:
+			return portTestFixtureKey("nox_xxx_elevatorFn_53B750")
+		case 13:
+			return portTestFixtureKey("nox_xxx_fnPentagramTeleport_53C060")
+		case 15:
+			return portTestFixtureKey("sub_53C140")
+		case 17:
+			return portTestFixtureKey("sub_53C240")
+		case 19:
+			return portTestFixtureKey("sub_548830")
+		case 20:
+			return portTestFixtureKey("sub_548860")
+		default:
+			return nil
+		}
 	}
 }
 
@@ -232,7 +223,25 @@ func portTestWorldCall(id int, u, target *server.Object, value int) uint32 {
 	case 18:
 		return worldTrapDoor(u)
 	default:
-		return uint32(C.worldCall(C.int(id), asObjectC(u), asObjectC(target), C.int(value)))
+		switch id {
+		case 7:
+			portTestInvoke_nox_xxx_fnElevatorShaft_53B410(C.int(uintptr(target.CObj())), C.int(uintptr(u.CObj())))
+		case 8:
+			portTestInvoke_nox_xxx_elevatorAud_53B490(C.int(uintptr(u.CObj())), C.int(value))
+		case 10:
+			portTestInvoke_nox_xxx_elevatorFn_53B750(C.int(uintptr(target.CObj())), C.int(uintptr(u.CObj())))
+		case 13:
+			portTestInvoke_nox_xxx_fnPentagramTeleport_53C060((*C.float)(unsafe.Pointer(target.CObj())), C.int(uintptr(unsafe.Add(u.CObj(), 56))))
+		case 15:
+			portTestInvoke_sub_53C140((*C.float)(unsafe.Pointer(target.CObj())), C.int(uintptr(unsafe.Add(u.CObj(), 56))))
+		case 17:
+			portTestInvoke_sub_53C240((*C.float)(unsafe.Pointer(target.CObj())), C.int(uintptr(u.CObj())))
+		case 19:
+			portTestInvoke_sub_548830(C.int(*(*uint32)(unsafe.Add(u.CObj(), 748))))
+		case 20:
+			portTestInvoke_sub_548860(C.int(uintptr(u.CObj())), C.short(value))
+		}
+		return 0
 	}
 }
 
@@ -280,3 +289,32 @@ func (p *portTestShopPools) worldSnapshot(out []uint32) []uint32 {
 	}
 	return p.objectivesSnapshot(out)
 }
+
+// Fixture-native copies preserve the original wrapper ABI conversions.
+func portTestInvoke_nox_xxx_elevatorAud_53B490(a1 C.int, a2 C.int) {
+	worldElevatorSound(objectFromInt(a1), a2 != 0)
+}
+
+func portTestInvoke_nox_xxx_elevatorFn_53B750(a1 C.int, a2 C.int) {
+	worldElevatorCandidate(objectFromInt(a1), objectFromInt(a2))
+}
+
+func portTestInvoke_nox_xxx_fnElevatorShaft_53B410(a1 C.int, a2 C.int) {
+	worldShaftCandidate(objectFromInt(a1), objectFromInt(a2))
+}
+
+func portTestInvoke_nox_xxx_fnPentagramTeleport_53C060(a1 *C.float, a2 C.int) {
+	worldTeleportCandidate((*server.Object)(unsafe.Pointer(a1)), (*types.Pointf)(unsafe.Pointer(uintptr(uint32(a2)))), true)
+}
+
+func portTestInvoke_sub_53C140(a1 *C.float, a2 C.int) {
+	worldTeleportCandidate((*server.Object)(unsafe.Pointer(a1)), (*types.Pointf)(unsafe.Pointer(uintptr(uint32(a2)))), false)
+}
+
+func portTestInvoke_sub_53C240(a1 *C.float, arg4 C.int) {
+	worldBlowCandidate((*server.Object)(unsafe.Pointer(a1)), objectFromInt(arg4))
+}
+
+func portTestInvoke_sub_548830(a1 C.int) { worldAngleQueue(unsafe.Pointer(uintptr(uint32(a1)))) }
+
+func portTestInvoke_sub_548860(a1 C.int, a2 C.short) { worldAngle(objectFromInt(a1), int16(a2)) }

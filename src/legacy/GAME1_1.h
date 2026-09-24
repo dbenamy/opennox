@@ -27,7 +27,6 @@ int* sub_425A50();
 int* sub_425A60(int* a1);
 int* sub_425A70(int a1);
 char* sub_425B60(void* lpMem, int a2);
-int nox_xxx_mapReadSection_426EA0(void* a1, char* name, uint32_t* a3);
 
 
 #endif // NOX_PORT_GAME1_1

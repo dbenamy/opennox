@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_3.h" // retained inventory insertion
-#include "GAME4_1.h"
-
-
-*/
-import "C"
-
 import (
 	"unsafe"
 
@@ -202,5 +194,3 @@ func spawnPolicyGlyphRelease(u *server.Object) {
 
 // The retained object and monster-death owners call these two C entrypoints.
 //
-//export sub_50E140
-func sub_50E140(a C.int) { spawnPolicyRelease(objectFromInt(a)) }

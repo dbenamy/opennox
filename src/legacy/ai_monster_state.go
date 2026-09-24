@@ -346,33 +346,8 @@ func monsterEnactOrder(source, u *server.Object, order int) {
 	}
 }
 
-//export nox_xxx_mobActionToAnimation_533790
-func nox_xxx_mobActionToAnimation_533790(p C.int) C.int {
-	return C.int(monsterActionToAnimation(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p))))))
-}
-
 func nox_xxx_orderUnit_533900(a, b *nox_object_t, o C.int) {
 	monsterOrder(asObjectS(a), asObjectS(b), int(o))
-}
-
-//export nox_xxx_mobCalcDir_533CC0
-func nox_xxx_mobCalcDir_533CC0(p C.int, v *C.float) {
-	monsterCalcDir(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p)))), (*float32)(unsafe.Pointer(v)))
-}
-
-//export nox_xxx_monsterHasShield_5342C0
-func nox_xxx_monsterHasShield_5342C0(p C.int) C.int {
-	return C.int(bool2int(monsterHasShield(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p)))))))
-}
-
-//export nox_xxx_monsterCanCast_534300
-func nox_xxx_monsterCanCast_534300(p *nox_object_t) C.int {
-	return C.int(bool2int(monsterCanCast(asObjectS(p))))
-}
-
-//export nox_xxx_monsterIsMoveing_534320
-func nox_xxx_monsterIsMoveing_534320(p C.int) C.int {
-	return C.int(bool2int(monsterMoving(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p)))))))
 }
 
 func objectFromInt(p C.int) *server.Object {
@@ -386,28 +361,4 @@ func objectFromWord(p uint32) *server.Object {
 func monsterCanBlockHead(u *server.Object) bool {
 	a := monsterHeadSafe(u)
 	return a == 0 || a == 1 || a == 4 || a == 25 || a == 26 || a == 27 || a == 23
-}
-
-//export sub_534340
-func sub_534340(p C.int) C.int {
-	return C.int(bool2int(monsterCanBlockHead(objectFromInt(p))))
-}
-
-//export nox_xxx_monsterCanAttackAtWill_534390
-func nox_xxx_monsterCanAttackAtWill_534390(p *nox_object_t) C.int {
-	return C.int(bool2int(monsterAttackAtWill(asObjectS(p))))
-}
-
-//export sub_5343C0
-func sub_5343C0(p C.int) C.int { return C.int(bool2int(monsterAggressionMid(objectFromInt(p)))) }
-
-//export sub_534440
-func sub_534440(p C.int) C.int { return C.int(bool2int(monsterAggressionRetreat(objectFromInt(p)))) }
-
-//export sub_5347C0
-func sub_5347C0(p C.int) C.int { return C.int(bool2int(monsterHasMissingHealth(objectFromInt(p)))) }
-
-//export nox_xxx_mobGetMoveAttemptTime_534810
-func nox_xxx_mobGetMoveAttemptTime_534810(p *nox_object_t) C.int {
-	return C.int(bool2int(monsterMoveAttempt(asObjectS(p))))
 }

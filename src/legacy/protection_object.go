@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include <stdint.h>
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -53,14 +48,4 @@ func toggleProtectionObject(id int32, obj *server.Object) uint32 {
 	r.Value ^= digest
 	dword_5d4594_2516328 ^= uint32(digest)
 	return uint32(dword_5d4594_2516328)
-}
-
-//export nox_xxx_protect_56FBF0
-func nox_xxx_protect_56FBF0(id C.int, obj *nox_object_t) C.int {
-	return C.int(toggleProtectionObject(int32(id), asObjectS(obj)))
-}
-
-//export nox_xxx_protect_56FC50
-func nox_xxx_protect_56FC50(id C.int, obj *nox_object_t) C.int {
-	return C.int(toggleProtectionObject(int32(id), asObjectS(obj)))
 }

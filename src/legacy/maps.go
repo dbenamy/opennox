@@ -41,16 +41,6 @@ var (
 	Nox_xxx_mapReadSection            func(*cryptfile.CryptFile, unsafe.Pointer, string) (bool, error)
 )
 
-//export nox_xxx_mapReadSection_426EA0
-func nox_xxx_mapReadSection_426EA0(a1 unsafe.Pointer, cname *C.char, cerr *C.uint) int {
-	ok, err := Nox_xxx_mapReadSection(cryptfile.Global(), a1, GoString(cname))
-	*cerr = C.uint(bool2int(err != nil))
-	if err != nil {
-		mapLog.Println(err)
-	}
-	return bool2int(ok)
-}
-
 func Nox_server_mapRWMapInfo_42A6E0(_ *cryptfile.CryptFile, a1 unsafe.Pointer) error {
 	if mapMetadataInfo() == 0 {
 		return fmt.Errorf("%s failed", caller(0))

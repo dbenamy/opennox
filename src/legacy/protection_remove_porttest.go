@@ -82,7 +82,7 @@ func PortTestRemove(values [][2]uint32, key, sum uint32, count uint16, ids []uin
 	var out []PortTestRemovalSnapshot
 	for _, id := range ids {
 		handle := C.int(id)
-		result := int(C.sub_56F4F0(&handle))
+		result := int(portTestInvoke_sub_56F4F0(&handle))
 		s := snapshot()
 		s.Result = result
 		s.Handle = uint32(handle)
@@ -91,4 +91,13 @@ func PortTestRemove(values [][2]uint32, key, sum uint32, count uint16, ids []uin
 	Sub_56F3B0()
 	out = append(out, snapshot())
 	return out
+}
+
+// Fixture-native copies preserve the original wrapper ABI conversions.
+func portTestInvoke_sub_56F4F0(id *C.int) C.int {
+	if deleteProtectionRecord(uint32(*id)) {
+		*id = 0
+		return 1
+	}
+	return 0
 }

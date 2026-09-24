@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-*/
-import "C"
-
 import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -200,11 +195,6 @@ func diePolyp(u *server.Object) {
 	}
 	core.Audio.EventObj(284, u, 0, 0)
 	GetServer().DelayedDelete(u)
-}
-
-//export nox_xxx_monsterAutoSpells_54C0C0
-func nox_xxx_monsterAutoSpells_54C0C0(u *nox_object_t) C.short {
-	return C.short(monsterAutoSpells(asObjectS(u)))
 }
 
 func createObelisk(u *server.Object) int32 {

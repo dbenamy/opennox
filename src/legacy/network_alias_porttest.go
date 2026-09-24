@@ -2,13 +2,9 @@
 
 package legacy
 
-/*
-#include "GAME5_2.h"
-*/
-import "C"
-
 import (
 	"bytes"
+	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
@@ -43,16 +39,16 @@ func PortTestAliasTable(initial []byte, calls []PortTestAliasCall) []PortTestAli
 		r := PortTestAliasResult{PointerSame: true}
 		switch c.Kind {
 		case "select":
-			r.Return = int(C.nox_xxx_cliGenerateAlias_57B9A0(C.int(uintptr(p)), C.int(c.Key1), C.int(c.Key2), C.uint(c.Frame)))
+			r.Return = int(portTestInvoke_nox_xxx_cliGenerateAlias_57B9A0(int32(uintptr(p)), int32(c.Key1), int32(c.Key2), uint32(c.Frame)))
 		case "write":
 			ptr := unsafe.Add(p, c.Slot*8)
-			ret := C.sub_57BA10(C.int(uintptr(ptr)), C.short(c.Key1), C.short(c.Key2), C.int(c.Frame))
+			ret := portTestInvoke_sub_57BA10(int32(uintptr(ptr)), int16(c.Key1), int16(c.Key2), int32(c.Frame))
 			r.PointerSame = uint32(ret) == uint32(uintptr(ptr))
 		case "reset":
 			if c.Wrapper {
 				Sub_57B920(p)
 			} else {
-				r.Return = int(C.sub_57B920(p))
+				r.Return = int(portTestInvoke_sub_57B920(p))
 			}
 		default:
 			panic("unknown alias call")
@@ -62,4 +58,21 @@ func PortTestAliasTable(initial []byte, calls []PortTestAliasCall) []PortTestAli
 		out = append(out, r)
 	}
 	return out
+}
+
+// Fixture-native copies preserve the original wrapper ABI conversions.
+func portTestInvoke_nox_xxx_cliGenerateAlias_57B9A0(ptr, key1, key2 int32, frame uint32) int8 {
+	table := (*[255]server.PlayerNetData)(unsafe.Pointer(uintptr(uint32(ptr))))
+	return int8(selectNetworkAlias(table, int32(key1), int32(key2), uint32(frame)))
+}
+
+func portTestInvoke_sub_57B920(ptr unsafe.Pointer) int32 {
+	resetNetworkAliases((*[255]server.PlayerNetData)(ptr))
+	return 0
+}
+
+func portTestInvoke_sub_57BA10(ptr int32, key1, key2 int16, frame int32) int32 {
+	rec := (*server.PlayerNetData)(unsafe.Pointer(uintptr(uint32(ptr))))
+	*rec = server.PlayerNetData{Field0: uint16(key1), Field2: uint16(key2), Frame4: uint32(frame)}
+	return ptr
 }

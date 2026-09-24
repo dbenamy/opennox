@@ -2,69 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME3_3.h"
-#include "GAME4_3.h"
-static void* projectileCollisionFunction(int id){switch(id){
-
-
-
-
-
-
-
-case 7: return (void*)sub_4E9A30;
-
-
-
-
-
-
-
-
-
-
-
-
-case 20: return (void*)sub_4EB250;
-case 21: return (void*)sub_4EB340;
-case 22: return (void*)sub_4EB3E0;
-
-
-
-
-default:return 0;}}
-static uint32_t projectileCollisionCall(int id,int u,int t,void* normal){switch(id){
-
-
-
-
-
-
-
-case 7: return sub_4E9A30((nox_object_t*)u,(nox_object_t*)t);
-
-
-
-
-
-
-
-
-
-
-
-
-case 20: return sub_4EB250(u);
-case 21: sub_4EB340((float*)t,u+56);return 0;
-case 22: sub_4EB3E0(u);return 0;
-
-
-
-
-default:return 0;}}
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
@@ -251,7 +188,18 @@ func portTestProjectileCollisionFunction(id int) unsafe.Pointer {
 	case 26:
 		return collisionKey(collisionIdentityPoisonGasTrap)
 	default:
-		return C.projectileCollisionFunction(C.int(id))
+		switch id {
+		case 7:
+			return portTestFixtureKey("sub_4E9A30")
+		case 20:
+			return portTestFixtureKey("sub_4EB250")
+		case 21:
+			return portTestFixtureKey("sub_4EB340")
+		case 22:
+			return portTestFixtureKey("sub_4EB3E0")
+		default:
+			return nil
+		}
 	}
 }
 
@@ -304,6 +252,31 @@ func portTestProjectileCollisionCall(id int, u, target *server.Object, normal *t
 	case 26:
 		return server.PortTestCollisionResult(collisionKey(collisionIdentityPoisonGasTrap), u, target, normal)
 	default:
-		return uint32(C.projectileCollisionCall(C.int(id), C.int(inventoryInt(u)), C.int(inventoryInt(target)), unsafe.Pointer(normal)))
+		switch id {
+		case 7:
+			return uint32(portTestInvoke_sub_4E9A30(asObjectC(u), asObjectC(target)))
+		case 20:
+			return uint32(portTestInvoke_sub_4EB250(int32(inventoryInt(u))))
+		case 21:
+			portTestInvoke_sub_4EB340((*float32)(unsafe.Pointer(target.CObj())), int32(inventoryInt(u)+56))
+		case 22:
+			portTestInvoke_sub_4EB3E0(int32(inventoryInt(u)))
+		}
+		return 0
 	}
 }
+
+// Fixture-native copies preserve the original wrapper ABI conversions.
+func portTestInvoke_sub_4E9A30(a, b *nox_object_t) int32 {
+	return int32(bool2int(projectileTrapEligible(asObjectS(a), asObjectS(b))))
+}
+
+func portTestInvoke_sub_4EB250(a int32) int32 {
+	return int32(inventoryInt(projectileChakramSelect(objectFromWord(uint32(a)))))
+}
+
+func portTestInvoke_sub_4EB340(a *float32, b int32) {
+	projectileChakramCandidate((*server.Object)(unsafe.Pointer(a)), (*types.Pointf)(unsafe.Pointer(uintptr(b))))
+}
+
+func portTestInvoke_sub_4EB3E0(a int32) { projectileChakramFallback(objectFromWord(uint32(a))) }

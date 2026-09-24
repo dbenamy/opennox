@@ -39,7 +39,7 @@ identity maps even when their operations use registered production dispatch.
 
 Baseline accepted: exact 288-root client / 287-root server coverage, with no selected
 skips or failures. Additional 231-root highres and 230-root server runs passed on unchanged source.
-[Baseline evidence](server-fixture-bridges-baseline.json). No conversion is installed.
+[Baseline evidence](server-fixture-bridges-baseline.json). The conversion has completed qualification; results are recorded below.
 
 ## Decisions and review points
 
@@ -71,3 +71,58 @@ inferred from this outcome.
 
 Local drafts and evidence: `build/port-server-fixture-bridges/`;
 prior selection audit: `build/port-after-modifier-identities/`.
+
+## Housekeeping
+
+Before conversion, reclaimed 559,865,856 allocated bytes from 1,654 verified
+original-asset duplicates in the completed modifier scenario and 340,205,568 bytes
+from five obsolete root/legacy cache archives. Host-use, hash and stat checks
+passed. Originals, current binaries/caches, saves and restoration manifests remain;
+see the checkpoint for recovery commands. Cleanup scripts are consumed.
+
+## Reviewed conversion
+
+Primary verified the frozen 55-path draft against its source hashes. All retained
+production owner functions match the original AST representation. The 80 copied
+fixture adapters preserve original bodies and conversions; durability uses its
+existing Go owner directly. All 81 header deletions remove selected declarations.
+
+Before compilation, primary added three missing fixture imports and removed an
+unused production import. Twelve numeric-only fixtures now use equivalent Go
+widths and drop cgo imports; the identity table has only its 19 used keys. World
+and floating-point observers retain their original C bodies with independent
+standard-header declarations. Other live fixture C interfaces remain.
+
+No production algorithm, assertion or captured expectation changed. The expected
+production cgo decrease is 18; the measured post-qualification inventory governs
+the final reported count.
+
+## Qualified results
+
+All 288 default/highres and 287 server roots passed, with exact expected name sets
+and no skips. Safe/static checks, three production/ABI builds, the exact known
+asset-suite results and a fresh headless save/load/resume scenario passed. All
+1,654 original asset hashes remain unchanged. Accepted phases have identical
+source fingerprints, and all 55 changed source paths match primary review.
+
+No shared production algorithm or dispatch API changed, so the affected selection
+in all profiles plus production gates qualifies this batch. The prior full default
+corpus (2,457 passes plus one known diagnostic skip) belongs to modifier commit
+99b65896; it supplied source-identical original-path baseline evidence here, not
+a claim of a post-conversion full-corpus run. Existing assertions and captures
+remain unchanged.
+
+Selected production cgo files: **193→175**; legacy C exports: **637→556**.
+Production and test-reference standalone C remain **0 lines**. The 157 tracked
+headers contain 3,313 physical lines. External native-library bindings are
+unchanged; this does not establish a whole-build cgo-free executable.
+
+[Qualification](server-fixture-bridges-qualification.json),
+[updated inventory](server-fixture-bridges-inventory-after.json).
+Original baseline: 9a833ff4.
+
+The Luna draft was useful for the bounded wrapper/header/caller migration. Primary
+review caught three missing adapter imports and one unused owner import before
+compilation, and removed avoidable test cgo types/unused identity slots. These
+corrections reinforce explicit compiler-visible import and consumer review; no
+subscription savings were measured.

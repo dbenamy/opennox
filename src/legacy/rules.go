@@ -35,9 +35,6 @@ func ruleHeader(flags uint16) *C.char {
 	return nil
 }
 
-//export sub_57A1B0
-func sub_57A1B0(a1 C.short) *C.char { return ruleHeader(uint16(a1)) }
-
 func ruleNarrow(s []uint16) string {
 	b := make([]byte, 0, len(s))
 	for _, c := range s {
@@ -287,16 +284,6 @@ func ruleMapName(st *server.Settings2) string {
 		b = b[:i]
 	}
 	return string(b)
-}
-
-//export sub_57A1E0
-func sub_57A1E0(a1 *C.int, a2 *C.char, a3 *C.int, a4 C.char, a5 C.short) C.char {
-	st := (*server.Settings2)(unsafe.Pointer(a1))
-	name := "user.rul"
-	if a2 != nil {
-		name = GoString(a2)
-	}
-	return C.char(ruleLoad(st, name, (*C.nox_list_item_t)(unsafe.Pointer(a3)), byte(a4), uint16(a5)))
 }
 
 func ruleLoad(st *server.Settings2, user string, list *C.nox_list_item_t, selection byte, flags uint16) byte {

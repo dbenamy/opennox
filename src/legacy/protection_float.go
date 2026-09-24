@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
-
 import "github.com/opennox/opennox/v1/internal/protection"
 
 func updateProtectionFloat(id int32, value float32, add bool) uint32 {
@@ -26,14 +21,4 @@ func updateProtectionFloat(id int32, value float32, add bool) uint32 {
 	r.Value = next ^ key
 	dword_5d4594_2516328 ^= uint32(old ^ r.Value)
 	return uint32(nox_xxx_protectData_56F5C0())
-}
-
-//export sub_56F8C0
-func sub_56F8C0(id C.int, value C.float) C.uint32_t {
-	return C.uint32_t(updateProtectionFloat(int32(id), float32(value), false))
-}
-
-//export sub_56FA40
-func sub_56FA40(id C.int, value C.float) C.uint32_t {
-	return C.uint32_t(updateProtectionFloat(int32(id), float32(value), true))
 }
