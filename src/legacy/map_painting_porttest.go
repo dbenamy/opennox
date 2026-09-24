@@ -14,39 +14,6 @@ package legacy
 #include "GAME4_1.h"
 #include "GAME4_2.h"
 #include "GAME4_3.h"
-int* nox_xxx_tileListAddNewSubtile_422160(int a1, int a2, int a3, int a4);
-int nox_xxx_tileFreeTile_422200(int a1);
-unsigned char nox_xxx_wall_42A6C0(unsigned char a1, unsigned char a2);
-int nox_xxx_mapGenFixCoords_4D3D90(float2* a1, float2* a2);
-int sub_51D8F0(float2* a1);
-float* sub_5245A0(int a1, float* a2, int a3, int a4);
-void nox_xxx_gen_524E00(int a1, int a2);
-int sub_526C40(int a1);
-int sub_527030(float2* a1);
-int nox_xxx_mapGenGetObjID_527940(char* a1);
-float* nox_xxx_mapGenPlaceObj_5279B0(float2* a1);
-float* nox_xxx_mapGenMoveObject_527A10(float* a1, float2* a2);
-int nox_xxx_mapGenOrientObj_527C60(int a1, int a2);
-int nox_xxx_mapGenFinishSpellbook_527DB0(int a1, char a2);
-int nox_xxx_tileSubtile_544310(float2* a1);
-static uint32_t paintInvoke(int op,const uint32_t* v){switch(op){
-case 0: return (uint32_t)(uintptr_t)nox_xxx_tileListAddNewSubtile_422160((int)v[0],(int)v[1],(int)v[2],(int)v[3]);
-case 2: return (uint32_t)nox_xxx_tileFreeTile_422200((int)v[0]);
-case 3: return (uint32_t)nox_xxx_wall_42A6C0((unsigned char)v[0],(unsigned char)v[1]);
-case 4: return (uint32_t)nox_xxx_mapGenFixCoords_4D3D90((float2*)(uintptr_t)v[0],(float2*)(uintptr_t)v[1]);
-case 7: return (uint32_t)sub_51D8F0((float2*)(uintptr_t)v[0]);
-case 13: return (uint32_t)(uintptr_t)sub_5245A0((int)v[0],(float*)(uintptr_t)v[1],(int)v[2],(int)v[3]);
-case 19: nox_xxx_gen_524E00((int)v[0],(int)v[1]);return 0;
-case 30: return (uint32_t)sub_526C40((int)v[0]);
-case 35: return (uint32_t)sub_527030((float2*)(uintptr_t)v[0]);
-case 38: return (uint32_t)nox_xxx_mapGenGetObjID_527940((char*)(uintptr_t)v[0]);
-case 39: return (uint32_t)(uintptr_t)nox_xxx_mapGenPlaceObj_5279B0((float2*)(uintptr_t)v[0]);
-case 40: return (uint32_t)(uintptr_t)nox_xxx_mapGenMoveObject_527A10((float*)(uintptr_t)v[0],(float2*)(uintptr_t)v[1]);
-case 41: return (uint32_t)nox_xxx_mapGenOrientObj_527C60((int)v[0],(int)v[1]);
-case 42: return (uint32_t)nox_xxx_mapGenFinishSpellbook_527DB0((int)v[0],(char)v[1]);
-case 47: return (uint32_t)nox_xxx_tileSubtile_544310((float2*)(uintptr_t)v[0]);
-default:abort();}}
-
 static void* paintXfer(int i){return i ? (void*)nox_xxx_XFerSpellReward_4F5F30:(void*)nox_xxx_XFerDoor_4F4CB0;}
 static unsigned short paintCW(){unsigned short cw;__asm__ __volatile__("fnstcw %0":"=m"(cw));return cw;}
 static void paintSetCW(unsigned short cw){__asm__ __volatile__("fldcw %0"::"m"(cw));}
@@ -742,7 +709,39 @@ func paintInvokeNative(op int, v [6]uint32) uint32 {
 		return 0
 	case 46:
 		return uint32(mapPaintSubtileAdd(mapPaintNode(v[0]), int32(v[1]), int32(v[2]), int32(v[3]), int32(v[4]), int32(v[5])))
+	case 0:
+		return mapRoomRaw(unsafe.Pointer(mapPaintSubtileNew(int32(v[0]), int32(v[1]), int32(v[2]), int32(v[3]))))
+	case 2:
+		return mapPaintSubtileClear(mapPaintNode(v[0]))
+	case 3:
+		return uint32(mapPaintWallCompose(byte(v[0]), byte(v[1])))
+	case 4:
+		return mapPaintTransform((*types.Pointf)(mapRoomPointer(v[0])), (*types.Pointf)(mapRoomPointer(v[1])))
+	case 7:
+		return mapPaintWorldFloor((*types.Pointf)(mapRoomPointer(v[0])))
+	case 13:
+		return mapPaintRect(mapRoomPointer(v[0]), (*types.Pointf)(mapRoomPointer(v[1])), int32(v[2]), int32(v[3]))
+	case 19:
+		mapPaintRoomWalls(mapRoomPointer(v[0]), (*mapRoom)(mapRoomPointer(v[1])))
+		return 0
+	case 30:
+		return mapPaintAfterWalls(int32(v[0]))
+	case 35:
+		return mapPaintEraseWall((*types.Pointf)(mapRoomPointer(v[0])))
+	case 38:
+		return mapPaintSelectObject((*byte)(mapRoomPointer(v[0])))
+	case 39:
+		return mapRoomRaw(unsafe.Pointer(mapPaintPlaceObject((*types.Pointf)(mapRoomPointer(v[0])))))
+	case 40:
+		return mapRoomRaw(unsafe.Pointer(mapPaintMoveObject((*server.Object)(mapRoomPointer(v[0])), (*types.Pointf)(mapRoomPointer(v[1])))))
+	case 41:
+		return mapPaintOrientObject((*server.Object)(mapRoomPointer(v[0])), int32(v[1]))
+	case 42:
+		return mapPaintFinishBook((*server.Object)(mapRoomPointer(v[0])), byte(v[1]))
+	case 47:
+		return mapPaintWorldBorder((*types.Pointf)(mapRoomPointer(v[0])))
 	default:
-		return uint32(C.paintInvoke(C.int(op), (*C.uint32_t)(unsafe.Pointer(&v[0]))))
+		C.abort()
+		return 0
 	}
 }

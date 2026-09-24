@@ -24,13 +24,31 @@ GPT-6 Luna drafts the isolated conversion and per-operation mapping. Primary rev
 checks every sparse opcode, native owner, argument order, signed/unsigned narrowing,
 32-bit address word, float32 input bits, float64 output bits and int64 rounding
 result. Review caught a pointer result cast and an incorrect room-argument type
-before installation. No source is installed yet.
+before installation. The ten-file conversion is installed and fully qualified.
 
-## Qualification plan
+## Qualification
 
-Reconstruct exact edits, format and review before installation. Require all 89
-baseline names in each converted profile, safe/static checks, three fresh production
-builds/ABI checks, exact known-suite results, headless creation/save/load/resume,
-identical source fingerprints throughout and unchanged original asset hashes.
-Measure selected cgo/export/header counts after qualification. Local artifacts:
-`build/port-map-room-paint-owners/`.
+All 89 baseline names pass without skips in each converted profile. Safe/static
+checks, three fresh production builds/ABI checks, exact known-suite results and
+headless creation/save/load/resume pass. The known suite retains 304 failure events,
+with 17 passing, two failing and 32 skipped packages. Source fingerprints match
+throughout; all ten changed/deleted files match the accepted hashes. Frozen
+expectations and all 1,654 original asset hashes remain unchanged.
+
+Selected production cgo files fall 227→225 (238/463 eliminated on net); exports
+fall 1,053→989 (901/1,890 retired). Two test cgo imports remain for independent
+control-word/allocation helpers and live transfer addresses. Production C callback
+bodies remain 78; headers remain 157 files, now 3,712 physical lines. Standalone
+production/test-reference C lines remain zero. External native bindings remain.
+See [qualification](map-room-paint-owners-qualification.json) and
+[inventory](map-room-paint-owners-inventory-after.json).
+
+Primary reconstructed every edit and checked all 64 sparse opcode mappings against
+original C cases and owner names. Existing native cases and remaining static C
+helpers are unchanged. Review corrected the pointer encoding for room overlap and
+the room-type argument. A follow-up draft mistakenly encoded the room-type uint32
+result as a pointer; primary corrected it locally and passed the grid configuration
+pointer directly. All corrections preceded compilation. The larger Luna draft was
+useful for bulk migration, but its generated casts still required independent
+signature review. No assertions, normalizers or algorithms changed.
+Local artifacts: `build/port-map-room-paint-owners/`.

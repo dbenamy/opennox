@@ -14,7 +14,6 @@ nox_map_list_item* nox_common_maplist_next_4D09C0(nox_map_list_item* list);
 int sub_4D0D70();
 int sub_4D0D90(int a1);
 char* nox_xxx_getQuestMapFile_4D0F60();
-int nox_xxx_mapGenFixCoords_4D3D90(float2* a1, float2* a2);
 int sub_4D6000(nox_object_t* a1);
 int sub_4D60B0();
 uint32_t* sub_4D60E0(int a1);

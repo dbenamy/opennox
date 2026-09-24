@@ -141,7 +141,6 @@ int nox_xxx_mapGenEdge_543EB0(int a1, int a2);
 int sub_544020(char* a1);
 int nox_xxx_tileCheckByte3_544070(int a1);
 int nox_xxx_tileCheckByte4_5440A0(int a1);
-int nox_xxx_tileSubtile_544310(float2* a1);
 int nox_xxx_mobSearchEdible_544A00(nox_object_t* a1, float a2);
 int sub_544AE0(int a1, float a2);
 

@@ -2615,3 +2615,15 @@ with 13 spell and 12 reward reservations, keep nine live reward callbacks and th
 routes. Original raw map sizes vary in three records while frozen outputs and
 generated-ID counts agree. All converted gates pass without expectation changes.
 See [SPELL_REWARD_OWNERS.md](SPELL_REWARD_OWNERS.md).
+
+
+## Map room/painting fixture dispatch
+
+Retire 64 numeric fixture-only C exports without changing owner algorithms or
+normalization. Keep x87 control-word fixtures, allocation helpers and live painting
+transfer addresses. Match sparse operation IDs and each numeric transport width;
+mapRoomIsHall returns a uint32 despite its C pointer argument, while mapRoomOverlap
+returns a pointer. Primary corrected both argument/result distinctions before
+compilation. Pass the existing grid-config pointer directly to native Go. All
+89 roots in three profiles and production gates pass with unchanged expectations.
+See [MAP_ROOM_PAINT_OWNERS.md](MAP_ROOM_PAINT_OWNERS.md).

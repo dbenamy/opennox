@@ -7,109 +7,6 @@ package legacy
 #include <string.h>
 #include <stdlib.h>
 #include "GAME4_2.h"
-static float mapRoomFloat(uint32_t v){float f;memcpy(&f,&v,4);return f;}
-static uint64_t mapRoomDouble(double v){uint64_t n;memcpy(&n,&v,8);return n;}
-long long nox_xxx_mapGenRoundFloatToPtr_520DF0(float2* a1, uint32_t* a2);
-int sub_520EA0(int a1);
-void sub_520F80();
-int sub_521200(int a1);
-int sub_521290(int2* a1);
-int sub_5212B0(int a1, uint32_t* a2);
-int nox_xxx_mapgenAllocBuffer_5213E0();
-void nox_xxx_mapgenFreeBuffer_521400();
-void* nox_xxx_mapGenGetTopRoom_521710();
-int sub_521720(int a1);
-int nox_xxx_mapGenAddNewRoom_521730(uint32_t* a1);
-int sub_521760(int a1);
-int sub_5217A0(int a1, int a2);
-int sub_521820(int a1, int a2);
-int nox_xxx_mapGenSetRoomPos_521880(uint32_t* a1, float2* a2);
-int sub_5218B0(int a1, int a2);
-int sub_521900(int a1, int a2, int a3);
-float* nox_xxx_mapGenMakeRoomStruct_521940(int a1, int a2);
-float* nox_xxx_mapGenPrepareRoom_521990(int a1);
-void sub_521A10(void* lpMem);
-uint32_t* nox_xxx_mapGenFreeTopRoom_521A40();
-int sub_521A70(int a1, int a2, int a3);
-int sub_521AA0(uint32_t* a1, int a2);
-double sub_521B00(int a1, int a2);
-double sub_521B30(int a1, int a2);
-double sub_521B60(int a1, int a2);
-double sub_521B90(int a1, int a2);
-float* sub_521BC0(int a1, float2* a2, float a3, float a4);
-uint32_t* sub_521C10(int a1);
-int sub_521EB0(float* a1, float* a2);
-int sub_521F10(int a1, float* a2);
-int sub_5226D0(int a1, float a2, int a3);
-char sub_522CA0(int a1, float* a2);
-int nox_xxx_mapGenCheckRoomType_5238F0(int* a1);
-int sub_523920(int a1);
-int sub_523960(int a1);
-int sub_523970(int a1);
-int sub_5239B0(int a1);
-int sub_523A10(int a1, float* a2);
-int sub_523C30(int a1, int a2);
-int sub_523CB0(int a1, int a2);
-float* sub_523D30(float* a1, float* a2);
-float* sub_523E30(int a1, int a2, int a3);
-float* nox_xxx_mapGenMakeHall_523EC0(int a1, int a2, int a3);
-int sub_524070(int a1, int a2);
-int nox_xxx_mapGenMakeRooms_524310(int a1);
-void nox_xxx_mapGenSetRngSeed_526AB0(unsigned int a1);
-signed int nox_xxx_mapGenRandFunc_526AC0(int a1, signed int a2);
-double sub_526BC0(float a1, float a2);
-static uint64_t mapRoomInvoke(int op,const uint32_t* v){switch(op){
-case 0: return (uint64_t)(nox_xxx_mapGenRoundFloatToPtr_520DF0((float2*)(uintptr_t)v[0],(uint32_t*)(uintptr_t)v[1]));
-case 2: return (uint32_t)(sub_520EA0((int)v[0]));
-case 3: sub_520F80(); return 0;
-case 6: return (uint32_t)(sub_521200((int)v[0]));
-case 7: return (uint32_t)(sub_521290((int2*)(uintptr_t)v[0]));
-case 8: return (uint32_t)(sub_5212B0((int)v[0],(uint32_t*)(uintptr_t)v[1]));
-case 9: return (uint32_t)(nox_xxx_mapgenAllocBuffer_5213E0());
-case 10: nox_xxx_mapgenFreeBuffer_521400(); return 0;
-case 11: return (uint32_t)(uintptr_t)(nox_xxx_mapGenGetTopRoom_521710());
-case 12: return (uint32_t)(sub_521720((int)v[0]));
-case 13: return (uint32_t)(nox_xxx_mapGenAddNewRoom_521730((uint32_t*)(uintptr_t)v[0]));
-case 14: return (uint32_t)(sub_521760((int)v[0]));
-case 15: return (uint32_t)(sub_5217A0((int)v[0],(int)v[1]));
-case 16: return (uint32_t)(sub_521820((int)v[0],(int)v[1]));
-case 18: return (uint32_t)(nox_xxx_mapGenSetRoomPos_521880((uint32_t*)(uintptr_t)v[0],(float2*)(uintptr_t)v[1]));
-case 19: return (uint32_t)(sub_5218B0((int)v[0],(int)v[1]));
-case 20: return (uint32_t)(sub_521900((int)v[0],(int)v[1],(int)v[2]));
-case 21: return (uint32_t)(uintptr_t)(nox_xxx_mapGenMakeRoomStruct_521940((int)v[0],(int)v[1]));
-case 22: return (uint32_t)(uintptr_t)(nox_xxx_mapGenPrepareRoom_521990((int)v[0]));
-case 23: sub_521A10((void*)(uintptr_t)v[0]); return 0;
-case 24: return (uint32_t)(uintptr_t)(nox_xxx_mapGenFreeTopRoom_521A40());
-case 25: return (uint32_t)(sub_521A70((int)v[0],(int)v[1],(int)v[2]));
-case 26: return (uint32_t)(sub_521AA0((uint32_t*)(uintptr_t)v[0],(int)v[1]));
-case 27: return mapRoomDouble(sub_521B00((int)v[0],(int)v[1]));
-case 28: return mapRoomDouble(sub_521B30((int)v[0],(int)v[1]));
-case 29: return mapRoomDouble(sub_521B60((int)v[0],(int)v[1]));
-case 30: return mapRoomDouble(sub_521B90((int)v[0],(int)v[1]));
-case 31: return (uint32_t)(uintptr_t)(sub_521BC0((int)v[0],(float2*)(uintptr_t)v[1],mapRoomFloat(v[2]),mapRoomFloat(v[3])));
-case 32: return (uint32_t)(uintptr_t)(sub_521C10((int)v[0]));
-case 33: return (uint32_t)(sub_521EB0((float*)(uintptr_t)v[0],(float*)(uintptr_t)v[1]));
-case 34: return (uint32_t)(sub_521F10((int)v[0],(float*)(uintptr_t)v[1]));
-case 35: return (uint32_t)(sub_5226D0((int)v[0],mapRoomFloat(v[1]),(int)v[2]));
-case 37: return (uint32_t)(sub_522CA0((int)v[0],(float*)(uintptr_t)v[1]));
-case 38: return (uint32_t)(nox_xxx_mapGenCheckRoomType_5238F0((int*)(uintptr_t)v[0]));
-case 39: return (uint32_t)(sub_523920((int)v[0]));
-case 40: return (uint32_t)(sub_523960((int)v[0]));
-case 41: return (uint32_t)(sub_523970((int)v[0]));
-case 42: return (uint32_t)(sub_5239B0((int)v[0]));
-case 43: return (uint32_t)(sub_523A10((int)v[0],(float*)(uintptr_t)v[1]));
-case 44: return (uint32_t)(sub_523C30((int)v[0],(int)v[1]));
-case 45: return (uint32_t)(sub_523CB0((int)v[0],(int)v[1]));
-case 46: return (uint32_t)(uintptr_t)(sub_523D30((float*)(uintptr_t)v[0],(float*)(uintptr_t)v[1]));
-case 47: return (uint32_t)(uintptr_t)(sub_523E30((int)v[0],(int)v[1],(int)v[2]));
-case 48: return (uint32_t)(uintptr_t)(nox_xxx_mapGenMakeHall_523EC0((int)v[0],(int)v[1],(int)v[2]));
-case 49: return (uint32_t)(sub_524070((int)v[0],(int)v[1]));
-case 54: return (uint32_t)(nox_xxx_mapGenMakeRooms_524310((int)v[0]));
-case 56: nox_xxx_mapGenSetRngSeed_526AB0((unsigned int)v[0]); return 0;
-case 57: return (uint32_t)(nox_xxx_mapGenRandFunc_526AC0((int)v[0],(signed int)v[1]));
-case 59: return mapRoomDouble(sub_526BC0(mapRoomFloat(v[0]),mapRoomFloat(v[1])));
-default:abort();}}
-
 
 static unsigned short mapRoomCW(void){unsigned short cw;__asm__ volatile("fnstcw %0":"=m"(cw));return cw;}
 static void mapRoomSetCW(unsigned short cw){__asm__ volatile("fldcw %0"::"m"(cw));}
@@ -484,13 +381,13 @@ func portTestMapRoomCase(sp PortTestMapRoomSpec, cw C.ushort) (out PortTestMapRo
 		}
 		var config [18]uint32
 		config[17] = uint32(sp.Radius)
-		if C.sub_520EA0(C.int(uintptr(unsafe.Pointer(&config[0])))) == 0 {
+		if mapRoomGridInit(unsafe.Pointer(&config[0])) == 0 {
 			panic("map room grid allocation")
 		}
 		f.registerGrid()
 	}
 	if sp.Buffer {
-		if C.nox_xxx_mapgenAllocBuffer_5213E0() == 0 {
+		if mapRoomScratchAlloc() == 0 {
 			panic("map room scratch allocation")
 		}
 		f.register(unsafe.Pointer(uintptr(portTestMapRoomGlobalGet(3))), 8192, "scratch", false)
@@ -554,7 +451,110 @@ func mapRoomPortInvoke(op int, args [4]uint32) uint64 {
 		return uint64(uint32(mapRoomNear(math.Float32frombits(args[0]), math.Float32frombits(args[1]))))
 	case 58:
 		return uint64(uint32(mapRoomRandomCentered(int32(args[0]), int32(args[1]))))
+	case 0:
+		return uint64(mapRoomRound((*types.Pointf)(mapRoomPointer(args[0])), (*[2]int32)(mapRoomPointer(args[1]))))
+	case 2:
+		return uint64(uint32(mapRoomGridInit(mapRoomPointer(args[0]))))
+	case 3:
+		mapRoomGridFree()
+		return 0
+	case 6:
+		return uint64(mapRoomRaw(unsafe.Pointer(mapRoomOverlap((*mapRoom)(mapRoomPointer(args[0]))))))
+	case 7:
+		return uint64(mapRoomRaw(unsafe.Pointer(mapRoomAt((*[2]int32)(mapRoomPointer(args[0]))))))
+	case 8:
+		return uint64(uint32(mapRoomResolveOverlap((*mapRoom)(mapRoomPointer(args[0])), (*mapRoom)(mapRoomPointer(args[1])))))
+	case 9:
+		return uint64(mapRoomScratchAlloc())
+	case 10:
+		mapRoomScratchFree()
+		return 0
+	case 11:
+		return uint64(mapRoomRaw(unsafe.Pointer(mapRoomHead())))
+	case 12:
+		return uint64(mapRoomRaw(unsafe.Pointer(mapRoomNext((*mapRoom)(mapRoomPointer(args[0]))))))
+	case 13:
+		return uint64(uint32(mapRoomAdd((*mapRoom)(mapRoomPointer(args[0])))))
+	case 14:
+		return uint64(uint32(mapRoomRemove((*mapRoom)(mapRoomPointer(args[0])))))
+	case 15:
+		return uint64(uint32(mapRoomWithinBounds(mapRoomPointer(args[0]), (*mapRoom)(mapRoomPointer(args[1])))))
+	case 16:
+		return uint64(uint32(mapRoomCanPlace(mapRoomPointer(args[0]), (*mapRoom)(mapRoomPointer(args[1])))))
+	case 18:
+		return uint64(mapRoomRaw(unsafe.Pointer(mapRoomSetPos((*mapRoom)(mapRoomPointer(args[0])), (*types.Pointf)(mapRoomPointer(args[1]))))))
+	case 19:
+		return uint64(uint32(mapRoomHasRoomNeighbor((*mapRoom)(mapRoomPointer(args[0])), int32(args[1]))))
+	case 20:
+		return uint64(uint32(mapRoomConnect((*mapRoom)(mapRoomPointer(args[0])), (*mapRoom)(mapRoomPointer(args[1])), int32(args[2]))))
+	case 21:
+		return uint64(mapRoomRaw(unsafe.Pointer(mapRoomNew(int32(args[0]), int32(args[1])))))
+	case 22:
+		return uint64(mapRoomRaw(unsafe.Pointer(mapRoomPrepare(mapRoomPointer(args[0])))))
+	case 23:
+		mapRoomFree((*mapRoom)(mapRoomPointer(args[0])))
+		return 0
+	case 24:
+		return uint64(mapRoomRaw(unsafe.Pointer(mapRoomFreeAll())))
+	case 25:
+		return uint64(uint32(mapRoomConnectBoth((*mapRoom)(mapRoomPointer(args[0])), (*mapRoom)(mapRoomPointer(args[1])), int32(args[2]))))
+	case 26:
+		return uint64(uint32(mapRoomIsEntranceSide((*mapRoom)(mapRoomPointer(args[0])), int32(args[1]))))
+	case 27:
+		return math.Float64bits(mapRoomRandomX((*mapRoom)(mapRoomPointer(args[0])), (*mapRoom)(mapRoomPointer(args[1]))))
+	case 28:
+		return math.Float64bits(mapRoomRandomY((*mapRoom)(mapRoomPointer(args[0])), (*mapRoom)(mapRoomPointer(args[1]))))
+	case 29:
+		return math.Float64bits(mapRoomRandomReverseX((*mapRoom)(mapRoomPointer(args[0])), (*mapRoom)(mapRoomPointer(args[1]))))
+	case 30:
+		return math.Float64bits(mapRoomRandomReverseY((*mapRoom)(mapRoomPointer(args[0])), (*mapRoom)(mapRoomPointer(args[1]))))
+	case 31:
+		return uint64(mapRoomRaw(unsafe.Pointer(mapRoomAddExclusion((*mapRoom)(mapRoomPointer(args[0])), (*types.Pointf)(mapRoomPointer(args[1])), math.Float32frombits(args[2]), math.Float32frombits(args[3])))))
+	case 32:
+		return uint64(mapRoomRaw(unsafe.Pointer(mapRoomRemoveGeneratedExclusions((*mapRoom)(mapRoomPointer(args[0]))))))
+	case 33:
+		return uint64(uint32(mapRoomContainsRect((*mapRoom)(mapRoomPointer(args[0])), (*mapRoomExclusion)(mapRoomPointer(args[1])))))
+	case 34:
+		return uint64(mapRoomRaw(unsafe.Pointer(mapRoomFindExclusionOverlap((*mapRoom)(mapRoomPointer(args[0])), (*mapRoomExclusion)(mapRoomPointer(args[1]))))))
+	case 35:
+		return uint64(uint32(mapRoomRandomPoint((*mapRoom)(mapRoomPointer(args[0])), math.Float32frombits(args[1]), (*types.Pointf)(mapRoomPointer(args[2])))))
+	case 37:
+		return uint64(uint32(int32(mapRoomRememberPoint((*mapRoom)(mapRoomPointer(args[0])), (*types.Pointf)(mapRoomPointer(args[1]))))))
+	case 38:
+		return uint64(mapRoomIsHall((*mapRoom)(mapRoomPointer(args[0]))))
+	case 39:
+		return uint64(uint32(mapRoomHallDirection(int32(args[0]))))
+	case 40:
+		return uint64(uint32(mapRoomOpposite(int32(args[0]))))
+	case 41:
+		return uint64(uint32(mapRoomHallSide(int32(args[0]))))
+	case 42:
+		return uint64(uint32(mapRoomHallOppositeSide(int32(args[0]))))
+	case 43:
+		return uint64(uint32(mapRoomTrimHall((*mapRoom)(mapRoomPointer(args[0])), (*mapRoom)(mapRoomPointer(args[1])))))
+	case 44:
+		return uint64(uint32(mapRoomHallExit((*mapRoom)(mapRoomPointer(args[0])), (*types.Pointf)(mapRoomPointer(args[1])))))
+	case 45:
+		return uint64(uint32(mapRoomHallEntry((*mapRoom)(mapRoomPointer(args[0])), (*types.Pointf)(mapRoomPointer(args[1])))))
+	case 46:
+		return uint64(mapRoomRaw(unsafe.Pointer(mapRoomHallCenter((*mapRoom)(mapRoomPointer(args[0])), (*types.Pointf)(mapRoomPointer(args[1]))))))
+	case 47:
+		return uint64(mapRoomRaw(unsafe.Pointer(mapRoomNewHall(int32(args[0]), int32(args[1]), int32(args[2])))))
+	case 48:
+		return uint64(mapRoomRaw(unsafe.Pointer(mapRoomPrepareHall(mapRoomPointer(args[0]), int32(args[1]), int32(args[2])))))
+	case 49:
+		return uint64(uint32(mapRoomRaw(mapRoomAssignDecoration(mapRoomPointer(args[0]), (*mapRoom)(mapRoomPointer(args[1]))))))
+	case 54:
+		return uint64(mapRoomAssignRequiredDecorations(mapRoomPointer(args[0])))
+	case 56:
+		mapRoomSeed(args[0])
+		return 0
+	case 57:
+		return uint64(uint32(mapRoomRandomInt(int32(args[0]), int32(args[1]))))
+	case 59:
+		return math.Float64bits(mapRoomRandomFloat(math.Float32frombits(args[0]), math.Float32frombits(args[1])))
 	default:
-		return uint64(C.mapRoomInvoke(C.int(op), (*C.uint32_t)(unsafe.Pointer(&args[0]))))
+		C.abort()
+		return 0
 	}
 }

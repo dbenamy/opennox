@@ -3,7 +3,6 @@
 
 #include "defs.h"
 
-unsigned char nox_xxx_wall_42A6C0(unsigned char a1, unsigned char a2);
 void* nox_video_getImagePixdata_42FB30(nox_video_bag_image_t* img);
 nox_video_bag_image_t* nox_xxx_gLoadImg_42F970(char* name);
 int sub_430B50(int a1, int a2, int a3, int a4);
