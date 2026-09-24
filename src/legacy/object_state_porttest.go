@@ -105,13 +105,14 @@ import (
 )
 
 type PortTestObjectStateSpec struct {
-	HealthRefs  []int
-	ActorName   string
-	Target      int
-	X, Y, Z     int32
-	FloatBits   uint32
-	Globals     map[int]uint32
-	MissileList []int
+	RegisteredCollision bool
+	HealthRefs          []int
+	ActorName           string
+	Target              int
+	X, Y, Z             int32
+	FloatBits           uint32
+	Globals             map[int]uint32
+	MissileList         []int
 }
 type portTestObjectState struct {
 	result    uint64
@@ -245,7 +246,11 @@ func (p *portTestShopPools) objectStateAction(a PortTestShopAction) uint32 {
 	state := p.temporary.world.objectives.attack
 	u := p.temporaryRef(attack.Actor)
 	pointerReturn := a.Op == 1226 && u != nil && u.ObjClass&2 != 0 && u.ObjFlags&0x8002 == 0
-	if a.Op == 1222 {
+	if sp.RegisteredCollision && a.Op >= 1240 && a.Op <= 1242 {
+		name := []string{"MonsterCollide", "MimicCollide", "PlayerCollide"}[a.Op-1240]
+		PortTestRegisteredCollision(u, p.temporaryRef(sp.Target), nil, name)
+		state.state.result = 0
+	} else if a.Op == 1222 {
 		state.state.result = uint64(stateChecksum(u))
 	} else if a.Op == 1223 {
 		state.state.result = uint64(uint32(nox_xxx_inventoryGetFirst_4E7980(C.int(uintptr(u.CObj())))))

@@ -87,6 +87,7 @@ const (
 
 // References 100..102 address the existing three real fixture players.
 type PortTestObjectivesSpec struct {
+	RegisteredCollision                             bool
 	Attack                                          *PortTestAttackSpec
 	SpellDefinitions                                []server.PortTestSpellClassDef
 	Ticks                                           []uint64
@@ -322,6 +323,14 @@ func (p *portTestShopPools) objectivesAction(a PortTestShopAction) uint32 {
 		return p.temporary.result
 	}
 	sp := p.proxy.callbacks.shop.spec.TemporaryUpdates
+	if sp.World.Objectives.RegisteredCollision {
+		name := map[int]string{803: "BallCollide", 804: "CrownCollide", 805: "HomeBaseCollide", 812: "FlagCollide"}[a.Op]
+		if name != "" {
+			PortTestRegisteredCollision(p.items[a.Item].u, p.temporaryRef(sp.Target), nil, name)
+			p.temporary.result = 0
+			return 0
+		}
+	}
 	p.temporary.result = uint32(C.objectiveCall(C.int(a.Op-800), asObjectC(p.items[a.Item].u), asObjectC(p.temporaryRef(sp.Target)), C.int(a.Value)))
 	return p.temporary.result
 }

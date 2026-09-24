@@ -20,8 +20,9 @@ calling conventions. All 208 roots/profile, 352 frozen owner observations, safe/
 production/ABI, exact known-suite comparison and headless creation/save-load pass.
 See [LIFECYCLE_REGISTRY.md](docs/porting/LIFECYCLE_REGISTRY.md).
 **Standalone C remains zero; production C preamble bodies remain 79.**
-Next: review collision and damage-sound callback owners, argument types and existing
-coverage before selecting the next coherent registry batch.
+The next collision baseline is qualified: 257 roots/profile and 4,116 frozen owner
+observations, plus raw/dynamic-handler contracts. Production conversion is pending
+compiler escape checks for its pointer API. See [COLLISION_REGISTRY.md](docs/porting/COLLISION_REGISTRY.md).
 
 ### Earlier checkpoints
 

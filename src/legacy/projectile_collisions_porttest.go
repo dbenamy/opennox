@@ -66,21 +66,33 @@ default:return 0;}}
 */
 import "C"
 import (
-	"github.com/opennox/opennox/v1/common/memmap"
 	"unsafe"
+
+	"github.com/opennox/libs/types"
+	"github.com/opennox/opennox/v1/common/memmap"
 )
 
 type PortTestProjectileCollisionSpec struct {
-	DefinitionRefs map[int]int
-	Normal         *[2]uint32
-	WallContact    bool
-	WallXY         [2]int32
-	CollideRefs    []map[int]int
-	Globals        map[int]uint32
-	GlobalRefs     map[int]int
+	DefinitionRefs      map[int]int
+	Normal              *[2]uint32
+	WallContact         bool
+	WallXY              [2]int32
+	CollideRefs         []map[int]int
+	Globals             map[int]uint32
+	GlobalRefs          map[int]int
+	RegisteredCollision bool
 }
 
 var projectileCollisionTypeNames = []string{"ThrowingStone", "ImpShot", "ClosedBearTrap", "ToxicCloud"}
+
+var projectileCollisionRegistryNames = map[int]string{
+	0: "ProjectileCollide", 1: "ProjectileSparkCollide", 2: "DamageCollide", 3: "ManaDrainCollide",
+	4: "BombCollide", 5: "BoomCollide", 6: "DieCollide", 8: "SparkExplosionCollide",
+	9: "WallReflectCollide", 10: "YellowStarShotCollide", 11: "DeathBallFragmentCollide", 12: "PixieCollide",
+	13: "WallReflectSparkCollide", 14: "OwnCollide", 15: "SparkCollide", 16: "SpiderSpitCollide",
+	17: "FistCollide", 18: "TeleportWakeCollide", 19: "ChakramInMotionCollide", 23: "ArrowCollide",
+	24: "MonsterArrowCollide", 25: "BearTrapCollide", 26: "PoisonGasTrapCollide",
+}
 
 var projectileCollisionOffsets = []uintptr{1567836, 1567840, 1567924, 1567932, 1567948, 1567952, 1567964, 1567968, 1567972, 1567976, 1567980, 1567984, 1568000, 2488612, 2488616}
 
@@ -163,6 +175,15 @@ func (p *portTestShopPools) projectileCollisionAction(a PortTestShopAction) uint
 	tmp := p.proxy.callbacks.shop.spec.TemporaryUpdates
 	sp := tmp.World.Objectives.Attack
 	normal := p.temporary.world.objectives.attack.collisionNormal
+	if sp.Collision != nil && sp.Collision.RegisteredCollision {
+		name := projectileCollisionRegistryNames[a.Op-1000]
+		if name != "" {
+			legacyNormal := (*types.Pointf)(unsafe.Pointer(normal))
+			PortTestRegisteredCollision(p.temporaryRef(sp.Actor), p.temporaryRef(tmp.Target), legacyNormal, name)
+			p.temporary.result = 0 // all owner callbacks are invoked for side effects here
+			return p.temporary.result
+		}
+	}
 	p.temporary.result = uint32(C.projectileCollisionCall(C.int(a.Op-1000), inventoryInt(p.temporaryRef(sp.Actor)), inventoryInt(p.temporaryRef(tmp.Target)), normal))
 	return p.temporary.result
 }
