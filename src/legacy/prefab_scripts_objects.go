@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include <stdlib.h>
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_2.h"
-*/
-import "C"
 import (
 	"fmt"
 	"strings"
@@ -129,13 +122,13 @@ func prefabScriptObjectNames(instance, x, y int32) {
 		typ := s.Types.ByInd(int(u.TypeInd))
 		if typ != nil {
 			switch typ.Xfer {
-			case unsafe.Pointer(C.nox_xxx_unitTriggerXfer_4F4E50):
+			case xferIdentityKey(xferIDTrigger):
 				events = append(events, 1, 2, 0)
-			case unsafe.Pointer(C.nox_xxx_XFerMonster_528DB0):
+			case xferIdentityKey(xferIDMonster):
 				events = append(events, 3, 5, 4, 6, 7, 8, 9, 10, 11)
-			case unsafe.Pointer(C.nox_xxx_XFerHole_4F51D0):
+			case xferIdentityKey(xferIDHole):
 				events = append(events, 12)
-			case unsafe.Pointer(C.nox_xxx_XFerMonsterGen_4F7130):
+			case xferIdentityKey(xferIDMonsterGenerator):
 				events = append(events, 15, 16, 18, 17)
 			}
 		}
@@ -193,23 +186,23 @@ func prefabScriptPending(bounds *[4]int32, index uint32) uint32 {
 			continue
 		}
 		switch typ.Xfer {
-		case unsafe.Pointer(C.nox_xxx_XFerElevator_4F53D0), unsafe.Pointer(C.nox_xxx_XFerElevatorShaft_4F54A0):
+		case xferIdentityKey(xferIDElevator), xferIdentityKey(xferIDElevatorShaft):
 			ref(u.UpdateData, 8, true)
-		case unsafe.Pointer(C.nox_xxx_XFerTransporter_4F5300):
+		case xferIdentityKey(xferIDTransporter):
 			ref(u.UpdateData, 16, true)
-		case unsafe.Pointer(C.nox_xxx_XFerHole_4F51D0):
+		case xferIdentityKey(xferIDHole):
 			*word(u.CollideData, 8) += dx
 			*word(u.CollideData, 12) += dy
-		case unsafe.Pointer(C.nox_xxx_XFerExit_4F4B90):
+		case xferIdentityKey(xferIDExit):
 			shift(u.CollideData, 80)
-		case unsafe.Pointer(C.nox_xxx_XFerMover_4F5730):
+		case xferIdentityKey(xferIDMover):
 			wp := s.WPs.PendingByIndTmp(*word(u.UpdateData, 8))
 			*word(u.UpdateData, 8) = 0
 			if wp != nil {
 				*word(u.UpdateData, 8) = wp.Index
 			}
 			ref(u.UpdateData, 32, false)
-		case unsafe.Pointer(C.nox_xxx_XFerGlyph_4F5890):
+		case xferIdentityKey(xferIDGlyph):
 			shift(u.InitData, 28)
 		}
 	}

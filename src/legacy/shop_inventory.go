@@ -162,13 +162,13 @@ func shopLoad(s *shopSession) {
 				}
 				stateAttributes(u, unsafe.Pointer(&mods[0]))
 			}
-			if u.Xfer == C.nox_xxx_XFerSpellReward_4F5F30 {
+			if u.Xfer == xferIdentityKey(xferIDSpellReward) {
 				*(*byte)(u.UseData.Ptr) = byte(e.Reward)
 			}
-			if u.Xfer == C.nox_xxx_XFerAbilityReward_4F6240 {
+			if u.Xfer == xferIdentityKey(xferIDAbilityReward) {
 				*(*byte)(u.UseData.Ptr) = byte(e.Reward)
 			}
-			if u.Xfer == C.nox_xxx_XFerFieldGuide_4F6390 {
+			if u.Xfer == xferIdentityKey(xferIDFieldGuide) {
 				C.strcpy((*C.char)(u.UseData.Ptr), (*C.char)(nox_xxx_getUnitNameByThingType_4E3A80(int(C.int(e.Reward)))))
 			}
 			shopAdd(s, u)

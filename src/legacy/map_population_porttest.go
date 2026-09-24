@@ -110,13 +110,13 @@ func PortTestMapPopulation(cases []PortTestPaintSpec, owner func(*server.Server)
 		noxflags.ResetGame()
 		noxflags.SetGame(noxflags.GameFlag(sp.Globals["gameFlags"].Value))
 	}
-	ext.constants = map[uint32]uint32{mapRoomRaw(unsafe.Pointer(C.nox_xxx_XFerExit_4F4B90)): 0x70000003}
+	ext.constants = map[uint32]uint32{mapRoomRaw(xferIdentityKey(xferIDExit)): 0x70000003}
 	var active *paintTestFixture
 	var recordDiscardedHallways bool
 	var disposed map[*server.Object]bool
 	var restoreModifier func()
 	ext.setup = func(p *server.PortTestPaintOwners) func() {
-		p.PopulationTypes(unsafe.Pointer(C.nox_xxx_XFerExit_4F4B90))
+		p.PopulationTypes(xferIdentityKey(xferIDExit))
 		oldRelease := mapRoomTestRelease
 		mapRoomTestRelease = func(ptr unsafe.Pointer) {
 			if active != nil {

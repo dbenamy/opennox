@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/server"
@@ -54,7 +46,7 @@ func mapPaintMoveObject(u *server.Object, pos *types.Pointf) *server.Object {
 	*mapPaintGlobal(paintObjectCounter)++
 	u.PosVec = world
 	u.ObjFlags |= 0x1000000
-	if GetServer().S().Types.ByInd(int(u.TypeInd)).Xfer == unsafe.Pointer(C.nox_xxx_XFerDoor_4F4CB0) {
+	if GetServer().S().Types.ByInd(int(u.TypeInd)).Xfer == xferIdentityKey(xferIDDoor) {
 		u.PosVec.X = float32(int32(23 * int64(float64(world.X)*0.043478262+0.5)))
 		u.PosVec.Y = float32(int32(23 * int64(float64(world.Y)*0.043478262+0.5)))
 	}
@@ -67,7 +59,7 @@ func mapPaintOrientObject(u *server.Object, dir int32) uint32 {
 		return 0
 	}
 	if u.ObjClass&2 != 0 {
-		angle := uint32(C.int(geometryDirection4Angle(int32(mapPaintDirection(dir)))))
+		angle := uint32(geometryDirection4Angle(int32(mapPaintDirection(dir))))
 		*(*uint32)(unsafe.Add(u.UpdateData, 376)) = angle
 		u.Direction1 = server.Dir16(angle)
 		return 1
@@ -95,7 +87,7 @@ func mapPaintOrientObject(u *server.Object, dir int32) uint32 {
 	return 1
 }
 func mapPaintFinishBook(u *server.Object, value byte) uint32 {
-	if u == nil || GetServer().S().Types.ByInd(int(u.TypeInd)).Xfer != unsafe.Pointer(C.nox_xxx_XFerSpellReward_4F5F30) {
+	if u == nil || GetServer().S().Types.ByInd(int(u.TypeInd)).Xfer != xferIdentityKey(xferIDSpellReward) {
 		return 0
 	}
 	*(*byte)(u.UseData.Ptr) = value

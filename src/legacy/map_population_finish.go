@@ -42,7 +42,7 @@ func mapPopulationExitName(object, name uint32) uint32 {
 	}
 	u := populationObject(object)
 	typ := GetServer().S().Types.ByInd(int(u.TypeInd))
-	if typ == nil || typ.Xfer != unsafe.Pointer(C.nox_xxx_XFerExit_4F4B90) {
+	if typ == nil || typ.Xfer != xferIdentityKey(xferIDExit) {
 		return 0
 	}
 	dst := unsafe.Slice((*byte)(u.CollideData), 80)

@@ -14,7 +14,6 @@ package legacy
 #include "GAME4_1.h"
 #include "GAME4_2.h"
 #include "GAME4_3.h"
-static void* paintXfer(int i){return i ? (void*)nox_xxx_XFerSpellReward_4F5F30:(void*)nox_xxx_XFerDoor_4F4CB0;}
 static unsigned short paintCW(){unsigned short cw;__asm__ __volatile__("fnstcw %0":"=m"(cw));return cw;}
 static void paintSetCW(unsigned short cw){__asm__ __volatile__("fldcw %0"::"m"(cw));}
 */
@@ -454,7 +453,7 @@ func portTestMapPainting(cases []PortTestPaintSpec, owner func(*server.Server) (
 		}
 	}()
 	core := new(server.Server)
-	owners := core.PortTestMapPaintingOwners([2]unsafe.Pointer{C.paintXfer(0), C.paintXfer(1)})
+	owners := core.PortTestMapPaintingOwners([2]unsafe.Pointer{xferIdentityKey(xferIDDoor), xferIdentityKey(xferIDSpellReward)})
 	defer owners.Close()
 	realOwner, freeOwner := owner(core)
 	defer freeOwner()
@@ -485,7 +484,7 @@ func portTestMapPainting(cases []PortTestPaintSpec, owner func(*server.Server) (
 	return out
 }
 func paintTestCase(sp PortTestPaintSpec, owners *server.PortTestPaintOwners, globs map[string]*uint32, cw C.ushort, extra *paintTestExtension) (out PortTestPaintResult) {
-	f := &paintTestFixture{xfers: [2]uint32{mapRoomRaw(C.paintXfer(0)), mapRoomRaw(C.paintXfer(1))}, extra: extra, mapRoomTestFixture: &mapRoomTestFixture{slots: map[int]*mapRoomTestRegion{}, intact: true}, owners: owners, owned: map[*mapRoomTestRegion]bool{}, objectRecords: map[*mapRoomTestRegion]*server.Object{}, globs: globs, secret: map[*mapRoomTestRegion]bool{}}
+	f := &paintTestFixture{xfers: [2]uint32{mapRoomRaw(xferIdentityKey(xferIDDoor)), mapRoomRaw(xferIdentityKey(xferIDSpellReward))}, extra: extra, mapRoomTestFixture: &mapRoomTestFixture{slots: map[int]*mapRoomTestRegion{}, intact: true}, owners: owners, owned: map[*mapRoomTestRegion]bool{}, objectRecords: map[*mapRoomTestRegion]*server.Object{}, globs: globs, secret: map[*mapRoomTestRegion]bool{}}
 	defer func() {
 		if extra != nil && extra.finish != nil {
 			extra.finish(f)

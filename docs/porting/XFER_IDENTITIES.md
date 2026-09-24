@@ -46,3 +46,34 @@ or review widens the affected scope. Existing assertions and captures stay fixed
 [Original evidence](xfer-identities-baseline.json),
 [commands](xfer-identities-batch.json), [selection](xfer-identities-tests.txt).
 Local artifacts: `build/port-xfer-identities/`.
+
+
+## Qualified conversion
+
+All 222 focused roots pass in each default/server/high-resolution profile without
+skips. Safe/static checks, three production/ABI builds and headless character
+creation with explicit save/load/resume pass. The full asset suite exactly matches
+the known baseline: 304 failure events, 17 passing/two failing/32 skipped packages.
+All 1,654 original asset hashes and existing assertions/captures remain unchanged.
+The preceding item batch's full default corpus passed 2,441 roots plus one known
+diagnostic skip; it was not repeated for this unchanged registry implementation.
+
+All accepted phases have identical source fingerprints. All seventeen changed/new/
+deleted files match review, all 30 exports are absent, and retained exported
+function signatures and bodies are unchanged. Production cgo files fall 208→202
+(261/463 eliminated); selected legacy exports fall 825→795 (1,095/1,890 retired).
+Headers remain 157 files with 3,524 physical lines; embedded production callback
+bodies remain 77. Standalone production and test-reference C remain zero.
+External native-library bindings are unchanged.
+
+Luna produced the bounded overlay; primary reviewed every owner mapping, the
+default hook/logging body, all key/getter consumers and fixture normalization.
+Case-sensitive export/API audit corrections were made before installation. Primary
+removed the final redundant int32 C cast in the map-painting consumer.
+The first compile found a missing stdint.h include in the raw C observer after
+old engine headers were removed; primary added the explicit standard header.
+Accepted contracts are under contracts-fixed. Qualification found no behavior
+differences and required no assertion or capture changes.
+
+[Qualification](xfer-identities-qualification.json),
+[inventory](xfer-identities-inventory-after.json).

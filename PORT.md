@@ -114,7 +114,11 @@ may precede full qualification when their evidence and remaining gates are expli
    new export signatures with every existing header declaration. When removing a
    cgo import, check for `//export` directives too: those still need cgo even when
    no `C.` calls remain. Imports with `#cgo` directives also carry build settings
-   without direct calls; preserve them. Limit import cleanup to the files changed
+   without direct calls; preserve them. When removing engine headers from a
+   retained C observer, add its own required standard headers (for example,
+   stdint.h for uintptr_t); generated cgo glue is not a substitute. The transfer
+   identity compile caught this missing dependency after header cleanup.
+   Limit import cleanup to the files changed
    by the batch. Resolve actual declared package names before pruning imports;
    directory basenames can differ (`common/flags` declares `noxflags`). When the
    name is unknown, keep the import for compiler review. A small late source fix

@@ -23,7 +23,7 @@ var (
 func init() {
 	server.DefaultDamage = damageIdentityKey(damageIDDefault)
 	server.DefaultDamageSound = damageIdentityKey(damageIDDefaultSound)
-	server.DefaultXfer = C.nox_xxx_XFerDefault_4F49A0
+	server.DefaultXfer = xferIdentityKey(xferIDDefault)
 
 	server.RegisterObjectCreateGo("MonsterCreate", lifecycleCreateKey(createIDMonster), func(u *server.Object) { Nox_xxx_monsterCreateFn_54C480(u) })
 	server.RegisterObjectCreateGo("ArmorCreate", lifecycleCreateKey(createIDArmor), func(u *server.Object) { createArmor(u) })
@@ -75,7 +75,7 @@ func nox_xxx_newObjectByTypeID_4E3810(cstr *C.char) *nox_object_t {
 }
 
 func Get_nox_xxx_XFerInvLight_4F5AA0() unsafe.Pointer {
-	return unsafe.Pointer(C.nox_xxx_XFerInvLight_4F5AA0)
+	return xferIdentityKey(xferIDInvisibleLight)
 }
 func Get_nox_xxx_unitInitGold_4F04B0() unsafe.Pointer {
 	return lifecycleInitKey(initIDGold)

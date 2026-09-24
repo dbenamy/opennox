@@ -2705,3 +2705,14 @@ and mutable hooks late-bound. Direct fixture operations preserve sparse IDs and
 integer widths. Also migrate the team-flag return caller found during review.
 This reversible shared API change was qualified with the full default port corpus.
 See [ITEM_IDENTITIES.md](ITEM_IDENTITIES.md).
+
+
+## Transfer callback identities and adjacent wrappers
+
+Reuse the existing Go transfer registry for 28 native identities, retiring their C
+wrappers plus two unused lowercase common/inventory exports. Their similarly named
+capitalized Go helpers remain live and unchanged. Preserve default logging/error
+semantics, actual serialization owners and all comparison/getter consumers. Add
+real invisible-light script-storage allocation and lifetime contracts. Remove the
+map-painting consumer's redundant C.int cast because its owner already returns
+int32; no width or arithmetic change. See [XFER_IDENTITIES.md](XFER_IDENTITIES.md).

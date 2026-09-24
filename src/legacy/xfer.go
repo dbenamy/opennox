@@ -1,15 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_2.h"
-int nox_xxx_mapReadWriteObjData_4F4530(nox_object_t* a1p, int a2);
-int nox_xxx_xfer_4F3E30(unsigned short a1, nox_object_t* a2, int a3);
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -25,103 +15,48 @@ var (
 )
 
 func init() {
-	server.RegisterObjectXferGo("DefaultXfer", C.nox_xxx_XFerDefault_4F49A0, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerDefault_4F49A0(asObjectC(u), arg))
+	server.RegisterObjectXferGo("DefaultXfer", xferIdentityKey(xferIDDefault), func(u *server.Object, arg unsafe.Pointer) int {
+		if err := Nox_xxx_XFerDefault4F49A0(cryptfile.Global(), u, arg); err != nil {
+			mapLog.Println("nox_xxx_XFerDefault_4F49A0:", err)
+			return 0
+		}
+		return 1
 	})
-	server.RegisterObjectXferGo("SpellPagePedestalXfer", C.nox_xxx_XFerSpellPagePedistal_4F4A20, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerSpellPagePedistal_4F4A20(C.int(uintptr(u.CObj()))))
-	})
-	server.RegisterObjectXferGo("SpellRewardXfer", C.nox_xxx_XFerSpellReward_4F5F30, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerSpellReward_4F5F30((*C.int)(u.CObj())))
-	})
-	server.RegisterObjectXferGo("AbilityRewardXfer", C.nox_xxx_XFerAbilityReward_4F6240, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerAbilityReward_4F6240((*C.int)(u.CObj())))
-	})
-	server.RegisterObjectXferGo("FieldGuideXfer", C.nox_xxx_XFerFieldGuide_4F6390, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerFieldGuide_4F6390((*C.int)(u.CObj())))
-	})
-	server.RegisterObjectXferGo("ReadableXfer", C.nox_xxx_XFerReadable_4F4AB0, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerReadable_4F4AB0(C.int(uintptr(u.CObj()))))
-	})
-	server.RegisterObjectXferGo("ExitXfer", C.nox_xxx_XFerExit_4F4B90, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerExit_4F4B90(C.int(uintptr(u.CObj()))))
-	})
-	server.RegisterObjectXferGo("DoorXfer", C.nox_xxx_XFerDoor_4F4CB0, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerDoor_4F4CB0(C.int(uintptr(u.CObj()))))
-	})
-	server.RegisterObjectXferGo("TriggerXfer", C.nox_xxx_unitTriggerXfer_4F4E50, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_unitTriggerXfer_4F4E50(asObjectC(u)))
-	})
-	server.RegisterObjectXferGo("MonsterXfer", C.nox_xxx_XFerMonster_528DB0, func(u *server.Object, arg unsafe.Pointer) int { return int(nox_xxx_XFerMonster_528DB0(asObjectC(u))) })
-	server.RegisterObjectXferGo("HoleXfer", C.nox_xxx_XFerHole_4F51D0, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerHole_4F51D0(C.int(uintptr(u.CObj()))))
-	})
-	server.RegisterObjectXferGo("TransporterXfer", C.nox_xxx_XFerTransporter_4F5300, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerTransporter_4F5300(C.int(uintptr(u.CObj()))))
-	})
-	server.RegisterObjectXferGo("ElevatorXfer", C.nox_xxx_XFerElevator_4F53D0, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerElevator_4F53D0(C.int(uintptr(u.CObj()))))
-	})
-	server.RegisterObjectXferGo("ElevatorShaftXfer", C.nox_xxx_XFerElevatorShaft_4F54A0, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerElevatorShaft_4F54A0(C.int(uintptr(u.CObj()))))
-	})
-	server.RegisterObjectXferGo("MoverXfer", C.nox_xxx_XFerMover_4F5730, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerMover_4F5730(C.int(uintptr(u.CObj()))))
-	})
-	server.RegisterObjectXferGo("GlyphXfer", C.nox_xxx_XFerGlyph_4F5890, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerGlyph_4F5890(C.int(uintptr(u.CObj()))))
-	})
-	server.RegisterObjectXferGo("InvisibleLightXfer", C.nox_xxx_XFerInvLight_4F5AA0, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerInvLight_4F5AA0((*C.int)(u.CObj())))
-	})
-	server.RegisterObjectXferGo("SentryXfer", C.nox_xxx_XFerSentry_4F5E50, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerSentry_4F5E50(C.int(uintptr(u.CObj()))))
-	})
-	server.RegisterObjectXferGo("WeaponXfer", C.nox_xxx_XFerWeapon_4F64A0, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerWeapon_4F64A0(C.int(uintptr(u.CObj()))))
-	})
-	server.RegisterObjectXferGo("ArmorXfer", C.nox_xxx_XFerArmor_4F6860, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerArmor_4F6860(C.int(uintptr(u.CObj()))))
-	})
-	server.RegisterObjectXferGo("TeamXfer", C.nox_xxx_XFerTeam_4F6D20, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerTeam_4F6D20((*C.int)(u.CObj())))
-	})
-	server.RegisterObjectXferGo("GoldXfer", C.nox_xxx_XFerGold_4F6EC0, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerGold_4F6EC0(C.int(uintptr(u.CObj()))))
-	})
-	server.RegisterObjectXferGo("AmmoXfer", C.nox_xxx_XFerAmmo_4F6B20, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerAmmo_4F6B20((*C.int)(u.CObj())))
-	})
-	server.RegisterObjectXferGo("NPCXfer", C.nox_xxx_XFerNPC_52ADE0, func(u *server.Object, arg unsafe.Pointer) int { return int(nox_xxx_XFerNPC_52ADE0(asObjectC(u))) })
-	server.RegisterObjectXferGo("ObeliskXfer", C.nox_xxx_XFerObelisk_4F6F60, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerObelisk_4F6F60((*C.int)(u.CObj())))
-	})
-	server.RegisterObjectXferGo("ToxicCloudXfer", C.nox_xxx_XFerToxicCloud_4F70A0, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerToxicCloud_4F70A0(C.int(uintptr(u.CObj()))))
-	})
-	server.RegisterObjectXferGo("MonsterGeneratorXfer", C.nox_xxx_XFerMonsterGen_4F7130, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerMonsterGen_4F7130((*C.int)(u.CObj())))
-	})
-	server.RegisterObjectXferGo("RewardMarkerXfer", C.nox_xxx_XFerRewardMarker_4F74D0, func(u *server.Object, arg unsafe.Pointer) int {
-		return int(nox_xxx_XFerRewardMarker_4F74D0((*C.int)(u.CObj())))
-	})
-}
-
-//export nox_xxx_XFerDefault_4F49A0
-func nox_xxx_XFerDefault_4F49A0(a1p *nox_object_t, a2 unsafe.Pointer) int {
-	if err := Nox_xxx_XFerDefault4F49A0(cryptfile.Global(), asObjectS(a1p), a2); err != nil {
-		mapLog.Println("nox_xxx_XFerDefault_4F49A0:", err)
-		return 0
-	}
-	return 1
+	server.RegisterObjectXferGo("SpellPagePedestalXfer", xferIdentityKey(xferIDSpellPagePedestal), func(u *server.Object, arg unsafe.Pointer) int { return objectXferPedestal(u) })
+	server.RegisterObjectXferGo("SpellRewardXfer", xferIdentityKey(xferIDSpellReward), func(u *server.Object, arg unsafe.Pointer) int { return itemXferSpellReward(u) })
+	server.RegisterObjectXferGo("AbilityRewardXfer", xferIdentityKey(xferIDAbilityReward), func(u *server.Object, arg unsafe.Pointer) int { return itemXferAbilityReward(u) })
+	server.RegisterObjectXferGo("FieldGuideXfer", xferIdentityKey(xferIDFieldGuide), func(u *server.Object, arg unsafe.Pointer) int { return itemXferFieldGuide(u) })
+	server.RegisterObjectXferGo("ReadableXfer", xferIdentityKey(xferIDReadable), func(u *server.Object, arg unsafe.Pointer) int { return objectXferReadable(u) })
+	server.RegisterObjectXferGo("ExitXfer", xferIdentityKey(xferIDExit), func(u *server.Object, arg unsafe.Pointer) int { return objectXferExit(u) })
+	server.RegisterObjectXferGo("DoorXfer", xferIdentityKey(xferIDDoor), func(u *server.Object, arg unsafe.Pointer) int { return objectXferDoor(u) })
+	server.RegisterObjectXferGo("TriggerXfer", xferIdentityKey(xferIDTrigger), func(u *server.Object, arg unsafe.Pointer) int { return objectXferTrigger(u) })
+	server.RegisterObjectXferGo("MonsterXfer", xferIdentityKey(xferIDMonster), func(u *server.Object, arg unsafe.Pointer) int { return creatureXferMonster(u) })
+	server.RegisterObjectXferGo("HoleXfer", xferIdentityKey(xferIDHole), func(u *server.Object, arg unsafe.Pointer) int { return objectXferHole(u) })
+	server.RegisterObjectXferGo("TransporterXfer", xferIdentityKey(xferIDTransporter), func(u *server.Object, arg unsafe.Pointer) int { return objectXferTransporter(u) })
+	server.RegisterObjectXferGo("ElevatorXfer", xferIdentityKey(xferIDElevator), func(u *server.Object, arg unsafe.Pointer) int { return objectXferElevator(u) })
+	server.RegisterObjectXferGo("ElevatorShaftXfer", xferIdentityKey(xferIDElevatorShaft), func(u *server.Object, arg unsafe.Pointer) int { return objectXferShaft(u) })
+	server.RegisterObjectXferGo("MoverXfer", xferIdentityKey(xferIDMover), func(u *server.Object, arg unsafe.Pointer) int { return objectXferMover(u) })
+	server.RegisterObjectXferGo("GlyphXfer", xferIdentityKey(xferIDGlyph), func(u *server.Object, arg unsafe.Pointer) int { return objectXferGlyph(u) })
+	server.RegisterObjectXferGo("InvisibleLightXfer", xferIdentityKey(xferIDInvisibleLight), func(u *server.Object, arg unsafe.Pointer) int { return objectXferLight(u) })
+	server.RegisterObjectXferGo("SentryXfer", xferIdentityKey(xferIDSentry), func(u *server.Object, arg unsafe.Pointer) int { return objectXferSentry(u) })
+	server.RegisterObjectXferGo("WeaponXfer", xferIdentityKey(xferIDWeapon), func(u *server.Object, arg unsafe.Pointer) int { return itemXferWeapon(u) })
+	server.RegisterObjectXferGo("ArmorXfer", xferIdentityKey(xferIDArmor), func(u *server.Object, arg unsafe.Pointer) int { return itemXferArmor(u) })
+	server.RegisterObjectXferGo("TeamXfer", xferIdentityKey(xferIDTeam), func(u *server.Object, arg unsafe.Pointer) int { return itemXferTeam(u) })
+	server.RegisterObjectXferGo("GoldXfer", xferIdentityKey(xferIDGold), func(u *server.Object, arg unsafe.Pointer) int { return itemXferGold(u) })
+	server.RegisterObjectXferGo("AmmoXfer", xferIdentityKey(xferIDAmmo), func(u *server.Object, arg unsafe.Pointer) int { return itemXferAmmo(u) })
+	server.RegisterObjectXferGo("NPCXfer", xferIdentityKey(xferIDNPC), func(u *server.Object, arg unsafe.Pointer) int { return creatureXferNPC(u) })
+	server.RegisterObjectXferGo("ObeliskXfer", xferIdentityKey(xferIDObelisk), func(u *server.Object, arg unsafe.Pointer) int { return itemXferObelisk(u) })
+	server.RegisterObjectXferGo("ToxicCloudXfer", xferIdentityKey(xferIDToxicCloud), func(u *server.Object, arg unsafe.Pointer) int { return itemXferToxicCloud(u) })
+	server.RegisterObjectXferGo("MonsterGeneratorXfer", xferIdentityKey(xferIDMonsterGenerator), func(u *server.Object, arg unsafe.Pointer) int { return itemXferGenerator(u) })
+	server.RegisterObjectXferGo("RewardMarkerXfer", xferIdentityKey(xferIDRewardMarker), func(u *server.Object, arg unsafe.Pointer) int { return itemXferRewardMarker(u) })
 }
 
 func Get_nox_xxx_XFerFieldGuide_4F6390() unsafe.Pointer {
-	return C.nox_xxx_XFerFieldGuide_4F6390
+	return xferIdentityKey(xferIDFieldGuide)
 }
 
 func Get_nox_xxx_XFerAbilityReward_4F6240() unsafe.Pointer {
-	return C.nox_xxx_XFerAbilityReward_4F6240
+	return xferIdentityKey(xferIDAbilityReward)
 }
 func Nox_xxx_mapReadWriteObjData_4F4530(a1 *server.Object, a2 int) int {
 	return objectXferCommon(a1, a2)

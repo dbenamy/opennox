@@ -314,7 +314,7 @@ func Get_nox_objectDropAudEvent_4EE2F0() unsafe.Pointer {
 	return itemIdentityKey(itemIDAudEventDrop)
 }
 func Get_nox_xxx_XFerDefault_4F49A0() unsafe.Pointer {
-	return C.nox_xxx_XFerDefault_4F49A0
+	return xferIdentityKey(xferIDDefault)
 }
 func Get_nox_xxx_updateHarpoon_54F380() unsafe.Pointer {
 	return C.nox_xxx_updateHarpoon_54F380

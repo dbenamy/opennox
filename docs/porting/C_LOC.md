@@ -338,6 +338,7 @@ target build selection and linker evidence.
 | Native creation/init identities; selected cgo files 218→216, exports 913→894, preamble bodies remain 77 | 0 | 0 | 0 | 0 |
 | Native damage/sound identities and direct owners; selected cgo files 216→213, exports 894→866, preamble bodies remain 77 | 0 | 0 | 0 | 0 |
 | Native item use/drop/pickup identities; selected cgo files 213→208, exports 866→825, preamble bodies remain 77 | 0 | 0 | 0 | 0 |
+| Native transfer identities and consumers; selected cgo files 208→202, exports 825→795, preamble bodies remain 77 | 0 | 0 | 0 | 0 |
 
 The 33 checksum test-reference lines were retired after differential validation;
 their original source remains recoverable at `66fa7bd4`.

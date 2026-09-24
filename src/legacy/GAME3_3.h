@@ -44,21 +44,5 @@ int sub_4F2C30(int a1);
 int nox_xxx_spell_4F2E70(int a1);
 int sub_4F2EF0(int a1);
 int nox_xxx_inventoryServPlace_4F36F0(nox_object_t* a1p, nox_object_t* a2p, int a3, int a4);
-int nox_xxx_xfer_4F3E30(unsigned short a1, nox_object_t* a2, int a3);
-int nox_xxx_mapReadWriteObjData_4F4530(nox_object_t* a1, int a2);
-int nox_xxx_XFerDefault_4F49A0(nox_object_t* a1, void* a2);
-int nox_xxx_XFerSpellPagePedistal_4F4A20(int a1);
-int nox_xxx_XFerReadable_4F4AB0(int a1);
-int nox_xxx_XFerExit_4F4B90(int a1);
-int nox_xxx_XFerDoor_4F4CB0(int a1);
-int nox_xxx_unitTriggerXfer_4F4E50(nox_object_t* a1);
-int nox_xxx_XFerHole_4F51D0(int a1);
-int nox_xxx_XFerTransporter_4F5300(int a1);
-int nox_xxx_XFerElevator_4F53D0(int a1);
-int nox_xxx_XFerElevatorShaft_4F54A0(int a1);
-int nox_xxx_XFerMover_4F5730(int a1);
-int nox_xxx_XFerGlyph_4F5890(int a1);
-int nox_xxx_XFerInvLight_4F5AA0(int* a1);
-int nox_xxx_XFerSentry_4F5E50(int a1);
 
 #endif // NOX_PORT_GAME3_3
