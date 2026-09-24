@@ -1,0 +1,2701 @@
+{
+  "source_commit": "f6f5ee4cb73d5630e18030f9a3bd0280faf699cd",
+  "qualification": "docs/porting/remaining-unused-exports-qualification.json",
+  "all_source_fingerprints_identical": true,
+  "reuse": [
+    "complete root corpus in all three profiles",
+    "safe/static",
+    "fresh production/ABI",
+    "known suite",
+    "headless character creation and save/load/resume"
+  ],
+  "exports_retired": [
+    "get_dword_5d4594_3799468",
+    "get_video_mode_string",
+    "noxGetLocalTime",
+    "nox_client_clearScreen_440900",
+    "nox_client_countPlayerFiles04_4DC7D0",
+    "nox_client_drawAddPoint_49F500",
+    "nox_client_drawBorderLines_49CC70",
+    "nox_client_drawEnableAlpha_434560",
+    "nox_client_drawImageAt_47D2C0",
+    "nox_client_drawLineFromPoints_49E4B0",
+    "nox_client_drawPixel_49EFA0",
+    "nox_client_drawRectFilledAlpha_49CF10",
+    "nox_client_drawRectFilledOpaque_49CE30",
+    "nox_client_drawSetColor_434460",
+    "nox_client_getBriefDuration",
+    "nox_client_getChatMap_49FF40",
+    "nox_client_getIntroScreenDuration_44E3B0",
+    "nox_client_getRenderGUI",
+    "nox_client_guiXxxDestroy_4A24A0",
+    "nox_client_gui_set_flag_815132",
+    "nox_client_joinGame_438A90",
+    "nox_client_parseConfigHotkeysLine_42CF50",
+    "nox_client_quit_4460C0",
+    "nox_client_refreshServerList_4378B0",
+    "nox_client_resetScreenParticles_431510",
+    "nox_client_setCursorType_477610",
+    "nox_client_setRenderGUI",
+    "nox_client_toggleMap_473610",
+    "nox_color_rgb_4344A0",
+    "nox_common_getEngineFlag",
+    "nox_common_playerIsAbilityActive_4FC250",
+    "nox_common_randomInt_415FA0",
+    "nox_common_writecfgfile",
+    "nox_draw_set54RGB32_434040",
+    "nox_draw_setCutSize_476700",
+    "nox_draw_setMaterial_4340A0",
+    "nox_exit",
+    "nox_fs_close",
+    "nox_fs_fread",
+    "nox_game_decStateInd_43BDC0",
+    "nox_get_thing_name",
+    "nox_get_thing_pretty_name",
+    "nox_gui_console_Hide_4512B0",
+    "nox_gui_console_flagXxx_451410",
+    "nox_gui_menu_proc_ext",
+    "nox_input_pollEvents_4453A0",
+    "nox_netlist_addToMsgListCli_40EBC0",
+    "nox_new_window_from_file",
+    "nox_platform_rand",
+    "nox_savegame_sub_46D580",
+    "nox_script_readWriteZzz_541670",
+    "nox_server_currentMapGetFilename_409B30",
+    "nox_server_getFirstObject_4DA790",
+    "nox_server_getNextObject_4DA7A0",
+    "nox_server_parseCmdText_443C80",
+    "nox_server_questAllowDefault",
+    "nox_server_questNextStageThreshold_4D74F0",
+    "nox_setImaginaryCaster",
+    "nox_set_color_rgb_434430",
+    "nox_strman_get_lang_code",
+    "nox_strman_loadString_40F1D0",
+    "nox_ticks_reset_416D40",
+    "nox_video_callCopyBackBuffer_4AD170",
+    "nox_video_drawCircleColored_4C3270",
+    "nox_video_getCutSize_4766D0",
+    "nox_video_getFullScreen",
+    "nox_video_inFadeTransition_44E0D0",
+    "nox_video_setCutSize_4766A0",
+    "nox_video_setFullScreen",
+    "nox_video_setGammaSlider",
+    "nox_video_setMenuOptions",
+    "nox_window_set_hidden",
+    "nox_xxx_CheckGameplayFlags_417DA0",
+    "nox_xxx_XFer_ReadShopItem_52A840",
+    "nox_xxx_XFer_WriteShopItem_52A5F0",
+    "nox_xxx____setargv_4_44B000",
+    "nox_xxx_abilityCooldown_4252D0",
+    "nox_xxx_ammoCheck_415880",
+    "nox_xxx_animPlayerGetFrameRange_4F9F90",
+    "nox_xxx_audCreate_501A30",
+    "nox_xxx_aud_501960",
+    "nox_xxx_bindevent_bindNameByTitle_42EA40",
+    "nox_xxx_bookFirstKnownAbil_425330",
+    "nox_xxx_bookGet_430B40_get_mouse_prev_seq",
+    "nox_xxx_bookNextKnownAbil_425350",
+    "nox_xxx_castSpellByUser_4FDD20",
+    "nox_xxx_changeOwner_52BE40",
+    "nox_xxx_checkSummonedCreaturesLimit_500D70",
+    "nox_xxx_cliDrawConnectedLoop_43B360",
+    "nox_xxx_createAt_4DAA50",
+    "nox_xxx_creatureIsMonitored_500CC0",
+    "nox_xxx_cursorResetDraggedItem_4776A0",
+    "nox_xxx_cursorSetDraggedItem_477690",
+    "nox_xxx_delayedDeleteObject_4E5CC0",
+    "nox_xxx_drawPointMB_499B70",
+    "nox_xxx_drawSetTextColor_434390",
+    "nox_xxx_drawStringWrap_43FAF0",
+    "nox_xxx_findParentChainPlayer_4EC580",
+    "nox_xxx_gameGetScreenBoundaries_43BEB0_get_video_mode",
+    "nox_xxx_gameIsNotMultiplayer_4DB250",
+    "nox_xxx_gameSetAudioFadeoutMb_501AC0",
+    "nox_xxx_gameSetMapPath_409D70",
+    "nox_xxx_gameSetSwitchSolo_4DB220",
+    "nox_xxx_gameSetWallsDamage_4E25A0",
+    "nox_xxx_getEnchantSpell_424920",
+    "nox_xxx_getSevenDwords3_501940",
+    "nox_xxx_getUnitNameByThingType_4E3A80",
+    "nox_xxx_getUnitName_4E39D0",
+    "nox_xxx_guiFontHeightMB_43F320",
+    "nox_xxx_harpoonBreakForPlr_537520",
+    "nox_xxx_keybind_nameByTitle_42E960",
+    "nox_xxx_mapCheck_537110",
+    "nox_xxx_mapDamageToWalls_534FC0",
+    "nox_xxx_mapDamageUnitsAround_4E25B0",
+    "nox_xxx_mapGenMakeInfo_4D5DB0",
+    "nox_xxx_mapLoad_4D2450",
+    "nox_xxx_mapSwitchLevel_4D12E0",
+    "nox_xxx_mapTraceRay_535250",
+    "nox_xxx_mapWriteSectionsMB_426E20",
+    "nox_xxx_mapgenGetSomeFile_426A60",
+    "nox_xxx_modifGetDescById_413330",
+    "nox_xxx_modifGetIdByName_413290",
+    "nox_xxx_monsterMarkUpdate_4E8020",
+    "nox_xxx_monsterPopAction_50A160",
+    "nox_xxx_moveUpdateSpecial_517970",
+    "nox_xxx_netAbilRepotState_4D8100",
+    "nox_xxx_netInformTextMsg2_4DA180",
+    "nox_xxx_netInformTextMsg_4DA0F0",
+    "nox_xxx_netMarkMinimapObject_417190",
+    "nox_xxx_netReportAcquireCreature_4D91A0",
+    "nox_xxx_netReportEnchant_4D8F90",
+    "nox_xxx_netReportLesson_4D8EF0",
+    "nox_xxx_netReportUnitCurrentHP_4D8620",
+    "nox_xxx_netReportUnitHeight_4D9020",
+    "nox_xxx_netReportXStatus_4D8230",
+    "nox_xxx_netSendSecondaryWeapon_4D9670",
+    "nox_xxx_netUnmarkMinimapObj_417300",
+    "nox_xxx_net_getIP_554200",
+    "nox_xxx_newObjectByTypeID_4E3810",
+    "nox_xxx_newObjectWithTypeInd_4E3450",
+    "nox_xxx_objGetTeamByNetCode_418C80",
+    "nox_xxx_objectApplyForce_52DF80",
+    "nox_xxx_objectFreeMem_4E38A0",
+    "nox_xxx_playerCameraFollow_4E6060",
+    "nox_xxx_playerCameraUnlock_4E6040",
+    "nox_xxx_playerCancelAbils_4FC180",
+    "nox_xxx_playerClassCanUseItem_57B3D0",
+    "nox_xxx_playerExecuteAbil_4FBB70",
+    "nox_xxx_playerGoObserver_4E6860",
+    "nox_xxx_playerObserveMonster_4DDE80",
+    "nox_xxx_playerSendMOTD_4DD140",
+    "nox_xxx_playerSetState_4FA020",
+    "nox_xxx_playerSubLessons_4D8EC0",
+    "nox_xxx_probablyWarcryCheck_4FC3E0",
+    "nox_xxx_rasterPointRel_49F570",
+    "nox_xxx_scriptCallByEventBlock_502490",
+    "nox_xxx_servFinalizeDelObject_4DADE0",
+    "nox_xxx_serverHost_43B4D0",
+    "nox_xxx_serverIsClosing_446180",
+    "nox_xxx_spellAwardAll1_4EFD80",
+    "nox_xxx_spellAwardAll2_4EFC80",
+    "nox_xxx_spellAwardAll3_4EFE10",
+    "nox_xxx_spellCancelDurSpell_4FEB10",
+    "nox_xxx_spellDescription_424A30",
+    "nox_xxx_spellFirstValid_424AD0",
+    "nox_xxx_spellFlags_424A70",
+    "nox_xxx_spellGetAbilityIcon_425310",
+    "nox_xxx_spellGetAud44_424800",
+    "nox_xxx_spellIconHighlight_424AB0",
+    "nox_xxx_spellIcon_424A90",
+    "nox_xxx_spellIsEnabled_424B70",
+    "nox_xxx_spellIsValid_424B50",
+    "nox_xxx_spellManaCost_4249A0",
+    "nox_xxx_spellNextValid_424AF0",
+    "nox_xxx_unitArmorInventoryEquipFlags_415C70",
+    "nox_xxx_unitClearOwner_4EC300",
+    "nox_xxx_unitDoSummonAt_5016C0",
+    "nox_xxx_unitHasThatParent_4EC4F0",
+    "nox_xxx_unitIsHostileMimic_4E7F90",
+    "nox_xxx_unitIsUnitTT_4E7C80",
+    "nox_xxx_unitMove_4E7010",
+    "nox_xxx_unitSetOwner_4EC290",
+    "nox_xxx_unitSetXStatus_4E4800",
+    "nox_xxx_unitUnsetXStatus_4E4780",
+    "nox_xxx_updateSprings_5113A0",
+    "nox_xxx_weaponInventoryEquipFlags_415820",
+    "nox_xxx_windowDestroyMB_46C4E0",
+    "nox_xxx_wndButtonProc_4A7F50",
+    "nox_xxx_wndScrollBoxDraw_4B4BA0",
+    "sub_409F40",
+    "sub_40A1A0",
+    "sub_40A300",
+    "sub_413A00",
+    "sub_415840",
+    "sub_416150",
+    "sub_416170",
+    "sub_4165D0",
+    "sub_419E60",
+    "sub_41E300",
+    "sub_4252F0",
+    "sub_425450",
+    "sub_42E8E0",
+    "sub_430C30_set_video_max",
+    "sub_437260",
+    "sub_4373A0",
+    "sub_438770_waitList",
+    "sub_43BE30",
+    "sub_43BE40",
+    "sub_43BE50_get_video_mode_id",
+    "sub_43C6E0",
+    "sub_43CF40",
+    "sub_43CF70",
+    "sub_43DBD0",
+    "sub_43DBE0",
+    "sub_43F130",
+    "sub_446380",
+    "sub_449E60",
+    "sub_44A360",
+    "sub_44A400",
+    "sub_44A4A0",
+    "sub_44A4B0",
+    "sub_44A4E0",
+    "sub_44D640",
+    "sub_44D7E0",
+    "sub_44E320",
+    "sub_450580",
+    "sub_4537F0",
+    "sub_46D6F0",
+    "sub_4703F0",
+    "sub_4706C0",
+    "sub_473670",
+    "sub_473970",
+    "sub_4A1A40",
+    "sub_4A1BE0",
+    "sub_4A24C0",
+    "sub_4AE6F0",
+    "sub_4C26F0",
+    "sub_4C3A90",
+    "sub_4C3B70",
+    "sub_4CBBF0",
+    "sub_4CBE70",
+    "sub_4D6F30",
+    "sub_4D82F0",
+    "sub_4D9D20",
+    "sub_4DB170",
+    "sub_4DB1C0",
+    "sub_4DCBF0",
+    "sub_4DCC10",
+    "sub_4DCC90",
+    "sub_4DCFB0",
+    "sub_4E3AD0",
+    "sub_4E3B80",
+    "sub_4E71F0",
+    "sub_4E8290",
+    "sub_4FC0B0",
+    "sub_4FC300",
+    "sub_4FC440",
+    "sub_4FC670",
+    "sub_517590",
+    "sub_51D0E0",
+    "sub_526CA0",
+    "sub_554240",
+    "sub_554D10",
+    "sub_57B370",
+    "sub_57C490_2"
+  ],
+  "whole_unused_wrappers": [
+    "get_video_mode_string",
+    "nox_client_clearScreen_440900",
+    "nox_client_countPlayerFiles04_4DC7D0",
+    "nox_client_getBriefDuration",
+    "nox_client_getChatMap_49FF40",
+    "nox_client_getIntroScreenDuration_44E3B0",
+    "nox_client_getRenderGUI",
+    "nox_client_guiXxxDestroy_4A24A0",
+    "nox_client_gui_set_flag_815132",
+    "nox_client_joinGame_438A90",
+    "nox_client_parseConfigHotkeysLine_42CF50",
+    "nox_client_quit_4460C0",
+    "nox_client_refreshServerList_4378B0",
+    "nox_client_resetScreenParticles_431510",
+    "nox_client_toggleMap_473610",
+    "nox_common_writecfgfile",
+    "nox_draw_setCutSize_476700",
+    "nox_exit",
+    "nox_gui_console_Hide_4512B0",
+    "nox_gui_console_flagXxx_451410",
+    "nox_gui_menu_proc_ext",
+    "nox_new_window_from_file",
+    "nox_savegame_sub_46D580",
+    "nox_script_readWriteZzz_541670",
+    "nox_server_currentMapGetFilename_409B30",
+    "nox_server_questAllowDefault",
+    "nox_server_questNextStageThreshold_4D74F0",
+    "nox_setImaginaryCaster",
+    "nox_ticks_reset_416D40",
+    "nox_video_callCopyBackBuffer_4AD170",
+    "nox_video_getCutSize_4766D0",
+    "nox_video_getFullScreen",
+    "nox_video_inFadeTransition_44E0D0",
+    "nox_video_setCutSize_4766A0",
+    "nox_video_setFullScreen",
+    "nox_video_setGammaSlider",
+    "nox_video_setMenuOptions",
+    "nox_xxx_XFer_ReadShopItem_52A840",
+    "nox_xxx_XFer_WriteShopItem_52A5F0",
+    "nox_xxx_bindevent_bindNameByTitle_42EA40",
+    "nox_xxx_changeOwner_52BE40",
+    "nox_xxx_cliDrawConnectedLoop_43B360",
+    "nox_xxx_cursorResetDraggedItem_4776A0",
+    "nox_xxx_cursorSetDraggedItem_477690",
+    "nox_xxx_gameGetScreenBoundaries_43BEB0_get_video_mode",
+    "nox_xxx_gameIsNotMultiplayer_4DB250",
+    "nox_xxx_gameSetAudioFadeoutMb_501AC0",
+    "nox_xxx_gameSetMapPath_409D70",
+    "nox_xxx_gameSetSwitchSolo_4DB220",
+    "nox_xxx_harpoonBreakForPlr_537520",
+    "nox_xxx_keybind_nameByTitle_42E960",
+    "nox_xxx_mapGenMakeInfo_4D5DB0",
+    "nox_xxx_mapSwitchLevel_4D12E0",
+    "nox_xxx_mapWriteSectionsMB_426E20",
+    "nox_xxx_moveUpdateSpecial_517970",
+    "nox_xxx_netAbilRepotState_4D8100",
+    "nox_xxx_netReportXStatus_4D8230",
+    "nox_xxx_objGetTeamByNetCode_418C80",
+    "nox_xxx_playerCancelAbils_4FC180",
+    "nox_xxx_playerClassCanUseItem_57B3D0",
+    "nox_xxx_playerExecuteAbil_4FBB70",
+    "nox_xxx_playerGoObserver_4E6860",
+    "nox_xxx_playerObserveMonster_4DDE80",
+    "nox_xxx_playerSendMOTD_4DD140",
+    "nox_xxx_playerSubLessons_4D8EC0",
+    "nox_xxx_serverHost_43B4D0",
+    "nox_xxx_serverIsClosing_446180",
+    "nox_xxx_unitDoSummonAt_5016C0",
+    "nox_xxx_updateSprings_5113A0",
+    "sub_409F40",
+    "sub_40A1A0",
+    "sub_416150",
+    "sub_416170",
+    "sub_4165D0",
+    "sub_41E300",
+    "sub_430C30_set_video_max",
+    "sub_437260",
+    "sub_4373A0",
+    "sub_438770_waitList",
+    "sub_43BE30",
+    "sub_43BE40",
+    "sub_43BE50_get_video_mode_id",
+    "sub_43C6E0",
+    "sub_43CF40",
+    "sub_43CF70",
+    "sub_43DBD0",
+    "sub_43DBE0",
+    "sub_43F130",
+    "sub_446380",
+    "sub_449E60",
+    "sub_44A360",
+    "sub_44A400",
+    "sub_44A4A0",
+    "sub_44A4B0",
+    "sub_44A4E0",
+    "sub_44D640",
+    "sub_44D7E0",
+    "sub_44E320",
+    "sub_450580",
+    "sub_46D6F0",
+    "sub_4703F0",
+    "sub_4706C0",
+    "sub_473970",
+    "sub_4A1A40",
+    "sub_4A1BE0",
+    "sub_4A24C0",
+    "sub_4C26F0",
+    "sub_4C3A90",
+    "sub_4C3B70",
+    "sub_4CBBF0",
+    "sub_4CBE70",
+    "sub_4DB170",
+    "sub_4DB1C0",
+    "sub_4DCBF0",
+    "sub_4DCC10",
+    "sub_4DCC90",
+    "sub_4DCFB0",
+    "sub_4E3AD0",
+    "sub_4E71F0",
+    "sub_4FC0B0",
+    "sub_4FC670",
+    "sub_526CA0",
+    "sub_554240",
+    "sub_554D10",
+    "sub_57B370",
+    "sub_57C490_2"
+  ],
+  "preserved_go_functions": [
+    "get_dword_5d4594_3799468",
+    "noxGetLocalTime",
+    "nox_client_drawAddPoint_49F500",
+    "nox_client_drawBorderLines_49CC70",
+    "nox_client_drawEnableAlpha_434560",
+    "nox_client_drawImageAt_47D2C0",
+    "nox_client_drawLineFromPoints_49E4B0",
+    "nox_client_drawPixel_49EFA0",
+    "nox_client_drawRectFilledAlpha_49CF10",
+    "nox_client_drawRectFilledOpaque_49CE30",
+    "nox_client_drawSetColor_434460",
+    "nox_client_setCursorType_477610",
+    "nox_client_setRenderGUI",
+    "nox_color_rgb_4344A0",
+    "nox_common_getEngineFlag",
+    "nox_common_playerIsAbilityActive_4FC250",
+    "nox_common_randomInt_415FA0",
+    "nox_draw_set54RGB32_434040",
+    "nox_draw_setMaterial_4340A0",
+    "nox_fs_close",
+    "nox_fs_fread",
+    "nox_game_decStateInd_43BDC0",
+    "nox_get_thing_name",
+    "nox_get_thing_pretty_name",
+    "nox_input_pollEvents_4453A0",
+    "nox_netlist_addToMsgListCli_40EBC0",
+    "nox_platform_rand",
+    "nox_server_getFirstObject_4DA790",
+    "nox_server_getNextObject_4DA7A0",
+    "nox_server_parseCmdText_443C80",
+    "nox_set_color_rgb_434430",
+    "nox_strman_get_lang_code",
+    "nox_strman_loadString_40F1D0",
+    "nox_video_drawCircleColored_4C3270",
+    "nox_window_set_hidden",
+    "nox_xxx_CheckGameplayFlags_417DA0",
+    "nox_xxx____setargv_4_44B000",
+    "nox_xxx_abilityCooldown_4252D0",
+    "nox_xxx_ammoCheck_415880",
+    "nox_xxx_animPlayerGetFrameRange_4F9F90",
+    "nox_xxx_audCreate_501A30",
+    "nox_xxx_aud_501960",
+    "nox_xxx_bookFirstKnownAbil_425330",
+    "nox_xxx_bookGet_430B40_get_mouse_prev_seq",
+    "nox_xxx_bookNextKnownAbil_425350",
+    "nox_xxx_castSpellByUser_4FDD20",
+    "nox_xxx_checkSummonedCreaturesLimit_500D70",
+    "nox_xxx_createAt_4DAA50",
+    "nox_xxx_creatureIsMonitored_500CC0",
+    "nox_xxx_delayedDeleteObject_4E5CC0",
+    "nox_xxx_drawPointMB_499B70",
+    "nox_xxx_drawSetTextColor_434390",
+    "nox_xxx_drawStringWrap_43FAF0",
+    "nox_xxx_findParentChainPlayer_4EC580",
+    "nox_xxx_gameSetWallsDamage_4E25A0",
+    "nox_xxx_getEnchantSpell_424920",
+    "nox_xxx_getSevenDwords3_501940",
+    "nox_xxx_getUnitNameByThingType_4E3A80",
+    "nox_xxx_getUnitName_4E39D0",
+    "nox_xxx_guiFontHeightMB_43F320",
+    "nox_xxx_mapCheck_537110",
+    "nox_xxx_mapDamageToWalls_534FC0",
+    "nox_xxx_mapDamageUnitsAround_4E25B0",
+    "nox_xxx_mapLoad_4D2450",
+    "nox_xxx_mapTraceRay_535250",
+    "nox_xxx_mapgenGetSomeFile_426A60",
+    "nox_xxx_modifGetDescById_413330",
+    "nox_xxx_modifGetIdByName_413290",
+    "nox_xxx_monsterMarkUpdate_4E8020",
+    "nox_xxx_monsterPopAction_50A160",
+    "nox_xxx_netInformTextMsg2_4DA180",
+    "nox_xxx_netInformTextMsg_4DA0F0",
+    "nox_xxx_netMarkMinimapObject_417190",
+    "nox_xxx_netReportAcquireCreature_4D91A0",
+    "nox_xxx_netReportEnchant_4D8F90",
+    "nox_xxx_netReportLesson_4D8EF0",
+    "nox_xxx_netReportUnitCurrentHP_4D8620",
+    "nox_xxx_netReportUnitHeight_4D9020",
+    "nox_xxx_netSendSecondaryWeapon_4D9670",
+    "nox_xxx_netUnmarkMinimapObj_417300",
+    "nox_xxx_net_getIP_554200",
+    "nox_xxx_newObjectByTypeID_4E3810",
+    "nox_xxx_newObjectWithTypeInd_4E3450",
+    "nox_xxx_objectApplyForce_52DF80",
+    "nox_xxx_objectFreeMem_4E38A0",
+    "nox_xxx_playerCameraFollow_4E6060",
+    "nox_xxx_playerCameraUnlock_4E6040",
+    "nox_xxx_playerSetState_4FA020",
+    "nox_xxx_probablyWarcryCheck_4FC3E0",
+    "nox_xxx_rasterPointRel_49F570",
+    "nox_xxx_scriptCallByEventBlock_502490",
+    "nox_xxx_servFinalizeDelObject_4DADE0",
+    "nox_xxx_spellAwardAll1_4EFD80",
+    "nox_xxx_spellAwardAll2_4EFC80",
+    "nox_xxx_spellAwardAll3_4EFE10",
+    "nox_xxx_spellCancelDurSpell_4FEB10",
+    "nox_xxx_spellDescription_424A30",
+    "nox_xxx_spellFirstValid_424AD0",
+    "nox_xxx_spellFlags_424A70",
+    "nox_xxx_spellGetAbilityIcon_425310",
+    "nox_xxx_spellGetAud44_424800",
+    "nox_xxx_spellIconHighlight_424AB0",
+    "nox_xxx_spellIcon_424A90",
+    "nox_xxx_spellIsEnabled_424B70",
+    "nox_xxx_spellIsValid_424B50",
+    "nox_xxx_spellManaCost_4249A0",
+    "nox_xxx_spellNextValid_424AF0",
+    "nox_xxx_unitArmorInventoryEquipFlags_415C70",
+    "nox_xxx_unitClearOwner_4EC300",
+    "nox_xxx_unitHasThatParent_4EC4F0",
+    "nox_xxx_unitIsHostileMimic_4E7F90",
+    "nox_xxx_unitIsUnitTT_4E7C80",
+    "nox_xxx_unitMove_4E7010",
+    "nox_xxx_unitSetOwner_4EC290",
+    "nox_xxx_unitSetXStatus_4E4800",
+    "nox_xxx_unitUnsetXStatus_4E4780",
+    "nox_xxx_weaponInventoryEquipFlags_415820",
+    "nox_xxx_windowDestroyMB_46C4E0",
+    "nox_xxx_wndButtonProc_4A7F50",
+    "nox_xxx_wndScrollBoxDraw_4B4BA0",
+    "sub_40A300",
+    "sub_413A00",
+    "sub_415840",
+    "sub_419E60",
+    "sub_4252F0",
+    "sub_425450",
+    "sub_42E8E0",
+    "sub_4537F0",
+    "sub_473670",
+    "sub_4AE6F0",
+    "sub_4D6F30",
+    "sub_4D82F0",
+    "sub_4D9D20",
+    "sub_4E3B80",
+    "sub_4E8290",
+    "sub_4FC300",
+    "sub_4FC440",
+    "sub_517590",
+    "sub_51D0E0"
+  ],
+  "header_prototypes": [
+    {
+      "file": "src/legacy/GAME4.h",
+      "line": 61,
+      "kind": "prototype",
+      "text": "int nox_xxx_creatureIsMonitored_500CC0(nox_object_t* a1, nox_object_t* a2);",
+      "symbol": "nox_xxx_creatureIsMonitored_500CC0"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 196,
+      "kind": "prototype",
+      "text": "void nox_xxx_spellAwardAll2_4EFC80(nox_playerInfo* a1p);",
+      "symbol": "nox_xxx_spellAwardAll2_4EFC80"
+    },
+    {
+      "file": "src/legacy/GAME1.h",
+      "line": 30,
+      "kind": "prototype",
+      "text": "int nox_xxx_unitArmorInventoryEquipFlags_415C70(nox_object_t* item);",
+      "symbol": "nox_xxx_unitArmorInventoryEquipFlags_415C70"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 39,
+      "kind": "prototype",
+      "text": "void nox_xxx_unitSetXStatus_4E4800(nox_object_t* a1p, unsigned int a2);",
+      "symbol": "nox_xxx_unitSetXStatus_4E4800"
+    },
+    {
+      "file": "src/legacy/client__system__ctrlevnt.h",
+      "line": 30,
+      "kind": "prototype",
+      "text": "int nox_client_parseConfigHotkeysLine_42CF50(char* a1);",
+      "symbol": "nox_client_parseConfigHotkeysLine_42CF50"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 23,
+      "kind": "prototype",
+      "text": "int nox_xxx_wndScrollBoxDraw_4B4BA0(int a1, int a2, unsigned int a3, int a4);",
+      "symbol": "nox_xxx_wndScrollBoxDraw_4B4BA0"
+    },
+    {
+      "file": "src/legacy/GAME5_2.h",
+      "line": 10,
+      "kind": "prototype",
+      "text": "int sub_554240(int a1);",
+      "symbol": "sub_554240"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 8,
+      "kind": "prototype",
+      "text": "int sub_4A1BE0(int a1);",
+      "symbol": "sub_4A1BE0"
+    },
+    {
+      "file": "src/legacy/GAME2.h",
+      "line": 6,
+      "kind": "prototype",
+      "text": "char* nox_get_thing_name(int i);",
+      "symbol": "nox_get_thing_name"
+    },
+    {
+      "file": "src/legacy/GAME2_1.h",
+      "line": 73,
+      "kind": "prototype",
+      "text": "char nox_client_toggleMap_473610();",
+      "symbol": "nox_client_toggleMap_473610"
+    },
+    {
+      "file": "src/legacy/common__net_list.h",
+      "line": 6,
+      "kind": "prototype",
+      "text": "int nox_netlist_addToMsgListCli_40EBC0(int ind1, int ind2, unsigned char* buf, int sz);",
+      "symbol": "nox_netlist_addToMsgListCli_40EBC0"
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 23,
+      "kind": "prototype",
+      "text": "void nox_client_drawImageAt_47D2C0(nox_video_bag_image_t* img, int x, int y);",
+      "symbol": "nox_client_drawImageAt_47D2C0"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 12,
+      "kind": "prototype",
+      "text": "wchar2_t* get_video_mode_string(int v1);",
+      "symbol": "get_video_mode_string"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 65,
+      "kind": "prototype",
+      "text": "void* sub_4DB1C0();",
+      "symbol": "sub_4DB1C0"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 152,
+      "kind": "prototype",
+      "text": "void nox_xxx_unitClearOwner_4EC300(nox_object_t* obj);",
+      "symbol": "nox_xxx_unitClearOwner_4EC300"
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 11,
+      "kind": "prototype",
+      "text": "int sub_419E60(nox_object_t* a1);",
+      "symbol": "sub_419E60"
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 31,
+      "kind": "prototype",
+      "text": "void nox_xxx_serverHost_43B4D0();",
+      "symbol": "nox_xxx_serverHost_43B4D0"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 18,
+      "kind": "prototype",
+      "text": "void nox_xxx_mapDamageUnitsAround_4E25B0(float* a1, float a2, float a3, int a4, int a5, nox_object_t* a6, nox_object_t* a7);",
+      "symbol": "nox_xxx_mapDamageUnitsAround_4E25B0"
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 27,
+      "kind": "prototype",
+      "text": "int nox_xxx_bookNextKnownAbil_425350(int a1);",
+      "symbol": "nox_xxx_bookNextKnownAbil_425350"
+    },
+    {
+      "file": "src/legacy/client__gui__guicon.h",
+      "line": 27,
+      "kind": "prototype",
+      "text": "int nox_gui_console_Hide_4512B0();",
+      "symbol": "nox_gui_console_Hide_4512B0"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 52,
+      "kind": "prototype",
+      "text": "void nox_xxx_harpoonBreakForPlr_537520(nox_object_t* a1);",
+      "symbol": "nox_xxx_harpoonBreakForPlr_537520"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 88,
+      "kind": "prototype",
+      "text": "int sub_4E8290(char a1, short a2);",
+      "symbol": "sub_4E8290"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 48,
+      "kind": "prototype",
+      "text": "int nox_xxx_netSendSecondaryWeapon_4D9670(int a1, uint32_t* a2, char a3);",
+      "symbol": "nox_xxx_netSendSecondaryWeapon_4D9670"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 69,
+      "kind": "prototype",
+      "text": "int nox_client_countPlayerFiles04_4DC7D0();",
+      "symbol": "nox_client_countPlayerFiles04_4DC7D0"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 44,
+      "kind": "prototype",
+      "text": "int nox_xxx_netReportLesson_4D8EF0(nox_object_t* a1p);",
+      "symbol": "nox_xxx_netReportLesson_4D8EF0"
+    },
+    {
+      "file": "src/legacy/GAME3_1.h",
+      "line": 48,
+      "kind": "prototype",
+      "text": "void sub_4CBBF0();",
+      "symbol": "sub_4CBBF0"
+    },
+    {
+      "file": "src/legacy/GAME2_3.h",
+      "line": 16,
+      "kind": "prototype",
+      "text": "void nox_xxx_rasterPointRel_49F570(int a1, int a2);",
+      "symbol": "nox_xxx_rasterPointRel_49F570"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 68,
+      "kind": "prototype",
+      "text": "int nox_xxx_gameIsNotMultiplayer_4DB250();",
+      "symbol": "nox_xxx_gameIsNotMultiplayer_4DB250"
+    },
+    {
+      "file": "src/legacy/GAME4.h",
+      "line": 47,
+      "kind": "prototype",
+      "text": "int nox_xxx_castSpellByUser_4FDD20(int a1, nox_object_t* a2, void* a3);",
+      "symbol": "nox_xxx_castSpellByUser_4FDD20"
+    },
+    {
+      "file": "src/legacy/GAME2_3.h",
+      "line": 20,
+      "kind": "prototype",
+      "text": "nox_window* nox_new_window_from_file(char* cname, void* fnc);",
+      "symbol": "nox_new_window_from_file"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 53,
+      "kind": "prototype",
+      "text": "int sub_449E60(char a1);",
+      "symbol": "sub_449E60"
+    },
+    {
+      "file": "src/legacy/GAME5_2.h",
+      "line": 46,
+      "kind": "prototype",
+      "text": "unsigned char sub_57B370(int a1, int a2, int a3);",
+      "symbol": "sub_57B370"
+    },
+    {
+      "file": "src/legacy/GAME2.h",
+      "line": 15,
+      "kind": "prototype",
+      "text": "void sub_450580();",
+      "symbol": "sub_450580"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 51,
+      "kind": "prototype",
+      "text": "int nox_xxx_serverIsClosing_446180();",
+      "symbol": "nox_xxx_serverIsClosing_446180"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 20,
+      "kind": "prototype",
+      "text": "nox_object_t* nox_xxx_newObjectWithTypeInd_4E3450(int ind);",
+      "symbol": "nox_xxx_newObjectWithTypeInd_4E3450"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 25,
+      "kind": "prototype",
+      "text": "int sub_4E3AD0(int a1);",
+      "symbol": "sub_4E3AD0"
+    },
+    {
+      "file": "src/legacy/GAME2_3.h",
+      "line": 14,
+      "kind": "prototype",
+      "text": "void nox_client_drawPixel_49EFA0(int a1, int a2);",
+      "symbol": "nox_client_drawPixel_49EFA0"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 49,
+      "kind": "prototype",
+      "text": "bool nox_xxx_mapDamageToWalls_534FC0(int4* a1, void* a2, float a3, int a4, int a5, void* a6);",
+      "symbol": "nox_xxx_mapDamageToWalls_534FC0"
+    },
+    {
+      "file": "src/legacy/GAME5_2.h",
+      "line": 9,
+      "kind": "prototype",
+      "text": "unsigned int nox_xxx_net_getIP_554200(int a1);",
+      "symbol": "nox_xxx_net_getIP_554200"
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 17,
+      "kind": "prototype",
+      "text": "int sub_41E300(int a1);",
+      "symbol": "sub_41E300"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 20,
+      "kind": "prototype",
+      "text": "void nox_xxx_mapGenMakeInfo_4D5DB0(void* a1);",
+      "symbol": "nox_xxx_mapGenMakeInfo_4D5DB0"
+    },
+    {
+      "file": "src/legacy/GAME1.h",
+      "line": 35,
+      "kind": "prototype",
+      "text": "char* sub_4165D0(int a1);",
+      "symbol": "sub_4165D0"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 17,
+      "kind": "prototype",
+      "text": "void nox_xxx_gameSetWallsDamage_4E25A0(int a1);",
+      "symbol": "nox_xxx_gameSetWallsDamage_4E25A0"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 51,
+      "kind": "prototype",
+      "text": "int nox_xxx_mapCheck_537110(nox_object_t* a1, nox_object_t* a2);",
+      "symbol": "nox_xxx_mapCheck_537110"
+    },
+    {
+      "file": "src/legacy/GAME1.h",
+      "line": 14,
+      "kind": "prototype",
+      "text": "int sub_409F40(int a1);",
+      "symbol": "sub_409F40"
+    },
+    {
+      "file": "src/legacy/GAME1.h",
+      "line": 40,
+      "kind": "prototype",
+      "text": "bool nox_xxx_CheckGameplayFlags_417DA0(int a1);",
+      "symbol": "nox_xxx_CheckGameplayFlags_417DA0"
+    },
+    {
+      "file": "src/legacy/GAME4_1.h",
+      "line": 6,
+      "kind": "prototype",
+      "text": "int nox_xxx_monsterPopAction_50A160(nox_object_t* a1p);",
+      "symbol": "nox_xxx_monsterPopAction_50A160"
+    },
+    {
+      "file": "src/legacy/GAME2_1.h",
+      "line": 74,
+      "kind": "prototype",
+      "text": "int sub_473670();",
+      "symbol": "sub_473670"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 42,
+      "kind": "prototype",
+      "text": "int nox_xxx_netReportUnitCurrentHP_4D8620(int a1, uint32_t* a2);",
+      "symbol": "nox_xxx_netReportUnitCurrentHP_4D8620"
+    },
+    {
+      "file": "src/legacy/client__video__draw_common.h",
+      "line": 17,
+      "kind": "prototype",
+      "text": "uint32_t nox_color_rgb_4344A0(int r, int g, int b);",
+      "symbol": "nox_color_rgb_4344A0"
+    },
+    {
+      "file": "src/legacy/common__magic__speltree.h",
+      "line": 12,
+      "kind": "prototype",
+      "text": "void* nox_xxx_spellIconHighlight_424AB0(int ind);",
+      "symbol": "nox_xxx_spellIconHighlight_424AB0"
+    },
+    {
+      "file": "src/legacy/common__magic__speltree.h",
+      "line": 14,
+      "kind": "prototype",
+      "text": "int nox_xxx_spellNextValid_424AF0(int ind);",
+      "symbol": "nox_xxx_spellNextValid_424AF0"
+    },
+    {
+      "file": "src/legacy/GAME1.h",
+      "line": 12,
+      "kind": "prototype",
+      "text": "char* nox_server_currentMapGetFilename_409B30();",
+      "symbol": "nox_server_currentMapGetFilename_409B30"
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 15,
+      "kind": "prototype",
+      "text": "void nox_xxx_drawSetTextColor_434390(int a1);",
+      "symbol": "nox_xxx_drawSetTextColor_434390"
+    },
+    {
+      "file": "src/legacy/GAME4_2.h",
+      "line": 73,
+      "kind": "prototype",
+      "text": "void nox_xxx_objectApplyForce_52DF80(float* vec, nox_object_t* obj, float force);",
+      "symbol": "nox_xxx_objectApplyForce_52DF80"
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 26,
+      "kind": "prototype",
+      "text": "int nox_xxx_bookFirstKnownAbil_425330();",
+      "symbol": "nox_xxx_bookFirstKnownAbil_425330"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 26,
+      "kind": "prototype",
+      "text": "int sub_4E3B80(int a1);",
+      "symbol": "sub_4E3B80"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 58,
+      "kind": "prototype",
+      "text": "int sub_44A4E0();",
+      "symbol": "sub_44A4E0"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 45,
+      "kind": "prototype",
+      "text": "int nox_xxx_netReportEnchant_4D8F90(int a1, uint32_t* a2);",
+      "symbol": "nox_xxx_netReportEnchant_4D8F90"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 13,
+      "kind": "prototype",
+      "text": "void nox_xxx_gameGetScreenBoundaries_43BEB0_get_video_mode(int* w, int* h, int* d);",
+      "symbol": "nox_xxx_gameGetScreenBoundaries_43BEB0_get_video_mode"
+    },
+    {
+      "file": "src/legacy/GAME4.h",
+      "line": 71,
+      "kind": "prototype",
+      "text": "void nox_xxx_audCreate_501A30(int a1, float2* a2, int a3, int a4);",
+      "symbol": "nox_xxx_audCreate_501A30"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.h",
+      "line": 6,
+      "kind": "prototype",
+      "text": "void sub_4373A0();",
+      "symbol": "sub_4373A0"
+    },
+    {
+      "file": "src/legacy/GAME2_3.h",
+      "line": 11,
+      "kind": "prototype",
+      "text": "void nox_client_drawRectFilledAlpha_49CF10(int xLeft, int yTop, int a3, int a4);",
+      "symbol": "nox_client_drawRectFilledAlpha_49CF10"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 197,
+      "kind": "prototype",
+      "text": "void nox_xxx_spellAwardAll1_4EFD80(nox_playerInfo* a1p);",
+      "symbol": "nox_xxx_spellAwardAll1_4EFD80"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 38,
+      "kind": "prototype",
+      "text": "int sub_43F130();",
+      "symbol": "sub_43F130"
+    },
+    {
+      "file": "src/legacy/client__gui__window.h",
+      "line": 78,
+      "kind": "prototype",
+      "text": "int nox_window_set_hidden(nox_window* win, int visible);",
+      "symbol": "nox_window_set_hidden"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 72,
+      "kind": "prototype",
+      "text": "void sub_4DCFB0(nox_object_t* a1);",
+      "symbol": "sub_4DCFB0"
+    },
+    {
+      "file": "src/legacy/client__system__parsecmd.h",
+      "line": 7,
+      "kind": "prototype",
+      "text": "int nox_server_parseCmdText_443C80(wchar2_t* a1, int a2);",
+      "symbol": "nox_server_parseCmdText_443C80"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 73,
+      "kind": "prototype",
+      "text": "void nox_xxx_playerObserveMonster_4DDE80(nox_object_t* player, nox_object_t* unit);",
+      "symbol": "nox_xxx_playerObserveMonster_4DDE80"
+    },
+    {
+      "file": "src/legacy/GAME5_2.h",
+      "line": 11,
+      "kind": "prototype",
+      "text": "int sub_554D10();",
+      "symbol": "sub_554D10"
+    },
+    {
+      "file": "src/legacy/GAME4.h",
+      "line": 37,
+      "kind": "prototype",
+      "text": "void nox_xxx_playerExecuteAbil_4FBB70(nox_object_t* a1, int a2);",
+      "symbol": "nox_xxx_playerExecuteAbil_4FBB70"
+    },
+    {
+      "file": "src/legacy/common__random.h",
+      "line": 4,
+      "kind": "prototype",
+      "text": "int nox_common_randomInt_415FA0(int a1, int a2);",
+      "symbol": "nox_common_randomInt_415FA0"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 57,
+      "kind": "prototype",
+      "text": "void sub_44A4B0();",
+      "symbol": "sub_44A4B0"
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 18,
+      "kind": "prototype",
+      "text": "void nox_client_drawEnableAlpha_434560(int a1);",
+      "symbol": "nox_client_drawEnableAlpha_434560"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 151,
+      "kind": "prototype",
+      "text": "void nox_xxx_unitSetOwner_4EC290(nox_object_t* obj1, nox_object_t* obj2);",
+      "symbol": "nox_xxx_unitSetOwner_4EC290"
+    },
+    {
+      "file": "src/legacy/GAME2.h",
+      "line": 9,
+      "kind": "prototype",
+      "text": "void sub_44D640();",
+      "symbol": "sub_44D640"
+    },
+    {
+      "file": "src/legacy/GAME4_2.h",
+      "line": 70,
+      "kind": "prototype",
+      "text": "void nox_xxx_XFer_ReadShopItem_52A840(void* a1, int a2);",
+      "symbol": "nox_xxx_XFer_ReadShopItem_52A840"
+    },
+    {
+      "file": "src/legacy/GAME3_1.h",
+      "line": 37,
+      "kind": "prototype",
+      "text": "int sub_4C3A90(int a1, int a2, int* a3, int a4);",
+      "symbol": "sub_4C3A90"
+    },
+    {
+      "file": "src/legacy/GAME4.h",
+      "line": 70,
+      "kind": "prototype",
+      "text": "void nox_xxx_aud_501960(int a1, nox_object_t* a2, int a3, int a4);",
+      "symbol": "nox_xxx_aud_501960"
+    },
+    {
+      "file": "src/legacy/GAME4.h",
+      "line": 39,
+      "kind": "prototype",
+      "text": "void nox_xxx_playerCancelAbils_4FC180(nox_object_t* a1);",
+      "symbol": "nox_xxx_playerCancelAbils_4FC180"
+    },
+    {
+      "file": "src/legacy/GAME2_1.h",
+      "line": 55,
+      "kind": "prototype",
+      "text": "void sub_4703F0();",
+      "symbol": "sub_4703F0"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 27,
+      "kind": "prototype",
+      "text": "int sub_4D6F30();",
+      "symbol": "sub_4D6F30"
+    },
+    {
+      "file": "src/legacy/common__magic__speltree.h",
+      "line": 7,
+      "kind": "prototype",
+      "text": "int nox_xxx_spellGetAud44_424800(int ind, int a2);",
+      "symbol": "nox_xxx_spellGetAud44_424800"
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 28,
+      "kind": "prototype",
+      "text": "int sub_425450(int a1);",
+      "symbol": "sub_425450"
+    },
+    {
+      "file": "src/legacy/input_common.h",
+      "line": 8,
+      "kind": "prototype",
+      "text": "int nox_xxx_bookGet_430B40_get_mouse_prev_seq();",
+      "symbol": "nox_xxx_bookGet_430B40_get_mouse_prev_seq"
+    },
+    {
+      "file": "src/legacy/defs.h",
+      "line": 1251,
+      "kind": "prototype",
+      "text": "void noxGetLocalTime(noxSYSTEMTIME* lpSystemTime);",
+      "symbol": "noxGetLocalTime"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 10,
+      "kind": "prototype",
+      "text": "void sub_43BE40(int a1);",
+      "symbol": "sub_43BE40"
+    },
+    {
+      "file": "src/legacy/client__gui__guicon.h",
+      "line": 28,
+      "kind": "prototype",
+      "text": "int nox_gui_console_flagXxx_451410();",
+      "symbol": "nox_gui_console_flagXxx_451410"
+    },
+    {
+      "file": "src/legacy/common__strman.h",
+      "line": 18,
+      "kind": "prototype",
+      "text": "int nox_strman_get_lang_code();",
+      "symbol": "nox_strman_get_lang_code"
+    },
+    {
+      "file": "src/legacy/common__magic__speltree.h",
+      "line": 16,
+      "kind": "prototype",
+      "text": "bool nox_xxx_spellIsEnabled_424B70(int ind);",
+      "symbol": "nox_xxx_spellIsEnabled_424B70"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 41,
+      "kind": "prototype",
+      "text": "uint32_t* sub_4D82F0(int a1, uint32_t* a2);",
+      "symbol": "sub_4D82F0"
+    },
+    {
+      "file": "src/legacy/client__system__ctrlevnt.h",
+      "line": 31,
+      "kind": "prototype",
+      "text": "wchar2_t* sub_42E8E0(int a1, int a2);",
+      "symbol": "sub_42E8E0"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 49,
+      "kind": "prototype",
+      "text": "void nox_client_clearScreen_440900();",
+      "symbol": "nox_client_clearScreen_440900"
+    },
+    {
+      "file": "src/legacy/client__video__draw_common.h",
+      "line": 11,
+      "kind": "prototype",
+      "text": "int nox_video_getFullScreen();",
+      "symbol": "nox_video_getFullScreen"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 23,
+      "kind": "prototype",
+      "text": "char* nox_xxx_getUnitName_4E39D0(nox_object_t* a1);",
+      "symbol": "nox_xxx_getUnitName_4E39D0"
+    },
+    {
+      "file": "src/legacy/client__video__draw_common.h",
+      "line": 16,
+      "kind": "prototype",
+      "text": "void nox_set_color_rgb_434430(int r, int g, int b);",
+      "symbol": "nox_set_color_rgb_434430"
+    },
+    {
+      "file": "src/legacy/GAME4.h",
+      "line": 40,
+      "kind": "prototype",
+      "text": "int nox_common_playerIsAbilityActive_4FC250(nox_object_t* a1, int a2);",
+      "symbol": "nox_common_playerIsAbilityActive_4FC250"
+    },
+    {
+      "file": "src/legacy/GAME2.h",
+      "line": 10,
+      "kind": "prototype",
+      "text": "int sub_44D7E0(int a1);",
+      "symbol": "sub_44D7E0"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 50,
+      "kind": "prototype",
+      "text": "int nox_xxx_mapTraceRay_535250(float4* a1, float2* a2, int2* a3, char a4);",
+      "symbol": "nox_xxx_mapTraceRay_535250"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 50,
+      "kind": "prototype",
+      "text": "int nox_xxx_netInformTextMsg_4DA0F0(int a1, int a2, int* a3);",
+      "symbol": "nox_xxx_netInformTextMsg_4DA0F0"
+    },
+    {
+      "file": "src/legacy/common/platform/platform.h",
+      "line": 4,
+      "kind": "prototype",
+      "text": "int nox_platform_rand();",
+      "symbol": "nox_platform_rand"
+    },
+    {
+      "file": "src/legacy/client__video__draw_common.h",
+      "line": 18,
+      "kind": "prototype",
+      "text": "void nox_video_callCopyBackBuffer_4AD170(void);",
+      "symbol": "nox_video_callCopyBackBuffer_4AD170"
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 6,
+      "kind": "prototype",
+      "text": "void nox_video_setCutSize_4766A0(int a1);",
+      "symbol": "nox_video_setCutSize_4766A0"
+    },
+    {
+      "file": "src/legacy/GAME1.h",
+      "line": 28,
+      "kind": "prototype",
+      "text": "int nox_xxx_ammoCheck_415880(int typ_ind);",
+      "symbol": "nox_xxx_ammoCheck_415880"
+    },
+    {
+      "file": "src/legacy/GAME1.h",
+      "line": 23,
+      "kind": "prototype",
+      "text": "int nox_xxx_modifGetIdByName_413290(char* a1);",
+      "symbol": "nox_xxx_modifGetIdByName_413290"
+    },
+    {
+      "file": "src/legacy/GAME2.h",
+      "line": 7,
+      "kind": "prototype",
+      "text": "wchar2_t* nox_get_thing_pretty_name(int i);",
+      "symbol": "nox_get_thing_pretty_name"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 66,
+      "kind": "prototype",
+      "text": "void nox_xxx_gameSetSwitchSolo_4DB220(int a1);",
+      "symbol": "nox_xxx_gameSetSwitchSolo_4DB220"
+    },
+    {
+      "file": "src/legacy/GAME4.h",
+      "line": 52,
+      "kind": "prototype",
+      "text": "void nox_xxx_spellCancelDurSpell_4FEB10(int a1, nox_object_t* a2);",
+      "symbol": "nox_xxx_spellCancelDurSpell_4FEB10"
+    },
+    {
+      "file": "src/legacy/client__system__ctrlevnt.h",
+      "line": 26,
+      "kind": "prototype",
+      "text": "char* nox_xxx_keybind_nameByTitle_42E960(wchar2_t* title);",
+      "symbol": "nox_xxx_keybind_nameByTitle_42E960"
+    },
+    {
+      "file": "src/legacy/GAME4.h",
+      "line": 42,
+      "kind": "prototype",
+      "text": "int nox_xxx_probablyWarcryCheck_4FC3E0(nox_object_t* a1, int a2);",
+      "symbol": "nox_xxx_probablyWarcryCheck_4FC3E0"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 84,
+      "kind": "prototype",
+      "text": "int nox_xxx_unitIsHostileMimic_4E7F90(nox_object_t* a1, nox_object_t* a2);",
+      "symbol": "nox_xxx_unitIsHostileMimic_4E7F90"
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 9,
+      "kind": "prototype",
+      "text": "int nox_client_setCursorType_477610(int a1);",
+      "symbol": "nox_client_setCursorType_477610"
+    },
+    {
+      "file": "src/legacy/common__crypt.h",
+      "line": 8,
+      "kind": "prototype",
+      "text": "FILE* nox_xxx_mapgenGetSomeFile_426A60();",
+      "symbol": "nox_xxx_mapgenGetSomeFile_426A60"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 39,
+      "kind": "prototype",
+      "text": "void nox_xxx_netAbilRepotState_4D8100(nox_object_t* a1, char a2, char a3);",
+      "symbol": "nox_xxx_netAbilRepotState_4D8100"
+    },
+    {
+      "file": "src/legacy/client__gui__window.h",
+      "line": 71,
+      "kind": "prototype",
+      "text": "int nox_xxx_windowDestroyMB_46C4E0(nox_window* win);",
+      "symbol": "nox_xxx_windowDestroyMB_46C4E0"
+    },
+    {
+      "file": "src/legacy/GAME4.h",
+      "line": 43,
+      "kind": "prototype",
+      "text": "void sub_4FC440(nox_object_t* a1, int a2);",
+      "symbol": "sub_4FC440"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 70,
+      "kind": "prototype",
+      "text": "int sub_4DCC10(nox_object_t* a1p);",
+      "symbol": "sub_4DCC10"
+    },
+    {
+      "file": "src/legacy/GAME4_2.h",
+      "line": 69,
+      "kind": "prototype",
+      "text": "void nox_xxx_XFer_WriteShopItem_52A5F0(void* a1);",
+      "symbol": "nox_xxx_XFer_WriteShopItem_52A5F0"
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 10,
+      "kind": "prototype",
+      "text": "void nox_xxx_cursorSetDraggedItem_477690(nox_drawable* a1);",
+      "symbol": "nox_xxx_cursorSetDraggedItem_477690"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 55,
+      "kind": "prototype",
+      "text": "nox_object_t* nox_server_getFirstObject_4DA790();",
+      "symbol": "nox_server_getFirstObject_4DA790"
+    },
+    {
+      "file": "src/legacy/GAME3_1.h",
+      "line": 49,
+      "kind": "prototype",
+      "text": "int sub_4CBE70(int a1, int a2, int* a3, int a4);",
+      "symbol": "sub_4CBE70"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 198,
+      "kind": "prototype",
+      "text": "void nox_xxx_spellAwardAll3_4EFE10(nox_playerInfo* a1p);",
+      "symbol": "nox_xxx_spellAwardAll3_4EFE10"
+    },
+    {
+      "file": "src/legacy/defs.h",
+      "line": 63,
+      "kind": "prototype",
+      "text": "void nox_exit(int exitCode);",
+      "symbol": "nox_exit"
+    },
+    {
+      "file": "src/legacy/common__strman.h",
+      "line": 17,
+      "kind": "prototype",
+      "text": "wchar2_t* nox_strman_loadString_40F1D0(char* name, char** strOut, char* srcFile, int srcLine);",
+      "symbol": "nox_strman_loadString_40F1D0"
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 17,
+      "kind": "prototype",
+      "text": "void nox_client_drawSetColor_434460(int a1);",
+      "symbol": "nox_client_drawSetColor_434460"
+    },
+    {
+      "file": "src/legacy/GAME4.h",
+      "line": 44,
+      "kind": "prototype",
+      "text": "void sub_4FC670(int a1);",
+      "symbol": "sub_4FC670"
+    },
+    {
+      "file": "src/legacy/GAME1.h",
+      "line": 13,
+      "kind": "prototype",
+      "text": "char* nox_xxx_gameSetMapPath_409D70(char* a1);",
+      "symbol": "nox_xxx_gameSetMapPath_409D70"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 11,
+      "kind": "prototype",
+      "text": "int sub_43BE50_get_video_mode_id();",
+      "symbol": "sub_43BE50_get_video_mode_id"
+    },
+    {
+      "file": "src/legacy/common__magic__speltree.h",
+      "line": 10,
+      "kind": "prototype",
+      "text": "unsigned int nox_xxx_spellFlags_424A70(int ind);",
+      "symbol": "nox_xxx_spellFlags_424A70"
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 22,
+      "kind": "prototype",
+      "text": "int nox_xxx_getEnchantSpell_424920(int a1);",
+      "symbol": "nox_xxx_getEnchantSpell_424920"
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 23,
+      "kind": "prototype",
+      "text": "void sub_437260();",
+      "symbol": "sub_437260"
+    },
+    {
+      "file": "src/legacy/GAME4.h",
+      "line": 62,
+      "kind": "prototype",
+      "text": "bool nox_xxx_checkSummonedCreaturesLimit_500D70(nox_object_t* a1, int a2);",
+      "symbol": "nox_xxx_checkSummonedCreaturesLimit_500D70"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 23,
+      "kind": "prototype",
+      "text": "void sub_43DBE0();",
+      "symbol": "sub_43DBE0"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 43,
+      "kind": "prototype",
+      "text": "int nox_xxx_playerSubLessons_4D8EC0(int a1, int a2);",
+      "symbol": "nox_xxx_playerSubLessons_4D8EC0"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 56,
+      "kind": "prototype",
+      "text": "nox_object_t* nox_server_getNextObject_4DA7A0(nox_object_t* obj);",
+      "symbol": "nox_server_getNextObject_4DA7A0"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 18,
+      "kind": "prototype",
+      "text": "void nox_xxx_mapLoad_4D2450(char* a1);",
+      "symbol": "nox_xxx_mapLoad_4D2450"
+    },
+    {
+      "file": "src/legacy/GAME4.h",
+      "line": 72,
+      "kind": "prototype",
+      "text": "void nox_xxx_gameSetAudioFadeoutMb_501AC0(int a1);",
+      "symbol": "nox_xxx_gameSetAudioFadeoutMb_501AC0"
+    },
+    {
+      "file": "src/legacy/GAME1.h",
+      "line": 25,
+      "kind": "prototype",
+      "text": "void sub_413A00(int a1);",
+      "symbol": "sub_413A00"
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 25,
+      "kind": "prototype",
+      "text": "nox_video_bag_image_t* nox_xxx_spellGetAbilityIcon_425310(int a1, int a2);",
+      "symbol": "nox_xxx_spellGetAbilityIcon_425310"
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 27,
+      "kind": "prototype",
+      "text": "int nox_client_joinGame_438A90();",
+      "symbol": "nox_client_joinGame_438A90"
+    },
+    {
+      "file": "src/legacy/GAME4.h",
+      "line": 23,
+      "kind": "prototype",
+      "text": "int nox_xxx_playerSetState_4FA020(nox_object_t* a1, int a2);",
+      "symbol": "nox_xxx_playerSetState_4FA020"
+    },
+    {
+      "file": "src/legacy/GAME2_3.h",
+      "line": 13,
+      "kind": "prototype",
+      "text": "int nox_client_drawLineFromPoints_49E4B0();",
+      "symbol": "nox_client_drawLineFromPoints_49E4B0"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 55,
+      "kind": "prototype",
+      "text": "void nox_xxx_playerCameraFollow_4E6060(nox_object_t* player, nox_object_t* unitId);",
+      "symbol": "nox_xxx_playerCameraFollow_4E6060"
+    },
+    {
+      "file": "src/legacy/common__magic__speltree.h",
+      "line": 9,
+      "kind": "prototype",
+      "text": "wchar2_t* nox_xxx_spellDescription_424A30(int ind);",
+      "symbol": "nox_xxx_spellDescription_424A30"
+    },
+    {
+      "file": "src/legacy/common__magic__speltree.h",
+      "line": 11,
+      "kind": "prototype",
+      "text": "void* nox_xxx_spellIcon_424A90(int ind);",
+      "symbol": "nox_xxx_spellIcon_424A90"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 85,
+      "kind": "prototype",
+      "text": "void nox_xxx_monsterMarkUpdate_4E8020(nox_object_t* a1);",
+      "symbol": "nox_xxx_monsterMarkUpdate_4E8020"
+    },
+    {
+      "file": "src/legacy/GAME4_1.h",
+      "line": 18,
+      "kind": "prototype",
+      "text": "void nox_xxx_moveUpdateSpecial_517970(nox_object_t* unit);",
+      "symbol": "nox_xxx_moveUpdateSpecial_517970"
+    },
+    {
+      "file": "src/legacy/GAME4.h",
+      "line": 38,
+      "kind": "prototype",
+      "text": "void sub_4FC0B0(nox_object_t* a1, int a2);",
+      "symbol": "sub_4FC0B0"
+    },
+    {
+      "file": "src/legacy/common__magic__speltree.h",
+      "line": 13,
+      "kind": "prototype",
+      "text": "int nox_xxx_spellFirstValid_424AD0();",
+      "symbol": "nox_xxx_spellFirstValid_424AD0"
+    },
+    {
+      "file": "src/legacy/GAME2.h",
+      "line": 12,
+      "kind": "prototype",
+      "text": "int nox_video_inFadeTransition_44E0D0();",
+      "symbol": "nox_video_inFadeTransition_44E0D0"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 17,
+      "kind": "prototype",
+      "text": "int sub_43C6E0();",
+      "symbol": "sub_43C6E0"
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 8,
+      "kind": "prototype",
+      "text": "uint32_t* nox_xxx_objGetTeamByNetCode_418C80(int a1);",
+      "symbol": "nox_xxx_objGetTeamByNetCode_418C80"
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 8,
+      "kind": "prototype",
+      "text": "void nox_draw_setCutSize_476700(int cutPerc, int a2);",
+      "symbol": "nox_draw_setCutSize_476700"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 53,
+      "kind": "prototype",
+      "text": "void nox_xxx_delayedDeleteObject_4E5CC0(nox_object_t* obj);",
+      "symbol": "nox_xxx_delayedDeleteObject_4E5CC0"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 50,
+      "kind": "prototype",
+      "text": "void nox_client_quit_4460C0();",
+      "symbol": "nox_client_quit_4460C0"
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 29,
+      "kind": "prototype",
+      "text": "int nox_xxx_cliDrawConnectedLoop_43B360();",
+      "symbol": "nox_xxx_cliDrawConnectedLoop_43B360"
+    },
+    {
+      "file": "src/legacy/GAME2.h",
+      "line": 13,
+      "kind": "prototype",
+      "text": "void sub_44E320();",
+      "symbol": "sub_44E320"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 154,
+      "kind": "prototype",
+      "text": "int nox_xxx_unitHasThatParent_4EC4F0(nox_object_t* a1, nox_object_t* a2);",
+      "symbol": "nox_xxx_unitHasThatParent_4EC4F0"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 64,
+      "kind": "prototype",
+      "text": "void sub_4DB170(int a1, void* a2, int a3);",
+      "symbol": "sub_4DB170"
+    },
+    {
+      "file": "src/legacy/GAME3_1.h",
+      "line": 38,
+      "kind": "prototype",
+      "text": "void sub_4C3B70();",
+      "symbol": "sub_4C3B70"
+    },
+    {
+      "file": "src/legacy/GAME3_1.h",
+      "line": 32,
+      "kind": "prototype",
+      "text": "int sub_4C26F0(void* yTop);",
+      "symbol": "sub_4C26F0"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 6,
+      "kind": "prototype",
+      "text": "void nox_game_decStateInd_43BDC0();",
+      "symbol": "nox_game_decStateInd_43BDC0"
+    },
+    {
+      "file": "src/legacy/common__magic__speltree.h",
+      "line": 15,
+      "kind": "prototype",
+      "text": "bool nox_xxx_spellIsValid_424B50(int ind);",
+      "symbol": "nox_xxx_spellIsValid_424B50"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 18,
+      "kind": "prototype",
+      "text": "void sub_43CF40();",
+      "symbol": "sub_43CF40"
+    },
+    {
+      "file": "src/legacy/GAME4_1.h",
+      "line": 19,
+      "kind": "prototype",
+      "text": "void sub_51D0E0();",
+      "symbol": "sub_51D0E0"
+    },
+    {
+      "file": "src/legacy/client__gui__window.h",
+      "line": 96,
+      "kind": "prototype",
+      "text": "void nox_client_setRenderGUI(int v);",
+      "symbol": "nox_client_setRenderGUI"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 46,
+      "kind": "prototype",
+      "text": "int nox_xxx_drawStringWrap_43FAF0(void* a1, wchar2_t* str, int a3, int a4, int a5, int a6);",
+      "symbol": "nox_xxx_drawStringWrap_43FAF0"
+    },
+    {
+      "file": "src/legacy/client__gui__guisave.h",
+      "line": 7,
+      "kind": "prototype",
+      "text": "void nox_savegame_sub_46D580();",
+      "symbol": "nox_savegame_sub_46D580"
+    },
+    {
+      "file": "src/legacy/GAME2_1.h",
+      "line": 75,
+      "kind": "prototype",
+      "text": "void sub_473970(int2* a1, int2* a2);",
+      "symbol": "sub_473970"
+    },
+    {
+      "file": "src/legacy/GAME4.h",
+      "line": 41,
+      "kind": "prototype",
+      "text": "void sub_4FC300(nox_object_t* a1, int a2);",
+      "symbol": "sub_4FC300"
+    },
+    {
+      "file": "src/legacy/GAME4_1.h",
+      "line": 17,
+      "kind": "prototype",
+      "text": "int sub_517590(float a1, float a2);",
+      "symbol": "sub_517590"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 40,
+      "kind": "prototype",
+      "text": "int nox_xxx_netReportXStatus_4D8230(int a1, uint32_t* a2);",
+      "symbol": "nox_xxx_netReportXStatus_4D8230"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 155,
+      "kind": "prototype",
+      "text": "nox_object_t* nox_xxx_findParentChainPlayer_4EC580(nox_object_t* unit);",
+      "symbol": "nox_xxx_findParentChainPlayer_4EC580"
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 10,
+      "kind": "prototype",
+      "text": "void sub_430C30_set_video_max(int w, int h);",
+      "symbol": "sub_430C30_set_video_max"
+    },
+    {
+      "file": "src/legacy/client__video__draw_common.h",
+      "line": 14,
+      "kind": "prototype",
+      "text": "void nox_draw_set54RGB32_434040(int a1);",
+      "symbol": "nox_draw_set54RGB32_434040"
+    },
+    {
+      "file": "src/legacy/GAME2_3.h",
+      "line": 10,
+      "kind": "prototype",
+      "text": "void nox_client_drawRectFilledOpaque_49CE30(int xLeft, int yTop, int a3, int a4);",
+      "symbol": "nox_client_drawRectFilledOpaque_49CE30"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 49,
+      "kind": "prototype",
+      "text": "int sub_4D9D20(int a1, nox_object_t* a2);",
+      "symbol": "sub_4D9D20"
+    },
+    {
+      "file": "src/legacy/GAME2_3.h",
+      "line": 15,
+      "kind": "prototype",
+      "text": "void nox_client_drawAddPoint_49F500(int a1, int a2);",
+      "symbol": "nox_client_drawAddPoint_49F500"
+    },
+    {
+      "file": "src/legacy/GAME4.h",
+      "line": 69,
+      "kind": "prototype",
+      "text": "int nox_xxx_getSevenDwords3_501940(int a1);",
+      "symbol": "nox_xxx_getSevenDwords3_501940"
+    },
+    {
+      "file": "src/legacy/GAME1.h",
+      "line": 11,
+      "kind": "prototype",
+      "text": "bool nox_common_getEngineFlag(const nox_engine_flag flags);",
+      "symbol": "nox_common_getEngineFlag"
+    },
+    {
+      "file": "src/legacy/GAME1.h",
+      "line": 24,
+      "kind": "prototype",
+      "text": "void* nox_xxx_modifGetDescById_413330(int a1);",
+      "symbol": "nox_xxx_modifGetDescById_413330"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.h",
+      "line": 7,
+      "kind": "prototype",
+      "text": "void nox_client_refreshServerList_4378B0();",
+      "symbol": "nox_client_refreshServerList_4378B0"
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 11,
+      "kind": "prototype",
+      "text": "void nox_xxx_cursorResetDraggedItem_4776A0();",
+      "symbol": "nox_xxx_cursorResetDraggedItem_4776A0"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 57,
+      "kind": "prototype",
+      "text": "int nox_xxx_playerGoObserver_4E6860(nox_playerInfo* pl, int a2, int a3);",
+      "symbol": "nox_xxx_playerGoObserver_4E6860"
+    },
+    {
+      "file": "src/legacy/client__video__draw_common.h",
+      "line": 15,
+      "kind": "prototype",
+      "text": "void nox_draw_setMaterial_4340A0(int a1, int a2, int a3, int a4);",
+      "symbol": "nox_draw_setMaterial_4340A0"
+    },
+    {
+      "file": "src/legacy/client__system__ctrlevnt.h",
+      "line": 27,
+      "kind": "prototype",
+      "text": "char* nox_xxx_bindevent_bindNameByTitle_42EA40(wchar2_t* title);",
+      "symbol": "nox_xxx_bindevent_bindNameByTitle_42EA40"
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 23,
+      "kind": "prototype",
+      "text": "int nox_xxx_abilityCooldown_4252D0(int a1);",
+      "symbol": "nox_xxx_abilityCooldown_4252D0"
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 24,
+      "kind": "prototype",
+      "text": "wchar2_t* sub_4252F0(int a1);",
+      "symbol": "sub_4252F0"
+    },
+    {
+      "file": "src/legacy/GAME1.h",
+      "line": 37,
+      "kind": "prototype",
+      "text": "void nox_ticks_reset_416D40();",
+      "symbol": "nox_ticks_reset_416D40"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 22,
+      "kind": "prototype",
+      "text": "void sub_4AE6F0(int a1, int a2, int a3, int a4, int a5);",
+      "symbol": "sub_4AE6F0"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 7,
+      "kind": "prototype",
+      "text": "void sub_4A1A40(int a1);",
+      "symbol": "sub_4A1A40"
+    },
+    {
+      "file": "src/legacy/GAME1.h",
+      "line": 15,
+      "kind": "prototype",
+      "text": "int sub_40A1A0();",
+      "symbol": "sub_40A1A0"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 46,
+      "kind": "prototype",
+      "text": "int nox_xxx_netReportUnitHeight_4D9020(int a1, nox_object_t* a2);",
+      "symbol": "nox_xxx_netReportUnitHeight_4D9020"
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 7,
+      "kind": "prototype",
+      "text": "int nox_video_getCutSize_4766D0();",
+      "symbol": "nox_video_getCutSize_4766D0"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 56,
+      "kind": "prototype",
+      "text": "int sub_44A4A0();",
+      "symbol": "sub_44A4A0"
+    },
+    {
+      "file": "src/legacy/GAME1.h",
+      "line": 26,
+      "kind": "prototype",
+      "text": "int nox_xxx_weaponInventoryEquipFlags_415820(nox_object_t* item);",
+      "symbol": "nox_xxx_weaponInventoryEquipFlags_415820"
+    },
+    {
+      "file": "src/legacy/client__video__draw_common.h",
+      "line": 10,
+      "kind": "prototype",
+      "text": "void nox_video_setGammaSlider(int v);",
+      "symbol": "nox_video_setGammaSlider"
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 11,
+      "kind": "prototype",
+      "text": "void nox_client_resetScreenParticles_431510();",
+      "symbol": "nox_client_resetScreenParticles_431510"
+    },
+    {
+      "file": "src/legacy/input.h",
+      "line": 7,
+      "kind": "prototype",
+      "text": "int nox_input_pollEvents_4453A0();",
+      "symbol": "nox_input_pollEvents_4453A0"
+    },
+    {
+      "file": "src/legacy/GAME4.h",
+      "line": 21,
+      "kind": "prototype",
+      "text": "void nox_xxx_animPlayerGetFrameRange_4F9F90(int a1, int* a2, int* a3);",
+      "symbol": "nox_xxx_animPlayerGetFrameRange_4F9F90"
+    },
+    {
+      "file": "src/legacy/GAME1.h",
+      "line": 39,
+      "kind": "prototype",
+      "text": "void nox_xxx_netUnmarkMinimapObj_417300(int a1, nox_object_t* a2, unsigned int a3);",
+      "symbol": "nox_xxx_netUnmarkMinimapObj_417300"
+    },
+    {
+      "file": "src/legacy/GAME1.h",
+      "line": 27,
+      "kind": "prototype",
+      "text": "int sub_415840(int a1);",
+      "symbol": "sub_415840"
+    },
+    {
+      "file": "src/legacy/client__shell__mainmenu.h",
+      "line": 6,
+      "kind": "prototype",
+      "text": "int sub_4A24C0(int a1);",
+      "symbol": "sub_4A24C0"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 71,
+      "kind": "prototype",
+      "text": "int sub_4DCC90();",
+      "symbol": "sub_4DCC90"
+    },
+    {
+      "file": "src/legacy/GAME3_1.h",
+      "line": 35,
+      "kind": "prototype",
+      "text": "void nox_video_drawCircleColored_4C3270(int a1, int a2, int a3, int a4);",
+      "symbol": "nox_video_drawCircleColored_4C3270"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 47,
+      "kind": "prototype",
+      "text": "int nox_xxx_netReportAcquireCreature_4D91A0(int a1, nox_object_t* a2);",
+      "symbol": "nox_xxx_netReportAcquireCreature_4D91A0"
+    },
+    {
+      "file": "src/legacy/GAME5_2.h",
+      "line": 47,
+      "kind": "prototype",
+      "text": "int nox_xxx_playerClassCanUseItem_57B3D0(nox_object_t* item, int8_t a2);",
+      "symbol": "nox_xxx_playerClassCanUseItem_57B3D0"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 61,
+      "kind": "prototype",
+      "text": "void nox_xxx_createAt_4DAA50(nox_object_t* obj, nox_object_t* owner, float a3, float a4);",
+      "symbol": "nox_xxx_createAt_4DAA50"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 54,
+      "kind": "prototype",
+      "text": "void sub_44A360(int a1);",
+      "symbol": "sub_44A360"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 55,
+      "kind": "prototype",
+      "text": "void sub_44A400();",
+      "symbol": "sub_44A400"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 21,
+      "kind": "prototype",
+      "text": "nox_object_t* nox_xxx_newObjectByTypeID_4E3810(char* id);",
+      "symbol": "nox_xxx_newObjectByTypeID_4E3810"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 54,
+      "kind": "prototype",
+      "text": "void nox_xxx_playerCameraUnlock_4E6040(nox_object_t* player);",
+      "symbol": "nox_xxx_playerCameraUnlock_4E6040"
+    },
+    {
+      "file": "src/legacy/GAME4_1.h",
+      "line": 16,
+      "kind": "prototype",
+      "text": "void nox_xxx_updateSprings_5113A0();",
+      "symbol": "nox_xxx_updateSprings_5113A0"
+    },
+    {
+      "file": "src/legacy/GAME1.h",
+      "line": 17,
+      "kind": "prototype",
+      "text": "int sub_40A300();",
+      "symbol": "sub_40A300"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 63,
+      "kind": "prototype",
+      "text": "void nox_xxx_unitMove_4E7010(nox_object_t* obj, float2* a2);",
+      "symbol": "nox_xxx_unitMove_4E7010"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 35,
+      "kind": "prototype",
+      "text": "int nox_server_questNextStageThreshold_4D74F0(int lvl);",
+      "symbol": "nox_server_questNextStageThreshold_4D74F0"
+    },
+    {
+      "file": "src/legacy/GAME4_2.h",
+      "line": 72,
+      "kind": "prototype",
+      "text": "void nox_xxx_changeOwner_52BE40(nox_object_t* a1, nox_object_t* a2);",
+      "symbol": "nox_xxx_changeOwner_52BE40"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 63,
+      "kind": "prototype",
+      "text": "void nox_xxx_servFinalizeDelObject_4DADE0(nox_object_t* item);",
+      "symbol": "nox_xxx_servFinalizeDelObject_4DADE0"
+    },
+    {
+      "file": "src/legacy/GAME1.h",
+      "line": 31,
+      "kind": "prototype",
+      "text": "int sub_416150(int a1, int a2);",
+      "symbol": "sub_416150"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 38,
+      "kind": "prototype",
+      "text": "void nox_xxx_unitUnsetXStatus_4E4780(nox_object_t* a1, unsigned int a2);",
+      "symbol": "nox_xxx_unitUnsetXStatus_4E4780"
+    },
+    {
+      "file": "src/legacy/GAME1.h",
+      "line": 38,
+      "kind": "prototype",
+      "text": "void nox_xxx_netMarkMinimapObject_417190(int a1, nox_object_t* a2, unsigned int a3);",
+      "symbol": "nox_xxx_netMarkMinimapObject_417190"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 22,
+      "kind": "prototype",
+      "text": "int nox_xxx_objectFreeMem_4E38A0(nox_object_t* a1);",
+      "symbol": "nox_xxx_objectFreeMem_4E38A0"
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 42,
+      "kind": "prototype",
+      "text": "int nox_xxx_mapWriteSectionsMB_426E20(void* a1);",
+      "symbol": "nox_xxx_mapWriteSectionsMB_426E20"
+    },
+    {
+      "file": "src/legacy/GAME2_3.h",
+      "line": 7,
+      "kind": "prototype",
+      "text": "void nox_xxx_drawPointMB_499B70(int xLeft, int yTop, int a3);",
+      "symbol": "nox_xxx_drawPointMB_499B70"
+    },
+    {
+      "file": "src/legacy/client__video__draw_common.h",
+      "line": 12,
+      "kind": "prototype",
+      "text": "void nox_video_setFullScreen(int v);",
+      "symbol": "nox_video_setFullScreen"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 39,
+      "kind": "prototype",
+      "text": "int nox_xxx_guiFontHeightMB_43F320(void* a1);",
+      "symbol": "nox_xxx_guiFontHeightMB_43F320"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 9,
+      "kind": "prototype",
+      "text": "int sub_43BE30();",
+      "symbol": "sub_43BE30"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 19,
+      "kind": "prototype",
+      "text": "void sub_43CF70();",
+      "symbol": "sub_43CF70"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 17,
+      "kind": "prototype",
+      "text": "void nox_xxx_mapSwitchLevel_4D12E0(int a1);",
+      "symbol": "nox_xxx_mapSwitchLevel_4D12E0"
+    },
+    {
+      "file": "src/legacy/GAME2_1.h",
+      "line": 54,
+      "kind": "prototype",
+      "text": "int sub_46D6F0();",
+      "symbol": "sub_46D6F0"
+    },
+    {
+      "file": "src/legacy/GAME1.h",
+      "line": 32,
+      "kind": "prototype",
+      "text": "int sub_416170(int a1);",
+      "symbol": "sub_416170"
+    },
+    {
+      "file": "src/legacy/GAME3_2.h",
+      "line": 51,
+      "kind": "prototype",
+      "text": "int nox_xxx_netInformTextMsg2_4DA180(int a1, uint8_t* a2);",
+      "symbol": "nox_xxx_netInformTextMsg2_4DA180"
+    },
+    {
+      "file": "src/legacy/client__gui__window.h",
+      "line": 95,
+      "kind": "prototype",
+      "text": "int nox_client_getRenderGUI();",
+      "symbol": "nox_client_getRenderGUI"
+    },
+    {
+      "file": "src/legacy/GAME2_3.h",
+      "line": 8,
+      "kind": "prototype",
+      "text": "void nox_client_drawBorderLines_49CC70(int xLeft, int yTop, int a3, int a4);",
+      "symbol": "nox_client_drawBorderLines_49CC70"
+    },
+    {
+      "file": "src/legacy/common/fs/nox_fs.h",
+      "line": 28,
+      "kind": "prototype",
+      "text": "int nox_fs_fread(FILE* f, void* dst, int sz);",
+      "symbol": "nox_fs_fread"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 24,
+      "kind": "prototype",
+      "text": "char* nox_xxx_getUnitNameByThingType_4E3A80(int a1);",
+      "symbol": "nox_xxx_getUnitNameByThingType_4E3A80"
+    },
+    {
+      "file": "src/legacy/common/fs/nox_fs.h",
+      "line": 30,
+      "kind": "prototype",
+      "text": "void nox_fs_close(FILE* f);",
+      "symbol": "nox_fs_close"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 9,
+      "kind": "prototype",
+      "text": "int nox_client_guiXxxDestroy_4A24A0();",
+      "symbol": "nox_client_guiXxxDestroy_4A24A0"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 52,
+      "kind": "prototype",
+      "text": "void sub_446380();",
+      "symbol": "sub_446380"
+    },
+    {
+      "file": "src/legacy/GAME2.h",
+      "line": 14,
+      "kind": "prototype",
+      "text": "int nox_client_getIntroScreenDuration_44E3B0();",
+      "symbol": "nox_client_getIntroScreenDuration_44E3B0"
+    },
+    {
+      "file": "src/legacy/server__script__script.h",
+      "line": 7,
+      "kind": "prototype",
+      "text": "void* nox_xxx_scriptCallByEventBlock_502490(void* a1, void* a2, void* a3, int eventCode);",
+      "symbol": "nox_xxx_scriptCallByEventBlock_502490"
+    },
+    {
+      "file": "src/legacy/common__magic__speltree.h",
+      "line": 8,
+      "kind": "prototype",
+      "text": "int nox_xxx_spellManaCost_4249A0(int ind, int a2);",
+      "symbol": "nox_xxx_spellManaCost_4249A0"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 59,
+      "kind": "prototype",
+      "text": "void nox_xxx____setargv_4_44B000();",
+      "symbol": "nox_xxx____setargv_4_44B000"
+    },
+    {
+      "file": "src/legacy/GAME3_3.h",
+      "line": 78,
+      "kind": "prototype",
+      "text": "int nox_xxx_unitIsUnitTT_4E7C80(nox_object_t* a1, int a2);",
+      "symbol": "nox_xxx_unitIsUnitTT_4E7C80"
+    }
+  ],
+  "nonruntime_references_reviewed": [
+    {
+      "file": "src/client/noxrender/noxrender.go",
+      "line": 185,
+      "kind": "comment-or-literal",
+      "text": "// nox_client_drawEnableAlpha_434560",
+      "symbol": "nox_client_drawEnableAlpha_434560",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/client/noxrender/noxrender.go",
+      "line": 249,
+      "kind": "comment-or-literal",
+      "text": "// nox_xxx_drawSetTextColor_434390",
+      "symbol": "nox_xxx_drawSetTextColor_434390",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/client/noxrender/noxrender.go",
+      "line": 265,
+      "kind": "comment-or-literal",
+      "text": "// nox_client_drawSetColor_434460",
+      "symbol": "nox_client_drawSetColor_434460",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/client/noxrender/text.go",
+      "line": 274,
+      "kind": "comment-or-literal",
+      "text": "// nox_xxx_drawStringWrap_43FAF0",
+      "symbol": "nox_xxx_drawStringWrap_43FAF0",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/game.go",
+      "line": 656,
+      "kind": "comment-or-literal",
+      "text": "// nox_server_parseCmdText_443C80",
+      "symbol": "nox_server_parseCmdText_443C80",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/internal/noxfactor/c2gotok/token_test.go",
+      "line": 14,
+      "kind": "comment-or-literal",
+      "text": "`\n#include \"defs.h\"\n#include \"input.h\"\n\nextern uint32_t nox_server_resetQuestMinVotes_229988;\nextern uint32_t nox_server_kickQuestPlayerMinVotes_229992;\n\nunsigned int g_scaled_cfg = 0;\n#ifdef NOX_CGO\n//----- (004317B0) --------------------------------------------------------\nint nox_common_readcfgfile(const char* path, int a2);\n#endif // NOX_CGO\n//----- (004317B0) --------------------------------------------------------\nint nox_common_readcfgfile(const char* path, int a2) {\n\tsub_42CD90();\n\tFILE* file = nox_fs_open_text(path);\n\tif (file) {\n\t\tif (a2 || nox_common_parsecfg_all(file)) {\n\t\t\tif (nox_common_skipcfgfile_4331E0(file, (int)a2)) {\n\t\t\t\tnox_fs_close(file);\n\t\t\t\treturn 1;\n\t\t\t}\n\t\t}\n\t\tnox_fs_close(file);\n\t\tfile = 0;\n\t}\n\tsub_42CD90();\n\tfile = (int*)nox_fs_open_text(\"default.cfg\");\n\tif (!file) {\n\t\treturn 0;\n\t}\n\tif (!(a2 || nox_common_parsecfg_all(file))) {\n\t\tnox_fs_close(file);\n\t\treturn 0;\n\t}\n\tif (!nox_common_skipcfgfile_4331E0(file, a2)) {\n\t\tnox_fs_close(file);\n\t\treturn 0;\n\t}\n\tif int(*a)&b == 0 {\n\t\treturn 0;\n\t}\n#ifdef NOX_CGO\n\t*(uint32_t*)&dword_5d4594_805836 = 0;\n\t*(uint16_t* *)dword_5d4594_805836 = 0;\n#endif // NOX_CGO\n\tdo {\n\t\tnox_fs_close(file);\n\t\tnox_common_writecfgfile(\"nox.cfg\");\n\t} while (a < 10u);\n\treturn 1;\n}\n`",
+      "symbol": "nox_common_writecfgfile",
+      "reason": "Reviewed source-rewriter match key or literal parser fixture; no native symbol lookup"
+    },
+    {
+      "file": "src/internal/noxfactor/c2gotok/token_test.go",
+      "line": 81,
+      "kind": "comment-or-literal",
+      "text": "`\n#include \"defs.h\"\n#include \"input.h\"\n\nextern uint32 nox_server_resetQuestMinVotes_229988;\nextern uint32 nox_server_kickQuestPlayerMinVotes_229992;\n\nuint32 g_scaled_cfg = 0;\n#ifdef NOX_CGO\n//----- (004317B0) --------------------------------------------------------\nint nox_common_readcfgfile(byte* path, int a2);\n#endif // NOX_CGO\n//----- (004317B0) --------------------------------------------------------\nint nox_common_readcfgfile(byte* path, int a2) {\n\tsub_42CD90();\n\tFILE* file = nox_fs_open_text(path);\n\tif file {\n\t\tif a2 || nox_common_parsecfg_all(file) {\n\t\t\tif nox_common_skipcfgfile_4331E0(file, int(a2)) {\n\t\t\t\tnox_fs_close(file);\n\t\t\t\treturn 1;\n\t\t\t}\n\t\t}\n\t\tnox_fs_close(file);\n\t\tfile = 0;\n\t}\n\tsub_42CD90();\n\tfile = (*int)nox_fs_open_text(\"default.cfg\");\n\tif !file {\n\t\treturn 0;\n\t}\n\tif !(a2 || nox_common_parsecfg_all(file)) {\n\t\tnox_fs_close(file);\n\t\treturn 0;\n\t}\n\tif !nox_common_skipcfgfile_4331E0(file, a2) {\n\t\tnox_fs_close(file);\n\t\treturn 0;\n\t}\n\tif int(*a)&b == 0 {\n\t\treturn 0;\n\t}\n#ifdef NOX_CGO\n\t*(*uint32)(&dword_5d4594_805836)= 0;\n\t*(**uint16)(dword_5d4594_805836)= 0;\n#endif // NOX_CGO\n\tfor {\n\t\tnox_fs_close(file);\n\t\tnox_common_writecfgfile(\"nox.cfg\");\n\t\tif !(a < 10) {\n\t\t\tbreak\n\t\t}\n\t}\n\treturn 1;\n}\n`",
+      "symbol": "nox_common_writecfgfile",
+      "reason": "Reviewed source-rewriter match key or literal parser fixture; no native symbol lookup"
+    },
+    {
+      "file": "src/internal/noxfactor/c2gotok/token_test.go",
+      "line": 14,
+      "kind": "comment-or-literal",
+      "text": "`\n#include \"defs.h\"\n#include \"input.h\"\n\nextern uint32_t nox_server_resetQuestMinVotes_229988;\nextern uint32_t nox_server_kickQuestPlayerMinVotes_229992;\n\nunsigned int g_scaled_cfg = 0;\n#ifdef NOX_CGO\n//----- (004317B0) --------------------------------------------------------\nint nox_common_readcfgfile(const char* path, int a2);\n#endif // NOX_CGO\n//----- (004317B0) --------------------------------------------------------\nint nox_common_readcfgfile(const char* path, int a2) {\n\tsub_42CD90();\n\tFILE* file = nox_fs_open_text(path);\n\tif (file) {\n\t\tif (a2 || nox_common_parsecfg_all(file)) {\n\t\t\tif (nox_common_skipcfgfile_4331E0(file, (int)a2)) {\n\t\t\t\tnox_fs_close(file);\n\t\t\t\treturn 1;\n\t\t\t}\n\t\t}\n\t\tnox_fs_close(file);\n\t\tfile = 0;\n\t}\n\tsub_42CD90();\n\tfile = (int*)nox_fs_open_text(\"default.cfg\");\n\tif (!file) {\n\t\treturn 0;\n\t}\n\tif (!(a2 || nox_common_parsecfg_all(file))) {\n\t\tnox_fs_close(file);\n\t\treturn 0;\n\t}\n\tif (!nox_common_skipcfgfile_4331E0(file, a2)) {\n\t\tnox_fs_close(file);\n\t\treturn 0;\n\t}\n\tif int(*a)&b == 0 {\n\t\treturn 0;\n\t}\n#ifdef NOX_CGO\n\t*(uint32_t*)&dword_5d4594_805836 = 0;\n\t*(uint16_t* *)dword_5d4594_805836 = 0;\n#endif // NOX_CGO\n\tdo {\n\t\tnox_fs_close(file);\n\t\tnox_common_writecfgfile(\"nox.cfg\");\n\t} while (a < 10u);\n\treturn 1;\n}\n`",
+      "symbol": "nox_fs_close",
+      "reason": "Reviewed source-rewriter match key or literal parser fixture; no native symbol lookup"
+    },
+    {
+      "file": "src/internal/noxfactor/c2gotok/token_test.go",
+      "line": 81,
+      "kind": "comment-or-literal",
+      "text": "`\n#include \"defs.h\"\n#include \"input.h\"\n\nextern uint32 nox_server_resetQuestMinVotes_229988;\nextern uint32 nox_server_kickQuestPlayerMinVotes_229992;\n\nuint32 g_scaled_cfg = 0;\n#ifdef NOX_CGO\n//----- (004317B0) --------------------------------------------------------\nint nox_common_readcfgfile(byte* path, int a2);\n#endif // NOX_CGO\n//----- (004317B0) --------------------------------------------------------\nint nox_common_readcfgfile(byte* path, int a2) {\n\tsub_42CD90();\n\tFILE* file = nox_fs_open_text(path);\n\tif file {\n\t\tif a2 || nox_common_parsecfg_all(file) {\n\t\t\tif nox_common_skipcfgfile_4331E0(file, int(a2)) {\n\t\t\t\tnox_fs_close(file);\n\t\t\t\treturn 1;\n\t\t\t}\n\t\t}\n\t\tnox_fs_close(file);\n\t\tfile = 0;\n\t}\n\tsub_42CD90();\n\tfile = (*int)nox_fs_open_text(\"default.cfg\");\n\tif !file {\n\t\treturn 0;\n\t}\n\tif !(a2 || nox_common_parsecfg_all(file)) {\n\t\tnox_fs_close(file);\n\t\treturn 0;\n\t}\n\tif !nox_common_skipcfgfile_4331E0(file, a2) {\n\t\tnox_fs_close(file);\n\t\treturn 0;\n\t}\n\tif int(*a)&b == 0 {\n\t\treturn 0;\n\t}\n#ifdef NOX_CGO\n\t*(*uint32)(&dword_5d4594_805836)= 0;\n\t*(**uint16)(dword_5d4594_805836)= 0;\n#endif // NOX_CGO\n\tfor {\n\t\tnox_fs_close(file);\n\t\tnox_common_writecfgfile(\"nox.cfg\");\n\t\tif !(a < 10) {\n\t\t\tbreak\n\t\t}\n\t}\n\treturn 1;\n}\n`",
+      "symbol": "nox_fs_close",
+      "reason": "Reviewed source-rewriter match key or literal parser fixture; no native symbol lookup"
+    },
+    {
+      "file": "src/internal/noxfactor/main.go",
+      "line": 443,
+      "kind": "comment-or-literal",
+      "text": "\"nox_common_randomInt_415FA0\"",
+      "symbol": "nox_common_randomInt_415FA0",
+      "reason": "Reviewed source-rewriter match key or literal parser fixture; no native symbol lookup"
+    },
+    {
+      "file": "src/internal/noxfactor/main.go",
+      "line": 446,
+      "kind": "comment-or-literal",
+      "text": "\"nox_strman_loadString_40F1D0\"",
+      "symbol": "nox_strman_loadString_40F1D0",
+      "reason": "Reviewed source-rewriter match key or literal parser fixture; no native symbol lookup"
+    },
+    {
+      "file": "src/internal/noxfactor/main.go",
+      "line": 518,
+      "kind": "comment-or-literal",
+      "text": "\"nox_new_window_from_file\"",
+      "symbol": "nox_new_window_from_file",
+      "reason": "Reviewed source-rewriter match key or literal parser fixture; no native symbol lookup"
+    },
+    {
+      "file": "src/internal/noxfactor/main.go",
+      "line": 569,
+      "kind": "comment-or-literal",
+      "text": "\"nox_xxx_windowDestroyMB_46C4E0\"",
+      "symbol": "nox_xxx_windowDestroyMB_46C4E0",
+      "reason": "Reviewed source-rewriter match key or literal parser fixture; no native symbol lookup"
+    },
+    {
+      "file": "src/internal/noxfactor/main.go",
+      "line": 607,
+      "kind": "comment-or-literal",
+      "text": "\"nox_window_set_hidden\"",
+      "symbol": "nox_window_set_hidden",
+      "reason": "Reviewed source-rewriter match key or literal parser fixture; no native symbol lookup"
+    },
+    {
+      "file": "src/internal/noxfactor/main.go",
+      "line": 706,
+      "kind": "comment-or-literal",
+      "text": "\"nox_server_getFirstObject_4DA790\"",
+      "symbol": "nox_server_getFirstObject_4DA790",
+      "reason": "Reviewed source-rewriter match key or literal parser fixture; no native symbol lookup"
+    },
+    {
+      "file": "src/server/object.go",
+      "line": 205,
+      "kind": "comment-or-literal",
+      "text": "// nox_server_getFirstObject_4DA790",
+      "symbol": "nox_server_getFirstObject_4DA790",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/internal/noxfactor/main.go",
+      "line": 718,
+      "kind": "comment-or-literal",
+      "text": "\"nox_server_getNextObject_4DA7A0\"",
+      "symbol": "nox_server_getNextObject_4DA7A0",
+      "reason": "Reviewed source-rewriter match key or literal parser fixture; no native symbol lookup"
+    },
+    {
+      "file": "src/object.go",
+      "line": 529,
+      "kind": "comment-or-literal",
+      "text": "// nox_server_getNextObject_4DA7A0, nox_xxx_getNextUpdatable2Object_4DA850, nox_server_getNextObjectUninited_4DA880",
+      "symbol": "nox_server_getNextObject_4DA7A0",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/internal/noxfactor/main.go",
+      "line": 732,
+      "kind": "comment-or-literal",
+      "text": "\"nox_strman_get_lang_code\"",
+      "symbol": "nox_strman_get_lang_code",
+      "reason": "Reviewed source-rewriter match key or literal parser fixture; no native symbol lookup"
+    },
+    {
+      "file": "src/internal/noxfactor/main.go",
+      "line": 766,
+      "kind": "comment-or-literal",
+      "text": "\"nox_xxx_aud_501960\"",
+      "symbol": "nox_xxx_aud_501960",
+      "reason": "Reviewed source-rewriter match key or literal parser fixture; no native symbol lookup"
+    },
+    {
+      "file": "src/object.go",
+      "line": 895,
+      "kind": "comment-or-literal",
+      "text": "// nox_xxx_findParentChainPlayer_4EC580",
+      "symbol": "nox_xxx_findParentChainPlayer_4EC580",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/object.go",
+      "line": 1321,
+      "kind": "comment-or-literal",
+      "text": "// nox_xxx_unitIsUnitTT_4E7C80",
+      "symbol": "nox_xxx_unitIsUnitTT_4E7C80",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/server/object.go",
+      "line": 1851,
+      "kind": "comment-or-literal",
+      "text": "// nox_xxx_unitIsUnitTT_4E7C80",
+      "symbol": "nox_xxx_unitIsUnitTT_4E7C80",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/object_update.go",
+      "line": 641,
+      "kind": "comment-or-literal",
+      "text": "// nox_xxx_objectApplyForce_52DF80",
+      "symbol": "nox_xxx_objectApplyForce_52DF80",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/player.go",
+      "line": 111,
+      "kind": "comment-or-literal",
+      "text": "// nox_xxx_playerGoObserver_4E6860",
+      "symbol": "nox_xxx_playerGoObserver_4E6860",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/quest.go",
+      "line": 384,
+      "kind": "comment-or-literal",
+      "text": "// sub_4D6F30",
+      "symbol": "sub_4D6F30",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/server/object.go",
+      "line": 400,
+      "kind": "comment-or-literal",
+      "text": "// nox_xxx_newObjectWithTypeInd_4E3450",
+      "symbol": "nox_xxx_newObjectWithTypeInd_4E3450",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/server/object.go",
+      "line": 408,
+      "kind": "comment-or-literal",
+      "text": "// nox_xxx_newObjectByTypeID_4E3810",
+      "symbol": "nox_xxx_newObjectByTypeID_4E3810",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/server/object.go",
+      "line": 1664,
+      "kind": "comment-or-literal",
+      "text": "// nox_xxx_unitIsHostileMimic_4E7F90",
+      "symbol": "nox_xxx_unitIsHostileMimic_4E7F90",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/server/object.go",
+      "line": 2027,
+      "kind": "comment-or-literal",
+      "text": "// nox_xxx_unitSetXStatus_4E4800",
+      "symbol": "nox_xxx_unitSetXStatus_4E4800",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/server/object.go",
+      "line": 2043,
+      "kind": "comment-or-literal",
+      "text": "// nox_xxx_unitUnsetXStatus_4E4780",
+      "symbol": "nox_xxx_unitUnsetXStatus_4E4780",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/server/object_player.go",
+      "line": 212,
+      "kind": "comment-or-literal",
+      "text": "// nox_xxx_playerSubLessons_4D8EC0(-v), nox_xxx_changeScore_4D8E90(v)",
+      "symbol": "nox_xxx_playerSubLessons_4D8EC0",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/server/player.go",
+      "line": 895,
+      "kind": "comment-or-literal",
+      "text": "// nox_xxx_playerCameraUnlock_4E6040",
+      "symbol": "nox_xxx_playerCameraUnlock_4E6040",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/server/player.go",
+      "line": 909,
+      "kind": "comment-or-literal",
+      "text": "// nox_xxx_playerCameraFollow_4E6060",
+      "symbol": "nox_xxx_playerCameraFollow_4E6060",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/server/spells.go",
+      "line": 62,
+      "kind": "comment-or-literal",
+      "text": "// nox_xxx_spellGetAud44_424800(..., 0)",
+      "symbol": "nox_xxx_spellGetAud44_424800",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/server/spells.go",
+      "line": 69,
+      "kind": "comment-or-literal",
+      "text": "// nox_xxx_spellGetAud44_424800(..., 1)",
+      "symbol": "nox_xxx_spellGetAud44_424800",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/server/spells.go",
+      "line": 76,
+      "kind": "comment-or-literal",
+      "text": "// nox_xxx_spellGetAud44_424800(..., 2)",
+      "symbol": "nox_xxx_spellGetAud44_424800",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/server/spells.go",
+      "line": 83,
+      "kind": "comment-or-literal",
+      "text": "// nox_xxx_spellGetAud44_424800",
+      "symbol": "nox_xxx_spellGetAud44_424800",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    },
+    {
+      "file": "src/unit_ai.go",
+      "line": 473,
+      "kind": "comment-or-literal",
+      "text": "// nox_xxx_monsterPopAction_50A160",
+      "symbol": "nox_xxx_monsterPopAction_50A160",
+      "reason": "Reviewed historical Go-name annotation; not a cgo preamble or directive"
+    }
+  ],
+  "independent_ast_review": {
+    "all_remaining_declarations_unchanged": true,
+    "go_files": 69,
+    "removed_function_spans_verified": 126,
+    "unused_import_candidates": [
+      {
+        "end_line": 8,
+        "file": "src/legacy/gui_parser.go",
+        "name": "unsafe",
+        "path": "unsafe",
+        "start_line": 8
+      },
+      {
+        "end_line": 7,
+        "file": "src/legacy/gui_summon.go",
+        "name": "unsafe",
+        "path": "unsafe",
+        "start_line": 7
+      },
+      {
+        "end_line": 9,
+        "file": "src/legacy/session_entry_exports.go",
+        "name": "unsafe",
+        "path": "unsafe",
+        "start_line": 9
+      }
+    ]
+  },
+  "post_conversion": "Fresh complete root corpus, safe/static, three production builds/ABI, exact known suite and headless save/load/resume required.",
+  "final_ast_review": {
+    "all_remaining_declarations_unchanged": true,
+    "go_files": 69,
+    "removed_function_spans_verified": 126,
+    "unused_import_candidates": null
+  },
+  "import_cleanup": {
+    "cgo_files": [
+      "src/legacy/config.go",
+      "src/legacy/debug.go",
+      "src/legacy/gui_console.go",
+      "src/legacy/gui_cursor.go",
+      "src/legacy/gui_fps.go",
+      "src/legacy/gui_minimap.go",
+      "src/legacy/gui_parser.go",
+      "src/legacy/gui_summon.go",
+      "src/legacy/mapgen.go",
+      "src/legacy/music_imports.go",
+      "src/legacy/save.go",
+      "src/legacy/session_entry_exports.go",
+      "src/legacy/spells_abil.go",
+      "src/legacy/springs.go",
+      "src/legacy/things.go"
+    ],
+    "removed_preambles": {
+      "src/legacy/config.go": "/*\n#include <stdint.h>\n#include \"GAME1.h\"\n#include \"GAME1_3.h\"\n#include \"GAME2.h\"\n#include \"GAME2_2.h\"\n#include \"GAME3_2.h\"\n#include \"GAME5_2.h\"\n#include \"common__system__settings.h\"\n\n\n\n*/\nimport \"C\"\n",
+      "src/legacy/debug.go": "import \"C\"\n",
+      "src/legacy/gui_console.go": "/*\n#include \"client__gui__window.h\"\n#include \"client__gui__guicon.h\"\n*/\nimport \"C\"\n",
+      "src/legacy/gui_cursor.go": "import \"C\"\n",
+      "src/legacy/gui_fps.go": "import \"C\"\n",
+      "src/legacy/gui_minimap.go": "import \"C\"\n",
+      "src/legacy/gui_parser.go": "/*\n#include \"client__gui__window.h\"\n*/\nimport \"C\"\n",
+      "src/legacy/gui_summon.go": "/*\n */\nimport \"C\"\n",
+      "src/legacy/mapgen.go": "import \"C\"\n",
+      "src/legacy/music_imports.go": "/*\n#include <stdint.h>\n\nextern uint32_t dword_5d4594_816356;\n\n*/\nimport \"C\"\n",
+      "src/legacy/save.go": "/*\n#include \"GAME1.h\"\n#include \"GAME1_1.h\"\n#include \"GAME1_3.h\"\n#include \"GAME2.h\"\n#include \"GAME2_1.h\"\n#include \"GAME3_3.h\"\n#include \"GAME4_2.h\"\nvoid nox_xxx_unitsNewAddToList_4DAC00();\nint sub_41C280(void* a1);\nint nox_xxx_parseFileInfoData_41C3B0(int a1);\nint sub_41C780(int a1);\n*/\nimport \"C\"\n",
+      "src/legacy/session_entry_exports.go": "/*\n#include \"defs.h\"\ntypedef const char session_entry_const_char;\n*/\nimport \"C\"\n",
+      "src/legacy/spells_abil.go": "import \"C\"\n",
+      "src/legacy/springs.go": "import \"C\"\n",
+      "src/legacy/things.go": "/*\n#include \"memfile.h\"\n#include \"defs.h\"\n#include \"GAME1.h\"\n#include \"GAME1_1.h\"\n#include \"GAME2.h\"\n#include \"GAME2_1.h\"\n#include \"GAME2_2.h\"\n#include \"GAME4.h\"\n*/\nimport \"C\"\n"
+    },
+    "non_c_imports": [
+      {
+        "end_line": 8,
+        "file": "src/legacy/gui_parser.go",
+        "name": "unsafe",
+        "path": "unsafe",
+        "start_line": 8
+      },
+      {
+        "end_line": 7,
+        "file": "src/legacy/gui_summon.go",
+        "name": "unsafe",
+        "path": "unsafe",
+        "start_line": 7
+      },
+      {
+        "end_line": 9,
+        "file": "src/legacy/session_entry_exports.go",
+        "name": "unsafe",
+        "path": "unsafe",
+        "start_line": 9
+      }
+    ],
+    "reason": "Only unused import/preamble declarations; no build flags or executable C bodies. Unsafe imports have no init effects."
+  },
+  "surviving_imports_unchanged": true,
+  "preamble_header_review": {
+    "unique_project_header_paths": [
+      "src/legacy/GAME1.h",
+      "src/legacy/GAME1_1.h",
+      "src/legacy/GAME1_3.h",
+      "src/legacy/GAME2.h",
+      "src/legacy/GAME2_1.h",
+      "src/legacy/GAME2_2.h",
+      "src/legacy/GAME3_2.h",
+      "src/legacy/GAME3_3.h",
+      "src/legacy/GAME4.h",
+      "src/legacy/GAME4_2.h",
+      "src/legacy/GAME5_2.h",
+      "src/legacy/client__gui__guicon.h",
+      "src/legacy/client__gui__window.h",
+      "src/legacy/common/alloc/classes/alloc_class.h",
+      "src/legacy/common/platform/platform.h",
+      "src/legacy/common__savegame.h",
+      "src/legacy/common__system__settings.h",
+      "src/legacy/common__system__team.h",
+      "src/legacy/defs.h",
+      "src/legacy/memfile.h",
+      "src/legacy/nox_wchar.h",
+      "src/legacy/noxstring.h",
+      "src/legacy/static_assert.h"
+    ],
+    "new_headers_independently_read": [
+      "src/legacy/GAME3_2.h",
+      "src/legacy/GAME5_2.h",
+      "src/legacy/common__system__settings.h"
+    ],
+    "no_executable_preamble_bodies_or_build_directives": true
+  }
+}

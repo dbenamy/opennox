@@ -23,11 +23,13 @@ are unchanged. See [REMAINING_UNUSED_EXPORTS.md](docs/porting/REMAINING_UNUSED_E
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
 recorded reversible decisions. Stop at the milestone or for a substantial question.
-Next: review and install the following 265-export cohort: remove 126 unused
-wrappers and preserve 139 Go-referenced functions while retiring their C exports.
-Luna's ignored `build/port-go-only-exports/draft-v2/` is uninstalled; import cleanup,
-primary AST review, baseline freeze and qualification remain. The earlier
-`draft/` and `reviewed/` directive-only versions are superseded.
+Next: install the reviewed 265-export cohort after committing its baseline:
+remove 126 unused wrappers and preserve 139 Go-referenced functions while retiring
+their C exports. Fifteen C imports/preambles and three unused unsafe imports can
+also disappear. Primary exact-span/AST reviews pass. See
+[GO_ONLY_EXPORTS.md](docs/porting/GO_ONLY_EXPORTS.md). The ignored
+`build/port-go-only-exports/reviewed-v2/` is ready; earlier directive-only drafts
+are superseded. All post-conversion qualification remains.
 
 The complete `^Test` root corpus passes in all three profiles with exact name
 sets and only the documented map-population diagnostic skip. The first complete
@@ -138,6 +140,8 @@ do not rerun them or infer deletion safety from age alone.
 | Completed scenario data: `go-memory-save`, `raw-allocation-save`, `string-boundary-save`, `unused-exports-save` | Only SHA256-identical original-asset copies were removed. Saves/comparisons remain. Follow each run's `deduplicated-assets.json`; shared restore tool: `build/port-artifact-cleanup/restore-recent-scenario.py`. |
 | Large historical captures in `port-game-messages`, `port-map-sections`, `port-client-interaction`, `port-session-dialogs` | Restore with `gzip -dk` and verify hashes against `build/port-artifact-cleanup/large-historical-20260924/`. Its 116 discarded text logs are not recoverable from these archives. |
 | Initial complete-corpus default/server logs | Losslessly compressed; restore commands and hashes in `build/port-complete-corpus/initial-log-archive.json`. Keep the server failure evidence. |
+| Latest 378-export full-corpus logs | Losslessly compressed after qualification/commit; restore commands and SHA256s: `build/port-remaining-unused-exports/contract-log-archive.json`. |
+| Additional obsolete project cache archives | 31 old root/legacy archives removed after host checks, reclaiming 2,017,688,956 bytes; rebuild normally. Plan/journal: `build/port-artifact-cleanup/go-only-exports-cache-{plan,removed}.json`. |
 | Qualified complete-corpus logs | Losslessly compressed; restore commands/hashes: `build/port-complete-corpus/qualified-log-archive.json`. |
 | Completed pointer-fixture and prebuilt-pilot binaries | Five rebuildable binaries removed; source `4a0ab0dc`, original logs/records retained. Plan/journal: `build/port-artifact-cleanup/completed-corpus-binaries-{plan.json,removed.jsonl}`. |
 | Superseded Go-memory/raw-allocation/string-boundary binaries | Rebuild from `4e1e86a6`, `6ff98033`, `92029ddd` respectively. Exact inventory/removal journal: `build/port-artifact-cleanup/superseded-glue-binaries-{plan.json,removed.jsonl}`. |
