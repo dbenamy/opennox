@@ -1,0 +1,994 @@
+{
+  "status": "qualified original transfer and damage-sound registry baseline",
+  "revision": "d44f33d73e04c079a145b4cc9595d7fbf977da29",
+  "phase": {
+    "batch": "xfer-sound-registry",
+    "phase": "contracts",
+    "success": true,
+    "steps": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/xfer-sound-registry-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-xfer-sound-registry/baseline/default.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-xfer-sound-registry/baseline/default-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 47.86885267496109
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/xfer-sound-registry-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-xfer-sound-registry/baseline/server.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-xfer-sound-registry/baseline/server-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 156.03552521788515
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/xfer-sound-registry-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-xfer-sound-registry/baseline/highres.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-xfer-sound-registry/baseline/highres-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 82.44019676884636
+      }
+    ],
+    "revision": "d44f33d73e04c079a145b4cc9595d7fbf977da29",
+    "source_unchanged": true,
+    "wall_seconds": 286.910440312,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "contracts": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 228,
+      "selected_root_tests": 228,
+      "exit": 0,
+      "started_tests": 228,
+      "completed_tests": 228,
+      "started_root_tests": 228,
+      "completed_root_tests": 228,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 47.78625911800191
+    },
+    "server": {
+      "tags": "porttest,server",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 228,
+      "selected_root_tests": 228,
+      "exit": 0,
+      "started_tests": 228,
+      "completed_tests": 228,
+      "started_root_tests": 228,
+      "completed_root_tests": 228,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 155.9647526720073
+    },
+    "highres": {
+      "tags": "porttest,highres",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 228,
+      "selected_root_tests": 228,
+      "exit": 0,
+      "started_tests": 228,
+      "completed_tests": 228,
+      "started_root_tests": 228,
+      "completed_root_tests": 228,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 82.36742581101134
+    }
+  },
+  "captures": {
+    "TestCreatureXferActionArguments:creature-xfer-action-arguments": {
+      "sha256": "f42e6c0ca02e3a05d6290f05d502f23c850e7d3208df22d1def7b8f70d1ae331"
+    },
+    "TestCreatureXferActionEdges:creature-xfer-action-edges": {
+      "sha256": "4181955561fc0d2075358604e903a1d7570ee3703608b4d96a72aecd2aa57af0"
+    },
+    "TestCreatureXferActionHistorical:creature-xfer-action-historical": {
+      "sha256": "0a2fa616be097bbc8d8d9f492fa3a8389d181671e5af85fa8e7e2107895e366d"
+    },
+    "TestCreatureXferActionCurrent:creature-xfer-action-current": {
+      "sha256": "4c7066f977ad9d5d1f4bf42a047829a9c650eac4308b02f252d38ce10924eab8"
+    },
+    "TestCreatureXferAutomaticSpells:creature-xfer-auto-spells": {
+      "sha256": "d52054751fa0c381c9ddd5c3a4b8abd66ee08afef8cdbe95539d443ff4adf1f7"
+    },
+    "TestCreatureXferCurrentRecords:creature-xfer-current": {
+      "sha256": "d3bce2e0e945a46f08e4539705d5e5b51acae4a21021998801fd6400bff4c89a"
+    },
+    "TestCreatureXferBuffApplication:creature-xfer-buff-application": {
+      "sha256": "eeb10d0e71494c8986fdb7dc42724f964bafe728770ac7ab6f81fa242275e32c"
+    },
+    "TestCreatureXferBuffWriter:creature-xfer-buff-writer": {
+      "sha256": "491477ed873d75d72aa98fe30c46ad9d495d489b731fa77f67b5c056dbc4a205"
+    },
+    "TestCreatureXferDefinitionDefaults:creature-xfer-definition-defaults": {
+      "sha256": "2694cdd92e3157113a7851b6462f234742057c5ddeaa4bf3166b3cf4587910e3"
+    },
+    "TestCreatureXferEquipmentOrder:creature-xfer-equipment-order": {
+      "sha256": "fefcfa5d72da58b690c9ab091d64e7f24ce4199889a5153cc10334bc06a6b368"
+    },
+    "TestCreatureXferMerchantRecords:creature-xfer-merchant": {
+      "sha256": "d1820f99d8a6a53c84f9313b792a1dcf73eb4cc65c83ceecf2cc3a6bb743fb7e"
+    },
+    "TestCreatureXferMonsterHistorical:creature-xfer-monster-historical": {
+      "sha256": "bc3e7e0d2dcdcd12343c119c15c109f47fc75df5c0ee00cc8abf553d4eaf92a5"
+    },
+    "TestCreatureXferNPCHistorical:creature-xfer-npc-historical": {
+      "sha256": "1a3494a6e4b9316aba48108cd601de0e9473ea5d3404517cafe1b37a7bf5baff"
+    },
+    "TestCreatureXferPaths:creature-xfer-paths": {
+      "sha256": "83ac69db2230cc65c5f5cef23c335266dff56079b6582e8b268f2a8f18f95b8c"
+    },
+    "TestCreatureXferPostloadReferences:creature-xfer-postload": {
+      "sha256": "5996b0b2ba26681fc5621c10546d4d807fc487a5f1427517d7660de64139c1ad"
+    },
+    "TestCreatureXferActionReferences:creature-xfer-action-references": {
+      "sha256": "bef27611f488889453daac9b85fd6f793cc968da9cd95121aa2f06b61a8c9d91"
+    },
+    "TestCreatureXferSpellWords:creature-xfer-spell-words": {
+      "sha256": "cf46d2dbabd9249ac09dfe091e8e607ef94a841267269850a87bed89cc2c7826"
+    },
+    "TestCreatureXferActionStack:creature-xfer-action-stack": {
+      "sha256": "4649d58d02b79be244555bef4a4e51bf1b45add93f1ed7472eff6c27b71ade2c"
+    },
+    "TestCreatureXferTimestamps:creature-xfer-timestamps": {
+      "sha256": "5f3c1e03a96daf814ea8e85d2646a2fb09072184a8058895608dd29c0c83ee71"
+    },
+    "TestCreatureXferVoiceRecords:creature-xfer-voices": {
+      "sha256": "067a08d8ad5734f304babebc0d903d89e92b79524aaad2ceed37b6a8ba6061e0"
+    },
+    "TestDamageNames:damage-names": {
+      "sha256": "211cb3ec6b6902f9a54a947a371041c067493cd35dd7566486e760d147a190f0",
+      "cases": 63
+    },
+    "TestDamageBasic/2:damage-basic-02": {
+      "sha256": "4bff2e78ce703bca8e2bb3b365da49f0b51c1b4a8a618a55cf41efdc0a5ed4ca",
+      "cases": 162
+    },
+    "TestDamageBasic/9:damage-basic-09": {
+      "sha256": "092eb30f839233e318249f40abc99647dab3ae2230b7b61960e95a1f7a05ebb7",
+      "cases": 162
+    },
+    "TestDamageBasic/10:damage-basic-10": {
+      "sha256": "092eb30f839233e318249f40abc99647dab3ae2230b7b61960e95a1f7a05ebb7",
+      "cases": 162
+    },
+    "TestDamageBasic/14:damage-basic-14": {
+      "sha256": "dcada449448bbc41782db1456e0a076fc377dfb01b831d0d2918ce99b31cc390",
+      "cases": 162
+    },
+    "TestDamageBasic/20:damage-basic-20": {
+      "sha256": "4bff2e78ce703bca8e2bb3b365da49f0b51c1b4a8a618a55cf41efdc0a5ed4ca",
+      "cases": 162
+    },
+    "TestDamageBasic/21:damage-basic-21": {
+      "sha256": "4bff2e78ce703bca8e2bb3b365da49f0b51c1b4a8a618a55cf41efdc0a5ed4ca",
+      "cases": 162
+    },
+    "TestDamageBasic/22:damage-basic-22": {
+      "sha256": "1d28be03178fa224f1c6191fd7746e1fea23031485d9464ed81bd512562a4aca",
+      "cases": 162
+    },
+    "TestDamageBasic/23:damage-basic-23": {
+      "sha256": "f48a2a099d0db02a3596c5bb94c806704fa6b7742ffeafa365c72a6f68d33ccb",
+      "cases": 162
+    },
+    "TestDamageBasic/24:damage-basic-24": {
+      "sha256": "f5cc1849d66761cb8bd245f36935f9b13ffbdee1b091a9f7bb65294bc456b3f5",
+      "cases": 162
+    },
+    "TestDamageFraction:damage-fraction": {
+      "sha256": "9964c112a90ac48a7ae9f8dafe21e740d89e982318344bbab371b3fc12857154",
+      "cases": 30
+    },
+    "TestDamagePositive:damage-positive": {
+      "sha256": "97ae2a3328ceb9765ebe811b5eab63609642b6eeaec74b8dbb2a73ce9054db79",
+      "cases": 4
+    },
+    "TestDamageAdmission:damage-admission-02": {
+      "sha256": "c7dc4a0611c39e210254813f2d80bf826f736d6ce7d7af57ba28a9711d385ca4",
+      "cases": 64
+    },
+    "TestDamageAdmission:damage-admission-14": {
+      "sha256": "cc9452b9b8cc6234fbaccb3336f3dc2a1fdc88df7428bc149fc92f98af51fcf6",
+      "cases": 64
+    },
+    "TestDamageModifiers:damage-modifiers-02": {
+      "sha256": "37061e516a70c4e9954b35a1b97b22c110ffb1d7289d1d74f6c4ae8c7de19fa4",
+      "cases": 36
+    },
+    "TestDamageModifiers:damage-modifiers-04": {
+      "sha256": "06ccfed4fef3f2d90b82d4c80eebb932e52e9462049af27c9161740bf3c255ab",
+      "cases": 36
+    },
+    "TestDamageModifiers:damage-modifiers-05": {
+      "sha256": "63619f54f4ec0bdd00ecaa6d979715fd9d99bd32ed1513f001414aaf2e175705",
+      "cases": 36
+    },
+    "TestDamageModifiers:damage-modifiers-11": {
+      "sha256": "a791a4c3ed6b8ce0879d7a576a0d655dbd25ff9b31e6da0d69b5c56126839e60",
+      "cases": 36
+    },
+    "TestDamageModifiers:damage-modifiers-13": {
+      "sha256": "a791a4c3ed6b8ce0879d7a576a0d655dbd25ff9b31e6da0d69b5c56126839e60",
+      "cases": 36
+    },
+    "TestDamageReflect:damage-reflect": {
+      "sha256": "751b5d49b283bda180746a401f3235a7c9a1e9106c09df7c3be1b8f2740ae1e5",
+      "cases": 140
+    },
+    "TestDamageEquipmentHelpers:damage-equipment-06": {
+      "sha256": "d24a9ea17755339642c1bda520da771f773af3c8e6751a603d24ed6e47133877",
+      "cases": 24
+    },
+    "TestDamageEquipmentHelpers:damage-equipment-07": {
+      "sha256": "8861c43d64d08b3b6d23aaad3e6c99595ed00aaed79e5ef63e04634db46d559a",
+      "cases": 24
+    },
+    "TestDamageEquipmentHelpers:damage-equipment-08": {
+      "sha256": "8861c43d64d08b3b6d23aaad3e6c99595ed00aaed79e5ef63e04634db46d559a",
+      "cases": 24
+    },
+    "TestDamageEquipmentHelpers:damage-equipment-09": {
+      "sha256": "7be0a098be6d79bdd22114cdbfacdc97fc32f0bb183609594a5e3ef8c22a624b",
+      "cases": 24
+    },
+    "TestDamageEquipmentHelpers:damage-equipment-10": {
+      "sha256": "fecd5120836d6082fbba0efe3b87fcba24a2bf47f640c63551031f842451fabe",
+      "cases": 24
+    },
+    "TestDamageEquipmentHelpers:damage-equipment-12": {
+      "sha256": "82d7a8f3db268eb030acfb0f308b51ffeb894b0480b36169a38e114740bc5c32",
+      "cases": 24
+    },
+    "TestDamageEquipmentHelpers:damage-equipment-16": {
+      "sha256": "20ec2f556d08887edc28dcdef39506df747210d4aedb44a244fab2f41435e8f8",
+      "cases": 24
+    },
+    "TestDamageEquipmentHelpers:damage-equipment-17": {
+      "sha256": "7fe4956e6e1b2c3654093d7c87d86aabce4da5aa7d809eb9a9080ba62a1a93ab",
+      "cases": 24
+    },
+    "TestDamageEquipmentHelpers:damage-equipment-18": {
+      "sha256": "8ed0a14f8a9a6991e8676211d34be6ec9ad513a9a39d2f36b4df2e5b90317060",
+      "cases": 24
+    },
+    "TestDamageEquipmentHelpers:damage-equipment-19": {
+      "sha256": "8ed0a14f8a9a6991e8676211d34be6ec9ad513a9a39d2f36b4df2e5b90317060",
+      "cases": 24
+    },
+    "TestDamageResistance:damage-resistance": {
+      "sha256": "47e79497f434f4aaa4a922c0e8d5171e86ba1238773ff299b967908ac8e90527",
+      "cases": 168
+    },
+    "TestDamageSource:damage-source-02": {
+      "sha256": "303cd589cd08acd42089e4ace3b235c8ed0691bb0cead627a841d584a17b060d",
+      "cases": 54
+    },
+    "TestDamageSource:damage-source-14": {
+      "sha256": "e7ae2b20cc1e7fa8bcf5540c62d325917aaa370df61bbd0e4cff2b999e516674",
+      "cases": 54
+    },
+    "TestDamageArmor:damage-armor": {
+      "sha256": "049325fd1311d09a48256759f43879739655b0ceccd76ec4a74e27c6804e74fe",
+      "cases": 360
+    },
+    "TestDamageGenerator:damage-generator": {
+      "sha256": "ede19cee3cdf5378493d8b76b103a9e26e14f6b2c8fab1e5e440e0b08d139f00",
+      "cases": 144
+    },
+    "TestDamageBall:damage-ball": {
+      "sha256": "26d0c3f8a3904c027549935a256a6d79de5fedff17a3c6ba3e4bd65ff1efd823",
+      "cases": 10
+    },
+    "TestDamageBlocking:damage-blocking": {
+      "sha256": "d72c0a90e03295d120e8c1bbe97ddf8f5816d4d201a376a339c5b5141ac888c7",
+      "cases": 240
+    },
+    "TestDamageBuffs:damage-buffs-02": {
+      "sha256": "14c787ed80afc609b9c197e015da2ccc0b9fcc5ff428673da789cb0b6bd33f02",
+      "cases": 112
+    },
+    "TestDamageBuffs:damage-buffs-14": {
+      "sha256": "0d0efe356aa6c01326d99fef3f2a42018705d3747b16370d9d5324959ce78508",
+      "cases": 112
+    },
+    "TestDamageShield:damage-shield": {
+      "sha256": "a897e3a66c720431ba702a1aeaafbd6a01d1cac9c8fb429798cc8cf1fad28379",
+      "cases": 42
+    },
+    "TestDamageConductivity:damage-conductivity": {
+      "sha256": "060177bf2937736b4fd3a9536211dce6b2e03b2f137c167bcb861bf0e63d2772",
+      "cases": 32
+    },
+    "TestDamageNil:damage-nil": {
+      "sha256": "e0e132fb9df8db778230894dcf81ade50342a3dee7ba1afdaa0881d7a98f78bc",
+      "cases": 11
+    },
+    "TestDamageRegistryBasic/2:damage-registry-basic-02": {
+      "sha256": "eeacfa3de8fe2f201d53411aa1a55edd5d63074cb5437ab4fb9e102d6580ec5e",
+      "cases": 180
+    },
+    "TestDamageRegistryBasic/8:damage-registry-basic-08": {
+      "sha256": "26efe969ae70d0577d05fa016f628552b29e35b39076d4bbf2cc206b43af7ebc",
+      "cases": 180
+    },
+    "TestDamageRegistryBasic/9:damage-registry-basic-09": {
+      "sha256": "574121289fb695aed20ffd6abf658fce9ba0fcb81fcc4dc39f72e9b3a9c1e372",
+      "cases": 180
+    },
+    "TestDamageRegistryBasic/10:damage-registry-basic-10": {
+      "sha256": "209c91e4d1646ff8ec4d5bd8a60147bbedb298cf33712f6dd554b46a02ff8320",
+      "cases": 180
+    },
+    "TestDamageRegistryBasic/14:damage-registry-basic-14": {
+      "sha256": "f3e47315b0cbb8c40f4cc1c1f8198726d334faca869c497548a55984105f8ace",
+      "cases": 180
+    },
+    "TestDamageRegistryBasic/20:damage-registry-basic-20": {
+      "sha256": "3ee123dd759f97d9999539f72b4318d882a8438d159237b63eb7e5f1fa3710b2",
+      "cases": 180
+    },
+    "TestDamageRegistryBasic/21:damage-registry-basic-21": {
+      "sha256": "629ed7080385c9a74309a9ec3f80d4c2ff398512c07a4f4ff9b594db1529a425",
+      "cases": 180
+    },
+    "TestDamageRegistryBasic/22:damage-registry-basic-22": {
+      "sha256": "d40cacd0ea3cec927058b33a46bea9593edbd48abfd3067d1c541cfef0aae11f",
+      "cases": 180
+    },
+    "TestDamageRegistryBasic/23:damage-registry-basic-23": {
+      "sha256": "b7d2cf5279331b8c6d0edab33a14fa76bcd1bfce5b994eeec5e9ffcc496391ab",
+      "cases": 180
+    },
+    "TestDamageRegistryBasic/24:damage-registry-basic-24": {
+      "sha256": "39133581ded8ca8053ff79e63835f01603221b314203c226eb60722577ecc699",
+      "cases": 180
+    },
+    "TestDamageRegistryGenerator:damage-registry-generator": {
+      "sha256": "2f7d2020ce2fda68530c5c7db3f4f7b50590d5edac15d86f4a430944a9254d55",
+      "cases": 144
+    },
+    "TestDamageRegistrySource:damage-registry-source-02": {
+      "sha256": "b29253349968badb08cae4b541129799bc1dfc52d866a1318f78f66a47eb20a3",
+      "cases": 54
+    },
+    "TestDamageRegistrySource:damage-registry-source-14": {
+      "sha256": "9b0bdb7b170d4fa26f8312e09129f3571bfbf281553d47831ba2b096f00f7e6a",
+      "cases": 54
+    },
+    "TestDamageRegistryPositive:damage-registry-positive": {
+      "sha256": "43e3a2d989735df453c56b103068c4c5d7000a8aa9096ae5a9ab6ce253703a56",
+      "cases": 4
+    },
+    "TestDamageRegistryGolemWrapping:damage-registry-golem-wrapping": {
+      "sha256": "dbec9d6105f0cf6b9a2f821e06e853f011734c3fba92d90e05fc95af3addc76d",
+      "cases": 15
+    },
+    "TestDamageBlackPowderRejectNil:damage-registry-powder-reject-nil": {
+      "sha256": "4340c46d2160599f6b744c611fc4c806af8566feed1d40825d9341ef8178d0f6",
+      "cases": 9
+    },
+    "TestDamageValueBasic/2:damage-value-basic-02": {
+      "sha256": "eeacfa3de8fe2f201d53411aa1a55edd5d63074cb5437ab4fb9e102d6580ec5e",
+      "cases": 180
+    },
+    "TestDamageValueBasic/8:damage-value-basic-08": {
+      "sha256": "26efe969ae70d0577d05fa016f628552b29e35b39076d4bbf2cc206b43af7ebc",
+      "cases": 180
+    },
+    "TestDamageValueBasic/9:damage-value-basic-09": {
+      "sha256": "574121289fb695aed20ffd6abf658fce9ba0fcb81fcc4dc39f72e9b3a9c1e372",
+      "cases": 180
+    },
+    "TestDamageValueBasic/10:damage-value-basic-10": {
+      "sha256": "209c91e4d1646ff8ec4d5bd8a60147bbedb298cf33712f6dd554b46a02ff8320",
+      "cases": 180
+    },
+    "TestDamageValueBasic/14:damage-value-basic-14": {
+      "sha256": "f3e47315b0cbb8c40f4cc1c1f8198726d334faca869c497548a55984105f8ace",
+      "cases": 180
+    },
+    "TestDamageValueBasic/20:damage-value-basic-20": {
+      "sha256": "3ee123dd759f97d9999539f72b4318d882a8438d159237b63eb7e5f1fa3710b2",
+      "cases": 180
+    },
+    "TestDamageValueBasic/21:damage-value-basic-21": {
+      "sha256": "629ed7080385c9a74309a9ec3f80d4c2ff398512c07a4f4ff9b594db1529a425",
+      "cases": 180
+    },
+    "TestDamageValueBasic/22:damage-value-basic-22": {
+      "sha256": "d40cacd0ea3cec927058b33a46bea9593edbd48abfd3067d1c541cfef0aae11f",
+      "cases": 180
+    },
+    "TestDamageValueBasic/23:damage-value-basic-23": {
+      "sha256": "b7d2cf5279331b8c6d0edab33a14fa76bcd1bfce5b994eeec5e9ffcc496391ab",
+      "cases": 180
+    },
+    "TestDamageValueBasic/24:damage-value-basic-24": {
+      "sha256": "39133581ded8ca8053ff79e63835f01603221b314203c226eb60722577ecc699",
+      "cases": 180
+    },
+    "TestDamageValueGenerator:damage-value-generator": {
+      "sha256": "2f7d2020ce2fda68530c5c7db3f4f7b50590d5edac15d86f4a430944a9254d55",
+      "cases": 144
+    },
+    "TestDamageValueSource:damage-value-source-02": {
+      "sha256": "b29253349968badb08cae4b541129799bc1dfc52d866a1318f78f66a47eb20a3",
+      "cases": 54
+    },
+    "TestDamageValueSource:damage-value-source-14": {
+      "sha256": "9b0bdb7b170d4fa26f8312e09129f3571bfbf281553d47831ba2b096f00f7e6a",
+      "cases": 54
+    },
+    "TestDamageValuePositive:damage-value-positive": {
+      "sha256": "43e3a2d989735df453c56b103068c4c5d7000a8aa9096ae5a9ab6ce253703a56",
+      "cases": 4
+    },
+    "TestDamageValueGolemWrapping:damage-value-golem-wrapping": {
+      "sha256": "dbec9d6105f0cf6b9a2f821e06e853f011734c3fba92d90e05fc95af3addc76d",
+      "cases": 15
+    },
+    "TestItemXferDefaultRecords:item-xfer-default": {
+      "sha256": "6869329949659b6782b5fa57cb0ba222c85193e356658ff23cf27d98ff97ef62"
+    },
+    "TestItemXferWeaponCharges:item-xfer-weapon-charges": {
+      "sha256": "78ce522d53ec6949f2a27ff33e3a3fe7b1cad0a2041537b4db82dc63d39752d9"
+    },
+    "TestItemXferGeneratorRecords:item-xfer-generator-records": {
+      "sha256": "4d0309d232cb1ce62afa7c862e480e1fe7afef1280e87e38da73bb76d5d395c0"
+    },
+    "TestItemXferGeneratorPartialFailure:item-xfer-generator-partial": {
+      "sha256": "d2dc20501579610e180c7d21ac00a89dab1b1cfeae99a50d7422926583a83716"
+    },
+    "TestItemXferEquipmentHealth:item-xfer-equipment-health": {
+      "sha256": "af7f8e014742cec75751206eb64e9cfa484c9184927f8a436db1b7831116ce56"
+    },
+    "TestItemXferHistoricalRecords:item-xfer-historical": {
+      "sha256": "90d388662199a78f8c07c566b185df5cccacfc88c99fb11117f0818899edd063"
+    },
+    "TestItemXferModifierRecords:item-xfer-modifiers": {
+      "sha256": "5dec507c6294b4c666c4f14a4a43a21b5a75e97471e7d97b8b0d05d256f35b83"
+    },
+    "TestItemXferNameBoundaries:item-xfer-name-boundaries": {
+      "sha256": "eef3c2673164b967d3bcb50983f239c98fcc7145f1b673a530e0070fb0f4156e"
+    },
+    "TestItemXferObeliskMinimap:item-xfer-obelisk-minimap": {
+      "sha256": "682faf05e991e354997ef2f75194e6e9b62fe0ce0c3c9e05cb71d86d61a41d1c"
+    },
+    "TestItemXferRewardMasks:item-xfer-reward-masks": {
+      "sha256": "db3294dda28c6f942b267731f0a320ccec573e3f3af4aadc93e6c893497b2ec4"
+    },
+    "TestItemXferRewardReadFailures:item-xfer-reward-failures": {
+      "sha256": "ec77c9e1785dcf9d5d4ceb9b20c86fa3dcea89f3bb0907fd9deb27e1859494f2"
+    },
+    "TestItemXferRewardReadMerge:item-xfer-reward-merge": {
+      "sha256": "181f8397e0143fdfe072e8a5f89cd3b83a9dbc7c99011bfcd6678e0e862f6c19"
+    },
+    "TestMapOrchestrationStepBoundaries:step-boundaries": {
+      "sha256": "635b72c0db8747b78fa33790d65a35c0c45e5886ce3f3ca7632a29fbbfd5de32",
+      "cases": 24
+    },
+    "TestMapOrchestrationGeneratedMaps:normal-maps": {
+      "sha256": "c6fc4af3bd0c2935bf7c5c3607302ca0e066950237e2d455f5170a42967ef6ab",
+      "cases": 128
+    },
+    "TestMapOrchestrationGeneratedMaps:ring-maps": {
+      "sha256": "d8f1e06ff469e2c6b6dce2f9583c375a0c62f936831875547d06c3803acfb93d",
+      "cases": 16
+    },
+    "TestMapOrchestrationThemeFailures:theme-failures": {
+      "sha256": "e0bdd5828f0ebcc7a584699b059b6826c8b19281160eac5351eb9600c4da89c6",
+      "cases": 7
+    },
+    "TestMapSectionsFloorHistoricalRead:map-sections-floor-historical": {
+      "sha256": "85af9fb637c0096b22da58c9d79bc7d8c81a9a5fa427bfa19942e89df8125415"
+    },
+    "TestMapSectionsFloorHistoricalRegionRead:map-sections-floor-historical-region": {
+      "sha256": "cbf18d8bf7739ae2ff2e6be3bf769c04c596b5f392e6b3fc221a6d34f99b84b2"
+    },
+    "TestMapSectionsFloorCurrentRecords:map-sections-floor-current": {
+      "sha256": "ea601ffce1ae9335d4add46e23c0eec4da09da8a3de4362a9828ba2be8030902"
+    },
+    "TestMapSectionsFloorRegionWrite:map-sections-floor-region-write": {
+      "sha256": "39e55c1ff2e304b58ca09a3899229a4fbfe43ab5fa5a7b20e5ae83efb6e4df1a"
+    },
+    "TestMapSectionsMetadataMissingScratchWall:map-sections-metadata-missing": {
+      "sha256": "de4633140b0c35be625c3f8cde0bd7ea05bd548ac0332cc5668b32ef5f83030b"
+    },
+    "TestMapSectionsMetadataRead:map-sections-metadata-read": {
+      "sha256": "a72fdec825a58414df696a32304bf3d048c22c3fa1b04398dc78eac343ff5f71"
+    },
+    "TestMapSectionsMetadataWrite:map-sections-metadata-write": {
+      "sha256": "bb31322318332a0809d1777c596875e47d28911ce16bd3f867b87f145f108488"
+    },
+    "TestMapSectionsMetadataCountWidth:map-sections-metadata-count": {
+      "sha256": "f92926a92ffb8c20b223a2eadc5f26071a07338a5a8baa7a23a55faefa38a6c0"
+    },
+    "TestMapSectionsFloorOrdering:map-sections-floor-ordering": {
+      "sha256": "fcae64f6894e2611956fc0d708ae1cc0addbc0d73f83a0a474f7f2740ac38879"
+    },
+    "TestMapSectionsFloorRegionRead:map-sections-floor-region": {
+      "sha256": "67448dfa8e2c593cd525b87a8634b3271ab410329af5ae0061db5d1ab0d52fb1"
+    },
+    "TestMapSectionsTileRecords:map-sections-tile-records": {
+      "sha256": "c2f5fba52dd7cfa74468c5b35cbe38c4efe9e90a6b218a65b251bc865b730b39"
+    },
+    "TestMapSectionsUnsupportedVersions:map-sections-version-rejection": {
+      "sha256": "64e9e80a9c3a9efde15e8a3dda7ef0453e09ddaab6b0f5b90c79c0936ebcf6ef"
+    },
+    "TestMapSectionsWallHistoricalRead:map-sections-wall-historical": {
+      "sha256": "113c21fe58bd8ba04f97d01d6e94767956aabe7a36ade0b8d4321d0ab30bc5a8"
+    },
+    "TestMapSectionsWallPolygonLight:map-sections-wall-polygon-light": {
+      "sha256": "e7a5286a956195936797f543b3612617af81de5d862303c8e2ce8e79f8fb3dff"
+    },
+    "TestMapSectionsWallOverlay:map-sections-wall-overlay": {
+      "sha256": "34cdfe9f57636c288b91b6c487afd91fd43a4503d35b6284b0f7013abb8acada"
+    },
+    "TestMapSectionsWallCurrentRead:map-sections-wall-read": {
+      "sha256": "e129a8d4d42be1e28dd501a9c8a20636a2926e73920292bdb21705923bbc3a7b"
+    },
+    "TestMapSectionsWallRegionRead:map-sections-wall-region": {
+      "sha256": "c48644df05641db6ab3f1e44c1942987bbeb977f5c82b1bbed8ff51a5cd0bad7"
+    },
+    "TestMapSectionsWallVersionTwoSprites:map-sections-wall-v2-sprites": {
+      "sha256": "0b8474fa3b00d726674cc5c3f58b465274c55fcb1a59959051686885be1952e6"
+    },
+    "TestMapSectionsWallCurrentWrite:map-sections-wall-write": {
+      "sha256": "5bdafe2aab5895f49ea57d9443df66bdc5f0345cdd06593337da74ebd0314bc0"
+    },
+    "TestObjectXferCommonReadContracts:object-xfer-common-read": {
+      "sha256": "275370459efd1056acaf282f58e260cb43dd006b8dbd1704866ec2985f00dfd7"
+    },
+    "TestObjectXferDoorGeometry:object-xfer-door-geometry": {
+      "sha256": "20c9ae17e8ca3d17e152622396e7dab9776b3321b76c4763b12866577b9329ee"
+    },
+    "TestObjectXferTypedHistoricalRecords:object-xfer-historical": {
+      "sha256": "9c480b3dbfb9af885662e3dc682335a5b3bccbd0475fef2fd6ce063660e840b9"
+    },
+    "TestObjectXferLightReadContracts:object-xfer-light-read": {
+      "sha256": "0303ab7ca0cc845fed75282423d4a78145699fb668d1f785c3807e4b6b9325ae"
+    },
+    "TestObjectXferLightWriteContracts:object-xfer-light-write": {
+      "sha256": "92cd3416e7d581f5ae2da5d84d4f96bdc814e29f43bba583aa89e69fe7ebfc40"
+    },
+    "TestObjectXferNamesAndPickupHandlers:object-xfer-names": {
+      "sha256": "128626fc068730414326b95ea2478602099ed42e92690ad3fafb0f97961809ce"
+    },
+    "TestObjectXferOwnedReferencesWrite:object-xfer-owned-write": {
+      "sha256": "44c7ed44a24050b30e90cda145d94733de7ebafbe3df1dc825019b94cc948925"
+    },
+    "TestObjectXferTriggerDimensions:object-xfer-trigger-dimensions": {
+      "sha256": "ccaa201395324e84466376f5406aa82be0c098c3b35c7c9b6026fed8e21463ba"
+    },
+    "TestObjectXferLinkedPayloads:object-xfer-linked-payloads": {
+      "sha256": "6946cc7db7dc6e75cadd9a1b6258c4d403fd18a9db8b74526109d68f20fb40e1"
+    },
+    "TestObjectXferGlyphSpellNames:object-xfer-glyph-spells": {
+      "sha256": "0964c4ccf793cb6cca791706d267b4aac0f560b99d50d96250d88bdfa5b76629"
+    },
+    "TestObjectXferTypedDefaultRecords:object-xfer-typed-default": {
+      "sha256": "d7afffaf6c7195147aa27a1f4ea8ed0c792cb5f27de697480693611d4e0082b3"
+    },
+    "TestObjectXferCommonWriteContracts:object-xfer-common-write": {
+      "sha256": "47adcc6cb17fea591b9dd7bb3d8ad584c581432e09ed57b123dc77cbe7338fae"
+    },
+    "TestPlayerFilesAbilityRestore:player-files-ability-restore": {
+      "sha256": "5864836439dfbc2bc0cd5328ad9d8fac8f9ad01191908a7a1045299962097273"
+    },
+    "TestPlayerFilesAttributesWrite:player-files-attributes-write": {
+      "sha256": "5e075027ec6a87113bb3b8c513c3fdbbd153ea1652e34a00d863307e4689fe1a"
+    },
+    "TestPlayerFilesAttributesRead:player-files-attributes-read": {
+      "sha256": "1af6495bd98c46fda79ea158a8904d98cefa456204300ad97a66bc33df6b00d8"
+    },
+    "TestPlayerFilesAttributesUnitRead:player-files-attributes-unit-read": {
+      "sha256": "26f4dcee6107f1886d4d4a9a60716a03360741fcaa002c25c53502b134c94657"
+    },
+    "TestPlayerFilesSpellbookRestore:player-files-spellbook-restore": {
+      "sha256": "7b5d2fdd038d54d4c071d416b128e12954884e21cad4cc4c92e36221c86df72a"
+    },
+    "TestPlayerFilesSpellbookWrite:player-files-spellbook-write": {
+      "sha256": "28b567c24791640d4fe503a790bfc18b16eb5b896ebdb0506b297ba134462acd"
+    },
+    "TestPlayerFilesBookReadGates:player-files-book-read-gates": {
+      "sha256": "700a93921052f26facf5e0c41c71e32e96b5b3519004bf4f8fcf5649710bf516"
+    },
+    "TestPlayerFilesClientLoadFraming:player-files-client-load-framing": {
+      "sha256": "702d5394b25b7e24191777ec89dc509213e685511eba963212c7c7df222c5d21"
+    },
+    "TestPlayerFilesClientWriteFraming:player-files-client-write-framing": {
+      "sha256": "7697610f1cb2e4f8c45d119af35fd83745c2fea1135458e9e3eff466ea360bee"
+    },
+    "TestPlayerFilesEnchantmentApply:player-files-enchantment-apply": {
+      "sha256": "482fe7ad0787b71b0a003781ef39b60a23848cdc29679219c7f47f8ed0b8a5d4"
+    },
+    "TestPlayerFilesEnchantmentReadGates:player-files-enchantment-read-gates": {
+      "sha256": "64886e8b29df9b824e3aec9d986b10e54f198a6df21ae3004ec5fe900a498b82"
+    },
+    "TestPlayerFilesEnchantmentWrite:player-files-enchantment-write": {
+      "sha256": "8029dca6811bc5d66d6111baa1f0f8f850a72360902fec4477ea8c3c7db7621e"
+    },
+    "TestPlayerFilesSectionExtraction:player-files-section-extraction": {
+      "sha256": "51d2556dee434201136375c841b2a6a1b39bdfdd05d12ea671e61c34566355cb"
+    },
+    "TestPlayerFilesFieldbookWrite:player-files-fieldbook-write": {
+      "sha256": "7aed107c6b8bb79fff6519189fc6da13cff8d72310e619133641dfadbecbbfa7"
+    },
+    "TestPlayerFilesGameWrite:player-files-game-write": {
+      "sha256": "4faa8d82874e368a1976e292426c1b26728c0d8e9a1b70403f6764af4a6d2659"
+    },
+    "TestPlayerFilesGameRead:player-files-game-read": {
+      "sha256": "2f801bf8f4613210c142515717612d7efe31944b4e4ac2f14c250e0bdd934184"
+    },
+    "TestPlayerFilesGUIWrite:player-files-gui-write": {
+      "sha256": "e3c0a77762c7f303349b5cfa1915a4d746599f17e179f6478584bd621cf13fca"
+    },
+    "TestPlayerFilesGUIRead:player-files-gui-read": {
+      "sha256": "ed2464d247bfd1dc8e7f9e3f3715b6fe061a8ae72b8b0647d9b352401d697416"
+    },
+    "TestPlayerFilesFieldbookRestore:player-files-fieldbook-restore": {
+      "sha256": "a1a95b881d8f64baf6a81cf20436b549f65e5aaae7f57f825aec7f1a92b93741"
+    },
+    "TestPlayerFilesInventoryGridCount:player-files-inventory-grid-count": {
+      "sha256": "720f7af495eb06338fd3d3ef49031797e42cb98cde34f5ab76223987f88c4adb"
+    },
+    "TestPlayerFilesInventoryFilter:player-files-inventory-filter": {
+      "sha256": "0b9a189afb810d9cc23469d5bb4c00b5a2f2191107225f198b10c21d1f48b09e"
+    },
+    "TestPlayerFilesQuestInventoryWrite:player-files-quest-inventory-write": {
+      "sha256": "a6aef744f32b4d327a5d615760706de043c6dd14d7c00d57395ae9be6547695d"
+    },
+    "TestPlayerFilesInventoryReadGates:player-files-inventory-read-gates": {
+      "sha256": "b4573334b0e09325ca4481b62c34e7c916cd9a1d227763aa57887b8f62c40300"
+    },
+    "TestPlayerFilesInventoryRestore:player-files-inventory-restore": {
+      "sha256": "c20170bae6d622d70c4109d2120965045f944b376d5a31fa70ac3248d6dc42d1"
+    },
+    "TestPlayerFilesInventoryWrite:player-files-inventory-write": {
+      "sha256": "5aeafb8bf2017761ab93bcec563743e5e387cd3dfe54799a7bc4b8c869ca4f93"
+    },
+    "TestPlayerFilesJournalGates:player-files-journal-gates": {
+      "sha256": "b6fae4cbd71eaa0386f9fdd041a515dbffb709a8c40b51dcbd2867319ce3101e"
+    },
+    "TestPlayerFilesMetadataRead:player-files-metadata-read": {
+      "sha256": "f3222f98d7e387c1e442c700ef2481069702b7007e5df5052eb32259a07aed9c"
+    },
+    "TestPlayerFilesMetadataWrite:player-files-metadata-write": {
+      "sha256": "8e338797b1d56fa43a3535e0d4b8281b8e67d583eec9ec90e25f22aa5b0f57ea"
+    },
+    "TestPlayerFilesMusicWrite:player-files-music-write": {
+      "sha256": "7bad1d4a672d72e080da6d754e8aa044299a931df691d34aa30ca2e818f5f201"
+    },
+    "TestPlayerFilesMusicRead:player-files-music-read": {
+      "sha256": "094b460d3653e9bd480cc4286f92576a549bf948be0be6af064c4a64802e1055"
+    },
+    "TestPlayerFilesQuestSpellbook:player-files-quest-spellbook": {
+      "sha256": "85d4baeb3cb3fdaa75dd8c3dca8e508f0e54e4fa6fc4d25ec363ddd13dc93d91"
+    },
+    "TestPlayerFilesQuestFieldbook:player-files-quest-fieldbook": {
+      "sha256": "da0503b71453aa9c202f6327cc8247fed241ec061a68f54e83f1d966992b5934"
+    },
+    "TestPlayerFilesSaveRequest:player-files-save-request": {
+      "sha256": "ed6cfa07b11659fac798ac9c2839fd833cabd3e2c5746ada0a1a5fcbb3706a2c"
+    },
+    "TestPlayerFilesServerLoadFraming:player-files-server-load-framing": {
+      "sha256": "26372fb3cc108c066e1cfaa4838157828ff623c62447f3db03b1a7a6a2732de7"
+    },
+    "TestPlayerFilesStatusWrite:player-files-status-write": {
+      "sha256": "d8030ab510bf7605a09f9bb0e86a93711f4e9729b390cefbf554e443e4212ad4"
+    },
+    "TestPlayerFilesStatusRead:player-files-status-read": {
+      "sha256": "f44884ed7ec9ff2bce3e603d6b8668d2e599693083ca60cb0a8dac6e8d5dabde"
+    },
+    "TestPrefabRuntimeCacheRecords:prefab-runtime-cache-records": {
+      "sha256": "0770aaf6b42c27a54a3a820cf16dcc3fd9d12e39dac81d01bba808e7e11338e6"
+    },
+    "TestPrefabRuntimeFileControls:prefab-runtime-file-controls": {
+      "sha256": "344ab19b7f1347660d72d0a2df78b69e61b6b0d5254ebec6b086a3a54cd4f104"
+    },
+    "TestPrefabRuntimeWaypointGeneration:prefab-runtime-waypoint-generation": {
+      "sha256": "399afa48848d51d2932880d3f82caeefbda71a815127c16a170fc6e59a0cb9bb"
+    },
+    "TestPrefabRuntimeGroupWrite:prefab-runtime-group-write": {
+      "sha256": "a5bcbf34b3562ff77dddacc304e4c99aa08f3dbc17618da65059f61a46d18eb3"
+    },
+    "TestPrefabRuntimeGroupRead:prefab-runtime-group-read": {
+      "sha256": "2d32f5e357d1c8225a40d321b87ba711684ebc563c276be5908d4ea9cfb49856"
+    },
+    "TestPrefabRuntimeInstantiation:prefab-runtime-instantiation": {
+      "sha256": "a23c80e5fc62fa92f886f9079e041c1a5dea413dd4ef05154e175b102169af8c"
+    },
+    "TestPrefabRuntimeIntro:prefab-runtime-intro": {
+      "sha256": "2c445d2eb2b9856f886c209f3174c26e3df5825104572c62c118da7166fd6135"
+    },
+    "TestPrefabRuntimeLibrary:prefab-runtime-library": {
+      "sha256": "247b891633bef2c5cbb718145b39fc270a8649f9828b4322fa13a9c9ca2293d9"
+    },
+    "TestPrefabRuntimeLoader:prefab-runtime-loader": {
+      "sha256": "cef02ad3be4b23437be6a875e7673108a0709803c50c1c669565aae9855ce0b6"
+    },
+    "TestPrefabRuntimeMetadata:prefab-runtime-metadata": {
+      "sha256": "9342a1ef9d41f510d01a9d3714ade6d0ff6395746379d6fa499bbecff125a133"
+    },
+    "TestPrefabRuntimeObjectList:prefab-runtime-object-list": {
+      "sha256": "513f6d2b61450d490e6bb1516d3811cddd9fd791966aa5c8db1e6f7a32f12b32"
+    },
+    "TestPrefabRuntimeObjectPlacement:prefab-runtime-object-placement": {
+      "sha256": "926acfa9d64ae80722835b7e0577e65d9bfc77d1856ef291ab5416fdc4b91c96"
+    },
+    "TestPrefabRuntimePaths:prefab-runtime-paths": {
+      "sha256": "75c22902d77b3dd4c3a9d4d71e7b159b68c12cd6510126343fd6c4e62d43fef5"
+    },
+    "TestPrefabRuntimePlacement:prefab-runtime-placement": {
+      "sha256": "e165d6659adb39a9b0fa159554c9ee1bbe90d52db5663a101a7e29c928e5970d"
+    },
+    "TestPrefabRuntimeRelativeCoordinates:prefab-runtime-relative-coordinates": {
+      "sha256": "805d23e46fc3ad50c13f455889d1a9c7d176dbc549b130a9cf7ad498ddc8fbe6"
+    },
+    "TestPrefabRuntimeScripts:prefab-runtime-scripts": {
+      "sha256": "0f6a38490f447ac5b9dc12fe662c6155de5b61117b24e0c446e1006bfd888db4"
+    },
+    "TestPrefabRuntimeGroupTraversal:prefab-runtime-group-traversal": {
+      "sha256": "db758da6df8102b5bc297afdf42452240aeaf9ce8236d875aaa0385dc3955006"
+    },
+    "TestPrefabRuntimeWaypointSections:prefab-runtime-waypoint-sections": {
+      "sha256": "0820d8ae08b9447ea29965fce70b9b5caeea997d3bdd0fb2edb12d7f5e72d010"
+    },
+    "TestPrefabScriptsInstructions:prefab-scripts-instructions": {
+      "sha256": "4fea75fdbe7823de766a93eb683ab1372f3af885ef9b7153012511bf693db4db"
+    },
+    "TestPrefabScriptsCompleteMerge:prefab-scripts-merge": {
+      "sha256": "5a16ebfaf33c3731ef58412af035f8d79559c4de46cb6fe5b3f70afddfd22f89"
+    },
+    "TestPrefabScriptsBoundsOrdering:prefab-scripts-bounds": {
+      "sha256": "79fd4a29af468edf4876dd3ab1ef00f1fdb8548e20fac8e6cf0125671e4a5249"
+    },
+    "TestPrefabScriptsCallbackAssignment:prefab-scripts-callbacks": {
+      "sha256": "8b4d6b80aaac00b0fe268422e78fb195387e265d61cec1110e83e9355d5f8b85"
+    },
+    "TestPrefabScriptsScalars:prefab-scripts-scalars": {
+      "sha256": "dbd866060474f624e7fde5101562bb32ac302c7c73bbbfe3d2297d1d23256796"
+    },
+    "TestPrefabScriptsGeneration:prefab-scripts-generation": {
+      "sha256": "ce1620e8a963bba41f4e1913d30ae4123fd0214f2cb6d0126d9cc4d0d4e46ee6"
+    },
+    "TestPrefabScriptsPendingGroupReferences:prefab-scripts-pending-groups": {
+      "sha256": "2ccbfeeed37252eff482d6cb951a0645bbd7a861f001ccb46431d9a637481aa5"
+    },
+    "TestPrefabScriptsObjectNames:prefab-scripts-object-names": {
+      "sha256": "1039c556f4a46d91f3d2be32adf3b571b904e2a8676e35b83d87ffbeed7117ad"
+    },
+    "TestPrefabScriptsPendingReferences:prefab-scripts-pending": {
+      "sha256": "9e5398ec1b43f8f876605a9d257ba3885e3c684cd242ea348aea0520bd1543e8"
+    },
+    "TestPrefabScriptsRewrite:prefab-scripts-rewrite": {
+      "sha256": "9001bcea8d67d8ebd5311cc78d92443f99dbb29349a15b8776be9cdd1083c68b"
+    },
+    "TestPrefabScriptsVMSuffixCoordinates:prefab-scripts-vm-suffix": {
+      "sha256": "3cd5b4e1a22206e268fa54e58e1d861c6fd8e29f64187ee715582bb5e448f70f"
+    },
+    "TestResourceDefinitionsCatalogLinks:resource-definitions-catalog-links": {
+      "sha256": "204c57215cc922f7babe66caed6ae3d2287788a7a23fe03487f7f4da2eea5a9e"
+    },
+    "TestResourceDefinitionsMonsterSound:resource-definitions-monster-sound": {
+      "sha256": "4f65333521fd007a469cfde08293e2d59910cfd8975c3dc9de6bd86d0311e724"
+    },
+    "TestResourceDefinitionsLight:resource-definitions-light": {
+      "sha256": "9bc95a1eda3d846bcdfabe3f5ac8580695a1d2234d72a5b4aa53bc2e0732d0ed"
+    },
+    "TestResourceDefinitionsClientUpdate:resource-definitions-client-update": {
+      "sha256": "3bc939f3a3f9577cdc472555eaef96e9c68cebc8f5ad4408d6fba387818996c8"
+    },
+    "TestResourceDefinitionsImages:resource-definitions-images": {
+      "sha256": "9f5f274a1852436da768837d8f63c2b48733bac98aabd3df5be698abd3daefa6"
+    },
+    "TestResourceDefinitionsWandPartial:resource-definitions-wand-partial": {
+      "sha256": "edd04b87e361c4577d9df24ae64bd46f802802ed751f44e9ab3f5720d09146f4"
+    },
+    "TestResourceDefinitionsNames:resource-definitions-names": {
+      "sha256": "4c05d91e19a8ee0d2e8cf662db9f091ba7a8b715928a3d998a19174288176b3f"
+    },
+    "TestResourceDefinitionsWands:resource-definitions-wands": {
+      "sha256": "3444ef187eef4184171d60689e31d99be7c4f839c8b981cb39413918a7f121b2"
+    },
+    "TestResourceDefinitionsRegistrations:resource-definitions-registrations": {
+      "sha256": "1140e7333f923de5511bd0db84f4aabebacaadb4b199f9188cff788bfc8216df"
+    },
+    "TestResourceDefinitionsDamage:resource-definitions-damage": {
+      "sha256": "cd08a99e8925b080d9cba84ad3894dd2de4ed3868958782fa108c16c869d8193"
+    },
+    "TestResourceDefinitionsNumericEdges:resource-definitions-numeric-edges": {
+      "sha256": "c4f59d1908e91b3ef89b39716c54d8cc9173e8aa823abba2c224b9d2ff88e149"
+    },
+    "TestResourceDefinitionsIntegerParsers:resource-definitions-integers": {
+      "sha256": "d3ff3ccb83d92bece2f7cba7012329bca4641f700d04f3aac1343417397065ac"
+    },
+    "TestResourceDefinitionsPartialScans:resource-definitions-partial-scans": {
+      "sha256": "fa07e29ada7387a239e3111df79dca23618a1eaaf2fc04637fefbdd6bbbc6232"
+    },
+    "TestResourceDefinitionsTokens:resource-definitions-tokens": {
+      "sha256": "c8627ee90ecb326269a119ab4c087500c09bb298354aa52bbdd1b40f0fad47b0"
+    },
+    "TestResourceDefinitionsSoundSets:resource-definitions-soundsets": {
+      "sha256": "a4d95d2ff7116089942401a5392dae43c4d34142be8999ed356d1be4670bc806"
+    }
+  },
+  "retained_callback_exports": [
+    "nox_xxx_XFerDefault_4F49A0",
+    "nox_xxx_XFerSpellPagePedistal_4F4A20",
+    "nox_xxx_XFerSpellReward_4F5F30",
+    "nox_xxx_XFerAbilityReward_4F6240",
+    "nox_xxx_XFerFieldGuide_4F6390",
+    "nox_xxx_XFerReadable_4F4AB0",
+    "nox_xxx_XFerExit_4F4B90",
+    "nox_xxx_XFerDoor_4F4CB0",
+    "nox_xxx_unitTriggerXfer_4F4E50",
+    "nox_xxx_XFerMonster_528DB0",
+    "nox_xxx_XFerHole_4F51D0",
+    "nox_xxx_XFerTransporter_4F5300",
+    "nox_xxx_XFerElevator_4F53D0",
+    "nox_xxx_XFerElevatorShaft_4F54A0",
+    "nox_xxx_XFerMover_4F5730",
+    "nox_xxx_XFerGlyph_4F5890",
+    "nox_xxx_XFerInvLight_4F5AA0",
+    "nox_xxx_XFerSentry_4F5E50",
+    "nox_xxx_XFerWeapon_4F64A0",
+    "nox_xxx_XFerArmor_4F6860",
+    "nox_xxx_XFerTeam_4F6D20",
+    "nox_xxx_XFerGold_4F6EC0",
+    "nox_xxx_XFerAmmo_4F6B20",
+    "nox_xxx_XFerNPC_52ADE0",
+    "nox_xxx_XFerObelisk_4F6F60",
+    "nox_xxx_XFerToxicCloud_4F70A0",
+    "nox_xxx_XFerMonsterGen_4F7130",
+    "nox_xxx_XFerRewardMarker_4F74D0",
+    "nox_xxx_soundDefaultDamageSound_532E20",
+    "nox_xxx_soundPlayerDamageSound_5328B0"
+  ],
+  "registered_xfer_names": 28,
+  "registered_sound_names": 2,
+  "new_contract_roots": 8,
+  "affected_roots_per_profile": 228,
+  "contracts_added": [
+    "30 original callback identities and all 27 nondefault fixture routes",
+    "36 raw transfer return/argument/API cases",
+    "12 replaceable default transfer cases",
+    "128 damage owner return/slot/source/weapon cases with successive handlers",
+    "48 real deferred sound event cases through the damage owner",
+    "two default serialized record round trips and two outer detailed-error/handler-independence cases"
+  ],
+  "production_reuse": "Only five new porttest files. Every preceding source/dependency fingerprint and four preceding binary hashes match. No production changes installed.",
+  "reused_qualification": "collision-registry-qualification.json",
+  "binary_sha256": {
+    "safe": "07d7382fd9c7615efd93be4f60ac2d89c9663ac96ad9b0fd28da31655a6ded0f",
+    "opennox": "f5000f02e096b523358e61e180f3fdef4c2a17498157e3efdbf8ffd8e9372e15",
+    "opennox-hd": "bafdf2a93fabaf6c24dd43ebef5753ae5a714c3ccd1036b8f66cb18da8d32ea6",
+    "opennox-server": "d18bc0f0ee5709c60b329f7a2cdf33c1343583abcd2837bd4372e98a6375e65a"
+  },
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 0,
+      "lines": 0
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "production_c_preamble_bodies": 79,
+  "scope_limits": [
+    "Configured 386/SSE2/CGO target.",
+    "Outer default transfer shortcut remains separate from mutable legacy wrapper.",
+    "Sound nil-slot default is fixed wrapper, not mutable registry pointer."
+  ]
+}

@@ -7,7 +7,34 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — collision conversion qualified
+## Current — transfer/sound original baseline qualified
+
+All 228 affected roots pass without skips in default/server/highres; all 220 frozen
+capture groups match across profiles. Eight new contract roots passed before this
+combined selection. Five new porttest files are the only source changes; all other
+source/dependency hashes and four collision production binaries match d44f33d7.
+Original baseline production evidence is explicitly reused from collision.
+See XFER_SOUND_REGISTRY.md and xfer-sound-registry-c-qualification.json.
+
+Next: commit/push this baseline, then apply build/port-xfer-sound-registry/production.patch
+and qualify the five-file production conversion. Preserve the outer default
+transfer's local detailed errors and the damage sound owner's fixed nil-slot
+default. No production conversion installed; no Go job active at this checkpoint.
+Current production binaries remain build/port-collision-registry/{safe/opennox-safe,production/production/bin}.
+
+One Luna helper supplied 30 bindings, fixture/caller reviews and a cache plan;
+primary independently verified mappings and owns contracts/API/integration.
+Initial job 8647 stopped during compilation due to primary's missing GAME4_3 header
+in the test bridge; corrected include only, then 35130 passed all eight new roots.
+No runtime expectations changed. Combined original profiles ran in job 59130.
+
+Cleanup 39789 reclaimed 1,442,158,216 bytes from 30 old repository compiler archives
+with no Go jobs active. Strict pre-2026-09-23 22:00 UTC cutoff, stat/hash/archive/
+module and host inode-use checks passed. Source/modules/assets/binaries/evidence
+retained. Exact plan/removal record: build/port-xfer-sound-registry.
+Standalone C remains zero files/lines; production C preamble bodies remain 79.
+
+## Earlier — collision conversion qualified
 
 All 53 named collision registrations now bind complete existing Go wrappers.
 Five production files and one test-only pointer bridge changed. Generic CallCollide

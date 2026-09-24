@@ -20,8 +20,9 @@ All 257 affected roots/profile, 4,116 frozen observations, pointer escape/lifeti
 checks, safe/static, fresh production/ABI, exact known-suite comparison and headless
 creation/save-load pass. See [COLLISION_REGISTRY.md](docs/porting/COLLISION_REGISTRY.md).
 **Standalone C remains zero; production C preamble bodies remain 79.**
-Next: review the remaining transfer and damage-sound registry owners and their
-return/default contracts. The integer-returning collision caller remains raw.
+The original transfer/damage-sound baseline is now qualified: 228 roots/profile
+and 220 unchanged frozen capture groups. Next: install and qualify the 30 bindings. See [XFER_SOUND_REGISTRY.md](docs/porting/XFER_SOUND_REGISTRY.md).
+The integer-returning collision caller remains raw.
 
 ### Earlier checkpoints
 
