@@ -2,10 +2,14 @@
 
 ## Original baseline and scope
 
-All 181 selected roots pass without skips in default, server and high-resolution
+All 203 selected roots pass without skips in default, server and high-resolution
 profiles against `8c9b3fc6` plus three test-only files. Production fingerprints
 match that qualified checkpoint exactly; its production, ABI, known-suite and
 save/load evidence supplies the production baseline.
+
+The first 181 roots were supplemented by 22 PlayerControls roots after review
+found the team-flag return route calling the CrownPickup wrapper. Both runs have
+identical source fingerprints; all 203 names are required after conversion.
 
 Replace 41 distinct C addresses: fourteen Use, eleven Drop and sixteen Pickup
 registrations. Retire their 41 exports and two adjacent Go-only inventory fixture

@@ -3061,7 +3061,7 @@
     "src/xfer_sound_registry_default_porttest_test.go": "3503bed9db9234eac195bedd02367e438e658dc5323504a9ce536ded020ab040"
   },
   "selection": {
-    "pattern": "^(TestBookAwardsAbilityGuideGates|TestBookAwardsClientMessages|TestBookAwardsEnchantCountGates|TestBookAwardsEnchantEnumeration|TestBookAwardsGuideCatalog|TestBookAwardsGuideLoader|TestBookAwardsItemUse|TestBookAwardsItemUseRegistry|TestBookAwardsNameLookup|TestBookAwardsNotifications|TestBookAwardsQuestSingleLevelSpells|TestBookAwardsReports|TestBookAwardsShopClosure|TestBookAwardsSpellFamilies|TestBookAwardsSpellGates|TestBookAwardsSpellNotificationGates|TestCollisionRegistryPickup|TestEffectsArithmetic|TestEffectsFireWand|TestEffectsFireballWall|TestEffectsFlags|TestEffectsGripAndInversion|TestEffectsInventoryLookup|TestEffectsNullGuards|TestEffectsProjectiles|TestEffectsProtection|TestEffectsReadinessRecharge|TestEffectsRechargePercent|TestEffectsRegeneration|TestEffectsReplenishment|TestEffectsResourceTransfers|TestEffectsSpeedRounding|TestEffectsStatusAndForce|TestEffectsTimingFireWand|TestEffectsTimingFireballWall|TestEffectsTimingPositiveRegeneration|TestEffectsTimingProjectiles|TestEffectsTimingRegeneration|TestEffectsTimingReplenishment|TestEffectsTimingWandAcceptance|TestEffectsTimingWandClasses|TestEffectsUseDispatch|TestEffectsWandAcceptance|TestEffectsWandClasses|TestInventoryAmmoMerge|TestInventoryArmorReplacement|TestInventoryChest|TestInventoryCrownTreasure|TestInventoryDefaultDrops|TestInventoryDispatchPlacement|TestInventoryDropAllIntegration|TestInventoryDropEligibility|TestInventoryDropRejections|TestInventoryDropSpecialItems|TestInventoryEquipmentPickup|TestInventoryFoodAudio|TestInventoryGeometryBoundaries|TestInventoryLinks|TestInventoryPickupBoundaries|TestInventoryTeamMembers|TestInventoryTeamObjectives|TestItemIdentityLifetime|TestItemMutableIdentityHooks|TestItemUseFullResultWords|TestItemUseGetterIdentities|TestPlayerFilesAbilityRestore|TestPlayerFilesAttributesRead|TestPlayerFilesAttributesUnitRead|TestPlayerFilesAttributesWrite|TestPlayerFilesBookReadGates|TestPlayerFilesClientLoadFraming|TestPlayerFilesClientWriteFraming|TestPlayerFilesEnchantmentApply|TestPlayerFilesEnchantmentReadGates|TestPlayerFilesEnchantmentWrite|TestPlayerFilesFieldbookRestore|TestPlayerFilesFieldbookWrite|TestPlayerFilesGUIRead|TestPlayerFilesGUIWrite|TestPlayerFilesGameRead|TestPlayerFilesGameWrite|TestPlayerFilesInventoryFilter|TestPlayerFilesInventoryGridCount|TestPlayerFilesInventoryReadGates|TestPlayerFilesInventoryRestore|TestPlayerFilesInventoryWrite|TestPlayerFilesJournalGates|TestPlayerFilesMetadataRead|TestPlayerFilesMetadataWrite|TestPlayerFilesMusicRead|TestPlayerFilesMusicWrite|TestPlayerFilesQuestFieldbook|TestPlayerFilesQuestInventoryWrite|TestPlayerFilesQuestSpellbook|TestPlayerFilesSaveRequest|TestPlayerFilesSectionExtraction|TestPlayerFilesServerLoadFraming|TestPlayerFilesSpellbookRestore|TestPlayerFilesSpellbookWrite|TestPlayerFilesStatusRead|TestPlayerFilesStatusWrite|TestResourceDefinitionsCatalogLinks|TestResourceDefinitionsClientUpdate|TestResourceDefinitionsDamage|TestResourceDefinitionsFailedReaderCleanup|TestResourceDefinitionsFloatLexical|TestResourceDefinitionsImages|TestResourceDefinitionsIntegerParsers|TestResourceDefinitionsLight|TestResourceDefinitionsMonsterSound|TestResourceDefinitionsNames|TestResourceDefinitionsNumericEdges|TestResourceDefinitionsPartialScans|TestResourceDefinitionsRegistrations|TestResourceDefinitionsRetainedABI|TestResourceDefinitionsSoundSets|TestResourceDefinitionsTokens|TestResourceDefinitionsWandPartial|TestResourceDefinitionsWands|TestScriptInventoryCarrySelection|TestScriptInventoryCarryStacks|TestScriptInventoryHalberd|TestScriptInventoryStartup|TestServerOrchestrationDifficultyTiming|TestServerOrchestrationDropFlags|TestServerOrchestrationFreshLoadout|TestServerOrchestrationLoadState|TestServerOrchestrationOpenShopTransition|TestServerOrchestrationPlayerReset|TestServerOrchestrationPlayerTransition|TestServerOrchestrationRestoreCleanup|TestServerOrchestrationRestoreIntegration|TestServerOrchestrationRestoreReferences|TestServerOrchestrationRestoreScheduling|TestServerOrchestrationRestoreWithoutHost|TestServerOrchestrationRewards|TestServerOrchestrationRoundFlags|TestServerOrchestrationSecretWalls|TestServerOrchestrationTimeout|TestUnitGameplayActionNames|TestUnitGameplayDebug|TestUnitGameplayDialogue|TestUnitGameplayExperience|TestUnitGameplayExperiencePresentation|TestUnitGameplayExperienceRounding|TestUnitGameplayItemNames|TestUnitGameplayMonsterTimers|TestUnitGameplayNPCNames|TestUnitGameplayOrders|TestUnitGameplayReadMessageLimits|TestUnitGameplayReadUse|TestUnitGameplayRewardOwners|TestUnitGameplayUndeadUpdate|TestWorldCollisionsAnkhHistory|TestWorldCollisionsAudioFrames|TestWorldCollisionsChestContents|TestWorldCollisionsChestKey|TestWorldCollisionsClockThrottle|TestWorldCollisionsCoopExitSave|TestWorldCollisionsCountdown|TestWorldCollisionsDoorKeys|TestWorldCollisionsDoorMagic|TestWorldCollisionsDoorMissingKey|TestWorldCollisionsExitAdmission|TestWorldCollisionsExitGlyphCleanup|TestWorldCollisionsMassExchange|TestWorldCollisionsPentagram|TestWorldCollisionsPickupAdmission|TestWorldCollisionsPickupIntegration|TestWorldCollisionsQuestExit|TestWorldCollisionsQuestReadiness|TestWorldCollisionsScriptTriggers|TestWorldCollisionsSign|TestWorldCollisionsSoulGate|TestWorldCollisionsSpellAward|TestWorldCollisionsSpellProjectile|TestWorldCollisionsSpellWall|TestWorldCollisionsTeleport|TestWorldCollisionsTrapAbility|TestWorldCollisionsTrapGeometry|TestWorldCollisionsUndeadDamage)$",
+    "pattern": "^(TestBookAwardsAbilityGuideGates|TestBookAwardsClientMessages|TestBookAwardsEnchantCountGates|TestBookAwardsEnchantEnumeration|TestBookAwardsGuideCatalog|TestBookAwardsGuideLoader|TestBookAwardsItemUse|TestBookAwardsItemUseRegistry|TestBookAwardsNameLookup|TestBookAwardsNotifications|TestBookAwardsQuestSingleLevelSpells|TestBookAwardsReports|TestBookAwardsShopClosure|TestBookAwardsSpellFamilies|TestBookAwardsSpellGates|TestBookAwardsSpellNotificationGates|TestCollisionRegistryPickup|TestEffectsArithmetic|TestEffectsFireWand|TestEffectsFireballWall|TestEffectsFlags|TestEffectsGripAndInversion|TestEffectsInventoryLookup|TestEffectsNullGuards|TestEffectsProjectiles|TestEffectsProtection|TestEffectsReadinessRecharge|TestEffectsRechargePercent|TestEffectsRegeneration|TestEffectsReplenishment|TestEffectsResourceTransfers|TestEffectsSpeedRounding|TestEffectsStatusAndForce|TestEffectsTimingFireWand|TestEffectsTimingFireballWall|TestEffectsTimingPositiveRegeneration|TestEffectsTimingProjectiles|TestEffectsTimingRegeneration|TestEffectsTimingReplenishment|TestEffectsTimingWandAcceptance|TestEffectsTimingWandClasses|TestEffectsUseDispatch|TestEffectsWandAcceptance|TestEffectsWandClasses|TestInventoryAmmoMerge|TestInventoryArmorReplacement|TestInventoryChest|TestInventoryCrownTreasure|TestInventoryDefaultDrops|TestInventoryDispatchPlacement|TestInventoryDropAllIntegration|TestInventoryDropEligibility|TestInventoryDropRejections|TestInventoryDropSpecialItems|TestInventoryEquipmentPickup|TestInventoryFoodAudio|TestInventoryGeometryBoundaries|TestInventoryLinks|TestInventoryPickupBoundaries|TestInventoryTeamMembers|TestInventoryTeamObjectives|TestItemIdentityLifetime|TestItemMutableIdentityHooks|TestItemUseFullResultWords|TestItemUseGetterIdentities|TestPlayerControlsActionMapping|TestPlayerControlsAdmission|TestPlayerControlsBoltDamage|TestPlayerControlsBotUpdate|TestPlayerControlsBots|TestPlayerControlsConfusion|TestPlayerControlsInversion|TestPlayerControlsMessages|TestPlayerControlsMorphs|TestPlayerControlsObservers|TestPlayerControlsOwnership|TestPlayerControlsPositive|TestPlayerControlsRemaining|TestPlayerControlsRespawn|TestPlayerControlsRespawnFlags|TestPlayerControlsRespawnItems|TestPlayerControlsScheduledSpells|TestPlayerControlsStamina|TestPlayerControlsStartSelection|TestPlayerControlsStats|TestPlayerControlsWaypoints|TestPlayerControlsWeaponMappings|TestPlayerFilesAbilityRestore|TestPlayerFilesAttributesRead|TestPlayerFilesAttributesUnitRead|TestPlayerFilesAttributesWrite|TestPlayerFilesBookReadGates|TestPlayerFilesClientLoadFraming|TestPlayerFilesClientWriteFraming|TestPlayerFilesEnchantmentApply|TestPlayerFilesEnchantmentReadGates|TestPlayerFilesEnchantmentWrite|TestPlayerFilesFieldbookRestore|TestPlayerFilesFieldbookWrite|TestPlayerFilesGUIRead|TestPlayerFilesGUIWrite|TestPlayerFilesGameRead|TestPlayerFilesGameWrite|TestPlayerFilesInventoryFilter|TestPlayerFilesInventoryGridCount|TestPlayerFilesInventoryReadGates|TestPlayerFilesInventoryRestore|TestPlayerFilesInventoryWrite|TestPlayerFilesJournalGates|TestPlayerFilesMetadataRead|TestPlayerFilesMetadataWrite|TestPlayerFilesMusicRead|TestPlayerFilesMusicWrite|TestPlayerFilesQuestFieldbook|TestPlayerFilesQuestInventoryWrite|TestPlayerFilesQuestSpellbook|TestPlayerFilesSaveRequest|TestPlayerFilesSectionExtraction|TestPlayerFilesServerLoadFraming|TestPlayerFilesSpellbookRestore|TestPlayerFilesSpellbookWrite|TestPlayerFilesStatusRead|TestPlayerFilesStatusWrite|TestResourceDefinitionsCatalogLinks|TestResourceDefinitionsClientUpdate|TestResourceDefinitionsDamage|TestResourceDefinitionsFailedReaderCleanup|TestResourceDefinitionsFloatLexical|TestResourceDefinitionsImages|TestResourceDefinitionsIntegerParsers|TestResourceDefinitionsLight|TestResourceDefinitionsMonsterSound|TestResourceDefinitionsNames|TestResourceDefinitionsNumericEdges|TestResourceDefinitionsPartialScans|TestResourceDefinitionsRegistrations|TestResourceDefinitionsRetainedABI|TestResourceDefinitionsSoundSets|TestResourceDefinitionsTokens|TestResourceDefinitionsWandPartial|TestResourceDefinitionsWands|TestScriptInventoryCarrySelection|TestScriptInventoryCarryStacks|TestScriptInventoryHalberd|TestScriptInventoryStartup|TestServerOrchestrationDifficultyTiming|TestServerOrchestrationDropFlags|TestServerOrchestrationFreshLoadout|TestServerOrchestrationLoadState|TestServerOrchestrationOpenShopTransition|TestServerOrchestrationPlayerReset|TestServerOrchestrationPlayerTransition|TestServerOrchestrationRestoreCleanup|TestServerOrchestrationRestoreIntegration|TestServerOrchestrationRestoreReferences|TestServerOrchestrationRestoreScheduling|TestServerOrchestrationRestoreWithoutHost|TestServerOrchestrationRewards|TestServerOrchestrationRoundFlags|TestServerOrchestrationSecretWalls|TestServerOrchestrationTimeout|TestUnitGameplayActionNames|TestUnitGameplayDebug|TestUnitGameplayDialogue|TestUnitGameplayExperience|TestUnitGameplayExperiencePresentation|TestUnitGameplayExperienceRounding|TestUnitGameplayItemNames|TestUnitGameplayMonsterTimers|TestUnitGameplayNPCNames|TestUnitGameplayOrders|TestUnitGameplayReadMessageLimits|TestUnitGameplayReadUse|TestUnitGameplayRewardOwners|TestUnitGameplayUndeadUpdate|TestWorldCollisionsAnkhHistory|TestWorldCollisionsAudioFrames|TestWorldCollisionsChestContents|TestWorldCollisionsChestKey|TestWorldCollisionsClockThrottle|TestWorldCollisionsCoopExitSave|TestWorldCollisionsCountdown|TestWorldCollisionsDoorKeys|TestWorldCollisionsDoorMagic|TestWorldCollisionsDoorMissingKey|TestWorldCollisionsExitAdmission|TestWorldCollisionsExitGlyphCleanup|TestWorldCollisionsMassExchange|TestWorldCollisionsPentagram|TestWorldCollisionsPickupAdmission|TestWorldCollisionsPickupIntegration|TestWorldCollisionsQuestExit|TestWorldCollisionsQuestReadiness|TestWorldCollisionsScriptTriggers|TestWorldCollisionsSign|TestWorldCollisionsSoulGate|TestWorldCollisionsSpellAward|TestWorldCollisionsSpellProjectile|TestWorldCollisionsSpellWall|TestWorldCollisionsTeleport|TestWorldCollisionsTrapAbility|TestWorldCollisionsTrapGeometry|TestWorldCollisionsUndeadDamage)$",
     "profiles": {
       "default": [
         "TestBookAwardsAbilityGuideGates",
@@ -3129,6 +3129,28 @@
         "TestItemMutableIdentityHooks",
         "TestItemUseFullResultWords",
         "TestItemUseGetterIdentities",
+        "TestPlayerControlsActionMapping",
+        "TestPlayerControlsAdmission",
+        "TestPlayerControlsBoltDamage",
+        "TestPlayerControlsBotUpdate",
+        "TestPlayerControlsBots",
+        "TestPlayerControlsConfusion",
+        "TestPlayerControlsInversion",
+        "TestPlayerControlsMessages",
+        "TestPlayerControlsMorphs",
+        "TestPlayerControlsObservers",
+        "TestPlayerControlsOwnership",
+        "TestPlayerControlsPositive",
+        "TestPlayerControlsRemaining",
+        "TestPlayerControlsRespawn",
+        "TestPlayerControlsRespawnFlags",
+        "TestPlayerControlsRespawnItems",
+        "TestPlayerControlsScheduledSpells",
+        "TestPlayerControlsStamina",
+        "TestPlayerControlsStartSelection",
+        "TestPlayerControlsStats",
+        "TestPlayerControlsWaypoints",
+        "TestPlayerControlsWeaponMappings",
         "TestPlayerFilesAbilityRestore",
         "TestPlayerFilesAttributesRead",
         "TestPlayerFilesAttributesUnitRead",
@@ -3312,6 +3334,28 @@
         "TestItemMutableIdentityHooks",
         "TestItemUseFullResultWords",
         "TestItemUseGetterIdentities",
+        "TestPlayerControlsActionMapping",
+        "TestPlayerControlsAdmission",
+        "TestPlayerControlsBoltDamage",
+        "TestPlayerControlsBotUpdate",
+        "TestPlayerControlsBots",
+        "TestPlayerControlsConfusion",
+        "TestPlayerControlsInversion",
+        "TestPlayerControlsMessages",
+        "TestPlayerControlsMorphs",
+        "TestPlayerControlsObservers",
+        "TestPlayerControlsOwnership",
+        "TestPlayerControlsPositive",
+        "TestPlayerControlsRemaining",
+        "TestPlayerControlsRespawn",
+        "TestPlayerControlsRespawnFlags",
+        "TestPlayerControlsRespawnItems",
+        "TestPlayerControlsScheduledSpells",
+        "TestPlayerControlsStamina",
+        "TestPlayerControlsStartSelection",
+        "TestPlayerControlsStats",
+        "TestPlayerControlsWaypoints",
+        "TestPlayerControlsWeaponMappings",
         "TestPlayerFilesAbilityRestore",
         "TestPlayerFilesAttributesRead",
         "TestPlayerFilesAttributesUnitRead",
@@ -3495,6 +3539,28 @@
         "TestItemMutableIdentityHooks",
         "TestItemUseFullResultWords",
         "TestItemUseGetterIdentities",
+        "TestPlayerControlsActionMapping",
+        "TestPlayerControlsAdmission",
+        "TestPlayerControlsBoltDamage",
+        "TestPlayerControlsBotUpdate",
+        "TestPlayerControlsBots",
+        "TestPlayerControlsConfusion",
+        "TestPlayerControlsInversion",
+        "TestPlayerControlsMessages",
+        "TestPlayerControlsMorphs",
+        "TestPlayerControlsObservers",
+        "TestPlayerControlsOwnership",
+        "TestPlayerControlsPositive",
+        "TestPlayerControlsRemaining",
+        "TestPlayerControlsRespawn",
+        "TestPlayerControlsRespawnFlags",
+        "TestPlayerControlsRespawnItems",
+        "TestPlayerControlsScheduledSpells",
+        "TestPlayerControlsStamina",
+        "TestPlayerControlsStartSelection",
+        "TestPlayerControlsStats",
+        "TestPlayerControlsWaypoints",
+        "TestPlayerControlsWeaponMappings",
         "TestPlayerFilesAbilityRestore",
         "TestPlayerFilesAttributesRead",
         "TestPlayerFilesAttributesUnitRead",
@@ -3901,5 +3967,250 @@
     "sub_53A720",
     "sub_53F830",
     "sub_53F930"
-  ]
+  ],
+  "supplemental_player_controls_baseline": {
+    "default": {
+      "result": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 3600,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "1536MiB",
+          "GOGC": null
+        },
+        "binary_verification": {
+          "path": "/root/src/opennox/build/port-item-identities/baseline-controls/profiles/default.test",
+          "sha256": "be1419dcfab3365302a81a4d017572269264dd320aa253125554384e82f9b9fb",
+          "source_matches": true,
+          "record_matches": true,
+          "build_metadata": {
+            "path": "github.com/opennox/opennox/v1.test",
+            "-buildmode": "exe",
+            "-compiler": "gc",
+            "tags": "porttest",
+            "DefaultGODEBUG": "cryptocustomrand=1,tlssecpmlkem=0,urlstrictcolons=0",
+            "CGO_ENABLED": "1",
+            "CGO_CFLAGS": "",
+            "CGO_CPPFLAGS": "",
+            "CGO_CXXFLAGS": "",
+            "CGO_LDFLAGS": "",
+            "GOARCH": "386",
+            "GOOS": "linux",
+            "GO386": "sse2"
+          },
+          "verified": true
+        },
+        "discovery_command": [
+          "go",
+          "tool",
+          "test2json",
+          "-t",
+          "-p",
+          "github.com/opennox/opennox/v1",
+          "/root/src/opennox/build/port-item-identities/baseline-controls/profiles/default.test",
+          "-test.list=^(TestPlayerControlsActionMapping|TestPlayerControlsAdmission|TestPlayerControlsBoltDamage|TestPlayerControlsBotUpdate|TestPlayerControlsBots|TestPlayerControlsConfusion|TestPlayerControlsInversion|TestPlayerControlsMessages|TestPlayerControlsMorphs|TestPlayerControlsObservers|TestPlayerControlsOwnership|TestPlayerControlsPositive|TestPlayerControlsRemaining|TestPlayerControlsRespawn|TestPlayerControlsRespawnFlags|TestPlayerControlsRespawnItems|TestPlayerControlsScheduledSpells|TestPlayerControlsStamina|TestPlayerControlsStartSelection|TestPlayerControlsStats|TestPlayerControlsWaypoints|TestPlayerControlsWeaponMappings)$"
+        ],
+        "discovery_exit": 0,
+        "selected_tests": 22,
+        "selected_root_tests": 22,
+        "execution_command": [
+          "go",
+          "tool",
+          "test2json",
+          "-t",
+          "-p",
+          "github.com/opennox/opennox/v1",
+          "/root/src/opennox/build/port-item-identities/baseline-controls/profiles/default.test",
+          "-test.v=test2json",
+          "-test.count=1",
+          "-test.timeout=3600s",
+          "-test.run=^(TestPlayerControlsActionMapping|TestPlayerControlsAdmission|TestPlayerControlsBoltDamage|TestPlayerControlsBotUpdate|TestPlayerControlsBots|TestPlayerControlsConfusion|TestPlayerControlsInversion|TestPlayerControlsMessages|TestPlayerControlsMorphs|TestPlayerControlsObservers|TestPlayerControlsOwnership|TestPlayerControlsPositive|TestPlayerControlsRemaining|TestPlayerControlsRespawn|TestPlayerControlsRespawnFlags|TestPlayerControlsRespawnItems|TestPlayerControlsScheduledSpells|TestPlayerControlsStamina|TestPlayerControlsStartSelection|TestPlayerControlsStats|TestPlayerControlsWaypoints|TestPlayerControlsWeaponMappings)$"
+        ],
+        "exit": 0,
+        "started_tests": 22,
+        "completed_tests": 22,
+        "started_root_tests": 22,
+        "completed_root_tests": 22,
+        "skipped_tests": [],
+        "failed_tests": [],
+        "failure_events": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 10.561957028927281
+      },
+      "log_sha256": "5d93843bdec9d5390b02286311c48d218d85daf70ad2a4cbddee029f3a919aa4"
+    },
+    "server": {
+      "result": {
+        "tags": "porttest,server",
+        "success": true,
+        "timeout_seconds": 3600,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "1536MiB",
+          "GOGC": null
+        },
+        "binary_verification": {
+          "path": "/root/src/opennox/build/port-item-identities/baseline-controls/profiles/server.test",
+          "sha256": "440f8403b43ffdbaa489ede1bbe9879ffdd662a6447c920769c24ade5911a9bc",
+          "source_matches": true,
+          "record_matches": true,
+          "build_metadata": {
+            "path": "github.com/opennox/opennox/v1.test",
+            "-buildmode": "exe",
+            "-compiler": "gc",
+            "tags": "porttest,server",
+            "DefaultGODEBUG": "cryptocustomrand=1,tlssecpmlkem=0,urlstrictcolons=0",
+            "CGO_ENABLED": "1",
+            "CGO_CFLAGS": "",
+            "CGO_CPPFLAGS": "",
+            "CGO_CXXFLAGS": "",
+            "CGO_LDFLAGS": "",
+            "GOARCH": "386",
+            "GOOS": "linux",
+            "GO386": "sse2"
+          },
+          "verified": true
+        },
+        "discovery_command": [
+          "go",
+          "tool",
+          "test2json",
+          "-t",
+          "-p",
+          "github.com/opennox/opennox/v1",
+          "/root/src/opennox/build/port-item-identities/baseline-controls/profiles/server.test",
+          "-test.list=^(TestPlayerControlsActionMapping|TestPlayerControlsAdmission|TestPlayerControlsBoltDamage|TestPlayerControlsBotUpdate|TestPlayerControlsBots|TestPlayerControlsConfusion|TestPlayerControlsInversion|TestPlayerControlsMessages|TestPlayerControlsMorphs|TestPlayerControlsObservers|TestPlayerControlsOwnership|TestPlayerControlsPositive|TestPlayerControlsRemaining|TestPlayerControlsRespawn|TestPlayerControlsRespawnFlags|TestPlayerControlsRespawnItems|TestPlayerControlsScheduledSpells|TestPlayerControlsStamina|TestPlayerControlsStartSelection|TestPlayerControlsStats|TestPlayerControlsWaypoints|TestPlayerControlsWeaponMappings)$"
+        ],
+        "discovery_exit": 0,
+        "selected_tests": 22,
+        "selected_root_tests": 22,
+        "execution_command": [
+          "go",
+          "tool",
+          "test2json",
+          "-t",
+          "-p",
+          "github.com/opennox/opennox/v1",
+          "/root/src/opennox/build/port-item-identities/baseline-controls/profiles/server.test",
+          "-test.v=test2json",
+          "-test.count=1",
+          "-test.timeout=3600s",
+          "-test.run=^(TestPlayerControlsActionMapping|TestPlayerControlsAdmission|TestPlayerControlsBoltDamage|TestPlayerControlsBotUpdate|TestPlayerControlsBots|TestPlayerControlsConfusion|TestPlayerControlsInversion|TestPlayerControlsMessages|TestPlayerControlsMorphs|TestPlayerControlsObservers|TestPlayerControlsOwnership|TestPlayerControlsPositive|TestPlayerControlsRemaining|TestPlayerControlsRespawn|TestPlayerControlsRespawnFlags|TestPlayerControlsRespawnItems|TestPlayerControlsScheduledSpells|TestPlayerControlsStamina|TestPlayerControlsStartSelection|TestPlayerControlsStats|TestPlayerControlsWaypoints|TestPlayerControlsWeaponMappings)$"
+        ],
+        "exit": 0,
+        "started_tests": 22,
+        "completed_tests": 22,
+        "started_root_tests": 22,
+        "completed_root_tests": 22,
+        "skipped_tests": [],
+        "failed_tests": [],
+        "failure_events": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 9.82389189209789
+      },
+      "log_sha256": "eb338800c17dbcf06f4eb20c5e6edcf79eeb8044a8fcab7dd5be5e6bf91f7ceb"
+    },
+    "highres": {
+      "result": {
+        "tags": "porttest,highres",
+        "success": true,
+        "timeout_seconds": 3600,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "1536MiB",
+          "GOGC": null
+        },
+        "binary_verification": {
+          "path": "/root/src/opennox/build/port-item-identities/baseline-controls/profiles/highres.test",
+          "sha256": "6ed16ba0d9d2de1dd33c1c755cba67958f931aea6e1fd42d487bc28e31eb7370",
+          "source_matches": true,
+          "record_matches": true,
+          "build_metadata": {
+            "path": "github.com/opennox/opennox/v1.test",
+            "-buildmode": "exe",
+            "-compiler": "gc",
+            "tags": "porttest,highres",
+            "DefaultGODEBUG": "cryptocustomrand=1,tlssecpmlkem=0,urlstrictcolons=0",
+            "CGO_ENABLED": "1",
+            "CGO_CFLAGS": "",
+            "CGO_CPPFLAGS": "",
+            "CGO_CXXFLAGS": "",
+            "CGO_LDFLAGS": "",
+            "GOARCH": "386",
+            "GOOS": "linux",
+            "GO386": "sse2"
+          },
+          "verified": true
+        },
+        "discovery_command": [
+          "go",
+          "tool",
+          "test2json",
+          "-t",
+          "-p",
+          "github.com/opennox/opennox/v1",
+          "/root/src/opennox/build/port-item-identities/baseline-controls/profiles/highres.test",
+          "-test.list=^(TestPlayerControlsActionMapping|TestPlayerControlsAdmission|TestPlayerControlsBoltDamage|TestPlayerControlsBotUpdate|TestPlayerControlsBots|TestPlayerControlsConfusion|TestPlayerControlsInversion|TestPlayerControlsMessages|TestPlayerControlsMorphs|TestPlayerControlsObservers|TestPlayerControlsOwnership|TestPlayerControlsPositive|TestPlayerControlsRemaining|TestPlayerControlsRespawn|TestPlayerControlsRespawnFlags|TestPlayerControlsRespawnItems|TestPlayerControlsScheduledSpells|TestPlayerControlsStamina|TestPlayerControlsStartSelection|TestPlayerControlsStats|TestPlayerControlsWaypoints|TestPlayerControlsWeaponMappings)$"
+        ],
+        "discovery_exit": 0,
+        "selected_tests": 22,
+        "selected_root_tests": 22,
+        "execution_command": [
+          "go",
+          "tool",
+          "test2json",
+          "-t",
+          "-p",
+          "github.com/opennox/opennox/v1",
+          "/root/src/opennox/build/port-item-identities/baseline-controls/profiles/highres.test",
+          "-test.v=test2json",
+          "-test.count=1",
+          "-test.timeout=3600s",
+          "-test.run=^(TestPlayerControlsActionMapping|TestPlayerControlsAdmission|TestPlayerControlsBoltDamage|TestPlayerControlsBotUpdate|TestPlayerControlsBots|TestPlayerControlsConfusion|TestPlayerControlsInversion|TestPlayerControlsMessages|TestPlayerControlsMorphs|TestPlayerControlsObservers|TestPlayerControlsOwnership|TestPlayerControlsPositive|TestPlayerControlsRemaining|TestPlayerControlsRespawn|TestPlayerControlsRespawnFlags|TestPlayerControlsRespawnItems|TestPlayerControlsScheduledSpells|TestPlayerControlsStamina|TestPlayerControlsStartSelection|TestPlayerControlsStats|TestPlayerControlsWaypoints|TestPlayerControlsWeaponMappings)$"
+        ],
+        "exit": 0,
+        "started_tests": 22,
+        "completed_tests": 22,
+        "started_root_tests": 22,
+        "completed_root_tests": 22,
+        "skipped_tests": [],
+        "failed_tests": [],
+        "failure_events": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 10.28762632003054
+      },
+      "log_sha256": "d1470688c15d46f53fdebe9182eeced6a437db9af87822fbdca2a0895fc4ae0d"
+    }
+  }
 }

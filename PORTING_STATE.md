@@ -22,7 +22,7 @@ See [DAMAGE_IDENTITIES.md](docs/porting/DAMAGE_IDENTITIES.md).
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
 recorded reversible decisions. Active batch: 41 item use/drop/pickup identities and
 two adjacent Go inventory adapters (41 C exports), under `build/port-item-identities/`.
-The original 181-root baseline passes in all three profiles without skips. New contracts
+The original 203-root baseline passes in all three profiles without skips. New contracts
 cover lifetime, all ten mutable hooks, script-facing getters and full Use return
 words. Planned result-aware Use dispatch requires a full default port corpus
 sweep after focused conversion checks. Conversion is drafted, not installed.
