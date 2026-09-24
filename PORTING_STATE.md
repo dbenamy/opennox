@@ -22,7 +22,11 @@ Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
 recorded reversible decisions. Next candidate: 53 named object-update callbacks plus
 three special update identities. Primary exact reference inventory and helper owner
 map are under `build/port-after-xfer-identities/`; original contracts and a bounded
-implementation draft are being prepared under `build/port-update-identities/`.
+implementation draft are under `build/port-update-identities/`. Original baseline
+passes all 279 selected roots in each profile, no skips, under `baseline-fixed/`.
+The first bot contract omitted AI fixture initialization; using the established
+controls runner corrected that test setup. See [UPDATE_IDENTITIES.md](docs/porting/UPDATE_IDENTITIES.md).
+The conversion is still an ignored draft, not installed.
 Stop at the milestone or a substantial question.
 
 Latest artifacts: `build/port-xfer-identities/`.
@@ -119,6 +123,8 @@ do not rerun them or infer deletion safety from age alone.
 
 | Artifact | Recovery or current location |
 | --- | --- |
+| Superseded create/init and damage binaries | Removed 14 verified unused executables; 786,116,608 allocated bytes reclaimed. Rebuild revisions `ed82a5a8` and `8c9b3fc6`; item/transfer replacements remain. Source/hash/host-use evidence: `build/port-update-identities/cleanup-production-{approved.json,deleted.jsonl}`. |
+| Completed transfer scenario assets | Removed 1,654 verified original-asset duplicates; 559,902,720 allocated bytes reclaimed. Originals, saves/results retained. Restore: `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/xfer-identities-save/deduplicated-assets.json`. Plan/result: `build/port-post-xfer-cleanup/`. |
 | Obsolete pre-catalog-conversion project cache | 44 unused, hash/stat-verified root/legacy archives removed; 2,402,185,216 allocated bytes reclaimed. Current caches, baselines and binaries remain. Rebuild normally; plan/approval/journal: `build/port-collision-identities/cache-cleanup-{proposal.json,approved.json,deleted.jsonl}`. |
 | Completed catalog/effect scenario assets | Removed 1,654 verified duplicate originals; 559,931,392 allocated bytes reclaimed. Originals, saves/results retained. Restore: `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/catalog-effect-owners-save/deduplicated-assets.json`. Plan/result: `build/port-post-catalog-effect-cleanup/`. |
 | Superseded inventory/resource, shop/trade and spell/reward binaries | Removed 21 verified, unused executables; 1,183,252,480 allocated bytes reclaimed. Rebuild revisions `9dac58bf`, `279e7867`, `b5d7ee16` with retained commands. Latest map-room/painting replacements remain. Source/hash/host-use checks and deletion journal: `build/port-catalog-effect-owners/cleanup-{approved.json,deleted.jsonl}`. |
@@ -148,7 +154,7 @@ do not rerun them or infer deletion safety from age alone.
 | Completed damage scenario assets | Removed 1,654 verified duplicates; 559,915,008 allocated bytes reclaimed. Originals, saves and results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/damage-identities-save/deduplicated-assets.json`. Plan/result: `build/port-post-damage-cleanup/`. |
 | Completed creation/init scenario assets | Removed 1,654 SHA256-identical original-asset duplicates after host-use checks; 559,972,352 allocated bytes reclaimed. Originals, saves/results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/create-init-identities-save/deduplicated-assets.json`. Plan/result: `build/port-post-create-init-cleanup/`. |
 | Superseded collision/death qualified binaries | Removed 14 test/safe/production executables after exact committed-source, replacement/hash and host-use checks; 786,751,488 allocated bytes reclaimed. Rebuild qualified revisions `170b594a` and `e7ca9d31` using retained commands. Source, original baseline binaries, logs, manifests and current create/init and damage outputs remain. Plan/journal: `build/port-item-identities/cleanup-production-{approved.json,deleted.jsonl}`. |
-| Current qualified production/safe binaries | Retained under `build/port-xfer-identities/`; preceding item, damage and create/init binaries also remain; older collision/death qualified executables were removed as recorded above. |
+| Current qualified production/safe binaries | Retained under `build/port-xfer-identities/`; preceding item binaries also remain; superseded damage/create-init binaries were removed as recorded above; older collision/death qualified executables were removed as recorded above. |
 | Superseded primitive-interface binaries | Seven executables removed after source/replacement/hash and host-use checks; 395,362,304 allocated bytes reclaimed. All 3,062 source fingerprints match `78ff20f9`; current qualified replacements match `4214ea8f`. Rebuild the old revision using retained phase commands. Plan/journal: `build/port-go-layout-boundaries/cleanup-primitive-{approved.json,deleted.jsonl}`. |
 | Superseded scalar-storage binaries | Seven executables removed after source/replacement/hash and host-use checks; 395,452,416 allocated bytes reclaimed. All 3,062 source fingerprints match `e64ff24e`; qualified replacements match `78ff20f9`. Rebuild the old revision using retained phase commands. Plan/journal: `build/port-go-native-call-boundaries/cleanup-scalar-{approved.json,deleted.jsonl}`. |
 | Completed scenario data: `go-memory-save`, `raw-allocation-save`, `string-boundary-save`, `unused-exports-save`, `remaining-unused-exports-save`, `go-only-exports-save` | Only SHA256-identical original-asset copies were removed. Saves/comparisons remain. Follow each run's `deduplicated-assets.json`; shared restore tool: `build/port-artifact-cleanup/restore-recent-scenario.py`. |

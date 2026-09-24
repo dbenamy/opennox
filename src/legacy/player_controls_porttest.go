@@ -100,6 +100,7 @@ import (
 )
 
 type PortTestPlayerControlsSpec struct {
+	BotUpdateRoute           uint8 `json:",omitempty"` // 0: original path; 1: direct; 2: stored callback, both discard result.
 	RegisteredInit           bool
 	Extension                *PortTestExtensionSpec
 	RuntimeHost              *PortTestRuntimeHostSpec
@@ -356,6 +357,18 @@ func (p *portTestShopPools) controlsAction(a PortTestShopAction) uint32 {
 		}
 		// The direct comparison operation is void. Validate dispatch length above,
 		// then compare its complete gameplay state with that qualified operation.
+		st.result = 0
+	} else if sp.BotUpdateRoute != 0 && a.Op == 1447 {
+		u := p.temporaryRef(spec.Actor)
+		u.Update = Get_nox_xxx_updatePlayerMonsterBot_4FAB20()
+		switch sp.BotUpdateRoute {
+		case 1:
+			controlsInvoke(47, u, p.temporaryRef(sp.Target), sp.X, sp.Y, record, st.name)
+		case 2:
+			u.CallUpdate()
+		default:
+			panic("invalid bot update contract route")
+		}
 		st.result = 0
 	} else if sp.RegisteredInit && a.Op == 1420 {
 		PortTestRegisteredInit(p.temporaryRef(spec.Actor), "PlayerInit")
