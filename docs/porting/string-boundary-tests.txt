@@ -1,0 +1,1 @@
+^Test(ServerConfig|ServerOptions|ServerBrowser|MapPainting|TileSelection|BorderSelection|PrefabScripts|PrefabRuntime|ObjectXfer|LegacyCStringOwnership)|^TestConsoleCommandsNames$

@@ -24,9 +24,10 @@ files no longer use cgo; libc still supplies the underlying storage.
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
 recorded reversible decisions. Stop at the milestone or for a substantial question.
 The requested C_LOC cleanup and quantified status line are complete.
-Next: review remaining string-helper ownership and unused export reachability
-before choosing the next removal batch. Luna's read-only draft is at
-`build/port-raw-allocation/next-string-audit.md`; it is not accepted evidence.
+Active batch: internal string boundaries, with 178 original owner roots passing
+in every production profile and seven applicable safe roots passing. The draft
+is reviewed but not installed. See [STRING_BOUNDARY.md](docs/porting/STRING_BOUNDARY.md)
+for scope, original safe-fixture limitations and selector repairs.
 
 ## What remains
 
@@ -145,3 +146,8 @@ removed after host process/file-use checks, reclaiming 419 MiB. Their reports
 remain; rebuild older binaries from recorded revisions if needed. The current
 Go-memory binaries are retained. Journal:
 `build/port-artifact-cleanup/superseded-leaves-xfer-binaries-20260924/`.
+
+Before string-boundary qualification, 25 unopened old Go-cache archives were
+removed after host process checks, reclaiming 1.43 GiB. They are rebuildable;
+source, assets, production binaries and reports are retained. Journal:
+`build/port-artifact-cleanup/string-boundary-cache-removed.jsonl`.
