@@ -1,0 +1,1 @@
+^Test(?:AIMonsterState|Damage|ObjectState|MatchRoster|ClientInteraction|Minimap|ServerBrowser|ServerOptions|ResourceDefinitions)

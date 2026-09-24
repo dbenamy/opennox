@@ -23,7 +23,9 @@ See [GO_NATIVE_RECORD_STORAGE.md](docs/porting/GO_NATIVE_RECORD_STORAGE.md).
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
 recorded reversible decisions. Next: native owners/constants and connected
 browser/message callers; reviewed drafts are under
-`build/port-go-native-owner-constants/`. They are not installed or qualified.
+`build/port-go-native-owner-constants/`. The focused original baseline passes (195/193/195 roots, no skips).
+See [GO_NATIVE_OWNER_CONSTANTS.md](docs/porting/GO_NATIVE_OWNER_CONSTANTS.md).
+The conversion is not yet installed or qualified.
 Stop at the milestone or for a substantial question.
 
 Latest artifacts: `build/port-go-native-record-storage/`.
@@ -130,6 +132,9 @@ do not rerun them or infer deletion safety from age alone.
 
 | Artifact | Recovery or current location |
 | --- | --- |
+| Old owner/constants project cache | 65 hash/stat-verified, unused root/legacy archives removed; 4,718,157,824 allocated bytes reclaimed. Rebuild normally. Plan/journal: `build/port-go-native-owner-constants/cache-cleanup-{approved.json,deleted.jsonl}`. |
+| Native-record full-corpus logs | Losslessly compressed; restore with `gzip -dk`. Hashes: `build/port-go-native-record-storage/contract-log-archive.json`; 306,063,181 bytes reclaimed. |
+| Completed native-record scenario assets | Removed 1,654 verified original-asset duplicates; 559,874,048 allocated bytes reclaimed. Saves/results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/go-native-record-storage-save/deduplicated-assets.json`. |
 | Superseded Go-only-export binaries | Seven test/safe/production executables removed after primary source/replacement/hash and host-use checks; 395,526,144 allocated bytes reclaimed. Five source maps (3,062 unique files) match `12bc387d`; retain phase commands and rebuild that revision. Plan/journal: `build/port-go-primitive-interfaces/cleanup-go-only-{approved.json,deleted.jsonl}`. |
 | Superseded 378-export root test binaries | Three executables removed after host-use, inode and hash checks; 204,169,216 allocated bytes reclaimed. All 3,090 recorded source fingerprints match `f6f5ee4c`; rebuild that revision with the retained profile commands. Plan/journal: `build/port-go-primitive-interfaces/cleanup-binaries-{approved-plan.json,deleted.jsonl}`. |
 | Layout-boundary full-corpus logs | Losslessly compressed; restore with `gzip -dk`. Hashes/commands: `build/port-go-layout-boundaries/contract-log-archive.json`; 306,061,277 bytes reclaimed. |
