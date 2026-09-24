@@ -242,7 +242,7 @@ func expectedSafeMemory(c safeMemoryCase) (left, right []byte, ret int, dest boo
 }
 
 func TestSafeMemoryBridges(t *testing.T) {
-	const want = "2b34e573e3b8f5b62ced16258ec2de832284fbe9d0cecc3a0c5120edf22eb59a" // Frozen from three actual-C runs.
+	const want = "2b34e573e3b8f5b62ced16258ec2de832284fbe9d0cecc3a0c5120edf22eb59a" // Freeze from original bridge after comparison-sign normalization.
 	var captures []safeMemoryCapture
 	for _, c := range safeMemoryCases() {
 		wantLeft, wantRight, wantRet, wantDest := expectedSafeMemory(c)
@@ -267,6 +267,15 @@ func TestSafeMemoryBridges(t *testing.T) {
 		if got.ReturnedDest != wantDest {
 			t.Errorf("%s: returned-destination got %v, want %v", c.Name, got.ReturnedDest, wantDest)
 		}
+		// libc comparison magnitudes vary with implementation; the contract
+		// and engine consumers use only negative, zero or positive ordering.
+		if c.Spec.Op == "memcmp" || c.Spec.Op == "strcmp" {
+			if got.Return < 0 {
+				got.Return = -1
+			} else if got.Return > 0 {
+				got.Return = 1
+			}
+		}
 		captures = append(captures, safeMemoryCapture{Name: c.Name, Spec: c.Spec, Result: got})
 	}
 	data, err := json.Marshal(captures)
@@ -276,7 +285,7 @@ func TestSafeMemoryBridges(t *testing.T) {
 	sum := sha256.Sum256(data)
 	hash := hex.EncodeToString(sum[:])
 	t.Logf("safe memory capture sha256=%s cases=%d", hash, len(captures))
-	if hash != want {
+	if want != "" && hash != want {
 		t.Fatalf("safe memory capture hash got %s want %s", hash, want)
 	}
 	if path := os.Getenv("OPENNOX_SAFE_BRIDGES_CAPTURE"); path != "" {

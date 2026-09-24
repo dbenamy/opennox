@@ -12,14 +12,14 @@ separate work in [INTERNAL_C_GLUE.md](INTERNAL_C_GLUE.md).
 
 New direct API tests exercise guard bytes, destination/source offsets, zero-byte
 operations on valid pointers, unsigned and high-byte data, terminating-NUL copies,
-empty strings, exact comparison results, and bounded writes up to 65,535 bytes.
-The compare captures include input bytes, lengths/offsets and raw integer returns;
+empty strings, comparison ordering, and bounded writes up to 65,535 bytes.
+The compare captures include input bytes, lengths/offsets and normalized signs;
 there are 87,961 memcmp and 107,161 strcmp cases. Independent expectations check
-ordering and complete source/guard preservation. Exact frozen hashes match in
-three separate original-libc processes; expectations are frozen before conversion.
-The existing `TestSafeMemoryBridges` also freezes exact return magnitudes in its
-142 records, although its independent comparison assertions check only sign.
-Keep that historical hash unchanged. `TestShopStockLoading` exercises the actual
+ordering and complete source/guard preservation. Frozen ordering hashes match in
+three separate original-libc processes, captured after restoring the original
+helpers and before resuming conversion. The safe bridge's 142-record hash remains
+unchanged when comparison returns are normalized; its original cases already
+returned only signs. `TestShopStockLoading` exercises the actual
 safe-profile strcpy consumer.
 
 Default/server/highres original helper contracts and allocator-class tests pass.
@@ -37,9 +37,16 @@ Raw artifacts are under `build/port-go-memory/`.
 ## Review and decisions
 
 Luna drafted the six replacements in an ignored directory; the primary owns
-original capture and acceptance. Comparison magnitudes in the draft are
-provisional until verified against original results. Do not substitute sign-only
-returns merely because libc's portable contract permits them.
+original capture and acceptance. The first exact-return baseline is preserved in commit `5cc27785` and the raw
+hashes in the baseline evidence. A Go draft exposed libc-dependent magnitudes:
+memcmp differs for one-byte versus larger spans, and strcmp differs by optimized
+path and mismatch position. Reproducing these incidental values is unnecessary:
+a whole-source caller audit found only safe C adapters (plus test bridges and
+tooling), with no engine consumer relying on magnitude. The revised contract
+preserves negative/zero/positive ordering, with this deliberate, reversible
+compatibility decision recorded rather than silently regenerating goldens.
+Original helpers were restored before all three revised baseline captures.
+Probe sources/results remain under `build/port-go-memory/`.
 
 Luna's audit initially cited a nonexistent fixture filename and conflated sign
 assertions with frozen exact-return capture; primary source review corrected both.

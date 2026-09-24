@@ -20,8 +20,8 @@ dependency, with production and integration qualification complete.
 The user resumed chunk-by-chunk work, with one Luna helper, qualification,
 commit/push and recorded reversible decisions. Stop at the milestone or for a
 substantial question. Next: qualify and replace six libc memory/string helpers;
-allocator ownership remains a separate batch. Original memory-helper contracts and safe bridges are qualified, with exact
-comparison hashes frozen from three runs; production helper code is unchanged.
+allocator ownership remains a separate batch. Original memory-helper contracts and safe bridges are qualified, with comparison-ordering
+hashes frozen from three original-libc runs (raw magnitudes are libc-dependent); production helper code is unchanged.
 See [GO_MEMORY.md](docs/porting/GO_MEMORY.md) and `build/port-go-memory/`.
 The implementation draft remains under `build/port-cgo-leaves/next-memory-draft/`.
 

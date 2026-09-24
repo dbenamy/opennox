@@ -2384,3 +2384,14 @@ now guides removal order. The leaf cleanup batches 33 unused imports with the
 equivalent Linux socket ioctl constant; Go bodies and frozen expectations stay
 unchanged. This avoids an extra qualification cycle for trivial import-only work.
 See INTERNAL_C_GLUE.md and CGO_LEAVES.md.
+
+## Libc memory comparison ordering
+
+The Go memory-helper batch preserves comparison sign, not incidental libc return
+magnitude. Original Linux/386 strcmp magnitudes vary by optimized path and
+mismatch position; memcmp also differs by span length. Whole-source caller review
+found no engine magnitude consumer. Raw original captures remain in baseline
+commit `5cc27785`; the original implementations were restored before capturing
+normalized ordering three times and freezing the revised contracts. This is a
+deliberate reversible compatibility choice, not an unchanged exact-return claim.
+See GO_MEMORY.md and go-memory-c-qualification.json.

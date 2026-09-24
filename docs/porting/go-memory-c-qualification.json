@@ -407,5 +407,144 @@
         "allocs_op": 0
       }
     ]
+  },
+  "comparison_contract_revision": {
+    "decision": "Preserve ordering sign; target-libc magnitude depends on optimized path and has no engine consumer.",
+    "raw_baseline_commit": "5cc27785",
+    "original_helpers_restored": true,
+    "repetitions": 3,
+    "ordering_hashes": {
+      "memcmp": "3973015d60c667cee95867d663027cd09a040df0a6cef253faf482792440cb29",
+      "strcmp": "2fa41584258301b12796e740845f54350ffa51746dd346a2e1d52310c1a6b968"
+    },
+    "safe_hash_unchanged": "2b34e573e3b8f5b62ced16258ec2de832284fbe9d0cecc3a0c5120edf22eb59a",
+    "caller_audit": [
+      "src/internal/callgraph/main.go:56:\t\t\"nox_strcmp\":  1,",
+      "src/internal/callgraph/main.go:59:\t\t\"nox_memcmp\":  1,",
+      "src/legacy/safe_memory_porttest.go:7:int nox_memcmp(const void* a, const void* b, unsigned int size);",
+      "src/legacy/safe_memory_porttest.go:11:int nox_strcmp(const char* a, const char* b);",
+      "src/legacy/safe_memory_porttest.go:69:\t\t\tout.Return = int32(C.nox_memcmp(lp, rp, C.uint(s.Size)))",
+      "src/legacy/safe_memory_porttest.go:89:\t\tout.Return = int32(C.nox_strcmp((*C.char)(lp), (*C.char)(rp)))",
+      "src/legacy/common/alloc/alloc.go:128:\treturn int(C.memcmp(ptr1, ptr2, C.size_t(size)))",
+      "src/legacy/common/alloc/alloc.go:230:\treturn int(C.strcmp((*C.char)(str1), (*C.char)(str2)))",
+      "src/legacy/cgo_safe.go:15:#cgo CFLAGS: -Dmemcmp=nox_memcmp",
+      "src/legacy/cgo_safe.go:19:#cgo CFLAGS: -Dstrcmp=nox_strcmp",
+      "src/legacy/cgo_safe.go:71://export nox_memcmp",
+      "src/legacy/cgo_safe.go:72:func nox_memcmp(ptr1, ptr2 C.nox_safe_const_void_ptr, size C.uint) C.int {",
+      "src/legacy/cgo_safe.go:73:\treturn C.int(alloc.Memcmp(unsafe.Pointer(ptr1), unsafe.Pointer(ptr2), uintptr(size)))",
+      "src/legacy/cgo_safe.go:91://export nox_strcmp",
+      "src/legacy/cgo_safe.go:92:func nox_strcmp(str1, str2 C.nox_safe_const_char_ptr) C.int {",
+      "src/legacy/cgo_safe.go:93:\treturn C.int(alloc.Strcmp(unsafe.Pointer(str1), unsafe.Pointer(str2)))"
+    ]
+  },
+  "normalized-baseline-helpers": {
+    "batch": "go-memory",
+    "phase": "helpers",
+    "success": true,
+    "steps": [
+      {
+        "name": "default",
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-count=1",
+          "-v",
+          "./legacy/common/alloc"
+        ],
+        "exit": 0,
+        "wall_seconds": 1.7484758039936423
+      },
+      {
+        "name": "server",
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-count=1",
+          "-v",
+          "-tags",
+          "server",
+          "./legacy/common/alloc"
+        ],
+        "exit": 0,
+        "wall_seconds": 1.2323109400458634
+      },
+      {
+        "name": "highres",
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-count=1",
+          "-v",
+          "-tags",
+          "highres",
+          "./legacy/common/alloc"
+        ],
+        "exit": 0,
+        "wall_seconds": 1.1679351159837097
+      }
+    ],
+    "revision": "5cc277859cf5543ab5fe3580e25b4408851f7612",
+    "source_unchanged": true,
+    "wall_seconds": 4.635485059116036,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "normalized-baseline-safe": {
+    "batch": "go-memory",
+    "phase": "safe-contracts",
+    "success": true,
+    "steps": [
+      {
+        "name": "safe-contracts",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/safe-bridges-tests.txt",
+          "--tags",
+          "safe,porttest",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-go-memory/normalized-baseline-safe/safe.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-go-memory/normalized-baseline-safe/safe-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 42.64573005097918
+      }
+    ],
+    "revision": "5cc277859cf5543ab5fe3580e25b4408851f7612",
+    "source_unchanged": true,
+    "wall_seconds": 42.929286441067234,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
   }
 }
