@@ -20,9 +20,12 @@ equipment death messages. Three production cgo files and one test cgo import
 disappear. See [DEATH_IDENTITIES.md](docs/porting/DEATH_IDENTITIES.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Next candidate audit covers connected creation and
-initialization identities under `build/port-after-death-identities/`; primary scope
-acceptance is required before conversion. Stop at the milestone or a substantial question.
+recorded reversible decisions. Active batch: nineteen creation/init identities
+across twenty names under `build/port-create-init-identities/`. The original
+163-root baseline passes in all three profiles, including new lifetime and gold
+classification/arithmetic contracts. Conversion is drafted, not installed.
+See [CREATE_INIT_IDENTITIES.md](docs/porting/CREATE_INIT_IDENTITIES.md).
+Stop at the milestone or a substantial question.
 
 Latest artifacts: `build/port-death-identities/`.
 
