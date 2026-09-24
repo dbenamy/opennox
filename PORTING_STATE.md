@@ -24,11 +24,13 @@ bridges, callback bodies and external native bindings are unchanged. Baseline:
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
 recorded reversible decisions. Stop at the milestone or for a substantial question.
-Next: review a connected batch of remaining primitive C-type interfaces and their
-Go callers. Luna's read-only inventory found 83 candidate files: 20 with local
-scalar uses, nine with numeric Go-function signatures, and 54 involving pointers,
-strings or floats. These are candidates, not approved removals; primary owns the
-boundary review and selection. Local discovery: `build/port-go-scalar-storage/next-numeric-*.{json,md}`.
+Active: original baseline accepted for 102 Go-only primitive interfaces and
+255 direct Go calls, from unchanged qualified source `e64ff24e`. Candidate scope:
+83 production files / 465 numeric C selectors. Repeated target probes verify all
+12 primitive mappings. Conversion is not installed; primary owns boundary review,
+with one Luna helper tracing native call replacements. Preserve pointer ownership,
+widths and narrowing; keep casts at surviving C boundaries and measure actual
+import removals after integration. See [GO_PRIMITIVE_INTERFACES.md](docs/porting/GO_PRIMITIVE_INTERFACES.md).
 
 All storage captures match the frozen baseline across normal profiles, with the
 scalar contract also passing safe. The raw fixture intentionally crosses addresses
@@ -142,7 +144,8 @@ do not rerun them or infer deletion safety from age alone.
 | Completed scenario data: `go-memory-save`, `raw-allocation-save`, `string-boundary-save`, `unused-exports-save`, `remaining-unused-exports-save`, `go-only-exports-save` | Only SHA256-identical original-asset copies were removed. Saves/comparisons remain. Follow each run's `deduplicated-assets.json`; shared restore tool: `build/port-artifact-cleanup/restore-recent-scenario.py`. |
 | Large historical captures in `port-game-messages`, `port-map-sections`, `port-client-interaction`, `port-session-dialogs` | Restore with `gzip -dk` and verify hashes against `build/port-artifact-cleanup/large-historical-20260924/`. Its 116 discarded text logs are not recoverable from these archives. |
 | Initial complete-corpus default/server logs | Losslessly compressed; restore commands and hashes in `build/port-complete-corpus/initial-log-archive.json`. Keep the server failure evidence. |
-| Latest 265-export full-corpus logs | Losslessly compressed after qualification/commit; restore commands and SHA256s: `build/port-go-only-exports/contract-log-archive.json`. |
+| Latest scalar full-corpus logs | Losslessly compressed after qualification/commit; restore commands and SHA256s: `build/port-go-scalar-storage/contract-log-archive.json`. |
+| Prior 265-export full-corpus logs | Losslessly compressed after qualification/commit; restore commands and SHA256s: `build/port-go-only-exports/contract-log-archive.json`. |
 | Remaining old project cache archives | 26 verified old root/legacy archives removed after host checks, reclaiming 1,614,089,922 bytes; rebuild normally. Plan/journal: `build/port-artifact-cleanup/go-scalar-storage-cache-{plan,removed}.json`. |
 | 378-export full-corpus logs | Losslessly compressed after qualification/commit; restore commands and SHA256s: `build/port-remaining-unused-exports/contract-log-archive.json`. |
 | Additional obsolete project cache archives | 31 old root/legacy archives removed after host checks, reclaiming 2,017,688,956 bytes; rebuild normally. Plan/journal: `build/port-artifact-cleanup/go-only-exports-cache-{plan,removed}.json`. |
