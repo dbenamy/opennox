@@ -1,0 +1,35 @@
+{
+  "batch": "prebuilt-profile-pilot",
+  "env": {
+    "GOMAXPROCS": "2",
+    "GOMEMLIMIT": "768MiB",
+    "NOX_DATA": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_BRIEFING_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_CLIENT_AUDIO_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "ALSOFT_DRIVERS": "null",
+    "OPENNOX_SPELLBOOK_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_DECODE_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SHOP_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_TRADE_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_CATALOG_ASSETS": "{root}/build/assets/extracted/drive_c/Nox"
+  },
+  "phases": {
+    "pilot": [
+      {
+        "name": "profiles",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_profiles.py",
+          "--out",
+          "{out}/profiles",
+          "--pattern-file",
+          "{root}/docs/porting/prebuilt-profile-pilot-pattern.txt",
+          "--jobs",
+          "2",
+          "--timeout-seconds",
+          "600"
+        ]
+      }
+    ]
+  }
+}

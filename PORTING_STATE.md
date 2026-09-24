@@ -32,8 +32,11 @@ exposed invalid pointer seeds in the player-reset fixture; these now use live
 pointers. Engine source and frozen expectations are unchanged. All three profiles
 also pass 20 focused GC-stress repetitions (800 subcases each), and static checks
 pass. See [COMPLETE_PORT_CORPUS.md](docs/porting/COMPLETE_PORT_CORPUS.md).
-Next: trial the optional prebuilt profile runner, then install and qualify the
-reviewed 378-export removal. The export draft remains uninstalled.
+The optional prebuilt runner passed its bounded trial: 96 existing roots per
+profile, exact name sets, no skips/failures, and verified server/highres overlap.
+See [PREBUILT_PROFILES.md](docs/porting/PREBUILT_PROFILES.md). Next: install and qualify
+the reviewed 378-export removal, using at most two prebuilt root-test processes.
+The export draft remains uninstalled.
 
 
 ## What remains

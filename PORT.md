@@ -309,6 +309,13 @@ Reconsider the tests as the behavior and failure modes become clearer.
   environment settings override it and the effective settings are recorded.
   Independent target sweeps may run concurrently when their output directories
   and fixtures are isolated and total CPU/memory fit this VM.
+  The optional `run_profiles.py --jobs 2` controller builds root test binaries
+  sequentially, verifies their source/binary/profile records, then runs at most
+  two test processes. Use it only for the audited root porttest corpus; keep
+  capture/diagnostic output variables unset and dependencies/source frozen.
+  Production builds and headless scenarios stay sequential. See the bounded
+  [prebuilt-profile trial](docs/porting/PREBUILT_PROFILES.md); fall back to
+  `--jobs 1` if concurrent resource or isolation problems appear.
   The accumulated selector is `^Test`: run every root test compiled with `porttest`
   instead of maintaining a historical list of names. Keep focused owner patterns
   separate. Compare discovered and completed root-name sets for each profile;

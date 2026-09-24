@@ -2443,3 +2443,12 @@ and in the other pointer fields, preserving numeric seeds, byte assertions and
 frozen output; retain the engine's typed pointer clear. A focused original run did
 not reproduce the heap-state-dependent crash, so full qualification remains the
 gate. See COMPLETE_PORT_CORPUS.md for completed versus pending evidence.
+
+## Bounded concurrent root-profile sweeps
+
+Try at most two prebuilt root porttest processes after sequential compilation.
+Require matching binary/source/profile records, isolated outputs, unset optional
+capture/diagnostic paths, and joined jobs before source changes. The bounded
+96-root/profile trial passes; it does not establish full-corpus isolation or a
+measured general speedup. Keep production/headless qualification sequential and
+fall back to one process if resource/isolation failures arise. See PREBUILT_PROFILES.md.
