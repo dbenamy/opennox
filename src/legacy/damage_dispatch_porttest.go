@@ -25,63 +25,6 @@ static void* damageDefendPtr(void){return damageDefend;}
 static void* damagePrePtr(void){return damagePre;}
 static int damageCount(void){return damageN;}
 static uint32_t damageEvent(int i){return damageEvents[i];}
-static void* damageFunction(int id){switch(id){
-case 0:return (void*)nox_xxx_parseDamageTypeByName_4E0A00;
-case 1:return (void*)nox_xxx_projectileReflect_4E0A70;
-case 2:return (void*)nox_xxx_damageDefaultProc_4E0B30;
-case 3:return (void*)nox_xxx_gameballOnPlayerDamage_4E1230;
-case 4:return (void*)nox_xxx_itemApplyDefendEffect2_4E1320;
-case 5:return (void*)nox_xxx_itemApplyPreDamageEffect_4E13B0;
-case 6:return (void*)sub_4E1400;
-case 7:return (void*)sub_4E1470;
-case 8:return (void*)sub_4E14A0;
-case 9:return (void*)sub_4E14B0;
-case 10:return (void*)nox_xxx_damageArmor_4E1500;
-case 11:return (void*)nox_xxx_playerDamageWeapon_4E1560;
-case 12:return (void*)nox_xxx_itemDestroyed_4E1650;
-case 13:return (void*)nox_xxx_equipDamage_4E16D0;
-case 14:return (void*)nox_server_handler_PlayerDamage_4E17B0;
-case 15:return (void*)nox_xxx_playerDecrementHPMana_4E20F0;
-case 16:return (void*)nox_xxx_playerDamageItems_4E2180;
-case 17:return (void*)sub_4E2220;
-case 18:return (void*)sub_4E22A0;
-case 19:return (void*)sub_4E2330;
-case 20:return (void*)sub_4E23C0;
-case 21:return (void*)sub_4E24B0;
-case 22:return (void*)sub_4E24E0;
-case 23:return (void*)nox_xxx_damageFlammable_4E2520;
-case 24:return (void*)nox_xxx_damageBlackPowder_4E2560;
-case 25:return (void*)nox_xxx_damageMonsterGen_4E27D0;
-default:return 0;}}
-static uint64_t damageCall(int id,int u,int t,int it,int other,int damage,int kind,uint32_t floatBits,void* record,char* name,int playerIndex){
- float f;memcpy(&f,&floatBits,4);switch(id){
-case 0:{return (uint32_t)nox_xxx_parseDamageTypeByName_4E0A00(name);}
-case 1:{return (uint32_t)nox_xxx_projectileReflect_4E0A70(u,t);}
-case 2:{return (uint32_t)nox_xxx_damageDefaultProc_4E0B30(u,t,it,damage,kind);}
-case 3:{nox_xxx_gameballOnPlayerDamage_4E1230(u,t,damage);return 0;}
-case 4:{return (uint32_t)nox_xxx_itemApplyDefendEffect2_4E1320(u,t,it,(int*)record,kind);}
-case 5:{return (uint32_t)nox_xxx_itemApplyPreDamageEffect_4E13B0(u,t,it,(int)record);}
-case 6:{return (uint32_t)sub_4E1400(u,(uint32_t*)it);}
-case 7:{return (uint32_t)sub_4E1470(it);}
-case 8:{return (uint32_t)sub_4E14A0();}
-case 9:{return (uint32_t)sub_4E14B0(u,t,it,damage,kind);}
-case 10:{return (uint32_t)nox_xxx_damageArmor_4E1500(u,t,it,damage,kind);}
-case 11:{nox_xxx_playerDamageWeapon_4E1560(u,t,it,other,f,kind);return 0;}
-case 12:{return (uint32_t)nox_xxx_itemDestroyed_4E1650(playerIndex,(uint32_t*)t,(unsigned short)damage,(unsigned short)kind);}
-case 13:{nox_xxx_equipDamage_4E16D0(u,t,it,other,f,kind);return 0;}
-case 14:{return (uint32_t)nox_server_handler_PlayerDamage_4E17B0(u,t,it,damage,kind);}
-case 15:{nox_xxx_playerDecrementHPMana_4E20F0(u,(int)record,f);return 0;}
-case 16:{nox_xxx_playerDamageItems_4E2180(u,t,it,damage,f);return 0;}
-case 17:{double d=sub_4E2220(u);uint64_t bits;memcpy(&bits,&d,8);return bits;}
-case 18:{return (uint32_t)sub_4E22A0(u,t,it,damage,f,kind);}
-case 19:{return (uint32_t)sub_4E2330(u,t,it,damage,f,kind);}
-case 20:{return (uint32_t)sub_4E23C0(u,t,it,damage,kind);}
-case 21:{return (uint32_t)sub_4E24B0(u,t,it,damage,kind);}
-case 22:{return (uint32_t)sub_4E24E0(u,t,it,damage,kind);}
-case 23:{return (uint32_t)nox_xxx_damageFlammable_4E2520(u,t,it,damage,kind);}
-case 24:{return (uint32_t)nox_xxx_damageBlackPowder_4E2560(u,t,it,damage,kind);}
-case 25:{return (uint32_t)nox_xxx_damageMonsterGen_4E27D0(u,t,it,damage,kind);}
-default:return 0;}}
 */
 import "C"
 import (
@@ -89,7 +32,9 @@ import (
 	"github.com/opennox/libs/object"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/common/memmap/nox/blobdata"
+	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
+	"math"
 	"unsafe"
 )
 
@@ -160,8 +105,13 @@ func (p *portTestShopPools) damageItems() {
 		return
 	}
 	C.damageReset(C.int(bool2int(sp.SetOutput)), C.uint32_t(sp.Output))
+	// Retired non-registry adapters occupied fifteen entries in the capture map.
+	// Keep later dynamically allocated IDs stable without identifying nil.
+	p.reservedFunctionIDs += 15
 	for i := 0; i < 26; i++ {
-		p.identify(C.damageFunction(C.int(i)), 88000+uint32(i))
+		if key := portTestDamageFunction(i); key != nil {
+			p.identify(key, 88000+uint32(i))
+		}
 	}
 	p.identify(C.damageDefendPtr(), 88050)
 	p.identify(C.damagePrePtr(), 88051)
@@ -198,7 +148,7 @@ func (p *portTestShopPools) damageAction(a PortTestShopAction) uint32 {
 	state := p.temporary.world.objectives.attack
 	if sp.Registry != "" {
 		actor := p.temporaryRef(attack.Actor)
-		if actor.Damage != C.damageFunction(C.int(a.Op-1100)) {
+		if actor.Damage != portTestDamageFunction(a.Op-1100) {
 			panic("damage registry name/address mismatch")
 		}
 		if sp.RegistryValue {
@@ -207,7 +157,7 @@ func (p *portTestShopPools) damageAction(a PortTestShopAction) uint32 {
 			state.damage.result = uint64(bool2int(actor.CallDamage(p.temporaryRef(sp.Source), p.temporaryRef(sp.Weapon), int(sp.Amount), object.DamageType(sp.Kind))))
 		}
 	} else {
-		state.damage.result = uint64(C.damageCall(C.int(a.Op-1100), C.int(inventoryInt(p.temporaryRef(attack.Actor))), C.int(inventoryInt(p.temporaryRef(sp.Source))), C.int(inventoryInt(p.temporaryRef(sp.Weapon))), C.int(inventoryInt(p.temporaryRef(sp.Other))), C.int(sp.Amount), C.int(sp.Kind), C.uint32_t(sp.FloatBits), state.record, (*C.char)(internCStr(sp.Name)), C.int(sp.PlayerIndex)))
+		state.damage.result = portTestDamageInvoke(a.Op-1100, p.temporaryRef(attack.Actor), p.temporaryRef(sp.Source), p.temporaryRef(sp.Weapon), p.temporaryRef(sp.Other), sp.Amount, sp.Kind, sp.FloatBits, state.record, (*byte)(unsafe.Pointer(internCStr(sp.Name))), int32(sp.PlayerIndex))
 	}
 	p.temporary.result = uint32(state.damage.result)
 	return p.temporary.result
@@ -227,4 +177,91 @@ func (p *portTestShopPools) damageSnapshot(out []uint32) []uint32 {
 		out = append(out, *memmap.PtrUint32(0x5d4594, off))
 	}
 	return append(out, uint32(dword_5d4594_1563320))
+}
+
+func portTestDamageFunction(id int) unsafe.Pointer {
+	switch id {
+	case 2:
+		return damageIdentityKey(damageIDDefault)
+	case 8:
+		return damageIdentityKey(damageIDBall)
+	case 9:
+		return damageIdentityKey(damageIDWeapon)
+	case 10:
+		return damageIdentityKey(damageIDArmor)
+	case 14:
+		return damageIdentityKey(damageIDPlayer)
+	case 20:
+		return damageIdentityKey(damageIDSkeleton)
+	case 21:
+		return damageIdentityKey(damageIDStone)
+	case 22:
+		return damageIdentityKey(damageIDMechGolem)
+	case 23:
+		return damageIdentityKey(damageIDFlammable)
+	case 24:
+		return damageIdentityKey(damageIDBlackPowder)
+	case 25:
+		return damageIdentityKey(damageIDMonsterGenerator)
+	default:
+		return nil
+	}
+}
+func portTestDamageInvoke(op int, u, t, it, other *server.Object, amount, kind int32, floatBits uint32, record unsafe.Pointer, name *byte, playerIndex int32) uint64 {
+	f := math.Float32frombits(floatBits)
+	switch op {
+	case 0:
+		return uint64(uint32(damageTypeByName(alloc.GoString(name))))
+	case 1:
+		return uint64(uint32(damageReflect(u, t)))
+	case 2:
+		return uint64(uint32(damageDefault(u, t, it, amount, kind)))
+	case 3:
+		damageBall(u, t, amount)
+	case 4:
+		return uint64(uint32(damageDefend(u, t, it, (*int32)(record), kind)))
+	case 5:
+		return uint64(uint32(damagePre(u, t, it, (*int32)(record))))
+	case 6:
+		return uint64(uint32(bool2int(damageMelee(u, it))))
+	case 7:
+		return uint64(uint32(bool2int(damageFriendlyWeapon(it))))
+	case 8:
+		return 0
+	case 9:
+		return uint64(uint32(damageWeapon(u, t, it, amount, kind)))
+	case 10:
+		return uint64(uint32(damageArmor(u, t, it, amount, kind)))
+	case 11:
+		damageDurability(u, t, it, other, f, kind, true)
+	case 12:
+		return uint64(uint32(damageItemReport(playerIndex, t, uint16(amount), uint16(kind))))
+	case 13:
+		damageDurability(u, t, it, other, f, kind, false)
+	case 14:
+		return uint64(uint32(damagePlayer(u, t, it, amount, kind)))
+	case 15:
+		damageFraction(u, (*int32)(record), f)
+	case 16:
+		damageInventory(u, t, it, amount, f)
+	case 17:
+		return math.Float64bits(damageConductivity(u))
+	case 18:
+		return uint64(uint32(damageBlockingItem(u, t, it, amount, f, kind, true)))
+	case 19:
+		return uint64(uint32(damageBlockingItem(u, t, it, amount, f, kind, false)))
+	case 20:
+		return uint64(uint32(damageSkeleton(u, t, it, amount, kind)))
+	case 21:
+		return uint64(uint32(damageDefault(u, t, it, amount, kind)))
+	case 22:
+		return uint64(uint32(damageMechGolem(u, t, it, amount, kind)))
+	case 23:
+		return uint64(uint32(damageFlammable(u, t, it, amount, kind)))
+	case 24:
+		return uint64(uint32(damageBlackPowder(u, t, it, amount, kind)))
+	case 25:
+		return uint64(uint32(damageGenerator(u, t, it, amount, kind)))
+	}
+	return 0
 }

@@ -3,18 +3,6 @@
 
 #include "defs.h"
 
-int nox_server_handler_PlayerDamage_4E17B0(int a1, int a2, int a3, int a4, int a5);
-void nox_xxx_playerDecrementHPMana_4E20F0(int a1, int a2, float a3);
-void nox_xxx_playerDamageItems_4E2180(int a1, int a2, int a3, int a4, float a5);
-double sub_4E2220(int a1);
-int sub_4E22A0(int a1, int a2, int a3, int a4, float a5, int a6);
-int sub_4E2330(int a1, int a2, int a3, int a4, float a5, int a6);
-int sub_4E23C0(int a1, int a2, int a3, int a4, int a5);
-int sub_4E24B0(int a1, int a2, int a3, int a4, int a5);
-int sub_4E24E0(int a1, int a2, int a3, int a4, int a5);
-int nox_xxx_damageFlammable_4E2520(int a1, int a2, int a3, int a4, int a5);
-int nox_xxx_damageBlackPowder_4E2560(int a1, int a2, int a3, int a4, int a5);
-int nox_xxx_damageMonsterGen_4E27D0(int a1, int a2, int a3, int a4, int a5);
 double sub_4E3CA0();
 int nox_game_getQuestStage_4E3CC0();
 void nox_game_setQuestStage_4E3CD0(int a1);

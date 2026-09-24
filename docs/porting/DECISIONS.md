@@ -2681,3 +2681,15 @@ fixtures preserve sparse IDs, pointer/integer result bits and PlayerInit's signe
 byte extension. Gold accessor classification now follows the native registered
 key and has explicit signed/wraparound contracts. See
 [CREATE_INIT_IDENTITIES.md](CREATE_INIT_IDENTITIES.md).
+
+
+## Native damage/sound identities and direct owners
+
+Retire thirteen registered C callback identities and fifteen adjacent wrappers
+from the same fixture cohort, removing 28 exports in one qualification cycle.
+Keep distinct Stone/Default keys, both damage result caches, late-bound sound
+hooks and the fixed default sound owner for a nil callback slot. Preserve fixture
+operation widths and first-NUL semantics. Reserve fifteen retired address entries
+because map cardinality affects subsequent capture IDs; skip nil entries rather
+than identifying them. Independent C observers remain. See
+[DAMAGE_IDENTITIES.md](DAMAGE_IDENTITIES.md).

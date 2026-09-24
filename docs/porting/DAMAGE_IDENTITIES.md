@@ -53,3 +53,33 @@ fixture migration, independent review and acceptance. Local artifacts are under
 
 [Original evidence](damage-identities-baseline.json),
 [commands](damage-identities-batch.json), [selection](damage-identities-tests.txt).
+
+
+## Qualified conversion
+
+All 76 focused roots pass in each default/server/high-resolution profile without
+skips. Safe/static checks, three fresh production builds and ABI checks, headless
+character creation and explicit save/load/resume pass. The ordinary full asset
+suite matches the known baseline exactly: 304 failure events, 17 passing, two
+failing and 32 skipped packages. Existing assertions and goldens are unchanged.
+The full port corpus was not repeated; the earlier collision milestone remains
+the broad shared-identity check, and no shared registry/cache implementation changes.
+
+All accepted phases have identical source fingerprints. Eleven changed, new or
+deleted source files match review; retained export signatures/bodies and all
+1,654 original asset hashes are unchanged. All 28 retired exports are absent.
+Production cgo files fall 216→213 (250/463 eliminated); selected legacy exports
+fall 894→866 (1,024/1,890 retired). No test cgo import is removed: the fixtures
+still use independent C observers. Embedded production C bodies remain 77.
+Headers remain 157 files with 3,592 physical lines; 27 prototypes are removed
+because PlayerDamageSound had only inline declarations. Standalone production
+and test-reference C remain zero. External native-library bindings are unchanged.
+
+Luna supplied the bounded production draft and independently reviewed the two
+primary fixture migrations. Primary verified every registration mapping, sparse
+fixture key and prototype removal, retained-export identity and argument/result
+widths. The sound.go cgo correction was made before installation. Qualification
+found no behavior differences and required no assertion or capture changes.
+
+[Qualification](damage-identities-qualification.json),
+[inventory](damage-identities-inventory-after.json).

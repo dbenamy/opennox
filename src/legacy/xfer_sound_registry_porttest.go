@@ -12,7 +12,6 @@ package legacy
 int nox_xxx_mapReadWriteObjData_4F4530(nox_object_t* a1p, int a2);
 int nox_xxx_xfer_4F3E30(unsigned short a1, nox_object_t* a2, int a3);
 #include "GAME3_2.h"
-int nox_xxx_soundPlayerDamageSound_5328B0(nox_object_t*,nox_object_t*);
 static int xferSoundObserveReturn;
 static unsigned int xferSoundObserveWords[3];
 static int xferSoundObserve(void* a,void* b) {
@@ -91,9 +90,9 @@ func PortTestDamageSoundRegistryPointer(name string) unsafe.Pointer {
 	var want unsafe.Pointer
 	switch name {
 	case "DefaultDamageSound":
-		want = C.nox_xxx_soundDefaultDamageSound_532E20
+		want = damageIdentityKey(damageIDDefaultSound)
 	case "PlayerDamageSound":
-		want = C.nox_xxx_soundPlayerDamageSound_5328B0
+		want = damageIdentityKey(damageIDPlayerSound)
 	default:
 		panic("unknown damage sound registry name")
 	}

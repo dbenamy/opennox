@@ -21,8 +21,8 @@ var (
 )
 
 func init() {
-	server.DefaultDamage = C.nox_xxx_damageDefaultProc_4E0B30
-	server.DefaultDamageSound = C.nox_xxx_soundDefaultDamageSound_532E20
+	server.DefaultDamage = damageIdentityKey(damageIDDefault)
+	server.DefaultDamageSound = damageIdentityKey(damageIDDefaultSound)
 	server.DefaultXfer = C.nox_xxx_XFerDefault_4F49A0
 
 	server.RegisterObjectCreateGo("MonsterCreate", lifecycleCreateKey(createIDMonster), func(u *server.Object) { Nox_xxx_monsterCreateFn_54C480(u) })

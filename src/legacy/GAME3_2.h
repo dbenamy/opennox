@@ -57,19 +57,5 @@ void nox_xxx_recoilEffect_4E0640(int a1, int a2, int a3, int a4);
 void nox_xxx_lightngEffect_4E06F0(int a1, int a2, int a3, int a4);
 int nox_xxx_itemCheckReadinessEffect_4E0960(int a1);
 int nox_xxx_effectProjectileSpeed_4E09B0(int a1, int a2, int a3, int a4, int a5);
-int nox_xxx_parseDamageTypeByName_4E0A00(char* a1);
-int nox_xxx_projectileReflect_4E0A70(int a1, int a2);
-int nox_xxx_damageDefaultProc_4E0B30(int a1, int a2, int a3, int a4, int a5);
-void nox_xxx_gameballOnPlayerDamage_4E1230(int a1, int a2, int a3);
-int nox_xxx_itemApplyDefendEffect2_4E1320(int a1, int a2, int a3, int* a4, int a5);
-int nox_xxx_itemApplyPreDamageEffect_4E13B0(int a1, int a2, int a3, int a4);
-int sub_4E1400(int a1, uint32_t* a2);
-int sub_4E1470(int a1);
-int sub_4E14A0();
-int sub_4E14B0(int a1, int a2, int a3, int a4, int a5);
-int nox_xxx_damageArmor_4E1500(int a1, int a2, int a3, int a4, int a5);
-void nox_xxx_playerDamageWeapon_4E1560(int a1, int a2, int a3, int a4, float a5, int a6);
-int nox_xxx_itemDestroyed_4E1650(int a1, uint32_t* a2, unsigned short a3, unsigned short a4);
-void nox_xxx_equipDamage_4E16D0(int a1, int a2, int a3, int a4, float a5, int a6);
 
 #endif // NOX_PORT_GAME3_2

@@ -32,7 +32,6 @@ int sub_5319E0(int a1);
 int nox_xxx_spellCreateMoonglow_531A00(uint32_t* a1);
 int sub_531AF0(int a1);
 void sub_532930(int a1, unsigned short a2, unsigned short a3);
-int nox_xxx_soundDefaultDamageSound_532E20(nox_object_t* a1, nox_object_t* a2);
 int nox_xxx_mobActionToAnimation_533790(int a1);
 void nox_xxx_mobCalcDir_533CC0(int a1, float* a2);
 int nox_xxx_monsterHasShield_5342C0(int a1);

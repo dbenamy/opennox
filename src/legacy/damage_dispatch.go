@@ -192,7 +192,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 			if fn != nil {
 				u.CallDamageSound(actual)
 			} else {
-				nox_xxx_soundDefaultDamageSound_532E20(asObjectC(u), asObjectC(actual))
+				Nox_xxx_soundDefaultDamageSound_532E20(u, actual)
 			}
 		}
 	}
