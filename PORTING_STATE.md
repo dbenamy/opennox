@@ -20,9 +20,12 @@ dispatch. Two production cgo files and three test cgo imports disappear. See
 [CREATE_INIT_IDENTITIES.md](docs/porting/CREATE_INIT_IDENTITIES.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Next candidate: connected damage and damage-sound
-identities, including defaults and fixture consumers. Audit artifacts are under
-`build/port-after-create-init-identities/`. Stop at the milestone or a substantial question.
+recorded reversible decisions. Active batch: thirteen damage/sound identities and
+fifteen adjacent direct-owner wrappers (28 exports total), under
+`build/port-damage-identities/`. The original 76-root baseline passes in all three
+profiles, including new lifetime and first-NUL string contracts. Conversion is
+drafted, not installed. See [DAMAGE_IDENTITIES.md](docs/porting/DAMAGE_IDENTITIES.md).
+Stop at the milestone or a substantial question.
 
 Latest artifacts: `build/port-create-init-identities/`.
 
