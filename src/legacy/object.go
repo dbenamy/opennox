@@ -206,11 +206,6 @@ func nox_bomberDead_54A150(a1 *nox_object_t) int {
 	return Nox_bomberDead_54A150(asObjectS(a1))
 }
 
-//export nox_xxx_dieGlyph_54DF30
-func nox_xxx_dieGlyph_54DF30(a1 *nox_object_t) {
-	Nox_xxx_dieGlyph_54DF30(asObjectS(a1))
-}
-
 func nox_xxx_unitSetXStatus_4E4800(a1 *nox_object_t, a2 uint32) {
 	asObjectS(a1).SetXStatus(a2)
 }

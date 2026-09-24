@@ -189,7 +189,7 @@ func portTestGeneratorObjectsCall(proxy *portTestRoamOwnerServer, u *server.Obje
 		o.policyPlayers = snapshot()
 		return 0
 	case 4:
-		C.nox_xxx_dieMonsterGen_54E630(C.int(combatPtr(u)))
+		generatorDeath(u)
 	case 5:
 		return uint32(generatorPick(u, (*types.Pointf)(p), o.source))
 	case 6:

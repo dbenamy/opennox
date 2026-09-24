@@ -6,7 +6,6 @@ import (
 	"fmt"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/legacy"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"testing"
 	"unsafe"
@@ -62,7 +61,7 @@ func TestPlayerDeathAbilityCleanup(t *testing.T) {
 					ad.ExecList = &entries[0]
 				}
 				o.reset()
-				ccall.CallVoidPtr(server.PortTestPlayerDeathCallback(), u.CObj())
+				server.PortTestPlayerDeathCallback()(u)
 				r := row{Name: name, Buffs: u.Buffs, Dur: u.BuffsDur, Power: u.BuffsPower, Cooldowns: ad.Cooldowns, Reports: o.state()}
 				if r.Buffs != 0 || r.Dur != [32]uint16{} || r.Power != [32]uint8{} || r.Cooldowns != [server.AbilityMax]int{} || ad.ExecList != nil {
 					t.Fatal("death cleanup retained buffs or abilities")

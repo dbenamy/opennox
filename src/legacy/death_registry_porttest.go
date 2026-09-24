@@ -31,20 +31,20 @@ type portTestDeathRegistration struct {
 
 func portTestDeathRegistrations() []portTestDeathRegistration {
 	return []portTestDeathRegistration{
-		{"PlayerDie", C.nox_xxx_diePlayer_54D2B0, 0},
-		{"PotionDie", C.nox_xxx_diePotion_54CBB0, 0},
-		{"ImpEggDie", C.nox_xxx_dieImpEgg_54CAE0, 0},
-		{"GlyphDie", C.nox_xxx_dieGlyph_54DF30, 0},
-		{"BarrelDie", C.nox_xxx_dieBarrel_54DFA0, 0},
-		{"CreateObjectDie", C.nox_xxx_dieCreateObject_54E010, 132},
-		{"SpawnObjectDie", C.nox_xxx_dieSpawnObject_54E070, 132},
-		{"PolypDie", C.nox_xxx_diePolyp_54CB10, 0},
-		{"MarkerDie", C.nox_xxx_dieMarker_54E460, 0},
-		{"WeaponDie", C.nox_xxx_dieWeapon_54E370_obj_die, 0},
-		{"ArmorDie", C.nox_xxx_dieArmor_54E170_obj_die, 0},
-		{"BoulderDie", C.nox_xxx_dieBoulder_54E4B0, 0},
-		{"GameBallDie", C.nox_xxx_dieGameBall_54E620, 0},
-		{"MonsterGeneratorDie", C.nox_xxx_dieMonsterGen_54E630, 0},
+		{"PlayerDie", deathKey(deathIdentityPlayer), 0},
+		{"PotionDie", deathKey(deathIdentityPotion), 0},
+		{"ImpEggDie", deathKey(deathIdentityImpEgg), 0},
+		{"GlyphDie", deathKey(deathIdentityGlyph), 0},
+		{"BarrelDie", deathKey(deathIdentityBarrel), 0},
+		{"CreateObjectDie", deathKey(deathIdentityCreateObject), 132},
+		{"SpawnObjectDie", deathKey(deathIdentitySpawnObject), 132},
+		{"PolypDie", deathKey(deathIdentityPolyp), 0},
+		{"MarkerDie", deathKey(deathIdentityMarker), 0},
+		{"WeaponDie", deathKey(deathIdentityWeapon), 0},
+		{"ArmorDie", deathKey(deathIdentityArmor), 0},
+		{"BoulderDie", deathKey(deathIdentityBoulder), 0},
+		{"GameBallDie", deathKey(deathIdentityGameBall), 0},
+		{"MonsterGeneratorDie", deathKey(deathIdentityMonsterGenerator), 0},
 	}
 }
 

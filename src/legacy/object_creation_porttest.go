@@ -124,11 +124,11 @@ func portTestCreationCall(u *server.Object, op int) uint32 {
 	case 7:
 		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_createRewardMarker_54CAC0(C.int(p)))))
 	case 8:
-		return uint32(C.nox_xxx_dieImpEgg_54CAE0(C.int(p)))
+		return objectDeathImpEgg(u)
 	case 9:
-		C.nox_xxx_diePolyp_54CB10(C.int(p))
+		diePolyp(u)
 	case 10:
-		C.nox_xxx_diePotion_54CBB0(C.int(p))
+		objectDeathPotion(u)
 	default:
 		panic("invalid creation operation")
 	}

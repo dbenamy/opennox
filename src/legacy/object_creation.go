@@ -253,16 +253,3 @@ func nox_xxx_createRewardMarker_54CAC0(a C.int) *C.uint32_t {
 	data[53] = 0
 	return (*C.uint32_t)(u.InitData)
 }
-
-//export nox_xxx_dieImpEgg_54CAE0
-func nox_xxx_dieImpEgg_54CAE0(a C.int) C.int {
-	return C.int(objectDeathImpEgg(objectFromInt(a)))
-}
-
-//export nox_xxx_diePolyp_54CB10
-func nox_xxx_diePolyp_54CB10(a C.int) { diePolyp(objectFromInt(a)) }
-
-//export nox_xxx_diePotion_54CBB0
-func nox_xxx_diePotion_54CBB0(a C.int) {
-	objectDeathPotion(objectFromInt(a))
-}

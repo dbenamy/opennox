@@ -11,7 +11,6 @@ import (
 	"github.com/opennox/opennox/v1/internal/netlist"
 	"github.com/opennox/opennox/v1/legacy"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"testing"
 	"unsafe"
@@ -92,7 +91,7 @@ func TestPlayerDeathInformation(t *testing.T) {
 						}
 					}
 					objectXferSetWord(u.CObj(), 520, uint32(uintptr(unsafe.Pointer(cause))))
-					ccall.CallVoidPtr(server.PortTestPlayerDeathCallback(), u.CObj())
+					server.PortTestPlayerDeathCallback()(u)
 					r := record{Name: name, Source: objectXferGetWord(unsafe.Pointer(ud), 304), Reports: o.state()}
 					want := []byte{169, 14, 0, 0, 0, 0, byte(u.NetCode), byte(u.NetCode >> 8), byte(which), byte(which >> 8), kind}
 					binary.LittleEndian.PutUint16(want[2:], killerCode)

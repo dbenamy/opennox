@@ -2656,3 +2656,15 @@ Pin fixture pointer arguments across uintptr transport and nested Go calls.
 Chest fixtures deliberately reuse a collision owner as Death; register that
 fixture-only typed route explicitly rather than executing a native data address.
 See [COLLISION_IDENTITIES.md](COLLISION_IDENTITIES.md) for qualification and scope.
+
+
+## Native death identities and equipment text
+
+Retire fourteen death C callback identities using distinct static Go slots and the
+existing typed cache. Keep all names, closures, data sizes, parser hooks and raw
+fallback behavior. Direct fixtures preserve ImpEgg's uint32 bits, Spawn's signed
+short extension and GameBall's C-int result. Native uint16 pointers and the exact
+underlying string-interning helper remove the equipment death owner's remaining
+C type dependency without changing formatting or allocation behavior. Existing
+Glyph override coverage is reused; the new contract covers object/type storage
+and dispatch after GC. See [DEATH_IDENTITIES.md](DEATH_IDENTITIES.md).

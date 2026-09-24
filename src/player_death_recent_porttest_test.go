@@ -6,7 +6,6 @@ import (
 	"fmt"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/legacy"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"testing"
 	"unsafe"
@@ -79,7 +78,7 @@ func TestPlayerDeathRecentAssist(t *testing.T) {
 							if enabled != 0 && age < 300 && presence == 0 && candidate == 2 {
 								scores[2]++
 							}
-							ccall.CallVoidPtr(callback, u.CObj())
+							callback(u)
 							r := record{Name: name, Recent: objectXferGetWord(pl.C(), 3600), Reports: o.state()}
 							for i := range o.units {
 								p := o.units[i].UpdateDataPlayer().Player

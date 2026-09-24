@@ -134,6 +134,3 @@ func generatorSpawn(gen *server.Object, point *types.Pointf, src *server.Object)
 	core.Audio.EventObj(1002, child, 0, 0)
 	return uint32(uintptr(child.CObj()))
 }
-
-//export nox_xxx_dieMonsterGen_54E630
-func nox_xxx_dieMonsterGen_54E630(a C.int) { generatorDeath(objectFromInt(a)) }

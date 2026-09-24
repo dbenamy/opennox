@@ -7,7 +7,6 @@ import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"testing"
 )
@@ -46,7 +45,7 @@ func TestPlayerDeathCoopPendingLoad(t *testing.T) {
 			objectXferSetWord(u.UpdateDataPlayer().Player.C(), 3600, 0)
 			o.reset()
 			o.s.SetFrame(frame)
-			ccall.CallVoidPtr(server.PortTestPlayerDeathCallback(), u.CObj())
+			server.PortTestPlayerDeathCallback()(u)
 			r := row{frame, dword_5d4594_1563092, dword_5d4594_1563088, *words["restore-cleanup"], *memmap.PtrUint32(0x5D4594, 1563076), dword_5d4594_1563080, dword_5d4594_1563084 != nil}
 			if r != (row{Frame: frame, Delay: frame}) {
 				t.Fatalf("pending load after death %+v", r)

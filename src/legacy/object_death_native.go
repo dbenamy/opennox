@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "server__object__objutil.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/strman"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -129,9 +122,9 @@ func objectDeathArmor(u *server.Object) {
 	if plural && key != "ArmorDieGeneric" {
 		key += "Plural"
 	}
-	format := internWStr(core.Strings().GetStringInFile(strman.ID(key), "Die.c"))
-	name := (*C.wchar2_t)(unsafe.Pointer(unitItemName(u)))
-	textFormatLine((*server.Object)(unsafe.Pointer(holder)), (*uint16)(unsafe.Pointer(format)), textFormatPointer(unsafe.Pointer(name)))
+	format := alloc.InternCString16(core.Strings().GetStringInFile(strman.ID(key), "Die.c"))
+	name := unitItemName(u)
+	textFormatLine(holder, format, textFormatPointer(unsafe.Pointer(name)))
 	core.Audio.EventPos(id, *pos, 0, 0)
 	GetServer().DelayedDelete(u)
 }
@@ -144,49 +137,23 @@ func objectDeathWeapon(u *server.Object) {
 	}
 	key := "WeaponDieGeneric"
 	var id sound.ID
-	var name *C.wchar2_t
+	var name *uint16
 	switch {
 	case u.Material&16 != 0:
-		name = (*C.wchar2_t)(unsafe.Pointer(unitItemName(u)))
+		name = unitItemName(u)
 		key = "WeaponDieMetal"
 		id = 818
 	case u.Material&8 != 0:
-		name = (*C.wchar2_t)(unsafe.Pointer(unitItemName(u)))
+		name = unitItemName(u)
 		key = "WeaponDieWood"
 		id = 819
 	default:
-		name = internWStr(core.Armor.Sub_415B60(u))
+		name = alloc.InternCString16(core.Armor.Sub_415B60(u))
 	}
-	format := internWStr(core.Strings().GetStringInFile(strman.ID(key), "Die.c"))
-	textFormatLine((*server.Object)(unsafe.Pointer(holder)), (*uint16)(unsafe.Pointer(format)), textFormatPointer(unsafe.Pointer(name)))
+	format := alloc.InternCString16(core.Strings().GetStringInFile(strman.ID(key), "Die.c"))
+	textFormatLine(holder, format, textFormatPointer(unsafe.Pointer(name)))
 	if id != 0 {
 		core.Audio.EventPos(id, *pos, 0, 0)
 	}
 	GetServer().DelayedDelete(u)
 }
-
-//export nox_xxx_dieBarrel_54DFA0
-func nox_xxx_dieBarrel_54DFA0(a C.int) { objectDeathBarrel(objectFromInt(a)) }
-
-//export nox_xxx_dieCreateObject_54E010
-func nox_xxx_dieCreateObject_54E010(a C.int) { objectDeathCreate(objectFromInt(a), false) }
-
-//export nox_xxx_dieSpawnObject_54E070
-func nox_xxx_dieSpawnObject_54E070(a C.int) C.short {
-	return C.short(objectDeathCreate(objectFromInt(a), true))
-}
-
-//export nox_xxx_dieMarker_54E460
-func nox_xxx_dieMarker_54E460(a C.int) { objectDeathMarker(objectFromInt(a)) }
-
-//export nox_xxx_dieBoulder_54E4B0
-func nox_xxx_dieBoulder_54E4B0(a C.int) { objectDeathBoulder(objectFromInt(a)) }
-
-//export nox_xxx_dieGameBall_54E620
-func nox_xxx_dieGameBall_54E620(a C.int) C.int { return C.int(objectiveBallReset(objectFromInt(a))) }
-
-//export nox_xxx_dieArmor_54E170_obj_die
-func nox_xxx_dieArmor_54E170_obj_die(a C.int) { objectDeathArmor(objectFromInt(a)) }
-
-//export nox_xxx_dieWeapon_54E370_obj_die
-func nox_xxx_dieWeapon_54E370_obj_die(a C.int) { objectDeathWeapon(objectFromInt(a)) }

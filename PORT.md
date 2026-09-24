@@ -144,7 +144,10 @@ may precede full qualification when their evidence and remaining gates are expli
    compare every mapping before compiling; an owner list alone loses sparse keys.
    The fixture-storage review caught index28 incorrectly compacted to14 in a draft.
    When retiring callback addresses, follow each key into every callback field,
-   including test setup. Collision fixtures reused Pentagram as a Death callback;
+   including test setup. Trace pointer-returning getters and saved aliases into
+   raw dispatch calls too; five player-death tests bypassed typed dispatch through
+   a helper getter that did not mention the original C symbol. Collision fixtures
+   reused Pentagram as a Death callback;
    that cross-family route needed an explicit typed fixture adapter after the key
    became non-executable data. Preserve the original assertions and captures.
    Check dispatch ownership when reusing an existing Go implementation: equal

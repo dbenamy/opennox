@@ -334,6 +334,7 @@ target build selection and linker evidence.
 | Native map room/painting fixture owners; selected cgo files 227→225, exports 1,053→989, preamble bodies remain 78 | 0 | 0 | 0 | 0 |
 | Native catalog/effect fixture owners; selected cgo files 225→224, exports 989→978, preamble bodies 78→77 | 0 | 0 | 0 | 0 |
 | Native collision identities; selected cgo files 224→221, exports 978→927, preamble bodies remain 77 | 0 | 0 | 0 | 0 |
+| Native death identities and equipment text; selected cgo files 221→218, exports 927→913, preamble bodies remain 77 | 0 | 0 | 0 | 0 |
 
 The 33 checksum test-reference lines were retired after differential validation;
 their original source remains recoverable at `66fa7bd4`.

@@ -39,7 +39,7 @@ shared identity mechanism with the full default-client corpus; this batch reuses
 an unchanged death dispatch cache and selects all affected owners and consumers.
 Broaden if a failure makes the affected scope uncertain.
 
-Conversion is uninstalled. One Luna helper drafted bounded production changes;
+One Luna helper drafted bounded production changes;
 primary owns baseline acceptance, fixture migration, UTF-16 cleanup, integration
 and final qualification. Review preserves the current Glyph hook and all direct
 fixture return conventions. The helper initially reported an unmigrated fixture
@@ -50,3 +50,40 @@ than offsets after earlier draft deletions. Neither correction changed behavior.
 [Original evidence](death-identities-baseline.json),
 [commands](death-identities-batch.json), [selection](death-identities-tests.txt).
 Local artifacts: `build/port-death-identities/`.
+
+
+## Qualified conversion
+
+All 140 focused roots pass in default, server and high-resolution profiles without
+skips. Safe/static checks, three fresh production builds and retained/retired ABI
+checks pass. Headless character creation and explicit save/load/resume pass.
+The ordinary full asset suite matches the known baseline exactly: 304 failure
+events, with 17 passing, two failing and 32 skipped packages. The previous collision
+milestone's full default corpus remains the broad shared-identity check; this
+batch did not repeat the full port corpus.
+
+All accepted phases use identical source fingerprints. All nineteen changed,
+new or deleted source files match the reviewed draft. Retained export signatures
+and bodies, existing assertions, frozen captures and 1,654 original asset hashes
+are unchanged. The first profile run exposed five player-death tests calling a registry key
+through raw C after it became data. Their getter now returns the registered typed
+DeathFunc, and callers invoke it without changing the victim's Death slot. Only
+fixture routing and imports changed; frozen assertions are unchanged. The failed
+run remains under `contracts/`; accepted evidence is under `contracts-fixed/`.
+
+Selected production cgo files fall 221→218 (245/463 eliminated); legacy exports
+fall 927→913 (977/1,890 retired). The death registry and equipment death owner lose
+cgo; the PlayerDie export-only file is deleted. One test cgo import is removed.
+Embedded production C bodies remain 77, and headers remain 157 files with 3,638
+physical lines. Standalone production and test-reference C remain zero. External
+native-library bindings are unchanged.
+
+Luna's production draft preserved all fourteen registration closures and parser
+bindings exactly. Primary independently reconstructed mappings/removals, corrected
+source-coordinate metadata, migrated fixture calls with explicit widths, and
+removed the connected UTF-16 type adapter. The helper's stale-overlay warning
+was resolved without code changes. Final compilation and qualification validate
+the integrated result; no subscription savings are inferred from these outcomes.
+
+[Qualification](death-identities-qualification.json),
+[inventory](death-identities-inventory-after.json).

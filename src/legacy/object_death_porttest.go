@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME5.h"
-#include "server__object__die__die.h"
-*/
-import "C"
 import (
 	"bytes"
 	"encoding/binary"
@@ -143,24 +138,23 @@ func portTestDeathPrepare(proxy *portTestRoamOwnerServer, u *server.Object, sp *
 	}
 }
 func portTestDeathCall(u *server.Object, op int) uint32 {
-	p := combatPtr(u)
 	switch op {
 	case 0:
-		C.nox_xxx_dieBarrel_54DFA0(C.int(p))
+		objectDeathBarrel(u)
 	case 1:
-		C.nox_xxx_dieCreateObject_54E010(C.int(p))
+		objectDeathCreate(u, false)
 	case 2:
-		return uint32(int32(C.nox_xxx_dieSpawnObject_54E070(C.int(p))))
+		return uint32(int32(objectDeathCreate(u, true)))
 	case 3:
-		C.nox_xxx_dieMarker_54E460(C.int(p))
+		objectDeathMarker(u)
 	case 4:
-		C.nox_xxx_dieBoulder_54E4B0(C.int(p))
+		objectDeathBoulder(u)
 	case 5:
-		return uint32(C.nox_xxx_dieGameBall_54E620(C.int(p)))
+		return uint32(int32(objectiveBallReset(u)))
 	case 6:
-		C.nox_xxx_dieArmor_54E170_obj_die(C.int(p))
+		objectDeathArmor(u)
 	case 7:
-		C.nox_xxx_dieWeapon_54E370_obj_die(C.int(p))
+		objectDeathWeapon(u)
 	default:
 		panic("death operation")
 	}

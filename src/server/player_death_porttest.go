@@ -2,7 +2,8 @@
 
 package server
 
-import "unsafe"
-
-// Read the actual registration used when parsing a PlayerDie object definition.
-func PortTestPlayerDeathCallback() unsafe.Pointer { return deathFuncs["PlayerDie"].Func }
+// Resolve the registered typed owner without changing the victim's Death slot.
+// Native registry keys are opaque identities, not executable C callbacks.
+func PortTestPlayerDeathCallback() DeathFunc {
+	return objDeath.Get(deathFuncs["PlayerDie"].Func)
+}

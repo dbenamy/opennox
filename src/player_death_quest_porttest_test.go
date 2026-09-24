@@ -10,7 +10,6 @@ import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"testing"
 	"unsafe"
@@ -91,7 +90,7 @@ func TestPlayerDeathQuestLives(t *testing.T) {
 					wantStats[2]++
 					wantStats[10] |= 2
 				}
-				ccall.CallVoidPtr(server.PortTestPlayerDeathCallback(), u.CObj())
+				server.PortTestPlayerDeathCallback()(u)
 				r := record{Name: name, Lives: objectXferGetWord(unsafe.Pointer(ud), 320), Gold: pl.GoldVal, Frame: objectXferGetWord(unsafe.Pointer(ud), 548), Slots: bytes.Clone(slots), Stats: questRuntimeStats(pl.C()), Logic: o.s.Rand.Logic.Index(), Other: o.s.Rand.Other.Index(), Reports: o.state()}
 				if r.Lives != wantLives || r.Gold != wantGold || r.Frame != wantFrame || r.Stats != wantStats || !bytes.Equal(r.Slots, wantSlots) {
 					t.Fatalf("quest lives/gold/frame/stats/slots %d/%d/%d/%v/%x want %d/%d/%d/%v/%x", r.Lives, r.Gold, r.Frame, r.Stats, r.Slots, wantLives, wantGold, wantFrame, wantStats, wantSlots)
