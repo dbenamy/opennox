@@ -1,0 +1,166 @@
+{
+  "engine_source_unchanged_from": "9adcf3d3",
+  "changed_source_files": [
+    "src/server_orchestration_player_porttest_test.go"
+  ],
+  "frozen_hash": "9e62b5a235e909219f97b671b718a09595b8765cdc82c56704e7db01d4473225",
+  "profiles": {
+    "default": {
+      "root_passes": 20,
+      "subcase_passes": 800,
+      "GOGC": "1",
+      "log_path": "build/port-complete-corpus/fixture-valid-pointers/default.log",
+      "log_sha256": "00e1d74e600705bebff07cfe21c1e17e818e62e91e474a557178c0aa77c94057"
+    },
+    "server": {
+      "root_passes": 20,
+      "subcase_passes": 800,
+      "GOGC": "1",
+      "log_path": "build/port-complete-corpus/fixture-runtime-gc/server.log",
+      "log_sha256": "b8e3a6a996a6ea7b3de9420a1834a0b13fc1a4d35d21e7581985d160059e19e0"
+    },
+    "highres": {
+      "root_passes": 20,
+      "subcase_passes": 800,
+      "GOGC": "1",
+      "log_path": "build/port-complete-corpus/fixture-runtime-gc/highres.log",
+      "log_sha256": "442e0d2410f1184e998b74530668cdfe9beaa15c8bcbcc2b31c19d7e169dbf8f"
+    }
+  },
+  "remaining_phase": {
+    "batch": "complete-port-corpus",
+    "phase": "fixture-remaining",
+    "success": true,
+    "steps": [
+      {
+        "name": "server-build",
+        "command": [
+          "env",
+          "GOGC=100",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "test",
+          "-c",
+          "-p",
+          "2",
+          "-tags",
+          "porttest,server",
+          "-o",
+          "/root/src/opennox/build/port-complete-corpus/fixture-runtime-gc/server.test",
+          "."
+        ],
+        "exit": 0,
+        "wall_seconds": 37.594726727111265
+      },
+      {
+        "name": "server",
+        "command": [
+          "go",
+          "tool",
+          "test2json",
+          "-t",
+          "-p",
+          "github.com/opennox/opennox/v1",
+          "env",
+          "GOGC=1",
+          "/root/src/opennox/build/port-complete-corpus/fixture-runtime-gc/server.test",
+          "-test.v=test2json",
+          "-test.count=20",
+          "-test.timeout=300s",
+          "-test.run=^TestServerOrchestrationPlayerReset$"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.9560741621535271
+      },
+      {
+        "name": "highres-build",
+        "command": [
+          "env",
+          "GOGC=100",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "test",
+          "-c",
+          "-p",
+          "2",
+          "-tags",
+          "porttest,highres",
+          "-o",
+          "/root/src/opennox/build/port-complete-corpus/fixture-runtime-gc/highres.test",
+          "."
+        ],
+        "exit": 0,
+        "wall_seconds": 39.616864586947486
+      },
+      {
+        "name": "highres",
+        "command": [
+          "go",
+          "tool",
+          "test2json",
+          "-t",
+          "-p",
+          "github.com/opennox/opennox/v1",
+          "env",
+          "GOGC=1",
+          "/root/src/opennox/build/port-complete-corpus/fixture-runtime-gc/highres.test",
+          "-test.v=test2json",
+          "-test.count=20",
+          "-test.timeout=300s",
+          "-test.run=^TestServerOrchestrationPlayerReset$"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.4628736679442227
+      },
+      {
+        "name": "static",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ],
+        "exit": 0,
+        "wall_seconds": 1.0666583601851016
+      }
+    ],
+    "revision": "9adcf3d38dc7ecef26bf9897823c53dcba51f83d",
+    "source_unchanged": true,
+    "wall_seconds": 80.53374872286804,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "default_step_reused": {
+    "name": "default",
+    "command": [
+      "env",
+      "GOGC=1",
+      "go",
+      "test",
+      "-p",
+      "2",
+      "-tags",
+      "porttest",
+      "-count=20",
+      "-timeout=300s",
+      "-json",
+      "-run",
+      "^TestServerOrchestrationPlayerReset$",
+      "."
+    ],
+    "exit": 0,
+    "wall_seconds": 92.62593910680152
+  },
+  "full_corpus": "pending"
+}

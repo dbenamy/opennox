@@ -1,0 +1,295 @@
+{
+  "batch": "complete-port-corpus",
+  "env": {
+    "GOMAXPROCS": "2",
+    "GOMEMLIMIT": "768MiB",
+    "NOX_DATA": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_BRIEFING_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_CLIENT_AUDIO_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "ALSOFT_DRIVERS": "null",
+    "OPENNOX_SPELLBOOK_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_DECODE_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SHOP_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_TRADE_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_CATALOG_ASSETS": "{root}/build/assets/extracted/drive_c/Nox"
+  },
+  "phases": {
+    "contracts": [
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/server.jsonl",
+          "--result",
+          "{out}/server-result.json",
+          "--timeout-seconds",
+          "3600"
+        ]
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/highres.jsonl",
+          "--result",
+          "{out}/highres-result.json",
+          "--timeout-seconds",
+          "3600"
+        ]
+      },
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/default.jsonl",
+          "--result",
+          "{out}/default-result.json",
+          "--timeout-seconds",
+          "3600"
+        ]
+      }
+    ],
+    "fixture": [
+      {
+        "name": "default-build",
+        "cwd": "{root}/src",
+        "command": [
+          "env",
+          "GOGC=100",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "test",
+          "-c",
+          "-p",
+          "2",
+          "-tags",
+          "porttest",
+          "-o",
+          "{out}/default.test",
+          "."
+        ]
+      },
+      {
+        "name": "default",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "tool",
+          "test2json",
+          "-t",
+          "-p",
+          "github.com/opennox/opennox/v1",
+          "env",
+          "GOGC=1",
+          "{out}/default.test",
+          "-test.v=test2json",
+          "-test.count=20",
+          "-test.timeout=300s",
+          "-test.run=^TestServerOrchestrationPlayerReset$"
+        ]
+      },
+      {
+        "name": "server-build",
+        "cwd": "{root}/src",
+        "command": [
+          "env",
+          "GOGC=100",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "test",
+          "-c",
+          "-p",
+          "2",
+          "-tags",
+          "porttest,server",
+          "-o",
+          "{out}/server.test",
+          "."
+        ]
+      },
+      {
+        "name": "server",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "tool",
+          "test2json",
+          "-t",
+          "-p",
+          "github.com/opennox/opennox/v1",
+          "env",
+          "GOGC=1",
+          "{out}/server.test",
+          "-test.v=test2json",
+          "-test.count=20",
+          "-test.timeout=300s",
+          "-test.run=^TestServerOrchestrationPlayerReset$"
+        ]
+      },
+      {
+        "name": "highres-build",
+        "cwd": "{root}/src",
+        "command": [
+          "env",
+          "GOGC=100",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "test",
+          "-c",
+          "-p",
+          "2",
+          "-tags",
+          "porttest,highres",
+          "-o",
+          "{out}/highres.test",
+          "."
+        ]
+      },
+      {
+        "name": "highres",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "tool",
+          "test2json",
+          "-t",
+          "-p",
+          "github.com/opennox/opennox/v1",
+          "env",
+          "GOGC=1",
+          "{out}/highres.test",
+          "-test.v=test2json",
+          "-test.count=20",
+          "-test.timeout=300s",
+          "-test.run=^TestServerOrchestrationPlayerReset$"
+        ]
+      },
+      {
+        "name": "static",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ]
+      }
+    ],
+    "fixture-remaining": [
+      {
+        "name": "server-build",
+        "cwd": "{root}/src",
+        "command": [
+          "env",
+          "GOGC=100",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "test",
+          "-c",
+          "-p",
+          "2",
+          "-tags",
+          "porttest,server",
+          "-o",
+          "{out}/server.test",
+          "."
+        ]
+      },
+      {
+        "name": "server",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "tool",
+          "test2json",
+          "-t",
+          "-p",
+          "github.com/opennox/opennox/v1",
+          "env",
+          "GOGC=1",
+          "{out}/server.test",
+          "-test.v=test2json",
+          "-test.count=20",
+          "-test.timeout=300s",
+          "-test.run=^TestServerOrchestrationPlayerReset$"
+        ]
+      },
+      {
+        "name": "highres-build",
+        "cwd": "{root}/src",
+        "command": [
+          "env",
+          "GOGC=100",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "test",
+          "-c",
+          "-p",
+          "2",
+          "-tags",
+          "porttest,highres",
+          "-o",
+          "{out}/highres.test",
+          "."
+        ]
+      },
+      {
+        "name": "highres",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "tool",
+          "test2json",
+          "-t",
+          "-p",
+          "github.com/opennox/opennox/v1",
+          "env",
+          "GOGC=1",
+          "{out}/highres.test",
+          "-test.v=test2json",
+          "-test.count=20",
+          "-test.timeout=300s",
+          "-test.run=^TestServerOrchestrationPlayerReset$"
+        ]
+      },
+      {
+        "name": "static",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ]
+      }
+    ]
+  }
+}

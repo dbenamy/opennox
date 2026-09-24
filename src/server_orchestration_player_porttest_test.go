@@ -60,11 +60,16 @@ func TestServerOrchestrationPlayerReset(t *testing.T) {
 				ud := unsafe.Slice((*byte)(u.UpdateData), int(unsafe.Sizeof(server.PlayerUpdateData{})))
 				pr := unsafe.Slice((*byte)(pl.C()), int(unsafe.Sizeof(server.Player{})))
 				offs := []int{116, 120, 124, 128, 308, 264}
-				for i, off := range offs {
-					binary.LittleEndian.PutUint32(ud[off:], uint32(0x80112233)+uint32(i))
+				// Seed pointer fields with live objects: a typed clear may invoke
+				// Go's write barrier even though this fixture uses native storage.
+				update := u.UpdateDataPlayer()
+				for i := range update.Field29 {
+					update.Field29[i] = inventory[i%len(inventory)]
 				}
+				update.Field77 = inventory[0].CObj()
+				update.Field66 = 0x80112238
 				ud[244] = 73
-				*(*uint32)(unsafe.Add(u.CObj(), 520)) = 0x76543210
+				u.Obj130 = inventory[1]
 				for i, off := range []int{4796, 4800, 4804, 4808, 4812, 3660, 3664} {
 					binary.LittleEndian.PutUint32(pr[off:], uint32(0x12345600+i))
 				}

@@ -97,6 +97,11 @@ may precede full qualification when their evidence and remaining gates are expli
    words. A Go pointer assignment can make its write barrier scan the previous
    integer bits as a managed pointer; the world-grid broad sweep caught this under
    active GC. Keep foreign list links in their original raw representation too.
+   Distinguish real pointer fields from integer/pointer unions: seed pointer-only
+   fixture fields with live non-null pointers, not arbitrary integer patterns.
+   Even native-backed records can pass their old values through Go's write barrier.
+   The player-reset full sweep exposed such an invalid fixture seed; keep typed
+   production assignments and correct the fixture without changing its goldens.
    Before the first compile, format new files, check the whitespace diff, and compare
    new export signatures with every existing header declaration. When removing a
    cgo import, check for `//export` directives too: those still need cgo even when
@@ -304,10 +309,12 @@ Reconsider the tests as the behavior and failure modes become clearer.
   environment settings override it and the effective settings are recorded.
   Independent target sweeps may run concurrently when their output directories
   and fixtures are isolated and total CPU/memory fit this VM.
-  Compare each qualified owner-name set with the accumulated selector and add
-  missing roots explicitly. Do not assume copied historical patterns are complete.
-  Audit that selector against actual compiled porttest inventories at milestones,
-  documenting intentional exclusions separately from accidental omissions.
+  The accumulated selector is `^Test`: run every root test compiled with `porttest`
+  instead of maintaining a historical list of names. Keep focused owner patterns
+  separate. Compare discovered and completed root-name sets for each profile;
+  document any intentional exclusions or diagnostic skips explicitly. The selector
+  repair found 899 existing roots omitted by the former hand-maintained pattern.
+  Safe-only roots require their own applicable safe selection.
 - **Static memory accesses:** run `go test ./common/memmap/nox -run
   '^TestCodeStatic$' -count=1` from `src` when adding or changing fixtures that
   touch mapped state. This inexpensive preflight also scans porttest files.

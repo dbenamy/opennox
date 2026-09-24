@@ -8,6 +8,7 @@ superseded status when updating it. The workflow and delegation rules live in
 
 **Progress: 142,665/142,665 original standalone C lines ported or retired;
 internal glue: 64/463 cgo files eliminated on net (399 remain).**
+Selected legacy C export bridges: **68/1,890 retired (1,822 remain)**.
 
 The glue count uses the selected project files in each Linux 386 production
 profile, measured from this phase's baseline. Directly cgo-dependent project
@@ -23,12 +24,19 @@ prototypes were removed. External native bindings are unchanged.
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
 recorded reversible decisions. Stop at the milestone or for a substantial question.
-Next: repair the accumulated test selector and qualify the complete compiled
+Active: accumulated selector repaired to `^Test`; qualify the complete compiled
 porttest corpus before further glue removal. The old selector includes only
 1,527/2,426 default/highres roots and 1,523/2,415 server roots. All omitted roots
 are porttest-tagged; this is a selection-maintenance gap, not evidence their earlier
-focused qualifications never ran. Replace the historical name list with a complete
-root-test selector, review prerequisites and record every executed/finished root.
+focused qualifications never ran. Run all three profiles and record every executed/finished root. See
+[COMPLETE_PORT_CORPUS.md](docs/porting/COMPLETE_PORT_CORPUS.md). The first full default run passed
+all 2,426 roots (one diagnostic skip). Server stopped at player reset: the fixture
+seeded an integer into an object-pointer field, causing a GC write-barrier crash.
+The fixture now uses live object pointers, including its other pointer fields;
+engine code and frozen expectations are unchanged. All three profiles pass 20 focused
+GC-stress repetitions (800 subcases each), and static checks pass. A fresh full
+three-profile sweep is pending. The 378-export draft remains uninstalled.
+
 
 ## What remains
 
@@ -145,8 +153,7 @@ historical and must not be followed as the current plan.
 
 Nine superseded binaries from the leaf-glue and transfer/sound batches were
 removed after host process/file-use checks, reclaiming 419 MiB. Their reports
-remain; rebuild older binaries from recorded revisions if needed. The current
-Go-memory binaries are retained. Journal:
+remain; rebuild older binaries from recorded revisions if needed. Those binaries were later superseded as well; see the cleanup below. Journal:
 `build/port-artifact-cleanup/superseded-leaves-xfer-binaries-20260924/`.
 
 Before string-boundary qualification, 25 unopened old Go-cache archives were
@@ -159,3 +166,15 @@ and `string-boundary-save` scenario data trees were removed after host-use and
 SHA256 checks, reclaiming 1.55 GiB. Saves and comparison outputs remain. Restore
 data before replay using the command in each run's `deduplicated-assets.json`;
 the shared script is `build/port-artifact-cleanup/restore-recent-scenario.py`.
+
+Twelve superseded production/safe binaries from `port-go-memory`,
+`port-raw-allocation` and `port-string-boundary` were removed after host-use and
+current-binary hash checks, reclaiming 558 MiB. Rebuild from `4e1e86a6`, `6ff98033`
+and `92029ddd` respectively. Current `port-unused-exports` binaries, original
+assets and all reports remain. Plan and removal journal:
+`build/port-artifact-cleanup/superseded-glue-binaries-{plan.json,removed.jsonl}`.
+
+The completed `unused-exports-save` scenario was likewise deduplicated after
+host-use and SHA256 checks, reclaiming 531 MiB. Preserve its saves and comparison
+outputs; restore original data with the command in its `deduplicated-assets.json`
+before replay. Current qualified binaries and original assets are retained.

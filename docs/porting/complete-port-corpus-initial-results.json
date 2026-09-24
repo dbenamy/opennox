@@ -1,0 +1,86 @@
+{
+  "source_commit": "9adcf3d3",
+  "corrected_fixture_not_yet_applied": true,
+  "profiles": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 3600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 2426,
+      "selected_root_tests": 2426,
+      "exit": 0,
+      "started_tests": 2426,
+      "completed_tests": 2426,
+      "started_root_tests": 2426,
+      "completed_root_tests": 2426,
+      "skipped_tests": [
+        [
+          "github.com/opennox/opennox/v1",
+          "TestMapPopulationPrerequisiteProbe"
+        ]
+      ],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 962.5685602969024,
+      "missing_started_count": 0,
+      "missing_completed_count": 0,
+      "log_sha256": "b18e7ed95fbbfa596157092cfa0a53b2396a11aa04973cbf27d8f87f0d648548"
+    },
+    "server": {
+      "tags": "porttest,server",
+      "success": false,
+      "timeout_seconds": 3600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 2415,
+      "selected_root_tests": 2415,
+      "exit": 1,
+      "started_tests": 1867,
+      "completed_tests": 1866,
+      "started_root_tests": 1867,
+      "completed_root_tests": 1866,
+      "skipped_tests": [
+        [
+          "github.com/opennox/opennox/v1",
+          "TestMapPopulationPrerequisiteProbe"
+        ]
+      ],
+      "reason": "selected test suite failed",
+      "wall_seconds": 758.2469974129926,
+      "missing_started_count": 548,
+      "missing_completed_count": 549,
+      "log_sha256": "5d62922d486ecbce87392ba35471a840e6ab192bf3b59b3311b45267be70a581"
+    }
+  },
+  "crash_test": "TestServerOrchestrationPlayerReset",
+  "crash_pointer": "0x76543210",
+  "crash_kind": "invalid pointer consumed during Go write-barrier flush",
+  "highres": "not started after server failure",
+  "original_focused_gc1_repetitions": 20,
+  "original_focused_gc1_result": "pass; did not reproduce full-run heap state"
+}

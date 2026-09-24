@@ -2432,3 +2432,14 @@ review including C preambles. Preserve live logger/sentinel declarations beside
 retired wrappers. Executable builds and remaining ABI callbacks pass; no supported
 external shared-library consumer was found. This reversible retirement preserves
 all live implementations and tests. See UNUSED_EXPORTS.md.
+
+## Complete regression selection and valid pointer fixtures
+
+Use `^Test` for the full root porttest corpus, replacing a stale manual selector
+that omitted 899 default/highres roots and 892 server roots. Keep focused owner
+patterns separately. The expanded server sweep exposed an invalid integer seed
+in the player-reset fixture's pointer-only Obj130 field. Seed live objects there
+and in the other pointer fields, preserving numeric seeds, byte assertions and
+frozen output; retain the engine's typed pointer clear. A focused original run did
+not reproduce the heap-state-dependent crash, so full qualification remains the
+gate. See COMPLETE_PORT_CORPUS.md for completed versus pending evidence.
