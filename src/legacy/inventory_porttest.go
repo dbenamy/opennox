@@ -7,13 +7,14 @@ package legacy
 #include "GAME3_3.h"
 #include "GAME4_3.h"
 static uint32_t invTrace[4097], invUseDelete, invDropResult;
+static int32_t invUseResult;
 static uint32_t* invTracePtr(void) {return invTrace;}
-static void invReset(int useDelete,int dropResult) {memset(invTrace,0,sizeof(invTrace));invUseDelete=useDelete;invDropResult=dropResult;}
+static void invReset(int useDelete,int dropResult,int32_t useResult) {memset(invTrace,0,sizeof(invTrace));invUseDelete=useDelete;invDropResult=dropResult;invUseResult=useResult;}
 static int invUse(nox_object_t* u,nox_object_t* it) {
  uint32_t i=1+6*invTrace[0]++;
  if(i+5<4097) {invTrace[i]=1;invTrace[i+1]=(uint32_t)u;invTrace[i+2]=(uint32_t)it;}
  if(invUseDelete) it->obj_flags|=0x20;
- return 1;
+ return invUseResult;
 }
 static int invDrop(nox_object_t* u,nox_object_t* it,float2* pos) {
  uint32_t i=1+6*invTrace[0]++;
@@ -65,6 +66,7 @@ import (
 )
 
 type PortTestInventorySpec struct {
+	UseResult   *int32 `json:",omitempty"` // nil preserves the original observer result of one.
 	NilDrop     bool
 	TeamMembers bool
 	Teams       [4]byte // Three players, then the first item.
@@ -175,7 +177,11 @@ func (p *portTestShopPools) inventoryPrepare() func() {
 	walls(sp.WallMode)
 	oldDecay := motionDecayHead
 	motionDecayHead = 0
-	C.invReset(C.int(bool2int(sp.UseDelete)), C.int(bool2int(sp.DropResult)))
+	useResult := int32(1)
+	if sp.UseResult != nil {
+		useResult = *sp.UseResult
+	}
+	C.invReset(C.int(bool2int(sp.UseDelete)), C.int(bool2int(sp.DropResult)), C.int32_t(useResult))
 	p.identify(C.nox_xxx_dropDefault_4ED290, 55000)
 	p.identify(C.invUsePtr(), 55001)
 	p.identify(C.invDropPtr(), 55002)
