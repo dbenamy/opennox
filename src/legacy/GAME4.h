@@ -69,9 +69,6 @@ int nox_xxx_unitGetBuffTimer_4FF550(nox_object_t* unit, int buff);
 char nox_xxx_buffGetPower_4FF570(nox_object_t* unit, int buff);
 void nox_xxx_unitClearBuffs_4FF580(nox_object_t* unit);
 int nox_xxx_spellBuffOff_4FF5B0(nox_object_t* a1, int a2);
-char* sub_5007E0(char* a1);
-int sub_500A60();
-int sub_500B70();
 int nox_xxx_creatureIsMonitored_500CC0(nox_object_t* a1, nox_object_t* a2);
 bool nox_xxx_checkSummonedCreaturesLimit_500D70(nox_object_t* a1, int a2);
 int nox_xxx_summonStart_500DA0(int a1);
@@ -97,7 +94,6 @@ int sub_5046A0(uint32_t* a1, unsigned int a2);
 int sub_504720(unsigned int a1, unsigned int a2);
 void* sub_5049D0();
 int sub_5049E0(int a1);
-int sub_5095E0();
 
 void nox_server_scriptExecuteFnForEachGroupObj_502670(unsigned char* groupPtr, int expectedType, void* a3,
 													  int a4);

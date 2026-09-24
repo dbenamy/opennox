@@ -41,8 +41,6 @@ void sub_486570(void* a1, void* a2);
 void sub_486620(void* a1);
 int sub_4873C0(int a3);
 int* sub_487810(int a1, int a2);
-int nox_xxx_wndEditProc_487D70(nox_window* a1, int a2, int a3, int a4);
-int nox_xxx_wndEditDrawNoImage_488160(int a1, int a2);
 int nox_xxx_wndStaticDrawNoImage_488D00(nox_window* a1p, nox_window_data* a2p);
 nox_window* nox_gui_newStaticText_489300(nox_window* a1, int a2, int a3, int a4, int a5, int a6, nox_window_data* a7p, nox_staticText_data* a8p);
 

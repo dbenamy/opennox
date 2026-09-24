@@ -7,7 +7,7 @@ superseded status when updating it. The workflow and delegation rules live in
 ## Status: resumed; internal C-glue removal
 
 **Progress: 142,665/142,665 original standalone C lines ported or retired;
-internal glue: 50/463 cgo files eliminated on net (413 remain).**
+internal glue: 64/463 cgo files eliminated on net (399 remain).**
 
 The glue count uses the selected project files in each Linux 386 production
 profile, measured from this phase's baseline. Directly cgo-dependent project
@@ -15,30 +15,31 @@ packages are down from six to three; 79 embedded C callback bodies remain. These
 are dependency counts, not equivalent units of work or an effort percentage.
 Production and test-reference standalone `.c` files both remain at zero.
 
-Latest qualified implementation: **internal string boundaries**, following original
-baseline `da37002b`. See [STRING_BOUNDARY.md](docs/porting/STRING_BOUNDARY.md).
-Six Go owner files no longer need local C types; three unused C exports and three
-unused string wrappers are retired. Live string/allocation behavior is unchanged.
+Latest qualified implementation: **65 unused C export bridges retired**, following
+original baseline `5fa49336`. See [UNUSED_EXPORTS.md](docs/porting/UNUSED_EXPORTS.md).
+Fourteen Go files no longer need cgo; live implementations and all tests are
+unchanged. Selected legacy exports fell from 1,887 to 1,822; 63 unused header
+prototypes were removed. External native bindings are unchanged.
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
 recorded reversible decisions. Stop at the milestone or for a substantial question.
-Active batch: retire 65 unused export bridges, preserving all live owners and
-the logger/allocator sentinel beside two retired sets. Primary's complete cohort
-scan includes C preambles and header bodies. All 164 original owner roots pass
-per profile; allocator/server package checks pass too. Draft reviewed, not installed.
-See [UNUSED_EXPORTS.md](docs/porting/UNUSED_EXPORTS.md). A systematic accumulated
-selector audit is also underway after finding more missing existing owner roots.
+Next: repair the accumulated test selector and qualify the complete compiled
+porttest corpus before further glue removal. The old selector includes only
+1,527/2,426 default/highres roots and 1,523/2,415 server roots. All omitted roots
+are porttest-tagged; this is a selection-maintenance gap, not evidence their earlier
+focused qualifications never ran. Replace the historical name list with a complete
+root-test selector, review prerequisites and record every executed/finished root.
 
 ## What remains
 
-Counts below describe the qualified internal string-boundary cleanup. Zero `.c` lines is
+Counts below describe the qualified unused-export cleanup. Zero `.c` lines is
 not a count of all C dependencies or a measure of remaining engineering effort.
 
 | Area | Remaining work or dependency |
 | --- | --- |
 | Embedded C callback glue | 79 production function bodies in Go preambles: 76 generic function-pointer dispatchers and three specialized adapters. |
 | Callback routes | Some Go implementations still call each other through C-compatible addresses. More direct Go dispatch is possible; shared raw fallbacks remain until their users and compatibility requirements are resolved. |
-| Declarations and C types | 157 tracked headers / 4,542 physical lines; each production profile selects 413 cgo files in three project packages (alloc, ccall, legacy). Selected-build counts replace the earlier whole-tree text count. These are mostly interface/layout machinery, not unported algorithms. |
+| Declarations and C types | 157 tracked headers / 4,479 physical lines; each production profile selects 399 cgo files in three project packages (alloc, ccall, legacy). Selected-build counts replace the earlier whole-tree text count. These are mostly interface/layout machinery, not unported algorithms. |
 | Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Removing them requires ownership/layout changes beyond function translation. |
 | External libraries | SDL2, OpenGL, OpenAL and similar native dependencies and their cgo bindings stay for this phase; their future is a subsequent discussion. |
 | Portability and release validation | Qualified target is Linux 386/SSE2 with cgo. The complete engine is not qualified as cgo-free, 64-bit, native macOS or browser/WebAssembly. Physical display and audible playback remain manual release checks. |
@@ -50,23 +51,21 @@ not reduce the 79-body count because they retain the shared fallback machinery.
 
 ## Latest qualification and evidence
 
-- Affected owners: 178 roots per production profile, no skips; exact root-name
-  sets match the original baseline. Seven applicable safe roots also match/pass.
-- Existing assertions and frozen expectations remain unchanged. The only fixture
-  edit adapts a pointer type at the direct border-lookup bridge.
-- Safe build/static checks and three fresh production binaries/ABI checks pass.
+- All 164 affected owner roots pass in default/server/highres, no skips; exact
+  root-name sets match the original baseline. Allocator/server package checks pass
+  in all profiles; binfile compiles but has no direct package tests.
+- All test/fixture files and frozen expectations remain unchanged.
+- Safe build/static checks and three fresh production binaries/ABI checks pass;
+  all 65 retired symbols are absent. No safe owner-contract run is claimed here.
 - Headless character creation and explicit save/load/resume pass.
 - Full-suite results match the known baseline exactly: 304 failure events,
   with 17 passing, two failing and 32 skipped packages.
-- Original safe-mode fixture limitations affect server-config setup and the tile
-  state observer; see the report. Do not describe the full owner set as safe-tested.
-- The preceding memory-helper milestone ran the full accumulated corpus:
-  1,280 default, 1,276 server and 1,280 highres roots, with no failures and only
-  the allowed map-population diagnostic skip. Later batches use affected owners.
-  This batch added 129 newly qualified existing roots missing from that pattern.
+- All phases used identical source fingerprints. The prior memory-helper sweep
+  covered the then-current accumulated selector (1,280/1,276/1,280 roots), not
+  the newly inventoried complete corpus. The broader sweep is still pending.
 
-Report: [STRING_BOUNDARY.md](docs/porting/STRING_BOUNDARY.md).
-Evidence: [qualification](docs/porting/string-boundary-qualification.json).
+Report: [UNUSED_EXPORTS.md](docs/porting/UNUSED_EXPORTS.md).
+Evidence: [qualification](docs/porting/unused-exports-qualification.json).
 Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expected-suite.jsonl).
 
 ## Goal, next work and open review items
@@ -99,10 +98,11 @@ its return cannot be replaced with a void-dispatch result. See
 [collision compatibility decisions](docs/porting/COLLISION_REGISTRY.md).
 Other behavior/compatibility findings are recorded in [DECISIONS.md](docs/porting/DECISIONS.md).
 
-Luna drafted the string-boundary migration and unused wrappers. Primary verified
-all changes and the historical Trigger read path, and caught a test bridge needing
-a matching byte-pointer signature. Root/package assertions are unchanged. The
-original-source tests and exact selected names are recorded in the batch report.
+Luna drafted bounded export/prototype removals. Primary corrected broad inventory
+omissions, independently checked all 65 symbols and retained live globals. A later
+selector audit also needed correction to use the full regex rather than literal
+alternatives. Keep inventory algorithm design with the primary and prefer bounded,
+mechanically verifiable helper assignments.
 
 ## Resume and artifact recovery
 
@@ -114,8 +114,8 @@ The current Go toolchain is `/usr/lib/go-1.26/bin`. Follow the
 [build environment instructions](PORT.md#build-and-test-environment), including
 sourcing `build/baseline/env.sh` in every Go shell.
 
-Latest local artifacts are under `build/port-string-boundary/`:
-`safe-contracts/`, `contracts/`, `safe/opennox-safe`, and
+Latest local artifacts are under `build/port-unused-exports/`:
+`helpers/`, `contracts/`, `safe/opennox-safe`, and
 `production/production/bin/{opennox,opennox-hd,opennox-server}`.
 Source, tests, reports and qualification metadata are committed; ignored local
 binaries/logs/drafts are not backed up by pushing Git. Completed finalizers are

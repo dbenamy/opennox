@@ -3,9 +3,6 @@
 
 #include "defs.h"
 
-int nox_xxx_wallMath_427F30(int2* a1, int* a2);
-int sub_428170(void* a1, int4* a2);
-int nox_xxx_pointInRect_4281F0(int2* a1, int4* a2);
 unsigned char nox_xxx_wall_42A6C0(unsigned char a1, unsigned char a2);
 int nox_xxx_objectTOCgetTT_42C2B0(unsigned short a1);
 nox_video_bag_image_t* nox_xxx_readImgMB_42FAA0(int known_idx, char a2, char* a3);

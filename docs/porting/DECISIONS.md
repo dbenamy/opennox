@@ -2424,3 +2424,11 @@ external library API. Preserve live string allocation and callback entrypoints.
 Retaining dead wrappers solely to fix/test their ownership quirks would obstruct
 internal glue removal. This reversible internal API cleanup is recorded in
 STRING_BOUNDARY.md, including the limits of external-consumer discovery.
+
+## Retire proven-unused internal exports
+
+Remove 65 forwarding exports and 63 prototypes after whole-source reachability
+review including C preambles. Preserve live logger/sentinel declarations beside
+retired wrappers. Executable builds and remaining ABI callbacks pass; no supported
+external shared-library consumer was found. This reversible retirement preserves
+all live implementations and tests. See UNUSED_EXPORTS.md.

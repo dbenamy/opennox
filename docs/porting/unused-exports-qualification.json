@@ -1,0 +1,433 @@
+{
+  "baseline_commit": "5fa49336",
+  "helpers": {
+    "batch": "unused-exports",
+    "phase": "helpers",
+    "success": true,
+    "steps": [
+      {
+        "name": "default",
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-count=1",
+          "./internal/binfile",
+          "./legacy/common/alloc",
+          "./server"
+        ],
+        "exit": 0,
+        "wall_seconds": 1.0196026109624654
+      },
+      {
+        "name": "server",
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-count=1",
+          "-tags",
+          "server",
+          "./internal/binfile",
+          "./legacy/common/alloc",
+          "./server"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.9893888949882239
+      },
+      {
+        "name": "highres",
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-count=1",
+          "-tags",
+          "highres",
+          "./internal/binfile",
+          "./legacy/common/alloc",
+          "./server"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.9932139459997416
+      }
+    ],
+    "revision": "5fa49336aa43111dd21a88c7b97617951bc7eb25",
+    "source_unchanged": true,
+    "wall_seconds": 3.526500327978283,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "contracts": {
+    "batch": "unused-exports",
+    "phase": "contracts",
+    "success": true,
+    "steps": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/unused-exports-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-unused-exports/contracts/default.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-unused-exports/contracts/default-result.json",
+          "--timeout-seconds",
+          "1800",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 141.12671057507396
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/unused-exports-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-unused-exports/contracts/server.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-unused-exports/contracts/server-result.json",
+          "--timeout-seconds",
+          "1800",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 144.17451752908528
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/unused-exports-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-unused-exports/contracts/highres.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-unused-exports/contracts/highres-result.json",
+          "--timeout-seconds",
+          "1800",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 72.65287309000269
+      }
+    ],
+    "revision": "5fa49336aa43111dd21a88c7b97617951bc7eb25",
+    "source_unchanged": true,
+    "wall_seconds": 358.528188819997,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "safe": {
+    "batch": "unused-exports",
+    "phase": "safe",
+    "success": true,
+    "steps": [
+      {
+        "name": "build",
+        "command": [
+          "env",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-tags",
+          "safe",
+          "-o",
+          "/root/src/opennox/build/port-unused-exports/safe/opennox-safe",
+          "./cmd/opennox"
+        ],
+        "exit": 0,
+        "wall_seconds": 62.51768140285276
+      },
+      {
+        "name": "static",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ],
+        "exit": 0,
+        "wall_seconds": 1.0069272289983928
+      }
+    ],
+    "revision": "5fa49336aa43111dd21a88c7b97617951bc7eb25",
+    "source_unchanged": true,
+    "wall_seconds": 63.97555952495895,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "production": {
+    "batch": "unused-exports",
+    "phase": "production",
+    "success": true,
+    "steps": [
+      {
+        "name": "production",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/qualify_production.py",
+          "/root/src/opennox/docs/porting/unused-exports-batch.json",
+          "--out",
+          "/root/src/opennox/build/port-unused-exports/production/production"
+        ],
+        "exit": 0,
+        "wall_seconds": 228.76561842113733
+      }
+    ],
+    "revision": "5fa49336aa43111dd21a88c7b97617951bc7eb25",
+    "source_unchanged": true,
+    "wall_seconds": 229.05977633292787,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "contract_selections": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 1800,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 164,
+      "selected_root_tests": 164,
+      "exit": 0,
+      "started_tests": 164,
+      "completed_tests": 164,
+      "started_root_tests": 164,
+      "completed_root_tests": 164,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 141.01616941881366
+    },
+    "server": {
+      "tags": "porttest,server",
+      "success": true,
+      "timeout_seconds": 1800,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 164,
+      "selected_root_tests": 164,
+      "exit": 0,
+      "started_tests": 164,
+      "completed_tests": 164,
+      "started_root_tests": 164,
+      "completed_root_tests": 164,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 144.07690973603167
+    },
+    "highres": {
+      "tags": "porttest,highres",
+      "success": true,
+      "timeout_seconds": 1800,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 164,
+      "selected_root_tests": 164,
+      "exit": 0,
+      "started_tests": 164,
+      "completed_tests": 164,
+      "started_root_tests": 164,
+      "completed_root_tests": 164,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 72.54734312696382
+    }
+  },
+  "exact_baseline_selected_root_sets_match": true,
+  "source_review": {
+    "unchanged_other_source_inputs": 3046,
+    "unchanged_test_and_fixture_files": 1733,
+    "scope": "65 unused Go export functions and63 prototypes removed; logger and DeadWord retained exactly; no other Go declarations changed.",
+    "reachability_report": "docs/porting/unused-exports-reachability.json"
+  },
+  "production_detail": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 59.85955528006889,
+        "sha256": "2a1a5fdae9d2db6feaca390b0d64877f0623197110e2e37f1ca3a52fc4212c00",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 10.150460534030572,
+        "sha256": "66f4ae5f66ae94f5a3410f94be390a88f63a207d982ca7686751a8ee9533f9a0",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 59.44741235207766,
+        "sha256": "0f00692c4f54a67eac22f5d3120d0032ee5b71e91269e0cc9c15776310ea472e",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "unused-exports-save": {
+        "exit": 0,
+        "wall_seconds": 48.57129541411996,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 47.97202588012442,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c-save",
+          "binary_sha256": "2a1a5fdae9d2db6feaca390b0d64877f0623197110e2e37f1ca3a52fc4212c00",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-unused-exports/production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/unused-exports-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Retire 65 unused internal C export bridges; preserve all live owners and callback identities",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "ef7d53d7078e4c858c2af8311f6ca937847eec6a0242da0fc1332c6fda9be60b"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 44.93908134801313,
+      "failure_entries": 304,
+      "packages": {
+        "skip": 32,
+        "pass": 17,
+        "fail": 2
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "selected_cgo_files": 399,
+  "direct_project_cgo_packages": 3,
+  "retired_c_exports": 65,
+  "removed_local_cgo_imports": 14,
+  "standalone_production_c_lines": 0,
+  "standalone_test_c_lines": 0
+}

@@ -3,7 +3,6 @@
 
 #include "defs.h"
 
-int nox_xxx_math_509EA0(int a1);
 int nox_xxx_monsterPopAction_50A160(nox_object_t* a1p);
 #define nox_xxx_monsterPushAction_50A260(obj, a2) nox_xxx_monsterPushAction_50A260_impl(obj, a2, __FILE__, __LINE__)
 void* nox_xxx_monsterPushAction_50A260_impl(nox_object_t* a1p, int a2, char* file, int line);
@@ -17,7 +16,6 @@ void sub_510E20(int a1);
 signed int nox_xxx_updateSentryGlobe_510E60(int a1);
 void nox_xxx_updateSprings_5113A0();
 int nox_xxx_unitSetDecayTime_511660(nox_object_t* a1, int a2);
-void sub_516FC0();
 int sub_517590(float a1, float a2);
 void nox_xxx_moveUpdateSpecial_517970(nox_object_t* unit);
 void nox_xxx_unitsGetInCircle_517F90(float2* a1, float a2, void* fnc, void* data);

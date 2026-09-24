@@ -7,9 +7,6 @@
 void sub_4A1A40(int a1);
 int sub_4A1BE0(int a1);
 int nox_client_guiXxxDestroy_4A24A0();
-int nox_xxx_wndListboxProcWithoutData10_4A28E0(uint32_t* a1, int a2, unsigned int a3, int a4);
-int nox_xxx_wndListboxProcPre_4A30D0(nox_window* win, unsigned int a2, uint32_t a3, int a4);
-int sub_4A4800(int a1);
 int nox_game_showSelClass_4A4840();
 int sub_4A4970();
 int sub_4A49A0();

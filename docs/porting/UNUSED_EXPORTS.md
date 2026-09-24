@@ -1,7 +1,8 @@
 # Unused internal export bridges
 
-Status: original baseline qualified at `92029ddd`; removal draft reviewed but not
-installed. This is a reachability-based cleanup, not an algorithm replacement.
+Status: qualified. Original baseline at `92029ddd`, frozen in `5fa49336`;
+the reviewed removal passes the completed-batch gates. This is a reachability-based cleanup,
+not an algorithm replacement.
 
 Retire 65 unused C export bridges: twelve complete forwarding files, the player
 departure adapter beside `scriptLog`, and six class-allocation adapters beside
@@ -64,3 +65,23 @@ claimed; the broad inventory needed more review than the bounded draft.
 
 Artifacts: `build/port-unused-exports/`; original evidence:
 [unused-exports-c-qualification.json](unused-exports-c-qualification.json).
+
+## Completed qualification
+
+All 164 original owner roots pass in each production profile without skips, with
+identical selected-name sets. Package checks, safe build/static checks, three fresh
+production builds/ABI checks and headless character creation/save/load/resume pass.
+The package suite matches all 304 known failure events and package outcomes exactly.
+All phases share identical source fingerprints; 1,733 test/fixture files are unchanged.
+Safe owner contracts were not part of this batch's scope.
+
+Selected project cgo files fall from 413 to 399 in each profile: 64/463 removed on
+net since this phase began. Three project packages still use cgo. Selected legacy
+exports fall from 1,887 to 1,822; 157 headers now contain 4,479 physical lines.
+Embedded C callback bodies remain 79; standalone production/test C remains zero.
+External native dependency selections are unchanged.
+
+The systematic selector audit found 899 omitted default/highres roots and 892
+server roots. Repair and full-corpus qualification follow this chunk before further
+source conversion. Earlier focused qualifications remain valid for their recorded
+scope. See [unused-exports-qualification.json](unused-exports-qualification.json).
