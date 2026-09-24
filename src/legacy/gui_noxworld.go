@@ -181,18 +181,6 @@ func (s *Nox_gui_server_ent_t) SetFlags(v noxflags.GameFlag) {
 	*(*uint16)(unsafe.Pointer(&s.FlagsVal)) = uint16(v) // flags
 }
 
-//export nox_client_refreshServerList_4378B0
-func nox_client_refreshServerList_4378B0() { Nox_client_refreshServerList_4378B0() }
-
-//export sub_438770_waitList
-func sub_438770_waitList() { Sub_438770_waitList() }
-
-//export sub_554D10
-func sub_554D10() int { return Sub_554D10() }
-
-//export sub_4373A0
-func sub_4373A0() { Sub_4373A0() }
-
 func Sub_4A0410(addr string, port int) bool {
 	cstr := CString(addr)
 	defer StrFree(cstr)

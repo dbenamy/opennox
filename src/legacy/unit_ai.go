@@ -28,10 +28,6 @@ type Nox_player_polygon_check_data struct {
 	Field_0 [35]uint32
 }
 
-//export nox_xxx_gameSetAudioFadeoutMb_501AC0
-func nox_xxx_gameSetAudioFadeoutMb_501AC0(v int) { Nox_xxx_gameSetAudioFadeoutMb_501AC0(v) }
-
-//export nox_xxx_monsterPopAction_50A160
 func nox_xxx_monsterPopAction_50A160(a1 *nox_object_t) int {
 	return asObjectS(a1).MonsterPopAction()
 }

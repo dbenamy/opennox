@@ -35,12 +35,6 @@ func nox_xxx_wallFlags(ind int) uint32 {
 	return GetServer().S().Walls.DefByInd(ind).Flags32
 }
 
-//export sub_526CA0
-func sub_526CA0(a1 *C.char) int {
-	return Sub_526CA0(GoString(a1))
-}
-
-//export nox_xxx_mapDamageToWalls_534FC0
 func nox_xxx_mapDamageToWalls_534FC0(a1 *C.int4, a2 unsafe.Pointer, a3 C.float, a4, a5 int, a6 unsafe.Pointer) C.bool {
 	rect := image.Rect(int(a1.field_0), int(a1.field_4), int(a1.field_8), int(a1.field_C))
 	return C.bool(GetServer().Nox_xxx_mapDamageToWalls_534FC0(rect, *(*types.Pointf)(a2), float32(a3), a4, object.DamageType(a5), AsObjectP(a6)))

@@ -52,12 +52,6 @@ func nox_xxx_cliUpdateCameraPos_435600(x, y int) {
 	Nox_xxx_cliUpdateCameraPos_435600(x, y)
 }
 
-//export sub_437260
-func sub_437260() {
-	Sub_437260()
-}
-
-//export nox_draw_setMaterial_4340A0
 func nox_draw_setMaterial_4340A0(ind, r, g, b int) {
 	GetClient().R2().Data().SetMaterialRGB(ind, r, g, b)
 }
@@ -67,7 +61,6 @@ func sub_434080(a1 int) {
 	GetClient().R2().Data().SetField262(a1)
 }
 
-//export nox_xxx_drawSetTextColor_434390
 func nox_xxx_drawSetTextColor_434390(a1 int) {
 	GetClient().R2().Data().SetTextColor(noxcolor.RGBA5551(a1))
 }
@@ -77,12 +70,10 @@ func nox_xxx_drawSetColor_4343E0(a1 int) {
 	GetClient().R2().Data().SetColor(noxcolor.RGBA5551(a1))
 }
 
-//export nox_client_drawSetColor_434460
 func nox_client_drawSetColor_434460(a1 int) {
 	GetClient().R2().Data().SetColor2(noxcolor.RGBA5551(a1))
 }
 
-//export nox_client_drawEnableAlpha_434560
 func nox_client_drawEnableAlpha_434560(a1 int) {
 	GetClient().R2().Data().SetAlphaEnabled(a1 != 0)
 }
@@ -107,23 +98,19 @@ func nox_client_drawSetAlpha_434580(a C.uchar) {
 	GetClient().R2().Data().SetAlpha(byte(a))
 }
 
-//export nox_client_drawAddPoint_49F500
 func nox_client_drawAddPoint_49F500(x, y int) {
 	GetClient().R2().AddPoint(image.Pt(x, y))
 }
 
-//export nox_xxx_rasterPointRel_49F570
 func nox_xxx_rasterPointRel_49F570(x, y int) {
 	GetClient().R2().AddPointRel(image.Pt(x, y))
 }
 
-//export nox_client_drawLineFromPoints_49E4B0
 func nox_client_drawLineFromPoints_49E4B0() int {
 	r := GetClient().R2()
 	return bool2int(r.DrawLineFromPoints(r.Data().Color2()))
 }
 
-//export nox_draw_set54RGB32_434040
 func nox_draw_set54RGB32_434040(cl int) {
 	c := noxrender.SplitColor(noxcolor.RGBA5551(cl))
 	GetClient().R2().Data().SetColorInt54(noxrender.RGB{
@@ -138,36 +125,30 @@ func sub_437290() {
 	GetClient().R2().SetRectFullScreen()
 }
 
-//export nox_client_drawRectFilledOpaque_49CE30
 func nox_client_drawRectFilledOpaque_49CE30(a1, a2, a3, a4 int) {
 	r := GetClient().R2()
 	r.DrawRectFilledOpaque(a1, a2, a3, a4, r.Data().Color2())
 }
 
-//export nox_client_drawRectFilledAlpha_49CF10
 func nox_client_drawRectFilledAlpha_49CF10(a1, a2, a3, a4 int) {
 	GetClient().R2().DrawRectFilledAlpha(a1, a2, a3, a4)
 }
 
-//export nox_client_drawBorderLines_49CC70
 func nox_client_drawBorderLines_49CC70(a1, a2, a3, a4 int) {
 	r := GetClient().R2()
 	r.DrawBorder(a1, a2, a3, a4, r.Data().Color2())
 }
 
-//export nox_client_drawPixel_49EFA0
 func nox_client_drawPixel_49EFA0(a1, a2 int) {
 	r := GetClient().R2()
 	r.DrawPixel(image.Pt(a1, a2), r.Data().Color2())
 }
 
-//export nox_xxx_drawPointMB_499B70
 func nox_xxx_drawPointMB_499B70(a1, a2, a3 int) {
 	r := GetClient().R2()
 	r.DrawPoint(image.Pt(a1, a2), a3, r.Data().Color2())
 }
 
-//export nox_xxx_guiFontHeightMB_43F320
 func nox_xxx_guiFontHeightMB_43F320(fnt unsafe.Pointer) int {
 	r := GetClient().R2()
 	return r.FontHeight(r.GetFonts().AsFont(fnt))
@@ -211,7 +192,6 @@ func nox_draw_drawStringHL_43F730(font unsafe.Pointer, sp *wchar2_t, x, y int) i
 	return r.DrawStringHL(r.GetFonts().AsFont(font), GoWString(sp), image.Point{X: x, Y: y})
 }
 
-//export nox_xxx_drawStringWrap_43FAF0
 func nox_xxx_drawStringWrap_43FAF0(font unsafe.Pointer, sp *wchar2_t, x, y, maxW, maxH int) int {
 	r := GetClient().R2()
 	return r.DrawStringWrapped(r.GetFonts().AsFont(font), GoWString(sp), image.Rect(x, y, x+maxW, y+maxH))
@@ -235,12 +215,10 @@ func nox_xxx_drawStringStyle_43F7B0(font unsafe.Pointer, sp *wchar2_t, x, y int)
 	return r.DrawStringStyle(r.GetFonts().AsFont(font), GoWString(sp), image.Point{X: x, Y: y})
 }
 
-//export nox_video_drawCircleColored_4C3270
 func nox_video_drawCircleColored_4C3270(a1, a2, a3, a4 int) {
 	GetClient().R2().DrawCircle(a1, a2, a3, noxcolor.RGBA5551(a4))
 }
 
-//export nox_client_drawImageAt_47D2C0
 func nox_client_drawImageAt_47D2C0(img *nox_video_bag_image_t, x, y int) {
 	GetClient().R2().DrawImageAt(asImage(img), image.Point{X: x, Y: y})
 }
@@ -254,25 +232,12 @@ func nox_video_getImagePixdata_42FB30(img *nox_video_bag_image_t) unsafe.Pointer
 	return unsafe.Pointer(&data[0])
 }
 
-//export sub_4AE6F0
 func sub_4AE6F0(cx, cy, rad, ang, ccl int) {
 	GetClient().R2().DrawCircleSegment(cx, cy, rad, ang, noxcolor.RGBA5551(ccl))
 }
 
-//export sub_473970
-func sub_473970(a1, a2p *C.int2) {
-	a2 := Sub_473970(image.Pt(int(a1.field_0), int(a1.field_4)))
-	a2p.field_0 = C.int(a2.X)
-	a2p.field_4 = C.int(a2.Y)
-}
-
 func nox_client_isConnected_43C700() int {
 	return bool2int(Nox_client_isConnected())
-}
-
-//export nox_video_inFadeTransition_44E0D0
-func nox_video_inFadeTransition_44E0D0() int {
-	return Nox_video_inFadeTransition_44E0D0()
 }
 
 //export sub_4B6720

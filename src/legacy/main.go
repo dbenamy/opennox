@@ -26,14 +26,6 @@ var (
 	Sub_4AA9C0                                            func() int
 )
 
-//export nox_exit
-func nox_exit(exitCode int) { Nox_exit(exitCode) }
-
-//export nox_xxx_gameGetScreenBoundaries_43BEB0_get_video_mode
-func nox_xxx_gameGetScreenBoundaries_43BEB0_get_video_mode(w, h, d *int) {
-	Nox_xxx_gameGetScreenBoundaries_43BEB0_get_video_mode(w, h, d)
-}
-
 //export sub_4AA9C0
 func sub_4AA9C0() int { return Sub_4AA9C0() }
 

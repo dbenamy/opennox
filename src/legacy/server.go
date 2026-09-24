@@ -106,19 +106,12 @@ func sub_40A040_settings(a1 C.short, a2 C.uchar) {
 	GetServer().Sub40A040settings(int(a1), int(a2))
 }
 
-//export sub_40A300
 func sub_40A300() int {
 	return bool2int(GetServer().GetFlag3592())
 }
 
-//export nox_xxx_mapLoad_4D2450
 func nox_xxx_mapLoad_4D2450(a1 *C.char) {
 	GetServer().SwitchMap(GoString(a1))
-}
-
-//export sub_40A1A0
-func sub_40A1A0() int {
-	return Sub_40A1A0()
 }
 
 func gameFPS() uint32 {

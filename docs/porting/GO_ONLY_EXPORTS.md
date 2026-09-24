@@ -1,7 +1,7 @@
 # Retire C interfaces without native callers
 
-Status: baseline frozen from qualified source `f6f5ee4c`; reviewed conversion
-not yet installed. See [baseline](go-only-exports-baseline.json) and
+Status: baseline frozen at `ac3a842c` from qualified source `f6f5ee4c`;
+conversion fully qualified. See [baseline](go-only-exports-baseline.json) and
 [batch manifest](go-only-exports-batch.json).
 
 ## Scope and reachability
@@ -65,3 +65,39 @@ scan limitations; no measured cost-saving claim is made.
 Local drafts/review: `build/port-go-only-exports/`. `draft-v2/` and `reviewed-v2/`
 replace the earlier directive-only drafts. Completed scripts are consumed; do
 not rerun them against later source.
+
+### Follow-on audit finding
+
+During this batch's qualification, a separate Luna frontier audit proposed 25
+object-state export removals but omitted calls inside `object_state_porttest.go`'s
+C preamble. Primary rejected that proposal before any installation; those wrappers
+remain untouched. The accepted 265-export cohort had independently scanned all
+comment/literal references and its tests compile. Narrow subsequent helper work to
+explicit scalar-edit spans; keep C-preamble reachability classification with the
+primary. The ignored frontier is incomplete evidence, not the next accepted batch.
+
+## Completed qualification
+
+All gates pass on identical source fingerprints. Default/highres each pass 2,425
+root tests plus the expected map-population diagnostic skip; server passes 2,414
+plus that skip. Discovered, started and completed name sets exactly match the
+frozen complete-corpus inventory. There are no failed events or unexpected skips.
+The prebuilt controller took 2,141 seconds including sequential compilation and
+at most two concurrent root sweeps. Safe build and static checks pass.
+
+Three fresh production binaries pass ABI checks; all 265 newly retired C symbols
+are absent, while required interfaces remain. The broader suite exactly matches
+304 known failure events and 17 passing/two failing/32 skipped packages. Headless
+character creation and explicit save/load/resume pass. All test/fixture source
+inputs and 1,654 original asset hashes remain unchanged. No safe runtime contract
+run is claimed for this export-only batch.
+
+Measured in every production profile: project cgo files 397→382; legacy exports
+1,444→1,179. Phase totals: 81/463 cgo files eliminated on net and 711/1,890 exports
+retired. Headers: 157 files / 3,902 physical lines. Three direct project cgo
+packages, 79 embedded callback bodies and external native bindings remain.
+Standalone production/reference C stays zero.
+
+Evidence: [qualification](go-only-exports-qualification.json) and
+[selected inventory](go-only-exports-inventory-after.json).
+Local completed gates: `build/port-go-only-exports/{contracts,safe,production}/`.

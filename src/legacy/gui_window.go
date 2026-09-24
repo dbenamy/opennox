@@ -31,7 +31,6 @@ func asWindow(win *nox_window) *gui.Window {
 	return AsWindowP(unsafe.Pointer(win))
 }
 
-//export get_dword_5d4594_3799468
 func get_dword_5d4594_3799468() int {
 	return GetClient().Cli().GUI.ValXXX
 }
@@ -81,7 +80,6 @@ func nox_xxx_wndGetChildByID_46B0C0(root *nox_window, id int) *nox_window {
 	return (*nox_window)(asWindow(root).ChildByID(uint(id)).C())
 }
 
-//export nox_xxx_windowDestroyMB_46C4E0
 func nox_xxx_windowDestroyMB_46C4E0(a1 *nox_window) int {
 	win := asWindow(a1)
 	if win == nil {
@@ -91,7 +89,6 @@ func nox_xxx_windowDestroyMB_46C4E0(a1 *nox_window) int {
 	return 0
 }
 
-//export nox_window_set_hidden
 func nox_window_set_hidden(p *nox_window, hidden int) int {
 	if p == nil {
 		return -2

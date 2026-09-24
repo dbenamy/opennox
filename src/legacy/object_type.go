@@ -48,21 +48,17 @@ func init() {
 	server.RegisterObjectInitGo("GoldInit", C.nox_xxx_unitInitGold_4F04B0, func(u *server.Object) { nox_xxx_unitInitGold_4F04B0(C.int(uintptr(u.CObj()))) }, unsafe.Sizeof(server.GoldInitData{}))
 }
 
-//export nox_xxx_newObjectWithTypeInd_4E3450
 func nox_xxx_newObjectWithTypeInd_4E3450(ind int) *nox_object_t {
 	s := GetServer().S()
 	return asObjectC(s.NewObjectByTypeInd(ind))
 }
 
-//export nox_xxx_getUnitName_4E39D0
 func nox_xxx_getUnitName_4E39D0(cobj *nox_object_t) *C.char {
 	return internCStr(GetServer().S().Types.ByInd(int(asObjectS(cobj).TypeInd)).ID())
 }
 
-//export sub_4E3B80
 func sub_4E3B80(ind int) int { return bool2int(Sub_4E3B80(ind)) }
 
-//export nox_xxx_getUnitNameByThingType_4E3A80
 func nox_xxx_getUnitNameByThingType_4E3A80(ind int) *C.char {
 	if ind == 0 {
 		return nil
@@ -70,7 +66,6 @@ func nox_xxx_getUnitNameByThingType_4E3A80(ind int) *C.char {
 	return internCStr(GetServer().S().Types.ByInd(ind).ID())
 }
 
-//export nox_xxx_newObjectByTypeID_4E3810
 func nox_xxx_newObjectByTypeID_4E3810(cstr *C.char) *nox_object_t {
 	obj := GetServer().S().NewObjectByTypeID(GoString(cstr))
 	if obj == nil {

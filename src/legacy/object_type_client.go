@@ -28,7 +28,6 @@ func nox_xxx_getTTByNameSpriteMB_44CFC0(cstr *C.char) int {
 	return GetClient().Cli().Things.IndByID(id)
 }
 
-//export nox_get_thing_name
 func nox_get_thing_name(i int) *C.char {
 	t := GetClient().Cli().Things.TypeByInd(i)
 	if t == nil {
@@ -37,7 +36,6 @@ func nox_get_thing_name(i int) *C.char {
 	return (*C.char)(unsafe.Pointer(t.Name))
 }
 
-//export nox_get_thing_pretty_name
 func nox_get_thing_pretty_name(i int) *wchar2_t {
 	t := GetClient().Cli().Things.TypeByInd(i)
 	if t == nil {

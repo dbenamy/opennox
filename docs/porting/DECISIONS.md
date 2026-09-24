@@ -2468,3 +2468,19 @@ name sets and source/binary/profile verification. Individual runtimes stayed nea
 the preceding sequential sweeps; the overlap reduces elapsed sweep time without
 establishing a general engine performance improvement. Keep production and
 headless qualification sequential.
+
+## Retire C interfaces while preserving Go callers
+
+The 265-export batch deletes 126 unreferenced wrappers but keeps 139 functions
+used by Go, removing only their C exports. Resolve owning-package references
+before deletion: same-named functions in another package are different owners.
+Remove 244 exact header prototypes and 15 unused C imports after preamble/header
+review; all complete regression, production, ABI and gameplay gates pass. See
+GO_ONLY_EXPORTS.md.
+
+Reject a separate follow-on object-state export proposal whose inventory missed
+native calls inside a test preamble. C preambles are active code despite Go's
+comment syntax. Narrow helper work to explicit edit spans and inspect whole C
+selectors: the subsequent scalar draft initially changed the suffix but retained
+C prefixes. Primary corrected it while reconstructing the draft; it is still
+uninstalled and must pass original storage contracts and fresh qualification.

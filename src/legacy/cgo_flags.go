@@ -26,12 +26,6 @@ func nox_common_gameFlags_check_40A5C0(f C.uint) C.bool {
 	return C.bool(noxflags.HasGame(noxflags.GameFlag(f)))
 }
 
-//export nox_xxx_CheckGameplayFlags_417DA0
 func nox_xxx_CheckGameplayFlags_417DA0(v int) C.bool {
 	return C.bool(noxflags.HasGamePlay(noxflags.GameplayFlag(v)))
-}
-
-//export nox_xxx_moveUpdateSpecial_517970
-func nox_xxx_moveUpdateSpecial_517970(cunit *nox_object_t) {
-	Nox_xxx_moveUpdateSpecial_517970(asObjectS(cunit))
 }

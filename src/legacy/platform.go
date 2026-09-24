@@ -11,7 +11,6 @@ var (
 	Nox_ticks_reset_416D40 func()
 )
 
-//export nox_platform_rand
 func nox_platform_rand() int {
 	// The remaining CRT-rand consumers scale by 0x7fff. Keep this ABI at the
 	// original 15-bit range even when the Go platform supplies a wider int.
@@ -20,6 +19,3 @@ func nox_platform_rand() int {
 
 //export nox_platform_get_ticks
 func nox_platform_get_ticks() C.uint { return C.uint(PlatformTicks()) }
-
-//export nox_ticks_reset_416D40
-func nox_ticks_reset_416D40() { Nox_ticks_reset_416D40() }

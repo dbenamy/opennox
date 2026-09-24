@@ -34,11 +34,6 @@ func sub_418830(t, group C.int) C.int {
 	return t
 }
 
-//export nox_xxx_objGetTeamByNetCode_418C80
-func nox_xxx_objGetTeamByNetCode_418C80(code C.int) *C.uint32_t {
-	return (*C.uint32_t)(teamRuntimeObject(int(code)).C())
-}
-
 func nox_xxx_teamRenameMB_418CD0(t, name *C.wchar2_t) {
 	teamRuntimeRename((*server.Team)(unsafe.Pointer(t)), (*uint16)(unsafe.Pointer(name)))
 }

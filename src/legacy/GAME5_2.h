@@ -6,9 +6,6 @@
 void nullsub_22();
 void nullsub_36();
 void nullsub_29(void);
-unsigned int nox_xxx_net_getIP_554200(int a1);
-int sub_554240(int a1);
-int sub_554D10();
 int sub_56F250();
 int nox_xxx_protectionCreateInt_56F400(int a1);
 int sub_56F4F0(int* a1);
@@ -43,8 +40,6 @@ int sub_57A9F0(char* a1, char* a2);
 char sub_57AAA0(char* a1, char* a2, int* a3);
 int nox_xxx_playerCheckSpellClass_57AEA0(int a1, int a2);
 int sub_57B190(unsigned short a1, unsigned short a2);
-unsigned char sub_57B370(int a1, int a2, int a3);
-int nox_xxx_playerClassCanUseItem_57B3D0(nox_object_t* item, int8_t a2);
 int nox_xxx_client_57B400(int a1);
 int nox_xxx_collideReflect_57B810(float* a1, int a2);
 int nox_xxx_map_57B850(float2* a1, float* a2, float2* a3);

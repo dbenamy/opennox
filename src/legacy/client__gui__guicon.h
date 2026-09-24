@@ -24,8 +24,6 @@ enum {
 	NOX_CONSOLE_LIGHT_YELLOW = 16
 };
 
-int nox_gui_console_Hide_4512B0();
-int nox_gui_console_flagXxx_451410();
 
 
 #endif // NOX_PORT_CLIENT_GUI_GUICON

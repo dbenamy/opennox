@@ -60,7 +60,6 @@
 // For now bools are kept 1-byte long
 //_Static_assert(sizeof(bool) == 4, "boolean values must be aligned to 32-bit int");
 
-void nox_exit(int exitCode);
 
 
 /* 293 */
@@ -1248,7 +1247,6 @@ typedef struct {
 } noxSYSTEMTIME;
 _Static_assert(sizeof(noxSYSTEMTIME) == 16, "wrong size of SYSTEMTIME structure!");
 
-void noxGetLocalTime(noxSYSTEMTIME* lpSystemTime);
 
 // See timer.go for definition
 typedef struct timer timer;

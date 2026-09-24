@@ -19,13 +19,9 @@ var (
 	Sub_445B40 func() int
 )
 
-//export nox_xxx____setargv_4_44B000
 func nox_xxx____setargv_4_44B000() {
 	dword_5d4594_830272 = 1
 }
-
-//export sub_446380
-func sub_446380() { Sub_446380() }
 
 func Sub_4D70B0() {
 	questRuntimeSettings()

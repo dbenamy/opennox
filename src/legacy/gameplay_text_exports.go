@@ -13,12 +13,10 @@ import (
 	"unsafe"
 )
 
-//export nox_xxx_netInformTextMsg_4DA0F0
 func nox_xxx_netInformTextMsg_4DA0F0(to, kind C.int, data *C.int) C.int {
 	return C.int(gameplayTextInformation(int(to), int(kind), unsafe.Pointer(data)))
 }
 
-//export nox_xxx_netInformTextMsg2_4DA180
 func nox_xxx_netInformTextMsg2_4DA180(kind C.int, data *C.uint8_t) C.int {
 	return C.int(gameplayTextInformationAll(int(kind), unsafe.Pointer(data)))
 }

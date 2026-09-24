@@ -40,23 +40,11 @@ var (
 //export winMainMenuAnimOutStartFnc
 func winMainMenuAnimOutStartFnc() int { return WinMainMenuAnimOutStartFnc() }
 
-//export sub_44E320
-func sub_44E320() { Sub_44E320() }
-
 //export winMainMenuAnimOutDoneFnc
 func winMainMenuAnimOutDoneFnc() int { return WinMainMenuAnimOutDoneFnc() }
 
-//export sub_4A24C0
-func sub_4A24C0(a1 int) int { return Sub_4A24C0(a1) }
-
 //export nox_game_showMainMenu_4A1C00
 func nox_game_showMainMenu_4A1C00() int { return Nox_game_showMainMenu_4A1C00() }
-
-//export sub_43BE40
-func sub_43BE40(a1 int) { Sub_43BE40(a1) }
-
-//export sub_43BE30
-func sub_43BE30() int { return Sub_43BE30() }
 
 //export sub_4A18E0
 func sub_4A18E0(a1 unsafe.Pointer, a2, a3, a4 int) int { return Sub_4A18E0(AsWindowP(a1), a2, a3, a4) }

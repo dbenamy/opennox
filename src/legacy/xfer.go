@@ -116,16 +116,6 @@ func nox_xxx_XFerDefault_4F49A0(a1p *nox_object_t, a2 unsafe.Pointer) int {
 	return 1
 }
 
-//export nox_xxx_XFer_ReadShopItem_52A840
-func nox_xxx_XFer_ReadShopItem_52A840(a1 unsafe.Pointer, a2 int) {
-	Nox_xxx_XFer_ReadShopItem_52A840(a1, a2)
-}
-
-//export nox_xxx_XFer_WriteShopItem_52A5F0
-func nox_xxx_XFer_WriteShopItem_52A5F0(a1 unsafe.Pointer) {
-	Nox_xxx_XFer_WriteShopItem_52A5F0(a1)
-}
-
 func Get_nox_xxx_XFerFieldGuide_4F6390() unsafe.Pointer {
 	return C.nox_xxx_XFerFieldGuide_4F6390
 }

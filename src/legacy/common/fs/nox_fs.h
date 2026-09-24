@@ -25,9 +25,7 @@ FILE* nox_fs_open_rw(char* path);
 
 
 int nox_fs_fseek(FILE* f, long off, int mode);
-int nox_fs_fread(FILE* f, void* dst, int sz);
 
-void nox_fs_close(FILE* f);
 
 #define nox_fs_fseek_start(f, off) nox_fs_fseek(f, off, SEEK_SET)
 #define nox_fs_fseek_cur(f, off) nox_fs_fseek(f, off, SEEK_CUR)

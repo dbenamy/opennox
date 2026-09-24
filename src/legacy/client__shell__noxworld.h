@@ -3,8 +3,6 @@
 
 #include "defs.h"
 
-void sub_4373A0();
-void nox_client_refreshServerList_4378B0();
 int nox_game_showGameSel_4379F0();
 
 #endif // NOX_PORT_CLIENT_SHELL_NOXWORLD

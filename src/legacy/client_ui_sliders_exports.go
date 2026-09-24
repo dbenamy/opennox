@@ -9,7 +9,6 @@ import (
 	"unsafe"
 )
 
-//export nox_xxx_wndScrollBoxDraw_4B4BA0
 func nox_xxx_wndScrollBoxDraw_4B4BA0(win, code C.int, a C.uint, b C.int) C.int {
 	// Keep the C caller's raw key-state and packed-coordinate words intact.
 	ev := &gui.RawEvent{Event: int(code), Arg1: uintptr(a), Arg2: uintptr(uint32(b))}

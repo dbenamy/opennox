@@ -22,12 +22,10 @@ var (
 	Nox_xxx_unitMove_4E7010     func(a1 *server.Object, pos types.Pointf)
 )
 
-//export nox_xxx_unitIsUnitTT_4E7C80
 func nox_xxx_unitIsUnitTT_4E7C80(a1 *nox_object_t, a2 int) int {
 	return Nox_xxx_unitIsUnitTT_4E7C80(asObjectS(a1), a2)
 }
 
-//export nox_xxx_unitMove_4E7010
 func nox_xxx_unitMove_4E7010(a1 *nox_object_t, pos *C.float2) {
 	Nox_xxx_unitMove_4E7010(asObjectS(a1), AsPointf(unsafe.Pointer(pos)))
 }

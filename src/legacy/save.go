@@ -1,19 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME1_3.h"
-#include "GAME2.h"
-#include "GAME2_1.h"
-#include "GAME3_3.h"
-#include "GAME4_2.h"
-void nox_xxx_unitsNewAddToList_4DAC00();
-int sub_41C280(void* a1);
-int nox_xxx_parseFileInfoData_41C3B0(int a1);
-int sub_41C780(int a1);
-*/
-import "C"
 import (
 	"errors"
 	"unsafe"
@@ -36,28 +22,7 @@ var (
 	Nox_setSaveFileName_4DB130           func(s string)
 )
 
-//export nox_client_countPlayerFiles04_4DC7D0
-func nox_client_countPlayerFiles04_4DC7D0() int { return Nox_client_countPlayerFiles04_4DC7D0() }
-
 func nox_xxx_gameGet_4DB1B0() int { return bool2int(Nox_xxx_gameGet_4DB1B0()) }
-
-//export sub_4DCC90
-func sub_4DCC90() int { return Sub_4DCC90() }
-
-//export sub_4DB1C0
-func sub_4DB1C0() unsafe.Pointer { return Sub_4DB1C0() }
-
-//export sub_4DCBF0
-func sub_4DCBF0(a1 int) { Sub_4DCBF0(a1) }
-
-//export nox_xxx_serverIsClosing_446180
-func nox_xxx_serverIsClosing_446180() int { return Nox_xxx_serverIsClosing_446180() }
-
-//export sub_4DCC10
-func sub_4DCC10(a1p *nox_object_t) int { return Sub_4DCC10(asObjectS(a1p)) }
-
-//export sub_4DCFB0
-func sub_4DCFB0(a1p *nox_object_t) { Sub_4DCFB0(asObjectS(a1p)) }
 
 func sub_4DD0B0(a1p *nox_object_t) { Sub_4DD0B0(asObjectS(a1p)) }
 func Nox_xxx_destroyEveryChatMB_528D60() {

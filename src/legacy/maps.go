@@ -51,11 +51,6 @@ func nox_xxx_mapReadSection_426EA0(a1 unsafe.Pointer, cname *C.char, cerr *C.uin
 	return bool2int(ok)
 }
 
-//export nox_xxx_mapWriteSectionsMB_426E20
-func nox_xxx_mapWriteSectionsMB_426E20(a1 unsafe.Pointer) int {
-	return Nox_xxx_mapWriteSectionsMB_426E20(a1)
-}
-
 func Nox_server_mapRWMapInfo_42A6E0(_ *cryptfile.CryptFile, a1 unsafe.Pointer) error {
 	if mapMetadataInfo() == 0 {
 		return fmt.Errorf("%s failed", caller(0))

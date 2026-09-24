@@ -21,15 +21,6 @@ var (
 	Sub_4D6F30                                func() int
 )
 
-//export nox_server_questAllowDefault
-func nox_server_questAllowDefault() C.bool { return C.bool(Nox_server_questAllowDefault()) }
-
-//export nox_server_questNextStageThreshold_4D74F0
-func nox_server_questNextStageThreshold_4D74F0(lvl int) int {
-	return Nox_server_questNextStageThreshold_4D74F0(lvl)
-}
-
-//export sub_4D6F30
 func sub_4D6F30() int { return Sub_4D6F30() }
 func Nox_game_getQuestStage_4E3CC0() int {
 	return int(questRuntimeStage())

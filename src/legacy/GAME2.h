@@ -3,16 +3,8 @@
 
 #include "defs.h"
 
-char* nox_get_thing_name(int i);
-wchar2_t* nox_get_thing_pretty_name(int i);
 void sub_44D3A0();
-void sub_44D640();
-int sub_44D7E0(int a1);
 int nox_xxx_playDialogFile_44D900(unsigned char* a1, int a2);
-int nox_video_inFadeTransition_44E0D0();
-void sub_44E320();
-int nox_client_getIntroScreenDuration_44E3B0();
-void sub_450580();
 unsigned char sub_450750();
 char sub_450760(char a1);
 int sub_4526D0(int a1);

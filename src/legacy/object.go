@@ -63,7 +63,6 @@ func ToObjS(p *nox_object_t) server.Obj {
 	return asObjectS(p)
 }
 
-//export nox_server_getFirstObject_4DA790
 func nox_server_getFirstObject_4DA790() *nox_object_t {
 	return asObjectC(GetServer().S().Objs.First())
 }
@@ -73,7 +72,6 @@ func nox_server_getFirstObjectUninited_4DA870() *nox_object_t {
 	return asObjectC(GetServer().S().Objs.Pending)
 }
 
-//export nox_server_getNextObject_4DA7A0
 func nox_server_getNextObject_4DA7A0(cobj *nox_object_t) *nox_object_t {
 	return asObjectC(asObjectS(cobj).Next())
 }
@@ -88,7 +86,6 @@ func nox_xxx_getNextUpdatable2Object_4DA850(cobj *nox_object_t) *nox_object_t {
 	return asObjectC(asObjectS(cobj).Next())
 }
 
-//export nox_xxx_servFinalizeDelObject_4DADE0
 func nox_xxx_servFinalizeDelObject_4DADE0(cobj *nox_object_t) {
 	GetServer().ObjectDeleteLast(asObjectS(cobj))
 }
@@ -103,42 +100,34 @@ func nox_xxx_unitsNewAddToList_4DAC00() {
 	GetServer().ObjectsAddPending()
 }
 
-//export nox_xxx_delayedDeleteObject_4E5CC0
 func nox_xxx_delayedDeleteObject_4E5CC0(obj *nox_object_t) {
 	GetServer().DelayedDelete(asObjectS(obj))
 }
 
-//export nox_xxx_unitSetOwner_4EC290
 func nox_xxx_unitSetOwner_4EC290(obj1, obj2 *nox_object_t) {
 	GetServer().S().ObjSetOwner(asObjectS(obj1), asObjectS(obj2))
 }
 
-//export nox_xxx_unitClearOwner_4EC300
 func nox_xxx_unitClearOwner_4EC300(obj *nox_object_t) {
 	GetServer().S().ObjClearOwner(asObjectS(obj))
 }
 
-//export nox_xxx_creatureIsMonitored_500CC0
 func nox_xxx_creatureIsMonitored_500CC0(obj1, obj2 *nox_object_t) int {
 	return bool2int(server.Nox_xxx_creatureIsMonitored_500CC0(asObjectS(obj1), asObjectS(obj2)))
 }
 
-//export nox_xxx_netMarkMinimapObject_417190
 func nox_xxx_netMarkMinimapObject_417190(a1 int, obj *nox_object_t, a3 uint32) {
 	GetServer().S().Players.Nox_xxx_netMarkMinimapObject_417190(ntype.PlayerInd(a1), asObjectS(obj), a3)
 }
 
-//export nox_xxx_netUnmarkMinimapObj_417300
 func nox_xxx_netUnmarkMinimapObj_417300(a1 int, obj *nox_object_t, a3 uint32) {
 	GetServer().S().Players.Nox_xxx_netUnmarkMinimapObj_417300(ntype.PlayerInd(a1), asObjectS(obj), a3)
 }
 
-//export nox_xxx_monsterMarkUpdate_4E8020
 func nox_xxx_monsterMarkUpdate_4E8020(obj *nox_object_t) {
 	asObjectS(obj).Nox_xxx_monsterMarkUpdate_4E8020()
 }
 
-//export nox_xxx_unitIsHostileMimic_4E7F90
 func nox_xxx_unitIsHostileMimic_4E7F90(obj1, obj2 *nox_object_t) int {
 	return bool2int(GetServer().S().IsHostileMimicXxx(asObjectS(obj1), asObjectS(obj2)))
 }
@@ -172,7 +161,6 @@ func AsPoint(p unsafe.Pointer) image.Point {
 	}
 }
 
-//export nox_xxx_createAt_4DAA50
 func nox_xxx_createAt_4DAA50(cobj *nox_object_t, cowner *nox_object_t, x C.float, y C.float) {
 	var owner server.Obj
 	if cowner != nil {
@@ -181,17 +169,14 @@ func nox_xxx_createAt_4DAA50(cobj *nox_object_t, cowner *nox_object_t, x C.float
 	GetServer().CreateObjectAt(ToObjS(cobj), owner, types.Pointf{X: float32(x), Y: float32(y)})
 }
 
-//export nox_xxx_objectFreeMem_4E38A0
 func nox_xxx_objectFreeMem_4E38A0(a1p *nox_object_t) int {
 	return GetServer().S().Objs.FreeObject(asObjectS(a1p))
 }
 
-//export nox_xxx_findParentChainPlayer_4EC580
 func nox_xxx_findParentChainPlayer_4EC580(obj *nox_object_t) *nox_object_t {
 	return asObjectC(asObjectS(obj).FindOwnerChainPlayer())
 }
 
-//export nox_xxx_unitHasThatParent_4EC4F0
 func nox_xxx_unitHasThatParent_4EC4F0(obj, owner *nox_object_t) int {
 	return bool2int(asObjectS(obj).HasOwner(asObjectS(owner)))
 }
@@ -215,25 +200,13 @@ func nox_xxx_unitMonsterInit_4F0040(obj *nox_object_t) {
 	Nox_xxx_unitMonsterInit_4F0040(asObjectS(obj))
 }
 
-//export nox_xxx_checkSummonedCreaturesLimit_500D70
 func nox_xxx_checkSummonedCreaturesLimit_500D70(obj *nox_object_t, ind int) C.bool {
 	return C.bool(Nox_xxx_checkSummonedCreaturesLimit_500D70(asObjectS(obj), ind))
-}
-
-//export nox_xxx_unitDoSummonAt_5016C0
-func nox_xxx_unitDoSummonAt_5016C0(typID int, cpos *float32, owner *nox_object_t, dir C.uchar) *nox_object_t {
-	pos := unsafe.Slice(cpos, 2)
-	return asObjectC(Nox_xxx_unitDoSummonAt_5016C0(typID, types.Ptf(pos[0], pos[1]), asObjectS(owner), server.Dir16(dir)))
 }
 
 //export sub_57AEE0
 func sub_57AEE0(sp int, u *nox_object_t) int {
 	return bool2int(server.Sub_57AEE0(spell.ID(sp), asObjectS(u)))
-}
-
-//export sub_4E71F0
-func sub_4E71F0(a1 *nox_object_t) {
-	Sub_4E71F0(asObjectS(a1))
 }
 
 //export nox_bomberDead_54A150
@@ -251,37 +224,30 @@ func nox_xxx_collideGlyph_4E9A00(a1, a2 *nox_object_t) {
 	Nox_xxx_collideGlyph_4E9A00(asObjectS(a1), asObjectS(a2))
 }
 
-//export nox_xxx_unitSetXStatus_4E4800
 func nox_xxx_unitSetXStatus_4E4800(a1 *nox_object_t, a2 uint32) {
 	asObjectS(a1).SetXStatus(a2)
 }
 
-//export nox_xxx_unitUnsetXStatus_4E4780
 func nox_xxx_unitUnsetXStatus_4E4780(a1 *nox_object_t, a2 uint32) {
 	asObjectS(a1).UnsetXStatus(a2)
 }
 
-//export nox_xxx_playerSetState_4FA020
 func nox_xxx_playerSetState_4FA020(a1 *nox_object_t, a2 int) int {
 	return bool2int(Nox_xxx_playerSetState_4FA020(asObjectS(a1), server.PlayerState(a2)))
 }
 
-//export nox_xxx_weaponInventoryEquipFlags_415820
 func nox_xxx_weaponInventoryEquipFlags_415820(obj *nox_object_t) int {
 	return int(GetServer().S().Weapons.Nox_xxx_weaponInventoryEquipFlags_415820(asObjectS(obj)))
 }
 
-//export nox_xxx_unitArmorInventoryEquipFlags_415C70
 func nox_xxx_unitArmorInventoryEquipFlags_415C70(obj *nox_object_t) int {
 	return int(GetServer().S().Armor.Nox_xxx_unitArmorInventoryEquipFlags_415C70(asObjectS(obj)))
 }
 
-//export nox_xxx_ammoCheck_415880
 func nox_xxx_ammoCheck_415880(a1 int) int {
 	return int(GetServer().S().Weapons.Nox_xxx_ammoCheck_415880(a1))
 }
 
-//export sub_415840
 func sub_415840(a1 int) int {
 	return int(GetServer().S().Weapons.Sub_415840(uint32(a1)))
 }

@@ -129,24 +129,9 @@ func sub_43EC10() int {
 	return Sub_43EC10()
 }
 
-//export sub_43F130
-func sub_43F130() int {
-	return int(Sub_43F130())
-}
-
 //export sub_43ED00
 func sub_43ED00(a1p *C.uint32_t) int {
 	return Sub_43ED00(unsafe.Pointer(a1p))
-}
-
-//export sub_44D640
-func sub_44D640() {
-	Sub_44D640()
-}
-
-//export sub_44D7E0
-func sub_44D7E0(a1 int) int {
-	return Sub_44D7E0(a1)
 }
 
 //export sub_43F060

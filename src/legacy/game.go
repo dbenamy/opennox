@@ -99,12 +99,6 @@ func nox_xxx_gameGetPlayState_4356B0() int {
 	return GameGetPlayState()
 }
 
-//export nox_xxx_serverHost_43B4D0
-func nox_xxx_serverHost_43B4D0() {
-	Nox_xxx_serverHost_43B4D0()
-}
-
-//export nox_server_parseCmdText_443C80
 func nox_server_parseCmdText_443C80(cstr *wchar2_t, _ int) int {
 	cmd := GoWString(cstr)
 	if cmd == "" {
@@ -114,22 +108,11 @@ func nox_server_parseCmdText_443C80(cstr *wchar2_t, _ int) int {
 	return bool2int(res)
 }
 
-//export nox_xxx_gameIsNotMultiplayer_4DB250
-func nox_xxx_gameIsNotMultiplayer_4DB250() int {
-	return bool2int(Nox_xxx_gameIsNotMultiplayer_4DB250())
-}
-
-//export nox_xxx_gameSetSwitchSolo_4DB220
-func nox_xxx_gameSetSwitchSolo_4DB220(a1 int) {
-	Nox_xxx_gameSetSwitchSolo_4DB220(a1)
-}
-
 //export nox_xxx_gameIsSwitchToSolo_4DB240
 func nox_xxx_gameIsSwitchToSolo_4DB240() int {
 	return bool2int(Nox_xxx_gameIsSwitchToSolo_4DB240())
 }
 
-//export nox_xxx_mapTraceRay_535250
 func nox_xxx_mapTraceRay_535250(a1 *C.float4, a2 *C.float2, a3 *C.int2, a4 C.char) int {
 	p1 := (*types.Pointf)(unsafe.Pointer(&a1.field_0))
 	p2 := (*types.Pointf)(unsafe.Pointer(&a1.field_8))
@@ -141,17 +124,14 @@ func nox_xxx_mapTraceRay_535250(a1 *C.float4, a2 *C.float2, a3 *C.int2, a4 C.cha
 	return 0
 }
 
-//export sub_517590
 func sub_517590(x float32, y float32) int {
 	return bool2int(GetServer().S().Map.ValidIndexPos(types.Ptf(x, y)))
 }
 
-//export nox_xxx_gameSetWallsDamage_4E25A0
 func nox_xxx_gameSetWallsDamage_4E25A0(v int) {
 	Nox_xxx_gameSetWallsDamage_4E25A0(v)
 }
 
-//export nox_xxx_mapDamageUnitsAround_4E25B0
 func nox_xxx_mapDamageUnitsAround_4E25B0(a1 *C.float, a2, a3 C.float, a4, a5 int, a6, a7 *nox_object_t) {
 	cpos := unsafe.Slice(a1, 2)
 	pos := types.Pointf{X: float32(cpos[0]), Y: float32(cpos[1])}
@@ -168,7 +148,6 @@ func nox_game_getStateCode_43BE10() int {
 	return int(GetClient().GameGetStateCode())
 }
 
-//export nox_game_decStateInd_43BDC0
 func nox_game_decStateInd_43BDC0() {
 	GetClient().GamePopState()
 }
@@ -178,7 +157,6 @@ func nox_game_switchStates_43C0A0() int {
 	return bool2int(GetClient().GameStateSwitch())
 }
 
-//export sub_4537F0
 func sub_4537F0() {
 	GetServer().S().Sub4537F0()
 }
@@ -187,24 +165,8 @@ func sub_41CC00(cstr *C.char) {
 	Sub_41CC00(GoString(cstr))
 }
 
-//export nox_xxx_playerSendMOTD_4DD140
-func nox_xxx_playerSendMOTD_4DD140(a1 int) {
-	Nox_xxx_playerSendMOTD_4DD140(ntype.PlayerInd(a1))
-}
-
-//export nox_xxx_mapCheck_537110
 func nox_xxx_mapCheck_537110(a1, a2 *nox_object_t) int {
 	return bool2int(GetServer().S().MapTraceVision(asObjectS(a1), asObjectS(a2)))
-}
-
-//export nox_client_getChatMap_49FF40
-func nox_client_getChatMap_49FF40(pt *C.short) *C.char {
-	return internCStr(Nox_client_getChatMap_49FF40())
-}
-
-//export nox_xxx_mapSwitchLevel_4D12E0
-func nox_xxx_mapSwitchLevel_4D12E0(a1 int) {
-	Nox_xxx_mapSwitchLevel_4D12E0(a1 != 0)
 }
 
 func Nox_xxx_sMakeScorch_537AF0(pos types.Pointf, a2 int) { motionScorch(&pos, int32(a2)) }

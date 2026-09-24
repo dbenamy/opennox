@@ -44,47 +44,6 @@ var (
 
 type nox_render_data_t = C.nox_render_data_t
 
-//export nox_video_getCutSize_4766D0
-func nox_video_getCutSize_4766D0() int { return Nox_video_getCutSize_4766D0() }
-
-//export nox_video_setCutSize_4766A0
-func nox_video_setCutSize_4766A0(v int) { Nox_video_setCutSize_4766A0(v) }
-
-//export nox_video_setGammaSlider
-func nox_video_setGammaSlider(v int) { Nox_video_setGammaSlider(v) }
-
-//export sub_43BE50_get_video_mode_id
-func sub_43BE50_get_video_mode_id() int { return Sub_43BE50_get_video_mode_id() }
-
-//export get_video_mode_string
-func get_video_mode_string(id int) *wchar2_t { return internWStr(Get_video_mode_string(id)) }
-
-//export nox_video_getFullScreen
-func nox_video_getFullScreen() int { return Nox_video_getFullScreen() }
-
-//export nox_video_setFullScreen
-func nox_video_setFullScreen(v int) { Nox_video_setFullScreen(v) }
-
-//export sub_430C30_set_video_max
-func sub_430C30_set_video_max(w, h int) { Sub_430C30_set_video_max(w, h) }
-
-//export nox_video_callCopyBackBuffer_4AD170
-func nox_video_callCopyBackBuffer_4AD170() { Nox_video_callCopyBackBuffer_4AD170() }
-
-//export nox_client_clearScreen_440900
-func nox_client_clearScreen_440900() { Nox_client_clearScreen_440900() }
-
-//export nox_draw_setCutSize_476700
-func nox_draw_setCutSize_476700(cutPerc C.int, a2 int) { Nox_draw_setCutSize_476700(int(cutPerc), a2) }
-
-//export nox_xxx_cursorSetDraggedItem_477690
-func nox_xxx_cursorSetDraggedItem_477690(a1 *nox_drawable) {
-	Nox_xxx_cursorSetDraggedItem_477690(asDrawable(a1))
-}
-
-//export nox_xxx_cursorResetDraggedItem_4776A0
-func nox_xxx_cursorResetDraggedItem_4776A0() { Nox_xxx_cursorResetDraggedItem_4776A0() }
-
 func sub_478000() int { return Sub_478000() }
 func Sub_4AEE30() {
 	runtimeMeterWave()

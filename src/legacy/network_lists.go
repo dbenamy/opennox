@@ -17,7 +17,6 @@ var (
 	Nox_netlist_addToMsgListSrv func(ind ntype.PlayerInd, buf []byte) bool
 )
 
-//export nox_netlist_addToMsgListCli_40EBC0
 func nox_netlist_addToMsgListCli_40EBC0(ind1, ind2 int, buf *C.uchar, sz int) int {
 	return bool2int(GetServer().S().NetList.AddToMsgListCli(ntype.PlayerInd(ind1), netlist.Kind(ind2), unsafe.Slice((*byte)(unsafe.Pointer(buf)), sz)))
 }

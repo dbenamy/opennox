@@ -51,8 +51,6 @@ int nox_xxx_wndSetIconLit_46AEA0(int a1, int a2);
 int sub_46AEC0(int a1, int a2);
 int sub_46AEE0(int a1, int a2);
 wchar2_t* sub_46AF00(void* a1);
-int sub_46D6F0();
-void sub_4703F0();
 int sub_470CC0();
 int sub_470CD0();
 void sub_470D70();
@@ -70,8 +68,5 @@ int nox_xxx_guiHealthManaTubeProc_472100(int a1, int a2);
 int sub_4721A0(int a1);
 wchar2_t* sub_472280();
 unsigned char* sub_472310();
-char nox_client_toggleMap_473610();
-int sub_473670();
-void sub_473970(int2* a1, int2* a2);
 
 #endif // NOX_PORT_GAME2_1

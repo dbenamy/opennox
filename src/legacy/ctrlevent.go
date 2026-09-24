@@ -40,7 +40,6 @@ var (
 	Nox_client_parseConfigHotkeysLine_42CF50 func(s string) int
 )
 
-//export sub_42E8E0
 func sub_42E8E0(key, a2 int) *wchar2_t {
 	s := GetClient().GetCtrlEvent().Sub_42E8E0_go(keybind.Event(key), a2)
 	return internWStr(s)
@@ -49,11 +48,6 @@ func sub_42E8E0(key, a2 int) *wchar2_t {
 //export sub_42CD90
 func sub_42CD90() {
 	GetClient().GetCtrlEvent().Reset()
-}
-
-//export nox_client_parseConfigHotkeysLine_42CF50
-func nox_client_parseConfigHotkeysLine_42CF50(a1 *C.char) int {
-	return Nox_client_parseConfigHotkeysLine_42CF50(GoString(a1))
 }
 
 func Nox_xxx_guiSpellTargetClickCheckSend_45DBB0() {

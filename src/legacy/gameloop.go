@@ -41,16 +41,6 @@ var (
 	Nox_client_quit_4460C0                   func()
 )
 
-//export nox_client_getIntroScreenDuration_44E3B0
-func nox_client_getIntroScreenDuration_44E3B0() int {
-	return Nox_client_getIntroScreenDuration_44E3B0()
-}
-
-//export nox_client_getBriefDuration
-func nox_client_getBriefDuration() int {
-	return Nox_client_getBriefDuration()
-}
-
 //export nox_game_SetCliDrawFunc
 func nox_game_SetCliDrawFunc(fnc unsafe.Pointer) {
 	if fnc == nil {
@@ -70,25 +60,6 @@ func sub_470510() {
 	Sub_470510()
 }
 
-//export sub_4703F0
-func sub_4703F0() {
-	Sub_4703F0()
-}
-
-//export nox_xxx_cliDrawConnectedLoop_43B360
-func nox_xxx_cliDrawConnectedLoop_43B360() int {
-	return Nox_xxx_cliDrawConnectedLoop_43B360()
-}
-
-//export nox_client_guiXxxDestroy_4A24A0
-func nox_client_guiXxxDestroy_4A24A0() int {
-	return Nox_client_guiXxxDestroy_4A24A0()
-}
-
-//export nox_client_quit_4460C0
-func nox_client_quit_4460C0() {
-	Nox_client_quit_4460C0()
-}
 func Sub_43DB60() {
 	audioEventMusicEnter()
 }

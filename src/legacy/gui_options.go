@@ -28,25 +28,8 @@ var (
 	Sub_4A1A40               func(a1 int)
 )
 
-//export nox_video_setMenuOptions
-func nox_video_setMenuOptions(cwin *nox_window) { Nox_video_setMenuOptions(asWindow(cwin)) }
-
-//export nox_gui_menu_proc_ext
-func nox_gui_menu_proc_ext(id int) int { return Nox_gui_menu_proc_ext(id) }
-
 //export sub_4AAA10
 func sub_4AAA10() int { return Sub_4AAA10() }
-
-//export sub_4C3A90
-func sub_4C3A90(a1, a2 int, a3 *C.int, a4 int) int { return Sub_4C3A90(a1, a2, unsafe.Pointer(a3), a4) }
-
-//export sub_4CBE70
-func sub_4CBE70(a1, a2 int, a3 *C.int, a4 int) int { return Sub_4CBE70(a1, a2, unsafe.Pointer(a3), a4) }
-
-//export sub_4A1A40
-func sub_4A1A40(a1 int) {
-	Sub_4A1A40(a1)
-}
 
 func Sub_4CBD30() {
 	bindingMenu.apply()

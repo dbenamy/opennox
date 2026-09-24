@@ -11,7 +11,6 @@ import (
 	"github.com/opennox/libs/platform"
 )
 
-//export noxGetLocalTime
 func noxGetLocalTime(p *C.noxSYSTEMTIME) {
 	tm := time.Now()
 	if env.IsE2E() {

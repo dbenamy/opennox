@@ -186,8 +186,3 @@ func nox_xxx_collideDeathBall_4E9E90(a1, a2 *nox_object_t, pos *C.float) {
 func nox_xxx_castCounterSpell_52BBB0(a1 int32, a2, a3, a4 *nox_object_t) {
 	Nox_xxx_castCounterSpell_52BBB0(spell.ID(a1), asObjectS(a2), asObjectS(a3), asObjectS(a4), nil, 0)
 }
-
-//export nox_xxx_changeOwner_52BE40
-func nox_xxx_changeOwner_52BE40(a1, a2 *nox_object_t) {
-	Nox_xxx_changeOwner_52BE40(asObjectS(a1), asObjectS(a2))
-}

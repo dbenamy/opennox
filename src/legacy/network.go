@@ -61,13 +61,6 @@ func ip2int(ip netip.Addr) uint32 {
 	return v
 }
 
-//export nox_client_joinGame_438A90
-func nox_client_joinGame_438A90() int { return Nox_client_joinGame_438A90() }
-
-//export sub_554240
-func sub_554240(a1 int) int { return Sub_554240(ntype.PlayerInd(a1)) }
-
-//export nox_xxx_net_getIP_554200
 func nox_xxx_net_getIP_554200(a1 int) uint32 {
 	if a1 < 0 || a1 >= 31 {
 		panic("unexpected index")
@@ -80,15 +73,6 @@ func nox_xxx_net_getIP_554200(a1 int) uint32 {
 	}
 	return ip2int(GetServer().S().GetExtIP(conn))
 }
-
-//export sub_43C6E0
-func sub_43C6E0() int { return Sub_43C6E0() }
-
-//export sub_43CF40
-func sub_43CF40() { Sub_43CF40() }
-
-//export sub_43CF70
-func sub_43CF70() { Sub_43CF70() }
 
 func ClientGetServerPort() int {
 	return int(nox_client_getServerPort_43B320())

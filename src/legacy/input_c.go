@@ -48,12 +48,6 @@ func nox_xxx_setKeybTimeout_4160D0(key int) int {
 
 func sub_416120(key C.uchar) C.bool { return C.bool(Sub_416120(byte(key))) }
 
-//export sub_416170
-func sub_416170(key int) int { return Sub_416170(key) }
-
-//export sub_416150
-func sub_416150(key, ts int) int { return Sub_416150(key, ts) }
-
 //export nox_client_getMousePos_4309F0
 func nox_client_getMousePos_4309F0() (out C.nox_point) {
 	mpos := GetClient().GetMousePos()
@@ -62,7 +56,6 @@ func nox_client_getMousePos_4309F0() (out C.nox_point) {
 	return
 }
 
-//export nox_xxx_bookGet_430B40_get_mouse_prev_seq
 func nox_xxx_bookGet_430B40_get_mouse_prev_seq() int {
 	return int(GetClient().GetInputSeq())
 }
@@ -72,36 +65,11 @@ func nox_xxx_setMouseBounds_430A70(xmin, xmax, ymin, ymax int) {
 	GetClient().SetMouseBounds(image.Rect(xmin, ymin, xmax, ymax))
 }
 
-//export nox_input_pollEvents_4453A0
 func nox_input_pollEvents_4453A0() int {
 	// TODO
 	//inpHandler.Tick()
 	return 0
 }
-
-//export nox_xxx_keybind_nameByTitle_42E960
-func nox_xxx_keybind_nameByTitle_42E960(title *wchar2_t) *C.char {
-	k := Nox_xxx_keybind_nameByTitle_42E960(GoWString(title))
-	if k == 0 {
-		return nil
-	}
-	return internCStr(k.String())
-}
-
-//export nox_xxx_bindevent_bindNameByTitle_42EA40
-func nox_xxx_bindevent_bindNameByTitle_42EA40(title *wchar2_t) *C.char {
-	b := Nox_xxx_bindevent_bindNameByTitle_42EA40(GoWString(title))
-	if b == nil {
-		return nil
-	}
-	return internCStr(b.Name)
-}
-
-//export sub_4C3B70
-func sub_4C3B70() { Sub_4C3B70() }
-
-//export sub_4CBBF0
-func sub_4CBBF0() { Sub_4CBBF0() }
 
 func NoxInputOnChar(c uint16) {
 	uiEntryChar(c)

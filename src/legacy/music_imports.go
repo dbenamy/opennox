@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-
-extern uint32_t dword_5d4594_816356;
-
-*/
-import "C"
-
 import (
 	"unsafe"
 
@@ -54,16 +46,6 @@ func initMusic() {
 // Stop playing music
 func Sub_43D990() {
 	MusicModule.SetNextMusic(music.MusicState{})
-}
-
-//export sub_43DBD0
-func sub_43DBD0() {
-	MusicModule.Sub_43DBD0()
-}
-
-//export sub_43DBE0
-func sub_43DBE0() {
-	MusicModule.Sub_43DBE0()
 }
 
 func checkDialogs() bool {

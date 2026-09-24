@@ -40,16 +40,9 @@ func asWindowData(data *C.nox_window_data) *gui.WindowData {
 	return asWindowDataP(unsafe.Pointer(data))
 }
 
-//export nox_client_gui_set_flag_815132
-func nox_client_gui_set_flag_815132(v int) { Nox_client_gui_set_flag_815132(v) }
-
 func nox_client_onClientStatusA(v int) { Nox_client_onClientStatusA(v) }
 
-//export nox_client_setRenderGUI
 func nox_client_setRenderGUI(v int) { Nox_client_setRenderGUI(v) }
-
-//export nox_client_getRenderGUI
-func nox_client_getRenderGUI() int { return Nox_client_getRenderGUI() }
 
 //export nox_xxx_windowFocus_46B500
 func nox_xxx_windowFocus_46B500(win *nox_window) int {
@@ -76,12 +69,10 @@ func nox_xxx_wndGetCaptureMain_46AE00() *nox_window {
 	return (*nox_window)(GetClient().Cli().GUI.Captured().C())
 }
 
-//export nox_color_rgb_4344A0
 func nox_color_rgb_4344A0(r, g, b int) C.uint32_t {
 	return C.uint32_t(noxcolor.RGB5551Color(byte(r), byte(g), byte(b)).Color32())
 }
 
-//export nox_set_color_rgb_434430
 func nox_set_color_rgb_434430(r, g, b int) {
 	GetClient().R2().Data().SetColor2(noxcolor.RGB5551Color(byte(r), byte(g), byte(b)))
 }

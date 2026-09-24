@@ -29,7 +29,6 @@ func nox_xxx_cryptClose_4269F0() {
 	cryptfile.Close()
 }
 
-//export nox_xxx_mapgenGetSomeFile_426A60
 func nox_xxx_mapgenGetSomeFile_426A60() *C.FILE {
 	return NewFileHandle(cryptfile.Global().File.File)
 }

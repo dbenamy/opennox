@@ -68,25 +68,14 @@ func nox_xxx_playerCallDisconnect_4DEAB0(ind int, v C.char) *C.char {
 	return nil
 }
 
-//export nox_xxx_playerCameraUnlock_4E6040
 func nox_xxx_playerCameraUnlock_4E6040(cplayer *nox_object_t) {
 	Nox_xxx_playerCameraUnlock_4E6040(asObjectS(cplayer))
 }
 
-//export nox_xxx_playerCameraFollow_4E6060
 func nox_xxx_playerCameraFollow_4E6060(cplayer, cunit *nox_object_t) {
 	Nox_xxx_playerCameraFollow_4E6060(asObjectS(cplayer), asObjectS(cunit))
 }
 
-//export nox_xxx_playerGoObserver_4E6860
-func nox_xxx_playerGoObserver_4E6860(pl *nox_playerInfo, a2 int, a3 int) int {
-	return Nox_xxx_playerGoObserver_4E6860(asPlayerS(pl), a2, a3)
-}
-
-//export nox_xxx_playerObserveMonster_4DDE80
-func nox_xxx_playerObserveMonster_4DDE80(cplayer, cunit *nox_object_t) {
-	Nox_xxx_playerObserveMonster_4DDE80(asObjectS(cplayer), asObjectS(cunit))
-}
 func Nox_xxx_scavengerTreasureMax_4D1600() uint32 {
 	return uint32(sessionScavengerMaximum())
 }

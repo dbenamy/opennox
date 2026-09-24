@@ -233,7 +233,12 @@ Apply these review rules learned from earlier batches:
   valid Go syntax or types; format, compile and qualify the output.
 - Require reachability reports to show whole-source search commands and a concrete
   caller per symbol, distinguishing production, test-only and macro-remapped uses.
-  Generate path/line references from search output and verify them.
+  Generate path/line references from search output and verify them. Treat the comment
+  immediately before `import "C"` as executable C input, not an ordinary Go
+  comment; scan its full contents even across blank lines. A follow-on export
+  audit missed test-preamble calls by treating them as comments. Keep broad
+  reachability algorithm design with the primary; prefer explicit edit manifests
+  for helper coding tasks until those audits demonstrate reliable coverage.
 - Trace test selection through enclosing functions and fixture operation selectors.
   A captured callback slot does not prove a branch ran. Identify media by actual
   container/codec headers rather than filename extensions.

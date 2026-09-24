@@ -1,6 +1,5 @@
 package legacy
 
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/noxrender"
 	"github.com/opennox/opennox/v1/server"
@@ -22,26 +21,8 @@ var (
 	Nox_xxx_netAbilRepotState_4D8100   func(a1 *server.Object, a2 server.Ability, a3 byte)
 )
 
-//export sub_4FC670
-func sub_4FC670(a1 int) { Sub_4FC670(a1) }
-
-//export nox_xxx_playerExecuteAbil_4FBB70
-func nox_xxx_playerExecuteAbil_4FBB70(cu *nox_object_t, a2 int) {
-	Nox_xxx_playerExecuteAbil_4FBB70(asObjectS(cu), a2)
-}
-
-//export sub_4FC0B0
-func sub_4FC0B0(a1 *nox_object_t, a2 int) { Sub_4FC0B0(asObjectS(a1), a2) }
-
-//export nox_xxx_playerCancelAbils_4FC180
-func nox_xxx_playerCancelAbils_4FC180(cu *nox_object_t) {
-	Nox_xxx_playerCancelAbils_4FC180(asObjectS(cu))
-}
-
-//export sub_4FC300
 func sub_4FC300(cu *nox_object_t, a2 int) { Sub_4FC300(asObjectS(cu), a2) }
 
-//export sub_4FC440
 func sub_4FC440(a1 *nox_object_t, a2 int) {
 	GetServer().S().Abils.Sub4FC440(asObjectS(a1), server.Ability(a2))
 }
@@ -50,37 +31,24 @@ func nox_xxx_abilityGetName_0_425260(ca int) *wchar2_t {
 	return internWStr(Nox_xxx_abilityGetName_0_425260(ca))
 }
 
-//export nox_common_playerIsAbilityActive_4FC250
 func nox_common_playerIsAbilityActive_4FC250(a1 *nox_object_t, a2 int) int {
 	return bool2int(GetServer().S().Abils.IsActive(asObjectS(a1), server.Ability(a2)))
 }
 
-//export nox_xxx_probablyWarcryCheck_4FC3E0
 func nox_xxx_probablyWarcryCheck_4FC3E0(a1 *nox_object_t, a2 int) int {
 	return bool2int(GetServer().S().Abils.IsActiveVal(asObjectS(a1), server.Ability(a2)))
 }
 
-//export nox_xxx_abilityCooldown_4252D0
 func nox_xxx_abilityCooldown_4252D0(ca int) int { return Nox_xxx_abilityCooldown_4252D0(ca) }
 
-//export sub_4252F0
 func sub_4252F0(ca int) *wchar2_t { return internWStr(Sub_4252F0(ca)) }
 
-//export nox_xxx_spellGetAbilityIcon_425310
 func nox_xxx_spellGetAbilityIcon_425310(abil, icon int) *nox_video_bag_image_t {
 	return (*nox_video_bag_image_t)(Nox_xxx_spellGetAbilityIcon_425310(abil, icon))
 }
 
-//export nox_xxx_bookFirstKnownAbil_425330
 func nox_xxx_bookFirstKnownAbil_425330() int { return Nox_xxx_bookFirstKnownAbil_425330() }
 
-//export nox_xxx_bookNextKnownAbil_425350
 func nox_xxx_bookNextKnownAbil_425350(a1 int) int { return Nox_xxx_bookNextKnownAbil_425350(a1) }
 
-//export sub_425450
 func sub_425450(a1 int) int { return Sub_425450(a1) }
-
-//export nox_xxx_netAbilRepotState_4D8100
-func nox_xxx_netAbilRepotState_4D8100(a1 *nox_object_t, a2, a3 C.char) {
-	Nox_xxx_netAbilRepotState_4D8100(asObjectS(a1), server.Ability(a2), byte(a3))
-}

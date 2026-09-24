@@ -63,17 +63,6 @@ func nox_xxx_pickupPotion_4F37D0(cobj1 *nox_object_t, cobj2 *nox_object_t, a3 in
 	return bool2int(Nox_xxx_pickupPotion_4F37D0(asObjectS(cobj1), asObjectS(cobj2), a3, 0))
 }
 
-//export sub_57B370
-func sub_57B370(cl, sub, typ int32) byte {
-	return Sub_57B370(object.Class(cl), object.SubClass(sub), int(typ))
-}
-
-//export sub_419E60
 func sub_419E60(u *nox_object_t) int {
 	return bool2int(GetServer().S().Players.CheckXxx(asObjectS(u)))
-}
-
-//export nox_xxx_playerClassCanUseItem_57B3D0
-func nox_xxx_playerClassCanUseItem_57B3D0(item *nox_object_t, cl int8) int {
-	return bool2int(Nox_xxx_playerClassCanUseItem_57B3D0(asObjectS(item), player.Class(cl)))
 }

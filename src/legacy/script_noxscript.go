@@ -30,15 +30,6 @@ func nox_xxx_netGetUnitCodeServ_578AC0(cobj *nox_object_t) C.uint {
 	return C.uint(GetServer().S().GetUnitNetCode(asObjectS(cobj)))
 }
 
-//export nox_setImaginaryCaster
-func nox_setImaginaryCaster() int { return Nox_setImaginaryCaster() }
-
-//export nox_script_readWriteZzz_541670
-func nox_script_readWriteZzz_541670(cpath, cpath2, cdst *C.char) int {
-	return Nox_script_readWriteZzz_541670((*byte)(unsafe.Pointer(cpath)), (*byte)(unsafe.Pointer(cpath2)), (*byte)(unsafe.Pointer(cdst)))
-}
-
-//export nox_xxx_scriptCallByEventBlock_502490
 func nox_xxx_scriptCallByEventBlock_502490(a1 unsafe.Pointer, a2, a3 unsafe.Pointer, eventCode int32) unsafe.Pointer {
 	return GetServer().NoxScriptC().ScriptCallback((*server.ScriptCallback)(a1), AsObjectP(a2), AsObjectP(a3), server.ScriptEventType(eventCode))
 }

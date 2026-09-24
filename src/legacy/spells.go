@@ -44,7 +44,6 @@ var (
 	Nox_xxx_spellWallDestroy_500080   func(sp *server.DurSpell)
 )
 
-//export nox_xxx_getEnchantSpell_424920
 func nox_xxx_getEnchantSpell_424920(enc int) int {
 	return int(server.EnchantID(enc).Spell())
 }
@@ -59,16 +58,12 @@ func nox_xxx_spellNameToN_4243F0(cid *C.char) int {
 	return int(ind)
 }
 
-//export nox_xxx_spellAwardAll1_4EFD80
 func nox_xxx_spellAwardAll1_4EFD80(p *C.nox_playerInfo) { Nox_xxx_spellAwardAll1_4EFD80(asPlayerS(p)) }
 
-//export nox_xxx_spellAwardAll2_4EFC80
 func nox_xxx_spellAwardAll2_4EFC80(p *C.nox_playerInfo) { Nox_xxx_spellAwardAll2_4EFC80(asPlayerS(p)) }
 
-//export nox_xxx_spellAwardAll3_4EFE10
 func nox_xxx_spellAwardAll3_4EFE10(p *C.nox_playerInfo) { Nox_xxx_spellAwardAll3_4EFE10(asPlayerS(p)) }
 
-//export nox_xxx_spellGetAud44_424800
 func nox_xxx_spellGetAud44_424800(ind, a2 int) int {
 	return int(GetServer().S().Spells.DefByInd(spell.ID(ind)).GetAudio(a2))
 }
@@ -81,7 +76,6 @@ func nox_xxx_spellTitle_424930(ind int) *wchar2_t {
 	return internWStr(s)
 }
 
-//export nox_xxx_spellDescription_424A30
 func nox_xxx_spellDescription_424A30(ind int) *wchar2_t {
 	s, ok := Nox_xxx_spellDescription_424A30(ind)
 	if !ok {
@@ -90,7 +84,6 @@ func nox_xxx_spellDescription_424A30(ind int) *wchar2_t {
 	return internWStr(s)
 }
 
-//export nox_xxx_spellManaCost_4249A0
 func nox_xxx_spellManaCost_4249A0(ind, a2 int) int {
 	return GetServer().S().Spells.ManaCost(spell.ID(ind), a2)
 }
@@ -99,38 +92,30 @@ func nox_xxx_spellHasFlags_424A50(ind, flags int) C.bool {
 	return C.bool(GetServer().S().Spells.HasFlags(spell.ID(ind), things.SpellFlags(flags)))
 }
 
-//export nox_xxx_spellFlags_424A70
 func nox_xxx_spellFlags_424A70(ind int) C.uint {
 	return C.uint(GetServer().S().Spells.Flags(spell.ID(ind)))
 }
 
-//export nox_xxx_spellIcon_424A90
 func nox_xxx_spellIcon_424A90(ind int) unsafe.Pointer { return Nox_xxx_spellIcon_424A90(ind) }
 
-//export nox_xxx_spellIconHighlight_424AB0
 func nox_xxx_spellIconHighlight_424AB0(ind int) unsafe.Pointer {
 	return Nox_xxx_spellIconHighlight_424AB0(ind)
 }
 
-//export nox_xxx_spellFirstValid_424AD0
 func nox_xxx_spellFirstValid_424AD0() int { return int(GetServer().S().Spells.FirstValid()) }
 
-//export nox_xxx_spellNextValid_424AF0
 func nox_xxx_spellNextValid_424AF0(ind int) int {
 	return int(GetServer().S().Spells.NextValid(spell.ID(ind)))
 }
 
-//export nox_xxx_spellIsValid_424B50
 func nox_xxx_spellIsValid_424B50(ind int) C.bool {
 	return C.bool(GetServer().S().Spells.DefByInd(spell.ID(ind)).IsValid())
 }
 
-//export nox_xxx_spellIsEnabled_424B70
 func nox_xxx_spellIsEnabled_424B70(ind int) C.bool {
 	return C.bool(GetServer().S().Spells.DefByInd(spell.ID(ind)).IsEnabled())
 }
 
-//export nox_xxx_castSpellByUser_4FDD20
 func nox_xxx_castSpellByUser_4FDD20(a1 int, a2 *nox_object_t, a3 unsafe.Pointer) int {
 	return Nox_xxx_castSpellByUser_4FDD20(a1, asObjectS(a2), a3)
 }

@@ -1,16 +1,5 @@
 package legacy
 
-/*
-#include "memfile.h"
-#include "defs.h"
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME2.h"
-#include "GAME2_1.h"
-#include "GAME2_2.h"
-#include "GAME4.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/internal/binfile"
 )
@@ -25,8 +14,6 @@ var (
 	Sub_4E3AD0             func(ind int) int
 )
 
-//export sub_4E3AD0
-func sub_4E3AD0(ind int) int { return Sub_4E3AD0(ind) }
 func Sub_4F0640() {
 	resourceLinkCatalogs()
 }

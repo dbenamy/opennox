@@ -26,9 +26,6 @@ var (
 	Sub_44A360                        func(a1 int)
 )
 
-//export sub_44A4A0
-func sub_44A4A0() int { return Sub_44A4A0() }
-
 //export nox_xxx_dialogMsgBoxCreate_449A10
 func nox_xxx_dialogMsgBoxCreate_449A10(win *nox_window, title, text *wchar2_t, a4 int, a5, a6 unsafe.Pointer) unsafe.Pointer {
 	var fnc5, fnc6 func()
@@ -45,18 +42,6 @@ func nox_xxx_dialogMsgBoxCreate_449A10(win *nox_window, title, text *wchar2_t, a
 	Nox_xxx_dialogMsgBoxCreate_449A10(asWindow(win), GoWString(title), GoWString(text), gui.DialogFlags(a4), fnc5, fnc6)
 	return nil
 }
-
-//export sub_449E60
-func sub_449E60(a1 C.char) int { return Sub_449E60(int8(a1)) }
-
-//export sub_44A4E0
-func sub_44A4E0() int { return Sub_44A4E0() }
-
-//export sub_44A4B0
-func sub_44A4B0() { Sub_44A4B0() }
-
-//export sub_44A360
-func sub_44A360(a1 int) { Sub_44A360(a1) }
 
 func Sub_41DA70(a1, a2 int) {
 	onlineSessionEvent()

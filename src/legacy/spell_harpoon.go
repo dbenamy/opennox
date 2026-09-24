@@ -13,11 +13,6 @@ var (
 	Nox_xxx_updateHarpoon_54F380      func(a1c *server.Object)
 )
 
-//export nox_xxx_harpoonBreakForPlr_537520
-func nox_xxx_harpoonBreakForPlr_537520(u *nox_object_t) {
-	Nox_xxx_harpoonBreakForPlr_537520(asObjectS(u))
-}
-
 //export nox_xxx_collideHarpoon_4EB6A0
 func nox_xxx_collideHarpoon_4EB6A0(a1c *nox_object_t, a2c *nox_object_t) {
 	Nox_xxx_collideHarpoon_4EB6A0(asObjectS(a1c), asObjectS(a2c))

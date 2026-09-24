@@ -106,7 +106,6 @@ func init() {
 //export nox_xxx_updatePlayer_4F8100
 func nox_xxx_updatePlayer_4F8100(up *nox_object_t) { Nox_xxx_updatePlayer_4F8100(asObjectS(up)) }
 
-//export nox_xxx_objectApplyForce_52DF80
 func nox_xxx_objectApplyForce_52DF80(vec *C.float, obj *nox_object_t, force C.float) {
 	GetServer().ApplyForce(asObjectS(obj), AsPointf(unsafe.Pointer(vec)), float64(force))
 }

@@ -3,6 +3,5 @@
 
 #include <stdbool.h>
 
-int nox_netlist_addToMsgListCli_40EBC0(int ind1, int ind2, unsigned char* buf, int sz);
 
 #endif // NOX_COMMON_NET_LIST_H

@@ -65,7 +65,6 @@ func sub_5049C0(a0 C.int) C.int { return C.int(prefabObjectNext(uint32(a0))) }
 
 func sub_504A10(a0 C.int) C.int { return C.int(prefabObjectRemove(uint32(a0))) }
 
-//export sub_51D0E0
 func sub_51D0E0()                { prefabResetWaypoint() }
 func sub_51D0F0(a0 C.char) C.int { return C.int(prefabSetWaypointKind(byte(uint32(a0)))) }
 func sub_51D120(a0 *C.float) *C.uint32_t {

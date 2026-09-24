@@ -4,6 +4,5 @@
 #include "defs.h"
 
 int nox_xxx_serverHandleClientConsole_443E90(nox_playerInfo* pl, char action, wchar2_t* text);
-int nox_server_parseCmdText_443C80(wchar2_t* a1, int a2);
 
 #endif // NOX_PORT_CLIENT_SYSTEM_PARSECMD

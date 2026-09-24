@@ -54,7 +54,6 @@ func nox_fs_fseek(f *FILE, off C.long, mode int) int {
 	return 0
 }
 
-//export nox_fs_fread
 func nox_fs_fread(f *FILE, dst unsafe.Pointer, sz int) int {
 	fp := fileByHandle(f)
 	n, _ := fp.Read(unsafe.Slice((*byte)(dst), sz))
@@ -70,7 +69,6 @@ func fileByHandle(f *FILE) *binfile.File {
 	return fp
 }
 
-//export nox_fs_close
 func nox_fs_close(f *FILE) {
 	if f == nil {
 		return

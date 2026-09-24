@@ -63,41 +63,16 @@ type Nox_screenParticle struct {
 	Field_48 *Nox_screenParticle // 12, 48, prev
 }
 
-//export sub_4A1BE0
-func sub_4A1BE0(a1 int) int { return Sub_4A1BE0(a1) }
-
-//export sub_41E300
-func sub_41E300(a1 int) int { return Sub_41E300(a1) }
-
 //export sub_4A50A0
 func sub_4A50A0() int { return Sub_4A50A0() }
 
 //export sub_4A50D0
 func sub_4A50D0() int { return Sub_4A50D0() }
 
-//export nox_client_resetScreenParticles_431510
-func nox_client_resetScreenParticles_431510() { Nox_client_resetScreenParticles_431510() }
-
-//export sub_46D6F0
-func sub_46D6F0() int { return Sub_46D6F0() }
-
-//export sub_413A00
 func sub_413A00(a1 int) { Sub_413A00(a1) }
-
-//export sub_44A400
-func sub_44A400() { Sub_44A400() }
 
 //export nox_game_showSelChar_4A4DB0
 func nox_game_showSelChar_4A4DB0() int { return Nox_game_showSelChar_4A4DB0() }
-
-//export nox_savegame_sub_46D580
-func nox_savegame_sub_46D580() { Nox_savegame_sub_46D580() }
-
-//export sub_450580
-func sub_450580() { Sub_450580() }
-
-//export sub_4DB170
-func sub_4DB170(a1 int, a2 unsafe.Pointer, a3 int) { Sub_4DB170(a1 != 0, a2, a3) }
 
 func Sub_41E470() {
 	onlineSessionRetry()
