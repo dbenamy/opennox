@@ -214,9 +214,9 @@ func PortTestClientInteractionCall(op string, args ...uintptr) uint64 {
 	case 15:
 		return uint64(nox_xxx_clientIsObserver_4372E0())
 	case 16:
-		return uint64(uintptr(unsafe.Pointer(sub_445450())))
+		return uint64(uintptr(unsafe.Pointer(interactionMessagesClear())))
 	case 17:
-		return uint64(nox_xxx_drawMessageLines_445530())
+		return uint64(interactionMessagesDraw())
 	case 18:
 		return uint64(nox_xxx_guiChatMode_4456E0((*int32)(unsafe.Pointer(a[0]))))
 	case 19:
@@ -334,7 +334,7 @@ func PortTestClientInteractionCall(op string, args ...uintptr) uint64 {
 		nox_xxx_clientPickup_46C140((*nox_drawable)(unsafe.Pointer(a[0])))
 		return 0
 	case 73:
-		nox_xxx_printCentered_445490((*C.ushort)(unsafe.Pointer(a[0])))
+		interactionCentered((*uint16)(unsafe.Pointer(a[0])))
 		return 0
 	case 74:
 		return uint64(sub_49B4B0((*uint16)(unsafe.Pointer(a[0]))))

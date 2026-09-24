@@ -1,17 +1,7 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "common__random.h"
-#include "GAME1_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_3.h"
-*/
-import "C"
 import (
+	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/server"
 	"math"
@@ -106,7 +96,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 			*equipmentWord(ud, flagOff) = 1
 			*equipmentWord(ud, kindOff) = uint32(actual.TypeInd)
 		}
-		front := nox_server_testTwoPointsAndDirection_4E6E50((*C.float2)(unsafe.Pointer(&u.PosVec)), C.int(int16(u.Direction1)), (*C.float2)(unsafe.Pointer(&actual.PrevPos)))&1 != 0
+		front := stateFront(&u.PosVec, int32(int16(u.Direction1)), &actual.PrevPos)&1 != 0
 		if kind != 15 && eligible && front {
 			state := *(*byte)(unsafe.Add(ud, 88))
 			shield := (player && state == 16 || !player && monsterControlHead(u) == 21) && armor&0x3000000 != 0
@@ -130,7 +120,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 			} else {
 				canBlock := state == 13 || state == 18 || state == 19 || state == 20
 				if !player {
-					canBlock = sub_534340(C.int(inventoryInt(u))) != 0
+					canBlock = monsterCanBlockHead(u)
 				}
 				if weapons&0x400 != 0 && (actual.ObjClass&1 != 0 || kind == 0 || kind == 11) && canBlock {
 					if actual.ObjClass&1 != 0 {
@@ -142,7 +132,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 					}
 					inventorySound(890, u, 0, 0)
 					if player {
-						nox_xxx_playerSetState_4FA020(asObjectC(u), int(C.int(nox_common_randomInt_415FA0(18, 20))))
+						nox_xxx_playerSetState_4FA020(asObjectC(u), int(int32(nox_common_randomInt_415FA0(18, 20))))
 					} else {
 						monsterControlEnsure(u, 23)
 					}
@@ -199,7 +189,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 	if amount > 0 && n == 0 {
 		n = 1
 	}
-	if bool(nox_common_getEngineFlag(C.NOX_ENGINE_FLAG_GODMODE)) && u.ObjClass&4 != 0 {
+	if bool(noxflags.HasEngine(noxflags.EngineGodMode)) && u.ObjClass&4 != 0 {
 		return 1
 	}
 	if bool(nox_common_gameFlags_check_40A5C0(4096)) {

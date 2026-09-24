@@ -7,7 +7,7 @@ browser, interaction-message, damage and server-options callers to existing Go
 owners, preserving temporary string ownership, signed narrowing and return values.
 The proposed change removes six production and one test C imports and ten private
 Go adapters. All 1,179 actual C exports and 78 embedded C callback bodies stay.
-Expected selected production cgo count: 236 to 230; qualification is pending.
+Qualified selected production cgo count: 236 to 230 (233/463 eliminated).
 
 The baseline records all 3,052 source fingerprints. Fresh processes using the
 qualified binaries pass exactly 195 default, 193 server and 195 highres selected
@@ -45,3 +45,15 @@ full-suite baseline, and headless character creation/save/load/resume. Verify
 source fingerprints, original asset hashes and dependency counts. This localized
 caller batch does not change shared layouts or allocation, so another complete
 35-minute root corpus is reserved for a meaningful shared-infrastructure boundary.
+
+## Qualification result
+
+All gates pass. The exact 195 default, 193 server and 195 highres roots pass with
+no skips; safe build/static checks pass. Three fresh production binaries and ABI
+checks pass, the known-suite result matches exactly, and headless character
+creation/save/load/resume passes. All phases have identical source fingerprints,
+all 1,654 original assets are unchanged, and external native bindings are unchanged.
+No assertions or frozen expectations changed. Standalone production/test C remains
+zero; 1,179 C exports, 78 embedded callback bodies and 157 headers/3,902 lines remain.
+See [qualification](go-native-owner-constants-qualification.json) and
+[inventory](go-native-owner-constants-inventory-after.json).

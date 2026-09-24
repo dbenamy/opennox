@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include <stdlib.h>
-#include "GAME1.h"
-#include "GAME2.h"
-#include "GAME3.h"
-#include "GAME3_1.h"
-*/
-import "C"
 import (
 	"encoding/binary"
 	"github.com/opennox/opennox/v1/client/gui"
@@ -85,7 +77,7 @@ func serverOptionsEvent(_ *gui.Window, event int, arg uintptr, value int) int {
 		case 10141:
 			serverOptionsResetMap()
 		case 10145:
-			data := serverOptionsRecord(unsafe.Pointer((*C.char)(unsafe.Pointer(serverConfigSlot(int32(1))))))
+			data := serverOptionsRecord(unsafe.Pointer(serverConfigSlot(int32(1))))
 			serverOptionsRead(data)
 			serverConfigSlotCopy(int32(1), int32(0))
 			count := GetServer().S().Teams.Count()
@@ -119,7 +111,7 @@ func serverOptionsEvent(_ *gui.Window, event int, arg uintptr, value int) int {
 		case 10149:
 			serverOptionsClose(0)
 		case 10152:
-			serverPanelsAdvancedOpen(unsafe.Pointer((*C.char)(unsafe.Pointer(serverConfigSlot(int32(1))))))
+			serverPanelsAdvancedOpen(unsafe.Pointer(serverConfigSlot(int32(1))))
 		case 10159:
 			parent := child.Parent()
 			child.SetParent(nil)
@@ -220,7 +212,7 @@ func serverOptionsEvent(_ *gui.Window, event int, arg uintptr, value int) int {
 	if text == "" {
 		return 1
 	}
-	n := int(C.atoi((*C.char)(internCStr(text))))
+	n := int(resourceAtoi(text))
 	if n < 0 {
 		n = 0
 	}

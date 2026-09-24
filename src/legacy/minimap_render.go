@@ -57,7 +57,7 @@ func minimapDrawAndMessages() int {
 	if memmap.Uint8(0x5D4594, 1096424)&1 != 0 {
 		minimapDrawSprite(GetClient().Cli().Objs.ByNetCodeDynamic(ClientPlayerNetCode()))
 	}
-	return int(nox_xxx_drawMessageLines_445530())
+	return int(interactionMessagesDraw())
 }
 func minimapDraw(_ *client.Drawable, level int) int {
 	c, s := GetClient(), GetServer().S()

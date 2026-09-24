@@ -220,7 +220,7 @@ func Sub_49FF20() {
 	sub_49FF20()
 }
 func Sub_445450() {
-	sub_445450()
+	interactionMessagesClear()
 }
 func Sub_45DB90() {
 	quickbarResetFlash()

@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2_3.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
@@ -23,7 +18,7 @@ func PortTestServerBrowserCollectionOwner() func() {
 	listClear(head)
 	*init = 1
 	return func() {
-		sub_49FFA0(0)
+		browserListClear(false)
 		if browserSelectedSnapshot != nil {
 			alloc.FreePtr(browserSelectedSnapshot)
 		}
@@ -32,9 +27,9 @@ func PortTestServerBrowserCollectionOwner() func() {
 		*init = oldInit
 	}
 }
-func PortTestServerBrowserCollectionClear() { sub_49FFA0(0) }
+func PortTestServerBrowserCollectionClear() { browserListClear(false) }
 func PortTestServerBrowserCollectionAdd(p unsafe.Pointer) int {
-	return int(nox_wol_servers_addResult_4A0030((*C.nox_gui_server_ent_t)(p)))
+	return browserListAdd(p)
 }
 func PortTestServerBrowserCollectionSnapshot() []unsafe.Pointer {
 	var out []unsafe.Pointer
@@ -45,19 +40,19 @@ func PortTestServerBrowserCollectionSnapshot() []unsafe.Pointer {
 	return out
 }
 func PortTestServerBrowserCollectionAt(index int32) unsafe.Pointer {
-	return unsafe.Pointer(sub_4A04C0(C.int(index)))
+	return browserListAt(index)
 }
 func PortTestServerBrowserCollectionID(id int32) unsafe.Pointer {
-	return unsafe.Pointer(sub_4A0490(C.int(id)))
+	return browserListID(id)
 }
 func PortTestServerBrowserCollectionMissing(addr string, port uint16) int {
 	p := CString(addr)
 	defer StrFree(p)
-	return int(sub_4A0410(p, C.short(port)))
+	return browserListMissing(GoString(p), int16(port))
 }
 
 // Native re-sort retains the existing records and owns its selection snapshot.
 func PortTestServerBrowserCollectionResort() func() {
-	sub_4A0390()
+	browserListResort()
 	return func() {}
 }

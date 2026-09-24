@@ -2553,3 +2553,18 @@ from directory basenames (`common/flags` is `noxflags`). Restore the import and
 record failed logs; resolve package names before future pruning. Frozen captures
 and root assertions remain unchanged. All completed-batch gates pass.
 See [GO_NATIVE_RECORD_STORAGE.md](GO_NATIVE_RECORD_STORAGE.md).
+
+
+## Native owner calls and compiled constants
+
+Preserve legacy package-wide compiled constants even when root Go profile
+constants differ: NOX_HIGH_RES applies to every legacy profile. Move private
+callers directly to existing owners with explicit signed narrowing and the same
+string lifetimes. Keep the public browser record raw-address accessor with an
+unsafe.Pointer result, documenting the C-specific return type removal.
+
+Use the audited affected-family selection for this localized caller batch; expand
+helper proposals to include actual AI policy and message-drawing routes. All
+three focused profiles, safe/static, fresh production/ABI, known-suite and headless
+save/load gates pass without changing frozen expectations. See
+[GO_NATIVE_OWNER_CONSTANTS.md](GO_NATIVE_OWNER_CONSTANTS.md).

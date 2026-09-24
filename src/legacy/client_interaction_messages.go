@@ -1,17 +1,11 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "client__gui__guicon.h"
-#include "common__strman.h"
-*/
-import "C"
-
 import (
 	"image"
 	"unsafe"
 
 	noxcolor "github.com/opennox/libs/color"
+	"github.com/opennox/libs/console"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 )
@@ -60,7 +54,7 @@ func interactionCentered(text *uint16) {
 	*memmap.PtrUint32(0x5D4594, 824440+off) = gameFrame() + 5*gameFPS()
 	*memmap.PtrUint8(0x5D4594, 824444+off) = 0
 	format := alloc.InternCString16(GetServer().S().Strings().GetStringInFile("systemmsg", `C:\NoxPost\src\Client\Gui\guimsg.c`))
-	textFormatConsole(byte(C.NOX_CONSOLE_RED), format, textFormatPointer(unsafe.Pointer(text)))
+	textFormatConsole(byte(console.ColorRed), format, textFormatPointer(unsafe.Pointer(text)))
 }
 func interactionMessagesDraw() int32 {
 	r := GetClient().R2()
@@ -101,11 +95,3 @@ func interactionMessagesDraw() int32 {
 	}
 	panic("unreachable message row")
 }
-
-func sub_445450() *C.ushort { return (*C.ushort)(unsafe.Pointer(interactionMessagesClear())) }
-
-func nox_xxx_printCentered_445490(text *C.ushort) {
-	interactionCentered((*uint16)(unsafe.Pointer(text)))
-}
-
-func nox_xxx_drawMessageLines_445530() C.int { return C.int(interactionMessagesDraw()) }

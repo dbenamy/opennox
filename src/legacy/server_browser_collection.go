@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME2_3.h"
-#include "client__shell__noxworld.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -201,21 +196,3 @@ func browserListMissing(addr string, port int16) int {
 	}
 	return 1
 }
-
-func sub_49FFA0(windows C.int) *C.int { return (*C.int)(browserListClear(windows != 0)) }
-
-func nox_wol_servers_addResult_4A0030(record *C.nox_gui_server_ent_t) C.int {
-	return C.int(browserListAdd(unsafe.Pointer(record)))
-}
-
-func sub_4A0360() *C.int { browserListRender(); return nil }
-
-func sub_4A0390() *C.int { browserListResort(); return nil }
-
-func sub_4A0410(addr *C.char, port C.short) C.int {
-	return C.int(browserListMissing(GoString(addr), int16(port)))
-}
-
-func sub_4A0490(id C.int) *C.int { return (*C.int)(browserListID(int32(id))) }
-
-func sub_4A04C0(index C.int) *C.int { return (*C.int)(browserListAt(int32(index))) }

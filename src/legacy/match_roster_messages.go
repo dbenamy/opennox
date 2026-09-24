@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1.h"
-#include "GAME1_1.h"
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -16,6 +9,10 @@ import (
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
+
+// legacyRosterProtocolVersion preserves the unconditional NOX_HIGH_RES C flag
+// used by the legacy roster in every qualified build profile.
+const legacyRosterProtocolVersion uint32 = 0x000F039A
 
 var matchRosterFlagType uint32
 
@@ -88,16 +85,16 @@ func matchRosterSettings() int {
 	a[0] = 175
 	binary.LittleEndian.PutUint32(a[1:], GetServer().S().Frame())
 	// The legacy C flag is unconditional today, including default/server targets.
-	binary.LittleEndian.PutUint32(a[5:], uint32(C.NOX_CLIENT_VERS_CODE))
+	binary.LittleEndian.PutUint32(a[5:], legacyRosterProtocolVersion)
 	binary.LittleEndian.PutUint32(a[9:], uint32(noxflags.GetGame())&0x7fff0)
 	binary.LittleEndian.PutUint32(a[13:], uint32(dword_5d4594_3484))
 	a[17] = byte(memmap.Uint32(0x5D4594, 3464))
-	a[18] = byte(C.short(serverConfigScore(int16(mode))))
-	a[19] = byte(C.uchar(serverConfigMinutes(int16(mode))))
+	a[18] = byte(int16(serverConfigScore(int16(mode))))
+	a[19] = byte(serverConfigMinutes(int16(mode)))
 	b[0] = 176
 	alloc.StrCopy(b[1:17], alloc.GoString(memmap.PtrUint8(0x5D4594, 1324)))
 	copy(b[17:45], unsafe.Slice((*byte)(unsafe.Add(settings, 24)), 28))
-	if C.int(serverConfigTimerGet()) != 0 && (sub_40A300() != 0 || a[19] != 0) {
+	if int32(serverConfigTimerGet()) != 0 && (sub_40A300() != 0 || a[19] != 0) {
 		binary.LittleEndian.PutUint32(b[45:], memmap.Uint32(0x5D4594, 3468)-uint32(PlatformTicks()))
 	}
 	gameplayReportSend(159, a[:], true, 0)

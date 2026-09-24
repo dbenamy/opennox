@@ -164,7 +164,7 @@ func Nox_xxx_gui_43E1A0(a1 int) {
 func Nox_xxx_printCentered_445490(str string) {
 	wstr, free := CWString(str)
 	defer free()
-	nox_xxx_printCentered_445490(wstr)
+	interactionCentered((*uint16)(unsafe.Pointer(wstr)))
 }
 func Nox_xxx_mapValidateMB_4CF470(a1 string, a2 uint32) int {
 	return int(sessionMapValidate((*byte)(unsafe.Pointer(internCStr(a1))), a2))

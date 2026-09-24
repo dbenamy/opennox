@@ -383,10 +383,14 @@ func objectFromWord(p uint32) *server.Object {
 	return (*server.Object)(unsafe.Pointer(uintptr(p)))
 }
 
+func monsterCanBlockHead(u *server.Object) bool {
+	a := monsterHeadSafe(u)
+	return a == 0 || a == 1 || a == 4 || a == 25 || a == 26 || a == 27 || a == 23
+}
+
 //export sub_534340
 func sub_534340(p C.int) C.int {
-	a := monsterHeadSafe(objectFromInt(p))
-	return C.int(bool2int(a == 0 || a == 1 || a == 4 || a == 25 || a == 26 || a == 27 || a == 23))
+	return C.int(bool2int(monsterCanBlockHead(objectFromInt(p))))
 }
 
 //export nox_xxx_monsterCanAttackAtWill_534390
