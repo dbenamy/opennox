@@ -20,8 +20,11 @@ file and one test cgo import disappear. Live rendering callback routes remain.
 See [CATALOG_EFFECT_OWNERS.md](docs/porting/CATALOG_EFFECT_OWNERS.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Next-candidate audit: `build/port-after-catalog-effect/`;
-primary review is required before accepting its scope. Stop at the milestone or
+recorded reversible decisions. Active batch: 51 collision callback identities, `build/port-collision-identities/`.
+The original selection passes (356 client roots, 355 server roots), including new identity/GC
+and activation-return contracts. Conversion remains uninstalled; see
+[COLLISION_IDENTITIES.md](docs/porting/COLLISION_IDENTITIES.md) for the result-dispatch
+decision and remaining gates. Stop at the milestone or
 for a substantial question.
 
 Latest artifacts: `build/port-catalog-effect-owners/`.
@@ -120,6 +123,8 @@ do not rerun them or infer deletion safety from age alone.
 
 | Artifact | Recovery or current location |
 | --- | --- |
+| Obsolete pre-catalog-conversion project cache | 44 unused, hash/stat-verified root/legacy archives removed; 2,402,185,216 allocated bytes reclaimed. Current caches, baselines and binaries remain. Rebuild normally; plan/approval/journal: `build/port-collision-identities/cache-cleanup-{proposal.json,approved.json,deleted.jsonl}`. |
+| Completed catalog/effect scenario assets | Removed 1,654 verified duplicate originals; 559,931,392 allocated bytes reclaimed. Originals, saves/results retained. Restore: `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/catalog-effect-owners-save/deduplicated-assets.json`. Plan/result: `build/port-post-catalog-effect-cleanup/`. |
 | Superseded inventory/resource, shop/trade and spell/reward binaries | Removed 21 verified, unused executables; 1,183,252,480 allocated bytes reclaimed. Rebuild revisions `9dac58bf`, `279e7867`, `b5d7ee16` with retained commands. Latest map-room/painting replacements remain. Source/hash/host-use checks and deletion journal: `build/port-catalog-effect-owners/cleanup-{approved.json,deleted.jsonl}`. |
 | Completed map-room/painting scenario assets | Removed 1,654 verified original-asset duplicates; 559,882,240 allocated bytes reclaimed. Originals, saves and results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/map-room-paint-owners-save/deduplicated-assets.json`. Plan/result: `build/port-post-map-room-paint-cleanup/`. |
 | Completed shop/trade and spell/reward scenario assets | Removed 3,308 verified original-asset duplicates; 1,119,744,000 allocated bytes reclaimed. Saves/results and originals remain. Restore each with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/SCENARIO/deduplicated-assets.json` for `shop-trade-owners-save` or `spell-reward-owners-save`. Plan/result: `build/port-post-spell-reward-cleanup/`. |
