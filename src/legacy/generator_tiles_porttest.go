@@ -2,13 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include "GAME1.h"
-#include "GAME4_1.h"
-*/
-import "C"
-
 import (
 	"bytes"
 	"fmt"
@@ -83,7 +76,7 @@ func portTestGeneratorTileEnvironment() (configure func(tileID int, cold bool), 
 	var wantRows, wantCells []uint32
 	var wantTiles, wantEdges, wantPrefix, wantSuffix []byte
 	var wantCache, initialCache [len(cacheOff)]uint32
-	var wantGrid **C.obj_5D4594_2650668_t
+	var wantGrid **worldTileCell
 
 	configure = func(tileID int, cold bool) {
 		if tileID < 0 || tileID >= len(tiles) {
@@ -124,7 +117,7 @@ func portTestGeneratorTileEnvironment() (configure func(tileID int, cold bool), 
 				cells[off+5], cells[off+10] = 0, 0
 			}
 		}
-		wantGrid = (**C.obj_5D4594_2650668_t)(unsafe.Pointer(&rows[1]))
+		wantGrid = (**worldTileCell)(unsafe.Pointer(&rows[1]))
 		worldTileGrid = wantGrid
 
 		wantRows = slices.Clone(rows)

@@ -27,13 +27,13 @@ func screenParticleAdd(p *Nox_screenParticle) {
 	if p.Field_44 != nil {
 		p.Field_44.Field_48 = p
 	} else {
-		legacyGlobals.dword_5d4594_806052 = (*C.nox_screenParticle)(unsafe.Pointer(p))
+		legacyGlobals.dword_5d4594_806052 = p
 	}
-	legacyGlobals.nox_screenParticles_head = (*C.nox_screenParticle)(unsafe.Pointer(p))
+	legacyGlobals.nox_screenParticles_head = p
 }
 func screenParticleUnlink(p *Nox_screenParticle) {
 	if p == screenParticleTail() {
-		legacyGlobals.dword_5d4594_806052 = (*C.nox_screenParticle)(unsafe.Pointer(p.Field_48))
+		legacyGlobals.dword_5d4594_806052 = p.Field_48
 	}
 	if p.Field_44 != nil {
 		p.Field_44.Field_48 = p.Field_48
@@ -41,7 +41,7 @@ func screenParticleUnlink(p *Nox_screenParticle) {
 	if p.Field_48 != nil {
 		p.Field_48.Field_44 = p.Field_44
 	} else {
-		legacyGlobals.nox_screenParticles_head = (*C.nox_screenParticle)(unsafe.Pointer(p.Field_44))
+		legacyGlobals.nox_screenParticles_head = p.Field_44
 	}
 }
 func screenParticleDelete(p *Nox_screenParticle) {

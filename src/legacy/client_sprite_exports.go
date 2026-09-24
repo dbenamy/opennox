@@ -43,30 +43,30 @@ func nox_thing_boulder_draw(vp *C.int, dr *C.nox_drawable) C.int {
 
 //export nox_things_animate_draw_parse
 func nox_things_animate_draw_parse(obj *C.nox_thing, f *C.nox_memfile, attr *C.char) C.bool {
-	return C.bool(spriteParseAnimate((*client.ObjectType)(unsafe.Pointer(obj)), asMemfile(f), unsafe.Slice((*byte)(unsafe.Pointer(attr)), 256)))
+	return C.bool(spriteParseAnimate((*client.ObjectType)(unsafe.Pointer(obj)), asMemfileP(unsafe.Pointer(f)), unsafe.Slice((*byte)(unsafe.Pointer(attr)), 256)))
 }
 
 //export nox_things_cond_animate_draw_parse
 func nox_things_cond_animate_draw_parse(obj *C.nox_thing, f *C.nox_memfile, attr *C.char) C.bool {
-	return C.bool(spriteParseConditional((*client.ObjectType)(unsafe.Pointer(obj)), asMemfile(f), unsafe.Slice((*byte)(unsafe.Pointer(attr)), 256)))
+	return C.bool(spriteParseConditional((*client.ObjectType)(unsafe.Pointer(obj)), asMemfileP(unsafe.Pointer(f)), unsafe.Slice((*byte)(unsafe.Pointer(attr)), 256)))
 }
 
 //export nox_things_static_draw_parse
 func nox_things_static_draw_parse(obj *C.nox_thing, f *C.nox_memfile, attr *C.char) C.bool {
-	return C.bool(spriteParseStatic((*client.ObjectType)(unsafe.Pointer(obj)), asMemfile(f), unsafe.Slice((*byte)(unsafe.Pointer(attr)), 256)))
+	return C.bool(spriteParseStatic((*client.ObjectType)(unsafe.Pointer(obj)), asMemfileP(unsafe.Pointer(f)), unsafe.Slice((*byte)(unsafe.Pointer(attr)), 256)))
 }
 
 //export nox_things_static_random_draw_parse
 func nox_things_static_random_draw_parse(obj *C.nox_thing, f *C.nox_memfile, attr *C.char) C.bool {
-	return C.bool(spriteParseRandom((*client.ObjectType)(unsafe.Pointer(obj)), asMemfile(f), unsafe.Slice((*byte)(unsafe.Pointer(attr)), 256), false))
+	return C.bool(spriteParseRandom((*client.ObjectType)(unsafe.Pointer(obj)), asMemfileP(unsafe.Pointer(f)), unsafe.Slice((*byte)(unsafe.Pointer(attr)), 256), false))
 }
 
 //export nox_things_slave_draw_parse
 func nox_things_slave_draw_parse(obj *C.nox_thing, f *C.nox_memfile, attr *C.char) C.bool {
-	return C.bool(spriteParseRandom((*client.ObjectType)(unsafe.Pointer(obj)), asMemfile(f), unsafe.Slice((*byte)(unsafe.Pointer(attr)), 256), true))
+	return C.bool(spriteParseRandom((*client.ObjectType)(unsafe.Pointer(obj)), asMemfileP(unsafe.Pointer(f)), unsafe.Slice((*byte)(unsafe.Pointer(attr)), 256), true))
 }
 
 //export nox_things_animate_state_draw_parse
 func nox_things_animate_state_draw_parse(obj *C.nox_thing, f *C.nox_memfile, attr *C.char) C.bool {
-	return C.bool(spriteParseState((*client.ObjectType)(unsafe.Pointer(obj)), asMemfile(f)))
+	return C.bool(spriteParseState((*client.ObjectType)(unsafe.Pointer(obj)), asMemfileP(unsafe.Pointer(f))))
 }

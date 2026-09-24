@@ -16,7 +16,7 @@ import (
 
 func browserMarkersEnable(enabled int) {
 	if browserUI.resultCount != 0 {
-		serverPanelsEnable(asWindow(browserUI.world), 10070, uint(browserUI.resultCount)+10069, enabled)
+		serverPanelsEnable(browserUI.world, 10070, uint(browserUI.resultCount)+10069, enabled)
 	}
 }
 func browserListReset() {
@@ -47,7 +47,7 @@ func browserAnimationOut() int {
 	return 1
 }
 func browserConnectionReset() int {
-	GetClient().Cli().GUI.Focus(asWindow(browserUI.world))
+	GetClient().Cli().GUI.Focus(browserUI.world)
 	if Sub_43BE30() == 0 || memmap.Uint32(0x5D4594, 815084) == 0 {
 		Sub_44A400()
 	}
@@ -66,7 +66,7 @@ func browserClose() int {
 		browserUI.detailPanel = nil
 	}
 	if browserUI.world != nil {
-		asWindow(browserUI.world).Destroy()
+		browserUI.world.Destroy()
 		browserUI.world = nil
 	}
 	browserConnectionReset()
@@ -88,7 +88,7 @@ func browserHideAfterChoice() int {
 	if GetClient().GameGetStateCode() == 1700 {
 		return browserAnimationFinish()
 	}
-	asWindow(browserUI.world).SetHidden(true)
+	browserUI.world.SetHidden(true)
 	browserWindow(uint32(uintptr(browserUI.detailPanel))).SetHidden(true)
 	nox_client_setCursorType_477610(0)
 	return 1
@@ -102,8 +102,8 @@ func browserShowList() int {
 	browserWindow(uint32(browserUI.gameList)).SetHidden(false)
 	browserWindow(uint32(uintptr(browserUI.mapWindow))).SetHidden(true)
 	browserWindow(uint32(browserUI.overview)).SetHidden(true)
-	serverPanelsEnable(asWindow(browserUI.world), 10006, 10007, 1)
-	serverPanelsHide(asWindow(browserUI.world), 10047, 10051, false)
+	serverPanelsEnable(browserUI.world, 10006, 10007, 1)
+	serverPanelsHide(browserUI.world, 10047, 10051, false)
 	browserLabel("ListJoinServer")
 	browserUI.listMode = 1
 	return 0

@@ -53,9 +53,10 @@ One initial consumer invocation rejected a two-line pattern before tests started
 Its logs are preserved separately; final phases use the corrected single-line
 pattern. No golden or existing expected failure changed.
 
-The remaining 79 production preamble bodies are 76 generic ccall dispatchers and
-three typed callback invokers (sprite iteration, spell callback and curve segments).
-No project-owned header function bodies remained in the prior reviewed inventory;
-the third-party MP3 implementation header has since been retired. These callback
-boundaries remain compatible with the current 386/SSE2 plus cgo target. Replacing
-them wholesale would require a considered callback-representation design.
+The original consolidation left 79 production preamble bodies. The later
+[native-record storage batch](GO_NATIVE_RECORD_STORAGE.md) retired the unused
+sprite-iteration adapter after a complete reference review. **78 now remain:**
+76 generic ccall dispatchers plus the spell and curve-segment adapters.
+No project-owned header function bodies remained in the reviewed inventory.
+These callback boundaries remain compatible with the current 386/SSE2 plus cgo
+target; retiring shared dispatch requires migrating its live callback identities.

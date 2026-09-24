@@ -50,7 +50,7 @@ func bookInit() int {
 	g := GetClient().Cli().GUI
 	drawOne := func(*gui.Window, *gui.WindowData) int { return 1 }
 	root := g.NewWindowRaw(nil, 1196, 5, int(nox_win_height)-323, 285, 168, nil)
-	legacyGlobals.nox_win_unk1 = (*C.nox_window)(root.C())
+	legacyGlobals.nox_win_unk1 = root
 	root.SetAllFuncs(bookEvent(func(w *gui.Window, e, a uint32) int { return bookListEvents(w, e, bookPoint(a)) }), func(w *gui.Window, _ *gui.WindowData) int { return bookDrawList(w) }, nil)
 	bookHideWindow(root, true)
 	for _, tab := range []struct{ x, y, id int }{{257, 15, 1320}, {253, 61, 1310}} {

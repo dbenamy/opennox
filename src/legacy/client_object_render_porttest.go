@@ -31,7 +31,7 @@ func PortTestNewObjectRenderEnvironment(data *noxrender.RenderData) *PortTestObj
 		nox_win_height, legacyGlobals.nox_draw_curDrawData_3799572 = height, render
 	})
 	nox_win_height = 96
-	legacyGlobals.nox_draw_curDrawData_3799572 = (*C.nox_render_data_t)(data.C())
+	legacyGlobals.nox_draw_curDrawData_3799572 = data
 	for _, reg := range [][3]uintptr{{0x587000, 80808, 4}, {0x5D4594, 1305732, 44}, {0x5D4594, 1321512, 16}, {0x5D4594, 1321532, 268}, {0x85B3FC, 956, 4}} {
 		b := unsafe.Slice((*byte)(memmap.PtrOff(reg[0], reg[1])), reg[2])
 		old := append([]byte(nil), b...)

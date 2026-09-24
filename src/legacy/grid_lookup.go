@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-*/
-import "C"
-
 import (
 	"unsafe"
 
@@ -20,27 +15,27 @@ func tileAtPoint(p types.Pointf) int32 {
 		return -1
 	}
 	u, v := floatToInt32(float32(x))%46, floatToInt32(float32(y))%46
-	rows := (*[128]*[128]C.obj_5D4594_2650668_t)(unsafe.Pointer(worldTileGrid))
+	rows := (*[128]*[128]worldTileCell)(unsafe.Pointer(worldTileGrid))
 	var fallback int32
 	var head unsafe.Pointer
 	var local [2]int32
 	if u <= v {
 		if 46-u <= v {
 			cell := &rows[i][j]
-			fallback, head = int32(cell.field_6), cell.field_10
+			fallback, head = int32(cell[6]), unsafe.Pointer(uintptr(cell[10]))
 			local = [2]int32{u, v - 23}
 		} else {
 			cell := &rows[i-1][j]
-			fallback, head = int32(cell.field_1), cell.field_5
+			fallback, head = int32(cell[1]), unsafe.Pointer(uintptr(cell[5]))
 			local = [2]int32{u + 23, v}
 		}
 	} else if 46-u <= v {
 		cell := &rows[i][j]
-		fallback, head = int32(cell.field_1), cell.field_5
+		fallback, head = int32(cell[1]), unsafe.Pointer(uintptr(cell[5]))
 		local = [2]int32{u - 23, v}
 	} else {
 		cell := &rows[i][j-1]
-		fallback, head = int32(cell.field_6), cell.field_10
+		fallback, head = int32(cell[6]), unsafe.Pointer(uintptr(cell[10]))
 		local = [2]int32{u, v + 23}
 	}
 	if head == nil {

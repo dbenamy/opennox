@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME1.h"
-*/
-import "C"
-
 import (
 	"image"
 	"slices"
@@ -58,7 +53,7 @@ func PortTestFloorEligibility(inputs []PortTestFloorInput) (out PortTestFloorRes
 			cells[off+5], cells[off+10] = 0, 0
 		}
 		wantCells := append([]uint32(nil), cells...)
-		installed := (**C.obj_5D4594_2650668_t)(unsafe.Pointer(&rows[1]))
+		installed := (**worldTileCell)(unsafe.Pointer(&rows[1]))
 		worldTileGrid = installed
 		noxflags.ResetEngine()
 		noxflags.SetEngine(noxflags.EngineFlag(in.Flags))

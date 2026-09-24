@@ -80,7 +80,7 @@ func (e bindingEditor) construct() int {
 			return gui.RawEventResp(Sub_4A18E0(w, ev.EventCode(), int(a), int(b)))
 		})
 		anim := Nox_gui_makeAnimation_43C5B0(w, 0, 0, 0, -480, 0, 20, 0, -40)
-		legacyGlobals.nox_wnd_xxx_1522608 = (*C.nox_gui_animation)(unsafe.Pointer(anim))
+		legacyGlobals.nox_wnd_xxx_1522608 = anim
 		if anim == nil {
 			return 0
 		}
@@ -174,14 +174,14 @@ func bindingClose(cancel int) int {
 func bindingMenuBack() int {
 	bindingMenu.apply()
 	WriteConfigLegacy("nox.cfg")
-	a := asGUIAnim(legacyGlobals.nox_wnd_xxx_1522608)
+	a := legacyGlobals.nox_wnd_xxx_1522608
 	a.SetState(gui.AnimOut)
 	Sub_43BE40(2)
 	Nox_xxx_clientPlaySoundSpecial_452D80(923, 100)
 	return 1
 }
 func bindingMenuDone() int {
-	a := asGUIAnim(legacyGlobals.nox_wnd_xxx_1522608)
+	a := legacyGlobals.nox_wnd_xxx_1522608
 	fn := a.Func13Ptr
 	a.Free()
 	bindingWindow(1522604).Destroy()

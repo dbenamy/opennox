@@ -115,8 +115,10 @@ may precede full qualification when their evidence and remaining gates are expli
    cgo import, check for `//export` directives too: those still need cgo even when
    no `C.` calls remain. Imports with `#cgo` directives also carry build settings
    without direct calls; preserve them. Limit import cleanup to the files changed
-   by the batch. A small late source fix can invalidate the whole cgo
-   package build and repeat the remaining C compile.
+   by the batch. Resolve actual declared package names before pruning imports;
+   directory basenames can differ (`common/flags` declares `noxflags`). When the
+   name is unknown, keep the import for compiler review. A small late source fix
+   can invalidate the whole cgo package build and repeat the remaining C compile.
    For GUI dispatch, check the event kind before decoding its arguments. The
    character-creation scenario caught a numeric WindowNewChild ID interpreted as
    a window pointer; button-only fixtures had valid pointers and missed it.

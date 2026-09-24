@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME1.h"
-*/
-import "C"
-
 import (
 	"bytes"
 	"math"
@@ -101,7 +96,7 @@ func portTestGridLookup(inputs [][2]uint32, listCount int, goWrapper bool, bench
 	}
 	wantLeft, wantRight := append([]byte(nil), left...), append([]byte(nil), right...)
 	wantTable := append([]byte(nil), table...)
-	installed := (**C.obj_5D4594_2650668_t)(unsafe.Pointer(&rows[1]))
+	installed := (**worldTileCell)(unsafe.Pointer(&rows[1]))
 	worldTileGrid = installed
 	out.Results = make([]int32, len(inputs))
 	out.InputGuardsOK, out.PointerUnchanged = true, true

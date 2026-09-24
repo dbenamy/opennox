@@ -1,9 +1,9 @@
 # Native record storage and callers
 
-Status: original baseline accepted at `fe44bab3`; reviewed conversion awaits
-installation and runtime qualification. Expected removal: 11 production and six
-test C imports, plus one unused specialized C adapter body. These are candidate
-counts until measured after qualification.
+Status: qualified on Linux 386/SSE2. **11 production C imports and six test
+C imports removed** across 40 source files. Selected production cgo files fall
+247→236; C exports remain 1,179. One unused specialized C body retires, leaving
+78 embedded callback bodies. Standalone production/test C remains zero.
 
 See the [baseline](go-native-record-storage-baseline.json) and
 [batch manifest](go-native-record-storage-batch.json). All four preceding phases
@@ -42,11 +42,25 @@ before installation, preserving independent C allocation/observation in particle
 and tile-worklist tests. Raw storage observations use measured native offsets;
 root assertions and frozen captures remain unchanged.
 
-After installation, run all seven storage captures, complete default/server/
-highres root suites, safe build/static checks, three production/ABI gates,
-exact known-suite comparison and headless character creation/save/load/resume.
-Verify exact test names/skips, unchanged source, original assets and dependency
-counts. Keep external SDL2/OpenGL/OpenAL bindings.
+All seven storage captures equal frozen hashes. Complete default/highres roots
+each pass 2,426 tests; server passes 2,415. All have only the expected prerequisite
+probe skip, with exact root-name sets. Safe build/static checks and all three
+production/ABI gates pass. The known suite retains exactly 304 failure events
+and 17 passing, two failing, 32 skipped packages. Headless character creation,
+save/load/resume passes. All phases have identical source fingerprints and all
+1,654 original assets are unchanged. External SDL2/OpenGL/OpenAL bindings remain.
+No complete safe runtime suite or safe raw-storage pass is claimed.
+
+See [qualification](go-native-record-storage-qualification.json) and the
+[dependency inventory](go-native-record-storage-inventory-after.json).
 
 Local drafts, reconstruction records and probes:
 `build/port-go-native-record-storage/`.
+
+The first compile found one incorrectly pruned `common/flags` import: its Go
+package is named `noxflags`, not the directory basename. Restoring the original
+import fixes the fixture without changing behavior or expectations. This was
+primary cleanup tooling, not Luna's six-file implementation. The failed build
+remains under `storage/`; corrected-source qualification uses `storage-final/`.
+Future import cleanup must resolve declared package names rather than infer them
+from paths. No other non-C import was pruned in this candidate's cleanup pass.

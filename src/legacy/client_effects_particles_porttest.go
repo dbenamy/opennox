@@ -57,7 +57,7 @@ func PortTestEffectsScreenParticles(capacity int) (func() [][]uint32, func()) {
 		var nodes []*C.nox_screenParticle
 		ids := make(map[*C.nox_screenParticle]uint32)
 		var prev *C.nox_screenParticle
-		for p := legacyGlobals.nox_screenParticles_head; p != nil; p = p.field_44 {
+		for p := (*C.nox_screenParticle)(unsafe.Pointer(legacyGlobals.nox_screenParticles_head)); p != nil; p = p.field_44 {
 			if len(nodes) >= capacity || ids[p] != 0 || p.field_48 != prev {
 				panic("invalid screen particle list")
 			}
@@ -65,7 +65,7 @@ func PortTestEffectsScreenParticles(capacity int) (func() [][]uint32, func()) {
 			ids[p] = uint32(len(nodes))
 			prev = p
 		}
-		if prev != legacyGlobals.dword_5d4594_806052 {
+		if prev != (*C.nox_screenParticle)(unsafe.Pointer(legacyGlobals.dword_5d4594_806052)) {
 			panic("invalid screen particle tail")
 		}
 		var out [][]uint32

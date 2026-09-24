@@ -1,17 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_2.h"
-#include "GAME1_3.h"
-#include "GAME2.h"
-#include "GAME2_1.h"
-#include "GAME2_2.h"
-#include "GAME2_3.h"
-#include "GAME3.h"
-#include "GAME3_1.h"
-#include "common__magic__speltree.h"
-*/
-import "C"
 import (
 	"image"
 
@@ -41,8 +29,6 @@ var (
 	Nox_xxx_cursorResetDraggedItem_4776A0   func()
 	Sub_478000                              func() int
 )
-
-type nox_render_data_t = C.nox_render_data_t
 
 func sub_478000() int { return Sub_478000() }
 func Sub_4AEE30() {

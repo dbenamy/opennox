@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME4.h"
-*/
-import "C"
 import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -137,7 +132,7 @@ func playerFileMetadata() int {
 		n8 := r.byte(byte(len(alloc.GoString((*byte)(field(1028))))))
 		r.raw(field(1028), int(n8))
 	}
-	noxGetLocalTime((*C.noxSYSTEMTIME)(field(1188)))
+	noxGetLocalTime((*noxSystemTime)(field(1188)))
 	for off := 1188; off < 1204; off += 2 {
 		r.raw(field(off), 2)
 	}

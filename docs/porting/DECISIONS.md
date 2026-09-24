@@ -2536,3 +2536,20 @@ and point conversions; preserve raw word aliases and original ownership. Primary
 caught stale field selectors in a Luna scratch-array conversion before install.
 All frozen storage, complete root, production and gameplay qualification passes.
 See [GO_LAYOUT_BOUNDARIES.md](GO_LAYOUT_BOUNDARIES.md).
+
+
+## Native record storage and fixture boundaries
+
+Use existing native window/render/particle/list/inventory records where target
+layout probes and alias contracts agree. Represent 44-byte world grid cells as
+11 raw words, preserving pointer-word slots, signed fallback decoding and
+unmanaged allocation/free ownership. Preserve the browser's existing 172-byte
+Go record versus 169-byte packed copy; no packing correction is bundled here.
+
+Keep independent C fixture allocation/observation where it still tests live
+boundaries. Four draft type mismatches were corrected before installation. The
+first compile separately caught an import-cleanup error: package names can differ
+from directory basenames (`common/flags` is `noxflags`). Restore the import and
+record failed logs; resolve package names before future pruning. Frozen captures
+and root assertions remain unchanged. All completed-batch gates pass.
+See [GO_NATIVE_RECORD_STORAGE.md](GO_NATIVE_RECORD_STORAGE.md).

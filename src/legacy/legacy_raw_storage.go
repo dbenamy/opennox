@@ -1,11 +1,8 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "server__script__internal.h"
-*/
-import "C"
 import (
+	"github.com/opennox/opennox/v1/client/gui"
+	"github.com/opennox/opennox/v1/client/noxrender"
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
@@ -23,7 +20,7 @@ type legacyGlobalStorage struct {
 	nox_alloc_screenParticles_806044      unsafe.Pointer
 	dword_587000_122852                   unsafe.Pointer
 	dword_587000_81128                    unsafe.Pointer
-	dword_5d4594_1090048                  *C.nox_window
+	dword_5d4594_1090048                  *gui.Window
 	dword_5d4594_1090100                  uint32
 	nox_alloc_monsterList_2386220         unsafe.Pointer
 	nox_alloc_tradeSession_2386492        unsafe.Pointer
@@ -31,33 +28,33 @@ type legacyGlobalStorage struct {
 	nox_alloc_magicEnt_1569668            unsafe.Pointer
 	dword_5d4594_1548532                  unsafe.Pointer
 	array_5D4594_1049872                  [9]uint32
-	nox_screenParticles_head              *C.nox_screenParticle
-	dword_5d4594_806052                   *C.nox_screenParticle
+	nox_screenParticles_head              *Nox_screenParticle
+	dword_5d4594_806052                   *Nox_screenParticle
 	dword_5d4594_805984                   unsafe.Pointer
-	nox_win_unk1                          *C.nox_window
-	nox_draw_curDrawData_3799572          *C.nox_render_data_t
+	nox_win_unk1                          *gui.Window
+	nox_draw_curDrawData_3799572          *noxrender.RenderData
 	dword_5d4594_830236                   unsafe.Pointer
 	dword_5d4594_830232                   unsafe.Pointer
-	nox_win_unk5                          *C.nox_window
-	dword_5d4594_1062452                  *C.nox_window
-	nox_client_inventory_grid_1050020     [C.NOX_INVENTORY_CELLS_MAX]C.nox_inventory_cell_t
-	nox_pixbuffer_rows_3798784            **C.uint8_t
+	nox_win_unk5                          *gui.Window
+	dword_5d4594_1062452                  *gui.Window
+	nox_client_inventory_grid_1050020     [84]uiInventoryCell
+	nox_pixbuffer_rows_3798784            **byte
 	nox_video_tileBuf_ptr_3798796         unsafe.Pointer
 	nox_video_tileBuf_end_3798844         unsafe.Pointer
 	nox_server_gameSettingsUpdated        int32
-	nox_wnd_xxx_1309740                   *C.nox_gui_animation
-	dword_5d4594_1522616                  *C.nox_window
-	dword_5d4594_1522620                  *C.nox_window
-	dword_5d4594_1522624                  *C.nox_window
-	dword_5d4594_1522628                  *C.nox_window
-	nox_wnd_xxx_1522608                   *C.nox_gui_animation
+	nox_wnd_xxx_1309740                   *gui.Anim
+	dword_5d4594_1522616                  *gui.Window
+	dword_5d4594_1522620                  *gui.Window
+	dword_5d4594_1522624                  *gui.Window
+	dword_5d4594_1522628                  *gui.Window
+	nox_wnd_xxx_1522608                   *gui.Anim
 	nox_gui_itemAmount_item_1319256       unsafe.Pointer
 	nox_gui_itemAmount_dialog_1319228     unsafe.Pointer
-	dword_5d4594_1321236                  *C.nox_window
-	dword_5d4594_1321240                  *C.nox_window
-	dword_5d4594_1321244                  *C.nox_window
-	dword_5d4594_1321248                  *C.nox_window
-	nox_common_maplist                    C.nox_list_item_t
+	dword_5d4594_1321236                  *gui.Window
+	dword_5d4594_1321240                  *gui.Window
+	dword_5d4594_1321244                  *gui.Window
+	dword_5d4594_1321248                  *gui.Window
+	nox_common_maplist                    legacyListNode
 }
 
 var legacyGlobals, _ = alloc.New(legacyGlobalStorage{})

@@ -26,7 +26,7 @@ func browserColumnsInit() int {
 		w.SetParent(main)
 		w.SetFunc93(browserListInput)
 	}
-	d := uiListData(asWindow(browserUI.detailList))
+	d := uiListData(browserUI.detailList)
 	(*gui.Window)(d.Field_7).SetID(10035)
 	(*gui.Window)(d.Field_8).SetID(10036)
 	(*gui.Window)(d.Field_9).SetID(10032)

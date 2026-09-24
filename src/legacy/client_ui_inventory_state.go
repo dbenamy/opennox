@@ -91,7 +91,9 @@ func sub_467680() {
 }
 
 //export nox_xxx_wndGetHandle_4676A0
-func nox_xxx_wndGetHandle_4676A0() *C.nox_window { return legacyGlobals.dword_5d4594_1062452 }
+func nox_xxx_wndGetHandle_4676A0() *C.nox_window {
+	return (*C.nox_window)(unsafe.Pointer(legacyGlobals.dword_5d4594_1062452))
+}
 
 func sub_467740(v int) int { dword_5d4594_1062488 = uint32(v); return v }
 

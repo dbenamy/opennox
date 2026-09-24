@@ -325,6 +325,7 @@ target build selection and linker evidence.
 | Use Go primitive types in 103 private interfaces and callers; selected cgo files 354→302, exports remain 1,179 and preamble bodies 79 | 0 | 0 | 0 | 0 |
 | Native Go calls at internal adapter boundaries; selected cgo files 302→271, exports remain 1,179 and preamble bodies 79 | 0 | 0 | 0 | 0 |
 | Native geometry/state boundaries and 145 private wrappers retired; selected cgo files 271→247, exports remain 1,179 and preamble bodies 79 | 0 | 0 | 0 | 0 |
+| Native record storage and callers; selected cgo files 247→236, exports remain 1,179, preamble bodies 79→78 | 0 | 0 | 0 | 0 |
 
 The 33 checksum test-reference lines were retired after differential validation;
 their original source remains recoverable at `66fa7bd4`.

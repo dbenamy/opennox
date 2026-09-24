@@ -138,7 +138,7 @@ func PortTestTileWorklist(initialCount, initialOverflow uint32, initialQueue []u
 		snap.AfterRestore = portTestWorklistState(count, overflow, queue, left, right)
 		snap.GridPointerRestored = worldTileGrid == oldGrid
 	}()
-	worldTileGrid = grid
+	worldTileGrid = (**worldTileCell)(unsafe.Pointer(grid))
 	copy(queue, initialQueue)
 	*count, *overflow = initialCount, initialOverflow
 	for i := range left {
@@ -168,9 +168,9 @@ func PortTestTileWorklist(initialCount, initialOverflow uint32, initialQueue []u
 				worldTileGrid = nil
 			}
 			C.sub_51DD50(C.int(s.X), C.int(s.Y), C.int(s.Flags), C.int(s.Key))
-			pointerOK := worldTileGrid == wantGrid
+			pointerOK := unsafe.Pointer(worldTileGrid) == unsafe.Pointer(wantGrid)
 			if s.NilGrid {
-				worldTileGrid = grid
+				worldTileGrid = (**worldTileCell)(unsafe.Pointer(grid))
 			}
 			v0, ok0 := portTestWorklistOutValue(s.PopX, words, count, overflow, queue)
 			v1, ok1 := portTestWorklistOutValue(s.PopY, words, count, overflow, queue)
@@ -181,7 +181,7 @@ func PortTestTileWorklist(initialCount, initialOverflow uint32, initialQueue []u
 			v0, ok0 := portTestWorklistOutValue(s.PopX, words, count, overflow, queue)
 			v1, ok1 := portTestWorklistOutValue(s.PopY, words, count, overflow, queue)
 			v2, ok2 := portTestWorklistOutValue(s.PopZ, words, count, overflow, queue)
-			snap.Results = append(snap.Results, PortTestTileWorklistResult{Return: int(ret), Count: *count, Overflow: *overflow, Outputs: [3]uint32{v0, v1, v2}, OutputReadable: [3]bool{ok0, ok1, ok2}, Queue: append([]uint32(nil), queue...), GridUnchanged: C.portTestWorklistGridEqual(grid, expected) != 0, GridPointerUnchanged: worldTileGrid == grid, QueueGuardsUnchanged: string(left) == string(wantLeft) && string(right) == string(wantRight), OutputGuardsOK: words[0] == 0xa0a0a0a0 && words[4] == 0xb0b0b0b0})
+			snap.Results = append(snap.Results, PortTestTileWorklistResult{Return: int(ret), Count: *count, Overflow: *overflow, Outputs: [3]uint32{v0, v1, v2}, OutputReadable: [3]bool{ok0, ok1, ok2}, Queue: append([]uint32(nil), queue...), GridUnchanged: C.portTestWorklistGridEqual(grid, expected) != 0, GridPointerUnchanged: unsafe.Pointer(worldTileGrid) == unsafe.Pointer(grid), QueueGuardsUnchanged: string(left) == string(wantLeft) && string(right) == string(wantRight), OutputGuardsOK: words[0] == 0xa0a0a0a0 && words[4] == 0xb0b0b0b0})
 		} else {
 			C.free(mem)
 			panic("invalid worklist operation")
@@ -198,7 +198,7 @@ func portTestMainGrid() (configure func(uint32), intact func() bool, free func()
 	if grid == nil || expected == nil {
 		panic("main fixture grid allocation")
 	}
-	worldTileGrid = grid
+	worldTileGrid = (**worldTileCell)(unsafe.Pointer(grid))
 	last := ^uint32(0)
 	configure = func(tile uint32) {
 		if tile == last {
@@ -213,7 +213,7 @@ func portTestMainGrid() (configure func(uint32), intact func() bool, free func()
 		}
 	}
 	intact = func() bool {
-		return worldTileGrid == grid && C.portTestWorklistGridEqual(grid, expected) != 0
+		return unsafe.Pointer(worldTileGrid) == unsafe.Pointer(grid) && C.portTestWorklistGridEqual(grid, expected) != 0
 	}
 	free = func() {
 		worldTileGrid = old
@@ -233,7 +233,7 @@ func PortTestWorldMotionTileGrid() (func(int32), func() bool, func()) {
 		C.portTestWorklistGridFree(want)
 		panic("world motion tile allocation")
 	}
-	worldTileGrid = grid
+	worldTileGrid = (**worldTileCell)(unsafe.Pointer(grid))
 	configure := func(kind int32) {
 		for _, table := range []**C.obj_5D4594_2650668_t{grid, want} {
 			for _, p := range unsafe.Slice(table, 128) {
@@ -246,7 +246,7 @@ func PortTestWorldMotionTileGrid() (func(int32), func() bool, func()) {
 		}
 	}
 	return configure, func() bool {
-			return worldTileGrid == grid && C.portTestWorklistGridEqual(grid, want) != 0
+			return unsafe.Pointer(worldTileGrid) == unsafe.Pointer(grid) && C.portTestWorklistGridEqual(grid, want) != 0
 		}, func() {
 			worldTileGrid = old
 			C.portTestWorklistGridFree(grid)

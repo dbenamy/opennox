@@ -143,7 +143,7 @@ func nox_thing_flag_draw(a1 *C.int, a2 *C.nox_drawable) C.int {
 func nox_things_door_draw_parse(obj *C.nox_thing, f *C.nox_memfile, attr *C.char) C.bool {
 	o := (*client.ObjectType)(unsafe.Pointer(obj))
 	o.DrawFunc = C.nox_thing_door_draw
-	o.DrawData = spriteStaticRandomData(asMemfile(f), unsafe.Slice((*byte)(unsafe.Pointer(attr)), 256))
+	o.DrawData = spriteStaticRandomData(asMemfileP(unsafe.Pointer(f)), unsafe.Slice((*byte)(unsafe.Pointer(attr)), 256))
 	return C.bool(o.DrawData != nil)
 }
 

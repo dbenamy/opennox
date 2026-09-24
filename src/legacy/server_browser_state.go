@@ -1,10 +1,9 @@
 package legacy
 
-/*
-#include "defs.h"
-*/
-import "C"
-import "unsafe"
+import (
+	"github.com/opennox/opennox/v1/client/gui"
+	"unsafe"
+)
 
 // Go owns the browser state. Fixed-width ABI types preserve the existing legacy
 // callers and fixture word views while their C global symbols retire.
@@ -21,7 +20,7 @@ var browserUI = struct {
 	filter             uint32
 	label              unsafe.Pointer
 	detailPanel        unsafe.Pointer
-	detailList         *C.nox_window
+	detailList         *gui.Window
 	playersColumn      uint32
 	modeColumn         uint32
 	mapColumn          uint32
@@ -35,11 +34,11 @@ var browserUI = struct {
 	retry              int32
 	connectionError    uint32
 	creating           uint32
-	animation          *C.nox_gui_animation
+	animation          *gui.Anim
 	resultCount        uint32
 	sort               uint32
 	gameList           uint32
-	world              *C.nox_window
+	world              *gui.Window
 	connectionDeadline uint64
 	refreshDeadline    uint64
 	servers            *legacyListNode

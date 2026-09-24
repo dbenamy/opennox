@@ -156,7 +156,7 @@ func browserListAdd(record unsafe.Pointer) int {
 }
 func browserListRender() {
 	for p := listNext(browserListHead()); p != nil; p = listNext(p) {
-		nox_gui_wol_newServerLine_43B7C0((*C.nox_gui_server_ent_t)(unsafe.Pointer(p)))
+		browserRow((*Nox_gui_server_ent_t)(unsafe.Pointer(p)))
 	}
 }
 func browserListResort() {

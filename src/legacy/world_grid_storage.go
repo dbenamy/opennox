@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include <stdlib.h>
-#include "GAME1.h"
-*/
-import "C"
-
 import (
 	"image"
 	"unsafe"
@@ -19,19 +13,26 @@ import (
 
 const worldTileGridCapacity = 128
 
-var worldTileGrid **C.obj_5D4594_2650668_t
+// worldTileCell retains the legacy 44-byte cell as eleven raw words.
+// Words 5 and 10 hold unmanaged subtile-list addresses.
+type worldTileCell [11]uint32
+
+var _ [44 - unsafe.Sizeof(worldTileCell{})]byte
+var _ [unsafe.Sizeof(worldTileCell{}) - 44]byte
+
+var worldTileGrid **worldTileCell
 var worldTileDefinitions [176]server.TileDef
 var worldTileDefinitionCount uint32
 var worldSecretHead unsafe.Pointer
 
 func worldGridAllocate() int {
-	worldTileGrid = (**C.obj_5D4594_2650668_t)(legacyCalloc(worldTileGridCapacity, 4))
+	worldTileGrid = (**worldTileCell)(legacyCalloc(worldTileGridCapacity, 4))
 	if worldTileGrid == nil {
 		return 0
 	}
 	rows := unsafe.Slice(worldTileGrid, worldTileGridCapacity)
 	for i := range rows {
-		rows[i] = (*C.obj_5D4594_2650668_t)(legacyCalloc(worldTileGridCapacity, 44))
+		rows[i] = (*worldTileCell)(legacyCalloc(worldTileGridCapacity, 44))
 		if rows[i] == nil {
 			return 0
 		}

@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME4_3.h"
-*/
-import "C"
-
 import (
 	"bytes"
 	"encoding/binary"
@@ -111,7 +105,7 @@ func PortTestAIActions(specs []PortTestAIActionSpec) (out []PortTestAIActionResu
 	}
 	wantRows, wantCells := slices.Clone(rows), slices.Clone(cells)
 	oldGrid := worldTileGrid
-	installed := (**C.obj_5D4594_2650668_t)(unsafe.Pointer(&rows[1]))
+	installed := (**worldTileCell)(unsafe.Pointer(&rows[1]))
 	worldTileGrid = installed
 	dirs := unsafe.Slice(memmap.PtrUint8(0x587000, 194128), 2064)
 	oldDirs := bytes.Clone(dirs)

@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME1.h"
-*/
-import "C"
-
 import (
 	"math"
 	"slices"
@@ -93,7 +88,7 @@ func portTestGuardEscortPrepare(proxy *portTestRoamOwnerServer, u, target *serve
 	if sp.Water {
 		grid = 1
 	}
-	worldTileGrid = (**C.obj_5D4594_2650668_t)(portTestGuardGrids[grid])
+	worldTileGrid = (**worldTileCell)(portTestGuardGrids[grid])
 	u.NetCode = sp.NetCode
 	u.Direction1, u.Direction2 = server.Dir16(sp.Direction), server.Dir16(sp.Desired)
 	if !sp.Reaction {

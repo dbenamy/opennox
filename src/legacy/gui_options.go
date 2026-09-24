@@ -44,7 +44,7 @@ func Sub_4C35B0(v int) {
 }
 
 func Get_nox_wnd_xxx_1309740() *gui.Anim {
-	return asGUIAnim(legacyGlobals.nox_wnd_xxx_1309740)
+	return legacyGlobals.nox_wnd_xxx_1309740
 }
 
 func Get_dword_5d4594_1309720() *gui.Window {

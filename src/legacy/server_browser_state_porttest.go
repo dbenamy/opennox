@@ -107,14 +107,14 @@ func PortTestServerBrowserFormat(addr string, port uint16, out unsafe.Pointer) i
 }
 
 func PortTestServerBrowserRow(record unsafe.Pointer) {
-	nox_gui_wol_newServerLine_43B7C0((*C.nox_gui_server_ent_t)(record))
+	browserRow((*Nox_gui_server_ent_t)(record))
 }
 func PortTestServerBrowserTrimName(text unsafe.Pointer, width byte) uintptr {
 	return uintptr(unsafe.Pointer(sub_43BC10((*C.wchar2_t)(text), C.uchar(width))))
 }
 
 func PortTestServerBrowserDetails(record unsafe.Pointer) {
-	nox_client_gui_serverInfoBlock_4394D0(C.int(uintptr(record)))
+	browserDetails(unsafe.Pointer(uintptr(uint32(uintptr(record)))))
 }
 
 func PortTestServerBrowserTick() int { return int(sub_438770()) }

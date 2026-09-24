@@ -2,10 +2,6 @@ package legacy
 
 /*
 #include "defs.h"
-extern int nox_drawable_count;
-static void go_nox_drawable_call_sprite_func(void(* fnc)(nox_drawable*, int), nox_drawable* dr, int arg) {
-	fnc(dr, arg);
-}
 */
 import "C"
 import (

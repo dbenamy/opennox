@@ -22,12 +22,12 @@ func browserMouseDraw(_ *gui.Window, _ *gui.WindowData) int {
 			optionsSend(browserWindow(uint32(browserUI.gameList)), 16403, 0xffffffff, 0)
 			browserUI.hasSelection = 0
 			detail.StackPop()
-			GetClient().Cli().GUI.Focus(asWindow(browserUI.world))
+			GetClient().Cli().GUI.Focus(browserUI.world)
 		}
 	}
 	if browserUI.popup != 0 && !serverOptionsPointIn(browserWindow(memmap.Uint32(0x5D4594, 815036)), p) {
 		browserPopupClose()
-		GetClient().Cli().GUI.Focus(asWindow(browserUI.world))
+		GetClient().Cli().GUI.Focus(browserUI.world)
 	}
 	if browserUI.creating != 0 && sub_438DD0(uint32(p.X), uint32(p.Y)) != 0 {
 		nox_client_setCursorType_477610(9)

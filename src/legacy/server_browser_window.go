@@ -40,7 +40,7 @@ func browserShow() int {
 	if browserUI.region != -1 {
 		browserMapPolygons()
 	}
-	root := asWindow(browserUI.world)
+	root := browserUI.world
 	if root != nil {
 		browserUI.transition = 0
 		anim := (*gui.Anim)(unsafe.Pointer(browserUI.animation))
@@ -63,7 +63,7 @@ func browserShow() int {
 		return 1
 	}
 	root = Nox_new_window_from_file("noxworld.wnd", browserEvent)
-	browserUI.world = (*C.nox_window)(root.C())
+	browserUI.world = root
 	if root == nil {
 		return 0
 	}
@@ -71,7 +71,7 @@ func browserShow() int {
 	root.ShowModal()
 	root.SetAllFuncs(browserMapInput, nil, nil)
 	anim := Nox_gui_makeAnimation_43C5B0(root, 0, 0, 0, -480, 0, 20, 0, -40)
-	browserUI.animation = (*C.nox_gui_animation)(unsafe.Pointer(anim))
+	browserUI.animation = anim
 	if anim == nil {
 		return 0
 	}
@@ -88,7 +88,7 @@ func browserShow() int {
 	main := root.ChildByID(10037)
 	browserUI.gameList = uint32(uintptr(main.C()))
 	details := root.ChildByID(10034)
-	browserUI.detailList = (*C.nox_window)(details.C())
+	browserUI.detailList = details
 	panel := root.ChildByID(10033)
 	browserUI.detailPanel = panel.C()
 	browserUI.filter = uint32(uintptr(sessionFilterOpen(root).C()))

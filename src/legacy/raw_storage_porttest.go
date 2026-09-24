@@ -2,64 +2,12 @@
 
 package legacy
 
-/*
-#include "defs.h"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-*/
-import "C"
-
-import "unsafe"
+import (
+	"github.com/opennox/opennox/v1/client"
+	"github.com/opennox/opennox/v1/client/gui"
+	"github.com/opennox/opennox/v1/client/noxrender"
+	"unsafe"
+)
 
 type rawStorageContract struct {
 	name                            string
@@ -83,7 +31,7 @@ var rawStorageContracts = []rawStorageContract{
 	{name: "nox_alloc_screenParticles_806044", ptr: unsafe.Pointer(&legacyGlobals.nox_alloc_screenParticles_806044), size: unsafe.Sizeof(legacyGlobals.nox_alloc_screenParticles_806044), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_alloc_screenParticles_806044) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.nox_alloc_screenParticles_806044))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.nox_alloc_screenParticles_806044 = (unsafe.Pointer)(p) }},
 	{name: "dword_587000_122852", ptr: unsafe.Pointer(&legacyGlobals.dword_587000_122852), size: unsafe.Sizeof(legacyGlobals.dword_587000_122852), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_587000_122852) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_587000_122852))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_587000_122852 = (unsafe.Pointer)(p) }},
 	{name: "dword_587000_81128", ptr: unsafe.Pointer(&legacyGlobals.dword_587000_81128), size: unsafe.Sizeof(legacyGlobals.dword_587000_81128), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_587000_81128) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_587000_81128))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_587000_81128 = (unsafe.Pointer)(p) }},
-	{name: "dword_5d4594_1090048", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_1090048), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_1090048), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_1090048) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_1090048))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_1090048 = (*C.nox_window)(p) }},
+	{name: "dword_5d4594_1090048", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_1090048), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_1090048), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_1090048) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_1090048))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_1090048 = (*gui.Window)(p) }},
 	{name: "dword_5d4594_1090100", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_1090100), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_1090100), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_1090100) }, readWord: func() uint32 { return uint32(legacyGlobals.dword_5d4594_1090100) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_1090100 = uint32(uintptr(p)) }, writeWord: func(v uint32) { *(*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1090100)) = v }},
 	{name: "nox_alloc_monsterList_2386220", ptr: unsafe.Pointer(&legacyGlobals.nox_alloc_monsterList_2386220), size: unsafe.Sizeof(legacyGlobals.nox_alloc_monsterList_2386220), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_alloc_monsterList_2386220) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.nox_alloc_monsterList_2386220))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.nox_alloc_monsterList_2386220 = (unsafe.Pointer)(p) }},
 	{name: "nox_alloc_tradeSession_2386492", ptr: unsafe.Pointer(&legacyGlobals.nox_alloc_tradeSession_2386492), size: unsafe.Sizeof(legacyGlobals.nox_alloc_tradeSession_2386492), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_alloc_tradeSession_2386492) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.nox_alloc_tradeSession_2386492))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.nox_alloc_tradeSession_2386492 = (unsafe.Pointer)(p) }},
@@ -91,32 +39,32 @@ var rawStorageContracts = []rawStorageContract{
 	{name: "nox_alloc_magicEnt_1569668", ptr: unsafe.Pointer(&legacyGlobals.nox_alloc_magicEnt_1569668), size: unsafe.Sizeof(legacyGlobals.nox_alloc_magicEnt_1569668), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_alloc_magicEnt_1569668) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.nox_alloc_magicEnt_1569668))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.nox_alloc_magicEnt_1569668 = (unsafe.Pointer)(p) }},
 	{name: "dword_5d4594_1548532", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_1548532), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_1548532), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_1548532) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_1548532))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_1548532 = (unsafe.Pointer)(p) }},
 	{name: "array_5D4594_1049872", ptr: unsafe.Pointer(&legacyGlobals.array_5D4594_1049872), size: unsafe.Sizeof(legacyGlobals.array_5D4594_1049872), wantSize: 36, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.array_5D4594_1049872) }},
-	{name: "nox_screenParticles_head", ptr: unsafe.Pointer(&legacyGlobals.nox_screenParticles_head), size: unsafe.Sizeof(legacyGlobals.nox_screenParticles_head), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_screenParticles_head) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.nox_screenParticles_head))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.nox_screenParticles_head = (*C.nox_screenParticle)(p) }},
-	{name: "dword_5d4594_806052", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_806052), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_806052), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_806052) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_806052))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_806052 = (*C.nox_screenParticle)(p) }},
+	{name: "nox_screenParticles_head", ptr: unsafe.Pointer(&legacyGlobals.nox_screenParticles_head), size: unsafe.Sizeof(legacyGlobals.nox_screenParticles_head), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_screenParticles_head) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.nox_screenParticles_head))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.nox_screenParticles_head = (*Nox_screenParticle)(p) }},
+	{name: "dword_5d4594_806052", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_806052), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_806052), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_806052) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_806052))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_806052 = (*Nox_screenParticle)(p) }},
 	{name: "dword_5d4594_805984", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_805984), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_805984), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_805984) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_805984))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_805984 = (unsafe.Pointer)(p) }},
-	{name: "nox_win_unk1", ptr: unsafe.Pointer(&legacyGlobals.nox_win_unk1), size: unsafe.Sizeof(legacyGlobals.nox_win_unk1), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_win_unk1) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.nox_win_unk1))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.nox_win_unk1 = (*C.nox_window)(p) }},
-	{name: "nox_draw_curDrawData_3799572", ptr: unsafe.Pointer(&legacyGlobals.nox_draw_curDrawData_3799572), size: unsafe.Sizeof(legacyGlobals.nox_draw_curDrawData_3799572), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_draw_curDrawData_3799572) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.nox_draw_curDrawData_3799572))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.nox_draw_curDrawData_3799572 = (*C.nox_render_data_t)(p) }},
+	{name: "nox_win_unk1", ptr: unsafe.Pointer(&legacyGlobals.nox_win_unk1), size: unsafe.Sizeof(legacyGlobals.nox_win_unk1), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_win_unk1) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.nox_win_unk1))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.nox_win_unk1 = (*gui.Window)(p) }},
+	{name: "nox_draw_curDrawData_3799572", ptr: unsafe.Pointer(&legacyGlobals.nox_draw_curDrawData_3799572), size: unsafe.Sizeof(legacyGlobals.nox_draw_curDrawData_3799572), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_draw_curDrawData_3799572) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.nox_draw_curDrawData_3799572))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.nox_draw_curDrawData_3799572 = (*noxrender.RenderData)(p) }},
 	{name: "dword_5d4594_830236", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_830236), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_830236), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_830236) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_830236))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_830236 = (unsafe.Pointer)(p) }},
 	{name: "dword_5d4594_830232", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_830232), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_830232), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_830232) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_830232))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_830232 = (unsafe.Pointer)(p) }},
-	{name: "nox_win_unk5", ptr: unsafe.Pointer(&legacyGlobals.nox_win_unk5), size: unsafe.Sizeof(legacyGlobals.nox_win_unk5), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_win_unk5) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.nox_win_unk5))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.nox_win_unk5 = (*C.nox_window)(p) }},
-	{name: "dword_5d4594_1062452", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_1062452), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_1062452), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_1062452) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_1062452))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_1062452 = (*C.nox_window)(p) }},
+	{name: "nox_win_unk5", ptr: unsafe.Pointer(&legacyGlobals.nox_win_unk5), size: unsafe.Sizeof(legacyGlobals.nox_win_unk5), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_win_unk5) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.nox_win_unk5))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.nox_win_unk5 = (*gui.Window)(p) }},
+	{name: "dword_5d4594_1062452", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_1062452), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_1062452), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_1062452) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_1062452))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_1062452 = (*gui.Window)(p) }},
 	{name: "nox_client_inventory_grid_1050020", ptr: unsafe.Pointer(&legacyGlobals.nox_client_inventory_grid_1050020), size: unsafe.Sizeof(legacyGlobals.nox_client_inventory_grid_1050020), wantSize: 12432, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_client_inventory_grid_1050020) }},
-	{name: "nox_pixbuffer_rows_3798784", ptr: unsafe.Pointer(&legacyGlobals.nox_pixbuffer_rows_3798784), size: unsafe.Sizeof(legacyGlobals.nox_pixbuffer_rows_3798784), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_pixbuffer_rows_3798784) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.nox_pixbuffer_rows_3798784))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.nox_pixbuffer_rows_3798784 = (**C.uint8_t)(p) }},
+	{name: "nox_pixbuffer_rows_3798784", ptr: unsafe.Pointer(&legacyGlobals.nox_pixbuffer_rows_3798784), size: unsafe.Sizeof(legacyGlobals.nox_pixbuffer_rows_3798784), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_pixbuffer_rows_3798784) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.nox_pixbuffer_rows_3798784))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.nox_pixbuffer_rows_3798784 = (**byte)(p) }},
 	{name: "nox_video_tileBuf_ptr_3798796", ptr: unsafe.Pointer(&legacyGlobals.nox_video_tileBuf_ptr_3798796), size: unsafe.Sizeof(legacyGlobals.nox_video_tileBuf_ptr_3798796), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_video_tileBuf_ptr_3798796) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.nox_video_tileBuf_ptr_3798796))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.nox_video_tileBuf_ptr_3798796 = (unsafe.Pointer)(p) }},
 	{name: "nox_video_tileBuf_end_3798844", ptr: unsafe.Pointer(&legacyGlobals.nox_video_tileBuf_end_3798844), size: unsafe.Sizeof(legacyGlobals.nox_video_tileBuf_end_3798844), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_video_tileBuf_end_3798844) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.nox_video_tileBuf_end_3798844))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.nox_video_tileBuf_end_3798844 = (unsafe.Pointer)(p) }},
 	{name: "nox_server_gameSettingsUpdated", ptr: unsafe.Pointer(&legacyGlobals.nox_server_gameSettingsUpdated), size: unsafe.Sizeof(legacyGlobals.nox_server_gameSettingsUpdated), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_server_gameSettingsUpdated) }, readWord: func() uint32 { return uint32(legacyGlobals.nox_server_gameSettingsUpdated) }, writeWord: func(v uint32) { legacyGlobals.nox_server_gameSettingsUpdated = int32(v) }},
-	{name: "nox_wnd_xxx_1309740", ptr: unsafe.Pointer(&legacyGlobals.nox_wnd_xxx_1309740), size: unsafe.Sizeof(legacyGlobals.nox_wnd_xxx_1309740), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_wnd_xxx_1309740) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.nox_wnd_xxx_1309740))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.nox_wnd_xxx_1309740 = (*C.nox_gui_animation)(p) }},
-	{name: "dword_5d4594_1522616", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_1522616), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_1522616), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_1522616) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_1522616))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_1522616 = (*C.nox_window)(p) }},
-	{name: "dword_5d4594_1522620", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_1522620), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_1522620), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_1522620) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_1522620))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_1522620 = (*C.nox_window)(p) }},
-	{name: "dword_5d4594_1522624", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_1522624), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_1522624), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_1522624) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_1522624))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_1522624 = (*C.nox_window)(p) }},
-	{name: "dword_5d4594_1522628", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_1522628), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_1522628), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_1522628) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_1522628))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_1522628 = (*C.nox_window)(p) }},
-	{name: "nox_wnd_xxx_1522608", ptr: unsafe.Pointer(&legacyGlobals.nox_wnd_xxx_1522608), size: unsafe.Sizeof(legacyGlobals.nox_wnd_xxx_1522608), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_wnd_xxx_1522608) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.nox_wnd_xxx_1522608))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.nox_wnd_xxx_1522608 = (*C.nox_gui_animation)(p) }},
+	{name: "nox_wnd_xxx_1309740", ptr: unsafe.Pointer(&legacyGlobals.nox_wnd_xxx_1309740), size: unsafe.Sizeof(legacyGlobals.nox_wnd_xxx_1309740), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_wnd_xxx_1309740) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.nox_wnd_xxx_1309740))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.nox_wnd_xxx_1309740 = (*gui.Anim)(p) }},
+	{name: "dword_5d4594_1522616", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_1522616), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_1522616), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_1522616) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_1522616))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_1522616 = (*gui.Window)(p) }},
+	{name: "dword_5d4594_1522620", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_1522620), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_1522620), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_1522620) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_1522620))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_1522620 = (*gui.Window)(p) }},
+	{name: "dword_5d4594_1522624", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_1522624), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_1522624), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_1522624) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_1522624))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_1522624 = (*gui.Window)(p) }},
+	{name: "dword_5d4594_1522628", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_1522628), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_1522628), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_1522628) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_1522628))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_1522628 = (*gui.Window)(p) }},
+	{name: "nox_wnd_xxx_1522608", ptr: unsafe.Pointer(&legacyGlobals.nox_wnd_xxx_1522608), size: unsafe.Sizeof(legacyGlobals.nox_wnd_xxx_1522608), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_wnd_xxx_1522608) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.nox_wnd_xxx_1522608))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.nox_wnd_xxx_1522608 = (*gui.Anim)(p) }},
 	{name: "nox_gui_itemAmount_item_1319256", ptr: unsafe.Pointer(&legacyGlobals.nox_gui_itemAmount_item_1319256), size: unsafe.Sizeof(legacyGlobals.nox_gui_itemAmount_item_1319256), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_gui_itemAmount_item_1319256) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.nox_gui_itemAmount_item_1319256))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.nox_gui_itemAmount_item_1319256 = (unsafe.Pointer)(p) }},
 	{name: "nox_gui_itemAmount_dialog_1319228", ptr: unsafe.Pointer(&legacyGlobals.nox_gui_itemAmount_dialog_1319228), size: unsafe.Sizeof(legacyGlobals.nox_gui_itemAmount_dialog_1319228), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_gui_itemAmount_dialog_1319228) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.nox_gui_itemAmount_dialog_1319228))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.nox_gui_itemAmount_dialog_1319228 = (unsafe.Pointer)(p) }},
-	{name: "dword_5d4594_1321236", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_1321236), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_1321236), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_1321236) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_1321236))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_1321236 = (*C.nox_window)(p) }},
-	{name: "dword_5d4594_1321240", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_1321240), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_1321240), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_1321240) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_1321240))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_1321240 = (*C.nox_window)(p) }},
-	{name: "dword_5d4594_1321244", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_1321244), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_1321244), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_1321244) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_1321244))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_1321244 = (*C.nox_window)(p) }},
-	{name: "dword_5d4594_1321248", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_1321248), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_1321248), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_1321248) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_1321248))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_1321248 = (*C.nox_window)(p) }},
+	{name: "dword_5d4594_1321236", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_1321236), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_1321236), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_1321236) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_1321236))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_1321236 = (*gui.Window)(p) }},
+	{name: "dword_5d4594_1321240", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_1321240), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_1321240), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_1321240) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_1321240))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_1321240 = (*gui.Window)(p) }},
+	{name: "dword_5d4594_1321244", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_1321244), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_1321244), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_1321244) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_1321244))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_1321244 = (*gui.Window)(p) }},
+	{name: "dword_5d4594_1321248", ptr: unsafe.Pointer(&legacyGlobals.dword_5d4594_1321248), size: unsafe.Sizeof(legacyGlobals.dword_5d4594_1321248), wantSize: 4, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.dword_5d4594_1321248) }, readWord: func() uint32 { return uint32(uintptr(unsafe.Pointer(legacyGlobals.dword_5d4594_1321248))) }, writePointer: func(p unsafe.Pointer) { legacyGlobals.dword_5d4594_1321248 = (*gui.Window)(p) }},
 	{name: "nox_common_maplist", ptr: unsafe.Pointer(&legacyGlobals.nox_common_maplist), size: unsafe.Sizeof(legacyGlobals.nox_common_maplist), wantSize: 12, align: 4, alias: func() unsafe.Pointer { return unsafe.Pointer(&legacyGlobals.nox_common_maplist) }},
 	{name: "byte_581450", ptr: unsafe.Pointer(&byte_581450[0]), size: uintptr(len(byte_581450)), wantSize: 23472, align: 4, blobBase: 0x581450, alias: func() unsafe.Pointer { return unsafe.Pointer(&byte_581450[0]) }},
 	{name: "byte_587000", ptr: unsafe.Pointer(&byte_587000[0]), size: uintptr(len(byte_587000)), wantSize: 316820, align: 4, blobBase: 0x587000, alias: func() unsafe.Pointer { return unsafe.Pointer(&byte_587000[0]) }},
@@ -145,9 +93,11 @@ var rawStorageInitialZero = func() []bool {
 
 // Typed aliases supplement the byte contract with the inventory/list ABI.
 func rawStorageLayout() []uintptr {
-	var cell C.nox_inventory_cell_t
-	var list C.nox_list_item_t
-	return []uintptr{unsafe.Sizeof(cell), C.NOX_INVENTORY_CELLS_MAX, unsafe.Offsetof(cell.field_0), unsafe.Offsetof(cell.field_4), unsafe.Offsetof(cell.data_4), unsafe.Offsetof(cell.field_128), unsafe.Offsetof(cell.field_132), unsafe.Offsetof(cell.field_136), unsafe.Offsetof(cell.field_140), unsafe.Offsetof(cell.field_141), unsafe.Offsetof(cell.field_142), unsafe.Offsetof(cell.field_143), unsafe.Offsetof(cell.field_144), unsafe.Sizeof(list), unsafe.Offsetof(list.field_0), unsafe.Offsetof(list.field_1), unsafe.Offsetof(list.field_2)}
+	var cell uiInventoryCell
+	var list legacyListNode
+	code := unsafe.Offsetof(cell.Codes)
+	word := unsafe.Sizeof(cell.Codes[0])
+	return []uintptr{unsafe.Sizeof(cell), uintptr(len(legacyGlobals.nox_client_inventory_grid_1050020)), unsafe.Offsetof(cell.Drawable), code, code + word, code + 31*word, unsafe.Offsetof(cell.Equipped), unsafe.Offsetof(cell.Alternate), unsafe.Offsetof(cell.Count), unsafe.Offsetof(cell.Flags1), unsafe.Offsetof(cell.Flags2), unsafe.Offsetof(cell.Flags3), unsafe.Offsetof(cell.Tail), unsafe.Sizeof(list), unsafe.Offsetof(list.next), unsafe.Offsetof(list.prev), unsafe.Offsetof(list.tag)}
 }
 
 func rawStorageTypedEquipment(index int, v uint32) uint32 {
@@ -157,14 +107,14 @@ func rawStorageTypedEquipment(index int, v uint32) uint32 {
 
 func rawStorageTypedInventory(index int, p unsafe.Pointer, code, tail uint32, count byte) {
 	c := &legacyGlobals.nox_client_inventory_grid_1050020[index]
-	c.field_0 = (*C.nox_drawable)(p)
-	c.field_4 = C.uint32_t(code)
-	c.field_140 = C.uint8_t(count)
-	c.field_144 = C.uint32_t(tail)
+	c.Drawable = (*client.Drawable)(p)
+	c.Codes[0] = uint32(code)
+	c.Count = uint8(count)
+	c.Tail = uint32(tail)
 }
 
 func rawStorageTypedList(p unsafe.Pointer) {
-	legacyGlobals.nox_common_maplist.field_0 = (*C.nox_list_item_t)(p)
-	legacyGlobals.nox_common_maplist.field_1 = (*C.nox_list_item_t)(p)
-	legacyGlobals.nox_common_maplist.field_2 = (*C.nox_list_item_t)(p)
+	legacyGlobals.nox_common_maplist.next = (*legacyListNode)(p)
+	legacyGlobals.nox_common_maplist.prev = (*legacyListNode)(p)
+	legacyGlobals.nox_common_maplist.tag = uintptr(p)
 }

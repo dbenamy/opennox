@@ -60,7 +60,7 @@ func browserTick() int {
 }
 func browserConnectionError() int {
 	if Sub_44A4A0() == 0 {
-		Nox_xxx_dialogMsgBoxCreate_449A10(asWindow(browserUI.world), "", "", 0, nil, nil)
+		Nox_xxx_dialogMsgBoxCreate_449A10(browserUI.world, "", "", 0, nil, nil)
 	}
 	code := uint32(browserUI.connectionError)
 	if code != 8 && code != 9 && code != 10 {
@@ -76,7 +76,7 @@ func browserConnectionError() int {
 }
 func browserAttemptConnect() {
 	browserWindow(uint32(uintptr(browserUI.detailPanel))).StackPop()
-	Nox_xxx_dialogMsgBoxCreate_449A10(asWindow(browserUI.world), "", browserString("AttemptingConn"), 34, nil, nil)
+	Nox_xxx_dialogMsgBoxCreate_449A10(browserUI.world, "", browserString("AttemptingConn"), 34, nil, nil)
 }
 func browserNotice(timeout bool) {
 	pending := &browserUI.pendingKicked

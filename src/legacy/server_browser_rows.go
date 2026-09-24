@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_2.h"
-#include "client__shell__noxworld.h"
-*/
-import "C"
 import (
 	"fmt"
 	"github.com/opennox/libs/spell"
@@ -125,7 +119,7 @@ func browserRow(rec *Nox_gui_server_ent_t) {
 		y >>= 1
 	}
 	rec.Field_11_0, rec.Field_11_2 = int16(x), int16(y)
-	draw := gui.WindowData{Style: 257, Window: asWindow(browserUI.world)}
+	draw := gui.WindowData{Style: 257, Window: browserUI.world}
 	w := NewButtonOrCheckbox(parent, flags, int(int16(x))-offset, int(int16(y))-offset, size, size, &draw)
 	rec.Field_7 = int32(uintptr(w.C()))
 	browserMarkerImages(rec)
@@ -143,7 +137,7 @@ func browserRow(rec *Nox_gui_server_ent_t) {
 }
 func browserDetails(record unsafe.Pointer) {
 	rec := (*Nox_gui_server_ent_t)(record)
-	w := asWindow(browserUI.detailList)
+	w := browserUI.detailList
 	optionsSend(w, 16399, 0, 0)
 	add := func(s string, color int) { browserText(w, s, color) }
 	title := func(key string) { add(serverPanelsText("noxworld.c", key), 14) }
@@ -234,12 +228,4 @@ func browserDetails(record unsafe.Pointer) {
 	if count == 0 {
 		add(serverPanelsText("noxworld.c", "None"), 4)
 	}
-}
-
-func nox_gui_wol_newServerLine_43B7C0(rec *C.nox_gui_server_ent_t) {
-	browserRow((*Nox_gui_server_ent_t)(unsafe.Pointer(rec)))
-}
-
-func nox_client_gui_serverInfoBlock_4394D0(record C.int) {
-	browserDetails(unsafe.Pointer(uintptr(uint32(record))))
 }

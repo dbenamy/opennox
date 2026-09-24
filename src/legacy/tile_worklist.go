@@ -23,9 +23,9 @@ func pushTileFill(x, y, flags, key int32) {
 	if x <= 0 || x >= 127 || y <= 0 || y >= 127 || flags&3 == 0 {
 		return
 	}
-	rows := (*[128]*[128]C.obj_5D4594_2650668_t)(unsafe.Pointer(worldTileGrid))
+	rows := (*[128]*[128]worldTileCell)(unsafe.Pointer(worldTileGrid))
 	cell := &rows[x][y]
-	if !(flags&2 != 0 && int32(cell.field_6) == key || flags&1 != 0 && int32(cell.field_1) == key) {
+	if !(flags&2 != 0 && int32(cell[6]) == key || flags&1 != 0 && int32(cell[1]) == key) {
 		return
 	}
 	if flags&1 != 0 && y == 1 || flags&2 != 0 && x == 1 {

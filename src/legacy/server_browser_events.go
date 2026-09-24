@@ -61,7 +61,7 @@ func browserEvent(w *gui.Window, ev gui.WindowEvent) gui.WindowEventResp {
 	if id != 10043 && id != 10044 && id != 10035 && id != 10036 {
 		Nox_xxx_clientPlaySoundSpecial_452D80(766, 100)
 	}
-	root := asWindow(browserUI.world)
+	root := browserUI.world
 	if id >= 10070 {
 		p := GetClient().GetMousePos()
 		point := [2]uint32{uint32(p.X - 216), uint32(p.Y - 27)}
