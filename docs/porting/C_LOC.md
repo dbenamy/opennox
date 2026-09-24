@@ -1,5 +1,8 @@
 # C source-size checkpoints
 
+**Standalone production and test-reference C are both zero.** This table preserves
+the conversion history; zero standalone C does not mean zero cgo or C dependencies.
+
 Update this table after every completed conversion chunk. Run
 `python3 tools/porting/c_loc.py` from the repository root, or pass a Git revision
 to reproduce a historical count.
@@ -193,11 +196,8 @@ target build selection and linker evidence.
 | Quest runtime, statistics and difficulty scaling | 82 | 53,049 | −897 | 0 |
 | Roster padding, Flagball draw and player layout prerequisites | 82 | 53,046 | −3 | 0 |
 | Match results and roster synchronization, private globals and EOF cleanup | 82 | 52,273 | −773 | 0 |
-
 | Team message fields and clear/rebalance count prerequisites | 82 | 52,275 | +2 | 0 |
-
 | Team runtime, membership and map objectives, including orphan/separator cleanup | 82 | 51,203 | −1,072 | 0 |
-
 | Team UI row ownership, naming, selection and missing-resource prerequisites | 82 | 51,225 | +22 | 0 |
 | Team HUD/player-list UI, private globals and translation-unit cleanup | 80 | 50,177 | −1,048 | 0 |
 | Server-options missing-resource and panel ownership prerequisites | 80 | 50,181 | +4 | 0 |
@@ -317,46 +317,10 @@ target build selection and linker evidence.
 | Remove 34 leaf cgo dependencies; direct project packages 6→3, selected cgo files 463→429; preamble bodies remain 79 | 0 | 0 | 0 | 0 |
 | Six libc memory/string helpers to Go; allocator ownership unchanged; selected cgo files remain 429 and preamble bodies 79 | 0 | 0 | 0 | 0 |
 
-The checksum removes two C function definitions from GAME5_2.c; C ABI entry
-points remain as generated bridges into Go. Translation-unit counts do not fall
-because the file still contains other functions. The 33 test-reference lines were subsequently removed after successful
-differential validation; they remain recoverable from Git at `66fa7bd4`.
+The 33 checksum test-reference lines were retired after differential validation;
+their original source remains recoverable at `66fa7bd4`.
 
-
-Server-panel prerequisites added 15 lines before conversion. The qualified native
-conversion then removes **2,364 lines**, including five C translation units and
-one proven orphan. Current C: **46,391 lines / 74 files / zero reference C**.
-See [SERVER_PANELS.md](SERVER_PANELS.md).
-
-Server-configuration prerequisites add **2 net C lines** before conversion.
-The repeated/frozen C baseline passes three-target and fresh production qualification;
-current C is **46,393 lines / 74 files / zero reference C**. See SERVER_CONFIG.md.
-
-The server-configuration native conversion removes **920 physical C lines**,
-including the two disabled helpers and eight private globals. Current C:
-**45,473 lines / 74 files / zero reference C**. See SERVER_CONFIG.md for the
-qualification record and retained interfaces.
-
-The map-polygon conversion removes **1,072 physical C lines**, including the
-selected functions and three private globals. Current C: **44,401 / 74 files /
-zero reference C**. See [MAP_POLYGONS.md](MAP_POLYGONS.md) for qualification.
-
-Geometry prerequisite corrections remove five unused quadrant local lines. Current
-C: **44,396 / 74 files / zero reference C**. This is not conversion progress; see
-[WORLD_GEOMETRY.md](WORLD_GEOMETRY.md) for qualified behavior changes.
-
-
-The world-geometry native conversion removes **1,414 physical C lines** across
-32 functions and two private data definitions. Current C: **42,982 / 74 files /
-zero reference C**. See [WORLD_GEOMETRY.md](WORLD_GEOMETRY.md) for the frozen
-three-target comparisons and fresh production qualification.
-
-
-The collision-core conversion removes **1,096 physical C lines** across 23
-functions, eight private globals and obsolete address/separator cleanup. Current
-C: **41,886 / 74 files / zero reference C**. Ten exports remain for actual C callers;
-eighteen interfaces are retired. See [COLLISION_CORE.md](COLLISION_CORE.md).
-
-The map-section conversion removes18 C bodies and two private globals. The
-physical reduction includes1,619 body/global lines and174 obsolete address-heading
-and blank lines in the touched C files. See [MAP_SECTIONS.md](MAP_SECTIONS.md).
+Standalone production C reached zero at the **Production Go MP3 integration**
+checkpoint. Subsequent memory-helper, preamble and cgo cleanup leaves this metric
+at zero. Track remaining internal C glue in
+[PORTING_STATE.md](../../PORTING_STATE.md), with qualification in the batch reports.

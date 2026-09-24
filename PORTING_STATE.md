@@ -12,17 +12,17 @@ The Go MP3 decoder is integrated and its C implementation header is retired.
 The legacy algorithm-port milestone is complete; the engine still requires cgo.
 Current work removes libc helpers and redundant **Go → C → Go** callback routes.
 
-Latest qualified implementation: **Go memory/string helpers (this commit)**,
+Latest qualified implementation: **`4e1e86a6` — Go memory/string helpers**,
 following original baselines `5cc27785` and `58f37c6c`.
 See [GO_MEMORY.md](docs/porting/GO_MEMORY.md). Six libc helper calls are replaced;
 allocation/free ownership and external native bindings are unchanged.
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
 recorded reversible decisions. Stop at the milestone or for a substantial question.
-Immediate diversion requested by the user: clean the C_LOC table separators and
-stale tail notes, then continue allocation-call centralization. Reviewed ignored
-drafts and original-path contract drafts are under `build/port-go-memory/`;
-they are not installed or qualified.
+The requested C_LOC cleanup is complete: its historical table is continuous and
+stale tail status notes are removed. Next: qualify and integrate allocation-call
+centralization. Reviewed ignored drafts and original-path contract drafts are under
+`build/port-go-memory/`; they are not installed or qualified.
 
 ## What remains
 
