@@ -21,8 +21,10 @@ reward callbacks and their original C fixture routes remain.
 See [SPELL_REWARD_OWNERS.md](docs/porting/SPELL_REWARD_OWNERS.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Select the next connected internal-glue batch;
-stop at the milestone or for a substantial question.
+recorded reversible decisions. Current batch: map-room/painting fixture owners;
+89 original roots pass in each profile. The 64-export draft is under review and
+not installed. See [MAP_ROOM_PAINT_OWNERS.md](docs/porting/MAP_ROOM_PAINT_OWNERS.md).
+Stop at the milestone or for a substantial question.
 
 Latest artifacts: `build/port-spell-reward-owners/`.
 
