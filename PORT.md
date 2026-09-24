@@ -266,9 +266,13 @@ Previous completed GUI batches include
 
 Replace OpenNox's remaining C implementation with Go while preserving observable
 behavior. Qualify the actual Linux x86 client, high-resolution client and server.
-The current target is **386/SSE2 with CGO**; support for older CPUs is unnecessary.
-Native macOS and browser/WebAssembly work comes after reducing the C dependency
-and understanding the remaining platform requirements.
+The agreed endpoint is a **cgo-free build of all three with `CGO_ENABLED=0`**.
+The currently qualified target is **386/SSE2 with CGO**; support for older CPUs is
+unnecessary. Keeping x86/32-bit-specific behavior, layouts and assumptions is
+acceptable. Removing internal C glue and addressing native dependencies that
+require cgo are in scope; general layout modernization, 64-bit, native macOS and
+browser/WebAssembly support are not requirements for this milestone. Preserve
+behavior as dependencies are replaced; a successful build alone is insufficient.
 
 Use headless X for window/input integration and deterministic software rendering.
 A local screen is unnecessary. OpenAL's null backend exercises audio initialization;
