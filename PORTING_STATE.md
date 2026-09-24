@@ -19,10 +19,12 @@ identities, migrating their consumers and direct-call fixtures (56 exports total
 Four production cgo files disappear. See [UPDATE_IDENTITIES.md](docs/porting/UPDATE_IDENTITIES.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Next candidate: sustained-spell callback identities.
-Read-only scope/getter/owner evidence is under `build/port-after-update-identities/`;
-no next conversion is installed. Review all duration callback fields before choosing
-scope/API. Stop at the milestone or a substantial question.
+recorded reversible decisions. Active batch: 53 sustained-spell callback identities.
+Scope/getter/owner evidence is under `build/port-after-update-identities/`. Three
+original-behavior fixture files are installed; all 85 roots pass in all three
+profiles without skips under `build/port-duration-identities/baseline-original/`.
+See [DURATION_IDENTITIES.md](docs/porting/DURATION_IDENTITIES.md). Conversion
+is not installed; its bounded Luna draft and primary API contract are ignored. Stop at the milestone or a substantial question.
 
 Latest artifacts: `build/port-update-identities/`.
 
@@ -118,6 +120,8 @@ do not rerun them or infer deletion safety from age alone.
 
 | Artifact | Recovery or current location |
 | --- | --- |
+| Completed update scenario assets | Removed 1,654 verified original-asset duplicates; 559,837,184 allocated bytes reclaimed. Originals, saves/results retained. Restore: `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/update-identities-save/deduplicated-assets.json`. Plan/result: `build/port-post-update-cleanup/`. |
+| Superseded item/transfer binaries | Removed 14 verified unused executables; 785,170,432 allocated bytes reclaimed. Rebuild revisions `00044175` and `1b14d1a3`; qualified update replacements remain. Source/hash/host-use evidence: `build/port-duration-identities/cleanup-production-{approved.json,deleted.jsonl}`. |
 | Obsolete pre-transfer root/legacy Go cache | Removed 56 hash/stat/host-use-verified archives older than qualified item commit `00044175`; 2,075,226,112 allocated bytes reclaimed. Current transfer/update caches and all source/assets remain. Rebuild normally; `build/port-update-identities/cache-cleanup-{proposal.json,approved.json,deleted.jsonl}`. |
 | Superseded create/init and damage binaries | Removed 14 verified unused executables; 786,116,608 allocated bytes reclaimed. Rebuild revisions `ed82a5a8` and `8c9b3fc6`; item/transfer replacements remain. Source/hash/host-use evidence: `build/port-update-identities/cleanup-production-{approved.json,deleted.jsonl}`. |
 | Completed transfer scenario assets | Removed 1,654 verified original-asset duplicates; 559,902,720 allocated bytes reclaimed. Originals, saves/results retained. Restore: `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/xfer-identities-save/deduplicated-assets.json`. Plan/result: `build/port-post-xfer-cleanup/`. |
@@ -150,7 +154,7 @@ do not rerun them or infer deletion safety from age alone.
 | Completed damage scenario assets | Removed 1,654 verified duplicates; 559,915,008 allocated bytes reclaimed. Originals, saves and results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/damage-identities-save/deduplicated-assets.json`. Plan/result: `build/port-post-damage-cleanup/`. |
 | Completed creation/init scenario assets | Removed 1,654 SHA256-identical original-asset duplicates after host-use checks; 559,972,352 allocated bytes reclaimed. Originals, saves/results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/create-init-identities-save/deduplicated-assets.json`. Plan/result: `build/port-post-create-init-cleanup/`. |
 | Superseded collision/death qualified binaries | Removed 14 test/safe/production executables after exact committed-source, replacement/hash and host-use checks; 786,751,488 allocated bytes reclaimed. Rebuild qualified revisions `170b594a` and `e7ca9d31` using retained commands. Source, original baseline binaries, logs, manifests and current create/init and damage outputs remain. Plan/journal: `build/port-item-identities/cleanup-production-{approved.json,deleted.jsonl}`. |
-| Current qualified production/safe binaries | Retained under `build/port-update-identities/`; preceding transfer/item binaries also remain; superseded damage/create-init binaries were removed as recorded above; older collision/death qualified executables were removed as recorded above. |
+| Current qualified production/safe binaries | Retained under `build/port-update-identities/`; superseded transfer/item binaries were removed as recorded above; superseded damage/create-init binaries were removed as recorded above; older collision/death qualified executables were removed as recorded above. |
 | Superseded primitive-interface binaries | Seven executables removed after source/replacement/hash and host-use checks; 395,362,304 allocated bytes reclaimed. All 3,062 source fingerprints match `78ff20f9`; current qualified replacements match `4214ea8f`. Rebuild the old revision using retained phase commands. Plan/journal: `build/port-go-layout-boundaries/cleanup-primitive-{approved.json,deleted.jsonl}`. |
 | Superseded scalar-storage binaries | Seven executables removed after source/replacement/hash and host-use checks; 395,452,416 allocated bytes reclaimed. All 3,062 source fingerprints match `e64ff24e`; qualified replacements match `78ff20f9`. Rebuild the old revision using retained phase commands. Plan/journal: `build/port-go-native-call-boundaries/cleanup-scalar-{approved.json,deleted.jsonl}`. |
 | Completed scenario data: `go-memory-save`, `raw-allocation-save`, `string-boundary-save`, `unused-exports-save`, `remaining-unused-exports-save`, `go-only-exports-save` | Only SHA256-identical original-asset copies were removed. Saves/comparisons remain. Follow each run's `deduplicated-assets.json`; shared restore tool: `build/port-artifact-cleanup/restore-recent-scenario.py`. |
