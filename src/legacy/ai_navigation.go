@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "GAME4_1.h"
-#include "GAME4_3.h"
-#include "GAME5.h"
-*/
-import "C"
-
 import (
 	"math"
 	"unsafe"

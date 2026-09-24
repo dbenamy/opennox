@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_2.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"

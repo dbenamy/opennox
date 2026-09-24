@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_1.h"
-*/
-import "C"
 import (
 	"encoding/binary"
 	"github.com/opennox/libs/types"

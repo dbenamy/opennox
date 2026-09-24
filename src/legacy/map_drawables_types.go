@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1.h"
-#include "GAME1_2.h"
-*/
-import "C"
 import (
 	"encoding/binary"
 	"github.com/opennox/opennox/v1/server"

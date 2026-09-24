@@ -43,9 +43,28 @@ Luna corrected both before integration. Primary checked the original constants,
 selected the file/audio consumer roots and owns baseline/production qualification.
 No cost or speed saving is asserted.
 
-## Qualification status
+## Qualified conversion
 
-Baseline consumer sweep passed all 32 roots in each of default/server/highres,
-with no skips. No production change has been installed or qualified yet. Standalone production/reference C remains zero; embedded
-production callback bodies remain 79. The expected direct project cgo-package
-count after conversion is six to three, with 34 fewer selected cgo files; this is not a cgo-free engine claim.
+Original baseline: `a28bdba7`. The unchanged six socket/handshake roots pass three
+repetitions with cgo disabled. All 32 consumer roots pass without skips in each
+of default/server/highres. Safe build and static checks pass. Three fresh 386/SSE2
+production binaries pass ABI checks; the full suite matches all 304 known failure
+events and package outcomes (17 pass, two fail, 32 skip). The headless scenario
+creates a character, saves, loads and resumes against the original references.
+
+All phase source-fingerprint checks pass. A separate diff check confirms the Go
+code in all 34 edited files is unchanged except for the equivalent ioctl constant.
+See [qualification](cgo-leaves-qualification.json) and the selected-file
+[inventory before](cgo-leaves-inventory-before.json) and
+[after](cgo-leaves-inventory-after.json).
+
+Direct project cgo packages fall **6 → 3** in each production profile; selected
+cgo files fall **463 → 429**. Remaining packages are `alloc` (one file), `ccall`
+(one) and `legacy` (427). `binfile` and `server` still have transitive cgo
+requirements, while the Linux `netstr` package itself now tests with cgo off.
+Native client bindings are unchanged. Standalone production/reference C remains
+**zero**, and embedded production callback bodies remain **79**.
+
+The next draft separates six libc memory/string helpers from the allocation
+ownership migration. It remains ignored and unqualified until original-path
+captures and review are complete.

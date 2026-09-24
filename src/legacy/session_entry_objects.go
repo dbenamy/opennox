@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME3_3.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/server"

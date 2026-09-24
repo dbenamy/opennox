@@ -1,18 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-
-
-
-
-
-
-
-
-
-*/
-import "C"
 import (
 	"fmt"
 	"unsafe"

@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_1.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/server"
 	"math"

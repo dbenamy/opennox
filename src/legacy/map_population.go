@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"

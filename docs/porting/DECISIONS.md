@@ -2374,3 +2374,13 @@ Explicit Go maps retain raw pointer-call fallbacks and configured-slot
 preconditions. Callback identities and layouts are unchanged. These reversible
 choices preserve the original dispatch contracts; qualification is recorded in
 XFER_SOUND_REGISTRY.md.
+
+## Internal glue before external bindings
+
+The immediate phase removes engine-owned C glue while retaining SDL2/OpenGL/OpenAL
+and similar external bindings. Whole-build cgo-free clients are deferred for a
+separate discussion. Selected dependency metadata, rather than standalone C LOC,
+now guides removal order. The leaf cleanup batches 33 unused imports with the
+equivalent Linux socket ioctl constant; Go bodies and frozen expectations stay
+unchanged. This avoids an extra qualification cycle for trivial import-only work.
+See INTERNAL_C_GLUE.md and CGO_LEAVES.md.

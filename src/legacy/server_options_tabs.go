@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "GAME2.h"
-#include "GAME3.h"
-#include "client__gui__servopts__general.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/client/noxrender"

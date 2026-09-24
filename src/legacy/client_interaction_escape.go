@@ -1,7 +1,5 @@
 package legacy
 
-import "C"
-
 import "github.com/opennox/opennox/v1/common/memmap"
 
 func interactionEscape() {

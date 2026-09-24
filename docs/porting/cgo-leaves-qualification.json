@@ -1,0 +1,299 @@
+{
+  "socket-native": {
+    "batch": "cgo-leaves",
+    "phase": "socket-native",
+    "success": true,
+    "steps": [
+      {
+        "name": "socket",
+        "command": [
+          "env",
+          "CGO_ENABLED=0",
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-count=3",
+          "-timeout",
+          "60s",
+          "-json",
+          "./internal/netstr"
+        ],
+        "exit": 0,
+        "wall_seconds": 7.578479499090463
+      }
+    ],
+    "revision": "a28bdba73eb73f2dbc641884cac78c98c1aa6b01",
+    "source_unchanged": true,
+    "wall_seconds": 7.844556753989309,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "contracts": {
+    "batch": "cgo-leaves",
+    "phase": "contracts",
+    "success": true,
+    "steps": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/cgo-leaves-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-cgo-leaves/contracts/default.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-cgo-leaves/contracts/default-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 149.29106198693626
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/cgo-leaves-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-cgo-leaves/contracts/server.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-cgo-leaves/contracts/server-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 145.4991257439833
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/cgo-leaves-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-cgo-leaves/contracts/highres.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-cgo-leaves/contracts/highres-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 67.3669888859149
+      }
+    ],
+    "revision": "a28bdba73eb73f2dbc641884cac78c98c1aa6b01",
+    "source_unchanged": true,
+    "wall_seconds": 362.713161992142,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "safe": {
+    "batch": "cgo-leaves",
+    "phase": "safe",
+    "success": true,
+    "steps": [
+      {
+        "name": "build",
+        "command": [
+          "env",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-tags",
+          "safe",
+          "-o",
+          "/root/src/opennox/build/port-cgo-leaves/safe/opennox-safe",
+          "./cmd/opennox"
+        ],
+        "exit": 0,
+        "wall_seconds": 69.23857235792093
+      },
+      {
+        "name": "static",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.9350516470149159
+      }
+    ],
+    "revision": "a28bdba73eb73f2dbc641884cac78c98c1aa6b01",
+    "source_unchanged": true,
+    "wall_seconds": 70.6030111759901,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "production": {
+    "batch": "cgo-leaves",
+    "phase": "production",
+    "success": true,
+    "steps": [
+      {
+        "name": "production",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/qualify_production.py",
+          "/root/src/opennox/docs/porting/cgo-leaves-batch.json",
+          "--out",
+          "/root/src/opennox/build/port-cgo-leaves/production/production"
+        ],
+        "exit": 0,
+        "wall_seconds": 232.1233788819518
+      }
+    ],
+    "revision": "a28bdba73eb73f2dbc641884cac78c98c1aa6b01",
+    "source_unchanged": true,
+    "wall_seconds": 232.43544636992738,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "production_detail": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 64.12381606805138,
+        "sha256": "632554695f51886fbd545da4c9a981769a1d0ce13d42b0417b4d779e5cef0152",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 10.215821451041847,
+        "sha256": "71256f3ef3a43c5517698d3728270d131f0f5ed9a7990cb4c8b25ee5d16c2f79",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 60.971999081084505,
+        "sha256": "1ae547a3565e330fef87e6cf073cd0632a1cfe9446de3405cfe01f115838df91",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "cgo-leaves-save": {
+        "exit": 0,
+        "wall_seconds": 45.73855683603324,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 45.10168491699733,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c-save",
+          "binary_sha256": "632554695f51886fbd545da4c9a981769a1d0ce13d42b0417b4d779e5cef0152",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-cgo-leaves/production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/cgo-leaves-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Remove leaf engine cgo dependencies",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1368,
+                "sha256": "d3f88a301dde65dd0c82d57ebb3f0728066a6f6a30c0787531416f7494738067"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 44.86059460090473,
+      "failure_entries": 304,
+      "packages": {
+        "skip": 32,
+        "pass": 17,
+        "fail": 2
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "baseline_commit": "a28bdba7",
+  "selected_cgo_files_before": 463,
+  "selected_cgo_files_after": 429,
+  "direct_project_cgo_packages_before": 6,
+  "direct_project_cgo_packages_after": 3,
+  "production_c_preamble_bodies": 79
+}

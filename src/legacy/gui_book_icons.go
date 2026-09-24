@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2.h"
-#include "GAME2_1.h"
-#include "GAME2_2.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/strman"
 	"github.com/opennox/opennox/v1/client/gui"

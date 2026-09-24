@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME4_2.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"

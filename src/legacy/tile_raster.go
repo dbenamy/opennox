@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-
-
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/noxrender"
 	"github.com/opennox/opennox/v1/common/memmap"

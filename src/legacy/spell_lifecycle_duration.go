@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME3_3.h"
-#include "GAME5_2.h"
-*/
-import "C"
 import (
 	"encoding/binary"
 	"github.com/opennox/libs/spell"

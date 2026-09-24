@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-
-*/
-import "C"
 import (
 	"encoding/binary"
 	"github.com/opennox/opennox/v1/client/noxrender"

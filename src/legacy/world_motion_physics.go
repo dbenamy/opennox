@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/unit/ai"

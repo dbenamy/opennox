@@ -12,26 +12,27 @@ The Go MP3 decoder is integrated and its C implementation header is retired.
 The legacy algorithm-port milestone is complete; the engine still requires cgo.
 Recent chunks remove redundant **Go → C → Go** callback routes.
 
-Latest qualified implementation: **`b034c43e`**, committed and pushed to `dev`.
-It routes 28 object-transfer and two damage-sound registrations through Go.
-Its original-behavior baseline was committed first as `003d6fab`.
+Latest qualified implementation: **leaf engine C-glue cleanup**, following
+original baseline `a28bdba7`. See [CGO_LEAVES.md](docs/porting/CGO_LEAVES.md).
+It removes 33 unused C imports/preambles and the Linux socket constant's C-header
+dependency, with production and integration qualification complete.
 
 The user resumed chunk-by-chunk work, with one Luna helper, qualification,
 commit/push and recorded reversible decisions. Stop at the milestone or for a
-substantial question. The first new chunk removes three leaf cgo imports; its
-original-behavior tests and baseline are being prepared under
-`build/port-cgo-leaves/`. No new production change is qualified yet.
+substantial question. Next: qualify and replace six libc memory/string helpers;
+allocator ownership remains a separate batch. Uninstalled drafts are under
+`build/port-cgo-leaves/next-memory-draft/`.
 
 ## What remains
 
-Counts below describe implementation checkpoint `b034c43e`. Zero `.c` lines is
+Counts below describe the qualified leaf-glue cleanup. Zero `.c` lines is
 not a count of all C dependencies or a measure of remaining engineering effort.
 
 | Area | Remaining work or dependency |
 | --- | --- |
 | Embedded C callback glue | 79 production function bodies in Go preambles: 76 generic function-pointer dispatchers and three specialized adapters. |
 | Callback routes | Some Go implementations still call each other through C-compatible addresses. More direct Go dispatch is possible; shared raw fallbacks remain until their users and compatibility requirements are resolved. |
-| Declarations and C types | 157 tracked headers / 4,548 physical lines; 469 non-porttest Go files import C across build profiles. These counts mostly reflect interface/layout machinery, not unported algorithms. |
+| Declarations and C types | 157 tracked headers / 4,548 physical lines; each production profile selects 429 cgo files in three project packages (alloc, ccall, legacy). Selected-build counts replace the earlier whole-tree text count. These are mostly interface/layout machinery, not unported algorithms. |
 | Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Removing them requires ownership/layout changes beyond function translation. |
 | External libraries | SDL2, OpenGL, OpenAL and similar native dependencies and their cgo bindings stay for this phase; their future is a subsequent discussion. |
 | Portability and release validation | Qualified target is Linux 386/SSE2 with cgo. The complete engine is not qualified as cgo-free, 64-bit, native macOS or browser/WebAssembly. Physical display and audible playback remain manual release checks. |
@@ -43,20 +44,16 @@ not reduce the 79-body count because they retain the shared fallback machinery.
 
 ## Latest qualification and evidence
 
-The transfer/sound conversion preserves callback identities, exact nonzero transfer
-success, generic versus detailed default-transfer errors, late-bound handlers,
-raw fallbacks, and the damage owner's fixed nil-slot default and ignored returns.
-
-- 228 selected test roots pass in each of default/server/highres; all 220 frozen
-  capture groups match the original baseline. Tests and expectations are unchanged.
-- Safe build/static checks and four fresh production binaries with ABI checks pass.
+- Six socket/handshake roots pass three times against the original path and again
+  with cgo disabled after conversion.
+- All 32 unchanged parser/audio consumer roots pass in default/server/highres.
+- Safe build/static checks and three fresh production binaries/ABI checks pass.
 - Headless character creation and explicit save/load/resume pass.
 - Full-suite results match the known baseline exactly: 304 failure events,
-  with 17 passing, two failing and 32 skipped packages. This is no-regression
-  qualification, not a completely green full suite.
+  with 17 passing, two failing and 32 skipped packages.
 
-Report: [XFER_SOUND_REGISTRY.md](docs/porting/XFER_SOUND_REGISTRY.md).
-Machine-readable evidence: [qualification](docs/porting/xfer-sound-registry-qualification.json).
+Report: [CGO_LEAVES.md](docs/porting/CGO_LEAVES.md).
+Evidence: [qualification](docs/porting/cgo-leaves-qualification.json).
 Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expected-suite.jsonl).
 
 ## Goal, next work and open review items
@@ -70,12 +67,11 @@ is outside this phase.
 
 The dependency inventory tool is `tools/porting/cgo_inventory.py`; the refreshed
 baseline is under `build/port-cgo-leaves/inventory-before/`.
-Production metadata identifies six project packages directly using cgo in all
-three profiles, plus OpenGL/SDL2/OpenAL bindings in the clients. Metadata discovery
+The completed leaf cleanup leaves three project packages directly using cgo in
+all profiles, plus OpenGL/SDL2/OpenAL bindings in the clients. Metadata discovery
 is not compilation or qualification. The helper's external-review draft is not
 accepted evidence: its suggestion that go-gl is residue is contradicted by the
-actual dependency graph (`libs/client/seat/opengl` imports it). No production
-source or dependencies were changed by the audit.
+actual dependency graph (`libs/client/seat/opengl` imports it).
 
 A preliminary candidate is 26 monster callbacks: 11 strike, five die and ten dead.
 Their production owners are `combatMelee`, `lifecycleDyingStart` and
@@ -93,8 +89,10 @@ The Go MP3 decoder remains slower than C in the recorded bounded benchmarks
 has not been established. See [the performance report](docs/porting/MP3_SYNTHESIS_PERFORMANCE.md).
 Other behavior/compatibility findings are recorded in [DECISIONS.md](docs/porting/DECISIONS.md).
 
-The latest Luna 30-binding draft passed independent review and qualification.
-No measured cost/time saving is claimed. See [delegation rules](PORT.md#subagent-use).
+Luna drafted the socket contracts; primary review prompted readiness/direct-call
+coverage corrections before the original baseline. Luna also reviewed the next
+memory-contract draft and caught missing high-byte copy coverage. No measured
+cost/time saving is claimed. See [delegation rules](PORT.md#subagent-use).
 
 ## Resume and artifact recovery
 
@@ -106,8 +104,8 @@ The current Go toolchain is `/usr/lib/go-1.26/bin`. Follow the
 [build environment instructions](PORT.md#build-and-test-environment), including
 sourcing `build/baseline/env.sh` in every Go shell.
 
-Latest local artifacts are under `build/port-xfer-sound-registry/`:
-`baseline/`, `contracts/`, `safe/opennox-safe`, and
+Latest local artifacts are under `build/port-cgo-leaves/`:
+`baseline/`, `socket-baseline/`, `socket-native/`, `contracts/`, `safe/opennox-safe`, and
 `production/production/bin/{opennox,opennox-hd,opennox-server}`.
 Source, tests, reports and qualification metadata are committed; ignored local
 binaries/logs/drafts are not backed up by pushing Git. Completed finalizers are
