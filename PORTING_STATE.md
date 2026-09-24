@@ -19,11 +19,13 @@ create/update/destroy dispatch, getters and fixtures. Three production cgo files
 disappear. See [DURATION_IDENTITIES.md](docs/porting/DURATION_IDENTITIES.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Next candidate: 40 equipment modifier callback keys
-and nine adjacent exports. Whole-source references, field routes and six blob
-aliases are audited under `build/port-after-duration-identities/`; primary review
-and ignored baseline/API drafts are under `build/port-modifier-identities/`.
-No modifier conversion is installed. Stop at the milestone or a substantial question.
+recorded reversible decisions. Current batch: 40 equipment modifier callback keys
+and nine adjacent exports. The original baseline passes all 331 focused roots in
+each of default/server/highres without skips; production remains identical to
+qualified d5d80c42. See [MODIFIER_IDENTITIES.md](docs/porting/MODIFIER_IDENTITIES.md).
+Luna is drafting the conversion in an ignored overlay; primary owns review and
+qualification. No modifier conversion is installed yet. Local evidence and drafts:
+`build/port-modifier-identities/`. Stop at the milestone or a substantial question.
 
 Latest artifacts: `build/port-duration-identities/`.
 
