@@ -2,24 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME3_1.h"
-#include "GAME3_2.h"
-#include "client__drawable__update__charmup.h"
-#include "client__drawable__update__cloud.h"
-#include "client__drawable__update__dball.h"
-#include "client__drawable__update__drainup.h"
-#include "client__drawable__update__fireball.h"
-#include "client__drawable__update__healup.h"
-#include "client__drawable__update__manabomb.h"
-#include "client__drawable__update__mmislup.h"
-#include "client__drawable__update__mtailup.h"
-#include "client__drawable__update__sparklup.h"
-#include "client__drawable__update__telwake.h"
-#include "client__drawable__update__vortexup.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/client/noxrender"
@@ -28,12 +10,8 @@ import (
 )
 
 // The owner supplies a real client, drawable pool/list/index and seeded RNG.
-// Integer pointer parameters are the production 386 callback ABI.
+// Results retain the original 32-bit callback ABI.
 func PortTestClientUpdate(op int, vp *noxrender.Viewport, dr *client.Drawable, a [4]int32) uint32 {
-	viewport := C.int(uintptr(vp.C()))
-	drawable := C.int(uintptr(dr.C()))
-	words := (*C.uint32_t)(dr.C())
-	viewWords := (*C.uint32_t)(vp.C())
 	switch op {
 	case 0:
 		updateTransfer(int(a[0]), vp, dr, a[1] != 0, true)
@@ -43,62 +21,68 @@ func PortTestClientUpdate(op int, vp *noxrender.Viewport, dr *client.Drawable, a
 	case 2:
 		return updateDeathBallSparks(dr, int(a[0]))
 	case 3:
-		return uint32(C.nox_xxx_updDrawDBallCharge_4CE0C0(viewport, drawable))
+		return uint32(int32(updateDeathBallCharge(dr)))
 	case 4:
-		return uint32(C.sub_4CD690(viewWords, drawable))
+		return uint32(int32(updateHealDrain(vp, dr, false)))
 	case 5:
 		updateFireball(dr, int(a[0]))
 		return 0
 	case 6:
-		return uint32(C.sub_4CD450(viewWords, drawable))
+		return uint32(int32(updateHealDrain(vp, dr, true)))
 	case 7:
-		return uint32(C.nox_xxx_updDrawManabombCharge_4CCAC0(viewport, words))
+		return uint32(int32(updateManaBomb(dr)))
 	case 8:
-		return uint32(C.nox_xxx_updDrawMagicMissile_4CD9E0(viewport, words))
+		return uint32(int32(updateMagicMissile(dr)))
 	case 9:
-		C.nox_xxx_updDrawMagic_4CDD80(viewport, words)
+		updateMagicTrail(dr)
 		return 0
 	case 10:
-		return uint32(C.nox_xxx_updDrawSparkleTrail_4CDBF0(viewport, words))
+		return uint32(int32(updateTrailSparks(dr, false)))
 	case 11:
-		return uint32(C.nox_xxx_updDrawTeleportWake_4CD8D0(viewport, drawable))
+		return uint32(int32(updateTeleportWake(dr)))
 	case 12:
-		return uint32(C.nox_xxx_updDrawVortexSource_4CC950(viewport, drawable))
+		return uint32(int32(updateVortex(dr)))
 	case 13:
-		return uint32(C.nox_xxx_updDrawUndeadKiller_4CCCF0())
+		return 1
 	case 14:
-		return uint32(C.sub_4CCD00(viewport, drawable))
+		return uint32(int32(updateHeight(dr, false)))
 	case 15:
-		return uint32(C.nox_xxx_updDrawFist_4CCDB0(viewport, drawable))
+		return uint32(int32(updateHeight(dr, true)))
 	case 16:
-		return uint32(C.sub_4CCE70(viewport, words))
+		return uint32(int32(updateFireballFrame(dr, 5)))
 	case 17:
-		return uint32(C.sub_4CD090(viewport, words))
+		return uint32(int32(updateFireballFrame(dr, 4)))
 	case 18:
-		return uint32(C.sub_4CD0C0(viewport, words))
+		return uint32(int32(updateFireballFrame(dr, 3)))
 	case 19:
-		return uint32(C.sub_4CD0F0(viewport, words))
+		return uint32(int32(updateFireballFrame(dr, 2)))
 	case 20:
-		return uint32(C.sub_4CD120(viewport, words))
+		return uint32(int32(updateFireballFrame(dr, 1)))
 	case 21:
-		return uint32(C.sub_4CD400(viewWords, drawable))
+		return uint32(int32(updateCharm(vp, dr)))
 	case 22:
-		return uint32(C.nox_xxx_updDrawDBall_4CDF80(viewport, drawable))
+		updateDeathBallSparks(dr, 3)
+		return 1
 	case 23:
-		return uint32(C.sub_4CE0A0(viewport, drawable))
+		updateDeathBallSparks(dr, 1)
+		return 1
 	case 24:
-		return uint32(C.nox_xxx_updDrawCloud_4CE1D0(viewport, drawable))
+		return uint32(int32(updateCloudFrame(dr, 75)))
 	case 25:
-		return uint32(C.sub_4CE340(viewport, drawable))
+		return uint32(int32(updateCloudRise(dr)))
 	case 26:
-		return uint32(C.sub_4CE360(viewport, drawable))
+		return uint32(int32(updateCloudFrame(dr, 35)))
 	default:
 		panic("unknown drawable update")
 	}
 }
 
-func PortTestClientUpdateCloudCallback() unsafe.Pointer { return unsafe.Pointer(C.sub_4CE340) }
-func PortTestClientUpdateMagicCallback() unsafe.Pointer { return C.nox_xxx_updDrawMagic_4CDD80 }
+func PortTestClientUpdateCloudCallback() unsafe.Pointer {
+	return drawableUpdateIdentity(updateID_sub_4CE340)
+}
+func PortTestClientUpdateMagicCallback() unsafe.Pointer {
+	return drawableUpdateIdentity(updateID_magic)
+}
 
 type PortTestClientUpdateEnvironment struct {
 	mapped  []uint32

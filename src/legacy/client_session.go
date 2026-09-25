@@ -223,7 +223,7 @@ func clientGameSession(ind int, op netmsg.Op, data []byte) int {
 			dr.AnimStart = GetServer().S().Frame()
 			dr.Field_81 = uint32(word(5))
 			dr.Field_82 = uint32(word(7))
-			dr.Field_115 = C.nox_xxx_sprite_4CA540
+			dr.Field_115 = drawableUpdateIdentity(updateID_sprite)
 			GetClient().Cli().Objs.List5Add(dr)
 		}
 	case 189:

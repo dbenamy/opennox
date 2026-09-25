@@ -2729,3 +2729,20 @@ getter consumers, lifetime, raw fallback and actual bot state are covered. The
 first new original bot contract omitted its AI fixture setup; use the established
 controlsRun owner environment without changing production or frozen captures.
 See [UPDATE_IDENTITIES.md](UPDATE_IDENTITIES.md).
+
+## Drawable update callback results
+
+Use a separate native registry for the 25 resource-table updates and three
+callbacks assigned directly to sprite fields. Preserve the primary slot's full
+signed-32 result and the secondary slot's discarded result, with existing raw C
+fallbacks for unknown addresses. Keep the update loop's saved-next traversal and
+pause/gating behavior unchanged.
+
+The old magic-trail wrapper declares void but is called through an integer-result
+path. Independent inspection of the supported production binary and repeated
+original contracts in all three profiles established a zero result on normal
+return. Preserve that observed zero explicitly after calling the Go owner; do not
+invent a success result or generalize this to other C toolchains. The independent
+contracts confirm the owner ran and the secondary callback was suppressed.
+See [DRAWABLE_UPDATE_IDENTITIES.md](DRAWABLE_UPDATE_IDENTITIES.md) for qualification
+status, fixture correction and the expanded 28-wrapper scope.

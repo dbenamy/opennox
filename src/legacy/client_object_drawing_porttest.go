@@ -2,24 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME3_1.h"
-#include "GAME1_1.h"
-#include "client__draw__doordraw.h"
-#include "client__draw__arrowdraw.h"
-#include "client__draw__glyphdraw.h"
-#include "client__draw__summondraw.h"
-#include "client__draw__weapondraw.h"
-#include "client__draw__armordraw.h"
-#include "client__draw__mgendraw.h"
-#include "client__draw__pressureplatedraw.h"
-#include "client__draw__triggerdraw.h"
-#include "client__draw__powderdraw.h"
-#include "client__draw__basedraw.h"
-#include "client__draw__flagdraw.h"
-*/
-import "C"
-
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/opennox/v1/client"
@@ -39,7 +21,7 @@ func PortTestObjectDrawHelper(op int, dr *client.Drawable, arg unsafe.Pointer, v
 	case 5:
 		return uint32(uintptr(objectGeneratorCountdown(dr)))
 	case 6:
-		return uint32(C.nox_xxx_updDrawMonsterGen_4BC920())
+		return 1
 	case 7:
 		return uint32(uintptr(unsafe.Pointer(objectTeamByColor(value))))
 	}

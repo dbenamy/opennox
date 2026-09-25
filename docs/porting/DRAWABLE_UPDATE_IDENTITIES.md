@@ -48,24 +48,24 @@ roots. It follows selected fixture APIs, stored callback fields and owner helper
 ten explicit `!server` roots are excluded on server. An independent function-value
 review found only local-name/field collisions outside the selected call closure.
 The complete original selection passed against verified binaries on all profiles,
-with the new gate contract repeated. Baseline accepted; no conversion installed. Production baseline is the
-qualified drawing revision `b03fb880`, with only test changes for this baseline.
+with the new gate contract repeated. Baseline accepted and pushed as `ae17a051`;
+conversion fully qualified. Production baseline is the qualified drawing revision `b03fb880`, with only test changes for this baseline.
 
 ## Conversion and qualification
 
-Use a separate typed update registry with static identities. Migrate the table,
+The conversion uses a separate typed update registry with static identities. It migrates the table,
 assignments to both callback fields, sparse fixture getters, direct fixture calls,
-and every raw field/alias consumer together. Preserve retained export comments
-and remove obsolete prototypes. Do not change owners, assertions or captures.
+and every raw field/alias consumer together. Retained export comments are preserved
+and obsolete prototypes removed. Owners, assertions and captures are unchanged.
 
-After original baseline acceptance and commit, run the affected selection on all
+After original baseline acceptance and commit, qualification ran the affected selection on all
 three converted profiles, the complete default root corpus for the new shared
 update dispatcher, safe/static checks, three production builds/ABI checks, exact
 known-suite comparison, fresh preflight/final save-load scenarios and asset hashes.
 
 ## Delegation and recovery
 
-Luna drafted the original gate probe and audits, and owns a fresh ignored legacy
+Luna drafted the original gate probe, audits and ignored legacy
 migration overlay in `build/port-drawable-update-identities/luna-overlay/`. Primary owns
 baseline acceptance, typed dispatch API, root/test callers, mapping review and
 qualification. The initial audit overstated table membership and omitted the
@@ -78,3 +78,30 @@ belongs to an earlier server batch. Its tracked documents were restored unchange
 Original probe/baseline artifacts stay at their recorded paths; new conversion
 artifacts and the replay manifest use `drawable-update-identities`. No engine source
 or running test input changed during the baseline.
+
+Primary review corrected two lost spark-owner calls in fixture operations 22/23
+before the first compile, and removed three leftover unused cgo imports. The
+registered adapters had preserved those side effects. All 28 registrations,
+25 table mappings, three direct field routes and fixture operations were checked
+independently. The reviewed conversion spans 32 source paths.
+
+## Qualified result
+
+All 1,033 default/highres and 1,023 server focused roots pass against exact original
+baseline names. The full default corpus has 2,461 passes and the one established
+prerequisite skip, with all 2,462 independently expected names accounted for.
+Safe/static, all three production ABI checks, exact known asset-suite comparison,
+both fresh headless save/load scenarios and 1,654 original asset hashes pass.
+See [qualification](drawable-update-identities-qualification.json).
+
+Selected cgo files fall from 159 to 152 in clients and 160 to 153 on server;
+legacy exports fall from 387 to 359. Four export-only files are deleted, three
+other production files and three fixture files no longer import C. The 157 headers
+contain 3,121 physical lines; 77 embedded production C bodies
+remain, and standalone production/test C stay zero. External native dependencies
+are unchanged.
+
+Luna supplied the bounded overlay and final read-only audit. Primary corrected
+the fixture side effects and unused imports before compiling. Keep wrapper-to-owner
+and fixture-operation review independent; constant returns do not imply an owner
+has no side effects. No timing or subscription savings estimate is inferred.

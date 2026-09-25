@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "client__draw__glowdraw.h"
-int sub_4CE340(int,int);
-*/
-import "C"
-
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/opennox/v1/client"
@@ -46,7 +39,7 @@ func updateCloud(dr *client.Drawable, count, radius int) int {
 			child.ZVal = 0
 			effectLink(child)
 			*effectByte(child, 432) = byte(effectRand(1, 3))
-			child.Field_115 = unsafe.Pointer(C.sub_4CE340)
+			child.Field_115 = drawableUpdateIdentity(updateID_sub_4CE340)
 			GetClient().Cli().Objs.TransparentDecay(child, effectRand(10, 32))
 			GetClient().Cli().Objs.List5Add(child)
 			GetClient().Cli().Objs.List6Add(child)

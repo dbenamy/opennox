@@ -3,12 +3,6 @@
 
 #include "defs.h"
 
-int nox_xxx_updDrawDBall_4CDF80(int a1, int a2);
-int sub_4CE0A0(int a1, int a2);
-int nox_xxx_updDrawCloud_4CE1D0(int a1, int a2);
-int sub_4CE340(int a1, int a2);
-int sub_4CE360(int a1, int a2);
-int nox_xxx_updDrawColorlight_4CE390(uint32_t* a1, int a2);
 int nox_xxx_netPrintLineToAll_4DA390(const char* a1);
 nox_object_t* nox_get_and_zero_server_objects_4DA3C0(void);
 void nox_set_server_objects_4DA3E0(nox_object_t* p);

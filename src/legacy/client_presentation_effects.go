@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_1.h"
-*/
-import "C"
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/libs/spell"
@@ -134,7 +130,7 @@ func presentationTurnUndead(pos *[2]int16) {
 		dr.Field_119 = 0
 		dr.AnimStart = GetServer().S().Frame()
 		dr.Field_81, dr.Field_82 = uint32(int32(pos[0])), uint32(int32(pos[1]))
-		dr.Field_115 = C.nox_xxx_sprite_4CA540
+		dr.Field_115 = drawableUpdateIdentity(updateID_sprite)
 		GetClient().Cli().Objs.List5Add(dr)
 		GetClient().Cli().Objs.List6Add(dr)
 	}

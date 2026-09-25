@@ -347,6 +347,7 @@ target build selection and linker evidence.
 | Retire 20 internal audio-stream C bridges and four callback identities; selected cgo files 170→167, exports 485→465 | 0 | 0 | 0 | 0 |
 | Retire 66 drawing/parser C bridges; selected client cgo 167→161, server 167→162, exports 465→399 | 0 | 0 | 0 | 0 |
 | Retire remaining 12 registered draw C wrappers; selected client cgo 161→159, server 162→160, exports 399→387 | 0 | 0 | 0 | 0 |
+| Retire 28 drawable update wrappers; selected client cgo 159→152, server 160→153, exports 387→359 | 0 | 0 | 0 | 0 |
 
 The 33 checksum test-reference lines were retired after differential validation;
 their original source remains recoverable at `66fa7bd4`.

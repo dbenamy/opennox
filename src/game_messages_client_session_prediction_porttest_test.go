@@ -13,7 +13,6 @@ import (
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/internal/netlist"
 	"github.com/opennox/opennox/v1/legacy"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 )
 
 func TestGameMessageClientSessionPrediction(t *testing.T) {
@@ -99,7 +98,7 @@ func TestGameMessageClientSessionPrediction(t *testing.T) {
 										t.Fatal("prediction fields/list", r)
 									}
 									_, restore := c.Cli().PortTestObjectRenderSight([]image.Point{{-10000, -10000}, {10000, -10000}, {10000, 10000}, {-10000, 10000}})
-									r.MotionReturn = ccall.CallIntPtr2(dr.Field_115, c.Viewport().C(), dr.C())
+									r.MotionReturn = int(client.CallDrawableUpdateResult(dr.Field_115, c.Viewport(), dr))
 									restore()
 									r.After = dr.PosVec
 									want := image.Pt(int(300+vx*(1-drag)), int(400+vy*(1-drag)))

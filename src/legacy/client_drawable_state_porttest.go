@@ -54,7 +54,7 @@ func PortTestDrawableState(op int, dr *client.Drawable, value int) uintptr {
 }
 func PortTestDrawableMotion(op int, vp *noxrender.Viewport, dr *client.Drawable) int {
 	if op == 0 {
-		return int(C.nox_xxx_sprite_4CA540((*C.uint32_t)(vp.C()), C.int(uintptr(dr.C()))))
+		return drawableMotionDamped(vp, dr)
 	}
-	return int(C.sub_4CA650(C.int(uintptr(vp.C())), C.int(uintptr(dr.C()))))
+	return drawableMotionTarget(dr)
 }

@@ -2,17 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME3.h"
-#include "GAME3_1.h"
-#include "client__draw__fx.h"
-#include "client__draw__drawrays.h"
-#include "client__draw__lightning.h"
-#include "client__draw__plasma.h"
-#include "client__draw__glowdraw.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/client/noxrender"
@@ -105,7 +94,7 @@ func PortTestClientEffects(op int, vp *noxrender.Viewport, dr *client.Drawable, 
 	case 36:
 		return uint32(effectOrb(vp, dr, a[0] != 0))
 	case 37:
-		return uint32(C.sub_4CA720(C.int(uintptr(unsafe.Pointer(vp))), C.int(uintptr(unsafe.Pointer(dr)))))
+		return uint32(effectOrbitUpdate(dr))
 	case 38:
 		return uint32(effectCurveColor(int(a[0])))
 	case 39:
@@ -169,7 +158,7 @@ func PortTestEffectsCallback(op int) unsafe.Pointer {
 	case 34:
 		return drawableDrawKey(drawKey_nox_thing_glow_orb_move_draw)
 	case 37:
-		return unsafe.Pointer(C.sub_4CA720)
+		return drawableUpdateIdentity(updateID_sub_4CA720)
 	default:
 		panic("unknown effect callback")
 	}

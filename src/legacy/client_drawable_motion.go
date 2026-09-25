@@ -78,13 +78,3 @@ func drawableMotionTarget(dr *client.Drawable) int {
 	GetClient().Cli().Nox_xxx_updateSpritePosition_49AA90(dr, int(nx), int(ny))
 	return 1
 }
-
-//export nox_xxx_sprite_4CA540
-func nox_xxx_sprite_4CA540(vp *C.uint32_t, p C.int) C.int {
-	return C.int(drawableMotionDamped((*noxrender.Viewport)(unsafe.Pointer(vp)), (*client.Drawable)(unsafe.Pointer(uintptr(uint32(p))))))
-}
-
-//export sub_4CA650
-func sub_4CA650(vp, p C.int) C.int {
-	return C.int(drawableMotionTarget((*client.Drawable)(unsafe.Pointer(uintptr(uint32(p))))))
-}

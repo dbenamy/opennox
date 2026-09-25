@@ -4,6 +4,7 @@ package opennox
 
 import (
 	"encoding/binary"
+	"github.com/opennox/opennox/v1/client"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"image"
 	"image/png"
@@ -16,7 +17,6 @@ import (
 	"github.com/opennox/libs/noximage"
 	"github.com/opennox/opennox/v1/legacy"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 )
 
 func TestClientEffectsMovingOrbDistance(t *testing.T) {
@@ -63,7 +63,7 @@ func TestClientEffectsStoredOrbitCallback(t *testing.T) {
 				}
 				for _, age := range []int{0, 1, 30, 59, 60} {
 					c.srv.SetFrame(frame + uint32(age))
-					got := ccall.CallIntPtr2(dr.ClientUpdateFuncPtr, c.Viewport().C(), dr.C())
+					got := int(client.CallDrawableUpdateResult(dr.ClientUpdateFuncPtr, c.Viewport(), dr))
 					if got < 0 || got > 1 || c.srv.Rand.Other.Index() != 33 || c.srv.Rand.Logic.Index() != 31 {
 						t.Fatal("stored orbit callback ABI/RNG")
 					}

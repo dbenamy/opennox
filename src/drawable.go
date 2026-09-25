@@ -11,7 +11,6 @@ import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 )
 
 func (c *Client) Nox_xxx_spriteCreate_48E970(typeID int, code uint16, x, y int) *client.Drawable {
@@ -344,9 +343,9 @@ func (c *Client) sub_49BD70(vp *noxrender.Viewport) {
 	var next *client.Drawable
 	for it := c.Objs.FirstList5(); it != nil; it = next {
 		next = it.Field_94
-		if fnc1 := it.ClientUpdateFuncPtr; fnc1 == nil || ccall.CallIntPtr2(fnc1, vp.C(), it.C()) != 0 {
+		if fnc1 := it.ClientUpdateFuncPtr; fnc1 == nil || client.CallDrawableUpdateResult(fnc1, vp, it) != 0 {
 			if fnc2 := it.Field_115; fnc2 != nil {
-				ccall.CallVoidPtr2(fnc2, vp.C(), it.C())
+				client.CallDrawableUpdateDiscard(fnc2, vp, it)
 			}
 		}
 	}

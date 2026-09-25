@@ -272,6 +272,9 @@ Apply these review rules learned from earlier batches:
   exact-width Go types where the fixture no longer needs a C interface, and create
   identity keys only for addresses with actual consumers. The server-fixture batch
   needed these corrections before its first build.
+  Preserve side effects before constant returns in every route, including test
+  adapters. The drawable-update draft kept the production spark call but omitted
+  it in two fixture operations; primary review restored it before compilation.
   Derive the adapter list from actual calls too: a symbol referenced only by a
   prototype or snapshot identity needs no callable replacement. The UI fixture
   draft copied unused wrappers that primary removed before qualification.

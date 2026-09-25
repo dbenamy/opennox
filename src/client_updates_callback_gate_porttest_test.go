@@ -10,12 +10,10 @@ import (
 	"github.com/opennox/opennox/v1/client"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/legacy"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 )
 
-// This contract intentionally captures the machine-level return of the
-// original void C export through the actual int callback path. Its zero
-// expectation is specific to the supported qualified Linux/386/SSE2 binary.
+// Preserve the original Linux/386 callback gate, including the zero machine
+// result captured from the old magic-trail void export.
 func TestClientUpdatesCallbackGate(t *testing.T) {
 	c, pix, effects, env := newUpdateTestOwner(t)
 	observer, words, result, restoreObserver := legacy.PortTestXferSoundRawObserver()
@@ -93,7 +91,7 @@ func TestClientUpdatesCallbackGate(t *testing.T) {
 	}
 	checkObserver(0, dr)
 
-	// The fixture exposes the same C export used by the update table. Capture its
+	// The fixture exposes the same identity used by the update table. Check its
 	// int-dispatch result directly on one drawable; the owner mutates/spawns, so
 	// use a fresh reset before checking the real root-loop gate.
 	magic := legacy.PortTestClientUpdateMagicCallback()
@@ -106,9 +104,9 @@ func TestClientUpdatesCallbackGate(t *testing.T) {
 	*(*uint32)(unsafe.Add(dr.C(), 432)) = uint32(dr.PosVec.X)
 	*(*uint32)(unsafe.Add(dr.C(), 436)) = uint32(dr.PosVec.Y)
 	installObserver(dr)
-	got := ccall.CallIntPtr2(magic, c.Viewport().C(), dr.C())
+	got := int(client.CallDrawableUpdateResult(magic, c.Viewport(), dr))
 	if got != 0 {
-		t.Fatalf("original magic void callback int result = %d, want 0 for qualified binary", got)
+		t.Fatalf("magic callback int result = %d, want 0 for qualified binary", got)
 	}
 	if len(c.Calls) != 5 {
 		t.Fatalf("direct magic callback attempted %d trail sparks, want 4", len(c.Calls)-1)

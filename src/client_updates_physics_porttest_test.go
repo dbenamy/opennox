@@ -4,8 +4,8 @@ package opennox
 
 import (
 	"encoding/binary"
+	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/legacy"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"image"
 	"math"
 	"testing"
@@ -100,7 +100,7 @@ func TestClientUpdatesStoredCloudCallback(t *testing.T) {
 			*(*byte)(unsafe.Add(dr.C(), 432)) = speed
 			before := c.srv.Rand.Other.Index()
 			for step := 0; step < 4; step++ {
-				got := ccall.CallIntPtr2(dr.Field_115, c.Viewport().C(), dr.C())
+				got := int(client.CallDrawableUpdateResult(dr.Field_115, c.Viewport(), dr))
 				if got != 1 || dr.ZVal != z+uint16((step+1)*int(speed)) || c.srv.Rand.Other.Index() != before {
 					t.Fatal("stored cloud callback increment/wrap")
 				}

@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_2.h"
-#include "defs.h"
-int sub_4CA720(int,int);
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/legacy/common/ccall"
@@ -54,7 +47,7 @@ func effectCreateOrbit(typ int, coords *[4]int16, angle int16, direction, period
 	*effectByte(dr, 444) = byte(effectRand(3, 10))
 	*effectByte(dr, 446) = period
 	*effectByte(dr, 445) = period
-	dr.ClientUpdateFuncPtr = unsafe.Pointer(C.sub_4CA720)
+	dr.ClientUpdateFuncPtr = drawableUpdateIdentity(updateID_sub_4CA720)
 	*effectShort(dr, 508) = uint16(angle)
 	effectLink(dr)
 }
