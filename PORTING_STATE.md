@@ -88,8 +88,11 @@ is not compilation or qualification. The helper's external-review draft is not
 accepted evidence: its suggestion that go-gl is residue is contradicted by the
 actual dependency graph (`libs/client/seat/opengl` imports it).
 
-The monster callback candidate is now qualified. Its corrected offset mapping
-was independently checked against both production initialization and fixture tables.
+Next batch: player-action bridges. Original source `456bdf2d` has an accepted
+565-root/profile baseline (558 exact-source results reused, seven freshly run).
+Luna is drafting removal of 32 exports plus three private C-typed adapters;
+primary reviews typed owner calls, radial closures and stable fixture IDs before
+installation. See [PLAYER_ACTION_IDENTITIES.md](docs/porting/PLAYER_ACTION_IDENTITIES.md).
 The earlier 25-export object-state proposal under
 `build/port-after-go-only-exports/` was rejected because it omitted fixture C calls.
 The qualified 37-export batch supersedes it with a complete caller/identity audit.
