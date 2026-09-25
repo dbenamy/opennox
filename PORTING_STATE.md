@@ -86,9 +86,12 @@ is not compilation or qualification. The helper's external-review draft is not
 accepted evidence: its suggestion that go-gl is residue is contradicted by the
 actual dependency graph (`libs/client/seat/opengl` imports it).
 
-List/player-group bridges are now qualified. The next scout concerns internal
-audio forwarding bridges and fixture consumers. Review actual reachability and
-ownership before choosing that scope; external audio backends remain untouched.
+List/player-group bridges are qualified. The next audio batch has an accepted
+original baseline: 130 roots per profile, including repeated new C-path hook/table
+and music-slot contracts. Production source remains unchanged. Next review/install
+the bounded Luna overlay, qualify 26 export removals and update the measured counts.
+See [AUDIO_BRIDGE_IDENTITIES.md](docs/porting/AUDIO_BRIDGE_IDENTITIES.md).
+External audio backends remain untouched.
 The earlier 25-export object-state proposal under
 `build/port-after-go-only-exports/` was rejected because it omitted fixture C calls.
 The qualified 37-export batch supersedes it with a complete caller/identity audit.
@@ -128,6 +131,7 @@ do not rerun them or infer deletion safety from age alone.
 
 | Artifact | Recovery or current location |
 | --- | --- |
+| Superseded player-action binaries and older cache archives | Removed seven verified unused player binaries (389,644,288 allocated bytes) and nine older root/legacy cache archives (421,584,896 bytes). Source/hash/replacement and host-use checks passed; current list and original audio binaries remain. Rebuild player `1ca13c2a` normally. Evidence: `build/port-audio-bridge-identities/binary-cleanup-{approved.json,deleted.jsonl}` and `cache-before-audio/`. |
 | Completed list preview/final scenario assets | Removed 1,654 identical asset copies per run, reclaiming 559,976,448 / 560,001,024 allocated bytes. Originals, saves and results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py` followed by `build/baseline/runs/list-glue-identities-preview-save/deduplicated-assets.json` or `build/baseline/runs/list-glue-identities-save/deduplicated-assets.json`. Evidence: `build/port-list-glue-identities/{preview,final}-cleanup/`. |
 | Superseded monster binaries and old project caches | Removed seven verified unused monster executables (389,943,296 allocated bytes) and 14 root/legacy cache archives predating `44a9a065` (758,870,016 bytes), with committed source/replacement/hash and host-use checks. Rebuild monster `456bdf2d` and older caches normally. Current player/list baseline binaries, current caches, source and assets remain. Evidence: `build/port-list-glue-identities/binary-cleanup-{approved.json,deleted.jsonl}` and `cache-before-list/`. |
 | Completed player-action preview/final scenario assets | Removed 1,654 identical asset copies per run, reclaiming 559,988,736 / 559,992,832 allocated bytes. Originals, saves and results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py` followed by `build/baseline/runs/player-action-identities-preview-save/deduplicated-assets.json` or `build/baseline/runs/player-action-identities-save/deduplicated-assets.json`. Evidence: `build/port-player-action-identities/{preview,final}-cleanup/`. |
