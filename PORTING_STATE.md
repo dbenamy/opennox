@@ -23,8 +23,10 @@ observed zero return is explicitly preserved. See
 [DRAWABLE_UPDATE_IDENTITIES.md](docs/porting/DRAWABLE_UPDATE_IDENTITIES.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Scout the remaining monster callback family next;
-its actual interfaces and consumers must be retired together. External media
+recorded reversible decisions. The next 26 monster callback wrappers are in
+original-baseline acceptance: all 564 roots pass in every profile and the new
+Bomber contract passed twice per profile. Production conversion is not installed. See
+[MONSTER_CALLBACK_IDENTITIES.md](docs/porting/MONSTER_CALLBACK_IDENTITIES.md). External media
 backends remain outside scope. Stop at the milestone or a substantial question.
 
 Latest qualified artifacts: `build/port-drawable-update-identities/`.
@@ -130,6 +132,7 @@ do not rerun them or infer deletion safety from age alone.
 
 | Artifact | Recovery or current location |
 | --- | --- |
+| Superseded pre-monster project cache | Removed nine unused, hash/stat/host-verified root/legacy archives predating `024b2632`; 422,182,912 allocated bytes reclaimed. Current monster baseline caches and all binaries/source/assets remain. Rebuild older cache entries normally. Evidence: `build/port-monster-callback-identities/cache-before-monster/`. |
 | Completed drawable-update final scenario assets | Removed 1,654 verified duplicates, reclaiming 559,894,528 allocated bytes. Originals, saves/results retained. Restore: `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/drawable-update-identities-save/deduplicated-assets.json`. Evidence: `build/port-drawable-update-identities/final-cleanup/`. |
 | Completed server-fixture scenario assets | Removed 1,654 verified duplicates, reclaiming 559,919,104 allocated bytes. Originals, saves/results retained. Restore: `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/server-fixture-bridges-save/deduplicated-assets.json`. Evidence: `build/port-post-server-fixture-cleanup/`. |
 | Obsolete pre-server-fixture-baseline cache | Removed nine hash/stat/host-use-verified root/legacy archives older than 9a833ff4; 425,369,600 allocated bytes reclaimed. Current qualified caches, all binaries/source/assets retained. Evidence: `build/port-client-ui-fixture-bridges/cache-cleanup-{proposal.json,approved.json,deleted.jsonl}`. |
