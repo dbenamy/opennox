@@ -21,9 +21,12 @@ captures are unchanged; two new original-path root contracts cover service-loop
 and completion behavior. See [AUDIO_STREAM_CALLBACKS.md](docs/porting/AUDIO_STREAM_CALLBACKS.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Next scouting examines connected client
-entity/effect/particle/sprite fixture bridges; primary must accept scope and
-baseline before another conversion. External media backends remain outside scope.
+recorded reversible decisions. The next 66-export drawing/parser baseline is
+accepted: 1,035 default/highres roots and 1,025 server roots pass through verified
+reused and additional evidence; no conversion is installed. Its 56 draw
+identities and seven parsers are separate from the deferred update callbacks.
+See [CLIENT_DRAW_IDENTITIES.md](docs/porting/CLIENT_DRAW_IDENTITIES.md).
+External media backends remain outside scope.
 Stop at the milestone or a substantial question.
 
 Latest qualified artifacts: `build/port-audio-stream-callbacks/`.
@@ -164,6 +167,7 @@ do not rerun them or infer deletion safety from age alone.
 | Completed damage scenario assets | Removed 1,654 verified duplicates; 559,915,008 allocated bytes reclaimed. Originals, saves and results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/damage-identities-save/deduplicated-assets.json`. Plan/result: `build/port-post-damage-cleanup/`. |
 | Completed creation/init scenario assets | Removed 1,654 SHA256-identical original-asset duplicates after host-use checks; 559,972,352 allocated bytes reclaimed. Originals, saves/results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/create-init-identities-save/deduplicated-assets.json`. Plan/result: `build/port-post-create-init-cleanup/`. |
 | Superseded collision/death qualified binaries | Removed 14 test/safe/production executables after exact committed-source, replacement/hash and host-use checks; 786,751,488 allocated bytes reclaimed. Rebuild qualified revisions `170b594a` and `e7ca9d31` using retained commands. Source, original baseline binaries, logs, manifests and current create/init and damage outputs remain. Plan/journal: `build/port-item-identities/cleanup-production-{approved.json,deleted.jsonl}`. |
+| Obsolete pre-audio project cache | Removed 21 hash/stat-verified root/legacy Linux 386 archives older than original audio baseline `9f6b2b46`, after host-use checks; 1,100,709,888 allocated bytes reclaimed. Newer audio caches, all source/assets/binaries remain. Rebuild normally. Plan/journal: `build/port-after-audio/cache-luna/cache-cleanup-{approved.json,deleted.jsonl}`. |
 | Current qualified production/safe binaries | Retained under `build/port-audio-stream-callbacks/`; superseded modifier/server-fixture/duration/update outputs removed as recorded below. |
 | Superseded UI-fixture binaries | Removed seven verified test/safe/production executables after committed audio replacement and host-use checks; 390,643,712 allocated bytes reclaimed. Rebuild revision `3d47a346` using retained commands/source maps. Logs/manifests and current audio replacements remain. Plan/journal: `build/port-audio-stream-callbacks/binary-cleanup-{approved.json,deleted.jsonl}`. |
 | Completed audio-stream scenario assets | Removed 1,654 verified original-asset duplicates; 559,931,392 allocated bytes reclaimed. Originals, saves and results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/audio-stream-callbacks-save/deduplicated-assets.json`. Plan/result: `build/port-post-audio-stream-cleanup/`. |

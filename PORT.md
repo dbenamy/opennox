@@ -273,6 +273,9 @@ Apply these review rules learned from earlier batches:
   prototype or snapshot identity needs no callable replacement. The UI fixture
   draft copied unused wrappers that primary removed before qualification.
 - Trace test selection through enclosing functions and fixture operation selectors.
+  Match calls when following helper methods: common names such as `state`,
+  `result` and `call` also appear as unrelated variables. Audit function-valued
+  references separately, and record conservative over-selection explicitly.
   A captured callback slot does not prove a branch ran. Identify media by actual
   container/codec headers rather than filename extensions.
 - Test primary review assumptions against the original path too. Do not overrule
