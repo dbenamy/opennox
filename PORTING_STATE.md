@@ -22,8 +22,11 @@ assertions and captures are unchanged. See
 [CLIENT_DRAW_IDENTITIES.md](docs/porting/CLIENT_DRAW_IDENTITIES.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Next audit covers the remaining drawing registry
-callbacks. The 25 update callbacks remain separate; their mixed return conventions
+recorded reversible decisions. The next 12 drawing callback baseline is
+accepted: 763 client / 753 server roots pass, with the new dispatch contract
+repeated against the original wrappers;
+no next conversion is installed. See [REMAINING_DRAW_IDENTITIES.md](docs/porting/REMAINING_DRAW_IDENTITIES.md).
+The 25 update callbacks remain separate; their mixed return conventions
 need original-path investigation. External media backends remain outside scope.
 Stop at the milestone or a substantial question.
 

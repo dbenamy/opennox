@@ -113,7 +113,10 @@ may precede full qualification when their evidence and remaining gates are expli
    Before the first compile, format new files, check the whitespace diff, and compare
    new export signatures with every existing header declaration. When removing a
    cgo import, check for `//export` directives too: those still need cgo even when
-   no `C.` calls remain. Imports with `#cgo` directives also carry build settings
+   no `C.` calls remain. Preserve each retained `//export` as an adjacent function
+   doc comment; deleting preceding declarations must not join it to an import or
+   closing brace. The remaining-draw overlay review caught this before compilation.
+   Imports with `#cgo` directives also carry build settings
    without direct calls; preserve them. When removing engine headers from a
    retained C observer, add its own required standard headers (for example,
    stdint.h for uintptr_t); generated cgo glue is not a substitute. The transfer
