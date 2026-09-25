@@ -6,81 +6,12 @@ package legacy
 #include <string.h>
 #include <stdlib.h>
 #include <stdint.h>
-#include "GAME3_3.h"
-#include "GAME4.h"
-void nox_xxx_playerLeaveObserver_0_4E6AA0(nox_playerInfo* pl);
-void nox_xxx_unitRemoveChild_4EC470(nox_object_t* a1);
-int nox_xxx_plrReadVals_4EEDC0(nox_object_t* a1p, int a2);
-int sub_4EF140(int a1);
-double nox_xxx_calcBoltDamage_4EF1E0(int a1, int a2);
-void sub_4EF410(int a1, unsigned char a2);
-int sub_4EF6F0(int a1);
-nox_object_t* nox_xxx_playerRespawnItem_4EF750(nox_object_t* a1p, char* a2, int* a3, int a4, int a5);
-char nox_xxx_playerMakeDefItems_4EF7D0(int a1, int a2, int a3);
-int sub_4EFF10(int a1);
-void nox_xxx_mapFindPlayerStart_4F7AB0(float2* a1, nox_object_t* a2p);
-int nox_xxx_weaponGetStaminaByType_4F7E80(int a1);
-int sub_4FA280(int a1);
-int nox_common_mapPlrActionToStateId_4FA2B0(nox_object_t* a1p);
-int nox_xxx_checkInversionEffect_4FA4F0(int a1, int a2);
-char nox_xxx_mobMorphFromPlayer_4FAAC0(uint32_t* a1);
-char nox_xxx_mobMorphToPlayer_4FAAF0(uint32_t* a1);
-int nox_xxx_netSendRewardNotify_4FAD50(int a1, int a2, int a3, char a4);
-void sub_4FADD0(int a1, char* a2, char a3);
-int sub_4FB050(int a1, int a2, int* a3);
 static uint32_t controlsInitLog[256];static int controlsInitN;
-static void controlsInit(nox_object_t* u,int x){if(controlsInitN+2>=256)abort();controlsInitLog[controlsInitN++]=(uint32_t)u;controlsInitLog[controlsInitN++]=x;}
+static void controlsInit(void* u,int x){if(controlsInitN+2>=256)abort();controlsInitLog[controlsInitN++]=(uint32_t)u;controlsInitLog[controlsInitN++]=x;}
 static void controlsInitReset(){controlsInitN=0;}
 static int controlsInitCount(){return controlsInitN;}
 static uint32_t controlsInitValue(int i){return controlsInitLog[i];}
 static void* controlsInitPtr(){return controlsInit;}
-static void* controlsFunction(int id){switch(id){
-case 5:return (void*)nox_xxx_playerLeaveObserver_0_4E6AA0;
-case 8:return (void*)nox_xxx_unitRemoveChild_4EC470;
-case 11:return (void*)nox_xxx_plrReadVals_4EEDC0;
-case 12:return (void*)sub_4EF140;
-case 13:return (void*)nox_xxx_calcBoltDamage_4EF1E0;
-case 14:return (void*)sub_4EF410;
-case 16:return (void*)sub_4EF6F0;
-case 17:return (void*)nox_xxx_playerRespawnItem_4EF750;
-case 18:return (void*)nox_xxx_playerMakeDefItems_4EF7D0;
-case 21:return (void*)sub_4EFF10;
-case 26:return (void*)nox_xxx_mapFindPlayerStart_4F7AB0;
-case 31:return (void*)nox_xxx_weaponGetStaminaByType_4F7E80;
-case 41:return (void*)sub_4FA280;
-case 42:return (void*)nox_common_mapPlrActionToStateId_4FA2B0;
-case 43:return (void*)nox_xxx_checkInversionEffect_4FA4F0;
-case 45:return (void*)nox_xxx_mobMorphFromPlayer_4FAAC0;
-case 46:return (void*)nox_xxx_mobMorphToPlayer_4FAAF0;
-case 47:return 0;
-case 50:return (void*)nox_xxx_netSendRewardNotify_4FAD50;
-case 51:return (void*)sub_4FADD0;
-case 53:return (void*)sub_4FB050;
-default:return 0;}}
-static uint64_t controlsCall(int id,nox_object_t* u,nox_object_t* t,int x,int y,void* record,char* name){
- switch(id){
-case 5:{nox_xxx_playerLeaveObserver_0_4E6AA0((u?*(nox_playerInfo**)(*(char**)((char*)u+748)+276):0));return 0;}
-case 8:{nox_xxx_unitRemoveChild_4EC470(u);return 0;}
-case 11:{return (uint32_t)nox_xxx_plrReadVals_4EEDC0(u,x);}
-case 12:{return (uint32_t)sub_4EF140((int)u);}
-case 13:{double d=nox_xxx_calcBoltDamage_4EF1E0(x,(int)record);uint64_t bits;memcpy(&bits,&d,8);return bits;}
-case 14:{sub_4EF410((int)u,(unsigned char)x);return 0;}
-case 16:{return (uint32_t)sub_4EF6F0((int)u);}
-case 17:{return (uint32_t)nox_xxx_playerRespawnItem_4EF750(u,name,(int*)record,x,y);}
-case 18:{return (uint32_t)nox_xxx_playerMakeDefItems_4EF7D0((int)u,x,y);}
-case 21:{return (uint32_t)sub_4EFF10((int)u);}
-case 26:{nox_xxx_mapFindPlayerStart_4F7AB0((float2*)record,u);return 0;}
-case 31:{return (uint32_t)nox_xxx_weaponGetStaminaByType_4F7E80(x);}
-case 41:{return (uint32_t)sub_4FA280(x);}
-case 42:{return (uint32_t)nox_common_mapPlrActionToStateId_4FA2B0(u);}
-case 43:{return (uint32_t)nox_xxx_checkInversionEffect_4FA4F0((int)u,(int)t);}
-case 45:{return (uint32_t)nox_xxx_mobMorphFromPlayer_4FAAC0((uint32_t*)u);}
-case 46:{return (uint32_t)nox_xxx_mobMorphToPlayer_4FAAF0((uint32_t*)u);}
-case 47:{return 0;}
-case 50:{return (uint32_t)nox_xxx_netSendRewardNotify_4FAD50((int)u,x,(int)t,(char)y);}
-case 51:{sub_4FADD0((int)u,name,(char)x);return 0;}
-case 53:{return (uint32_t)sub_4FB050((int)u,(int)t,(int*)record);}
-default:return 0;}}
 */
 import "C"
 
@@ -287,7 +218,7 @@ func (p *portTestShopPools) controlsItems() {
 	if a.Controls == nil {
 		return
 	}
-	p.reservedFunctionIDs += 3
+	p.reservedFunctionIDs += 23
 	st := p.temporary.world.objectives.attack.controls
 	p.identify(C.controlsInitPtr(), 91600)
 	p.identify(updateIdentityKey(updateIDPlayer), 91601)
@@ -412,11 +343,11 @@ func (p *portTestShopPools) controlsAction(a PortTestShopAction) uint32 {
 		st.result = 0
 	} else if a.Op == 1456 {
 		u := p.temporaryRef(spec.Actor)
-		st.transitions = append(st.transitions, uint32(C.controlsCall(45, asObjectC(u), nil, 0, 0, record, nil)))
+		st.transitions = append(st.transitions, uint32(controlsCallDirect(45, u, nil, 0, 0, record, nil)))
 		for _, v := range unsafe.Slice((*uint32)(u.CObj()), 193) {
 			st.transitions = append(st.transitions, p.normalize(v))
 		}
-		st.result = uint64(C.controlsCall(46, asObjectC(u), nil, 0, 0, record, nil))
+		st.result = controlsCallDirect(46, u, nil, 0, 0, record, nil)
 	} else {
 		st.result = controlsInvoke(a.Op-1400, p.temporaryRef(spec.Actor), p.temporaryRef(sp.Target), sp.X, sp.Y, record, st.name)
 	}
@@ -549,17 +480,78 @@ func (p *portTestShopPools) controlsAdopt(u *server.Object) {
 	}
 }
 
-// controlsInvoke calls retired internal entry points directly; the C dispatcher
-// covers only ABIs still used by production C. Expected captures are unchanged.
+// controlsCallDirect mirrors the sparse C fixture operation switch while calling
+// the existing Go owners directly. C result casts remain explicit at the boundary.
+func controlsCallDirect(op int, u, t *server.Object, x, y int32, record unsafe.Pointer, name *byte) uint64 {
+	switch op {
+	case 5:
+		var pl unsafe.Pointer
+		if u != nil {
+			pl = controlPlayer(u)
+		}
+		controlLeaveObserver(pl)
+		return 0
+	case 8:
+		controlRemoveChildren(u)
+		return 0
+	case 11:
+		return uint64(uint32(controlReadStats(u, x)))
+	case 12:
+		return uint64(uint32(controlLevelFromXP(u)))
+	case 13:
+		return math.Float64bits(controlBoltDamage(x, record))
+	case 14:
+		controlSetLevel(u, byte(x))
+		return 0
+	case 16:
+		return uint64(uint32(controlGlyphCount(u)))
+	case 17:
+		obj := controlRespawnItem(u, alloc.GoString(name), record, x, y)
+		if obj == nil {
+			return 0
+		}
+		return uint64(uint32(uintptr(obj.CObj())))
+	case 18:
+		return uint64(uint32(int32(controlDefaultItems(u, x, y))))
+	case 21:
+		return uint64(uint32(controlResetPlayer(u)))
+	case 26:
+		controlFindStart((*types.Pointf)(record), u)
+		return 0
+	case 31:
+		return uint64(uint32(controlWeaponStamina(uint32(x))))
+	case 41:
+		return uint64(uint32(controlWeaponAnimation(uint32(x))))
+	case 42:
+		return uint64(uint32(controlActionState(u)))
+	case 43:
+		return uint64(uint32(controlInversion(u, t)))
+	case 45:
+		return uint64(uint32(int32(controlMorphFromPlayer(u))))
+	case 46:
+		return uint64(uint32(int32(controlMorphToPlayer(u))))
+	case 50:
+		return uint64(uint32(controlRewardNotify(u, x, t, byte(y))))
+	case 51:
+		controlLockedDoor(u, (*int8)(unsafe.Pointer(name)), byte(x))
+		return 0
+	case 53:
+		return uint64(uint32(controlGuideDamage(u, t, (*int32)(record))))
+	default:
+		return 0
+	}
+}
+
+// controlsInvoke preserves existing fixture overrides before dispatching the remaining owner operations.
 func controlsInvoke(op int, u, t *server.Object, x, y int32, record, name unsafe.Pointer) uint64 {
 	switch op {
 	case 22:
-		return uint64(uint32(nox_xxx_equipedItemByCode_4F7920(C.int(uintptr(u.CObj())), C.int(x))))
+		return uint64(uint32(inventoryInt(controlEquippedByCode(u, uint32(x)))))
 	case 24:
-		nox_xxx_playerSetCustomWP_4F79A0(C.int(uintptr(u.CObj())), C.int(x), C.int(y))
+		controlSetWaypoint(u, uint32(x), uint32(y))
 		return 0
 	case 32:
-		return uint64(uint32(int32(nox_xxx_playerRespawn_4F7EF0(asObjectC(u)))))
+		return uint64(uint32(int32(controlRespawn(u))))
 	case 79:
 		*equipmentWord(u.UpdateData, 548) = 0
 		controlRespawn(u)
@@ -681,7 +673,7 @@ func controlsInvoke(op int, u, t *server.Object, x, y int32, record, name unsafe
 	case 47:
 		return uint64(controlBotUpdate(u))
 	default:
-		return uint64(C.controlsCall(C.int(op), asObjectC(u), asObjectC(t), C.int(x), C.int(y), record, (*C.char)(name)))
+		return controlsCallDirect(op, u, t, x, y, record, (*byte)(name))
 	}
 }
 
@@ -705,5 +697,5 @@ func portTestControlsFunction(id int) unsafe.Pointer {
 	if id == 20 {
 		return lifecycleInitKey(initIDPlayer)
 	}
-	return C.controlsFunction(C.int(id))
+	return nil
 }

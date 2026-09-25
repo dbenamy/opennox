@@ -456,7 +456,7 @@ func Sub_4E79B0(a1 int) {
 	*memmap.PtrUint32(0x5d4594, 1567712) = uint32(a1)
 }
 func Nox_xxx_playerMakeDefItems_4EF7D0(a1 *server.Object, a2 int, a3 int) {
-	nox_xxx_playerMakeDefItems_4EF7D0(C.int(uintptr(a1.CObj())), C.int(a2), C.int(a3))
+	controlDefaultItems(a1, int32(a2), int32(a3))
 }
 func Sub_4181F0(a1 int) {
 	teamRuntimeBalance(a1 != 0)
@@ -486,13 +486,9 @@ func Sub_455F10(a1 int) {
 	teamUIHUDShow(true, a1)
 }
 func Nox_xxx_mapFindPlayerStart_4F7AB0(a2 *server.Object) types.Pointf {
-	cp, freeCp := alloc.New(C.float2{})
-	defer freeCp()
-	nox_xxx_mapFindPlayerStart_4F7AB0(cp, asObjectC(a2))
-	return types.Pointf{
-		X: float32(cp.field_0),
-		Y: float32(cp.field_4),
-	}
+	var out types.Pointf
+	controlFindStart(&out, a2)
+	return out
 }
 func Sub_500510(a1 string) {
 	questProgressNamespace(a1)

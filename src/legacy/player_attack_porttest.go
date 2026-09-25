@@ -3,9 +3,9 @@
 package legacy
 
 /*
+#include <stdint.h>
 #include <string.h>
-#include "GAME4_3.h"
-#include "GAME3_2.h"
+#include <stdlib.h>
 static uint32_t attackTrace[8192];static int attackCount,attackSet;static uint32_t attackOutput;static uint32_t attackFrontMask;
 static void attackReset(int set,uint32_t output){attackFrontMask=255;attackCount=0;attackSet=set;attackOutput=output;}
 static int attackEffect(int m,int it,int target,int actor,int record){
@@ -21,34 +21,6 @@ static void attackCollisionRecord(void){attackFrontMask=0;}
 static void* attackEffectPtr(void){return attackEffect;}
 static int attackN(void){return attackCount;}
 static uint32_t attackValue(int i){return attackTrace[i];}
-static void* attackFunction(int id){switch(id){
-case 0:return (void*)nox_xxx_playerPreAttackEffects_538290;
-case 1:return (void*)nox_xxx_playerTraceAttack_538330;
-case 2:return (void*)sub_538510;
-case 3:return (void*)sub_5386A0;
-case 4:return (void*)nox_xxx_itemApplyAttackEffect_538840;
-case 5:return (void*)nox_xxx_playerAttack_538960;
-case 6:return (void*)nox_xxx_warcryStunMonsters_539B90;
-case 7:return (void*)nox_xxx_shootBowCrossbow1_539BD0;
-case 8:return (void*)nox_xxx_shootBowCrossbow2_539D80;
-case 9:return (void*)nox_xxx_shootApplyEffects_539F40;
-case 10:return (void*)sub_539FB0;
-case 11:return (void*)nox_xxx_playerTryReloadQuiver_539FF0;
-default:return 0;}}
-static uint32_t attackCall(int id,nox_object_t* u,nox_object_t* t,nox_object_t* it,nox_object_t* ammo,void* record,uint32_t value){switch(id){
-case 0:return nox_xxx_playerPreAttackEffects_538290((int)t,(int)u,(int)it,(int)record);
-case 1:return nox_xxx_playerTraceAttack_538330((int)u,(int)record);
-case 2:sub_538510((int)t,(int)record);return 0;
-case 3:sub_5386A0((int)t,(int)u);return 0;
-case 4:return nox_xxx_itemApplyAttackEffect_538840((int)it,(int)u,(int)record);
-case 5:return nox_xxx_playerAttack_538960(u);
-case 6:return (uint32_t)nox_xxx_warcryStunMonsters_539B90((int)t,(int)u);
-case 7:return nox_xxx_shootBowCrossbow1_539BD0((int)u,(int)it);
-case 8:return (uint32_t)nox_xxx_shootBowCrossbow2_539D80((int)u,(int)ammo,(int)it,(char*)value);
-case 9:return nox_xxx_shootApplyEffects_539F40((int)u,(int)it,(int)t);
-case 10:return sub_539FB0((uint32_t*)u);
-case 11:return nox_xxx_playerTryReloadQuiver_539FF0((uint32_t*)u);
-default:return 0;}}
 */
 import "C"
 import (
@@ -161,9 +133,7 @@ func (p *portTestShopPools) attackItems() {
 		C.attackCollisionRecord()
 	}
 	p.identify(C.attackEffectPtr(), 86000)
-	for i := 0; i < 12; i++ {
-		p.identify(C.attackFunction(C.int(i)), 86001+uint32(i))
-	}
+	p.reservedFunctionIDs += 12
 	apply := func(ptr unsafe.Pointer, size int, words map[int]uint32, refs map[int]int) {
 		for off, v := range words {
 			if off < 0 || off+4 > size || off%4 != 0 {
@@ -217,6 +187,40 @@ func (p *portTestShopPools) attackItems() {
 	p.rewardItems()
 	p.controlsItems()
 }
+func attackCallDirect(op int, u, t, it, ammo *server.Object, record unsafe.Pointer, value uint32) uint32 {
+	r := (*attackRecord)(record)
+	switch op {
+	case 0:
+		return uint32(attackPreEffects(t, u, it, r))
+	case 1:
+		return uint32(attackTrace(u, r))
+	case 2:
+		attackHit(t, r)
+		return 0
+	case 3:
+		attackNearest(t, u)
+		return 0
+	case 4:
+		return uint32(attackItemEffects(it, u, r))
+	case 5:
+		return uint32(attackPlayer(u))
+	case 6:
+		return uint32(int32(attackWarcry(t, u)))
+	case 7:
+		return uint32(attackBow(u, it))
+	case 8:
+		return uint32(attackShoot(u, ammo, it, value))
+	case 9:
+		return uint32(attackShotEffects(u, it, t))
+	case 10:
+		return uint32(attackReload(equipmentObject(unsafe.Pointer(u.CObj())), 128))
+	case 11:
+		return uint32(attackReload(equipmentObject(unsafe.Pointer(u.CObj())), 2))
+	default:
+		return 0
+	}
+}
+
 func (p *portTestShopPools) attackAction(a PortTestShopAction) uint32 {
 	tmp := p.proxy.callbacks.shop.spec.TemporaryUpdates
 	sp := tmp.World.Objectives.Attack
@@ -224,7 +228,7 @@ func (p *portTestShopPools) attackAction(a PortTestShopAction) uint32 {
 	if a.Item >= 0 {
 		it = p.items[a.Item].u
 	}
-	p.temporary.result = uint32(C.attackCall(C.int(a.Op-900), asObjectC(p.temporaryRef(sp.Actor)), asObjectC(p.temporaryRef(tmp.Target)), asObjectC(it), asObjectC(p.temporaryRef(sp.Ammo)), p.temporary.world.objectives.attack.record, C.uint32_t(a.Value)))
+	p.temporary.result = attackCallDirect(a.Op-900, p.temporaryRef(sp.Actor), p.temporaryRef(tmp.Target), it, p.temporaryRef(sp.Ammo), p.temporary.world.objectives.attack.record, a.Value)
 	if a.Op == PortTestAttack539B90 {
 		// This retained short is an input object's truncated address, not a scalar.
 		// Normalize known low-word addresses just as the fixture normalizes full pointers.

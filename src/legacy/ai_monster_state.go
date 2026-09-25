@@ -140,7 +140,7 @@ func monsterNPCAnim(u *server.Object) unsafe.Pointer {
 	switch ud.AIStack[ud.AIStackInd].Type() {
 	case 16, 17:
 		if ud.Field514&^3 != 0 {
-			a = int(sub_4FA280(C.int(ud.Field514 &^ 3)))
+			a = int(controlWeaponAnimation(uint32(ud.Field514 &^ 3)))
 			lookup = true
 		} else {
 			a = int(byte(ud.Field517))

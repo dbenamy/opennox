@@ -143,11 +143,11 @@ func attackTrace(u *server.Object, r *attackRecord) int {
 	// This dependency includes shape extents; EachObjInCircle uses centers only.
 	extra := float64(0)
 	if r.Weapon != nil && r.Weapon.ObjSubClass&0x4000 != 0 {
-		motionRadial(&r.Pos, r.Radius, C.sub_538510, uint32(uintptr(unsafe.Pointer(r))))
+		motionRadial(&r.Pos, r.Radius, func(candidate *server.Object) { attackHit(candidate, r) })
 		extra = 25
 	} else {
 		dword_5d4594_2488652 = uint32(math.Float32bits(r.Radius))
-		motionRadial(&u.PosVec, r.Radius, C.sub_5386A0, motionAddress(u))
+		motionRadial(&u.PosVec, r.Radius, func(candidate *server.Object) { attackNearest(candidate, u) })
 		if dword_5d4594_2488660 != 0 {
 			attackHit(objectFromInt(C.int(dword_5d4594_2488660)), r)
 		}

@@ -254,7 +254,7 @@ func combatMelee(u *server.Object) {
 		if ud.StatusFlags&0x20000 != 0 {
 			controlMorphToPlayer((*server.Object)(unsafe.Pointer(u.CObj())))
 		}
-		r := nox_xxx_playerAttack_538960(asObjectC(u))
+		r := attackPlayer(u)
 		if ud.StatusFlags&0x20000 != 0 {
 			controlMorphFromPlayer((*server.Object)(unsafe.Pointer(u.CObj())))
 		}
@@ -296,7 +296,7 @@ func combatMissileStart(u *server.Object) {
 func combatMissile(u *server.Object) {
 	ud := u.UpdateDataMonster()
 	if u.SubClass()&0x10 != 0 {
-		if nox_xxx_playerAttack_538960(asObjectC(u)) == 0 {
+		if attackPlayer(u) == 0 {
 			u.MonsterPopAction()
 		}
 		return

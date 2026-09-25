@@ -100,7 +100,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 		if kind != 15 && eligible && front {
 			state := *(*byte)(unsafe.Add(ud, 88))
 			shield := (player && state == 16 || !player && monsterControlHead(u) == 21) && armor&0x3000000 != 0
-			if !shield && weapons&0x400 == 0 && state == 1 && nox_common_mapPlrActionToStateId_4FA2B0(asObjectC(u)) == 45 && armor&0x3000000 != 0 && gameex_flags&0x10 != 0 {
+			if !shield && weapons&0x400 == 0 && state == 1 && controlActionState(u) == 45 && armor&0x3000000 != 0 && gameex_flags&0x10 != 0 {
 				shield = true
 			}
 			if shield {

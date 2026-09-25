@@ -272,6 +272,10 @@ Apply these review rules learned from earlier batches:
   exact-width Go types where the fixture no longer needs a C interface, and create
   identity keys only for addresses with actual consumers. The server-fixture batch
   needed these corrections before its first build.
+  When removing a fixture address table, retain native identities already mixed
+  into its getter/registration loop. The player-action draft dropped two live
+  normalization keys while retiring C entries; primary restored them before
+  compilation. Reserve only removed entries when map size determines capture IDs.
   Preserve side effects before constant returns in every route, including test
   adapters. The drawable-update draft kept the production spark call but omitted
   it in two fixture operations; primary review restored it before compilation.

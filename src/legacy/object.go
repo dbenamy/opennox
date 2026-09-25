@@ -253,7 +253,7 @@ func Nox_xxx_unit_511810(a1 *server.Object) {
 	motionDeactivate(a1)
 }
 func Nox_xxx_unitRemoveChild_4EC470(a1 *server.Object) {
-	nox_xxx_unitRemoveChild_4EC470(asObjectC(a1))
+	controlRemoveChildren(a1)
 }
 func Sub_4ECFA0(a1 *server.Object) {
 	netCodeCacheInvalidate(a1)

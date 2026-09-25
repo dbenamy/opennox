@@ -30,7 +30,9 @@ import "C"
 
 import (
 	"github.com/opennox/libs/types"
+	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
+	"runtime"
 	"unsafe"
 )
 
@@ -171,7 +173,11 @@ func PortTestCollisionCoreBuckets(ids map[unsafe.Pointer]uint32) map[uint32][][2
 func PortTestCollisionCoreRadial(u *server.Object, p *types.Pointf, radius float32, code uint32) [3]uint32 {
 	data := unsafe.Slice((*uint32)(unsafe.Pointer(C.coreRadialData())), 3)
 	clear(data)
-	motionRadialCandidate(u, p, radius, C.coreRadialCallback(), code)
+	observer := C.coreRadialCallback()
+	motionRadialCandidate(u, p, radius, func(u *server.Object) {
+		ccall.CallVoidUPtr2(observer, uintptr(unsafe.Pointer(u)), uintptr(code))
+		runtime.KeepAlive(u)
+	})
 	out := [3]uint32{data[0], data[1], data[2]}
 	clear(data)
 	return out

@@ -5,17 +5,16 @@ import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"math"
 	"unsafe"
 )
 
-func motionRadial(p *types.Pointf, radius float32, callback unsafe.Pointer, code uint32) uint32 {
+func motionRadial(p *types.Pointf, radius float32, callback func(*server.Object)) uint32 {
 	if p != nil {
 		rect := types.Rectf{Min: types.Pointf{X: float32(float64(p.X) - float64(radius)), Y: float32(float64(p.Y) - float64(radius))}, Max: types.Pointf{X: float32(float64(p.X) + float64(radius)), Y: float32(float64(p.Y) + float64(radius))}}
 		GetServer().S().Map.EachObjInRect(rect, func(u *server.Object) bool {
-			motionRadialCandidate(u, p, radius, callback, code)
+			motionRadialCandidate(u, p, radius, callback)
 			return true
 		})
 	}
@@ -52,7 +51,7 @@ func motionScorch(p *types.Pointf, size int32) {
 	}
 }
 
-func motionRadialCandidate(u *server.Object, p *types.Pointf, radius float32, callback unsafe.Pointer, code uint32) {
+func motionRadialCandidate(u *server.Object, p *types.Pointf, radius float32, callback func(*server.Object)) {
 	if u == nil || p == nil {
 		return
 	}
@@ -71,6 +70,6 @@ func motionRadialCandidate(u *server.Object, p *types.Pointf, radius float32, ca
 		overlap = float64(radius) - distance
 	}
 	if overlap > 0 {
-		ccall.CallVoidUPtr2(callback, uintptr(unsafe.Pointer(u)), uintptr(code))
+		callback(u)
 	}
 }

@@ -53,7 +53,7 @@ func Nox_xxx_mobSearchEdible_544A00(a1 *server.Object, a2 float32) int {
 	return 0
 }
 func Nox_xxx_weaponGetStaminaByType_4F7E80(a1 int) int {
-	return int(nox_xxx_weaponGetStaminaByType_4F7E80(C.int(a1)))
+	return int(controlWeaponStamina(uint32(a1)))
 }
 func Nox_xxx_mobGetMoveAttemptTime_534810(a1 *server.Object) int {
 	return bool2int(monsterMoveAttempt(a1))

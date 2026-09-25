@@ -128,7 +128,7 @@ func Nox_xxx_playerConfusedGetDirection_4F7A40(a1 *server.Object) server.Dir16 {
 	return server.Dir16(controlConfusedDirection(a1))
 }
 func Nox_xxx_playerAttack_538960(a1 *server.Object) int {
-	return int(nox_xxx_playerAttack_538960(asObjectC(a1)))
+	return attackPlayer(a1)
 }
 func Nox_xxx_playerRespawn_4F7EF0(a1 *server.Object) {
 	controlRespawn(a1)

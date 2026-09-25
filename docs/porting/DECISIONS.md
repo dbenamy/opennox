@@ -2759,3 +2759,17 @@ Bomber's mutable root hook inside each call. Populate the map in init, consisten
 with existing registries, to avoid making gameplay-owner calls package-variable
 initialization dependencies. Preserve the sparse fixture operation map and stable
 capture IDs. See [MONSTER_CALLBACK_IDENTITIES.md](MONSTER_CALLBACK_IDENTITIES.md).
+
+## Player-action visitors and fixture identities
+
+Replace the two transient radial attack C callbacks with Go closures capturing the
+original record/player. Keep geometry, iteration order, strict positive overlap
+and center-address result unchanged; a persistent identity registry is unnecessary.
+Independent observer fixtures still call their C probes, retaining exact argument
+words and candidate lifetime. Existing geometry/owner contracts and captures qualify
+the change. Keep signed char/short widening and double/pointer result bits at fixture
+boundaries. Reserve only the 32 removed address entries in the fixture ID counter;
+retain native controls IDs20/47, which primary restored after the helper omitted them.
+The map-start adapter uses a zeroed Go point after verifying its address never escapes
+the owner. These are reversible implementation choices within the existing 386 scope.
+See [PLAYER_ACTION_IDENTITIES.md](PLAYER_ACTION_IDENTITIES.md).

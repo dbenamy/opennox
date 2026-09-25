@@ -50,11 +50,39 @@ than registering nil pointers. Nil registration would change zero normalization.
 Original export addresses are pairwise distinct on all three verified binaries;
 unchanged frozen captures must additionally confirm dynamic ID preservation.
 
-Luna owns a bounded uninstalled overlay. Primary owns original baseline acceptance,
-review against wrappers and full C preambles, integration and qualification.
+Original baseline committed/pushed as `44a9a065`. Primary verified the frozen
+19-path overlay (including two deletions), formatted a reviewed copy, checked
+functions through the Go AST and compared all owner/operation mappings and exact
+32 prototype removals. No selected legacy symbol remains in the merged source.
 
-## Planned gates
+Luna removed the complete controls identity getter/loop while its review claimed
+native IDs 20/47 were retained. Primary restored both before compilation, removed
+a duplicate standard-header include and added explicit candidate lifetime protection
+around the two independent C observer calls. The other mappings matched review.
+This was a useful bounded draft with a substantive correction; its prose was not
+accepted as proof. Root assertions and frozen captures remain unchanged.
 
-Run all 565 affected roots on all profiles, safe/static checks, three production
+The map-start public adapter uses a zero-initialized Go point. Its existing owner
+only writes that output and does not retain or expose its address; the previous
+C-layout allocation is unnecessary. This reversible cleanup preserves nil-input
+zero output and gameplay selection/RNG behavior.
+
+## Qualification scope
+
+Qualification includes all 565 affected roots on all profiles, safe/static checks, three production
 builds/ABI checks, exact known-suite comparison, fresh preflight/final headless
-save/load, original asset hashes and the measured C inventory. Conversion is pending.
+save/load, original asset hashes and the measured C inventory. The conversion is fully qualified.
+
+
+## Qualified result
+
+All 565 affected roots pass on default/server/highres against exact original names,
+without failures/skips. Safe/static, three production/ABI checks, exact known
+asset-suite comparison, both fresh headless save/load scenarios and all 1,654
+original asset hashes pass. See [qualification](player-action-identities-qualification.json).
+
+Legacy exports fall 333→301; selected production cgo files fall to 150 client and
+151 server. The 157 tracked headers contain 3,063 physical lines.
+Embedded production C bodies remain 77; standalone production/test C remain zero.
+External native bindings are unchanged. The last full default corpus was the
+preceding shared drawable-update batch `024b2632`, explicitly on that earlier source.

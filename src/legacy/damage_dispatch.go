@@ -215,7 +215,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 		}
 	}
 	if bool(nox_common_gameFlags_check_40A5C0(6144)) {
-		sub_4FB050(C.int(inventoryInt(source)), C.int(inventoryInt(u)), (*C.int)(unsafe.Pointer(value)))
+		controlGuideDamage(source, u, (*int32)(unsafe.Pointer(value)))
 	}
 	if source != nil {
 		mob := source
