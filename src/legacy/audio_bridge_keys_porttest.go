@@ -2,10 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME1_3.h"
-*/
-import "C"
 import (
 	"bytes"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -15,9 +11,9 @@ import (
 // Order follows the nine voice API words and four device descriptor callbacks.
 func PortTestAudioBridgeKeys() [13]unsafe.Pointer {
 	return [13]unsafe.Pointer{
-		C.sub_43EC30, C.sub_43ECB0, C.sub_43ED00, C.sub_43EFD0,
-		C.sub_43F010, C.sub_43F030, C.sub_43F050, C.sub_43F060, C.sub_43F0D0,
-		C.sub_43E940, C.sub_43E9F0, C.sub_43EA20, C.sub_43EC10,
+		audioBridgeCallbackKey(0), audioBridgeCallbackKey(1), audioBridgeCallbackKey(2), audioBridgeCallbackKey(3),
+		audioBridgeCallbackKey(4), audioBridgeCallbackKey(5), audioBridgeCallbackKey(6), audioBridgeCallbackKey(7), audioBridgeCallbackKey(8),
+		audioBridgeCallbackKey(9), audioBridgeCallbackKey(10), audioBridgeCallbackKey(11), audioBridgeCallbackKey(12),
 	}
 }
 

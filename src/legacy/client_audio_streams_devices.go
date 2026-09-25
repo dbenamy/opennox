@@ -3,7 +3,6 @@ package legacy
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"unsafe"
 )
 
@@ -20,7 +19,7 @@ func audioStreamDeviceNew(desc *audioStreamDescriptor) *audioStreamDevice {
 	listInit(&p.Node)
 	p.References = 0
 	p.Descriptor = desc
-	if ccall.CallIntPtr(desc.Init, unsafe.Pointer(p)) == 0 {
+	if AudioStreamCallbackInt(desc.Init, unsafe.Pointer(p)) == 0 {
 		return p
 	}
 	audioStreamDeviceFree(p)
@@ -39,7 +38,7 @@ func audioStreamDeviceRegister(desc *audioStreamDescriptor) *audioStreamDevice {
 	return p
 }
 func audioStreamDeviceFree(p *audioStreamDevice) {
-	ccall.CallVoidPtr(p.Descriptor.Free, unsafe.Pointer(p))
+	AudioStreamCallbackVoid(p.Descriptor.Free, unsafe.Pointer(p))
 	p.Descriptor.InUse &^= 1
 	alloc.Free(p)
 }
@@ -123,7 +122,7 @@ func audioStreamContextNew(device *audioStreamDevice, slot int32, format *audioS
 	if format != nil {
 		audioStreamContextFormat(p, format)
 	}
-	if ccall.CallIntPtr(device.Descriptor.ContextInit, unsafe.Pointer(p)) == 0 {
+	if AudioStreamCallbackInt(device.Descriptor.ContextInit, unsafe.Pointer(p)) == 0 {
 		return p
 	}
 	audioStreamContextFree(p)
@@ -131,7 +130,7 @@ func audioStreamContextNew(device *audioStreamDevice, slot int32, format *audioS
 }
 func audioStreamContextFree(p *audioStreamContext) {
 	audioStreamVoiceDeleteKind(p, -1)
-	ccall.CallVoidPtr(p.Device.Descriptor.ContextFree, unsafe.Pointer(p))
+	AudioStreamCallbackVoid(p.Device.Descriptor.ContextFree, unsafe.Pointer(p))
 	p.Device.Contexts[p.Slot] = nil
 	p.Device.References--
 	if p.Device.References < 0 {
@@ -224,7 +223,7 @@ func audioStreamContextTick(p *audioStreamContext) int32 {
 			voice.Timers.Update()
 			if changed || voice.Timers.IsUpdated() || voice.GlobalTimers != nil && voice.GlobalTimers.IsUpdated() || voice.ExtraTimers != nil && voice.ExtraTimers.IsUpdated() {
 				audioStreamVoiceMix(voice)
-				ccall.CallVoidPtr(voice.API.Update, unsafe.Pointer(voice))
+				AudioStreamCallbackVoid(voice.API.Update, unsafe.Pointer(voice))
 			}
 		}
 		node = next

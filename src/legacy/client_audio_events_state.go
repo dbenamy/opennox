@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-#include "GAME2.h"
-#include "client__audio__audevent.h"
-
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/common/sound"
@@ -98,9 +91,9 @@ func audioEventFree() {
 	*audioEventEnabled = 0
 }
 func audioEventCallbacks(v *audioStreamVoice) {
-	v.OnLoop = C.sub_452770
-	v.OnEnd = C.sub_4526F0
-	v.OnStop = C.sub_4526D0
+	v.OnLoop = audioBridgeCallbackKey(13)
+	v.OnEnd = audioBridgeCallbackKey(14)
+	v.OnStop = audioBridgeCallbackKey(15)
 }
 func audioEventMusicDisable() { dword_587000_93156 = 0 }
 func audioEventMusicEnable() int32 {

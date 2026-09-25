@@ -3,7 +3,6 @@ package legacy
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/legacy/timer"
 	"unsafe"
 )
@@ -17,14 +16,14 @@ func audioStreamVoiceNew(ctx *audioStreamContext) *audioStreamVoice {
 	audioStreamVoiceInit(p)
 	p.Context = ctx
 	p.API = ctx.VoiceAPI
-	if ccall.CallIntPtr(p.API.Init, unsafe.Pointer(p)) == 0 {
+	if AudioStreamCallbackInt(p.API.Init, unsafe.Pointer(p)) == 0 {
 		return p
 	}
 	audioStreamVoiceFree(p)
 	return nil
 }
 func audioStreamVoiceFree(p *audioStreamVoice) {
-	ccall.CallVoidPtr(p.API.Free, unsafe.Pointer(p))
+	AudioStreamCallbackVoid(p.API.Free, unsafe.Pointer(p))
 	alloc.Free(p)
 }
 func audioStreamVoiceInit(p *audioStreamVoice) unsafe.Pointer {
@@ -63,7 +62,7 @@ func audioStreamVoiceMix(p *audioStreamVoice) {
 }
 func audioStreamVoiceData(p *audioStreamVoice) int32 {
 	if p.OnData != nil {
-		result := int32(ccall.CallIntPtr(p.OnData, unsafe.Pointer(p)))
+		result := int32(AudioStreamCallbackInt(p.OnData, unsafe.Pointer(p)))
 		if result != 0 {
 			p.Remaining = 0
 			p.Length = 0
@@ -94,10 +93,10 @@ func audioStreamVoiceLoop(p *audioStreamVoice) int32 {
 		audioStreamVoiceBind(p, nil)
 	}
 	if p.OnLoop != nil {
-		ccall.CallVoidPtr(p.OnLoop, unsafe.Pointer(p))
+		AudioStreamCallbackVoid(p.OnLoop, unsafe.Pointer(p))
 	}
 	if p.Buffer != nil {
-		ccall.CallVoidPtr(p.API.Restart, unsafe.Pointer(p))
+		AudioStreamCallbackVoid(p.API.Restart, unsafe.Pointer(p))
 	}
 	return 0
 }
@@ -107,7 +106,7 @@ func audioStreamVoiceEnd(p *audioStreamVoice) int32 {
 	p.Loops = 0
 	p.Timers.Init()
 	if p.OnEnd != nil {
-		return int32(ccall.CallIntPtr(p.OnEnd, unsafe.Pointer(p)))
+		return int32(AudioStreamCallbackInt(p.OnEnd, unsafe.Pointer(p)))
 	}
 	return 0
 }
@@ -118,11 +117,11 @@ func audioStreamVoiceDestroy(p *audioStreamVoice) {
 }
 func audioStreamVoiceStop(p *audioStreamVoice) int32 {
 	if p.Flags&5 != 0 {
-		ccall.CallVoidPtr(p.API.Stop, unsafe.Pointer(p))
+		AudioStreamCallbackVoid(p.API.Stop, unsafe.Pointer(p))
 	}
 	result := int32(0)
 	if p.OnStop != nil {
-		result = int32(ccall.CallIntPtr(p.OnStop, unsafe.Pointer(p)))
+		result = int32(AudioStreamCallbackInt(p.OnStop, unsafe.Pointer(p)))
 	}
 	p.Buffer = nil
 	return result
@@ -138,7 +137,7 @@ func audioStreamVoiceStart(p *audioStreamVoice) int32 {
 	}
 	p.Timers.Update()
 	audioStreamVoiceMix(p)
-	result := int32(ccall.CallIntPtr(p.API.Start, unsafe.Pointer(p)))
+	result := int32(AudioStreamCallbackInt(p.API.Start, unsafe.Pointer(p)))
 	if result == 0 {
 		p.Flags |= 1
 	}

@@ -2773,3 +2773,17 @@ retain native controls IDs20/47, which primary restored after the helper omitted
 The map-start adapter uses a zeroed Go point after verifying its address never escapes
 the owner. These are reversible implementation choices within the existing 386 scope.
 See [PLAYER_ACTION_IDENTITIES.md](PLAYER_ACTION_IDENTITIES.md).
+
+
+## Internal audio bridge identities
+
+Retain 13 distinct stream/device table identities, including the three currently
+unread raw voice words, and preserve their original Go stop/abort/zero behavior.
+Route every selected field consumer through typed-aware dispatch before registering
+keys. Resolve mutable hooks at call time; preserve integer versus discarded-return
+conventions and foreign fallback. Remove the five AIL C forwarding exports with no
+repository or dependency-source consumers while retaining actual backend methods.
+Fixture captures keep signed32/signed8 extension to64 and zero-extended pointer bits.
+Primary restored the helper draft's omitted known-name zero fallback before install
+and made the device-ready width explicit. These changes are reversible within the
+supported 386 target. See [AUDIO_BRIDGE_IDENTITIES.md](AUDIO_BRIDGE_IDENTITIES.md).

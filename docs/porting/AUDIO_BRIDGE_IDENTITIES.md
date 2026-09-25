@@ -43,8 +43,26 @@ GC test exercises unchanged chunk/buffer binding, outside this callback conversi
 
 ## Qualification status
 
-Original baseline acceptance and conversion qualification are recorded separately.
-Required converted gates: all affected roots on default/server/highres, safe/static,
+Original baseline `403efa06` is committed and pushed: all 130 roots pass per
+profile with zero skips, and both new contracts pass twice per profile. An initial
+run omitted asset variables and skipped RealCatalog; only its two asset-independent
+new-contract passes are reused as repetition evidence. The accepted affected run
+uses every runtime variable from the batch manifest.
+
+The 14-path Luna overlay passed primary hash, AST, table and caller reconstruction.
+Primary caught and restored the known-name zero fallback before installation, and
+requested an explicit int32 device-ready result (int was equivalent on 386).
+Existing owner algorithms and root assertions remain unchanged.
+
+Conversion qualification is complete.
+Passed converted gates: all affected roots on default/server/highres, safe/static,
 three production/ABI builds, exact known-suite comparison, fresh preflight/final
 headless save/load, asset hashes and measured cgo/export/header inventory.
-No conversion or current-source full-corpus result is claimed by this baseline.
+No current-source full-root corpus result is claimed.
+
+
+All 130 converted roots pass per profile; production and scenario gates pass with
+unchanged reviewed source. See [qualification](audio-bridge-identities-qualification.json).
+Exports fall 288→262; selected production cgo files fall 149→146 client and 150→147
+server. Headers remain 157 files with 3,024 physical lines. Embedded production C
+bodies remain 77; standalone production/test-reference C remains zero.

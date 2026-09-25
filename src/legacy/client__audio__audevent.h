@@ -3,6 +3,5 @@
 
 #include "defs.h"
 
-int sub_452770(uint32_t* a1);
 
 #endif // NOX_PORT_CLIENT_AUDIO_AUDEVENT

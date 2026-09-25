@@ -2,10 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/legacy/client/audio/ail"
 	"unsafe"
@@ -28,7 +24,7 @@ func PortTestAudioEventDevice(sample ail.Sample, user *AudioSample, ready func()
 	return func() { portTestAudioEventDeviceOwner = old }
 }
 
-func nox_porttest_audio_event_user_data(h C.uintptr_t) unsafe.Pointer {
+func nox_porttest_audio_event_user_data(h uintptr) unsafe.Pointer {
 	sample := ail.Sample(h)
 	if o := portTestAudioEventDeviceOwner; o != nil {
 		if sample != o.sample {
@@ -43,18 +39,18 @@ func nox_porttest_audio_event_user_data(h C.uintptr_t) unsafe.Pointer {
 	return unsafe.Pointer(p.(*AudioSample))
 }
 
-func nox_porttest_audio_event_buffer_ready(h C.uintptr_t) C.int {
+func nox_porttest_audio_event_buffer_ready(h uintptr) int32 {
 	sample := ail.Sample(h)
 	if o := portTestAudioEventDeviceOwner; o != nil {
 		if sample != o.sample {
 			panic("unexpected audio device sample")
 		}
-		return C.int(o.ready())
+		return int32(o.ready())
 	}
-	return C.int(sample.BufferReady())
+	return int32(sample.BufferReady())
 }
 
-func nox_porttest_audio_event_load_buffer(h C.uintptr_t, n C.uint32_t, p unsafe.Pointer, size C.uint32_t) {
+func nox_porttest_audio_event_load_buffer(h uintptr, n uint32, p unsafe.Pointer, size uint32) {
 	sample := ail.Sample(h)
 	data := unsafe.Slice((*byte)(p), int(size))
 	if o := portTestAudioEventDeviceOwner; o != nil {
@@ -69,10 +65,10 @@ func nox_porttest_audio_event_load_buffer(h C.uintptr_t, n C.uint32_t, p unsafe.
 
 func init() {
 	audioEventDeviceUser = func(s ail.Sample) *AudioSample {
-		return (*AudioSample)(nox_porttest_audio_event_user_data(C.uintptr_t(uintptr(s))))
+		return (*AudioSample)(nox_porttest_audio_event_user_data(uintptr(s)))
 	}
-	audioEventDeviceReady = func(s ail.Sample) int { return int(nox_porttest_audio_event_buffer_ready(C.uintptr_t(uintptr(s)))) }
+	audioEventDeviceReady = func(s ail.Sample) int { return int(nox_porttest_audio_event_buffer_ready(uintptr(s))) }
 	audioEventDeviceLoad = func(s ail.Sample, index uint32, data []byte) {
-		nox_porttest_audio_event_load_buffer(C.uintptr_t(uintptr(s)), C.uint32_t(index), unsafe.Pointer(unsafe.SliceData(data)), C.uint32_t(len(data)))
+		nox_porttest_audio_event_load_buffer(uintptr(s), index, unsafe.Pointer(unsafe.SliceData(data)), uint32(len(data)))
 	}
 }

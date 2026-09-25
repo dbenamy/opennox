@@ -1,22 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-#include "compat.h"
-#include "GAME2_2.h"
-#include "client/audio/ail/compat_mss.h"
-#include "client__io__win95__focus.h"
-
-int sub_43F060(uint32_t* a1);
-
-
-
-
-
-
-
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -51,102 +34,6 @@ type AudioSample struct {
 	Data1  *byte          // 5, 20
 	Data2  *byte          // 6, 24
 	Flag7  uint32         // 7, 28
-}
-
-//export sub_43F050
-func sub_43F050() int {
-	return 0
-}
-
-//export sub_43F0D0
-func sub_43F0D0() int {
-	return 0
-}
-
-//export sub_43F030
-func sub_43F030(a1 int) int {
-	panic("abort")
-}
-
-//export AIL_set_stream_volume
-func AIL_set_stream_volume(s C.HSTREAM, volume C.int32_t) {
-	ail.Stream(unsafe.Pointer(s)).SetVolume(int(volume))
-}
-
-//export AIL_stream_position
-func AIL_stream_position(s C.HSTREAM) C.int32_t {
-	return C.int32_t(ail.Stream(unsafe.Pointer(s)).Position())
-}
-
-//export AIL_load_sample_buffer
-func AIL_load_sample_buffer(s C.HSAMPLE, num C.uint32_t, buf unsafe.Pointer, sz C.uint32_t) {
-	ail.Sample(unsafe.Pointer(s)).LoadBuffer(uint32(num), unsafe.Slice((*byte)(buf), int(sz)))
-}
-
-//export AIL_sample_buffer_ready
-func AIL_sample_buffer_ready(s C.HSAMPLE) C.int32_t {
-	return C.int32_t(ail.Sample(unsafe.Pointer(s)).BufferReady())
-}
-
-//export AIL_sample_user_data
-func AIL_sample_user_data(s C.HSAMPLE) unsafe.Pointer {
-	v := ail.Sample(unsafe.Pointer(s)).UserData()
-	if v == nil {
-		return nil
-	}
-	return unsafe.Pointer(v.(*AudioSample))
-}
-
-//export sub_43F010
-func sub_43F010(a1 unsafe.Pointer) int {
-	p := *(**AudioSample)(unsafe.Add(a1, 272))
-	p.Smp.Stop()
-	return 0
-}
-
-//export sub_43EA20
-func sub_43EA20(a1 unsafe.Pointer) int {
-	return Sub_43EA20(a1)
-}
-
-//export sub_43E9F0
-func sub_43E9F0() {
-	Sub_43E9F0()
-}
-
-//export sub_43E940
-func sub_43E940(a1 unsafe.Pointer) int {
-	return Sub_43E940(a1)
-}
-
-//export sub_43EFD0
-func sub_43EFD0(a1 unsafe.Pointer) int {
-	return Sub_43EFD0(a1)
-}
-
-//export sub_43EC10
-func sub_43EC10() int {
-	return Sub_43EC10()
-}
-
-//export sub_43ED00
-func sub_43ED00(a1p *C.uint32_t) int {
-	return Sub_43ED00(unsafe.Pointer(a1p))
-}
-
-//export sub_43F060
-func sub_43F060(a1p *C.uint32_t) int {
-	return Sub_43F060(unsafe.Pointer(a1p))
-}
-
-//export sub_43EC30
-func sub_43EC30(a1p unsafe.Pointer) int {
-	return Sub_43EC30(unsafe.Pointer(a1p))
-}
-
-//export sub_43ECB0
-func sub_43ECB0(a1p unsafe.Pointer) int {
-	return Sub_43ECB0(unsafe.Pointer(a1p))
 }
 
 func Get_dword_587000_127004() unsafe.Pointer {

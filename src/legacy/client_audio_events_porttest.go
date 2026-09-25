@@ -2,34 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include "client/audio/ail/compat_mss.h"
-#include "GAME1_3.h"
-#include "GAME2.h"
-#include "client__audio__audevent.h"
-int sub_43DB20();
-int sub_43DB30(int a1);
-char* sub_43DB40(int a1);
-unsigned char sub_450750();
-char sub_450760(char a1);
-int sub_4526D0(int a1);
-int sub_4526F0(int a1);
-int sub_452770(uint32_t* a1);
-
-static uint64_t nox_porttest_audio_event_call(int op,uint64_t a0,uint64_t a1,uint64_t a2,uint64_t a3){switch(op){
-case 2: return (uint64_t)(int64_t)sub_43DB20();
-case 3: return (uint64_t)(int64_t)sub_43DB30((int)a0);
-case 4: return (uint64_t)(uintptr_t)sub_43DB40((int)a0);
-case 16: return (uint64_t)(int64_t)sub_450750();
-case 17: return (uint64_t)(int64_t)sub_450760((char)a0);
-case 40: return (uint64_t)(int64_t)sub_4526D0((int)a0);
-case 41: return (uint64_t)(int64_t)sub_4526F0((int)a0);
-case 61: return (uint64_t)(int64_t)sub_452770((uint32_t*)a0);
-}return 0;}
-
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/legacy/client/audio/ail"
 	"unsafe"
@@ -153,6 +125,22 @@ func PortTestAudioEventCall(name string, args ...uint64) uint64 {
 	var a [4]uint64
 	copy(a[:], args)
 	switch name {
+	case portTestAudioEventNames[2]:
+		return uint64(int64(int32(*audioEventMusicCount)))
+	case portTestAudioEventNames[3]:
+		return uint64(int64(audioEventMusicSetCount(int32(a[0]))))
+	case portTestAudioEventNames[4]:
+		return uint64(uintptr(audioEventMusicSlotPointer(int32(a[0]))))
+	case portTestAudioEventNames[16]:
+		return uint64(audioEventByte())
+	case portTestAudioEventNames[17]:
+		return uint64(int64(audioEventSetByte(int8(uint8(a[0])))))
+	case portTestAudioEventNames[40]:
+		return uint64(int64(audioEventVoiceStopped((*audioStreamVoice)(unsafe.Pointer(uintptr(uint32(a[0])))))))
+	case portTestAudioEventNames[41]:
+		return uint64(int64(audioEventVoiceEnded((*audioStreamVoice)(unsafe.Pointer(uintptr(uint32(a[0])))))))
+	case portTestAudioEventNames[61]:
+		return uint64(int64(audioEventVoiceLoop((*audioStreamVoice)(unsafe.Pointer(uintptr(uint32(a[0])))))))
 	case "nox_xxx_draw_452300":
 		return uint64(uintptr(unsafe.Pointer(audioEventNew((*audioEventMetadata)(unsafe.Pointer(uintptr(uint32(a[0]))))))))
 	case "sub_4523D0":
@@ -278,9 +266,9 @@ func PortTestAudioEventCall(name string, args ...uint64) uint64 {
 	case "sub_452580":
 		return uint64(int64(int32(audioEventReserve((*audioEvent)(unsafe.Pointer(uintptr(uint32(a[0]))))))))
 	}
-	for i, n := range portTestAudioEventNames {
+	for _, n := range portTestAudioEventNames {
 		if name == n {
-			return uint64(C.nox_porttest_audio_event_call(C.int(i), C.uint64_t(a[0]), C.uint64_t(a[1]), C.uint64_t(a[2]), C.uint64_t(a[3])))
+			return 0
 		}
 	}
 	panic("unknown audio event operation: " + name)
