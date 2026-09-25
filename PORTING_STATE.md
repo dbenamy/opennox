@@ -21,11 +21,12 @@ removed separately from the production-file metric.
 See [SERVER_FIXTURE_BRIDGES.md](docs/porting/SERVER_FIXTURE_BRIDGES.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Next candidate: 71 fixture-only client UI bridges
-across 19 owners. Luna's bounded reachability/test-selection audit is under
-`build/port-after-server-fixture-bridges/`; primary must accept references,
-consumers and baseline coverage before another conversion. No next conversion is
-installed. Stop at the milestone or a substantial question.
+recorded reversible decisions. Current preparation: 71 fixture-only client UI bridges
+across 19 owners. Original-path baseline passes 383 default/highres and 382 server
+roots against source-identical qualified binaries. The caller audit expanded the
+initial selection by 122 shared-fixture roots. Luna is drafting an ignored overlay;
+primary review and baseline commit precede installation. No conversion is installed.
+See [CLIENT_UI_FIXTURE_BRIDGES.md](docs/porting/CLIENT_UI_FIXTURE_BRIDGES.md). Stop at the milestone or a substantial question.
 
 Latest qualified artifacts: `build/port-server-fixture-bridges/`.
 
@@ -124,6 +125,8 @@ do not rerun them or infer deletion safety from age alone.
 
 | Artifact | Recovery or current location |
 | --- | --- |
+| Completed server-fixture scenario assets | Removed 1,654 verified duplicates, reclaiming 559,919,104 allocated bytes. Originals, saves/results retained. Restore: `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/server-fixture-bridges-save/deduplicated-assets.json`. Evidence: `build/port-post-server-fixture-cleanup/`. |
+| Obsolete pre-server-fixture-baseline cache | Removed nine hash/stat/host-use-verified root/legacy archives older than 9a833ff4; 425,369,600 allocated bytes reclaimed. Current qualified caches, all binaries/source/assets retained. Evidence: `build/port-client-ui-fixture-bridges/cache-cleanup-{proposal.json,approved.json,deleted.jsonl}`. |
 | Completed modifier scenario assets | Removed 1,654 verified duplicates, reclaiming 559,865,856 allocated bytes. Originals, saves/results retained. Restore: `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/modifier-identities-save/deduplicated-assets.json`. Evidence: `build/port-post-modifier-cleanup/`. |
 | Obsolete pre-modifier-baseline cache | Removed five hash/stat/host-use-verified root/legacy archives older than 09f15464; 340,205,568 allocated bytes reclaimed. Qualified modifier conversion caches, all binaries/source/assets retained. Evidence: `build/port-server-fixture-bridges/cache-cleanup-{proposal.json,approved.json,deleted.jsonl}`. |
 | Completed duration scenario assets | Removed 1,654 verified original-asset duplicates; 559,857,664 allocated bytes reclaimed. Originals, saves/results retained. Restore: `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/duration-identities-save/deduplicated-assets.json`. Plan/result: `build/port-post-duration-cleanup/`. |

@@ -1,0 +1,6102 @@
+{
+  "scope": "71 candidate client UI exports from build/port-after-server-fixture-bridges/client-ui-candidate.json",
+  "current_source_commit": "9a833ff4d433793d4a0741d3701da608970306ed",
+  "source_worktree_dirty": true,
+  "reference_method": "single union regex scan over git ls-files src; line text retained; identifiers exact-case, comments and literals included for conservative audit",
+  "tracked_src_files_scanned": 3091,
+  "candidate_symbols": 71,
+  "reference_rows": 390,
+  "symbols": {
+    "nox_client_invAlterWeapon_4672C0": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          30
+        ],
+        "src/legacy/client_inventory_transactions_porttest.go": [
+          75
+        ],
+        "src/legacy/client_ui_inventory_place.go": [
+          162,
+          163
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 30,
+          "text": "void nox_client_invAlterWeapon_4672C0();"
+        },
+        {
+          "path": "src/legacy/client_inventory_transactions_porttest.go",
+          "line": 75,
+          "text": "\t\tC.nox_client_invAlterWeapon_4672C0()"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_place.go",
+          "line": 162,
+          "text": "//export nox_client_invAlterWeapon_4672C0"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_place.go",
+          "line": 163,
+          "text": "func nox_client_invAlterWeapon_4672C0() { uiInventoryAlterWeapon() }"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 30,
+          "text": "void nox_client_invAlterWeapon_4672C0();"
+        },
+        {
+          "path": "src/legacy/client_inventory_transactions_porttest.go",
+          "line": 75,
+          "text": "C.nox_client_invAlterWeapon_4672C0()"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_place.go",
+          "line": 162,
+          "text": "//export nox_client_invAlterWeapon_4672C0"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_place.go",
+          "line": 163,
+          "text": "func nox_client_invAlterWeapon_4672C0() { uiInventoryAlterWeapon() }"
+        }
+      ]
+    },
+    "nox_client_makePlayerStatsDlg_463880": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/client__gui__guiinv.h": [
+          8
+        ],
+        "src/legacy/client_inventory_display_porttest.go": [
+          43
+        ],
+        "src/legacy/client_ui_inventory_display_stats.go": [
+          155,
+          156
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/client__gui__guiinv.h",
+          "line": 8,
+          "text": "void nox_client_makePlayerStatsDlg_463880(int* a1);"
+        },
+        {
+          "path": "src/legacy/client_inventory_display_porttest.go",
+          "line": 43,
+          "text": "\t\tC.nox_client_makePlayerStatsDlg_463880((*C.int)(unsafe.Pointer(a)))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_display_stats.go",
+          "line": 155,
+          "text": "//export nox_client_makePlayerStatsDlg_463880"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_display_stats.go",
+          "line": 156,
+          "text": "func nox_client_makePlayerStatsDlg_463880(pos *C.int) {"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/client__gui__guiinv.h",
+          "line": 8,
+          "text": "void nox_client_makePlayerStatsDlg_463880(int* a1);"
+        },
+        {
+          "path": "src/legacy/client_inventory_display_porttest.go",
+          "line": 43,
+          "text": "C.nox_client_makePlayerStatsDlg_463880((*C.int)(unsafe.Pointer(a)))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_display_stats.go",
+          "line": 155,
+          "text": "//export nox_client_makePlayerStatsDlg_463880"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_display_stats.go",
+          "line": 156,
+          "text": "func nox_client_makePlayerStatsDlg_463880(pos *C.int) {"
+        }
+      ]
+    },
+    "nox_client_toggleSpellbook_45AC70": {
+      "ref_count": 10,
+      "paths": {
+        "src/legacy/GAME2.h": [
+          14
+        ],
+        "src/legacy/book_porttest.go": [
+          10,
+          33,
+          34,
+          117,
+          117
+        ],
+        "src/legacy/gui_book_exports.go": [
+          9,
+          10
+        ],
+        "src/spellbook_show_porttest_test.go": [
+          37,
+          53
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 14,
+          "text": "void nox_client_toggleSpellbook_45AC70();"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 10,
+          "text": "void nox_client_toggleSpellbook_45AC70();"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 33,
+          "text": "\tcase \"nox_client_toggleSpellbook_45AC70\":"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 34,
+          "text": "\t\tC.nox_client_toggleSpellbook_45AC70()"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 117,
+          "text": "\t\t\"nox_client_toggleSpellbook_45AC70\":        unsafe.Pointer(C.nox_client_toggleSpellbook_45AC70),"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 9,
+          "text": "//export nox_client_toggleSpellbook_45AC70"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 10,
+          "text": "func nox_client_toggleSpellbook_45AC70() { bookToggle() }"
+        },
+        {
+          "path": "src/spellbook_show_porttest_test.go",
+          "line": 37,
+          "text": "\t\t\t\t\t\top = \"nox_client_toggleSpellbook_45AC70\""
+        },
+        {
+          "path": "src/spellbook_show_porttest_test.go",
+          "line": 53,
+          "text": "\t\t\t\t\t\to.bookCall(\"nox_client_toggleSpellbook_45AC70\")"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 14,
+          "text": "void nox_client_toggleSpellbook_45AC70();"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 10,
+          "text": "void nox_client_toggleSpellbook_45AC70();"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 33,
+          "text": "case \"nox_client_toggleSpellbook_45AC70\":"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 34,
+          "text": "C.nox_client_toggleSpellbook_45AC70()"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 117,
+          "text": "\"nox_client_toggleSpellbook_45AC70\":        unsafe.Pointer(C.nox_client_toggleSpellbook_45AC70),"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 117,
+          "text": "\"nox_client_toggleSpellbook_45AC70\":        unsafe.Pointer(C.nox_client_toggleSpellbook_45AC70),"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 9,
+          "text": "//export nox_client_toggleSpellbook_45AC70"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 10,
+          "text": "func nox_client_toggleSpellbook_45AC70() { bookToggle() }"
+        },
+        {
+          "path": "src/spellbook_show_porttest_test.go",
+          "line": 37,
+          "text": "op = \"nox_client_toggleSpellbook_45AC70\""
+        },
+        {
+          "path": "src/spellbook_show_porttest_test.go",
+          "line": 53,
+          "text": "o.bookCall(\"nox_client_toggleSpellbook_45AC70\")"
+        }
+      ]
+    },
+    "nox_client_trapSetSelect_4604B0": {
+      "ref_count": 9,
+      "paths": {
+        "src/legacy/GAME2.h": [
+          28
+        ],
+        "src/legacy/gui_quickbar_exports.go": [
+          25,
+          26
+        ],
+        "src/legacy/quickbar_porttest.go": [
+          115,
+          264,
+          264
+        ],
+        "src/player_files_gui_porttest_test.go": [
+          58
+        ],
+        "src/quickbar_rows_porttest_test.go": [
+          95
+        ],
+        "src/quickbar_trap_porttest_test.go": [
+          23
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 28,
+          "text": "int nox_client_trapSetSelect_4604B0(int a1);"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 25,
+          "text": "//export nox_client_trapSetSelect_4604B0"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 26,
+          "text": "func nox_client_trapSetSelect_4604B0(row C.int) C.int { return C.int(quickbarTrapSelect(int(row))) }"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 115,
+          "text": "\tcase \"nox_client_trapSetSelect_4604B0\":"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 264,
+          "text": "\t\t\"nox_client_trapSetSelect_4604B0\":             unsafe.Pointer(C.nox_client_trapSetSelect_4604B0),"
+        },
+        {
+          "path": "src/player_files_gui_porttest_test.go",
+          "line": 58,
+          "text": "\t\t\t\tq.call(\"nox_client_trapSetSelect_4604B0\", trapRow)"
+        },
+        {
+          "path": "src/quickbar_rows_porttest_test.go",
+          "line": 95,
+          "text": "\t\t\tq.call(\"nox_client_trapSetSelect_4604B0\", selected)"
+        },
+        {
+          "path": "src/quickbar_trap_porttest_test.go",
+          "line": 23,
+          "text": "\t\t\t\t\tq.call(\"nox_client_trapSetSelect_4604B0\", row)"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 28,
+          "text": "int nox_client_trapSetSelect_4604B0(int a1);"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 25,
+          "text": "//export nox_client_trapSetSelect_4604B0"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 26,
+          "text": "func nox_client_trapSetSelect_4604B0(row C.int) C.int { return C.int(quickbarTrapSelect(int(row))) }"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 115,
+          "text": "case \"nox_client_trapSetSelect_4604B0\":"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 264,
+          "text": "\"nox_client_trapSetSelect_4604B0\":             unsafe.Pointer(C.nox_client_trapSetSelect_4604B0),"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 264,
+          "text": "\"nox_client_trapSetSelect_4604B0\":             unsafe.Pointer(C.nox_client_trapSetSelect_4604B0),"
+        },
+        {
+          "path": "src/player_files_gui_porttest_test.go",
+          "line": 58,
+          "text": "q.call(\"nox_client_trapSetSelect_4604B0\", trapRow)"
+        },
+        {
+          "path": "src/quickbar_rows_porttest_test.go",
+          "line": 95,
+          "text": "q.call(\"nox_client_trapSetSelect_4604B0\", selected)"
+        },
+        {
+          "path": "src/quickbar_trap_porttest_test.go",
+          "line": 23,
+          "text": "q.call(\"nox_client_trapSetSelect_4604B0\", row)"
+        }
+      ]
+    },
+    "nox_window_get_size": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/client__gui__window.h": [
+          75
+        ],
+        "src/legacy/client_ui_window.go": [
+          107,
+          108
+        ],
+        "src/legacy/client_window_porttest.go": [
+          31
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/client__gui__window.h",
+          "line": 75,
+          "text": "int nox_window_get_size(nox_window* win, int* outW, int* outH);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 107,
+          "text": "//export nox_window_get_size"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 108,
+          "text": "func nox_window_get_size(w *nox_window, x, y *C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 31,
+          "text": "\t\tret = int(C.nox_window_get_size(p, (*C.int)(unsafe.Pointer(&x)), (*C.int)(unsafe.Pointer(&y))))"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/client__gui__window.h",
+          "line": 75,
+          "text": "int nox_window_get_size(nox_window* win, int* outW, int* outH);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 107,
+          "text": "//export nox_window_get_size"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 108,
+          "text": "func nox_window_get_size(w *nox_window, x, y *C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 31,
+          "text": "ret = int(C.nox_window_get_size(p, (*C.int)(unsafe.Pointer(&x)), (*C.int)(unsafe.Pointer(&y))))"
+        }
+      ]
+    },
+    "nox_xxx_abilityReward_45D290": {
+      "ref_count": 9,
+      "paths": {
+        "src/legacy/GAME2.h": [
+          20
+        ],
+        "src/legacy/book_porttest.go": [
+          16,
+          75,
+          76,
+          136,
+          136
+        ],
+        "src/legacy/gui_book_exports.go": [
+          29,
+          30
+        ],
+        "src/spellbook_presentation_porttest_test.go": [
+          57
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 20,
+          "text": "void nox_xxx_abilityReward_45D290(int a1, char* a2, int a3);"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 16,
+          "text": "void nox_xxx_abilityReward_45D290(int a1, char* a2, int a3);"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 75,
+          "text": "\tcase \"nox_xxx_abilityReward_45D290\":"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 76,
+          "text": "\t\tC.nox_xxx_abilityReward_45D290(C.int(a[0]), (*C.char)(unsafe.Pointer(uintptr(a[1]))), C.int(a[2]))"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 136,
+          "text": "\t\t\"nox_xxx_abilityReward_45D290\":             unsafe.Pointer(C.nox_xxx_abilityReward_45D290),"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 29,
+          "text": "//export nox_xxx_abilityReward_45D290"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 30,
+          "text": "func nox_xxx_abilityReward_45D290(id C.int, notify *C.char, autoAdd C.int) {"
+        },
+        {
+          "path": "src/spellbook_presentation_porttest_test.go",
+          "line": 57,
+          "text": "\t\t\t\t\t\tret = o.bookCall(\"nox_xxx_abilityReward_45D290\", 1, notify, auto)"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 20,
+          "text": "void nox_xxx_abilityReward_45D290(int a1, char* a2, int a3);"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 16,
+          "text": "void nox_xxx_abilityReward_45D290(int a1, char* a2, int a3);"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 75,
+          "text": "case \"nox_xxx_abilityReward_45D290\":"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 76,
+          "text": "C.nox_xxx_abilityReward_45D290(C.int(a[0]), (*C.char)(unsafe.Pointer(uintptr(a[1]))), C.int(a[2]))"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 136,
+          "text": "\"nox_xxx_abilityReward_45D290\":             unsafe.Pointer(C.nox_xxx_abilityReward_45D290),"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 136,
+          "text": "\"nox_xxx_abilityReward_45D290\":             unsafe.Pointer(C.nox_xxx_abilityReward_45D290),"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 29,
+          "text": "//export nox_xxx_abilityReward_45D290"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 30,
+          "text": "func nox_xxx_abilityReward_45D290(id C.int, notify *C.char, autoAdd C.int) {"
+        },
+        {
+          "path": "src/spellbook_presentation_porttest_test.go",
+          "line": 57,
+          "text": "ret = o.bookCall(\"nox_xxx_abilityReward_45D290\", 1, notify, auto)"
+        }
+      ]
+    },
+    "nox_xxx_bookFillAll_45D570": {
+      "ref_count": 11,
+      "paths": {
+        "src/client_interaction_escape_book_porttest_test.go": [
+          51
+        ],
+        "src/legacy/GAME2.h": [
+          22
+        ],
+        "src/legacy/book_porttest.go": [
+          18,
+          88,
+          89,
+          142,
+          142
+        ],
+        "src/legacy/gui_book_exports.go": [
+          45,
+          46
+        ],
+        "src/spellbook_animation_frames_porttest_test.go": [
+          52
+        ],
+        "src/spellbook_animation_porttest_test.go": [
+          85
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/client_interaction_escape_book_porttest_test.go",
+          "line": 51,
+          "text": "\t\t\t\t\to.bookCall(\"nox_xxx_bookFillAll_45D570\", kind, 1)"
+        },
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 22,
+          "text": "void nox_xxx_bookFillAll_45D570(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 18,
+          "text": "void nox_xxx_bookFillAll_45D570(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 88,
+          "text": "\tcase \"nox_xxx_bookFillAll_45D570\":"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 89,
+          "text": "\t\tC.nox_xxx_bookFillAll_45D570(C.int(a[0]), C.int(a[1]))"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 142,
+          "text": "\t\t\"nox_xxx_bookFillAll_45D570\":               unsafe.Pointer(C.nox_xxx_bookFillAll_45D570),"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 45,
+          "text": "//export nox_xxx_bookFillAll_45D570"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 46,
+          "text": "func nox_xxx_bookFillAll_45D570(kind, id C.int) { bookAdd(int(kind), int(id)) }"
+        },
+        {
+          "path": "src/spellbook_animation_frames_porttest_test.go",
+          "line": 52,
+          "text": "\t\t\t\t\to.bookCall(\"nox_xxx_bookFillAll_45D570\", kind, 1)"
+        },
+        {
+          "path": "src/spellbook_animation_porttest_test.go",
+          "line": 85,
+          "text": "\t\t\t\t\tret := o.bookCall(\"nox_xxx_bookFillAll_45D570\", kind, 1)"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/client_interaction_escape_book_porttest_test.go",
+          "line": 51,
+          "text": "o.bookCall(\"nox_xxx_bookFillAll_45D570\", kind, 1)"
+        },
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 22,
+          "text": "void nox_xxx_bookFillAll_45D570(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 18,
+          "text": "void nox_xxx_bookFillAll_45D570(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 88,
+          "text": "case \"nox_xxx_bookFillAll_45D570\":"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 89,
+          "text": "C.nox_xxx_bookFillAll_45D570(C.int(a[0]), C.int(a[1]))"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 142,
+          "text": "\"nox_xxx_bookFillAll_45D570\":               unsafe.Pointer(C.nox_xxx_bookFillAll_45D570),"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 142,
+          "text": "\"nox_xxx_bookFillAll_45D570\":               unsafe.Pointer(C.nox_xxx_bookFillAll_45D570),"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 45,
+          "text": "//export nox_xxx_bookFillAll_45D570"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 46,
+          "text": "func nox_xxx_bookFillAll_45D570(kind, id C.int) { bookAdd(int(kind), int(id)) }"
+        },
+        {
+          "path": "src/spellbook_animation_frames_porttest_test.go",
+          "line": 52,
+          "text": "o.bookCall(\"nox_xxx_bookFillAll_45D570\", kind, 1)"
+        },
+        {
+          "path": "src/spellbook_animation_porttest_test.go",
+          "line": 85,
+          "text": "ret := o.bookCall(\"nox_xxx_bookFillAll_45D570\", kind, 1)"
+        }
+      ]
+    },
+    "nox_xxx_bookHideMB_45ACA0": {
+      "ref_count": 15,
+      "paths": {
+        "src/legacy/GAME2.h": [
+          15
+        ],
+        "src/legacy/book_porttest.go": [
+          11,
+          36,
+          37,
+          118,
+          118
+        ],
+        "src/legacy/gui_book_exports.go": [
+          12,
+          13
+        ],
+        "src/spellbook_drag_hide_porttest_test.go": [
+          38,
+          55,
+          78
+        ],
+        "src/spellbook_visibility_porttest_test.go": [
+          27,
+          43,
+          48,
+          66
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 15,
+          "text": "int nox_xxx_bookHideMB_45ACA0(int a1);"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 11,
+          "text": "int nox_xxx_bookHideMB_45ACA0(int a1);"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 36,
+          "text": "\tcase \"nox_xxx_bookHideMB_45ACA0\":"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 37,
+          "text": "\t\treturn uint32(C.nox_xxx_bookHideMB_45ACA0(C.int(a[0])))"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 118,
+          "text": "\t\t\"nox_xxx_bookHideMB_45ACA0\":                unsafe.Pointer(C.nox_xxx_bookHideMB_45ACA0),"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 12,
+          "text": "//export nox_xxx_bookHideMB_45ACA0"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 13,
+          "text": "func nox_xxx_bookHideMB_45ACA0(reset C.int) C.int { return C.int(bookHide(int(reset))) }"
+        },
+        {
+          "path": "src/spellbook_drag_hide_porttest_test.go",
+          "line": 38,
+          "text": "\t\t\tif got := o.bookCall(\"nox_xxx_bookHideMB_45ACA0\", 0); got != 1 {"
+        },
+        {
+          "path": "src/spellbook_drag_hide_porttest_test.go",
+          "line": 55,
+          "text": "\t\t\tif got := o.bookCall(\"nox_xxx_bookHideMB_45ACA0\", 0); got != 0 {"
+        },
+        {
+          "path": "src/spellbook_drag_hide_porttest_test.go",
+          "line": 78,
+          "text": "\tif got := o.bookCall(\"nox_xxx_bookHideMB_45ACA0\", 0); got != 0 {"
+        },
+        {
+          "path": "src/spellbook_visibility_porttest_test.go",
+          "line": 27,
+          "text": "\t\t\tif o.bookCall(\"nox_xxx_bookHideMB_45ACA0\", reset) != 0 {"
+        },
+        {
+          "path": "src/spellbook_visibility_porttest_test.go",
+          "line": 43,
+          "text": "\t\t\t\tif o.bookCall(\"nox_xxx_bookHideMB_45ACA0\", reset) != 0 || len(o.sounds) != n || o.c.GUI.Captured() != o.bookWindow() {"
+        },
+        {
+          "path": "src/spellbook_visibility_porttest_test.go",
+          "line": 48,
+          "text": "\t\t\t\tret := o.bookCall(\"nox_xxx_bookHideMB_45ACA0\", reset)"
+        },
+        {
+          "path": "src/spellbook_visibility_porttest_test.go",
+          "line": 66,
+          "text": "\t\t\tif o.bookCall(\"nox_xxx_bookHideMB_45ACA0\", 0) != 1 || o.c.GUI.Captured() != other {"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 15,
+          "text": "int nox_xxx_bookHideMB_45ACA0(int a1);"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 11,
+          "text": "int nox_xxx_bookHideMB_45ACA0(int a1);"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 36,
+          "text": "case \"nox_xxx_bookHideMB_45ACA0\":"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 37,
+          "text": "return uint32(C.nox_xxx_bookHideMB_45ACA0(C.int(a[0])))"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 118,
+          "text": "\"nox_xxx_bookHideMB_45ACA0\":                unsafe.Pointer(C.nox_xxx_bookHideMB_45ACA0),"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 118,
+          "text": "\"nox_xxx_bookHideMB_45ACA0\":                unsafe.Pointer(C.nox_xxx_bookHideMB_45ACA0),"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 12,
+          "text": "//export nox_xxx_bookHideMB_45ACA0"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 13,
+          "text": "func nox_xxx_bookHideMB_45ACA0(reset C.int) C.int { return C.int(bookHide(int(reset))) }"
+        },
+        {
+          "path": "src/spellbook_drag_hide_porttest_test.go",
+          "line": 38,
+          "text": "if got := o.bookCall(\"nox_xxx_bookHideMB_45ACA0\", 0); got != 1 {"
+        },
+        {
+          "path": "src/spellbook_drag_hide_porttest_test.go",
+          "line": 55,
+          "text": "if got := o.bookCall(\"nox_xxx_bookHideMB_45ACA0\", 0); got != 0 {"
+        },
+        {
+          "path": "src/spellbook_drag_hide_porttest_test.go",
+          "line": 78,
+          "text": "if got := o.bookCall(\"nox_xxx_bookHideMB_45ACA0\", 0); got != 0 {"
+        },
+        {
+          "path": "src/spellbook_visibility_porttest_test.go",
+          "line": 27,
+          "text": "if o.bookCall(\"nox_xxx_bookHideMB_45ACA0\", reset) != 0 {"
+        },
+        {
+          "path": "src/spellbook_visibility_porttest_test.go",
+          "line": 43,
+          "text": "if o.bookCall(\"nox_xxx_bookHideMB_45ACA0\", reset) != 0 || len(o.sounds) != n || o.c.GUI.Captured() != o.bookWindow() {"
+        },
+        {
+          "path": "src/spellbook_visibility_porttest_test.go",
+          "line": 48,
+          "text": "ret := o.bookCall(\"nox_xxx_bookHideMB_45ACA0\", reset)"
+        },
+        {
+          "path": "src/spellbook_visibility_porttest_test.go",
+          "line": 66,
+          "text": "if o.bookCall(\"nox_xxx_bookHideMB_45ACA0\", 0) != 1 || o.c.GUI.Captured() != other {"
+        }
+      ]
+    },
+    "nox_xxx_bookSetForward_45D200": {
+      "ref_count": 9,
+      "paths": {
+        "src/legacy/GAME2.h": [
+          19
+        ],
+        "src/legacy/book_porttest.go": [
+          15,
+          73,
+          74,
+          135,
+          135
+        ],
+        "src/legacy/gui_book_exports.go": [
+          24,
+          25
+        ],
+        "src/spellbook_controls_porttest_test.go": [
+          47
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 19,
+          "text": "int* nox_xxx_bookSetForward_45D200(int* a1, int a2, int2* a3);"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 15,
+          "text": "int* nox_xxx_bookSetForward_45D200(int* a1, int a2, int2* a3);"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 73,
+          "text": "\tcase \"nox_xxx_bookSetForward_45D200\":"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 74,
+          "text": "\t\treturn uint32(uintptr(unsafe.Pointer(C.nox_xxx_bookSetForward_45D200((*C.int)(unsafe.Pointer(uintptr(a[0]))), C.int(a[1]), (*C.int2)(unsafe.Pointer(uintptr(a[2])))))))"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 135,
+          "text": "\t\t\"nox_xxx_bookSetForward_45D200\":            unsafe.Pointer(C.nox_xxx_bookSetForward_45D200),"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 24,
+          "text": "//export nox_xxx_bookSetForward_45D200"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 25,
+          "text": "func nox_xxx_bookSetForward_45D200(kind *C.int, id C.int, pos *C.int2) *C.int {"
+        },
+        {
+          "path": "src/spellbook_controls_porttest_test.go",
+          "line": 47,
+          "text": "\t\t\t\tret := o.bookCall(\"nox_xxx_bookSetForward_45D200\", kind, id, uint32(uintptr(unsafe.Pointer(point))))"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 19,
+          "text": "int* nox_xxx_bookSetForward_45D200(int* a1, int a2, int2* a3);"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 15,
+          "text": "int* nox_xxx_bookSetForward_45D200(int* a1, int a2, int2* a3);"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 73,
+          "text": "case \"nox_xxx_bookSetForward_45D200\":"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 74,
+          "text": "return uint32(uintptr(unsafe.Pointer(C.nox_xxx_bookSetForward_45D200((*C.int)(unsafe.Pointer(uintptr(a[0]))), C.int(a[1]), (*C.int2)(unsafe.Pointer(uintptr(a[2])))))))"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 135,
+          "text": "\"nox_xxx_bookSetForward_45D200\":            unsafe.Pointer(C.nox_xxx_bookSetForward_45D200),"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 135,
+          "text": "\"nox_xxx_bookSetForward_45D200\":            unsafe.Pointer(C.nox_xxx_bookSetForward_45D200),"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 24,
+          "text": "//export nox_xxx_bookSetForward_45D200"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 25,
+          "text": "func nox_xxx_bookSetForward_45D200(kind *C.int, id C.int, pos *C.int2) *C.int {"
+        },
+        {
+          "path": "src/spellbook_controls_porttest_test.go",
+          "line": 47,
+          "text": "ret := o.bookCall(\"nox_xxx_bookSetForward_45D200\", kind, id, uint32(uintptr(unsafe.Pointer(point))))"
+        }
+      ]
+    },
+    "nox_xxx_book_45DBE0": {
+      "ref_count": 6,
+      "paths": {
+        "src/legacy/GAME2.h": [
+          24
+        ],
+        "src/legacy/gui_quickbar_exports.go": [
+          9,
+          10
+        ],
+        "src/legacy/quickbar_porttest.go": [
+          42,
+          231,
+          231
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 24,
+          "text": "void* nox_xxx_book_45DBE0(void* a1, int a2, int a3);"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 9,
+          "text": "//export nox_xxx_book_45DBE0"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 10,
+          "text": "func nox_xxx_book_45DBE0(kind unsafe.Pointer, id, slot C.int) unsafe.Pointer {"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 42,
+          "text": "\tcase \"nox_xxx_book_45DBE0\":"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 231,
+          "text": "\t\t\"nox_xxx_book_45DBE0\":                         unsafe.Pointer(C.nox_xxx_book_45DBE0),"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 24,
+          "text": "void* nox_xxx_book_45DBE0(void* a1, int a2, int a3);"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 9,
+          "text": "//export nox_xxx_book_45DBE0"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 10,
+          "text": "func nox_xxx_book_45DBE0(kind unsafe.Pointer, id, slot C.int) unsafe.Pointer {"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 42,
+          "text": "case \"nox_xxx_book_45DBE0\":"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 231,
+          "text": "\"nox_xxx_book_45DBE0\":                         unsafe.Pointer(C.nox_xxx_book_45DBE0),"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 231,
+          "text": "\"nox_xxx_book_45DBE0\":                         unsafe.Pointer(C.nox_xxx_book_45DBE0),"
+        }
+      ]
+    },
+    "nox_xxx_buttonsGetSelectedRow_45E180": {
+      "ref_count": 7,
+      "paths": {
+        "src/legacy/GAME2.h": [
+          26
+        ],
+        "src/legacy/gui_quickbar_exports.go": [
+          17,
+          18
+        ],
+        "src/legacy/quickbar_porttest.go": [
+          61,
+          240,
+          240
+        ],
+        "src/player_files_gui_porttest_test.go": [
+          102
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 26,
+          "text": "int nox_xxx_buttonsGetSelectedRow_45E180();"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 17,
+          "text": "//export nox_xxx_buttonsGetSelectedRow_45E180"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 18,
+          "text": "func nox_xxx_buttonsGetSelectedRow_45E180() C.int { return C.int(quickbarMain().Selected) }"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 61,
+          "text": "\tcase \"nox_xxx_buttonsGetSelectedRow_45E180\":"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 240,
+          "text": "\t\t\"nox_xxx_buttonsGetSelectedRow_45E180\":        unsafe.Pointer(C.nox_xxx_buttonsGetSelectedRow_45E180),"
+        },
+        {
+          "path": "src/player_files_gui_porttest_test.go",
+          "line": 102,
+          "text": "\t\tif q.call(\"nox_xxx_buttonsGetSelectedRow_45E180\") != selected || q.call(\"sub_4604E0\") != trap {"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 26,
+          "text": "int nox_xxx_buttonsGetSelectedRow_45E180();"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 17,
+          "text": "//export nox_xxx_buttonsGetSelectedRow_45E180"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 18,
+          "text": "func nox_xxx_buttonsGetSelectedRow_45E180() C.int { return C.int(quickbarMain().Selected) }"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 61,
+          "text": "case \"nox_xxx_buttonsGetSelectedRow_45E180\":"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 240,
+          "text": "\"nox_xxx_buttonsGetSelectedRow_45E180\":        unsafe.Pointer(C.nox_xxx_buttonsGetSelectedRow_45E180),"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 240,
+          "text": "\"nox_xxx_buttonsGetSelectedRow_45E180\":        unsafe.Pointer(C.nox_xxx_buttonsGetSelectedRow_45E180),"
+        },
+        {
+          "path": "src/player_files_gui_porttest_test.go",
+          "line": 102,
+          "text": "if q.call(\"nox_xxx_buttonsGetSelectedRow_45E180\") != selected || q.call(\"sub_4604E0\") != trap {"
+        }
+      ]
+    },
+    "nox_xxx_cliInventorySpriteUpd_465A30": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/client__gui__guiinv.h": [
+          10
+        ],
+        "src/legacy/client_inventory_transactions_porttest.go": [
+          65
+        ],
+        "src/legacy/client_ui_inventory_place.go": [
+          89,
+          90
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/client__gui__guiinv.h",
+          "line": 10,
+          "text": "void nox_xxx_cliInventorySpriteUpd_465A30();"
+        },
+        {
+          "path": "src/legacy/client_inventory_transactions_porttest.go",
+          "line": 65,
+          "text": "\t\tC.nox_xxx_cliInventorySpriteUpd_465A30()"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_place.go",
+          "line": 89,
+          "text": "//export nox_xxx_cliInventorySpriteUpd_465A30"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_place.go",
+          "line": 90,
+          "text": "func nox_xxx_cliInventorySpriteUpd_465A30() { uiInventoryDragCopy() }"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/client__gui__guiinv.h",
+          "line": 10,
+          "text": "void nox_xxx_cliInventorySpriteUpd_465A30();"
+        },
+        {
+          "path": "src/legacy/client_inventory_transactions_porttest.go",
+          "line": 65,
+          "text": "C.nox_xxx_cliInventorySpriteUpd_465A30()"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_place.go",
+          "line": 89,
+          "text": "//export nox_xxx_cliInventorySpriteUpd_465A30"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_place.go",
+          "line": 90,
+          "text": "func nox_xxx_cliInventorySpriteUpd_465A30() { uiInventoryDragCopy() }"
+        }
+      ]
+    },
+    "nox_xxx_clientDequip_464B70": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          19
+        ],
+        "src/legacy/client_inventory_transactions_porttest.go": [
+          59
+        ],
+        "src/legacy/client_ui_inventory_requests.go": [
+          36,
+          37
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 19,
+          "text": "int nox_xxx_clientDequip_464B70(int a1);"
+        },
+        {
+          "path": "src/legacy/client_inventory_transactions_porttest.go",
+          "line": 59,
+          "text": "\t\treturn uint32(C.nox_xxx_clientDequip_464B70(C.int(a)))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_requests.go",
+          "line": 36,
+          "text": "//export nox_xxx_clientDequip_464B70"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_requests.go",
+          "line": 37,
+          "text": "func nox_xxx_clientDequip_464B70(v C.int) C.int {"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 19,
+          "text": "int nox_xxx_clientDequip_464B70(int a1);"
+        },
+        {
+          "path": "src/legacy/client_inventory_transactions_porttest.go",
+          "line": 59,
+          "text": "return uint32(C.nox_xxx_clientDequip_464B70(C.int(a)))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_requests.go",
+          "line": 36,
+          "text": "//export nox_xxx_clientDequip_464B70"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_requests.go",
+          "line": 37,
+          "text": "func nox_xxx_clientDequip_464B70(v C.int) C.int {"
+        }
+      ]
+    },
+    "nox_xxx_clientEquip_4623B0": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          14
+        ],
+        "src/legacy/client_inventory_transactions_porttest.go": [
+          49
+        ],
+        "src/legacy/client_ui_inventory_requests.go": [
+          31,
+          32
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 14,
+          "text": "int nox_xxx_clientEquip_4623B0(int a1);"
+        },
+        {
+          "path": "src/legacy/client_inventory_transactions_porttest.go",
+          "line": 49,
+          "text": "\t\treturn uint32(C.nox_xxx_clientEquip_4623B0(C.int(a)))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_requests.go",
+          "line": 31,
+          "text": "//export nox_xxx_clientEquip_4623B0"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_requests.go",
+          "line": 32,
+          "text": "func nox_xxx_clientEquip_4623B0(v C.int) C.int {"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 14,
+          "text": "int nox_xxx_clientEquip_4623B0(int a1);"
+        },
+        {
+          "path": "src/legacy/client_inventory_transactions_porttest.go",
+          "line": 49,
+          "text": "return uint32(C.nox_xxx_clientEquip_4623B0(C.int(a)))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_requests.go",
+          "line": 31,
+          "text": "//export nox_xxx_clientEquip_4623B0"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_requests.go",
+          "line": 32,
+          "text": "func nox_xxx_clientEquip_4623B0(v C.int) C.int {"
+        }
+      ]
+    },
+    "nox_xxx_clientSetAltWeapon_461550": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          8
+        ],
+        "src/legacy/client_inventory_transactions_porttest.go": [
+          23
+        ],
+        "src/legacy/client_ui_inventory_stack.go": [
+          66,
+          67
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 8,
+          "text": "int nox_xxx_clientSetAltWeapon_461550(int a1);"
+        },
+        {
+          "path": "src/legacy/client_inventory_transactions_porttest.go",
+          "line": 23,
+          "text": "\t\treturn uint32(C.nox_xxx_clientSetAltWeapon_461550(C.int(a)))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_stack.go",
+          "line": 66,
+          "text": "//export nox_xxx_clientSetAltWeapon_461550"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_stack.go",
+          "line": 67,
+          "text": "func nox_xxx_clientSetAltWeapon_461550(v C.int) C.int {"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 8,
+          "text": "int nox_xxx_clientSetAltWeapon_461550(int a1);"
+        },
+        {
+          "path": "src/legacy/client_inventory_transactions_porttest.go",
+          "line": 23,
+          "text": "return uint32(C.nox_xxx_clientSetAltWeapon_461550(C.int(a)))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_stack.go",
+          "line": 66,
+          "text": "//export nox_xxx_clientSetAltWeapon_461550"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_stack.go",
+          "line": 67,
+          "text": "func nox_xxx_clientSetAltWeapon_461550(v C.int) C.int {"
+        }
+      ]
+    },
+    "nox_xxx_clientTrade_465870": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          21
+        ],
+        "src/legacy/client_inventory_transactions_porttest.go": [
+          63
+        ],
+        "src/legacy/client_ui_inventory_requests.go": [
+          51,
+          52
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 21,
+          "text": "int nox_xxx_clientTrade_465870(short a1);"
+        },
+        {
+          "path": "src/legacy/client_inventory_transactions_porttest.go",
+          "line": 63,
+          "text": "\t\treturn uint32(C.nox_xxx_clientTrade_465870(C.short(a)))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_requests.go",
+          "line": 51,
+          "text": "//export nox_xxx_clientTrade_465870"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_requests.go",
+          "line": 52,
+          "text": "func nox_xxx_clientTrade_465870(v C.short) C.int { return C.int(uiInventoryTrade(28, uint16(v))) }"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 21,
+          "text": "int nox_xxx_clientTrade_465870(short a1);"
+        },
+        {
+          "path": "src/legacy/client_inventory_transactions_porttest.go",
+          "line": 63,
+          "text": "return uint32(C.nox_xxx_clientTrade_465870(C.short(a)))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_requests.go",
+          "line": 51,
+          "text": "//export nox_xxx_clientTrade_465870"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_requests.go",
+          "line": 52,
+          "text": "func nox_xxx_clientTrade_465870(v C.short) C.int { return C.int(uiInventoryTrade(28, uint16(v))) }"
+        }
+      ]
+    },
+    "nox_xxx_clientUpdateButtonRow_45E110": {
+      "ref_count": 9,
+      "paths": {
+        "src/legacy/GAME2.h": [
+          25
+        ],
+        "src/legacy/gui_quickbar_exports.go": [
+          14,
+          15
+        ],
+        "src/legacy/quickbar_porttest.go": [
+          59,
+          239,
+          239
+        ],
+        "src/player_files_gui_porttest_test.go": [
+          57
+        ],
+        "src/quickbar_crossrows_porttest_test.go": [
+          36,
+          43
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 25,
+          "text": "int nox_xxx_clientUpdateButtonRow_45E110(int a1);"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 14,
+          "text": "//export nox_xxx_clientUpdateButtonRow_45E110"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 15,
+          "text": "func nox_xxx_clientUpdateButtonRow_45E110(row C.int) C.int { return C.int(quickbarSelectRow(int(row))) }"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 59,
+          "text": "\tcase \"nox_xxx_clientUpdateButtonRow_45E110\":"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 239,
+          "text": "\t\t\"nox_xxx_clientUpdateButtonRow_45E110\":        unsafe.Pointer(C.nox_xxx_clientUpdateButtonRow_45E110),"
+        },
+        {
+          "path": "src/player_files_gui_porttest_test.go",
+          "line": 57,
+          "text": "\t\t\t\tq.call(\"nox_xxx_clientUpdateButtonRow_45E110\", row)"
+        },
+        {
+          "path": "src/quickbar_crossrows_porttest_test.go",
+          "line": 36,
+          "text": "\t\t\t\tq.call(\"nox_xxx_clientUpdateButtonRow_45E110\", uint32(from))"
+        },
+        {
+          "path": "src/quickbar_crossrows_porttest_test.go",
+          "line": 43,
+          "text": "\t\t\t\tq.call(\"nox_xxx_clientUpdateButtonRow_45E110\", uint32(to))"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 25,
+          "text": "int nox_xxx_clientUpdateButtonRow_45E110(int a1);"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 14,
+          "text": "//export nox_xxx_clientUpdateButtonRow_45E110"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 15,
+          "text": "func nox_xxx_clientUpdateButtonRow_45E110(row C.int) C.int { return C.int(quickbarSelectRow(int(row))) }"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 59,
+          "text": "case \"nox_xxx_clientUpdateButtonRow_45E110\":"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 239,
+          "text": "\"nox_xxx_clientUpdateButtonRow_45E110\":        unsafe.Pointer(C.nox_xxx_clientUpdateButtonRow_45E110),"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 239,
+          "text": "\"nox_xxx_clientUpdateButtonRow_45E110\":        unsafe.Pointer(C.nox_xxx_clientUpdateButtonRow_45E110),"
+        },
+        {
+          "path": "src/player_files_gui_porttest_test.go",
+          "line": 57,
+          "text": "q.call(\"nox_xxx_clientUpdateButtonRow_45E110\", row)"
+        },
+        {
+          "path": "src/quickbar_crossrows_porttest_test.go",
+          "line": 36,
+          "text": "q.call(\"nox_xxx_clientUpdateButtonRow_45E110\", uint32(from))"
+        },
+        {
+          "path": "src/quickbar_crossrows_porttest_test.go",
+          "line": 43,
+          "text": "q.call(\"nox_xxx_clientUpdateButtonRow_45E110\", uint32(to))"
+        }
+      ]
+    },
+    "nox_xxx_clientUse_465C70": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          24
+        ],
+        "src/legacy/client_inventory_transactions_porttest.go": [
+          72
+        ],
+        "src/legacy/client_ui_inventory_requests.go": [
+          41,
+          42
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 24,
+          "text": "void nox_xxx_clientUse_465C70(int a1);"
+        },
+        {
+          "path": "src/legacy/client_inventory_transactions_porttest.go",
+          "line": 72,
+          "text": "\t\tC.nox_xxx_clientUse_465C70(C.int(a))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_requests.go",
+          "line": 41,
+          "text": "//export nox_xxx_clientUse_465C70"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_requests.go",
+          "line": 42,
+          "text": "func nox_xxx_clientUse_465C70(v C.int) { uiInventoryUse(uiInventoryDrawable(uint32(v))) }"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 24,
+          "text": "void nox_xxx_clientUse_465C70(int a1);"
+        },
+        {
+          "path": "src/legacy/client_inventory_transactions_porttest.go",
+          "line": 72,
+          "text": "C.nox_xxx_clientUse_465C70(C.int(a))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_requests.go",
+          "line": 41,
+          "text": "//export nox_xxx_clientUse_465C70"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_requests.go",
+          "line": 42,
+          "text": "func nox_xxx_clientUse_465C70(v C.int) { uiInventoryUse(uiInventoryDrawable(uint32(v))) }"
+        }
+      ]
+    },
+    "nox_xxx_cursorSetTooltip_4776B0": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_2.h": [
+          6
+        ],
+        "src/legacy/client_tooltip_porttest.go": [
+          21
+        ],
+        "src/legacy/client_ui_tooltip.go": [
+          181,
+          182
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_2.h",
+          "line": 6,
+          "text": "void nox_xxx_cursorSetTooltip_4776B0(wchar2_t* a1);"
+        },
+        {
+          "path": "src/legacy/client_tooltip_porttest.go",
+          "line": 21,
+          "text": "\tC.nox_xxx_cursorSetTooltip_4776B0((*C.wchar2_t)(unsafe.Pointer(text)))"
+        },
+        {
+          "path": "src/legacy/client_ui_tooltip.go",
+          "line": 181,
+          "text": "//export nox_xxx_cursorSetTooltip_4776B0"
+        },
+        {
+          "path": "src/legacy/client_ui_tooltip.go",
+          "line": 182,
+          "text": "func nox_xxx_cursorSetTooltip_4776B0(text *C.wchar2_t) {"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_2.h",
+          "line": 6,
+          "text": "void nox_xxx_cursorSetTooltip_4776B0(wchar2_t* a1);"
+        },
+        {
+          "path": "src/legacy/client_tooltip_porttest.go",
+          "line": 21,
+          "text": "C.nox_xxx_cursorSetTooltip_4776B0((*C.wchar2_t)(unsafe.Pointer(text)))"
+        },
+        {
+          "path": "src/legacy/client_ui_tooltip.go",
+          "line": 181,
+          "text": "//export nox_xxx_cursorSetTooltip_4776B0"
+        },
+        {
+          "path": "src/legacy/client_ui_tooltip.go",
+          "line": 182,
+          "text": "func nox_xxx_cursorSetTooltip_4776B0(text *C.wchar2_t) {"
+        }
+      ]
+    },
+    "nox_xxx_guiDrawInventoryTray_4643B0": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          17
+        ],
+        "src/legacy/client_inventory_display_porttest.go": [
+          46
+        ],
+        "src/legacy/client_ui_inventory_display_draw.go": [
+          112,
+          113
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 17,
+          "text": "int nox_xxx_guiDrawInventoryTray_4643B0(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_inventory_display_porttest.go",
+          "line": 46,
+          "text": "\t\treturn uint64(uint32(C.nox_xxx_guiDrawInventoryTray_4643B0(C.int(a), C.int(b))))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_display_draw.go",
+          "line": 112,
+          "text": "//export nox_xxx_guiDrawInventoryTray_4643B0"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_display_draw.go",
+          "line": 113,
+          "text": "func nox_xxx_guiDrawInventoryTray_4643B0(ax, ay C.int) C.int {"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 17,
+          "text": "int nox_xxx_guiDrawInventoryTray_4643B0(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_inventory_display_porttest.go",
+          "line": 46,
+          "text": "return uint64(uint32(C.nox_xxx_guiDrawInventoryTray_4643B0(C.int(a), C.int(b))))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_display_draw.go",
+          "line": 112,
+          "text": "//export nox_xxx_guiDrawInventoryTray_4643B0"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_display_draw.go",
+          "line": 113,
+          "text": "func nox_xxx_guiDrawInventoryTray_4643B0(ax, ay C.int) C.int {"
+        }
+      ]
+    },
+    "nox_xxx_quickBarClose_4606B0": {
+      "ref_count": 7,
+      "paths": {
+        "src/legacy/GAME2.h": [
+          31
+        ],
+        "src/legacy/gui_quickbar_exports.go": [
+          34,
+          35
+        ],
+        "src/legacy/quickbar_porttest.go": [
+          133,
+          272,
+          272
+        ],
+        "src/quickbar_rows_porttest_test.go": [
+          53
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 31,
+          "text": "int nox_xxx_quickBarClose_4606B0();"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 34,
+          "text": "//export nox_xxx_quickBarClose_4606B0"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 35,
+          "text": "func nox_xxx_quickBarClose_4606B0() C.int { return C.int(quickbarCloseExpanded()) }"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 133,
+          "text": "\tcase \"nox_xxx_quickBarClose_4606B0\":"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 272,
+          "text": "\t\t\"nox_xxx_quickBarClose_4606B0\":                unsafe.Pointer(C.nox_xxx_quickBarClose_4606B0),"
+        },
+        {
+          "path": "src/quickbar_rows_porttest_test.go",
+          "line": 53,
+          "text": "\t\tret := q.call(\"nox_xxx_quickBarClose_4606B0\")"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 31,
+          "text": "int nox_xxx_quickBarClose_4606B0();"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 34,
+          "text": "//export nox_xxx_quickBarClose_4606B0"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 35,
+          "text": "func nox_xxx_quickBarClose_4606B0() C.int { return C.int(quickbarCloseExpanded()) }"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 133,
+          "text": "case \"nox_xxx_quickBarClose_4606B0\":"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 272,
+          "text": "\"nox_xxx_quickBarClose_4606B0\":                unsafe.Pointer(C.nox_xxx_quickBarClose_4606B0),"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 272,
+          "text": "\"nox_xxx_quickBarClose_4606B0\":                unsafe.Pointer(C.nox_xxx_quickBarClose_4606B0),"
+        },
+        {
+          "path": "src/quickbar_rows_porttest_test.go",
+          "line": 53,
+          "text": "ret := q.call(\"nox_xxx_quickBarClose_4606B0\")"
+        }
+      ]
+    },
+    "nox_xxx_trade_4657B0": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          20
+        ],
+        "src/legacy/client_inventory_transactions_porttest.go": [
+          61
+        ],
+        "src/legacy/client_ui_inventory_requests.go": [
+          48,
+          49
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 20,
+          "text": "int nox_xxx_trade_4657B0(short a1);"
+        },
+        {
+          "path": "src/legacy/client_inventory_transactions_porttest.go",
+          "line": 61,
+          "text": "\t\treturn uint32(C.nox_xxx_trade_4657B0(C.short(a)))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_requests.go",
+          "line": 48,
+          "text": "//export nox_xxx_trade_4657B0"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_requests.go",
+          "line": 49,
+          "text": "func nox_xxx_trade_4657B0(v C.short) C.int { return C.int(uiInventoryTrade(30, uint16(v))) }"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 20,
+          "text": "int nox_xxx_trade_4657B0(short a1);"
+        },
+        {
+          "path": "src/legacy/client_inventory_transactions_porttest.go",
+          "line": 61,
+          "text": "return uint32(C.nox_xxx_trade_4657B0(C.short(a)))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_requests.go",
+          "line": 48,
+          "text": "//export nox_xxx_trade_4657B0"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_requests.go",
+          "line": 49,
+          "text": "func nox_xxx_trade_4657B0(v C.short) C.int { return C.int(uiInventoryTrade(30, uint16(v))) }"
+        }
+      ]
+    },
+    "nox_xxx_wndClearFlag_46AD80": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/client__gui__window.h": [
+          85
+        ],
+        "src/legacy/client_ui_window.go": [
+          155,
+          156
+        ],
+        "src/legacy/client_window_porttest.go": [
+          43
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/client__gui__window.h",
+          "line": 85,
+          "text": "int nox_xxx_wndClearFlag_46AD80(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 155,
+          "text": "//export nox_xxx_wndClearFlag_46AD80"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 156,
+          "text": "func nox_xxx_wndClearFlag_46AD80(ptr, mask C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 43,
+          "text": "\t\tret = int(C.nox_xxx_wndClearFlag_46AD80(addr, C.int(a)))"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/client__gui__window.h",
+          "line": 85,
+          "text": "int nox_xxx_wndClearFlag_46AD80(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 155,
+          "text": "//export nox_xxx_wndClearFlag_46AD80"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 156,
+          "text": "func nox_xxx_wndClearFlag_46AD80(ptr, mask C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 43,
+          "text": "ret = int(C.nox_xxx_wndClearFlag_46AD80(addr, C.int(a)))"
+        }
+      ]
+    },
+    "nox_xxx_wndGetFlags_46ADA0": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/client__gui__window.h": [
+          86
+        ],
+        "src/legacy/client_ui_window.go": [
+          166,
+          167
+        ],
+        "src/legacy/client_window_porttest.go": [
+          45
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/client__gui__window.h",
+          "line": 86,
+          "text": "int nox_xxx_wndGetFlags_46ADA0(int a1);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 166,
+          "text": "//export nox_xxx_wndGetFlags_46ADA0"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 167,
+          "text": "func nox_xxx_wndGetFlags_46ADA0(ptr C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 45,
+          "text": "\t\tret = int(C.nox_xxx_wndGetFlags_46ADA0(addr))"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/client__gui__window.h",
+          "line": 86,
+          "text": "int nox_xxx_wndGetFlags_46ADA0(int a1);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 166,
+          "text": "//export nox_xxx_wndGetFlags_46ADA0"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 167,
+          "text": "func nox_xxx_wndGetFlags_46ADA0(ptr C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 45,
+          "text": "ret = int(C.nox_xxx_wndGetFlags_46ADA0(addr))"
+        }
+      ]
+    },
+    "nox_xxx_wndGetHandle_4676A0": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          37
+        ],
+        "src/legacy/client_inventory_porttest.go": [
+          63
+        ],
+        "src/legacy/client_ui_inventory_state.go": [
+          93,
+          94
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 37,
+          "text": "nox_window* nox_xxx_wndGetHandle_4676A0();"
+        },
+        {
+          "path": "src/legacy/client_inventory_porttest.go",
+          "line": 63,
+          "text": "\t\treturn uint32(uintptr(unsafe.Pointer(C.nox_xxx_wndGetHandle_4676A0())))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_state.go",
+          "line": 93,
+          "text": "//export nox_xxx_wndGetHandle_4676A0"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_state.go",
+          "line": 94,
+          "text": "func nox_xxx_wndGetHandle_4676A0() *C.nox_window {"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 37,
+          "text": "nox_window* nox_xxx_wndGetHandle_4676A0();"
+        },
+        {
+          "path": "src/legacy/client_inventory_porttest.go",
+          "line": 63,
+          "text": "return uint32(uintptr(unsafe.Pointer(C.nox_xxx_wndGetHandle_4676A0())))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_state.go",
+          "line": 93,
+          "text": "//export nox_xxx_wndGetHandle_4676A0"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_state.go",
+          "line": 94,
+          "text": "func nox_xxx_wndGetHandle_4676A0() *C.nox_window {"
+        }
+      ]
+    },
+    "nox_xxx_wndRetNULL_46A8A0": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          46
+        ],
+        "src/legacy/client_ui_window.go": [
+          227,
+          228
+        ],
+        "src/legacy/client_window_porttest.go": [
+          77
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 46,
+          "text": "int nox_xxx_wndRetNULL_46A8A0();"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 227,
+          "text": "//export nox_xxx_wndRetNULL_46A8A0"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 228,
+          "text": "func nox_xxx_wndRetNULL_46A8A0() C.int { return 0 }"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 77,
+          "text": "\t\tret = int(C.nox_xxx_wndRetNULL_46A8A0())"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 46,
+          "text": "int nox_xxx_wndRetNULL_46A8A0();"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 227,
+          "text": "//export nox_xxx_wndRetNULL_46A8A0"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 228,
+          "text": "func nox_xxx_wndRetNULL_46A8A0() C.int { return 0 }"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 77,
+          "text": "ret = int(C.nox_xxx_wndRetNULL_46A8A0())"
+        }
+      ]
+    },
+    "nox_xxx_wndSetIconLit_46AEA0": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          50
+        ],
+        "src/legacy/client_ui_window.go": [
+          266,
+          267
+        ],
+        "src/legacy/client_window_porttest.go": [
+          57
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 50,
+          "text": "int nox_xxx_wndSetIconLit_46AEA0(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 266,
+          "text": "//export nox_xxx_wndSetIconLit_46AEA0"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 267,
+          "text": "func nox_xxx_wndSetIconLit_46AEA0(ptr, img C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 57,
+          "text": "\t\tret = int(C.nox_xxx_wndSetIconLit_46AEA0(addr, C.int(uintptr(other))))"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 50,
+          "text": "int nox_xxx_wndSetIconLit_46AEA0(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 266,
+          "text": "//export nox_xxx_wndSetIconLit_46AEA0"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 267,
+          "text": "func nox_xxx_wndSetIconLit_46AEA0(ptr, img C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 57,
+          "text": "ret = int(C.nox_xxx_wndSetIconLit_46AEA0(addr, C.int(uintptr(other))))"
+        }
+      ]
+    },
+    "nox_xxx_wndSetIcon_46AE60": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          49
+        ],
+        "src/legacy/client_ui_window.go": [
+          261,
+          262
+        ],
+        "src/legacy/client_window_porttest.go": [
+          55
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 49,
+          "text": "int nox_xxx_wndSetIcon_46AE60(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 261,
+          "text": "//export nox_xxx_wndSetIcon_46AE60"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 262,
+          "text": "func nox_xxx_wndSetIcon_46AE60(ptr, img C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 55,
+          "text": "\t\tret = int(C.nox_xxx_wndSetIcon_46AE60(addr, C.int(uintptr(other))))"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 49,
+          "text": "int nox_xxx_wndSetIcon_46AE60(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 261,
+          "text": "//export nox_xxx_wndSetIcon_46AE60"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 262,
+          "text": "func nox_xxx_wndSetIcon_46AE60(ptr, img C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 55,
+          "text": "ret = int(C.nox_xxx_wndSetIcon_46AE60(addr, C.int(uintptr(other))))"
+        }
+      ]
+    },
+    "nox_xxx_wndSetOffsetMB_46AE40": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          48
+        ],
+        "src/legacy/client_ui_window.go": [
+          243,
+          244
+        ],
+        "src/legacy/client_window_porttest.go": [
+          53
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 48,
+          "text": "int nox_xxx_wndSetOffsetMB_46AE40(int a1, int a2, int a3);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 243,
+          "text": "//export nox_xxx_wndSetOffsetMB_46AE40"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 244,
+          "text": "func nox_xxx_wndSetOffsetMB_46AE40(ptr, x, y C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 53,
+          "text": "\t\tret = int(C.nox_xxx_wndSetOffsetMB_46AE40(addr, C.int(a), C.int(b)))"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 48,
+          "text": "int nox_xxx_wndSetOffsetMB_46AE40(int a1, int a2, int a3);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 243,
+          "text": "//export nox_xxx_wndSetOffsetMB_46AE40"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 244,
+          "text": "func nox_xxx_wndSetOffsetMB_46AE40(ptr, x, y C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 53,
+          "text": "ret = int(C.nox_xxx_wndSetOffsetMB_46AE40(addr, C.int(a), C.int(b)))"
+        }
+      ]
+    },
+    "nox_xxx_wnd_46ABB0": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/client__gui__window.h": [
+          76
+        ],
+        "src/legacy/client_ui_window.go": [
+          139,
+          140
+        ],
+        "src/legacy/client_window_porttest.go": [
+          39
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/client__gui__window.h",
+          "line": 76,
+          "text": "int nox_xxx_wnd_46ABB0(nox_window* win, int a2);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 139,
+          "text": "//export nox_xxx_wnd_46ABB0"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 140,
+          "text": "func nox_xxx_wnd_46ABB0(w *nox_window, enabled C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 39,
+          "text": "\t\tret = int(C.nox_xxx_wnd_46ABB0(p, C.int(a)))"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/client__gui__window.h",
+          "line": 76,
+          "text": "int nox_xxx_wnd_46ABB0(nox_window* win, int a2);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 139,
+          "text": "//export nox_xxx_wnd_46ABB0"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 140,
+          "text": "func nox_xxx_wnd_46ABB0(w *nox_window, enabled C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 39,
+          "text": "ret = int(C.nox_xxx_wnd_46ABB0(p, C.int(a)))"
+        }
+      ]
+    },
+    "nox_xxx_wnd_46AD60": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/client__gui__window.h": [
+          94
+        ],
+        "src/legacy/client_ui_window.go": [
+          144,
+          145
+        ],
+        "src/legacy/client_window_porttest.go": [
+          41
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/client__gui__window.h",
+          "line": 94,
+          "text": "int nox_xxx_wnd_46AD60(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 144,
+          "text": "//export nox_xxx_wnd_46AD60"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 145,
+          "text": "func nox_xxx_wnd_46AD60(ptr, mask C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 41,
+          "text": "\t\tret = int(C.nox_xxx_wnd_46AD60(addr, C.int(a)))"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/client__gui__window.h",
+          "line": 94,
+          "text": "int nox_xxx_wnd_46AD60(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 144,
+          "text": "//export nox_xxx_wnd_46AD60"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 145,
+          "text": "func nox_xxx_wnd_46AD60(ptr, mask C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 41,
+          "text": "ret = int(C.nox_xxx_wnd_46AD60(addr, C.int(a)))"
+        }
+      ]
+    },
+    "nox_xxx_wnd_46B280": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/client__gui__window.h": [
+          92
+        ],
+        "src/legacy/client_ui_window.go": [
+          188,
+          189
+        ],
+        "src/legacy/client_window_porttest.go": [
+          49
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/client__gui__window.h",
+          "line": 92,
+          "text": "int nox_xxx_wnd_46B280(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 188,
+          "text": "//export nox_xxx_wnd_46B280"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 189,
+          "text": "func nox_xxx_wnd_46B280(ptr, owner C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 49,
+          "text": "\t\tret = int(C.nox_xxx_wnd_46B280(addr, C.int(uintptr(other))))"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/client__gui__window.h",
+          "line": 92,
+          "text": "int nox_xxx_wnd_46B280(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 188,
+          "text": "//export nox_xxx_wnd_46B280"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 189,
+          "text": "func nox_xxx_wnd_46B280(ptr, owner C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 49,
+          "text": "ret = int(C.nox_xxx_wnd_46B280(addr, C.int(uintptr(other))))"
+        }
+      ]
+    },
+    "sub_430B50": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME1_2.h": [
+          8
+        ],
+        "src/legacy/client_ui_render_exports.go": [
+          9,
+          10
+        ],
+        "src/legacy/client_ui_render_porttest.go": [
+          29
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME1_2.h",
+          "line": 8,
+          "text": "int sub_430B50(int a1, int a2, int a3, int a4);"
+        },
+        {
+          "path": "src/legacy/client_ui_render_exports.go",
+          "line": 9,
+          "text": "//export sub_430B50"
+        },
+        {
+          "path": "src/legacy/client_ui_render_exports.go",
+          "line": 10,
+          "text": "func sub_430B50(x1, y1, x2, y2 C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_ui_render_porttest.go",
+          "line": 29,
+          "text": "\t\treturn int32(C.sub_430B50(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3])))"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME1_2.h",
+          "line": 8,
+          "text": "int sub_430B50(int a1, int a2, int a3, int a4);"
+        },
+        {
+          "path": "src/legacy/client_ui_render_exports.go",
+          "line": 9,
+          "text": "//export sub_430B50"
+        },
+        {
+          "path": "src/legacy/client_ui_render_exports.go",
+          "line": 10,
+          "text": "func sub_430B50(x1, y1, x2, y2 C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_ui_render_porttest.go",
+          "line": 29,
+          "text": "return int32(C.sub_430B50(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3])))"
+        }
+      ]
+    },
+    "sub_45CFC0": {
+      "ref_count": 15,
+      "paths": {
+        "src/legacy/GAME2.h": [
+          18
+        ],
+        "src/legacy/book_porttest.go": [
+          14,
+          65,
+          66,
+          132,
+          132
+        ],
+        "src/legacy/gui_book_exports.go": [
+          15,
+          16
+        ],
+        "src/spellbook_drag_hide_porttest_test.go": [
+          29,
+          41
+        ],
+        "src/spellbook_show_porttest_test.go": [
+          41,
+          54
+        ],
+        "src/spellbook_visibility_porttest_test.go": [
+          24,
+          32,
+          49
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 18,
+          "text": "int sub_45CFC0();"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 14,
+          "text": "int sub_45CFC0();"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 65,
+          "text": "\tcase \"sub_45CFC0\":"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 66,
+          "text": "\t\treturn uint32(C.sub_45CFC0())"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 132,
+          "text": "\t\t\"sub_45CFC0\":                               unsafe.Pointer(C.sub_45CFC0),"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 15,
+          "text": "//export sub_45CFC0"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 16,
+          "text": "func sub_45CFC0() C.int { return C.int(bookShown()) }"
+        },
+        {
+          "path": "src/spellbook_drag_hide_porttest_test.go",
+          "line": 29,
+          "text": "\t\t\tif o.bookCall(\"sub_45CFC0\") != 1 || o.bookWindow().GetFlags().IsHidden() {"
+        },
+        {
+          "path": "src/spellbook_drag_hide_porttest_test.go",
+          "line": 41,
+          "text": "\t\t\tif o.bookCall(\"sub_45CFC0\") != 0 || o.c.GUI.Captured() != nil {"
+        },
+        {
+          "path": "src/spellbook_show_porttest_test.go",
+          "line": 41,
+          "text": "\t\t\t\t\tif (o.bookCall(\"sub_45CFC0\") != 0) != shown {"
+        },
+        {
+          "path": "src/spellbook_show_porttest_test.go",
+          "line": 54,
+          "text": "\t\t\t\t\t\tif o.bookCall(\"sub_45CFC0\") != 0 {"
+        },
+        {
+          "path": "src/spellbook_visibility_porttest_test.go",
+          "line": 24,
+          "text": "\t\t\tif o.bookCall(\"sub_45CFC0\") != 0 {"
+        },
+        {
+          "path": "src/spellbook_visibility_porttest_test.go",
+          "line": 32,
+          "text": "\t\t\t\tif o.bookCall(\"sub_45CFC0\") != 1 || o.bookWindow().GetFlags().IsHidden() {"
+        },
+        {
+          "path": "src/spellbook_visibility_porttest_test.go",
+          "line": 49,
+          "text": "\t\t\t\tif ret != 1 || o.bookCall(\"sub_45CFC0\") != 0 || o.c.GUI.Captured() != nil || *o.words[\"dword_5d4594_1046868\"] != guide {"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 18,
+          "text": "int sub_45CFC0();"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 14,
+          "text": "int sub_45CFC0();"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 65,
+          "text": "case \"sub_45CFC0\":"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 66,
+          "text": "return uint32(C.sub_45CFC0())"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 132,
+          "text": "\"sub_45CFC0\":                               unsafe.Pointer(C.sub_45CFC0),"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 132,
+          "text": "\"sub_45CFC0\":                               unsafe.Pointer(C.sub_45CFC0),"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 15,
+          "text": "//export sub_45CFC0"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 16,
+          "text": "func sub_45CFC0() C.int { return C.int(bookShown()) }"
+        },
+        {
+          "path": "src/spellbook_drag_hide_porttest_test.go",
+          "line": 29,
+          "text": "if o.bookCall(\"sub_45CFC0\") != 1 || o.bookWindow().GetFlags().IsHidden() {"
+        },
+        {
+          "path": "src/spellbook_drag_hide_porttest_test.go",
+          "line": 41,
+          "text": "if o.bookCall(\"sub_45CFC0\") != 0 || o.c.GUI.Captured() != nil {"
+        },
+        {
+          "path": "src/spellbook_show_porttest_test.go",
+          "line": 41,
+          "text": "if (o.bookCall(\"sub_45CFC0\") != 0) != shown {"
+        },
+        {
+          "path": "src/spellbook_show_porttest_test.go",
+          "line": 54,
+          "text": "if o.bookCall(\"sub_45CFC0\") != 0 {"
+        },
+        {
+          "path": "src/spellbook_visibility_porttest_test.go",
+          "line": 24,
+          "text": "if o.bookCall(\"sub_45CFC0\") != 0 {"
+        },
+        {
+          "path": "src/spellbook_visibility_porttest_test.go",
+          "line": 32,
+          "text": "if o.bookCall(\"sub_45CFC0\") != 1 || o.bookWindow().GetFlags().IsHidden() {"
+        },
+        {
+          "path": "src/spellbook_visibility_porttest_test.go",
+          "line": 49,
+          "text": "if ret != 1 || o.bookCall(\"sub_45CFC0\") != 0 || o.c.GUI.Captured() != nil || *o.words[\"dword_5d4594_1046868\"] != guide {"
+        }
+      ]
+    },
+    "sub_45D500": {
+      "ref_count": 9,
+      "paths": {
+        "src/legacy/GAME2.h": [
+          21
+        ],
+        "src/legacy/book_porttest.go": [
+          17,
+          84,
+          85,
+          140,
+          140
+        ],
+        "src/legacy/gui_book_exports.go": [
+          42,
+          43
+        ],
+        "src/spellbook_controls_porttest_test.go": [
+          74
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 21,
+          "text": "int sub_45D500(int a1);"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 17,
+          "text": "int sub_45D500(int a1);"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 84,
+          "text": "\tcase \"sub_45D500\":"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 85,
+          "text": "\t\treturn uint32(C.sub_45D500(C.int(a[0])))"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 140,
+          "text": "\t\t\"sub_45D500\":                               unsafe.Pointer(C.sub_45D500),"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 42,
+          "text": "//export sub_45D500"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 43,
+          "text": "func sub_45D500(show C.int) C.int { return C.int(bookTemporaryShow(int(show))) }"
+        },
+        {
+          "path": "src/spellbook_controls_porttest_test.go",
+          "line": 74,
+          "text": "\t\t\t\tret := o.bookCall(\"sub_45D500\", show)"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 21,
+          "text": "int sub_45D500(int a1);"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 17,
+          "text": "int sub_45D500(int a1);"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 84,
+          "text": "case \"sub_45D500\":"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 85,
+          "text": "return uint32(C.sub_45D500(C.int(a[0])))"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 140,
+          "text": "\"sub_45D500\":                               unsafe.Pointer(C.sub_45D500),"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 140,
+          "text": "\"sub_45D500\":                               unsafe.Pointer(C.sub_45D500),"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 42,
+          "text": "//export sub_45D500"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 43,
+          "text": "func sub_45D500(show C.int) C.int { return C.int(bookTemporaryShow(int(show))) }"
+        },
+        {
+          "path": "src/spellbook_controls_porttest_test.go",
+          "line": 74,
+          "text": "ret := o.bookCall(\"sub_45D500\", show)"
+        }
+      ]
+    },
+    "sub_45D870": {
+      "ref_count": 10,
+      "paths": {
+        "src/legacy/book_porttest.go": [
+          21,
+          107,
+          108,
+          150,
+          150
+        ],
+        "src/legacy/client__gui__guibook.h": [
+          8
+        ],
+        "src/legacy/gui_book_exports.go": [
+          51,
+          52
+        ],
+        "src/legacy/input_c.go": [
+          19
+        ],
+        "src/spellbook_animation_frames_porttest_test.go": [
+          79
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 21,
+          "text": "void sub_45D870();"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 107,
+          "text": "\tcase \"sub_45D870\":"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 108,
+          "text": "\t\tC.sub_45D870()"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 150,
+          "text": "\t\t\"sub_45D870\":                               unsafe.Pointer(C.sub_45D870),"
+        },
+        {
+          "path": "src/legacy/client__gui__guibook.h",
+          "line": 8,
+          "text": "void sub_45D870();"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 51,
+          "text": "//export sub_45D870"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 52,
+          "text": "func sub_45D870() { bookFinishAddition() }"
+        },
+        {
+          "path": "src/legacy/input_c.go",
+          "line": 19,
+          "text": "void sub_45D870();"
+        },
+        {
+          "path": "src/spellbook_animation_frames_porttest_test.go",
+          "line": 79,
+          "text": "\t\t\t\t\t\t\to.bookCall(\"sub_45D870\")"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 21,
+          "text": "void sub_45D870();"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 107,
+          "text": "case \"sub_45D870\":"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 108,
+          "text": "C.sub_45D870()"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 150,
+          "text": "\"sub_45D870\":                               unsafe.Pointer(C.sub_45D870),"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 150,
+          "text": "\"sub_45D870\":                               unsafe.Pointer(C.sub_45D870),"
+        },
+        {
+          "path": "src/legacy/client__gui__guibook.h",
+          "line": 8,
+          "text": "void sub_45D870();"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 51,
+          "text": "//export sub_45D870"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 52,
+          "text": "func sub_45D870() { bookFinishAddition() }"
+        },
+        {
+          "path": "src/legacy/input_c.go",
+          "line": 19,
+          "text": "void sub_45D870();"
+        },
+        {
+          "path": "src/spellbook_animation_frames_porttest_test.go",
+          "line": 79,
+          "text": "o.bookCall(\"sub_45D870\")"
+        }
+      ]
+    },
+    "sub_45D9B0": {
+      "ref_count": 11,
+      "paths": {
+        "src/legacy/GAME2.h": [
+          23
+        ],
+        "src/legacy/book_porttest.go": [
+          19,
+          96,
+          97,
+          145,
+          145
+        ],
+        "src/legacy/client_ui_shop_input.go": [
+          5
+        ],
+        "src/legacy/gui_book_exports.go": [
+          48,
+          49
+        ],
+        "src/spellbook_controls_porttest_test.go": [
+          89,
+          93
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 23,
+          "text": "int sub_45D9B0();"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 19,
+          "text": "int sub_45D9B0();"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 96,
+          "text": "\tcase \"sub_45D9B0\":"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 97,
+          "text": "\t\treturn uint32(C.sub_45D9B0())"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 145,
+          "text": "\t\t\"sub_45D9B0\":                               unsafe.Pointer(C.sub_45D9B0),"
+        },
+        {
+          "path": "src/legacy/client_ui_shop_input.go",
+          "line": 5,
+          "text": "int sub_45D9B0(void);"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 48,
+          "text": "//export sub_45D9B0"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 49,
+          "text": "func sub_45D9B0() C.int { return C.int(*bookWord(1047520)) }"
+        },
+        {
+          "path": "src/spellbook_controls_porttest_test.go",
+          "line": 89,
+          "text": "\t\tif o.bookCall(\"sub_45D9B0\") != active {"
+        },
+        {
+          "path": "src/spellbook_controls_porttest_test.go",
+          "line": 93,
+          "text": "\t\tif o.bookCall(\"sub_45D9B0\") != 0 {"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 23,
+          "text": "int sub_45D9B0();"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 19,
+          "text": "int sub_45D9B0();"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 96,
+          "text": "case \"sub_45D9B0\":"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 97,
+          "text": "return uint32(C.sub_45D9B0())"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 145,
+          "text": "\"sub_45D9B0\":                               unsafe.Pointer(C.sub_45D9B0),"
+        },
+        {
+          "path": "src/legacy/book_porttest.go",
+          "line": 145,
+          "text": "\"sub_45D9B0\":                               unsafe.Pointer(C.sub_45D9B0),"
+        },
+        {
+          "path": "src/legacy/client_ui_shop_input.go",
+          "line": 5,
+          "text": "int sub_45D9B0(void);"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 48,
+          "text": "//export sub_45D9B0"
+        },
+        {
+          "path": "src/legacy/gui_book_exports.go",
+          "line": 49,
+          "text": "func sub_45D9B0() C.int { return C.int(*bookWord(1047520)) }"
+        },
+        {
+          "path": "src/spellbook_controls_porttest_test.go",
+          "line": 89,
+          "text": "if o.bookCall(\"sub_45D9B0\") != active {"
+        },
+        {
+          "path": "src/spellbook_controls_porttest_test.go",
+          "line": 93,
+          "text": "if o.bookCall(\"sub_45D9B0\") != 0 {"
+        }
+      ]
+    },
+    "sub_4602F0": {
+      "ref_count": 8,
+      "paths": {
+        "src/legacy/GAME2.h": [
+          27
+        ],
+        "src/legacy/gui_quickbar_exports.go": [
+          20,
+          21
+        ],
+        "src/legacy/quickbar_porttest.go": [
+          105,
+          260,
+          260
+        ],
+        "src/quickbar_clear_porttest_test.go": [
+          16,
+          34
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 27,
+          "text": "void* sub_4602F0();"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 20,
+          "text": "//export sub_4602F0"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 21,
+          "text": "func sub_4602F0() unsafe.Pointer { return unsafe.Pointer(uintptr(quickbarClearSlots())) }"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 105,
+          "text": "\tcase \"sub_4602F0\":"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 260,
+          "text": "\t\t\"sub_4602F0\":                                  unsafe.Pointer(C.sub_4602F0),"
+        },
+        {
+          "path": "src/quickbar_clear_porttest_test.go",
+          "line": 16,
+          "text": "\t\tfor _, op := range []string{\"sub_4602F0\", \"sub_460380\", \"sub_461360\", \"sub_461400\"} {"
+        },
+        {
+          "path": "src/quickbar_clear_porttest_test.go",
+          "line": 34,
+          "text": "\t\t\t\tcase \"sub_4602F0\", \"sub_460380\":"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 27,
+          "text": "void* sub_4602F0();"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 20,
+          "text": "//export sub_4602F0"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 21,
+          "text": "func sub_4602F0() unsafe.Pointer { return unsafe.Pointer(uintptr(quickbarClearSlots())) }"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 105,
+          "text": "case \"sub_4602F0\":"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 260,
+          "text": "\"sub_4602F0\":                                  unsafe.Pointer(C.sub_4602F0),"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 260,
+          "text": "\"sub_4602F0\":                                  unsafe.Pointer(C.sub_4602F0),"
+        },
+        {
+          "path": "src/quickbar_clear_porttest_test.go",
+          "line": 16,
+          "text": "for _, op := range []string{\"sub_4602F0\", \"sub_460380\", \"sub_461360\", \"sub_461400\"} {"
+        },
+        {
+          "path": "src/quickbar_clear_porttest_test.go",
+          "line": 34,
+          "text": "case \"sub_4602F0\", \"sub_460380\":"
+        }
+      ]
+    },
+    "sub_4604E0": {
+      "ref_count": 9,
+      "paths": {
+        "src/legacy/GAME2.h": [
+          29
+        ],
+        "src/legacy/gui_quickbar_exports.go": [
+          28,
+          29
+        ],
+        "src/legacy/quickbar_porttest.go": [
+          117,
+          265,
+          265
+        ],
+        "src/player_files_gui_porttest_test.go": [
+          102
+        ],
+        "src/quickbar_controls_porttest_test.go": [
+          91
+        ],
+        "src/quickbar_rows_porttest_test.go": [
+          101
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 29,
+          "text": "int sub_4604E0();"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 28,
+          "text": "//export sub_4604E0"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 29,
+          "text": "func sub_4604E0() C.int { return C.int(*quickbarByte(1048140)) }"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 117,
+          "text": "\tcase \"sub_4604E0\":"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 265,
+          "text": "\t\t\"sub_4604E0\":                                  unsafe.Pointer(C.sub_4604E0),"
+        },
+        {
+          "path": "src/player_files_gui_porttest_test.go",
+          "line": 102,
+          "text": "\t\tif q.call(\"nox_xxx_buttonsGetSelectedRow_45E180\") != selected || q.call(\"sub_4604E0\") != trap {"
+        },
+        {
+          "path": "src/quickbar_controls_porttest_test.go",
+          "line": 91,
+          "text": "\t\t\t\tq.check(t, byte(q.bar[50]) == byte(wantRow) && q.call(\"sub_4604E0\") == wantTrap, \"control changes correct row owner\")"
+        },
+        {
+          "path": "src/quickbar_rows_porttest_test.go",
+          "line": 101,
+          "text": "\t\t\tq.check(t, q.call(\"sub_4604E0\") == want, \"trap row wraps across three rows\")"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 29,
+          "text": "int sub_4604E0();"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 28,
+          "text": "//export sub_4604E0"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 29,
+          "text": "func sub_4604E0() C.int { return C.int(*quickbarByte(1048140)) }"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 117,
+          "text": "case \"sub_4604E0\":"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 265,
+          "text": "\"sub_4604E0\":                                  unsafe.Pointer(C.sub_4604E0),"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 265,
+          "text": "\"sub_4604E0\":                                  unsafe.Pointer(C.sub_4604E0),"
+        },
+        {
+          "path": "src/player_files_gui_porttest_test.go",
+          "line": 102,
+          "text": "if q.call(\"nox_xxx_buttonsGetSelectedRow_45E180\") != selected || q.call(\"sub_4604E0\") != trap {"
+        },
+        {
+          "path": "src/quickbar_controls_porttest_test.go",
+          "line": 91,
+          "text": "q.check(t, byte(q.bar[50]) == byte(wantRow) && q.call(\"sub_4604E0\") == wantTrap, \"control changes correct row owner\")"
+        },
+        {
+          "path": "src/quickbar_rows_porttest_test.go",
+          "line": 101,
+          "text": "q.check(t, q.call(\"sub_4604E0\") == want, \"trap row wraps across three rows\")"
+        }
+      ]
+    },
+    "sub_460660": {
+      "ref_count": 6,
+      "paths": {
+        "src/legacy/GAME2.h": [
+          30
+        ],
+        "src/legacy/gui_quickbar_exports.go": [
+          31,
+          32
+        ],
+        "src/legacy/quickbar_porttest.go": [
+          131,
+          271,
+          271
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 30,
+          "text": "int sub_460660();"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 31,
+          "text": "//export sub_460660"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 32,
+          "text": "func sub_460660() C.int { return C.int(quickbarCancelCapture()) }"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 131,
+          "text": "\tcase \"sub_460660\":"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 271,
+          "text": "\t\t\"sub_460660\":                                  unsafe.Pointer(C.sub_460660),"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 30,
+          "text": "int sub_460660();"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 31,
+          "text": "//export sub_460660"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 32,
+          "text": "func sub_460660() C.int { return C.int(quickbarCancelCapture()) }"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 131,
+          "text": "case \"sub_460660\":"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 271,
+          "text": "\"sub_460660\":                                  unsafe.Pointer(C.sub_460660),"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 271,
+          "text": "\"sub_460660\":                                  unsafe.Pointer(C.sub_460660),"
+        }
+      ]
+    },
+    "sub_460940": {
+      "ref_count": 8,
+      "paths": {
+        "src/legacy/GAME2.h": [
+          32
+        ],
+        "src/legacy/gui_quickbar_exports.go": [
+          37,
+          38
+        ],
+        "src/legacy/quickbar_porttest.go": [
+          138,
+          274,
+          274
+        ],
+        "src/quickbar_save_owners_porttest_test.go": [
+          83,
+          107
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 32,
+          "text": "int sub_460940(void* this);"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 37,
+          "text": "//export sub_460940"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 38,
+          "text": "func sub_460940(_ unsafe.Pointer) C.int { return C.int(quickbarSave()) }"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 138,
+          "text": "\tcase \"sub_460940\":"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 274,
+          "text": "\t\t\"sub_460940\":                                  unsafe.Pointer(C.sub_460940),"
+        },
+        {
+          "path": "src/quickbar_save_owners_porttest_test.go",
+          "line": 83,
+          "text": "\t\t\tret := q.call(\"sub_460940\")"
+        },
+        {
+          "path": "src/quickbar_save_owners_porttest_test.go",
+          "line": 107,
+          "text": "\t\t\tret = q.call(\"sub_460940\")"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2.h",
+          "line": 32,
+          "text": "int sub_460940(void* this);"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 37,
+          "text": "//export sub_460940"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 38,
+          "text": "func sub_460940(_ unsafe.Pointer) C.int { return C.int(quickbarSave()) }"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 138,
+          "text": "case \"sub_460940\":"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 274,
+          "text": "\"sub_460940\":                                  unsafe.Pointer(C.sub_460940),"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 274,
+          "text": "\"sub_460940\":                                  unsafe.Pointer(C.sub_460940),"
+        },
+        {
+          "path": "src/quickbar_save_owners_porttest_test.go",
+          "line": 83,
+          "text": "ret := q.call(\"sub_460940\")"
+        },
+        {
+          "path": "src/quickbar_save_owners_porttest_test.go",
+          "line": 107,
+          "text": "ret = q.call(\"sub_460940\")"
+        }
+      ]
+    },
+    "sub_460EA0": {
+      "ref_count": 6,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          7
+        ],
+        "src/legacy/gui_quickbar_exports.go": [
+          42,
+          43
+        ],
+        "src/legacy/quickbar_porttest.go": [
+          150,
+          280,
+          280
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 7,
+          "text": "int sub_460EA0(int a1);"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 42,
+          "text": "//export sub_460EA0"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 43,
+          "text": "func sub_460EA0(show C.int) C.int { return C.int(quickbarVisible(show != 0)) }"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 150,
+          "text": "\tcase \"sub_460EA0\":"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 280,
+          "text": "\t\t\"sub_460EA0\":                                  unsafe.Pointer(C.sub_460EA0),"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 7,
+          "text": "int sub_460EA0(int a1);"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 42,
+          "text": "//export sub_460EA0"
+        },
+        {
+          "path": "src/legacy/gui_quickbar_exports.go",
+          "line": 43,
+          "text": "func sub_460EA0(show C.int) C.int { return C.int(quickbarVisible(show != 0)) }"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 150,
+          "text": "case \"sub_460EA0\":"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 280,
+          "text": "\"sub_460EA0\":                                  unsafe.Pointer(C.sub_460EA0),"
+        },
+        {
+          "path": "src/legacy/quickbar_porttest.go",
+          "line": 280,
+          "text": "\"sub_460EA0\":                                  unsafe.Pointer(C.sub_460EA0),"
+        }
+      ]
+    },
+    "sub_4615C0": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          9
+        ],
+        "src/legacy/client_inventory_porttest.go": [
+          20
+        ],
+        "src/legacy/client_ui_inventory_queries.go": [
+          132,
+          133
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 9,
+          "text": "int sub_4615C0();"
+        },
+        {
+          "path": "src/legacy/client_inventory_porttest.go",
+          "line": 20,
+          "text": "\t\treturn uint32(C.sub_4615C0())"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_queries.go",
+          "line": 132,
+          "text": "//export sub_4615C0"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_queries.go",
+          "line": 133,
+          "text": "func sub_4615C0() int { return int(uintptr(unsafe.Pointer(uiInventoryCurrentWeapon()))) }"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 9,
+          "text": "int sub_4615C0();"
+        },
+        {
+          "path": "src/legacy/client_inventory_porttest.go",
+          "line": 20,
+          "text": "return uint32(C.sub_4615C0())"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_queries.go",
+          "line": 132,
+          "text": "//export sub_4615C0"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_queries.go",
+          "line": 133,
+          "text": "func sub_4615C0() int { return int(uintptr(unsafe.Pointer(uiInventoryCurrentWeapon()))) }"
+        }
+      ]
+    },
+    "sub_461B50": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          12
+        ],
+        "src/legacy/client_inventory_transactions_porttest.go": [
+          38
+        ],
+        "src/legacy/client_ui_inventory_stack.go": [
+          250,
+          251
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 12,
+          "text": "unsigned char* sub_461B50();"
+        },
+        {
+          "path": "src/legacy/client_inventory_transactions_porttest.go",
+          "line": 38,
+          "text": "\t\treturn uint32(uintptr(unsafe.Pointer(C.sub_461B50())))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_stack.go",
+          "line": 250,
+          "text": "//export sub_461B50"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_stack.go",
+          "line": 251,
+          "text": "func sub_461B50() *C.uchar { return (*C.uchar)(unsafe.Pointer(uiInventoryCompact())) }"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 12,
+          "text": "unsigned char* sub_461B50();"
+        },
+        {
+          "path": "src/legacy/client_inventory_transactions_porttest.go",
+          "line": 38,
+          "text": "return uint32(uintptr(unsafe.Pointer(C.sub_461B50())))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_stack.go",
+          "line": 250,
+          "text": "//export sub_461B50"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_stack.go",
+          "line": 251,
+          "text": "func sub_461B50() *C.uchar { return (*C.uchar)(unsafe.Pointer(uiInventoryCompact())) }"
+        }
+      ]
+    },
+    "sub_461EF0": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          13
+        ],
+        "src/legacy/client_inventory_porttest.go": [
+          26
+        ],
+        "src/legacy/client_ui_inventory_queries.go": [
+          152,
+          153
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 13,
+          "text": "char* sub_461EF0(int a1);"
+        },
+        {
+          "path": "src/legacy/client_inventory_porttest.go",
+          "line": 26,
+          "text": "\t\treturn uint32(uintptr(unsafe.Pointer(C.sub_461EF0(C.int(a)))))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_queries.go",
+          "line": 152,
+          "text": "//export sub_461EF0"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_queries.go",
+          "line": 153,
+          "text": "func sub_461EF0(code int) *C.char {"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 13,
+          "text": "char* sub_461EF0(int a1);"
+        },
+        {
+          "path": "src/legacy/client_inventory_porttest.go",
+          "line": 26,
+          "text": "return uint32(uintptr(unsafe.Pointer(C.sub_461EF0(C.int(a)))))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_queries.go",
+          "line": 152,
+          "text": "//export sub_461EF0"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_queries.go",
+          "line": 153,
+          "text": "func sub_461EF0(code int) *C.char {"
+        }
+      ]
+    },
+    "sub_462740": {
+      "ref_count": 5,
+      "paths": {
+        "src/legacy/client__gui__guiinv.h": [
+          6
+        ],
+        "src/legacy/client_inventory_window_environment_porttest.go": [
+          89
+        ],
+        "src/legacy/client_inventory_window_porttest.go": [
+          21
+        ],
+        "src/legacy/client_ui_inventory_window_state.go": [
+          40,
+          41
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/client__gui__guiinv.h",
+          "line": 6,
+          "text": "int sub_462740();"
+        },
+        {
+          "path": "src/legacy/client_inventory_window_environment_porttest.go",
+          "line": 89,
+          "text": "\t\tC.sub_462740,"
+        },
+        {
+          "path": "src/legacy/client_inventory_window_porttest.go",
+          "line": 21,
+          "text": "\t\treturn uint32(C.sub_462740())"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_window_state.go",
+          "line": 40,
+          "text": "//export sub_462740"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_window_state.go",
+          "line": 41,
+          "text": "func sub_462740() C.int { return C.int(uiInventoryCloseIdentify()) }"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/client__gui__guiinv.h",
+          "line": 6,
+          "text": "int sub_462740();"
+        },
+        {
+          "path": "src/legacy/client_inventory_window_environment_porttest.go",
+          "line": 89,
+          "text": "C.sub_462740,"
+        },
+        {
+          "path": "src/legacy/client_inventory_window_porttest.go",
+          "line": 21,
+          "text": "return uint32(C.sub_462740())"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_window_state.go",
+          "line": 40,
+          "text": "//export sub_462740"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_window_state.go",
+          "line": 41,
+          "text": "func sub_462740() C.int { return C.int(uiInventoryCloseIdentify()) }"
+        }
+      ]
+    },
+    "sub_4627F0": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/client__gui__guiinv.h": [
+          7
+        ],
+        "src/legacy/client_inventory_display_porttest.go": [
+          35
+        ],
+        "src/legacy/client_ui_inventory_display_identify.go": [
+          214,
+          215
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/client__gui__guiinv.h",
+          "line": 7,
+          "text": "int sub_4627F0(uint32_t* a1);"
+        },
+        {
+          "path": "src/legacy/client_inventory_display_porttest.go",
+          "line": 35,
+          "text": "\t\treturn uint64(uint32(C.sub_4627F0((*C.uint32_t)(unsafe.Pointer(a)))))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_display_identify.go",
+          "line": 214,
+          "text": "//export sub_4627F0"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_display_identify.go",
+          "line": 215,
+          "text": "func sub_4627F0(p *C.uint32_t) C.int {"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/client__gui__guiinv.h",
+          "line": 7,
+          "text": "int sub_4627F0(uint32_t* a1);"
+        },
+        {
+          "path": "src/legacy/client_inventory_display_porttest.go",
+          "line": 35,
+          "text": "return uint64(uint32(C.sub_4627F0((*C.uint32_t)(unsafe.Pointer(a)))))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_display_identify.go",
+          "line": 214,
+          "text": "//export sub_4627F0"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_display_identify.go",
+          "line": 215,
+          "text": "func sub_4627F0(p *C.uint32_t) C.int {"
+        }
+      ]
+    },
+    "sub_463370": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          16
+        ],
+        "src/legacy/client_inventory_display_porttest.go": [
+          37
+        ],
+        "src/legacy/client_ui_inventory_display_common.go": [
+          92,
+          93
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 16,
+          "text": "int sub_463370(uint32_t* a1, nox_point* pos, uint32_t* a3);"
+        },
+        {
+          "path": "src/legacy/client_inventory_display_porttest.go",
+          "line": 37,
+          "text": "\t\treturn uint64(uint32(C.sub_463370((*C.uint32_t)(unsafe.Pointer(a)), (*C.nox_point)(unsafe.Pointer(b)), (*C.uint32_t)(unsafe.Pointer(c)))))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_display_common.go",
+          "line": 92,
+          "text": "//export sub_463370"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_display_common.go",
+          "line": 93,
+          "text": "func sub_463370(w *C.uint32_t, pos *C.nox_point, out *C.uint32_t) C.int {"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 16,
+          "text": "int sub_463370(uint32_t* a1, nox_point* pos, uint32_t* a3);"
+        },
+        {
+          "path": "src/legacy/client_inventory_display_porttest.go",
+          "line": 37,
+          "text": "return uint64(uint32(C.sub_463370((*C.uint32_t)(unsafe.Pointer(a)), (*C.nox_point)(unsafe.Pointer(b)), (*C.uint32_t)(unsafe.Pointer(c)))))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_display_common.go",
+          "line": 92,
+          "text": "//export sub_463370"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_display_common.go",
+          "line": 93,
+          "text": "func sub_463370(w *C.uint32_t, pos *C.nox_point, out *C.uint32_t) C.int {"
+        }
+      ]
+    },
+    "sub_4649B0": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/client__gui__guiinv.h": [
+          9
+        ],
+        "src/legacy/client_inventory_transactions_porttest.go": [
+          55
+        ],
+        "src/legacy/client_ui_inventory_place.go": [
+          63,
+          64
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/client__gui__guiinv.h",
+          "line": 9,
+          "text": "int sub_4649B0(int a1, int a2, int a3);"
+        },
+        {
+          "path": "src/legacy/client_inventory_transactions_porttest.go",
+          "line": 55,
+          "text": "\t\treturn uint32(C.sub_4649B0(C.int(a), C.int(b), C.int(c)))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_place.go",
+          "line": 63,
+          "text": "//export sub_4649B0"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_place.go",
+          "line": 64,
+          "text": "func sub_4649B0(v, col, row C.int) C.int {"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/client__gui__guiinv.h",
+          "line": 9,
+          "text": "int sub_4649B0(int a1, int a2, int a3);"
+        },
+        {
+          "path": "src/legacy/client_inventory_transactions_porttest.go",
+          "line": 55,
+          "text": "return uint32(C.sub_4649B0(C.int(a), C.int(b), C.int(c)))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_place.go",
+          "line": 63,
+          "text": "//export sub_4649B0"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_place.go",
+          "line": 64,
+          "text": "func sub_4649B0(v, col, row C.int) C.int {"
+        }
+      ]
+    },
+    "sub_464B40": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          18
+        ],
+        "src/legacy/client_inventory_transactions_porttest.go": [
+          57
+        ],
+        "src/legacy/client_ui_inventory_place.go": [
+          21,
+          22
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 18,
+          "text": "int sub_464B40(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_inventory_transactions_porttest.go",
+          "line": 57,
+          "text": "\t\treturn uint32(C.sub_464B40(C.int(a), C.int(b)))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_place.go",
+          "line": 21,
+          "text": "//export sub_464B40"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_place.go",
+          "line": 22,
+          "text": "func sub_464B40(col, row C.int) C.int {"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 18,
+          "text": "int sub_464B40(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_inventory_transactions_porttest.go",
+          "line": 57,
+          "text": "return uint32(C.sub_464B40(C.int(a), C.int(b)))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_place.go",
+          "line": 21,
+          "text": "//export sub_464B40"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_place.go",
+          "line": 22,
+          "text": "func sub_464B40(col, row C.int) C.int {"
+        }
+      ]
+    },
+    "sub_467650": {
+      "ref_count": 5,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          35
+        ],
+        "src/legacy/client_inventory_window_environment_porttest.go": [
+          115
+        ],
+        "src/legacy/client_inventory_window_porttest.go": [
+          75
+        ],
+        "src/legacy/client_ui_inventory_window_state.go": [
+          122,
+          123
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 35,
+          "text": "int sub_467650();"
+        },
+        {
+          "path": "src/legacy/client_inventory_window_environment_porttest.go",
+          "line": 115,
+          "text": "\t\tC.sub_467650,"
+        },
+        {
+          "path": "src/legacy/client_inventory_window_porttest.go",
+          "line": 75,
+          "text": "\t\treturn uint32(C.sub_467650())"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_window_state.go",
+          "line": 122,
+          "text": "//export sub_467650"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_window_state.go",
+          "line": 123,
+          "text": "func sub_467650() C.int { return C.int(uiInventoryRepairMode()) }"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 35,
+          "text": "int sub_467650();"
+        },
+        {
+          "path": "src/legacy/client_inventory_window_environment_porttest.go",
+          "line": 115,
+          "text": "C.sub_467650,"
+        },
+        {
+          "path": "src/legacy/client_inventory_window_porttest.go",
+          "line": 75,
+          "text": "return uint32(C.sub_467650())"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_window_state.go",
+          "line": 122,
+          "text": "//export sub_467650"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_window_state.go",
+          "line": 123,
+          "text": "func sub_467650() C.int { return C.int(uiInventoryRepairMode()) }"
+        }
+      ]
+    },
+    "sub_467810": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          39
+        ],
+        "src/legacy/client_inventory_porttest.go": [
+          71
+        ],
+        "src/legacy/client_ui_inventory_queries.go": [
+          170,
+          171
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 39,
+          "text": "int sub_467810(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_inventory_porttest.go",
+          "line": 71,
+          "text": "\t\treturn uint32(C.sub_467810(C.int(a), C.int(b)))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_queries.go",
+          "line": 170,
+          "text": "//export sub_467810"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_queries.go",
+          "line": 171,
+          "text": "func sub_467810(col, row int) int {"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 39,
+          "text": "int sub_467810(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_inventory_porttest.go",
+          "line": 71,
+          "text": "return uint32(C.sub_467810(C.int(a), C.int(b)))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_queries.go",
+          "line": 170,
+          "text": "//export sub_467810"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_queries.go",
+          "line": 171,
+          "text": "func sub_467810(col, row int) int {"
+        }
+      ]
+    },
+    "sub_467870": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          40
+        ],
+        "src/legacy/client_inventory_porttest.go": [
+          75
+        ],
+        "src/legacy/client_ui_inventory_queries.go": [
+          178,
+          179
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 40,
+          "text": "char* sub_467870(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_inventory_porttest.go",
+          "line": 75,
+          "text": "\t\treturn uint32(uintptr(unsafe.Pointer(C.sub_467870(C.int(a), C.int(b)))))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_queries.go",
+          "line": 178,
+          "text": "//export sub_467870"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_queries.go",
+          "line": 179,
+          "text": "func sub_467870(col, row int) *C.char {"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 40,
+          "text": "char* sub_467870(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_inventory_porttest.go",
+          "line": 75,
+          "text": "return uint32(uintptr(unsafe.Pointer(C.sub_467870(C.int(a), C.int(b)))))"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_queries.go",
+          "line": 178,
+          "text": "//export sub_467870"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_queries.go",
+          "line": 179,
+          "text": "func sub_467870(col, row int) *C.char {"
+        }
+      ]
+    },
+    "sub_467BB0": {
+      "ref_count": 5,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          43
+        ],
+        "src/legacy/client_inventory_window_environment_porttest.go": [
+          117
+        ],
+        "src/legacy/client_inventory_window_porttest.go": [
+          79
+        ],
+        "src/legacy/client_ui_inventory_window_state.go": [
+          85,
+          86
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 43,
+          "text": "int sub_467BB0();"
+        },
+        {
+          "path": "src/legacy/client_inventory_window_environment_porttest.go",
+          "line": 117,
+          "text": "\t\tC.sub_467BB0,"
+        },
+        {
+          "path": "src/legacy/client_inventory_window_porttest.go",
+          "line": 79,
+          "text": "\t\treturn uint32(C.sub_467BB0())"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_window_state.go",
+          "line": 85,
+          "text": "//export sub_467BB0"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_window_state.go",
+          "line": 86,
+          "text": "func sub_467BB0() C.int { return C.int(uiInventoryOpenWindow()) }"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 43,
+          "text": "int sub_467BB0();"
+        },
+        {
+          "path": "src/legacy/client_inventory_window_environment_porttest.go",
+          "line": 117,
+          "text": "C.sub_467BB0,"
+        },
+        {
+          "path": "src/legacy/client_inventory_window_porttest.go",
+          "line": 79,
+          "text": "return uint32(C.sub_467BB0())"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_window_state.go",
+          "line": 85,
+          "text": "//export sub_467BB0"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_window_state.go",
+          "line": 86,
+          "text": "func sub_467BB0() C.int { return C.int(uiInventoryOpenWindow()) }"
+        }
+      ]
+    },
+    "sub_467C10": {
+      "ref_count": 5,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          44
+        ],
+        "src/legacy/client_inventory_window_environment_porttest.go": [
+          118
+        ],
+        "src/legacy/client_inventory_window_porttest.go": [
+          81
+        ],
+        "src/legacy/client_ui_inventory_window_state.go": [
+          104,
+          105
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 44,
+          "text": "int sub_467C10();"
+        },
+        {
+          "path": "src/legacy/client_inventory_window_environment_porttest.go",
+          "line": 118,
+          "text": "\t\tC.sub_467C10,"
+        },
+        {
+          "path": "src/legacy/client_inventory_window_porttest.go",
+          "line": 81,
+          "text": "\t\treturn uint32(C.sub_467C10())"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_window_state.go",
+          "line": 104,
+          "text": "//export sub_467C10"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_window_state.go",
+          "line": 105,
+          "text": "func sub_467C10() C.int { return C.int(uiInventoryCloseWindow()) }"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 44,
+          "text": "int sub_467C10();"
+        },
+        {
+          "path": "src/legacy/client_inventory_window_environment_porttest.go",
+          "line": 118,
+          "text": "C.sub_467C10,"
+        },
+        {
+          "path": "src/legacy/client_inventory_window_porttest.go",
+          "line": 81,
+          "text": "return uint32(C.sub_467C10())"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_window_state.go",
+          "line": 104,
+          "text": "//export sub_467C10"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_window_state.go",
+          "line": 105,
+          "text": "func sub_467C10() C.int { return C.int(uiInventoryCloseWindow()) }"
+        }
+      ]
+    },
+    "sub_467C80": {
+      "ref_count": 5,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          45
+        ],
+        "src/legacy/client_inventory_window_environment_porttest.go": [
+          120
+        ],
+        "src/legacy/client_inventory_window_porttest.go": [
+          85
+        ],
+        "src/legacy/client_ui_inventory_window_state.go": [
+          57,
+          58
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 45,
+          "text": "int sub_467C80();"
+        },
+        {
+          "path": "src/legacy/client_inventory_window_environment_porttest.go",
+          "line": 120,
+          "text": "\t\tC.sub_467C80,"
+        },
+        {
+          "path": "src/legacy/client_inventory_window_porttest.go",
+          "line": 85,
+          "text": "\t\treturn uint32(C.sub_467C80())"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_window_state.go",
+          "line": 57,
+          "text": "//export sub_467C80"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_window_state.go",
+          "line": 58,
+          "text": "func sub_467C80() C.int { return C.int(bool2int(uiInventoryWindowOpenState())) }"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 45,
+          "text": "int sub_467C80();"
+        },
+        {
+          "path": "src/legacy/client_inventory_window_environment_porttest.go",
+          "line": 120,
+          "text": "C.sub_467C80,"
+        },
+        {
+          "path": "src/legacy/client_inventory_window_porttest.go",
+          "line": 85,
+          "text": "return uint32(C.sub_467C80())"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_window_state.go",
+          "line": 57,
+          "text": "//export sub_467C80"
+        },
+        {
+          "path": "src/legacy/client_ui_inventory_window_state.go",
+          "line": 58,
+          "text": "func sub_467C80() C.int { return C.int(bool2int(uiInventoryWindowOpenState())) }"
+        }
+      ]
+    },
+    "sub_46AB20": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/client__gui__window.h": [
+          74
+        ],
+        "src/legacy/client_ui_window.go": [
+          134,
+          135
+        ],
+        "src/legacy/client_window_porttest.go": [
+          37
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/client__gui__window.h",
+          "line": 74,
+          "text": "int sub_46AB20(unsigned int* a1, int a2, int a3);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 134,
+          "text": "//export sub_46AB20"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 135,
+          "text": "func sub_46AB20(w *C.uint, width, height C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 37,
+          "text": "\t\tret = int(C.sub_46AB20((*C.uint)(w.C()), C.int(a), C.int(b)))"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/client__gui__window.h",
+          "line": 74,
+          "text": "int sub_46AB20(unsigned int* a1, int a2, int a3);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 134,
+          "text": "//export sub_46AB20"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 135,
+          "text": "func sub_46AB20(w *C.uint, width, height C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 37,
+          "text": "ret = int(C.sub_46AB20((*C.uint)(w.C()), C.int(a), C.int(b)))"
+        }
+      ]
+    },
+    "sub_46ACE0": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/client__gui__window.h": [
+          68
+        ],
+        "src/legacy/client_ui_window.go": [
+          202,
+          203
+        ],
+        "src/legacy/client_window_porttest.go": [
+          73
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/client__gui__window.h",
+          "line": 68,
+          "text": "void sub_46ACE0(unsigned int* a1, int a2, int a3, int a4);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 202,
+          "text": "//export sub_46ACE0"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 203,
+          "text": "func sub_46ACE0(w *C.uint, first, last, hidden C.int) {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 73,
+          "text": "\t\tC.sub_46ACE0((*C.uint)(w.C()), C.int(a), C.int(b), C.int(flag))"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/client__gui__window.h",
+          "line": 68,
+          "text": "void sub_46ACE0(unsigned int* a1, int a2, int a3, int a4);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 202,
+          "text": "//export sub_46ACE0"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 203,
+          "text": "func sub_46ACE0(w *C.uint, first, last, hidden C.int) {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 73,
+          "text": "C.sub_46ACE0((*C.uint)(w.C()), C.int(a), C.int(b), C.int(flag))"
+        }
+      ]
+    },
+    "sub_46AD20": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/client__gui__window.h": [
+          69
+        ],
+        "src/legacy/client_ui_window.go": [
+          216,
+          217
+        ],
+        "src/legacy/client_window_porttest.go": [
+          75
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/client__gui__window.h",
+          "line": 69,
+          "text": "void sub_46AD20(unsigned int* a1, int a2, int a3, int a4);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 216,
+          "text": "//export sub_46AD20"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 217,
+          "text": "func sub_46AD20(w *C.uint, first, last, enabled C.int) {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 75,
+          "text": "\t\tC.sub_46AD20((*C.uint)(w.C()), C.int(a), C.int(b), C.int(flag))"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/client__gui__window.h",
+          "line": 69,
+          "text": "void sub_46AD20(unsigned int* a1, int a2, int a3, int a4);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 216,
+          "text": "//export sub_46AD20"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 217,
+          "text": "func sub_46AD20(w *C.uint, first, last, enabled C.int) {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 75,
+          "text": "C.sub_46AD20((*C.uint)(w.C()), C.int(a), C.int(b), C.int(flag))"
+        }
+      ]
+    },
+    "sub_46AE10": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          47
+        ],
+        "src/legacy/client_ui_window.go": [
+          230,
+          231
+        ],
+        "src/legacy/client_window_porttest.go": [
+          51
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 47,
+          "text": "int sub_46AE10(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 230,
+          "text": "//export sub_46AE10"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 231,
+          "text": "func sub_46AE10(ptr, on C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 51,
+          "text": "\t\tret = int(C.sub_46AE10(addr, C.int(a)))"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 47,
+          "text": "int sub_46AE10(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 230,
+          "text": "//export sub_46AE10"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 231,
+          "text": "func sub_46AE10(ptr, on C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 51,
+          "text": "ret = int(C.sub_46AE10(addr, C.int(a)))"
+        }
+      ]
+    },
+    "sub_46AEC0": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          51
+        ],
+        "src/legacy/client_ui_window.go": [
+          285,
+          286
+        ],
+        "src/legacy/client_window_porttest.go": [
+          59
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 51,
+          "text": "int sub_46AEC0(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 285,
+          "text": "//export sub_46AEC0"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 286,
+          "text": "func sub_46AEC0(ptr, img C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 59,
+          "text": "\t\tret = int(C.sub_46AEC0(addr, C.int(uintptr(other))))"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 51,
+          "text": "int sub_46AEC0(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 285,
+          "text": "//export sub_46AEC0"
+        },
+        {
+          "path": "src/legacy/client_ui_window.go",
+          "line": 286,
+          "text": "func sub_46AEC0(ptr, img C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_window_porttest.go",
+          "line": 59,
+          "text": "ret = int(C.sub_46AEC0(addr, C.int(uintptr(other))))"
+        }
+      ]
+    },
+    "sub_472310": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_1.h": [
+          70
+        ],
+        "src/legacy/client_meters_porttest.go": [
+          92
+        ],
+        "src/legacy/client_ui_meters_items.go": [
+          186,
+          187
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 70,
+          "text": "unsigned char* sub_472310();"
+        },
+        {
+          "path": "src/legacy/client_meters_porttest.go",
+          "line": 92,
+          "text": "\t\treturn uint32(uintptr(unsafe.Pointer(C.sub_472310())))"
+        },
+        {
+          "path": "src/legacy/client_ui_meters_items.go",
+          "line": 186,
+          "text": "//export sub_472310"
+        },
+        {
+          "path": "src/legacy/client_ui_meters_items.go",
+          "line": 187,
+          "text": "func sub_472310() *C.uchar { return (*C.uchar)(unsafe.Pointer(uiMeterRefreshPotions())) }"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_1.h",
+          "line": 70,
+          "text": "unsigned char* sub_472310();"
+        },
+        {
+          "path": "src/legacy/client_meters_porttest.go",
+          "line": 92,
+          "text": "return uint32(uintptr(unsafe.Pointer(C.sub_472310())))"
+        },
+        {
+          "path": "src/legacy/client_ui_meters_items.go",
+          "line": 186,
+          "text": "//export sub_472310"
+        },
+        {
+          "path": "src/legacy/client_ui_meters_items.go",
+          "line": 187,
+          "text": "func sub_472310() *C.uchar { return (*C.uchar)(unsafe.Pointer(uiMeterRefreshPotions())) }"
+        }
+      ]
+    },
+    "sub_478040": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_2.h": [
+          8
+        ],
+        "src/legacy/client_shop_ui_environment_porttest.go": [
+          48
+        ],
+        "src/legacy/client_ui_shop_exports.go": [
+          11,
+          12
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_2.h",
+          "line": 8,
+          "text": "int sub_478040();"
+        },
+        {
+          "path": "src/legacy/client_shop_ui_environment_porttest.go",
+          "line": 48,
+          "text": "\t\tC.sub_478040,"
+        },
+        {
+          "path": "src/legacy/client_ui_shop_exports.go",
+          "line": 11,
+          "text": "//export sub_478040"
+        },
+        {
+          "path": "src/legacy/client_ui_shop_exports.go",
+          "line": 12,
+          "text": "func sub_478040() C.int { return C.int(uiShopCancelRequest()) }"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_2.h",
+          "line": 8,
+          "text": "int sub_478040();"
+        },
+        {
+          "path": "src/legacy/client_shop_ui_environment_porttest.go",
+          "line": 48,
+          "text": "C.sub_478040,"
+        },
+        {
+          "path": "src/legacy/client_ui_shop_exports.go",
+          "line": 11,
+          "text": "//export sub_478040"
+        },
+        {
+          "path": "src/legacy/client_ui_shop_exports.go",
+          "line": 12,
+          "text": "func sub_478040() C.int { return C.int(uiShopCancelRequest()) }"
+        }
+      ]
+    },
+    "sub_479590": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_2.h": [
+          11
+        ],
+        "src/legacy/client_shop_ui_environment_porttest.go": [
+          68
+        ],
+        "src/legacy/client_ui_shop_exports.go": [
+          24,
+          25
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_2.h",
+          "line": 11,
+          "text": "int sub_479590();"
+        },
+        {
+          "path": "src/legacy/client_shop_ui_environment_porttest.go",
+          "line": 68,
+          "text": "\t\tC.sub_479590,"
+        },
+        {
+          "path": "src/legacy/client_ui_shop_exports.go",
+          "line": 24,
+          "text": "//export sub_479590"
+        },
+        {
+          "path": "src/legacy/client_ui_shop_exports.go",
+          "line": 25,
+          "text": "func sub_479590() C.int { return C.int(uiShopMode()) }"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_2.h",
+          "line": 11,
+          "text": "int sub_479590();"
+        },
+        {
+          "path": "src/legacy/client_shop_ui_environment_porttest.go",
+          "line": 68,
+          "text": "C.sub_479590,"
+        },
+        {
+          "path": "src/legacy/client_ui_shop_exports.go",
+          "line": 24,
+          "text": "//export sub_479590"
+        },
+        {
+          "path": "src/legacy/client_ui_shop_exports.go",
+          "line": 25,
+          "text": "func sub_479590() C.int { return C.int(uiShopMode()) }"
+        }
+      ]
+    },
+    "sub_4795A0": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_2.h": [
+          12
+        ],
+        "src/legacy/client_shop_ui_environment_porttest.go": [
+          69
+        ],
+        "src/legacy/client_ui_shop_exports.go": [
+          27,
+          28
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_2.h",
+          "line": 12,
+          "text": "void sub_4795A0(int a1);"
+        },
+        {
+          "path": "src/legacy/client_shop_ui_environment_porttest.go",
+          "line": 69,
+          "text": "\t\tC.sub_4795A0,"
+        },
+        {
+          "path": "src/legacy/client_ui_shop_exports.go",
+          "line": 27,
+          "text": "//export sub_4795A0"
+        },
+        {
+          "path": "src/legacy/client_ui_shop_exports.go",
+          "line": 28,
+          "text": "func sub_4795A0(mode C.int) { uiShopSetMode(uint32(mode)) }"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_2.h",
+          "line": 12,
+          "text": "void sub_4795A0(int a1);"
+        },
+        {
+          "path": "src/legacy/client_shop_ui_environment_porttest.go",
+          "line": 69,
+          "text": "C.sub_4795A0,"
+        },
+        {
+          "path": "src/legacy/client_ui_shop_exports.go",
+          "line": 27,
+          "text": "//export sub_4795A0"
+        },
+        {
+          "path": "src/legacy/client_ui_shop_exports.go",
+          "line": 28,
+          "text": "func sub_4795A0(mode C.int) { uiShopSetMode(uint32(mode)) }"
+        }
+      ]
+    },
+    "sub_49CD30": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_3.h": [
+          7
+        ],
+        "src/legacy/client_ui_render_exports.go": [
+          14,
+          15
+        ],
+        "src/legacy/client_ui_render_porttest.go": [
+          26
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_3.h",
+          "line": 7,
+          "text": "void sub_49CD30(int xLeft, int yTop, int a3, int a4, int a5, int a6);"
+        },
+        {
+          "path": "src/legacy/client_ui_render_exports.go",
+          "line": 14,
+          "text": "//export sub_49CD30"
+        },
+        {
+          "path": "src/legacy/client_ui_render_exports.go",
+          "line": 15,
+          "text": "func sub_49CD30(x, y, w, h, color, width C.int) {"
+        },
+        {
+          "path": "src/legacy/client_ui_render_porttest.go",
+          "line": 26,
+          "text": "\t\tC.sub_49CD30(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3]), C.int(a[4]), C.int(a[5]))"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_3.h",
+          "line": 7,
+          "text": "void sub_49CD30(int xLeft, int yTop, int a3, int a4, int a5, int a6);"
+        },
+        {
+          "path": "src/legacy/client_ui_render_exports.go",
+          "line": 14,
+          "text": "//export sub_49CD30"
+        },
+        {
+          "path": "src/legacy/client_ui_render_exports.go",
+          "line": 15,
+          "text": "func sub_49CD30(x, y, w, h, color, width C.int) {"
+        },
+        {
+          "path": "src/legacy/client_ui_render_porttest.go",
+          "line": 26,
+          "text": "C.sub_49CD30(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3]), C.int(a[4]), C.int(a[5]))"
+        }
+      ]
+    },
+    "sub_49D1C0": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME2_3.h": [
+          8
+        ],
+        "src/legacy/client_ui_render_exports.go": [
+          19,
+          20
+        ],
+        "src/legacy/client_ui_render_porttest.go": [
+          37
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME2_3.h",
+          "line": 8,
+          "text": "int sub_49D1C0(void* a1, int a2, int a3);"
+        },
+        {
+          "path": "src/legacy/client_ui_render_exports.go",
+          "line": 19,
+          "text": "//export sub_49D1C0"
+        },
+        {
+          "path": "src/legacy/client_ui_render_exports.go",
+          "line": 20,
+          "text": "func sub_49D1C0(p unsafe.Pointer, color, size C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_ui_render_porttest.go",
+          "line": 37,
+          "text": "\t\treturn int32(C.sub_49D1C0(p, C.int(color), C.int(size)))"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME2_3.h",
+          "line": 8,
+          "text": "int sub_49D1C0(void* a1, int a2, int a3);"
+        },
+        {
+          "path": "src/legacy/client_ui_render_exports.go",
+          "line": 19,
+          "text": "//export sub_49D1C0"
+        },
+        {
+          "path": "src/legacy/client_ui_render_exports.go",
+          "line": 20,
+          "text": "func sub_49D1C0(p unsafe.Pointer, color, size C.int) C.int {"
+        },
+        {
+          "path": "src/legacy/client_ui_render_porttest.go",
+          "line": 37,
+          "text": "return int32(C.sub_49D1C0(p, C.int(color), C.int(size)))"
+        }
+      ]
+    },
+    "sub_4C05F0": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME3_1.h": [
+          27
+        ],
+        "src/legacy/client_trade_ui_environment_porttest.go": [
+          59
+        ],
+        "src/legacy/client_ui_trade_exports.go": [
+          14,
+          15
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME3_1.h",
+          "line": 27,
+          "text": "int sub_4C05F0(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_trade_ui_environment_porttest.go",
+          "line": 59,
+          "text": "\t\tC.sub_4C05F0,"
+        },
+        {
+          "path": "src/legacy/client_ui_trade_exports.go",
+          "line": 14,
+          "text": "//export sub_4C05F0"
+        },
+        {
+          "path": "src/legacy/client_ui_trade_exports.go",
+          "line": 15,
+          "text": "func sub_4C05F0(enabled, unit C.int) C.int {"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME3_1.h",
+          "line": 27,
+          "text": "int sub_4C05F0(int a1, int a2);"
+        },
+        {
+          "path": "src/legacy/client_trade_ui_environment_porttest.go",
+          "line": 59,
+          "text": "C.sub_4C05F0,"
+        },
+        {
+          "path": "src/legacy/client_ui_trade_exports.go",
+          "line": 14,
+          "text": "//export sub_4C05F0"
+        },
+        {
+          "path": "src/legacy/client_ui_trade_exports.go",
+          "line": 15,
+          "text": "func sub_4C05F0(enabled, unit C.int) C.int {"
+        }
+      ]
+    },
+    "sub_4C35B0": {
+      "ref_count": 5,
+      "paths": {
+        "src/bindings_auxiliary_porttest_test.go": [
+          85
+        ],
+        "src/legacy/GAME3_1.h": [
+          31
+        ],
+        "src/legacy/bindings_porttest.go": [
+          79
+        ],
+        "src/legacy/gui_bindings_exports.go": [
+          8,
+          9
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/bindings_auxiliary_porttest_test.go",
+          "line": 85,
+          "text": "\t\t\tr.Cancel = legacy.PortTestBindingInvoke(\"sub_4C35B0\", [4]uint32{1})"
+        },
+        {
+          "path": "src/legacy/GAME3_1.h",
+          "line": 31,
+          "text": "int sub_4C35B0(int a1);"
+        },
+        {
+          "path": "src/legacy/bindings_porttest.go",
+          "line": 79,
+          "text": "\tcase \"sub_4C35B0\":"
+        },
+        {
+          "path": "src/legacy/gui_bindings_exports.go",
+          "line": 8,
+          "text": "//export sub_4C35B0"
+        },
+        {
+          "path": "src/legacy/gui_bindings_exports.go",
+          "line": 9,
+          "text": "func sub_4C35B0(cancel C.int) C.int { return C.int(bindingClose(int(cancel))) }"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/bindings_auxiliary_porttest_test.go",
+          "line": 85,
+          "text": "r.Cancel = legacy.PortTestBindingInvoke(\"sub_4C35B0\", [4]uint32{1})"
+        },
+        {
+          "path": "src/legacy/GAME3_1.h",
+          "line": 31,
+          "text": "int sub_4C35B0(int a1);"
+        },
+        {
+          "path": "src/legacy/bindings_porttest.go",
+          "line": 79,
+          "text": "case \"sub_4C35B0\":"
+        },
+        {
+          "path": "src/legacy/gui_bindings_exports.go",
+          "line": 8,
+          "text": "//export sub_4C35B0"
+        },
+        {
+          "path": "src/legacy/gui_bindings_exports.go",
+          "line": 9,
+          "text": "func sub_4C35B0(cancel C.int) C.int { return C.int(bindingClose(int(cancel))) }"
+        }
+      ]
+    },
+    "sub_4C4260": {
+      "ref_count": 4,
+      "paths": {
+        "src/legacy/GAME3_1.h": [
+          32
+        ],
+        "src/legacy/bindings_porttest.go": [
+          81
+        ],
+        "src/legacy/gui_bindings_exports.go": [
+          11,
+          12
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/legacy/GAME3_1.h",
+          "line": 32,
+          "text": "void sub_4C4260();"
+        },
+        {
+          "path": "src/legacy/bindings_porttest.go",
+          "line": 81,
+          "text": "\tcase \"sub_4C4260\":"
+        },
+        {
+          "path": "src/legacy/gui_bindings_exports.go",
+          "line": 11,
+          "text": "//export sub_4C4260"
+        },
+        {
+          "path": "src/legacy/gui_bindings_exports.go",
+          "line": 12,
+          "text": "func sub_4C4260() { bindingShow() }"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/legacy/GAME3_1.h",
+          "line": 32,
+          "text": "void sub_4C4260();"
+        },
+        {
+          "path": "src/legacy/bindings_porttest.go",
+          "line": 81,
+          "text": "case \"sub_4C4260\":"
+        },
+        {
+          "path": "src/legacy/gui_bindings_exports.go",
+          "line": 11,
+          "text": "//export sub_4C4260"
+        },
+        {
+          "path": "src/legacy/gui_bindings_exports.go",
+          "line": 12,
+          "text": "func sub_4C4260() { bindingShow() }"
+        }
+      ]
+    },
+    "sub_4C4280": {
+      "ref_count": 6,
+      "paths": {
+        "src/bindings_auxiliary_porttest_test.go": [
+          84,
+          86
+        ],
+        "src/legacy/GAME3_1.h": [
+          33
+        ],
+        "src/legacy/bindings_porttest.go": [
+          84
+        ],
+        "src/legacy/gui_bindings_exports.go": [
+          14,
+          15
+        ]
+      },
+      "preliminary_matches": [
+        {
+          "path": "src/bindings_auxiliary_porttest_test.go",
+          "line": 84,
+          "text": "\t\t\tr := record{Initial: initial, Visible: legacy.PortTestBindingInvoke(\"sub_4C4280\", [4]uint32{})}"
+        },
+        {
+          "path": "src/bindings_auxiliary_porttest_test.go",
+          "line": 86,
+          "text": "\t\t\tr.After = legacy.PortTestBindingInvoke(\"sub_4C4280\", [4]uint32{})"
+        },
+        {
+          "path": "src/legacy/GAME3_1.h",
+          "line": 33,
+          "text": "int sub_4C4280();"
+        },
+        {
+          "path": "src/legacy/bindings_porttest.go",
+          "line": 84,
+          "text": "\tcase \"sub_4C4280\":"
+        },
+        {
+          "path": "src/legacy/gui_bindings_exports.go",
+          "line": 14,
+          "text": "//export sub_4C4280"
+        },
+        {
+          "path": "src/legacy/gui_bindings_exports.go",
+          "line": 15,
+          "text": "func sub_4C4280() C.int { return C.int(bindingVisible()) }"
+        }
+      ],
+      "references": [
+        {
+          "path": "src/bindings_auxiliary_porttest_test.go",
+          "line": 84,
+          "text": "r := record{Initial: initial, Visible: legacy.PortTestBindingInvoke(\"sub_4C4280\", [4]uint32{})}"
+        },
+        {
+          "path": "src/bindings_auxiliary_porttest_test.go",
+          "line": 86,
+          "text": "r.After = legacy.PortTestBindingInvoke(\"sub_4C4280\", [4]uint32{})"
+        },
+        {
+          "path": "src/legacy/GAME3_1.h",
+          "line": 33,
+          "text": "int sub_4C4280();"
+        },
+        {
+          "path": "src/legacy/bindings_porttest.go",
+          "line": 84,
+          "text": "case \"sub_4C4280\":"
+        },
+        {
+          "path": "src/legacy/gui_bindings_exports.go",
+          "line": 14,
+          "text": "//export sub_4C4280"
+        },
+        {
+          "path": "src/legacy/gui_bindings_exports.go",
+          "line": 15,
+          "text": "func sub_4C4280() C.int { return C.int(bindingVisible()) }"
+        }
+      ]
+    }
+  },
+  "owner_file_census": [
+    {
+      "path": "src/legacy/client_ui_inventory_place.go",
+      "sha256": "6969632520edeec7afbfc3c32099199735c19b509a2b2d11b6f52071809b56b7",
+      "candidate_exports": 4,
+      "all_export_names": [
+        "sub_464B40",
+        "sub_4649B0",
+        "nox_xxx_cliInventorySpriteUpd_465A30",
+        "nox_client_invAlterWeapon_4672C0"
+      ],
+      "noncandidate_exports": [],
+      "c_import": true,
+      "c_selectors": [
+        "int"
+      ],
+      "c_selector_count": 7,
+      "cgo_directives": []
+    },
+    {
+      "path": "src/legacy/client_ui_render_exports.go",
+      "sha256": "248537c2adb80f5d5fd7cd5d1825424e4a23d4be3092fc141cccbdb4336855df",
+      "candidate_exports": 3,
+      "all_export_names": [
+        "sub_430B50",
+        "sub_49CD30",
+        "sub_49D1C0",
+        "nox_client_copyRect_49F6F0"
+      ],
+      "noncandidate_exports": [
+        "nox_client_copyRect_49F6F0"
+      ],
+      "c_import": true,
+      "c_selectors": [
+        "int"
+      ],
+      "c_selector_count": 9,
+      "cgo_directives": []
+    },
+    {
+      "path": "src/legacy/client_ui_trade_exports.go",
+      "sha256": "c6d61f95f4fb05c7b463b75f8c3deebc4795333f9afbfb3cf3b05f96b46f841e",
+      "candidate_exports": 1,
+      "all_export_names": [
+        "nox_gui_itemAmountDialog_4C0430",
+        "sub_4C05F0",
+        "sub_4C1120"
+      ],
+      "noncandidate_exports": [
+        "nox_gui_itemAmountDialog_4C0430",
+        "sub_4C1120"
+      ],
+      "c_import": true,
+      "c_selectors": [
+        "int",
+        "uint",
+        "uint32_t",
+        "wchar2_t"
+      ],
+      "c_selector_count": 15,
+      "cgo_directives": []
+    },
+    {
+      "path": "src/legacy/client_ui_inventory_display_identify.go",
+      "sha256": "f921b9744650721e5fd0e6652a9e2987634da6c0f3552623be92107016653a65",
+      "candidate_exports": 1,
+      "all_export_names": [
+        "sub_4627F0"
+      ],
+      "noncandidate_exports": [],
+      "c_import": true,
+      "c_selectors": [
+        "int",
+        "uint32_t"
+      ],
+      "c_selector_count": 3,
+      "cgo_directives": []
+    },
+    {
+      "path": "src/legacy/gui_quickbar_exports.go",
+      "sha256": "0493e220957972cf76cd1a9f7576179671990d94b14c2a19423c37a109b60ee0",
+      "candidate_exports": 10,
+      "all_export_names": [
+        "nox_xxx_book_45DBE0",
+        "nox_xxx_clientUpdateButtonRow_45E110",
+        "nox_xxx_buttonsGetSelectedRow_45E180",
+        "sub_4602F0",
+        "nox_client_trapSetSelect_4604B0",
+        "sub_4604E0",
+        "sub_460660",
+        "nox_xxx_quickBarClose_4606B0",
+        "sub_460940",
+        "sub_460EA0",
+        "nox_xxx_quickbarButtonBook_45F3F0",
+        "sub_45F480"
+      ],
+      "noncandidate_exports": [
+        "nox_xxx_quickbarButtonBook_45F3F0",
+        "sub_45F480"
+      ],
+      "c_import": true,
+      "c_selectors": [
+        "char",
+        "int",
+        "uchar"
+      ],
+      "c_selector_count": 40,
+      "cgo_directives": []
+    },
+    {
+      "path": "src/legacy/gui_bindings_exports.go",
+      "sha256": "aaa9012cb5f52a6761b1846f1f5ccd696c2e57d1134bd1661f62074aac776041",
+      "candidate_exports": 3,
+      "all_export_names": [
+        "sub_4C35B0",
+        "sub_4C4260",
+        "sub_4C4280",
+        "sub_4CB880",
+        "sub_4CBB70",
+        "sub_4CBBB0"
+      ],
+      "noncandidate_exports": [
+        "sub_4CB880",
+        "sub_4CBB70",
+        "sub_4CBBB0"
+      ],
+      "c_import": true,
+      "c_selectors": [
+        "int"
+      ],
+      "c_selector_count": 11,
+      "cgo_directives": []
+    },
+    {
+      "path": "src/legacy/client_ui_inventory_requests.go",
+      "sha256": "60f6642179e73ae0089dfdd3d52f12452642a38def1baaffe10566dd79df76a1",
+      "candidate_exports": 5,
+      "all_export_names": [
+        "nox_xxx_clientEquip_4623B0",
+        "nox_xxx_clientDequip_464B70",
+        "nox_xxx_clientUse_465C70",
+        "nox_xxx_trade_4657B0",
+        "nox_xxx_clientTrade_465870",
+        "nox_xxx_clientDrop_465BE0",
+        "nox_xxx_clientKeyEquip_465C30"
+      ],
+      "noncandidate_exports": [
+        "nox_xxx_clientDrop_465BE0",
+        "nox_xxx_clientKeyEquip_465C30"
+      ],
+      "c_import": true,
+      "c_selectors": [
+        "int",
+        "int2",
+        "short"
+      ],
+      "c_selector_count": 21,
+      "cgo_directives": []
+    },
+    {
+      "path": "src/legacy/client_ui_inventory_stack.go",
+      "sha256": "df2469f4002aa4cfec1039632a7f6aed76d5a1c4429d9a503e41a62f89f3a7a5",
+      "candidate_exports": 2,
+      "all_export_names": [
+        "nox_xxx_clientSetAltWeapon_461550",
+        "sub_461B50"
+      ],
+      "noncandidate_exports": [],
+      "c_import": true,
+      "c_selectors": [
+        "int",
+        "uchar"
+      ],
+      "c_selector_count": 5,
+      "cgo_directives": []
+    },
+    {
+      "path": "src/legacy/client_ui_inventory_window_state.go",
+      "sha256": "f1a11fc1630e57ac164b8b95936a49ef76271e16d87a1746cd27a4e03251b44a",
+      "candidate_exports": 5,
+      "all_export_names": [
+        "sub_462740",
+        "sub_467C80",
+        "sub_467BB0",
+        "sub_467C10",
+        "sub_467650"
+      ],
+      "noncandidate_exports": [],
+      "c_import": true,
+      "c_selectors": [
+        "int"
+      ],
+      "c_selector_count": 13,
+      "cgo_directives": []
+    },
+    {
+      "path": "src/legacy/client_ui_tooltip.go",
+      "sha256": "af1d5c9ccc8f93088e6c215b4b8f44b5f5bb5437df91511e97efc4af52b90bfd",
+      "candidate_exports": 1,
+      "all_export_names": [
+        "nox_xxx_clientAskInfoMb_4BF050",
+        "nox_xxx_cursorSetTooltip_4776B0"
+      ],
+      "noncandidate_exports": [
+        "nox_xxx_clientAskInfoMb_4BF050"
+      ],
+      "c_import": true,
+      "c_selectors": [
+        "int",
+        "wchar2_t"
+      ],
+      "c_selector_count": 4,
+      "cgo_directives": []
+    },
+    {
+      "path": "src/legacy/client_ui_inventory_queries.go",
+      "sha256": "6ff6b7400e66558d78d76f8b819e117ab90a86fb33e1e6a4b6e6d1e574cd50d0",
+      "candidate_exports": 4,
+      "all_export_names": [
+        "sub_4615C0",
+        "sub_461600",
+        "sub_461930",
+        "sub_461EF0",
+        "sub_467700",
+        "sub_467810",
+        "sub_467870",
+        "sub_4678B0"
+      ],
+      "noncandidate_exports": [
+        "sub_461600",
+        "sub_461930",
+        "sub_467700",
+        "sub_4678B0"
+      ],
+      "c_import": true,
+      "c_selectors": [
+        "char"
+      ],
+      "c_selector_count": 4,
+      "cgo_directives": []
+    },
+    {
+      "path": "src/legacy/client_ui_shop_exports.go",
+      "sha256": "fc52fe2f659ff8ad4ff82e8624f9eb4006871aa2206f9e9593316f0835b919b5",
+      "candidate_exports": 3,
+      "all_export_names": [
+        "sub_478030",
+        "sub_478040",
+        "sub_478850",
+        "sub_478E50",
+        "sub_479590",
+        "sub_4795A0",
+        "sub_479690",
+        "sub_479680",
+        "sub_479810",
+        "sub_479820"
+      ],
+      "noncandidate_exports": [
+        "sub_478030",
+        "sub_478850",
+        "sub_478E50",
+        "sub_479690",
+        "sub_479680",
+        "sub_479810",
+        "sub_479820"
+      ],
+      "c_import": true,
+      "c_selectors": [
+        "int",
+        "short",
+        "uint"
+      ],
+      "c_selector_count": 23,
+      "cgo_directives": []
+    },
+    {
+      "path": "src/legacy/client_ui_inventory_state.go",
+      "sha256": "9bf7b5327a040c4f5f931f0e85ad799b540224e2db36f3b06668a380253e92f0",
+      "candidate_exports": 1,
+      "all_export_names": [
+        "sub_4673F0",
+        "sub_4674A0",
+        "nox_window_set_visible_unk5",
+        "sub_467590",
+        "sub_467680",
+        "nox_xxx_wndGetHandle_4676A0",
+        "sub_4678C0"
+      ],
+      "noncandidate_exports": [
+        "sub_4673F0",
+        "sub_4674A0",
+        "nox_window_set_visible_unk5",
+        "sub_467590",
+        "sub_467680",
+        "sub_4678C0"
+      ],
+      "c_import": true,
+      "c_selectors": [
+        "char",
+        "nox_window",
+        "uchar"
+      ],
+      "c_selector_count": 9,
+      "cgo_directives": []
+    },
+    {
+      "path": "src/legacy/client_ui_inventory_display_draw.go",
+      "sha256": "76d622e823bb026e6ec9ecfda47403ed7a5594cf368badc0ddf55c82bea1e812",
+      "candidate_exports": 1,
+      "all_export_names": [
+        "sub_4625D0",
+        "sub_465D50_draw",
+        "nox_xxx_inventoryDrawProc_466580",
+        "sub_466F50",
+        "nox_xxx_guiDrawInventoryTray_4643B0"
+      ],
+      "noncandidate_exports": [
+        "sub_4625D0",
+        "sub_465D50_draw",
+        "nox_xxx_inventoryDrawProc_466580",
+        "sub_466F50"
+      ],
+      "c_import": true,
+      "c_selectors": [
+        "int",
+        "uint32_t"
+      ],
+      "c_selector_count": 12,
+      "cgo_directives": []
+    },
+    {
+      "path": "src/legacy/client_ui_inventory_display_common.go",
+      "sha256": "0f6b24f4a200ad395b4bb3347c1f64513f78e7a2059cac6cbe5c8a7c564454e6",
+      "candidate_exports": 1,
+      "all_export_names": [
+        "sub_463370",
+        "sub_466660",
+        "sub_466E20",
+        "nox_xxx_inventoryNameSignInit_4671E0"
+      ],
+      "noncandidate_exports": [
+        "sub_466660",
+        "sub_466E20",
+        "nox_xxx_inventoryNameSignInit_4671E0"
+      ],
+      "c_import": true,
+      "c_selectors": [
+        "char",
+        "int",
+        "int2",
+        "nox_point",
+        "uint32_t",
+        "wchar2_t"
+      ],
+      "c_selector_count": 20,
+      "cgo_directives": []
+    },
+    {
+      "path": "src/legacy/client_ui_meters_items.go",
+      "sha256": "c1b9700a8148f9aebb8f1c53302db33eb6cd043a765537f29afdeb384e0d9f74",
+      "candidate_exports": 1,
+      "all_export_names": [
+        "nox_xxx_guiBottleSlotDrawFn_471A80",
+        "sub_470E90",
+        "nox_xxx_guiBottleSlotProc_471B90",
+        "nox_xxx_guiHealthManaTubeProc_472100",
+        "sub_472280",
+        "sub_472310",
+        "sub_4710B0"
+      ],
+      "noncandidate_exports": [
+        "nox_xxx_guiBottleSlotDrawFn_471A80",
+        "sub_470E90",
+        "nox_xxx_guiBottleSlotProc_471B90",
+        "nox_xxx_guiHealthManaTubeProc_472100",
+        "sub_472280",
+        "sub_4710B0"
+      ],
+      "c_import": true,
+      "c_selectors": [
+        "uchar",
+        "uint32_t",
+        "wchar2_t"
+      ],
+      "c_selector_count": 5,
+      "cgo_directives": []
+    },
+    {
+      "path": "src/legacy/client_ui_window.go",
+      "sha256": "a111f67afbaeb9436475e4ee14c027ecdcfe8fc726a716f253296bf98fd2968d",
+      "candidate_exports": 15,
+      "all_export_names": [
+        "nox_gui_getWindowOffs_46AA20",
+        "nox_client_wndGetPosition_46AA60",
+        "nox_window_get_size",
+        "nox_xxx_wndPointInWnd_46AAB0",
+        "sub_46AB20",
+        "nox_xxx_wnd_46ABB0",
+        "nox_xxx_wnd_46AD60",
+        "nox_xxx_wndClearFlag_46AD80",
+        "nox_xxx_wndGetFlags_46ADA0",
+        "nox_window_is_child",
+        "nox_xxx_wnd_46B280",
+        "sub_46ACE0",
+        "sub_46AD20",
+        "nox_xxx_wndRetNULL_46A8A0",
+        "sub_46AE10",
+        "nox_xxx_wndSetOffsetMB_46AE40",
+        "nox_xxx_wndSetIcon_46AE60",
+        "nox_xxx_wndSetIconLit_46AEA0",
+        "sub_46AEC0",
+        "sub_46AEE0",
+        "sub_46AF00"
+      ],
+      "noncandidate_exports": [
+        "nox_gui_getWindowOffs_46AA20",
+        "nox_client_wndGetPosition_46AA60",
+        "nox_xxx_wndPointInWnd_46AAB0",
+        "nox_window_is_child",
+        "sub_46AEE0",
+        "sub_46AF00"
+      ],
+      "c_import": true,
+      "c_selectors": [
+        "bool",
+        "int",
+        "uint"
+      ],
+      "c_selector_count": 56,
+      "cgo_directives": []
+    },
+    {
+      "path": "src/legacy/client_ui_inventory_display_stats.go",
+      "sha256": "507ba4857a53eecb241b2bf5c1d462fc9d71fec7a95f89738c02f08cba1df4d0",
+      "candidate_exports": 1,
+      "all_export_names": [
+        "nox_client_makePlayerStatsDlg_463880"
+      ],
+      "noncandidate_exports": [],
+      "c_import": true,
+      "c_selectors": [
+        "int"
+      ],
+      "c_selector_count": 1,
+      "cgo_directives": []
+    },
+    {
+      "path": "src/legacy/gui_book_exports.go",
+      "sha256": "ce926769bfea29beee8b5bf15676e7bb4e8de41d887497104692f03c56fe17d3",
+      "candidate_exports": 9,
+      "all_export_names": [
+        "nox_client_toggleSpellbook_45AC70",
+        "nox_xxx_bookHideMB_45ACA0",
+        "sub_45CFC0",
+        "nox_xxx_bookSetForward_45D200",
+        "nox_xxx_abilityReward_45D290",
+        "sub_45D500",
+        "nox_xxx_bookFillAll_45D570",
+        "sub_45D9B0",
+        "sub_45D870",
+        "nox_xxx_bookClickSpell_45B1F0",
+        "nox_xxx_bookClickCreature_45B200",
+        "nox_xxx_book_45CF00"
+      ],
+      "noncandidate_exports": [
+        "nox_xxx_bookClickSpell_45B1F0",
+        "nox_xxx_bookClickCreature_45B200",
+        "nox_xxx_book_45CF00"
+      ],
+      "c_import": true,
+      "c_selectors": [
+        "char",
+        "int",
+        "int2",
+        "uint32_t"
+      ],
+      "c_selector_count": 37,
+      "cgo_directives": []
+    }
+  ],
+  "fixture_files": [
+    {
+      "path": "src/legacy/bindings_porttest.go",
+      "sha256": "3a0b21a98bcd90acce9635d3474628ea0a5cafce1a64d6ab79f2865faa7f8df1",
+      "build_constraints": [
+        "//go:build porttest"
+      ],
+      "candidate_symbols": [
+        "sub_4C35B0",
+        "sub_4C4260",
+        "sub_4C4280"
+      ]
+    },
+    {
+      "path": "src/legacy/book_porttest.go",
+      "sha256": "c3316386e7915a6da4ba4e1f729f5912c86c40178f04aad8de609b97c7905e17",
+      "build_constraints": [
+        "//go:build porttest"
+      ],
+      "candidate_symbols": [
+        "nox_client_toggleSpellbook_45AC70",
+        "nox_xxx_abilityReward_45D290",
+        "nox_xxx_bookFillAll_45D570",
+        "nox_xxx_bookHideMB_45ACA0",
+        "nox_xxx_bookSetForward_45D200",
+        "sub_45CFC0",
+        "sub_45D500",
+        "sub_45D870",
+        "sub_45D9B0"
+      ]
+    },
+    {
+      "path": "src/legacy/client_inventory_display_porttest.go",
+      "sha256": "d8762000ecb1a8ea0a0b6cae853df2bacb45ec6de36b5cb5028be6fb0ba874b2",
+      "build_constraints": [
+        "//go:build porttest"
+      ],
+      "candidate_symbols": [
+        "nox_client_makePlayerStatsDlg_463880",
+        "nox_xxx_guiDrawInventoryTray_4643B0",
+        "sub_4627F0",
+        "sub_463370"
+      ]
+    },
+    {
+      "path": "src/legacy/client_inventory_porttest.go",
+      "sha256": "b48abb41e5b29d111c2dcc384fc49d6f81587f4cbc2caaeae0242d8cf7cb388e",
+      "build_constraints": [
+        "//go:build porttest"
+      ],
+      "candidate_symbols": [
+        "nox_xxx_wndGetHandle_4676A0",
+        "sub_4615C0",
+        "sub_461EF0",
+        "sub_467810",
+        "sub_467870"
+      ]
+    },
+    {
+      "path": "src/legacy/client_inventory_transactions_porttest.go",
+      "sha256": "38705fd80461cb8642c999b4e1266e9be45836bdc66265770875069cb07c12d0",
+      "build_constraints": [
+        "//go:build porttest"
+      ],
+      "candidate_symbols": [
+        "nox_client_invAlterWeapon_4672C0",
+        "nox_xxx_cliInventorySpriteUpd_465A30",
+        "nox_xxx_clientDequip_464B70",
+        "nox_xxx_clientEquip_4623B0",
+        "nox_xxx_clientSetAltWeapon_461550",
+        "nox_xxx_clientTrade_465870",
+        "nox_xxx_clientUse_465C70",
+        "nox_xxx_trade_4657B0",
+        "sub_461B50",
+        "sub_4649B0",
+        "sub_464B40"
+      ]
+    },
+    {
+      "path": "src/legacy/client_inventory_window_environment_porttest.go",
+      "sha256": "0276a2da48b10523b12edf06aa7e2a10343e4d673ede731827c06a6f5e6a84be",
+      "build_constraints": [
+        "//go:build porttest"
+      ],
+      "candidate_symbols": [
+        "sub_462740",
+        "sub_467650",
+        "sub_467BB0",
+        "sub_467C10",
+        "sub_467C80"
+      ]
+    },
+    {
+      "path": "src/legacy/client_inventory_window_porttest.go",
+      "sha256": "e1d19b76c101964d98ebc1114379dd9e122188ec90252d764328aec59611efa0",
+      "build_constraints": [
+        "//go:build porttest"
+      ],
+      "candidate_symbols": [
+        "sub_462740",
+        "sub_467650",
+        "sub_467BB0",
+        "sub_467C10",
+        "sub_467C80"
+      ]
+    },
+    {
+      "path": "src/legacy/client_meters_porttest.go",
+      "sha256": "3ac3f118323b8d61aa51a074669659a1bb3ddf78e3376158d1537b94237949c0",
+      "build_constraints": [
+        "//go:build porttest"
+      ],
+      "candidate_symbols": [
+        "sub_472310"
+      ]
+    },
+    {
+      "path": "src/legacy/client_shop_ui_environment_porttest.go",
+      "sha256": "366bef81209948db9b71c4db48178df08e01b56a707e8f5677ea802131dec21b",
+      "build_constraints": [
+        "//go:build porttest"
+      ],
+      "candidate_symbols": [
+        "sub_478040",
+        "sub_479590",
+        "sub_4795A0"
+      ]
+    },
+    {
+      "path": "src/legacy/client_tooltip_porttest.go",
+      "sha256": "29b3339587f3c3742c3556ae628b7ef5ef31e48857ce4f1f20ff63275a9bb306",
+      "build_constraints": [
+        "//go:build porttest"
+      ],
+      "candidate_symbols": [
+        "nox_xxx_cursorSetTooltip_4776B0"
+      ]
+    },
+    {
+      "path": "src/legacy/client_trade_ui_environment_porttest.go",
+      "sha256": "672e71462997e648de136d48ad560fd3357a4e0c2193a3fc5592d90b498882d7",
+      "build_constraints": [
+        "//go:build porttest"
+      ],
+      "candidate_symbols": [
+        "sub_4C05F0"
+      ]
+    },
+    {
+      "path": "src/legacy/client_ui_render_porttest.go",
+      "sha256": "20acc9bc88670cbb89be32d76cf966d79f0bb9f42a7c5fa5af1a5dfebc3cd189",
+      "build_constraints": [
+        "//go:build porttest"
+      ],
+      "candidate_symbols": [
+        "sub_430B50",
+        "sub_49CD30",
+        "sub_49D1C0"
+      ]
+    },
+    {
+      "path": "src/legacy/client_window_porttest.go",
+      "sha256": "2bfd58b5f3c25c796226d15b72abf84f3bc64de49610b4ceacbe15d68a981f85",
+      "build_constraints": [
+        "//go:build porttest"
+      ],
+      "candidate_symbols": [
+        "nox_window_get_size",
+        "nox_xxx_wndClearFlag_46AD80",
+        "nox_xxx_wndGetFlags_46ADA0",
+        "nox_xxx_wndRetNULL_46A8A0",
+        "nox_xxx_wndSetIconLit_46AEA0",
+        "nox_xxx_wndSetIcon_46AE60",
+        "nox_xxx_wndSetOffsetMB_46AE40",
+        "nox_xxx_wnd_46ABB0",
+        "nox_xxx_wnd_46AD60",
+        "nox_xxx_wnd_46B280",
+        "sub_46AB20",
+        "sub_46ACE0",
+        "sub_46AD20",
+        "sub_46AE10",
+        "sub_46AEC0"
+      ]
+    },
+    {
+      "path": "src/legacy/quickbar_porttest.go",
+      "sha256": "1ea191997b8f18327c69182d22710d45d93f0582e3b210f5532f02e3d198d6ed",
+      "build_constraints": [
+        "//go:build porttest"
+      ],
+      "candidate_symbols": [
+        "nox_client_trapSetSelect_4604B0",
+        "nox_xxx_book_45DBE0",
+        "nox_xxx_buttonsGetSelectedRow_45E180",
+        "nox_xxx_clientUpdateButtonRow_45E110",
+        "nox_xxx_quickBarClose_4606B0",
+        "sub_4602F0",
+        "sub_4604E0",
+        "sub_460660",
+        "sub_460940",
+        "sub_460EA0"
+      ]
+    }
+  ],
+  "preliminary_reference_scan": {
+    "files_scanned": 3068,
+    "note": "shared headers/fixtures changed after this scan; current refs are independently rescanned above. Its row coordinates are not treated as current unless path/line/text still match."
+  },
+  "reachability_conclusion": {
+    "current_occurrences_in_tracked_C_implementation_files": 0,
+    "current_non_owner_production_refs": [
+      {
+        "path": "src/legacy/client_ui_shop_input.go",
+        "line": 5,
+        "symbol": "sub_45D9B0",
+        "text": "int sub_45D9B0(void);",
+        "classification": "C preamble prototype only; no invocation/address use"
+      },
+      {
+        "path": "src/legacy/input_c.go",
+        "line": 19,
+        "symbol": "sub_45D870",
+        "text": "void sub_45D870();",
+        "classification": "C preamble prototype only; no invocation/address use"
+      }
+    ],
+    "production_caller_or_registration_found": false,
+    "candidate_exports_present": 71,
+    "note": "Candidate definitions were checked in owner-file census; references elsewhere are the listed header declarations, porttest bridges/tests, or root test operation strings. No external API claim is made."
+  },
+  "possible_cgo_import_removal": [
+    {
+      "path": "src/legacy/client_ui_inventory_display_identify.go",
+      "candidate_exports": [
+        "sub_4627F0"
+      ],
+      "selectors_outside_candidate_export_bodies": [],
+      "remaining_exports": [],
+      "assessment": "import C may be removable after selected wrapper retirement, subject to checking the complete include-only preamble closure for definitions/side effects"
+    },
+    {
+      "path": "src/legacy/client_ui_inventory_display_stats.go",
+      "candidate_exports": [
+        "nox_client_makePlayerStatsDlg_463880"
+      ],
+      "selectors_outside_candidate_export_bodies": [],
+      "remaining_exports": [],
+      "assessment": "import C may be removable after selected wrapper retirement, subject to checking the complete include-only preamble closure for definitions/side effects"
+    },
+    {
+      "path": "src/legacy/client_ui_inventory_stack.go",
+      "candidate_exports": [
+        "nox_xxx_clientSetAltWeapon_461550",
+        "sub_461B50"
+      ],
+      "selectors_outside_candidate_export_bodies": [],
+      "remaining_exports": [],
+      "assessment": "import C may be removable after selected wrapper retirement, subject to checking the complete include-only preamble closure for definitions/side effects"
+    }
+  ],
+  "cgo_import_removal_not_indicated": [
+    "src/legacy/client_ui_inventory_place.go",
+    "src/legacy/client_ui_render_exports.go",
+    "src/legacy/client_ui_trade_exports.go",
+    "src/legacy/gui_quickbar_exports.go",
+    "src/legacy/gui_bindings_exports.go",
+    "src/legacy/client_ui_inventory_requests.go",
+    "src/legacy/client_ui_inventory_window_state.go",
+    "src/legacy/client_ui_tooltip.go",
+    "src/legacy/client_ui_inventory_queries.go",
+    "src/legacy/client_ui_shop_exports.go",
+    "src/legacy/client_ui_inventory_state.go",
+    "src/legacy/client_ui_inventory_display_draw.go",
+    "src/legacy/client_ui_inventory_display_common.go",
+    "src/legacy/client_ui_meters_items.go",
+    "src/legacy/client_ui_window.go",
+    "src/legacy/gui_book_exports.go"
+  ],
+  "tracked_src_files_scanned_current": 3091,
+  "tracked_src_paths_listed": 3097,
+  "note_current_scan": "The current union scan skips six source paths deleted by the concurrently integrated 81-bridge batch; 3,091 extant tracked src files were read."
+}

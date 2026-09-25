@@ -1,0 +1,5509 @@
+{
+  "additional_roots": [
+    {
+      "chain": [
+        "TestBookAwardsGuideLoader",
+        "newSpellbookOwner",
+        "PortTestBookCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newSpellbookOwner",
+          "caller": "TestBookAwardsGuideLoader",
+          "evidence": [
+            {
+              "line": 17,
+              "path": "src/book_awards_loader_porttest_test.go",
+              "text": "o := newSpellbookOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookCallbacks",
+          "caller": "newSpellbookOwner",
+          "evidence": [
+            {
+              "line": 63,
+              "path": "src/spellbook_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestBookCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestBookAwardsGuideLoader",
+      "path": "src/book_awards_loader_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestBriefingChapterTable",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingOwner",
+          "caller": "TestBriefingChapterTable",
+          "evidence": [
+            {
+              "line": 16,
+              "path": "src/briefing_storage_porttest_test.go",
+              "text": "o := newBriefingOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestBriefingChapterTable",
+      "path": "src/briefing_storage_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestBriefingInstructionsLayoutAndFrames",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingOwner",
+          "caller": "TestBriefingInstructionsLayoutAndFrames",
+          "evidence": [
+            {
+              "line": 122,
+              "path": "src/briefing_render_porttest_test.go",
+              "text": "o := newBriefingOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestBriefingInstructionsLayoutAndFrames",
+      "path": "src/briefing_render_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestBriefingScoreComparison",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingOwner",
+          "caller": "TestBriefingScoreComparison",
+          "evidence": [
+            {
+              "line": 91,
+              "path": "src/briefing_storage_porttest_test.go",
+              "text": "o := newBriefingOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestBriefingScoreComparison",
+      "path": "src/briefing_storage_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestBriefingSelectionReports",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingOwner",
+          "caller": "TestBriefingSelectionReports",
+          "evidence": [
+            {
+              "line": 75,
+              "path": "src/briefing_reports_porttest_test.go",
+              "text": "o := newBriefingOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestBriefingSelectionReports",
+      "path": "src/briefing_reports_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestBriefingShippedWindow",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingOwner",
+          "caller": "TestBriefingShippedWindow",
+          "evidence": [
+            {
+              "line": 24,
+              "path": "src/briefing_assets_porttest_test.go",
+              "text": "o := newBriefingOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestBriefingShippedWindow",
+      "path": "src/briefing_assets_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestBriefingSpriteCacheLifecycle",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingOwner",
+          "caller": "TestBriefingSpriteCacheLifecycle",
+          "evidence": [
+            {
+              "line": 115,
+              "path": "src/briefing_storage_porttest_test.go",
+              "text": "o := newBriefingOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestBriefingSpriteCacheLifecycle",
+      "path": "src/briefing_storage_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestBriefingStageCaptionAndImage",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingOwner",
+          "caller": "TestBriefingStageCaptionAndImage",
+          "evidence": [
+            {
+              "line": 50,
+              "path": "src/briefing_storage_porttest_test.go",
+              "text": "o := newBriefingOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestBriefingStageCaptionAndImage",
+      "path": "src/briefing_storage_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestBriefingStatisticsLayouts",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingOwner",
+          "caller": "TestBriefingStatisticsLayouts",
+          "evidence": [
+            {
+              "line": 84,
+              "path": "src/briefing_render_porttest_test.go",
+              "text": "o := newBriefingOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestBriefingStatisticsLayouts",
+      "path": "src/briefing_render_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestBriefingTitleFramesAndCaptions",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingOwner",
+          "caller": "TestBriefingTitleFramesAndCaptions",
+          "evidence": [
+            {
+              "line": 64,
+              "path": "src/briefing_render_porttest_test.go",
+              "text": "o := newBriefingOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestBriefingTitleFramesAndCaptions",
+      "path": "src/briefing_render_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestBriefingWinReportMissingAndDuplicateIDs",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingOwner",
+          "caller": "TestBriefingWinReportMissingAndDuplicateIDs",
+          "evidence": [
+            {
+              "line": 124,
+              "path": "src/briefing_reports_porttest_test.go",
+              "text": "o := newBriefingOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestBriefingWinReportMissingAndDuplicateIDs",
+      "path": "src/briefing_reports_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestBriefingWinReportPlayersAndFields",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingOwner",
+          "caller": "TestBriefingWinReportPlayersAndFields",
+          "evidence": [
+            {
+              "line": 17,
+              "path": "src/briefing_reports_porttest_test.go",
+              "text": "o := newBriefingOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestBriefingWinReportPlayersAndFields",
+      "path": "src/briefing_reports_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestBriefingWindowChapterSelection",
+        "newBriefingWindowOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingWindowOwner",
+          "caller": "TestBriefingWindowChapterSelection",
+          "evidence": [
+            {
+              "line": 17,
+              "path": "src/briefing_window_presentation_porttest_test.go",
+              "text": "o := newBriefingWindowOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newBriefingWindowOwner",
+          "evidence": [
+            {
+              "line": 36,
+              "path": "src/briefing_window_owner_porttest_test.go",
+              "text": "o := &briefingWindowOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestBriefingWindowChapterSelection",
+      "path": "src/briefing_window_presentation_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestBriefingWindowConstructionLifecycle",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingOwner",
+          "caller": "TestBriefingWindowConstructionLifecycle",
+          "evidence": [
+            {
+              "line": 143,
+              "path": "src/briefing_reports_porttest_test.go",
+              "text": "o := newBriefingOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestBriefingWindowConstructionLifecycle",
+      "path": "src/briefing_reports_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestBriefingWindowCreditsSelection",
+        "newBriefingWindowOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingWindowOwner",
+          "caller": "TestBriefingWindowCreditsSelection",
+          "evidence": [
+            {
+              "line": 89,
+              "path": "src/briefing_window_presentation_porttest_test.go",
+              "text": "o := newBriefingWindowOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newBriefingWindowOwner",
+          "evidence": [
+            {
+              "line": 36,
+              "path": "src/briefing_window_owner_porttest_test.go",
+              "text": "o := &briefingWindowOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestBriefingWindowCreditsSelection",
+      "path": "src/briefing_window_presentation_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestBriefingWindowDrawModeSelection",
+        "newBriefingWindowOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingWindowOwner",
+          "caller": "TestBriefingWindowDrawModeSelection",
+          "evidence": [
+            {
+              "line": 14,
+              "path": "src/briefing_window_render_porttest_test.go",
+              "text": "o := newBriefingWindowOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newBriefingWindowOwner",
+          "evidence": [
+            {
+              "line": 36,
+              "path": "src/briefing_window_owner_porttest_test.go",
+              "text": "o := &briefingWindowOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestBriefingWindowDrawModeSelection",
+      "path": "src/briefing_window_render_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestBriefingWindowFadeVoiceIntegration",
+        "newBriefingWindowOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingWindowOwner",
+          "caller": "TestBriefingWindowFadeVoiceIntegration",
+          "evidence": [
+            {
+              "line": 18,
+              "path": "src/briefing_window_assets_porttest_test.go",
+              "text": "o := newBriefingWindowOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newBriefingWindowOwner",
+          "evidence": [
+            {
+              "line": 36,
+              "path": "src/briefing_window_owner_porttest_test.go",
+              "text": "o := &briefingWindowOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestBriefingWindowFadeVoiceIntegration",
+      "path": "src/briefing_window_assets_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestBriefingWindowInputGating",
+        "newBriefingWindowOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingWindowOwner",
+          "caller": "TestBriefingWindowInputGating",
+          "evidence": [
+            {
+              "line": 12,
+              "path": "src/briefing_window_input_porttest_test.go",
+              "text": "o := newBriefingWindowOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newBriefingWindowOwner",
+          "evidence": [
+            {
+              "line": 36,
+              "path": "src/briefing_window_owner_porttest_test.go",
+              "text": "o := &briefingWindowOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestBriefingWindowInputGating",
+      "path": "src/briefing_window_input_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestBriefingWindowQuestModePrecedence",
+        "newBriefingWindowOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingWindowOwner",
+          "caller": "TestBriefingWindowQuestModePrecedence",
+          "evidence": [
+            {
+              "line": 63,
+              "path": "src/briefing_window_presentation_porttest_test.go",
+              "text": "o := newBriefingWindowOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newBriefingWindowOwner",
+          "evidence": [
+            {
+              "line": 36,
+              "path": "src/briefing_window_owner_porttest_test.go",
+              "text": "o := &briefingWindowOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestBriefingWindowQuestModePrecedence",
+      "path": "src/briefing_window_presentation_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestBriefingWindowResourceFailure",
+        "newBriefingWindowOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingWindowOwner",
+          "caller": "TestBriefingWindowResourceFailure",
+          "evidence": [
+            {
+              "line": 17,
+              "path": "src/briefing_window_storage_porttest_test.go",
+              "text": "o := newBriefingWindowOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newBriefingWindowOwner",
+          "evidence": [
+            {
+              "line": 36,
+              "path": "src/briefing_window_owner_porttest_test.go",
+              "text": "o := &briefingWindowOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestBriefingWindowResourceFailure",
+      "path": "src/briefing_window_storage_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestBriefingWindowScrollAndEventHelpers",
+        "newBriefingWindowOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingWindowOwner",
+          "caller": "TestBriefingWindowScrollAndEventHelpers",
+          "evidence": [
+            {
+              "line": 35,
+              "path": "src/briefing_window_storage_porttest_test.go",
+              "text": "o := newBriefingWindowOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newBriefingWindowOwner",
+          "evidence": [
+            {
+              "line": 36,
+              "path": "src/briefing_window_owner_porttest_test.go",
+              "text": "o := &briefingWindowOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestBriefingWindowScrollAndEventHelpers",
+      "path": "src/briefing_window_storage_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestBriefingWindowShippedLifecycle",
+        "newBriefingWindowOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingWindowOwner",
+          "caller": "TestBriefingWindowShippedLifecycle",
+          "evidence": [
+            {
+              "line": 45,
+              "path": "src/briefing_window_assets_porttest_test.go",
+              "text": "o := newBriefingWindowOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newBriefingWindowOwner",
+          "evidence": [
+            {
+              "line": 36,
+              "path": "src/briefing_window_owner_porttest_test.go",
+              "text": "o := &briefingWindowOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestBriefingWindowShippedLifecycle",
+      "path": "src/briefing_window_assets_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestBriefingWindowTimedDismissal",
+        "newBriefingWindowOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingWindowOwner",
+          "caller": "TestBriefingWindowTimedDismissal",
+          "evidence": [
+            {
+              "line": 41,
+              "path": "src/briefing_window_render_porttest_test.go",
+              "text": "o := newBriefingWindowOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newBriefingWindowOwner",
+          "evidence": [
+            {
+              "line": 36,
+              "path": "src/briefing_window_owner_porttest_test.go",
+              "text": "o := &briefingWindowOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestBriefingWindowTimedDismissal",
+      "path": "src/briefing_window_render_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestBriefingWindowVoiceCallback",
+        "newBriefingWindowOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingWindowOwner",
+          "caller": "TestBriefingWindowVoiceCallback",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/briefing_window_storage_porttest_test.go",
+              "text": "o := newBriefingWindowOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newBriefingWindowOwner",
+          "evidence": [
+            {
+              "line": 36,
+              "path": "src/briefing_window_owner_porttest_test.go",
+              "text": "o := &briefingWindowOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestBriefingWindowVoiceCallback",
+      "path": "src/briefing_window_storage_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestCharacterCreationFiles",
+        "newQuickbarOwner",
+        "PortTestQuickbarCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newQuickbarOwner",
+          "caller": "TestCharacterCreationFiles",
+          "evidence": [
+            {
+              "line": 25,
+              "path": "src/character_creation_files_porttest_test.go",
+              "text": "q := newQuickbarOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestQuickbarCallbacks",
+          "caller": "newQuickbarOwner",
+          "evidence": [
+            {
+              "line": 51,
+              "path": "src/quickbar_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestQuickbarCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestCharacterCreationFiles",
+      "path": "src/character_creation_files_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestClientDrawableLoopAudio",
+        "PortTestBindingDimensions"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestBindingDimensions",
+          "caller": "TestClientDrawableLoopAudio",
+          "evidence": [
+            {
+              "line": 20,
+              "path": "src/client_drawable_loop_audio_porttest_test.go",
+              "text": "dimensions := legacy.PortTestBindingDimensions()"
+            }
+          ]
+        }
+      ],
+      "name": "TestClientDrawableLoopAudio",
+      "path": "src/client_drawable_loop_audio_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestClientDrawableLoopAudioZeroWidth",
+        "PortTestBindingDimensions"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestBindingDimensions",
+          "caller": "TestClientDrawableLoopAudioZeroWidth",
+          "evidence": [
+            {
+              "line": 116,
+              "path": "src/client_drawable_loop_audio_porttest_test.go",
+              "text": "dimensions := legacy.PortTestBindingDimensions()"
+            }
+          ]
+        }
+      ],
+      "name": "TestClientDrawableLoopAudioZeroWidth",
+      "path": "src/client_drawable_loop_audio_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestClientInteractionActionMessages",
+        "PortTestInventoryWindowWords"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestInventoryWindowWords",
+          "caller": "TestClientInteractionActionMessages",
+          "evidence": [
+            {
+              "line": 22,
+              "path": "src/client_interaction_actions_porttest_test.go",
+              "text": "inv, restoreInv := legacy.PortTestInventoryWindowWords()"
+            }
+          ]
+        }
+      ],
+      "name": "TestClientInteractionActionMessages",
+      "path": "src/client_interaction_actions_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestClientInteractionChatDrawingAndSubmit",
+        "PortTestBindingDimensions"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestBindingDimensions",
+          "caller": "TestClientInteractionChatDrawingAndSubmit",
+          "evidence": [
+            {
+              "line": 37,
+              "path": "src/client_interaction_chat_events_porttest_test.go",
+              "text": "dim := legacy.PortTestBindingDimensions()"
+            }
+          ]
+        }
+      ],
+      "name": "TestClientInteractionChatDrawingAndSubmit",
+      "path": "src/client_interaction_chat_events_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestClientInteractionChatEscapeKey",
+        "interactionEscapeOrder",
+        "PortTestBindingWords"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "interactionEscapeOrder",
+          "caller": "TestClientInteractionChatEscapeKey",
+          "evidence": [
+            {
+              "line": 18,
+              "path": "src/client_interaction_escape_porttest_test.go",
+              "text": "func TestClientInteractionChatEscapeKey(t *testing.T) { interactionEscapeOrder(t, true) }"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBindingWords",
+          "caller": "interactionEscapeOrder",
+          "evidence": [
+            {
+              "line": 35,
+              "path": "src/client_interaction_escape_porttest_test.go",
+              "text": "bindings, restoreBindings := legacy.PortTestBindingWords()"
+            }
+          ]
+        }
+      ],
+      "name": "TestClientInteractionChatEscapeKey",
+      "path": "src/client_interaction_escape_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestClientInteractionChatLifecycle",
+        "PortTestBindingDimensions"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestBindingDimensions",
+          "caller": "TestClientInteractionChatLifecycle",
+          "evidence": [
+            {
+              "line": 22,
+              "path": "src/client_interaction_chat_lifecycle_porttest_test.go",
+              "text": "dim := legacy.PortTestBindingDimensions()"
+            }
+          ]
+        }
+      ],
+      "name": "TestClientInteractionChatLifecycle",
+      "path": "src/client_interaction_chat_lifecycle_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestClientInteractionConversation",
+        "PortTestBindingDimensions"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestBindingDimensions",
+          "caller": "TestClientInteractionConversation",
+          "evidence": [
+            {
+              "line": 28,
+              "path": "src/client_interaction_dialog_porttest_test.go",
+              "text": "dim := legacy.PortTestBindingDimensions()"
+            }
+          ]
+        }
+      ],
+      "name": "TestClientInteractionConversation",
+      "path": "src/client_interaction_dialog_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestClientInteractionEscapeMiddleControllers",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "TestClientInteractionEscapeMiddleControllers",
+          "evidence": [
+            {
+              "line": 17,
+              "path": "src/client_interaction_escape_middle_porttest_test.go",
+              "text": "o := newInventoryWindowOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestClientInteractionEscapeMiddleControllers",
+      "path": "src/client_interaction_escape_middle_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestClientInteractionEscapeOrder",
+        "interactionEscapeOrder",
+        "PortTestBindingWords"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "interactionEscapeOrder",
+          "caller": "TestClientInteractionEscapeOrder",
+          "evidence": [
+            {
+              "line": 17,
+              "path": "src/client_interaction_escape_porttest_test.go",
+              "text": "func TestClientInteractionEscapeOrder(t *testing.T)   { interactionEscapeOrder(t, false) }"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBindingWords",
+          "caller": "interactionEscapeOrder",
+          "evidence": [
+            {
+              "line": 35,
+              "path": "src/client_interaction_escape_porttest_test.go",
+              "text": "bindings, restoreBindings := legacy.PortTestBindingWords()"
+            }
+          ]
+        }
+      ],
+      "name": "TestClientInteractionEscapeOrder",
+      "path": "src/client_interaction_escape_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestClientInteractionGameOver",
+        "PortTestBindingDimensions"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestBindingDimensions",
+          "caller": "TestClientInteractionGameOver",
+          "evidence": [
+            {
+              "line": 29,
+              "path": "src/client_interaction_gameover_porttest_test.go",
+              "text": "dim := legacy.PortTestBindingDimensions()"
+            }
+          ]
+        }
+      ],
+      "name": "TestClientInteractionGameOver",
+      "path": "src/client_interaction_gameover_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestClientInteractionHUDVisibility",
+        "PortTestBookWords"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestBookWords",
+          "caller": "TestClientInteractionHUDVisibility",
+          "evidence": [
+            {
+              "line": 23,
+              "path": "src/client_interaction_hud_porttest_test.go",
+              "text": "book, restoreBook := legacy.PortTestBookWords()"
+            }
+          ]
+        }
+      ],
+      "name": "TestClientInteractionHUDVisibility",
+      "path": "src/client_interaction_hud_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestClientInteractionHelpDialog",
+        "PortTestBindingDimensions"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestBindingDimensions",
+          "caller": "TestClientInteractionHelpDialog",
+          "evidence": [
+            {
+              "line": 44,
+              "path": "src/client_interaction_help_porttest_test.go",
+              "text": "dim := legacy.PortTestBindingDimensions()"
+            }
+          ]
+        }
+      ],
+      "name": "TestClientInteractionHelpDialog",
+      "path": "src/client_interaction_help_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestClientInteractionIndicatorWindows",
+        "PortTestBindingDimensions"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestBindingDimensions",
+          "caller": "TestClientInteractionIndicatorWindows",
+          "evidence": [
+            {
+              "line": 21,
+              "path": "src/client_interaction_icons_porttest_test.go",
+              "text": "dim := legacy.PortTestBindingDimensions()"
+            }
+          ]
+        }
+      ],
+      "name": "TestClientInteractionIndicatorWindows",
+      "path": "src/client_interaction_icons_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestClientInteractionKeyAndVoteWindows",
+        "PortTestBindingDimensions"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestBindingDimensions",
+          "caller": "TestClientInteractionKeyAndVoteWindows",
+          "evidence": [
+            {
+              "line": 20,
+              "path": "src/client_interaction_key_vote_porttest_test.go",
+              "text": "dim := legacy.PortTestBindingDimensions()"
+            }
+          ]
+        }
+      ],
+      "name": "TestClientInteractionKeyAndVoteWindows",
+      "path": "src/client_interaction_key_vote_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestClientInteractionMessageDrawing",
+        "PortTestBindingDimensions"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestBindingDimensions",
+          "caller": "TestClientInteractionMessageDrawing",
+          "evidence": [
+            {
+              "line": 47,
+              "path": "src/client_interaction_message_drawing_porttest_test.go",
+              "text": "dim := legacy.PortTestBindingDimensions()"
+            }
+          ]
+        }
+      ],
+      "name": "TestClientInteractionMessageDrawing",
+      "path": "src/client_interaction_message_drawing_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestCollisionRegistryWorldCoopExitSave",
+        "worldCollisionExitGlobals",
+        "PortTestBookWords"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "worldCollisionExitGlobals",
+          "caller": "TestCollisionRegistryWorldCoopExitSave",
+          "evidence": [
+            {
+              "line": 232,
+              "path": "src/collision_registry_world_exit_porttest_test.go",
+              "text": "words := worldCollisionExitGlobals(t, o)"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookWords",
+          "caller": "worldCollisionExitGlobals",
+          "evidence": [
+            {
+              "line": 114,
+              "path": "src/world_collisions_exit_porttest_test.go",
+              "text": "words, restore := legacy.PortTestBookWords()"
+            }
+          ]
+        }
+      ],
+      "name": "TestCollisionRegistryWorldCoopExitSave",
+      "path": "src/collision_registry_world_exit_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestCollisionRegistryWorldExitAdmission",
+        "worldCollisionExitGlobals",
+        "PortTestBookWords"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "worldCollisionExitGlobals",
+          "caller": "TestCollisionRegistryWorldExitAdmission",
+          "evidence": [
+            {
+              "line": 26,
+              "path": "src/collision_registry_world_exit_porttest_test.go",
+              "text": "words := worldCollisionExitGlobals(t, o)"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookWords",
+          "caller": "worldCollisionExitGlobals",
+          "evidence": [
+            {
+              "line": 114,
+              "path": "src/world_collisions_exit_porttest_test.go",
+              "text": "words, restore := legacy.PortTestBookWords()"
+            }
+          ]
+        }
+      ],
+      "name": "TestCollisionRegistryWorldExitAdmission",
+      "path": "src/collision_registry_world_exit_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestCollisionRegistryWorldExitGlyphCleanup",
+        "worldCollisionExitGlobals",
+        "PortTestBookWords"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "worldCollisionExitGlobals",
+          "caller": "TestCollisionRegistryWorldExitGlyphCleanup",
+          "evidence": [
+            {
+              "line": 305,
+              "path": "src/collision_registry_world_exit_porttest_test.go",
+              "text": "words := worldCollisionExitGlobals(t, o)"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookWords",
+          "caller": "worldCollisionExitGlobals",
+          "evidence": [
+            {
+              "line": 114,
+              "path": "src/world_collisions_exit_porttest_test.go",
+              "text": "words, restore := legacy.PortTestBookWords()"
+            }
+          ]
+        }
+      ],
+      "name": "TestCollisionRegistryWorldExitGlyphCleanup",
+      "path": "src/collision_registry_world_exit_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestCollisionRegistryWorldQuestExit",
+        "worldCollisionExitGlobals",
+        "PortTestBookWords"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "worldCollisionExitGlobals",
+          "caller": "TestCollisionRegistryWorldQuestExit",
+          "evidence": [
+            {
+              "line": 129,
+              "path": "src/collision_registry_world_exit_porttest_test.go",
+              "text": "words := worldCollisionExitGlobals(t, o)"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookWords",
+          "caller": "worldCollisionExitGlobals",
+          "evidence": [
+            {
+              "line": 114,
+              "path": "src/world_collisions_exit_porttest_test.go",
+              "text": "words, restore := legacy.PortTestBookWords()"
+            }
+          ]
+        }
+      ],
+      "name": "TestCollisionRegistryWorldQuestExit",
+      "path": "src/collision_registry_world_exit_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestGameMessageClientCreatures",
+        "newSummonOwner",
+        "newSpellbookOwner",
+        "PortTestBookCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newSummonOwner",
+          "caller": "TestGameMessageClientCreatures",
+          "evidence": [
+            {
+              "line": 17,
+              "path": "src/game_messages_client_creatures_porttest_test.go",
+              "text": "o := newSummonOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newSpellbookOwner",
+          "caller": "newSummonOwner",
+          "evidence": [
+            {
+              "line": 38,
+              "path": "src/summon_owner_porttest_test.go",
+              "text": "o := &summonOwner{spellbookOwner: newSpellbookOwner(t, \"CarnivorousPlant\", \"PortSmallCreature\", \"PortMediumCreature\", \"PortLargeCreature\")}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookCallbacks",
+          "caller": "newSpellbookOwner",
+          "evidence": [
+            {
+              "line": 63,
+              "path": "src/spellbook_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestBookCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestGameMessageClientCreatures",
+      "path": "src/game_messages_client_creatures_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestGameMessageClientInventoryNotifications",
+        "PortTestInventoryCells"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestInventoryCells",
+          "caller": "TestGameMessageClientInventoryNotifications",
+          "evidence": [
+            {
+              "line": 162,
+              "path": "src/game_messages_client_inventory_porttest_test.go",
+              "text": "cell := &legacy.PortTestInventoryCells()[0]"
+            },
+            {
+              "line": 196,
+              "path": "src/game_messages_client_inventory_porttest_test.go",
+              "text": "for _, cell := range legacy.PortTestInventoryCells() {"
+            },
+            {
+              "line": 214,
+              "path": "src/game_messages_client_inventory_porttest_test.go",
+              "text": "if legacy.PortTestInventoryCells()[0].Equipped != wantEquipped {"
+            },
+            {
+              "line": 218,
+              "path": "src/game_messages_client_inventory_porttest_test.go",
+              "text": "if admitted && op == 97 && legacy.PortTestInventoryCells()[0].Equipped != 0 {"
+            }
+          ]
+        }
+      ],
+      "name": "TestGameMessageClientInventoryNotifications",
+      "path": "src/game_messages_client_inventory_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestGameMessageClientMapProgress",
+        "PortTestBindingDimensions"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestBindingDimensions",
+          "caller": "TestGameMessageClientMapProgress",
+          "evidence": [
+            {
+              "line": 27,
+              "path": "src/game_messages_client_map_progress_porttest_test.go",
+              "text": "dim := legacy.PortTestBindingDimensions()"
+            }
+          ]
+        }
+      ],
+      "name": "TestGameMessageClientMapProgress",
+      "path": "src/game_messages_client_map_progress_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestGameMessageClientPickup",
+        "PortTestInventoryCells"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestInventoryCells",
+          "caller": "TestGameMessageClientPickup",
+          "evidence": [
+            {
+              "line": 52,
+              "path": "src/game_messages_client_inventory_porttest_test.go",
+              "text": "cell := &legacy.PortTestInventoryCells()[0]"
+            },
+            {
+              "line": 79,
+              "path": "src/game_messages_client_inventory_porttest_test.go",
+              "text": "cell := &legacy.PortTestInventoryCells()[0]"
+            }
+          ]
+        }
+      ],
+      "name": "TestGameMessageClientPickup",
+      "path": "src/game_messages_client_inventory_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestGameMessageClientSessionBookData",
+        "PortTestInventoryCells"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestInventoryCells",
+          "caller": "TestGameMessageClientSessionBookData",
+          "evidence": [
+            {
+              "line": 25,
+              "path": "src/game_messages_client_session_book_data_porttest_test.go",
+              "text": "cells := legacy.PortTestInventoryCells()"
+            }
+          ]
+        }
+      ],
+      "name": "TestGameMessageClientSessionBookData",
+      "path": "src/game_messages_client_session_book_data_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestGameMessageClientSessionBriefing",
+        "newBriefingWindowOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingWindowOwner",
+          "caller": "TestGameMessageClientSessionBriefing",
+          "evidence": [
+            {
+              "line": 17,
+              "path": "src/game_messages_client_session_briefing_porttest_test.go",
+              "text": "o := newBriefingWindowOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newBriefingWindowOwner",
+          "evidence": [
+            {
+              "line": 36,
+              "path": "src/briefing_window_owner_porttest_test.go",
+              "text": "o := &briefingWindowOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestGameMessageClientSessionBriefing",
+      "path": "src/game_messages_client_session_briefing_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestGameMessageClientSessionDeath",
+        "PortTestInventoryWindowWords"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestInventoryWindowWords",
+          "caller": "TestGameMessageClientSessionDeath",
+          "evidence": [
+            {
+              "line": 27,
+              "path": "src/game_messages_client_session_death_porttest_test.go",
+              "text": "windowWords, restore := legacy.PortTestInventoryWindowWords()"
+            }
+          ]
+        }
+      ],
+      "name": "TestGameMessageClientSessionDeath",
+      "path": "src/game_messages_client_session_death_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestGameMessageClientSessionGauntletBookRemoval",
+        "newQuickbarOwner",
+        "PortTestQuickbarCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newQuickbarOwner",
+          "caller": "TestGameMessageClientSessionGauntletBookRemoval",
+          "evidence": [
+            {
+              "line": 20,
+              "path": "src/game_messages_client_session_gauntlet_book_removal_porttest_test.go",
+              "text": "q := newQuickbarOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestQuickbarCallbacks",
+          "caller": "newQuickbarOwner",
+          "evidence": [
+            {
+              "line": 51,
+              "path": "src/quickbar_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestQuickbarCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestGameMessageClientSessionGauntletBookRemoval",
+      "path": "src/game_messages_client_session_gauntlet_book_removal_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestGameMessageClientSessionGauntletBriefing",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newBriefingOwner",
+          "caller": "TestGameMessageClientSessionGauntletBriefing",
+          "evidence": [
+            {
+              "line": 17,
+              "path": "src/game_messages_client_session_gauntlet_briefing_porttest_test.go",
+              "text": "o := newBriefingOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestGameMessageClientSessionGauntletBriefing",
+      "path": "src/game_messages_client_session_gauntlet_briefing_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestGameMessageClientSessionGauntletLevel",
+        "PortTestInventoryWindow"
+      ],
+      "classification": "fixture-dispatch-api-has-candidate-C-call",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestInventoryWindow",
+          "caller": "TestGameMessageClientSessionGauntletLevel",
+          "evidence": [
+            {
+              "line": 87,
+              "path": "src/game_messages_client_session_gauntlet_panels_porttest_test.go",
+              "text": "legacy.PortTestInventoryWindow(14, uintptr(level), 0, 0, 0)"
+            }
+          ]
+        }
+      ],
+      "name": "TestGameMessageClientSessionGauntletLevel",
+      "path": "src/game_messages_client_session_gauntlet_panels_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestGameMessageClientSessionGauntletScoreboard",
+        "newScoreboardOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newScoreboardOwner",
+          "caller": "TestGameMessageClientSessionGauntletScoreboard",
+          "evidence": [
+            {
+              "line": 18,
+              "path": "src/game_messages_client_session_gauntlet_panels_porttest_test.go",
+              "text": "o := newScoreboardOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newScoreboardOwner",
+          "evidence": [
+            {
+              "line": 43,
+              "path": "src/scoreboard_owner_porttest_test.go",
+              "text": "o := &scoreboardOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestGameMessageClientSessionGauntletScoreboard",
+      "path": "src/game_messages_client_session_gauntlet_panels_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestGameMessageClientSessionGauntletStart",
+        "PortTestMeterCall"
+      ],
+      "classification": "fixture-dispatch-api-has-candidate-C-call",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestMeterCall",
+          "caller": "TestGameMessageClientSessionGauntletStart",
+          "evidence": [
+            {
+              "line": 118,
+              "path": "src/game_messages_client_session_gauntlet_start_porttest_test.go",
+              "text": "legacy.PortTestMeterCall(1, nil, 1, 0, 0, 0)"
+            },
+            {
+              "line": 120,
+              "path": "src/game_messages_client_session_gauntlet_start_porttest_test.go",
+              "text": "legacy.PortTestMeterCall(27, nil, 0, 0, 0, 0)"
+            }
+          ]
+        }
+      ],
+      "name": "TestGameMessageClientSessionGauntletStart",
+      "path": "src/game_messages_client_session_gauntlet_start_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestGameMessageClientSessionInventory",
+        "PortTestInventoryCells"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestInventoryCells",
+          "caller": "TestGameMessageClientSessionInventory",
+          "evidence": [
+            {
+              "line": 33,
+              "path": "src/game_messages_client_session_inventory_porttest_test.go",
+              "text": "cells := legacy.PortTestInventoryCells()"
+            }
+          ]
+        }
+      ],
+      "name": "TestGameMessageClientSessionInventory",
+      "path": "src/game_messages_client_session_inventory_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestGameMessageClientSessionJournal",
+        "newJournalOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newJournalOwner",
+          "caller": "TestGameMessageClientSessionJournal",
+          "evidence": [
+            {
+              "line": 16,
+              "path": "src/game_messages_client_session_journal_porttest_test.go",
+              "text": "o := newJournalOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newJournalOwner",
+          "evidence": [
+            {
+              "line": 48,
+              "path": "src/journal_owner_porttest_test.go",
+              "text": "o := &journalOwner{inventoryWindowOwner: newInventoryWindowOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestGameMessageClientSessionJournal",
+      "path": "src/game_messages_client_session_journal_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestGameMessageClientSessionQuickbar",
+        "newQuickbarOwner",
+        "PortTestQuickbarCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newQuickbarOwner",
+          "caller": "TestGameMessageClientSessionQuickbar",
+          "evidence": [
+            {
+              "line": 17,
+              "path": "src/game_messages_client_session_quickbar_porttest_test.go",
+              "text": "q := newQuickbarOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestQuickbarCallbacks",
+          "caller": "newQuickbarOwner",
+          "evidence": [
+            {
+              "line": 51,
+              "path": "src/quickbar_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestQuickbarCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestGameMessageClientSessionQuickbar",
+      "path": "src/game_messages_client_session_quickbar_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestGameMessageClientSessionRewards",
+        "newQuickbarOwner",
+        "PortTestQuickbarCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newQuickbarOwner",
+          "caller": "TestGameMessageClientSessionRewards",
+          "evidence": [
+            {
+              "line": 23,
+              "path": "src/game_messages_client_session_rewards_porttest_test.go",
+              "text": "q := newQuickbarOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestQuickbarCallbacks",
+          "caller": "newQuickbarOwner",
+          "evidence": [
+            {
+              "line": 51,
+              "path": "src/quickbar_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestQuickbarCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestGameMessageClientSessionRewards",
+      "path": "src/game_messages_client_session_rewards_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestGameMessageClientSessionShop",
+        "PortTestInventoryCells"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestInventoryCells",
+          "caller": "TestGameMessageClientSessionShop",
+          "evidence": [
+            {
+              "line": 61,
+              "path": "src/game_messages_client_session_shop_porttest_test.go",
+              "text": "cell := &legacy.PortTestInventoryCells()[0]"
+            }
+          ]
+        }
+      ],
+      "name": "TestGameMessageClientSessionShop",
+      "path": "src/game_messages_client_session_shop_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestGameMessageClientSessionSummonCommand",
+        "newSummonOwner",
+        "newSpellbookOwner",
+        "PortTestBookCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newSummonOwner",
+          "caller": "TestGameMessageClientSessionSummonCommand",
+          "evidence": [
+            {
+              "line": 16,
+              "path": "src/game_messages_client_session_summon_porttest_test.go",
+              "text": "o := newSummonOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newSpellbookOwner",
+          "caller": "newSummonOwner",
+          "evidence": [
+            {
+              "line": 38,
+              "path": "src/summon_owner_porttest_test.go",
+              "text": "o := &summonOwner{spellbookOwner: newSpellbookOwner(t, \"CarnivorousPlant\", \"PortSmallCreature\", \"PortMediumCreature\", \"PortLargeCreature\")}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookCallbacks",
+          "caller": "newSpellbookOwner",
+          "evidence": [
+            {
+              "line": 63,
+              "path": "src/spellbook_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestBookCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestGameMessageClientSessionSummonCommand",
+      "path": "src/game_messages_client_session_summon_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestGameMessageClientSessionTrade",
+        "newTradeUIOwner",
+        "PortTestTradeUICallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newTradeUIOwner",
+          "caller": "TestGameMessageClientSessionTrade",
+          "evidence": [
+            {
+              "line": 17,
+              "path": "src/game_messages_client_session_trade_porttest_test.go",
+              "text": "o := newTradeUIOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestTradeUICallbacks",
+          "caller": "newTradeUIOwner",
+          "evidence": [
+            {
+              "line": 48,
+              "path": "src/client_trade_ui_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestTradeUICallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestGameMessageClientSessionTrade",
+      "path": "src/game_messages_client_session_trade_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestGameMessageClientSpellAward",
+        "newSpellbookAdditionOwner",
+        "newSpellbookOwner",
+        "PortTestBookCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newSpellbookAdditionOwner",
+          "caller": "TestGameMessageClientSpellAward",
+          "evidence": [
+            {
+              "line": 20,
+              "path": "src/game_messages_client_spell_award_porttest_test.go",
+              "text": "o, bar, configure := newSpellbookAdditionOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newSpellbookOwner",
+          "caller": "newSpellbookAdditionOwner",
+          "evidence": [
+            {
+              "line": 21,
+              "path": "src/spellbook_animation_porttest_test.go",
+              "text": "o := newSpellbookOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookCallbacks",
+          "caller": "newSpellbookOwner",
+          "evidence": [
+            {
+              "line": 63,
+              "path": "src/spellbook_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestBookCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestGameMessageClientSpellAward",
+      "path": "src/game_messages_client_spell_award_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestJournalAllPlayers",
+        "newJournalOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newJournalOwner",
+          "caller": "TestJournalAllPlayers",
+          "evidence": [
+            {
+              "line": 68,
+              "path": "src/journal_reports_porttest_test.go",
+              "text": "o := newJournalOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newJournalOwner",
+          "evidence": [
+            {
+              "line": 48,
+              "path": "src/journal_owner_porttest_test.go",
+              "text": "o := &journalOwner{inventoryWindowOwner: newInventoryWindowOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestJournalAllPlayers",
+      "path": "src/journal_reports_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestJournalDrawOrderAndScroll",
+        "newJournalOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newJournalOwner",
+          "caller": "TestJournalDrawOrderAndScroll",
+          "evidence": [
+            {
+              "line": 52,
+              "path": "src/journal_render_porttest_test.go",
+              "text": "o := newJournalOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newJournalOwner",
+          "evidence": [
+            {
+              "line": 48,
+              "path": "src/journal_owner_porttest_test.go",
+              "text": "o := &journalOwner{inventoryWindowOwner: newInventoryWindowOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestJournalDrawOrderAndScroll",
+      "path": "src/journal_render_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestJournalLifecycle",
+        "newJournalOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newJournalOwner",
+          "caller": "TestJournalLifecycle",
+          "evidence": [
+            {
+              "line": 177,
+              "path": "src/journal_storage_porttest_test.go",
+              "text": "o := newJournalOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newJournalOwner",
+          "evidence": [
+            {
+              "line": 48,
+              "path": "src/journal_owner_porttest_test.go",
+              "text": "o := &journalOwner{inventoryWindowOwner: newInventoryWindowOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestJournalLifecycle",
+      "path": "src/journal_storage_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestJournalLinksAndDuplicates",
+        "newJournalOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newJournalOwner",
+          "caller": "TestJournalLinksAndDuplicates",
+          "evidence": [
+            {
+              "line": 57,
+              "path": "src/journal_storage_porttest_test.go",
+              "text": "o := newJournalOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newJournalOwner",
+          "evidence": [
+            {
+              "line": 48,
+              "path": "src/journal_owner_porttest_test.go",
+              "text": "o := &journalOwner{inventoryWindowOwner: newInventoryWindowOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestJournalLinksAndDuplicates",
+      "path": "src/journal_storage_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestJournalMaskRemoval",
+        "newJournalOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newJournalOwner",
+          "caller": "TestJournalMaskRemoval",
+          "evidence": [
+            {
+              "line": 90,
+              "path": "src/journal_storage_porttest_test.go",
+              "text": "o := newJournalOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newJournalOwner",
+          "evidence": [
+            {
+              "line": 48,
+              "path": "src/journal_owner_porttest_test.go",
+              "text": "o := &journalOwner{inventoryWindowOwner: newInventoryWindowOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestJournalMaskRemoval",
+      "path": "src/journal_storage_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestJournalMeasuredHeight",
+        "newJournalOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newJournalOwner",
+          "caller": "TestJournalMeasuredHeight",
+          "evidence": [
+            {
+              "line": 14,
+              "path": "src/journal_render_porttest_test.go",
+              "text": "o := newJournalOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newJournalOwner",
+          "evidence": [
+            {
+              "line": 48,
+              "path": "src/journal_owner_porttest_test.go",
+              "text": "o := &journalOwner{inventoryWindowOwner: newInventoryWindowOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestJournalMeasuredHeight",
+      "path": "src/journal_render_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestJournalNoLocalPlayer",
+        "newJournalOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newJournalOwner",
+          "caller": "TestJournalNoLocalPlayer",
+          "evidence": [
+            {
+              "line": 113,
+              "path": "src/journal_reports_porttest_test.go",
+              "text": "o := newJournalOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newJournalOwner",
+          "evidence": [
+            {
+              "line": 48,
+              "path": "src/journal_owner_porttest_test.go",
+              "text": "o := &journalOwner{inventoryWindowOwner: newInventoryWindowOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestJournalNoLocalPlayer",
+      "path": "src/journal_reports_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestJournalReportsAndLocalUpdates",
+        "newJournalOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newJournalOwner",
+          "caller": "TestJournalReportsAndLocalUpdates",
+          "evidence": [
+            {
+              "line": 15,
+              "path": "src/journal_reports_porttest_test.go",
+              "text": "o := newJournalOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newJournalOwner",
+          "evidence": [
+            {
+              "line": 48,
+              "path": "src/journal_owner_porttest_test.go",
+              "text": "o := &journalOwner{inventoryWindowOwner: newInventoryWindowOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestJournalReportsAndLocalUpdates",
+      "path": "src/journal_reports_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestJournalSaveLoadOwner",
+        "newJournalOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newJournalOwner",
+          "caller": "TestJournalSaveLoadOwner",
+          "evidence": [
+            {
+              "line": 20,
+              "path": "src/journal_save_porttest_test.go",
+              "text": "o := newJournalOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newJournalOwner",
+          "evidence": [
+            {
+              "line": 48,
+              "path": "src/journal_owner_porttest_test.go",
+              "text": "o := &journalOwner{inventoryWindowOwner: newInventoryWindowOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestJournalSaveLoadOwner",
+      "path": "src/journal_save_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestJournalSequences",
+        "newJournalOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newJournalOwner",
+          "caller": "TestJournalSequences",
+          "evidence": [
+            {
+              "line": 121,
+              "path": "src/journal_storage_porttest_test.go",
+              "text": "o := newJournalOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newJournalOwner",
+          "evidence": [
+            {
+              "line": 48,
+              "path": "src/journal_owner_porttest_test.go",
+              "text": "o := &journalOwner{inventoryWindowOwner: newInventoryWindowOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestJournalSequences",
+      "path": "src/journal_storage_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestJournalStorageBoundaries",
+        "newJournalOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newJournalOwner",
+          "caller": "TestJournalStorageBoundaries",
+          "evidence": [
+            {
+              "line": 15,
+              "path": "src/journal_storage_porttest_test.go",
+              "text": "o := newJournalOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newJournalOwner",
+          "evidence": [
+            {
+              "line": 48,
+              "path": "src/journal_owner_porttest_test.go",
+              "text": "o := &journalOwner{inventoryWindowOwner: newInventoryWindowOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestJournalStorageBoundaries",
+      "path": "src/journal_storage_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestMatchRosterQuestTimeout",
+        "worldCollisionExitGlobals",
+        "PortTestBookWords"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "worldCollisionExitGlobals",
+          "caller": "TestMatchRosterQuestTimeout",
+          "evidence": [
+            {
+              "line": 34,
+              "path": "src/match_roster_quest_timeout_porttest_test.go",
+              "text": "worldCollisionExitGlobals(t, o.worldCollisionOwner)"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookWords",
+          "caller": "worldCollisionExitGlobals",
+          "evidence": [
+            {
+              "line": 114,
+              "path": "src/world_collisions_exit_porttest_test.go",
+              "text": "words, restore := legacy.PortTestBookWords()"
+            }
+          ]
+        }
+      ],
+      "name": "TestMatchRosterQuestTimeout",
+      "path": "src/match_roster_quest_timeout_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestOptionsCloseAndVisibility",
+        "PortTestBindingWords"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestBindingWords",
+          "caller": "TestOptionsCloseAndVisibility",
+          "evidence": [
+            {
+              "line": 29,
+              "path": "src/options_lifecycle_porttest_test.go",
+              "text": "binding, restore := legacy.PortTestBindingWords()"
+            }
+          ]
+        }
+      ],
+      "name": "TestOptionsCloseAndVisibility",
+      "path": "src/options_lifecycle_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestOptionsConstruction",
+        "PortTestBindingDimensions"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestBindingDimensions",
+          "caller": "TestOptionsConstruction",
+          "evidence": [
+            {
+              "line": 126,
+              "path": "src/options_construction_porttest_test.go",
+              "text": "dims := legacy.PortTestBindingDimensions()"
+            }
+          ]
+        }
+      ],
+      "name": "TestOptionsConstruction",
+      "path": "src/options_construction_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestPlayerFilesClientLoadFraming",
+        "newQuickbarOwner",
+        "PortTestQuickbarCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newQuickbarOwner",
+          "caller": "TestPlayerFilesClientLoadFraming",
+          "evidence": [
+            {
+              "line": 21,
+              "path": "src/player_files_client_load_porttest_test.go",
+              "text": "q := newQuickbarOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestQuickbarCallbacks",
+          "caller": "newQuickbarOwner",
+          "evidence": [
+            {
+              "line": 51,
+              "path": "src/quickbar_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestQuickbarCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestPlayerFilesClientLoadFraming",
+      "path": "src/player_files_client_load_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestPlayerFilesClientWriteFraming",
+        "newQuickbarOwner",
+        "PortTestQuickbarCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newQuickbarOwner",
+          "caller": "TestPlayerFilesClientWriteFraming",
+          "evidence": [
+            {
+              "line": 22,
+              "path": "src/player_files_client_write_porttest_test.go",
+              "text": "q := newQuickbarOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestQuickbarCallbacks",
+          "caller": "newQuickbarOwner",
+          "evidence": [
+            {
+              "line": 51,
+              "path": "src/quickbar_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestQuickbarCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestPlayerFilesClientWriteFraming",
+      "path": "src/player_files_client_write_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestPlayerFilesInventoryGridCount",
+        "PortTestInventoryCells"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestInventoryCells",
+          "caller": "TestPlayerFilesInventoryGridCount",
+          "evidence": [
+            {
+              "line": 19,
+              "path": "src/player_files_inventory_helpers_porttest_test.go",
+              "text": "cells := legacy.PortTestInventoryCells()"
+            }
+          ]
+        }
+      ],
+      "name": "TestPlayerFilesInventoryGridCount",
+      "path": "src/player_files_inventory_helpers_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestPlayerFilesInventoryWrite",
+        "PortTestInventoryCells"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestInventoryCells",
+          "caller": "TestPlayerFilesInventoryWrite",
+          "evidence": [
+            {
+              "line": 23,
+              "path": "src/player_files_inventory_write_porttest_test.go",
+              "text": "cells := legacy.PortTestInventoryCells()"
+            }
+          ]
+        }
+      ],
+      "name": "TestPlayerFilesInventoryWrite",
+      "path": "src/player_files_inventory_write_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestPlayerFilesJournalGates",
+        "newJournalOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newJournalOwner",
+          "caller": "TestPlayerFilesJournalGates",
+          "evidence": [
+            {
+              "line": 14,
+              "path": "src/player_files_journal_porttest_test.go",
+              "text": "o := newJournalOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newJournalOwner",
+          "evidence": [
+            {
+              "line": 48,
+              "path": "src/journal_owner_porttest_test.go",
+              "text": "o := &journalOwner{inventoryWindowOwner: newInventoryWindowOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestPlayerFilesJournalGates",
+      "path": "src/player_files_journal_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestScoreboardColumnsAndHeadings",
+        "newScoreboardOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newScoreboardOwner",
+          "caller": "TestScoreboardColumnsAndHeadings",
+          "evidence": [
+            {
+              "line": 19,
+              "path": "src/scoreboard_columns_porttest_test.go",
+              "text": "o := newScoreboardOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newScoreboardOwner",
+          "evidence": [
+            {
+              "line": 43,
+              "path": "src/scoreboard_owner_porttest_test.go",
+              "text": "o := &scoreboardOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestScoreboardColumnsAndHeadings",
+      "path": "src/scoreboard_columns_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestScoreboardConstructionLifetime",
+        "newScoreboardOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newScoreboardOwner",
+          "caller": "TestScoreboardConstructionLifetime",
+          "evidence": [
+            {
+              "line": 17,
+              "path": "src/scoreboard_storage_porttest_test.go",
+              "text": "o := newScoreboardOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newScoreboardOwner",
+          "evidence": [
+            {
+              "line": 43,
+              "path": "src/scoreboard_owner_porttest_test.go",
+              "text": "o := &scoreboardOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestScoreboardConstructionLifetime",
+      "path": "src/scoreboard_storage_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestScoreboardHeadlessHost",
+        "newScoreboardOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newScoreboardOwner",
+          "caller": "TestScoreboardHeadlessHost",
+          "evidence": [
+            {
+              "line": 161,
+              "path": "src/scoreboard_teams_porttest_test.go",
+              "text": "o := newScoreboardOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newScoreboardOwner",
+          "evidence": [
+            {
+              "line": 43,
+              "path": "src/scoreboard_owner_porttest_test.go",
+              "text": "o := &scoreboardOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestScoreboardHeadlessHost",
+      "path": "src/scoreboard_teams_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestScoreboardMembership",
+        "newScoreboardOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newScoreboardOwner",
+          "caller": "TestScoreboardMembership",
+          "evidence": [
+            {
+              "line": 98,
+              "path": "src/scoreboard_storage_porttest_test.go",
+              "text": "o := newScoreboardOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newScoreboardOwner",
+          "evidence": [
+            {
+              "line": 43,
+              "path": "src/scoreboard_owner_porttest_test.go",
+              "text": "o := &scoreboardOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestScoreboardMembership",
+      "path": "src/scoreboard_storage_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestScoreboardNamesAndClasses",
+        "newScoreboardOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newScoreboardOwner",
+          "caller": "TestScoreboardNamesAndClasses",
+          "evidence": [
+            {
+              "line": 124,
+              "path": "src/scoreboard_storage_porttest_test.go",
+              "text": "o := newScoreboardOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newScoreboardOwner",
+          "evidence": [
+            {
+              "line": 43,
+              "path": "src/scoreboard_owner_porttest_test.go",
+              "text": "o := &scoreboardOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestScoreboardNamesAndClasses",
+      "path": "src/scoreboard_storage_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestScoreboardObjectiveFlags",
+        "newScoreboardOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newScoreboardOwner",
+          "caller": "TestScoreboardObjectiveFlags",
+          "evidence": [
+            {
+              "line": 48,
+              "path": "src/scoreboard_storage_porttest_test.go",
+              "text": "o := newScoreboardOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newScoreboardOwner",
+          "evidence": [
+            {
+              "line": 43,
+              "path": "src/scoreboard_owner_porttest_test.go",
+              "text": "o := &scoreboardOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestScoreboardObjectiveFlags",
+      "path": "src/scoreboard_storage_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestScoreboardObjectiveIcons",
+        "newScoreboardOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newScoreboardOwner",
+          "caller": "TestScoreboardObjectiveIcons",
+          "evidence": [
+            {
+              "line": 213,
+              "path": "src/scoreboard_teams_porttest_test.go",
+              "text": "o := newScoreboardOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newScoreboardOwner",
+          "evidence": [
+            {
+              "line": 43,
+              "path": "src/scoreboard_owner_porttest_test.go",
+              "text": "o := &scoreboardOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestScoreboardObjectiveIcons",
+      "path": "src/scoreboard_teams_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestScoreboardPlayerOrdering",
+        "newScoreboardOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newScoreboardOwner",
+          "caller": "TestScoreboardPlayerOrdering",
+          "evidence": [
+            {
+              "line": 17,
+              "path": "src/scoreboard_sorting_porttest_test.go",
+              "text": "o := newScoreboardOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newScoreboardOwner",
+          "evidence": [
+            {
+              "line": 43,
+              "path": "src/scoreboard_owner_porttest_test.go",
+              "text": "o := &scoreboardOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestScoreboardPlayerOrdering",
+      "path": "src/scoreboard_sorting_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestScoreboardPopulatedRendering",
+        "newScoreboardOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newScoreboardOwner",
+          "caller": "TestScoreboardPopulatedRendering",
+          "evidence": [
+            {
+              "line": 15,
+              "path": "src/scoreboard_render_porttest_test.go",
+              "text": "o := newScoreboardOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newScoreboardOwner",
+          "evidence": [
+            {
+              "line": 43,
+              "path": "src/scoreboard_owner_porttest_test.go",
+              "text": "o := &scoreboardOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestScoreboardPopulatedRendering",
+      "path": "src/scoreboard_render_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestScoreboardRanksAndColors",
+        "newScoreboardOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newScoreboardOwner",
+          "caller": "TestScoreboardRanksAndColors",
+          "evidence": [
+            {
+              "line": 15,
+              "path": "src/scoreboard_ranks_porttest_test.go",
+              "text": "o := newScoreboardOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newScoreboardOwner",
+          "evidence": [
+            {
+              "line": 43,
+              "path": "src/scoreboard_owner_porttest_test.go",
+              "text": "o := &scoreboardOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestScoreboardRanksAndColors",
+      "path": "src/scoreboard_ranks_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestScoreboardRecordNameBoundaries",
+        "newScoreboardOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newScoreboardOwner",
+          "caller": "TestScoreboardRecordNameBoundaries",
+          "evidence": [
+            {
+              "line": 19,
+              "path": "src/scoreboard_record_names_porttest_test.go",
+              "text": "o := newScoreboardOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newScoreboardOwner",
+          "evidence": [
+            {
+              "line": 43,
+              "path": "src/scoreboard_owner_porttest_test.go",
+              "text": "o := &scoreboardOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestScoreboardRecordNameBoundaries",
+      "path": "src/scoreboard_record_names_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestScoreboardRefreshBoundaries",
+        "newScoreboardOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newScoreboardOwner",
+          "caller": "TestScoreboardRefreshBoundaries",
+          "evidence": [
+            {
+              "line": 14,
+              "path": "src/scoreboard_refresh_porttest_test.go",
+              "text": "o := newScoreboardOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newScoreboardOwner",
+          "evidence": [
+            {
+              "line": 43,
+              "path": "src/scoreboard_owner_porttest_test.go",
+              "text": "o := &scoreboardOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestScoreboardRefreshBoundaries",
+      "path": "src/scoreboard_refresh_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestScoreboardTeamsAndMembership",
+        "newScoreboardOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newScoreboardOwner",
+          "caller": "TestScoreboardTeamsAndMembership",
+          "evidence": [
+            {
+              "line": 50,
+              "path": "src/scoreboard_teams_porttest_test.go",
+              "text": "o := newScoreboardOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newScoreboardOwner",
+          "evidence": [
+            {
+              "line": 43,
+              "path": "src/scoreboard_owner_porttest_test.go",
+              "text": "o := &scoreboardOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestScoreboardTeamsAndMembership",
+      "path": "src/scoreboard_teams_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestScoreboardTimeAndLessonHeadings",
+        "newScoreboardOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newScoreboardOwner",
+          "caller": "TestScoreboardTimeAndLessonHeadings",
+          "evidence": [
+            {
+              "line": 18,
+              "path": "src/scoreboard_timers_porttest_test.go",
+              "text": "o := newScoreboardOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newScoreboardOwner",
+          "evidence": [
+            {
+              "line": 43,
+              "path": "src/scoreboard_owner_porttest_test.go",
+              "text": "o := &scoreboardOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestScoreboardTimeAndLessonHeadings",
+      "path": "src/scoreboard_timers_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestScoreboardVisibilityAndModeCallers",
+        "newScoreboardOwner",
+        "newBriefingOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newScoreboardOwner",
+          "caller": "TestScoreboardVisibilityAndModeCallers",
+          "evidence": [
+            {
+              "line": 55,
+              "path": "src/scoreboard_render_porttest_test.go",
+              "text": "o := newScoreboardOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newBriefingOwner",
+          "caller": "newScoreboardOwner",
+          "evidence": [
+            {
+              "line": 43,
+              "path": "src/scoreboard_owner_porttest_test.go",
+              "text": "o := &scoreboardOwner{briefingOwner: newBriefingOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newBriefingOwner",
+          "evidence": [
+            {
+              "line": 62,
+              "path": "src/briefing_owner_porttest_test.go",
+              "text": "o := &briefingOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extra...)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestScoreboardVisibilityAndModeCallers",
+      "path": "src/scoreboard_render_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestScriptBindingsJournal",
+        "newJournalOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newJournalOwner",
+          "caller": "TestScriptBindingsJournal",
+          "evidence": [
+            {
+              "line": 14,
+              "path": "src/script_bindings_journal_porttest_test.go",
+              "text": "o := newJournalOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newJournalOwner",
+          "evidence": [
+            {
+              "line": 48,
+              "path": "src/journal_owner_porttest_test.go",
+              "text": "o := &journalOwner{inventoryWindowOwner: newInventoryWindowOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestScriptBindingsJournal",
+      "path": "src/script_bindings_journal_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestScriptBindingsJournalNameBoundary",
+        "newJournalOwner",
+        "newInventoryWindowOwner",
+        "PortTestInventoryWindowCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newJournalOwner",
+          "caller": "TestScriptBindingsJournalNameBoundary",
+          "evidence": [
+            {
+              "line": 95,
+              "path": "src/script_bindings_journal_porttest_test.go",
+              "text": "o := newJournalOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newInventoryWindowOwner",
+          "caller": "newJournalOwner",
+          "evidence": [
+            {
+              "line": 48,
+              "path": "src/journal_owner_porttest_test.go",
+              "text": "o := &journalOwner{inventoryWindowOwner: newInventoryWindowOwner(t)}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestInventoryWindowCallbacks",
+          "caller": "newInventoryWindowOwner",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/client_inventory_window_owner_porttest_test.go",
+              "text": "for i, p := range legacy.PortTestInventoryWindowCallbacks() {"
+            }
+          ]
+        }
+      ],
+      "name": "TestScriptBindingsJournalNameBoundary",
+      "path": "src/script_bindings_journal_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestSessionDisconnectInitialResourcePosition",
+        "PortTestBindingDimensions"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestBindingDimensions",
+          "caller": "TestSessionDisconnectInitialResourcePosition",
+          "evidence": [
+            {
+              "line": 18,
+              "path": "src/session_dialogs_disconnect_offsets_porttest_test.go",
+              "text": "dim := legacy.PortTestBindingDimensions()"
+            }
+          ]
+        }
+      ],
+      "name": "TestSessionDisconnectInitialResourcePosition",
+      "path": "src/session_dialogs_disconnect_offsets_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestSessionDisconnectResourceLifecycle",
+        "PortTestBindingDimensions"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestBindingDimensions",
+          "caller": "TestSessionDisconnectResourceLifecycle",
+          "evidence": [
+            {
+              "line": 239,
+              "path": "src/session_dialogs_ui_porttest_test.go",
+              "text": "dim := legacy.PortTestBindingDimensions()"
+            }
+          ]
+        }
+      ],
+      "name": "TestSessionDisconnectResourceLifecycle",
+      "path": "src/session_dialogs_ui_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestSessionEntrySaveGate",
+        "PortTestBookWords"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestBookWords",
+          "caller": "TestSessionEntrySaveGate",
+          "evidence": [
+            {
+              "line": 17,
+              "path": "src/session_entry_gate_porttest_test.go",
+              "text": "book, restoreBook := legacy.PortTestBookWords()"
+            }
+          ]
+        }
+      ],
+      "name": "TestSessionEntrySaveGate",
+      "path": "src/session_entry_gate_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestSessionQuitVisibilityAndModes",
+        "PortTestBookWords"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "PortTestBookWords",
+          "caller": "TestSessionQuitVisibilityAndModes",
+          "evidence": [
+            {
+              "line": 37,
+              "path": "src/session_dialogs_quit_porttest_test.go",
+              "text": "book, restoreBook := legacy.PortTestBookWords()"
+            }
+          ]
+        }
+      ],
+      "name": "TestSessionQuitVisibilityAndModes",
+      "path": "src/session_dialogs_quit_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestSummonClassification",
+        "newSummonOwner",
+        "newSpellbookOwner",
+        "PortTestBookCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newSummonOwner",
+          "caller": "TestSummonClassification",
+          "evidence": [
+            {
+              "line": 69,
+              "path": "src/summon_ui_porttest_test.go",
+              "text": "o := newSummonOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newSpellbookOwner",
+          "caller": "newSummonOwner",
+          "evidence": [
+            {
+              "line": 38,
+              "path": "src/summon_owner_porttest_test.go",
+              "text": "o := &summonOwner{spellbookOwner: newSpellbookOwner(t, \"CarnivorousPlant\", \"PortSmallCreature\", \"PortMediumCreature\", \"PortLargeCreature\")}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookCallbacks",
+          "caller": "newSpellbookOwner",
+          "evidence": [
+            {
+              "line": 63,
+              "path": "src/spellbook_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestBookCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestSummonClassification",
+      "path": "src/summon_ui_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestSummonCommands",
+        "newSummonOwner",
+        "newSpellbookOwner",
+        "PortTestBookCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newSummonOwner",
+          "caller": "TestSummonCommands",
+          "evidence": [
+            {
+              "line": 105,
+              "path": "src/summon_ui_porttest_test.go",
+              "text": "o := newSummonOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newSpellbookOwner",
+          "caller": "newSummonOwner",
+          "evidence": [
+            {
+              "line": 38,
+              "path": "src/summon_owner_porttest_test.go",
+              "text": "o := &summonOwner{spellbookOwner: newSpellbookOwner(t, \"CarnivorousPlant\", \"PortSmallCreature\", \"PortMediumCreature\", \"PortLargeCreature\")}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookCallbacks",
+          "caller": "newSpellbookOwner",
+          "evidence": [
+            {
+              "line": 63,
+              "path": "src/spellbook_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestBookCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestSummonCommands",
+      "path": "src/summon_ui_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestSummonControlEvents",
+        "newSummonOwner",
+        "newSpellbookOwner",
+        "PortTestBookCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newSummonOwner",
+          "caller": "TestSummonControlEvents",
+          "evidence": [
+            {
+              "line": 93,
+              "path": "src/summon_render_porttest_test.go",
+              "text": "o := newSummonOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newSpellbookOwner",
+          "caller": "newSummonOwner",
+          "evidence": [
+            {
+              "line": 38,
+              "path": "src/summon_owner_porttest_test.go",
+              "text": "o := &summonOwner{spellbookOwner: newSpellbookOwner(t, \"CarnivorousPlant\", \"PortSmallCreature\", \"PortMediumCreature\", \"PortLargeCreature\")}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookCallbacks",
+          "caller": "newSpellbookOwner",
+          "evidence": [
+            {
+              "line": 63,
+              "path": "src/spellbook_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestBookCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestSummonControlEvents",
+      "path": "src/summon_render_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestSummonCreatureLifecycle",
+        "newSummonOwner",
+        "newSpellbookOwner",
+        "PortTestBookCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newSummonOwner",
+          "caller": "TestSummonCreatureLifecycle",
+          "evidence": [
+            {
+              "line": 38,
+              "path": "src/summon_ui_porttest_test.go",
+              "text": "o := newSummonOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newSpellbookOwner",
+          "caller": "newSummonOwner",
+          "evidence": [
+            {
+              "line": 38,
+              "path": "src/summon_owner_porttest_test.go",
+              "text": "o := &summonOwner{spellbookOwner: newSpellbookOwner(t, \"CarnivorousPlant\", \"PortSmallCreature\", \"PortMediumCreature\", \"PortLargeCreature\")}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookCallbacks",
+          "caller": "newSpellbookOwner",
+          "evidence": [
+            {
+              "line": 63,
+              "path": "src/spellbook_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestBookCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestSummonCreatureLifecycle",
+      "path": "src/summon_ui_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestSummonGrid",
+        "newSummonOwner",
+        "newSpellbookOwner",
+        "PortTestBookCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newSummonOwner",
+          "caller": "TestSummonGrid",
+          "evidence": [
+            {
+              "line": 98,
+              "path": "src/summon_storage_porttest_test.go",
+              "text": "o := newSummonOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newSpellbookOwner",
+          "caller": "newSummonOwner",
+          "evidence": [
+            {
+              "line": 38,
+              "path": "src/summon_owner_porttest_test.go",
+              "text": "o := &summonOwner{spellbookOwner: newSpellbookOwner(t, \"CarnivorousPlant\", \"PortSmallCreature\", \"PortMediumCreature\", \"PortLargeCreature\")}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookCallbacks",
+          "caller": "newSpellbookOwner",
+          "evidence": [
+            {
+              "line": 63,
+              "path": "src/spellbook_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestBookCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestSummonGrid",
+      "path": "src/summon_storage_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestSummonHighlights",
+        "newSummonOwner",
+        "newSpellbookOwner",
+        "PortTestBookCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newSummonOwner",
+          "caller": "TestSummonHighlights",
+          "evidence": [
+            {
+              "line": 53,
+              "path": "src/summon_render_porttest_test.go",
+              "text": "o := newSummonOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newSpellbookOwner",
+          "caller": "newSummonOwner",
+          "evidence": [
+            {
+              "line": 38,
+              "path": "src/summon_owner_porttest_test.go",
+              "text": "o := &summonOwner{spellbookOwner: newSpellbookOwner(t, \"CarnivorousPlant\", \"PortSmallCreature\", \"PortMediumCreature\", \"PortLargeCreature\")}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookCallbacks",
+          "caller": "newSpellbookOwner",
+          "evidence": [
+            {
+              "line": 63,
+              "path": "src/spellbook_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestBookCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestSummonHighlights",
+      "path": "src/summon_render_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestSummonLayout",
+        "newSummonOwner",
+        "newSpellbookOwner",
+        "PortTestBookCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newSummonOwner",
+          "caller": "TestSummonLayout",
+          "evidence": [
+            {
+              "line": 166,
+              "path": "src/summon_storage_porttest_test.go",
+              "text": "o := newSummonOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newSpellbookOwner",
+          "caller": "newSummonOwner",
+          "evidence": [
+            {
+              "line": 38,
+              "path": "src/summon_owner_porttest_test.go",
+              "text": "o := &summonOwner{spellbookOwner: newSpellbookOwner(t, \"CarnivorousPlant\", \"PortSmallCreature\", \"PortMediumCreature\", \"PortLargeCreature\")}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookCallbacks",
+          "caller": "newSpellbookOwner",
+          "evidence": [
+            {
+              "line": 63,
+              "path": "src/spellbook_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestBookCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestSummonLayout",
+      "path": "src/summon_storage_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestSummonLifecycle",
+        "newSummonOwner",
+        "newSpellbookOwner",
+        "PortTestBookCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newSummonOwner",
+          "caller": "TestSummonLifecycle",
+          "evidence": [
+            {
+              "line": 14,
+              "path": "src/summon_ui_porttest_test.go",
+              "text": "o := newSummonOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newSpellbookOwner",
+          "caller": "newSummonOwner",
+          "evidence": [
+            {
+              "line": 38,
+              "path": "src/summon_owner_porttest_test.go",
+              "text": "o := &summonOwner{spellbookOwner: newSpellbookOwner(t, \"CarnivorousPlant\", \"PortSmallCreature\", \"PortMediumCreature\", \"PortLargeCreature\")}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookCallbacks",
+          "caller": "newSpellbookOwner",
+          "evidence": [
+            {
+              "line": 63,
+              "path": "src/spellbook_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestBookCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestSummonLifecycle",
+      "path": "src/summon_ui_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestSummonMenuBounds",
+        "newSummonOwner",
+        "newSpellbookOwner",
+        "PortTestBookCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newSummonOwner",
+          "caller": "TestSummonMenuBounds",
+          "evidence": [
+            {
+              "line": 196,
+              "path": "src/summon_render_porttest_test.go",
+              "text": "o := newSummonOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newSpellbookOwner",
+          "caller": "newSummonOwner",
+          "evidence": [
+            {
+              "line": 38,
+              "path": "src/summon_owner_porttest_test.go",
+              "text": "o := &summonOwner{spellbookOwner: newSpellbookOwner(t, \"CarnivorousPlant\", \"PortSmallCreature\", \"PortMediumCreature\", \"PortLargeCreature\")}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookCallbacks",
+          "caller": "newSpellbookOwner",
+          "evidence": [
+            {
+              "line": 63,
+              "path": "src/spellbook_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestBookCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestSummonMenuBounds",
+      "path": "src/summon_render_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestSummonMenus",
+        "newSummonOwner",
+        "newSpellbookOwner",
+        "PortTestBookCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newSummonOwner",
+          "caller": "TestSummonMenus",
+          "evidence": [
+            {
+              "line": 139,
+              "path": "src/summon_ui_porttest_test.go",
+              "text": "o := newSummonOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newSpellbookOwner",
+          "caller": "newSummonOwner",
+          "evidence": [
+            {
+              "line": 38,
+              "path": "src/summon_owner_porttest_test.go",
+              "text": "o := &summonOwner{spellbookOwner: newSpellbookOwner(t, \"CarnivorousPlant\", \"PortSmallCreature\", \"PortMediumCreature\", \"PortLargeCreature\")}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookCallbacks",
+          "caller": "newSpellbookOwner",
+          "evidence": [
+            {
+              "line": 63,
+              "path": "src/spellbook_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestBookCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestSummonMenus",
+      "path": "src/summon_ui_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestSummonRecordStorage",
+        "newSummonOwner",
+        "newSpellbookOwner",
+        "PortTestBookCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newSummonOwner",
+          "caller": "TestSummonRecordStorage",
+          "evidence": [
+            {
+              "line": 13,
+              "path": "src/summon_storage_porttest_test.go",
+              "text": "o := newSummonOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newSpellbookOwner",
+          "caller": "newSummonOwner",
+          "evidence": [
+            {
+              "line": 38,
+              "path": "src/summon_owner_porttest_test.go",
+              "text": "o := &summonOwner{spellbookOwner: newSpellbookOwner(t, \"CarnivorousPlant\", \"PortSmallCreature\", \"PortMediumCreature\", \"PortLargeCreature\")}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookCallbacks",
+          "caller": "newSpellbookOwner",
+          "evidence": [
+            {
+              "line": 63,
+              "path": "src/spellbook_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestBookCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestSummonRecordStorage",
+      "path": "src/summon_storage_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestSummonRendering",
+        "newSummonOwner",
+        "newSpellbookOwner",
+        "PortTestBookCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newSummonOwner",
+          "caller": "TestSummonRendering",
+          "evidence": [
+            {
+              "line": 16,
+              "path": "src/summon_render_porttest_test.go",
+              "text": "o := newSummonOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newSpellbookOwner",
+          "caller": "newSummonOwner",
+          "evidence": [
+            {
+              "line": 38,
+              "path": "src/summon_owner_porttest_test.go",
+              "text": "o := &summonOwner{spellbookOwner: newSpellbookOwner(t, \"CarnivorousPlant\", \"PortSmallCreature\", \"PortMediumCreature\", \"PortLargeCreature\")}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookCallbacks",
+          "caller": "newSpellbookOwner",
+          "evidence": [
+            {
+              "line": 63,
+              "path": "src/spellbook_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestBookCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestSummonRendering",
+      "path": "src/summon_render_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestSummonSlotTooltips",
+        "newSummonOwner",
+        "newSpellbookOwner",
+        "PortTestBookCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newSummonOwner",
+          "caller": "TestSummonSlotTooltips",
+          "evidence": [
+            {
+              "line": 221,
+              "path": "src/summon_render_porttest_test.go",
+              "text": "o := newSummonOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newSpellbookOwner",
+          "caller": "newSummonOwner",
+          "evidence": [
+            {
+              "line": 38,
+              "path": "src/summon_owner_porttest_test.go",
+              "text": "o := &summonOwner{spellbookOwner: newSpellbookOwner(t, \"CarnivorousPlant\", \"PortSmallCreature\", \"PortMediumCreature\", \"PortLargeCreature\")}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookCallbacks",
+          "caller": "newSpellbookOwner",
+          "evidence": [
+            {
+              "line": 63,
+              "path": "src/spellbook_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestBookCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestSummonSlotTooltips",
+      "path": "src/summon_render_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestSummonTooltipsAndMenuDraw",
+        "newSummonOwner",
+        "newSpellbookOwner",
+        "PortTestBookCallbacks"
+      ],
+      "classification": "callback-identity-getter-only",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "newSummonOwner",
+          "caller": "TestSummonTooltipsAndMenuDraw",
+          "evidence": [
+            {
+              "line": 139,
+              "path": "src/summon_render_porttest_test.go",
+              "text": "o := newSummonOwner(t)"
+            }
+          ]
+        },
+        {
+          "callee": "newSpellbookOwner",
+          "caller": "newSummonOwner",
+          "evidence": [
+            {
+              "line": 38,
+              "path": "src/summon_owner_porttest_test.go",
+              "text": "o := &summonOwner{spellbookOwner: newSpellbookOwner(t, \"CarnivorousPlant\", \"PortSmallCreature\", \"PortMediumCreature\", \"PortLargeCreature\")}"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookCallbacks",
+          "caller": "newSpellbookOwner",
+          "evidence": [
+            {
+              "line": 63,
+              "path": "src/spellbook_owner_porttest_test.go",
+              "text": "callbacks := legacy.PortTestBookCallbacks()"
+            }
+          ]
+        }
+      ],
+      "name": "TestSummonTooltipsAndMenuDraw",
+      "path": "src/summon_render_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestWorldCollisionsCoopExitSave",
+        "worldCollisionExitGlobals",
+        "PortTestBookWords"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "worldCollisionExitGlobals",
+          "caller": "TestWorldCollisionsCoopExitSave",
+          "evidence": [
+            {
+              "line": 257,
+              "path": "src/world_collisions_exit_porttest_test.go",
+              "text": "words := worldCollisionExitGlobals(t, o)"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookWords",
+          "caller": "worldCollisionExitGlobals",
+          "evidence": [
+            {
+              "line": 114,
+              "path": "src/world_collisions_exit_porttest_test.go",
+              "text": "words, restore := legacy.PortTestBookWords()"
+            }
+          ]
+        }
+      ],
+      "name": "TestWorldCollisionsCoopExitSave",
+      "path": "src/world_collisions_exit_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestWorldCollisionsExitAdmission",
+        "worldCollisionExitGlobals",
+        "PortTestBookWords"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "worldCollisionExitGlobals",
+          "caller": "TestWorldCollisionsExitAdmission",
+          "evidence": [
+            {
+              "line": 26,
+              "path": "src/world_collisions_exit_porttest_test.go",
+              "text": "words := worldCollisionExitGlobals(t, o)"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookWords",
+          "caller": "worldCollisionExitGlobals",
+          "evidence": [
+            {
+              "line": 114,
+              "path": "src/world_collisions_exit_porttest_test.go",
+              "text": "words, restore := legacy.PortTestBookWords()"
+            }
+          ]
+        }
+      ],
+      "name": "TestWorldCollisionsExitAdmission",
+      "path": "src/world_collisions_exit_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestWorldCollisionsExitGlyphCleanup",
+        "worldCollisionExitGlobals",
+        "PortTestBookWords"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "worldCollisionExitGlobals",
+          "caller": "TestWorldCollisionsExitGlyphCleanup",
+          "evidence": [
+            {
+              "line": 330,
+              "path": "src/world_collisions_exit_porttest_test.go",
+              "text": "words := worldCollisionExitGlobals(t, o)"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookWords",
+          "caller": "worldCollisionExitGlobals",
+          "evidence": [
+            {
+              "line": 114,
+              "path": "src/world_collisions_exit_porttest_test.go",
+              "text": "words, restore := legacy.PortTestBookWords()"
+            }
+          ]
+        }
+      ],
+      "name": "TestWorldCollisionsExitGlyphCleanup",
+      "path": "src/world_collisions_exit_porttest_test.go"
+    },
+    {
+      "chain": [
+        "TestWorldCollisionsQuestExit",
+        "worldCollisionExitGlobals",
+        "PortTestBookWords"
+      ],
+      "classification": "other-fixture-api-or-owner-context",
+      "constraints": [
+        "//go:build porttest"
+      ],
+      "edges": [
+        {
+          "callee": "worldCollisionExitGlobals",
+          "caller": "TestWorldCollisionsQuestExit",
+          "evidence": [
+            {
+              "line": 154,
+              "path": "src/world_collisions_exit_porttest_test.go",
+              "text": "words := worldCollisionExitGlobals(t, o)"
+            }
+          ]
+        },
+        {
+          "callee": "PortTestBookWords",
+          "caller": "worldCollisionExitGlobals",
+          "evidence": [
+            {
+              "line": 114,
+              "path": "src/world_collisions_exit_porttest_test.go",
+              "text": "words, restore := legacy.PortTestBookWords()"
+            }
+          ]
+        }
+      ],
+      "name": "TestWorldCollisionsQuestExit",
+      "path": "src/world_collisions_exit_porttest_test.go"
+    }
+  ],
+  "candidate_callback_getter_seeds": [
+    "PortTestBookCallbacks",
+    "PortTestInventoryWindowCallbacks",
+    "PortTestQuickbarCallbacks",
+    "PortTestShopUICallbacks",
+    "PortTestTradeUICallbacks"
+  ],
+  "current_source": "a798ad1c per parent handoff",
+  "current_source_sha256_by_root_file": {
+    "src/book_awards_loader_porttest_test.go": "4d70a254289aebf23808420d6b2ddbfcb63267968bfda5d7d0ee20be253590a2",
+    "src/briefing_assets_porttest_test.go": "16197fc86a308acf3b99a226e5d102cec6f3410aec6e1a12c778555b6ea01971",
+    "src/briefing_render_porttest_test.go": "57d058c619ea443a451fe9f3622b48fe9bbd4f1f28ccbdeaec0a543e0a884dc4",
+    "src/briefing_reports_porttest_test.go": "d286963d9c2f8a08b392a0bc66f7b36f840b449dd05548f8daa20e14be526371",
+    "src/briefing_storage_porttest_test.go": "441e52febadd6a2385bdc657b7abc90ff5c5354ac005432f3f7202a281b48a03",
+    "src/briefing_window_assets_porttest_test.go": "fa211fd943a77c2f3af310b9c6342a50b99732f5afb0744ec3d43729cf8ad7e7",
+    "src/briefing_window_input_porttest_test.go": "92dda8c87b175cf104c156360f70603a618d934ff31c45bd009f921b53cf2324",
+    "src/briefing_window_presentation_porttest_test.go": "3819efb4f4933607644fd8f390591b27703930f139572b520dbfa303c20dcf5c",
+    "src/briefing_window_render_porttest_test.go": "0138b076dccd0e3c23660c4ae6aa12a298f99bfc98bb4b0ca933bf8c472f097c",
+    "src/briefing_window_storage_porttest_test.go": "49b9c95bacaa0ec00eab4e9462ad0955542ef11df3a57f98b5d81a313e19337a",
+    "src/character_creation_files_porttest_test.go": "fd2ac765590f75ff22e9b1123ed32dadd2ef424776f60e4a19aa507f9f0df0af",
+    "src/client_drawable_loop_audio_porttest_test.go": "61e29c4e14ec0526262f3fea8b6b5da60e87f977402713b7f399e5c68c0714f2",
+    "src/client_interaction_actions_porttest_test.go": "be56b9eac6d095aa0cdbb26c1b6ebcaa42c500a4058cdd092134730caebc35b2",
+    "src/client_interaction_chat_events_porttest_test.go": "87e6c23481d14815ad6ceceb34f4e66502130e31e3b607dff82e3a1bcad43f11",
+    "src/client_interaction_chat_lifecycle_porttest_test.go": "7a90565e94535e05625c34000acdc5283184cdebe51e8ac53092d4eebeff9cb5",
+    "src/client_interaction_dialog_porttest_test.go": "afd102982bc255d0fc3436fd8c1395a13f9d093ff0a19cdb55eed1557fcd5a7e",
+    "src/client_interaction_escape_middle_porttest_test.go": "97c2c6011ad98140986ae5b6b3f90c385294a844d51f03d6247c7442e44110f2",
+    "src/client_interaction_escape_porttest_test.go": "0d516e1c28d245b72e412931383f69b7df55aa626c7353141256ff2a3848e85e",
+    "src/client_interaction_gameover_porttest_test.go": "243388f75a38f08f9e98f693c1021b69dfcb1e96e8d143063a7378ecfc4de3e9",
+    "src/client_interaction_help_porttest_test.go": "460f57d48f4eb1809540564115647989b5973945e742c092a267b731d0aa820e",
+    "src/client_interaction_hud_porttest_test.go": "3cbdb974c09463d7bd525de5a1cacb5caf9760ad3d152f34528bd02842394aeb",
+    "src/client_interaction_icons_porttest_test.go": "d13c8a4fa0af02e5aaa5d97d2b4e5e82f959c1be64f6a38842e2df8b99920c91",
+    "src/client_interaction_key_vote_porttest_test.go": "f04226b38e9854e3de73ae5c49451aaa870c47a1ce5e3c601b3e102e164276c3",
+    "src/client_interaction_message_drawing_porttest_test.go": "418fdb94ac9ec99c567f4509dd732e570405e80f878bf7eb6f9dcbed170fcbd2",
+    "src/collision_registry_world_exit_porttest_test.go": "0c3beedb70e6b2a0f7b43793a06896c97fead6a36c13f089c6f673d84b6a9722",
+    "src/game_messages_client_creatures_porttest_test.go": "362d4a2ef1faf27ccf89f0a34c86f44db2945a1f36b67a71a5ffed9b369052bb",
+    "src/game_messages_client_inventory_porttest_test.go": "da290e37af71d97b733127c767d7403839e5d37232a6682da4793ba9da98eca0",
+    "src/game_messages_client_map_progress_porttest_test.go": "cdc2f5960041c3b133b1c51484cae326e6e8746a77632ea469cecb36c61b0591",
+    "src/game_messages_client_session_book_data_porttest_test.go": "c83fe526deb55986e04839627d1f738892cfd5d8c2327a96751d15728791b070",
+    "src/game_messages_client_session_briefing_porttest_test.go": "9d9c808fbac304b952699f552009f3b0c5b55c68d17d9756a6561397ce530296",
+    "src/game_messages_client_session_death_porttest_test.go": "eb6f1744b0f506c4d262c63e7bf57d31a4bd007c3465ed925b606989fab4adfa",
+    "src/game_messages_client_session_gauntlet_book_removal_porttest_test.go": "7017e25c07574dfbdb516071f9b4ded4bbb058c21eb088e5cc10221be9eda3e1",
+    "src/game_messages_client_session_gauntlet_briefing_porttest_test.go": "a60c9a38346924b56ec1763dbd63f1dacb743d005a86a13344b1fb0f81a37483",
+    "src/game_messages_client_session_gauntlet_panels_porttest_test.go": "8f325b680a5813e32bca18e036755d50c2efeb8f055d4f6e418aa1c8b8665007",
+    "src/game_messages_client_session_gauntlet_start_porttest_test.go": "c9340edb7dabc064e4d36928d197b25aef1ee87435a7eb9895e28f224254cbb3",
+    "src/game_messages_client_session_inventory_porttest_test.go": "86ab9499281d64a622456d6cf0b83dfb22f2c57e501a7b85cb2285a678d93c39",
+    "src/game_messages_client_session_journal_porttest_test.go": "bd0075a0e0477779386fa5e2dfae085d3a8610a3067fefb48db86ee4737f8c77",
+    "src/game_messages_client_session_quickbar_porttest_test.go": "4c9efa839255e2c98673b9b0c23c173bd2d8508dd4ed99548075d4fc51cec81f",
+    "src/game_messages_client_session_rewards_porttest_test.go": "7aab3a06af5b515d00a338153b90c3efe3acb0cdcaf4c828b240b24534034bcf",
+    "src/game_messages_client_session_shop_porttest_test.go": "65401e6b45da264a52c2d4f6885f853088222cdee7d8faf74e38fc6dd108997f",
+    "src/game_messages_client_session_summon_porttest_test.go": "f72ea7d2fda8d7522bf8948b55a61eba27f81e8a868cfa93a7a830dfe1f19896",
+    "src/game_messages_client_session_trade_porttest_test.go": "d77763389d97fa58f653713f3bc6dd95f7539cccc8e5000002f69a6293ab1085",
+    "src/game_messages_client_spell_award_porttest_test.go": "eeb36a10cb64c68d89ea5e8a899bf6b001acdebcbe67d32d1495e03d5415671e",
+    "src/journal_render_porttest_test.go": "bdf05ce54be5f584d10a966c5485ecb7d0e32685a9b27c8aac9867d4f7c4a6f4",
+    "src/journal_reports_porttest_test.go": "fc7ef7c0b9745d9e687e8b6dfbc5e12777fdc8e6a99970088bb939c94abe2591",
+    "src/journal_save_porttest_test.go": "bab02c00e3d747ceef2d98381f37cab53632ad1ddcf4e51aee7f7ebef9189633",
+    "src/journal_storage_porttest_test.go": "186c4fdff783a59d383d9dc79f61e9e70243c421662b05b01ef0e9695f40d7f3",
+    "src/match_roster_quest_timeout_porttest_test.go": "3763fbf0a04184af156ec3eba9084ec3602af7b0b998ef91572ee3dda02a4cbc",
+    "src/options_construction_porttest_test.go": "45cfa04350844965dc9efc3bac7960dcb297927dcc719fbbd70428c552a92bcc",
+    "src/options_lifecycle_porttest_test.go": "5197422cf6f6fc9d48d2e930a51df78af52fbab9671689951a81a2cdd69964d2",
+    "src/player_files_client_load_porttest_test.go": "e15937e658cfe05d4daf2d169106633fff6a5ca69291520918beea505f1de99a",
+    "src/player_files_client_write_porttest_test.go": "a3957412f99621a35cf09f3c25d8807905f185283bd08aa4c0484682cab9daba",
+    "src/player_files_inventory_helpers_porttest_test.go": "ebf5dfedfb166d3be48690c333903a89559a6afc6b50cb7ab0594de7112978e5",
+    "src/player_files_inventory_write_porttest_test.go": "fdfcabe7d4d063e24035ac93d7de0b550f933aea951c21848808eec401a2a3e2",
+    "src/player_files_journal_porttest_test.go": "b1103e620d21f135e7fadd93e9fb71f54f9d00efc30bd059ae021a9243284db6",
+    "src/scoreboard_columns_porttest_test.go": "d64718865c9ca2143c58f815f13e700e3a213934990d76e565723b9325fdeae1",
+    "src/scoreboard_ranks_porttest_test.go": "8da7476baa292e6f3e9b4db827f0f0d4bfc2a6a5a9b657285b7ec9542aad770f",
+    "src/scoreboard_record_names_porttest_test.go": "da0aad1c1b9b983f72321d0b3fb62688c4c5dd1616e6e1e4d7108aee262aae7f",
+    "src/scoreboard_refresh_porttest_test.go": "c9bc136cc20e2b75949783b0a35bb24a44a1f2e57ef53fbf8500cb36c1a95dd9",
+    "src/scoreboard_render_porttest_test.go": "0bb56d6fef37e88a084de5a8f805137fefa281b464cb5d9522e89e6f2bfd0819",
+    "src/scoreboard_sorting_porttest_test.go": "d0ecc3446eb05e9796101316214f39af83107571b23cb2a01b18da5c0dc00e6f",
+    "src/scoreboard_storage_porttest_test.go": "d63c8e6b3fd3f96045095b7fb2ec7f116271bc01fa09cb72ee53171742526b1f",
+    "src/scoreboard_teams_porttest_test.go": "c14731d2b47f17c12de71fb2a18a24ed2e813dcc0bb7a3b297ad68478120c438",
+    "src/scoreboard_timers_porttest_test.go": "4acbbd7184b08ebe692379fdcc772c3e3252b79c6c540aeb4a0064cb7c6c9945",
+    "src/script_bindings_journal_porttest_test.go": "8b86421f2819060a509b0b930cfa715af8d6edb5f43d07372d4c88a82aa4d0de",
+    "src/session_dialogs_disconnect_offsets_porttest_test.go": "0e5eee21f566cd40a427a8228984f664576ffadfaa0ae228f596a38f63741a50",
+    "src/session_dialogs_quit_porttest_test.go": "cd1eafcfc644beee160c20a7a359e14da442c2e27d7bfe1ece0d217b39d90c91",
+    "src/session_dialogs_ui_porttest_test.go": "00dc7057e3ec64c3a4f6c368359e54c0d5ff2229bc49955abc6cad3939fa6dba",
+    "src/session_entry_gate_porttest_test.go": "f3b6d3412b77056500fdbe87c01f104d776773dc5a1c2abc845834b3877be618",
+    "src/summon_render_porttest_test.go": "483eef3619ecffc08e967ac4513163e4b4b325931c60c1c9462257af99153b93",
+    "src/summon_storage_porttest_test.go": "1bfca5f9824fdce72bf1f8ecf95fbc78039fd3da5d527e06af96476f250901a3",
+    "src/summon_ui_porttest_test.go": "960ad517e2111c4bdde19af4b8e1c5c319325ad8e16f6ad4f073346264af267a",
+    "src/world_collisions_exit_porttest_test.go": "8b51b1d43f056f64ca005f06c81313abeed560079c092a082f04b8ff7bb58cba"
+  },
+  "limits": [
+    "The 122-root list is a conservative caller/owner closure, not a claim that all roots invoke one of 71 candidate wrappers.",
+    "Callback-getter-only roots exercise identity collection/normalization; they do not establish callback execution.",
+    "The closure follows free-function identifier calls; arbitrary method/function-value dispatch is not proven.",
+    "Keep the parent-selected 261+122 union as qualified caller coverage; this report does not alter selectors."
+  ],
+  "method": "Conservative free-function textual call closure over AST-extracted current root-test bodies; seeds all public PortTest/NewPortTest APIs in affected fixture files. Method dispatch and per-operation effects require manual followup.",
+  "scope": "Read-only addendum; no source edits or test execution.",
+  "summary": {
+    "additional_root_count": 122,
+    "dispatch_api_roots": 2,
+    "function_or_edge_errors": 0,
+    "identity_getter_roots": 82,
+    "initial_selected_root_count": 261,
+    "other_shared_owner_or_fixture_api_roots": 38,
+    "overlap_with_initial_selection": 0,
+    "validated_edge_call_references": 321
+  },
+  "validation_errors": []
+}
