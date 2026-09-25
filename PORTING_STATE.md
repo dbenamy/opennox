@@ -4,7 +4,7 @@ This file is the current resume checkpoint, not a chronological log. Replace
 superseded status when updating it. The workflow and delegation rules live in
 [PORT.md](PORT.md); detailed evidence belongs in the linked batch reports.
 
-## Status: resumed; internal C-glue removal
+## Status: paused at helper usage limit; original UI baseline saved
 
 **Progress: 142,665/142,665 original standalone C lines ported or retired;
 internal glue: 317/463 client cgo files eliminated on net (146 remain;
@@ -21,10 +21,11 @@ Mutable hooks, signed results, callback conventions and foreign callback fallbac
 are preserved. External audio backends, owner algorithms, layouts and assertions
 are unchanged. See [AUDIO_BRIDGE_IDENTITIES.md](docs/porting/AUDIO_BRIDGE_IDENTITIES.md).
 
-Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Select the next connected remaining callback or
-interface family from actual callers. External media backends remain outside
-scope. Stop at the milestone or a substantial question.
+Paused after Luna reached its usage limit during the UI meter scout. Primary
+finished the original baseline: 363 client/360 server roots pass and the two new tooltip
+contracts pass twice per profile. No UI production conversion is installed.
+On resume, continue the documented chunk/qualification/commit/push workflow;
+stop only at the milestone, usage limits or a substantial question.
 
 Latest qualified artifacts: `build/port-audio-bridge-identities/`.
 
@@ -86,10 +87,20 @@ is not compilation or qualification. The helper's external-review draft is not
 accepted evidence: its suggestion that go-gl is residue is contradicted by the
 actual dependency graph (`libs/client/seat/opengl` imports it).
 
-Audio bridge conversion is qualified. The next scout concerns remaining internal
-UI meter forwarding bridges and actual callback/fixture consumers. Review the
-bounded helper proposal before selecting conversion scope; external media backends
-remain untouched. Scout: `build/port-ui-meter-bridge-scout-20260925/`.
+Audio bridge conversion is qualified and pushed as `9eac418e`. The next UI meter
+batch has an accepted original-only baseline: 363 client/360 server roots, including
+new installed-tooltip and foreign-callback contracts repeated per profile. Production
+source is identical to the qualified audio source; only two test files were added.
+See [UI_METER_IDENTITIES.md](docs/porting/UI_METER_IDENTITIES.md) and
+[original baseline](docs/porting/ui-meter-identities-baseline.json).
+
+Next: finish scope/caller review (17 meter exports plus two constructors and the
+adjacent inventory draw bridge), choose the narrow native tooltip route, then
+prepare/review the conversion and requalify. Existing typed event/draw support can
+be reused. Preserve Window layout, foreign fallback, callback capture IDs and
+frozen state/pixel assertions. No UI conversion overlay exists. The partial Luna
+scout under `build/port-ui-meter-bridge-scout-20260925/` is not acceptance evidence;
+its old Git-head label must be checked against its actual source hashes.
 The earlier 25-export object-state proposal under
 `build/port-after-go-only-exports/` was rejected because it omitted fixture C calls.
 The qualified 37-export batch supersedes it with a complete caller/identity audit.
@@ -129,6 +140,8 @@ do not rerun them or infer deletion safety from age alone.
 
 | Artifact | Recovery or current location |
 | --- | --- |
+| Current original UI meter baseline | Retained under `build/port-ui-meter-identities/original-profiles/`; 363 client/360 server roots plus separate-process repeats in `repeat-*.jsonl`. Production remains audio `9eac418e`. Source/report/test selection are committed; local binaries/logs can be rebuilt. |
+| Obsolete pre-original-audio cache | Removed 14 unused root/legacy archives predating `403efa06`, reclaiming 757,334,016 allocated bytes after source-family/hash/stat and host-use checks. Current audio caches/binaries, all source and assets preserved. Evidence: `build/port-ui-meter-identities/cache-before-meters/`. Cleanup script consumed. |
 | Superseded list production/safe and older preview binaries | Removed four list production/safe executables (188,317,696 allocated bytes) after current audio builds/ABI and host-use checks, plus three monster/player/list preview executables (143,073,280 bytes) after source/hash/replacement checks. All logs/reports/source remain; rebuild the recorded revisions normally. Current audio production/safe/preview retained. Evidence: `build/port-audio-bridge-identities/old-{production,preview}-cleanup-{approved.json,deleted.jsonl}`. |
 | Audio preview/final duplicate assets | Removed 1,654 verified copies per scenario (559,976,448 / 560,005,120 allocated bytes). Originals, saves/results remain. Restore using `python3 build/port-artifact-cleanup/restore-recent-scenario.py` with `build/baseline/runs/audio-bridge-identities-preview-save/deduplicated-assets.json` or `build/baseline/runs/audio-bridge-identities-save/deduplicated-assets.json`. |
 | Superseded list and original audio test binaries | Removed six source/hash/host-verified executables (402,460,672 allocated bytes); converted audio contracts retained. Rebuild original audio `403efa06` or list `6f981385` normally; logs/records/source remain. Evidence: `build/port-audio-bridge-identities/old-tests-cleanup-{approved.json,deleted.jsonl}`. |
