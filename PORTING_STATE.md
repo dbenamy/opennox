@@ -21,10 +21,11 @@ and captures are unchanged; the full default corpus was rerun for these shared
 fixture owners. See [CLIENT_UI_FIXTURE_BRIDGES.md](docs/porting/CLIENT_UI_FIXTURE_BRIDGES.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Next scouting audit follows four live internal
-audio-stream callback routes; primary must accept the scope and original-path
-baseline before another conversion. External audio backends remain outside scope.
-No next conversion is installed. Stop at the milestone or a substantial question.
+recorded reversible decisions. The next audio-stream batch has an accepted
+original-path baseline: 86 roots per profile plus repeated new root contracts.
+It targets 20 exports and four live internal callback identities; no conversion
+is installed yet. See [AUDIO_STREAM_CALLBACKS.md](docs/porting/AUDIO_STREAM_CALLBACKS.md).
+External audio backends remain outside scope. Stop at the milestone or a substantial question.
 
 Latest qualified artifacts: `build/port-client-ui-fixture-bridges/`.
 
