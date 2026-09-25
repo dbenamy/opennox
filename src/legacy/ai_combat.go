@@ -7,7 +7,6 @@ import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/common/sound"
 	"github.com/opennox/opennox/v1/common/unit/ai"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"math"
 	"unsafe"
@@ -270,7 +269,7 @@ func combatMelee(u *server.Object) {
 		return
 	}
 	if uint32(ud.Field120_1) == d.MeleeAttackFrame108 && ud.Field120_2 == 0 {
-		hit := ccall.CallIntPtr(d.MeleeStrikeFunc236, u.CObj())
+		hit := monsterCallbackResult(d.MeleeStrikeFunc236, u)
 		if hit != 0 {
 			combatSound(u, 8)
 		} else {

@@ -33,8 +33,8 @@ hook; the unchanged root Bomber gameplay owner's item/no-item branches are not
 newly qualified by that contract. Existing captured owner tests cover the other
 callback operations. The original Bomber contract passed twice in separate processes per profile,
 and all 564 affected roots pass in each profile with exact names and no skips.
-Production source is identical to qualified `024b2632`; its production evidence is
-reused for this test-only baseline. Conversion qualification remains pending.
+Original baseline production source is identical to qualified `024b2632`; its
+production evidence was reused for that test-only baseline. The conversion is now fully qualified.
 
 ## Primary and helper review
 
@@ -47,10 +47,10 @@ them with the isolated fixture writes. Preserve the original audit and corrected
 version; only the verified table mapping is implementation input.
 
 Local evidence: `build/port-monster-callback-identities/primary/` and
-`build/port-monster-callback-scout-20260925/`. No production conversion installed.
+`build/port-monster-callback-scout-20260925/`. Original baseline committed/pushed as `28642775`; conversion fully qualified.
 
 
-## Conversion review and planned gates
+## Conversion review and qualification scope
 
 The reviewed overlay spans ten source paths. Primary verified all original/draft
 hashes, formatted the Go drafts, compared functions through the Go AST, and checked
@@ -61,9 +61,28 @@ No owner or callback mapping required correction in the final overlay.
 Its revision label was stale; actual source hashes match `024b2632` plus the two
 original-only contract files. Acceptance uses those verified hashes.
 
-Run the 564 affected roots on all three converted profiles, safe/static checks,
+Qualification covers the 564 affected roots on all three converted profiles, safe/static checks,
 three production/ABI builds, the exact known asset-suite comparison, fresh
 preflight/final headless save/load scenarios and original asset hashes. The
 private dispatcher has three audited production consumers, covered by the affected
 selection; the preceding shared drawable-update batch supplies the last full root
 corpus run. Do not present that earlier result as a run of this conversion.
+
+
+## Qualified result
+
+All 564 affected roots pass on default/server/highres against exact original names,
+without failures/skips. Safe/static, three production ABI checks, exact known
+asset-suite comparison, both fresh headless save/load scenarios and all 1,654
+original asset hashes pass. See [qualification](monster-callback-identities-qualification.json).
+
+The private dispatcher has three audited production consumers; this batch uses
+focused coverage plus production qualification. The immediately preceding drawable
+update batch `024b2632` supplies the last full default corpus run, explicitly on
+that earlier source rather than this conversion.
+
+Legacy exports fall 359→333; selected production cgo files remain 152 client and
+153 server because those files retain unrelated C interfaces. One isolated table
+fixture no longer imports C. The 157 tracked headers contain
+3,095 physical lines. Embedded production C bodies remain 77;
+standalone production and test-reference C remain zero. External bindings are unchanged.

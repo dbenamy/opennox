@@ -6,7 +6,6 @@ import (
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/common/memmap"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -30,10 +29,10 @@ func PortTestCallbackTableFunctions() []unsafe.Pointer {
 
 // PortTestMonsterCallbackCallResult preserves the callback's original int ABI.
 func PortTestMonsterCallbackCallResult(key unsafe.Pointer, u *server.Object) int32 {
-	return int32(ccall.CallIntPtr(key, u.CObj()))
+	return monsterCallbackResult(key, u)
 }
 
 // PortTestMonsterCallbackCallDiscard exercises the lifecycle void-call route.
 func PortTestMonsterCallbackCallDiscard(key unsafe.Pointer, u *server.Object) {
-	ccall.CallVoidPtr(key, u.CObj())
+	monsterCallbackDiscard(key, u)
 }

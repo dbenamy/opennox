@@ -2746,3 +2746,16 @@ invent a success result or generalize this to other C toolchains. The independen
 contracts confirm the owner ran and the secondary callback was suppressed.
 See [DRAWABLE_UPDATE_IDENTITIES.md](DRAWABLE_UPDATE_IDENTITIES.md) for qualification
 status, fixture correction and the expanded 28-wrapper scope.
+
+
+## Monster callback identities
+
+Use a private legacy registry for the 26 strike/dying/dead table identities;
+all three production consumers are in that package. Preserve each consumer's
+original return convention: melee uses int32, dying ignores the integer result,
+and dead uses void-discard. Unknown pointers retain the matching C fallback for
+independent observers. Keep keys distinct even when owners match, and resolve
+Bomber's mutable root hook inside each call. Populate the map in init, consistent
+with existing registries, to avoid making gameplay-owner calls package-variable
+initialization dependencies. Preserve the sparse fixture operation map and stable
+capture IDs. See [MONSTER_CALLBACK_IDENTITIES.md](MONSTER_CALLBACK_IDENTITIES.md).

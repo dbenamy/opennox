@@ -32,7 +32,6 @@ import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -227,14 +226,14 @@ func portTestAICallbackCall(proxy *portTestRoamOwnerServer, u *server.Object, sp
 		t = u
 	}
 	if sp.Op < 11 {
-		return uint32(ccall.CallIntPtr(*memmap.PtrPtr(0x587000, 287100+uintptr(sp.Op)*8), u.CObj()))
+		return uint32(monsterCallbackResult(*memmap.PtrPtr(0x587000, 287100+uintptr(sp.Op)*8), u))
 	}
 	if sp.Op < 20 {
 		index := []int{0, 1, 2, 3, 4, 6, 7, 8, 9}[sp.Op-11]
-		return uint32(ccall.CallIntPtr(*memmap.PtrPtr(0x587000, 287196+uintptr(index)*8), u.CObj()))
+		return uint32(monsterCallbackResult(*memmap.PtrPtr(0x587000, 287196+uintptr(index)*8), u))
 	}
 	if sp.Op < 25 {
-		return uint32(ccall.CallIntPtr(*memmap.PtrPtr(0x587000, 287284+uintptr(sp.Op-20)*8), u.CObj()))
+		return uint32(monsterCallbackResult(*memmap.PtrPtr(0x587000, 287284+uintptr(sp.Op-20)*8), u))
 	}
 	switch sp.Op {
 	case 25:

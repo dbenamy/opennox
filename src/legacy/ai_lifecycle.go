@@ -11,7 +11,6 @@ import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/common/ntype"
 	"github.com/opennox/opennox/v1/common/unit/ai"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -79,7 +78,7 @@ func lifecycleDyingStart(u *server.Object) {
 	combatSound(u, 15)
 	GetServer().NoxScriptC().ScriptCallback(&ud.ScriptDeath, nil, u, server.ScriptEventType(7))
 	if p := ud.MonsterDef.DieFunc228; p != nil {
-		ccall.CallIntPtr(p, u.CObj())
+		monsterCallbackResult(p, u)
 	}
 }
 func lifecycleIsZombie(u *server.Object) bool {
@@ -110,7 +109,7 @@ func lifecycleDeadStart(u *server.Object) {
 	u.ForceVec = types.Pointf{}
 	u.Pos24 = types.Pointf{}
 	if p := ud.MonsterDef.DeadFunc232; p != nil {
-		ccall.CallVoidPtr(p, u.CObj())
+		monsterCallbackDiscard(p, u)
 	}
 	if lifecycleIsZombie(u) {
 		lo := floatToInt32(float32(GetServer().S().Balance.FloatInd("ZombieDeadDuration", 0)))
