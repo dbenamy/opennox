@@ -98,6 +98,7 @@ func PortTestClientUpdate(op int, vp *noxrender.Viewport, dr *client.Drawable, a
 }
 
 func PortTestClientUpdateCloudCallback() unsafe.Pointer { return unsafe.Pointer(C.sub_4CE340) }
+func PortTestClientUpdateMagicCallback() unsafe.Pointer { return C.nox_xxx_updDrawMagic_4CDD80 }
 
 type PortTestClientUpdateEnvironment struct {
 	mapped  []uint32

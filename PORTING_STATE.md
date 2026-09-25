@@ -23,9 +23,12 @@ algorithms and captures are unchanged. See
 [REMAINING_DRAW_IDENTITIES.md](docs/porting/REMAINING_DRAW_IDENTITIES.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. The 25 drawing update callbacks remain separate;
-one void wrapper is observed through an integer-returning call, so establish its
-original-path behavior before migration. External media backends remain outside
+recorded reversible decisions. The next 28 drawable update wrappers have passed their original gate probe and
+complete affected baseline; no conversion is installed yet. See
+[DRAWABLE_UPDATE_IDENTITIES.md](docs/porting/DRAWABLE_UPDATE_IDENTITIES.md).
+New artifacts use `build/port-drawable-update-identities/`; original baseline
+artifacts remain at their recorded `build/port-update-identities/` paths.
+External media backends remain outside
 scope. Stop at the milestone or a substantial question.
 
 Latest qualified artifacts: `build/port-remaining-draw-identities/`.
@@ -235,3 +238,14 @@ The completed remaining-draw preview had 1,654 verified duplicate assets removed
 (559,861,760 allocated bytes); originals, saves and results remain. Restore:
 `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/remaining-draw-identities-preview-save/deduplicated-assets.json`.
 Evidence: `build/port-remaining-draw-identities/preview-cleanup/`.
+
+The completed remaining-draw final scenario also had 1,654 verified duplicate
+assets removed (559,943,680 allocated bytes). Restore:
+`python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/remaining-draw-identities-save/deduplicated-assets.json`.
+Evidence: `build/port-update-identities/drawing-cleanup/`.
+
+Removed 21 verified root/legacy Linux 386 cache archives older than baseline
+`9f91acda`, reclaiming 1,099,063,296 allocated bytes. Host checks confirmed no
+compiler or target open-file/mapping use; active Go processes only wrapped
+prebuilt tests. Current source, binaries and assets remain; rebuild caches normally.
+Evidence: `build/port-update-identities/cache-cleanup/`.
