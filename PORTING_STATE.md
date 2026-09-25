@@ -87,9 +87,10 @@ is not compilation or qualification. The helper's external-review draft is not
 accepted evidence: its suggestion that go-gl is residue is contradicted by the
 actual dependency graph (`libs/client/seat/opengl` imports it).
 
-Player-action bridges are now qualified. The next bounded candidate is the list/
-player-group interface family; confirm actual callers and fixture coverage before
-retiring its remaining wrappers. The ignored scout is not acceptance evidence.
+Next batch: retire 13 list/player-group C wrappers used by fixtures. All 19 original
+roots passed per profile on identical-source `1ca13c2a` binaries. The reviewed
+five-path Luna overlay remains uninstalled until this baseline is committed.
+See [LIST_GLUE_IDENTITIES.md](docs/porting/LIST_GLUE_IDENTITIES.md).
 The earlier 25-export object-state proposal under
 `build/port-after-go-only-exports/` was rejected because it omitted fixture C calls.
 The qualified 37-export batch supersedes it with a complete caller/identity audit.
