@@ -11,11 +11,6 @@ func nox_gui_itemAmountDialog_4C0430(title *C.wchar2_t, x, y, code, typ C.int, m
 	return C.int(uiAmountShow((*uint16)(unsafe.Pointer(title)), int(x), int(y), uint32(code), uint32(typ), mods, uint32(maximum), uint32(extra), accept, cancel))
 }
 
-//export sub_4C05F0
-func sub_4C05F0(enabled, unit C.int) C.int {
-	return C.int(uiAmountPrice(uint32(enabled), uint32(unit)))
-}
-
 //export sub_4C1120
 func sub_4C1120(w, event C.int, packed C.uint) C.int {
 	return C.int(uiTradeHover(uiInventoryPackedPoint(uintptr(packed))))

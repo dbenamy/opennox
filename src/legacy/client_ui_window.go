@@ -104,18 +104,6 @@ func nox_client_wndGetPosition_46AA60(w *nox_window, x, y *C.uint) C.int {
 	return 0
 }
 
-//export nox_window_get_size
-func nox_window_get_size(w *nox_window, x, y *C.int) C.int {
-	if w == nil {
-		*x = 0
-		*y = 0
-		return -2
-	}
-	*x = C.int(asWindow(w).SizeVal.X)
-	*y = C.int(asWindow(w).SizeVal.Y)
-	return 0
-}
-
 //export nox_xxx_wndPointInWnd_46AAB0
 func nox_xxx_wndPointInWnd_46AAB0(w *C.uint, x, y C.int) C.bool {
 	return C.bool(uiWindowPointIn((*gui.Window)(unsafe.Pointer(w)), int32(x), int32(y)))
@@ -131,47 +119,6 @@ func uiWindowPointIn(w *gui.Window, x, y int32) bool {
 	return int(x) >= p.X && int(x) <= p.X+size.X && int(y) >= p.Y && int(y) <= p.Y+size.Y
 }
 
-//export sub_46AB20
-func sub_46AB20(w *C.uint, width, height C.int) C.int {
-	return C.int(uiWindowResize((*gui.Window)(unsafe.Pointer(w)), int(width), int(height)))
-}
-
-//export nox_xxx_wnd_46ABB0
-func nox_xxx_wnd_46ABB0(w *nox_window, enabled C.int) C.int {
-	return C.int(uiWindowEnable(asWindow(w), int(enabled)))
-}
-
-//export nox_xxx_wnd_46AD60
-func nox_xxx_wnd_46AD60(ptr, mask C.int) C.int {
-	w := (*gui.Window)(unsafe.Pointer(uintptr(uint32(ptr))))
-	if w == nil {
-		return -2
-	}
-	old := w.Flags
-	w.Flags |= gui.StatusFlags(mask)
-	return C.int(old)
-}
-
-//export nox_xxx_wndClearFlag_46AD80
-func nox_xxx_wndClearFlag_46AD80(ptr, mask C.int) C.int {
-	w := (*gui.Window)(unsafe.Pointer(uintptr(uint32(ptr))))
-	if w == nil {
-		return -2
-	}
-	old := w.Flags
-	w.Flags &^= gui.StatusFlags(mask)
-	return C.int(old)
-}
-
-//export nox_xxx_wndGetFlags_46ADA0
-func nox_xxx_wndGetFlags_46ADA0(ptr C.int) C.int {
-	w := (*gui.Window)(unsafe.Pointer(uintptr(uint32(ptr))))
-	if w == nil {
-		return -2
-	}
-	return C.int(w.Flags)
-}
-
 //export nox_window_is_child
 func nox_window_is_child(parent, child *nox_window) C.int {
 	if parent == nil || child == nil {
@@ -185,91 +132,12 @@ func nox_window_is_child(parent, child *nox_window) C.int {
 	return 0
 }
 
-//export nox_xxx_wnd_46B280
-func nox_xxx_wnd_46B280(ptr, owner C.int) C.int {
-	w := (*gui.Window)(unsafe.Pointer(uintptr(uint32(ptr))))
-	if w == nil {
-		return -2
-	}
-	d := (*gui.Window)(unsafe.Pointer(uintptr(uint32(owner))))
-	if d == nil {
-		d = w
-	}
-	w.DrawData().Window = d
-	return 0
-}
-
-//export sub_46ACE0
-func sub_46ACE0(w *C.uint, first, last, hidden C.int) {
-	win := (*gui.Window)(unsafe.Pointer(w))
-	for i := int(first); i <= int(last); i++ {
-		c := win.ChildByID(uint(i))
-		if c != nil {
-			c.SetHidden(hidden != 0)
-		}
-		if i == int(last) {
-			break
-		}
-	}
-}
-
-//export sub_46AD20
-func sub_46AD20(w *C.uint, first, last, enabled C.int) {
-	win := (*gui.Window)(unsafe.Pointer(w))
-	for i := int(first); i <= int(last); i++ {
-		uiWindowEnable(win.ChildByID(uint(i)), int(enabled))
-		if i == int(last) {
-			break
-		}
-	}
-}
-
-//export nox_xxx_wndRetNULL_46A8A0
-func nox_xxx_wndRetNULL_46A8A0() C.int { return 0 }
-
-//export sub_46AE10
-func sub_46AE10(ptr, on C.int) C.int {
-	w := (*gui.Window)(unsafe.Pointer(uintptr(uint32(ptr))))
-	if w != nil {
-		if on != 0 {
-			w.DrawData().Field0 |= 2
-		} else {
-			w.DrawData().Field0 &^= 2
-		}
-	}
-	return ptr
-}
-
-//export nox_xxx_wndSetOffsetMB_46AE40
-func nox_xxx_wndSetOffsetMB_46AE40(ptr, x, y C.int) C.int {
-	w := (*gui.Window)(unsafe.Pointer(uintptr(uint32(ptr))))
-	if w != nil {
-		w.DrawData().ImgPtVal = image.Pt(int(x), int(y))
-	}
-	return ptr
-}
-
 func uiWindowSetBackgroundImage(ptr, img uint32) int32 {
 	w := (*gui.Window)(unsafe.Pointer(uintptr(ptr)))
 	if w == nil {
 		return -2
 	}
 	w.DrawData().BgImageHnd = noxrender.ImageHandle(unsafe.Pointer(uintptr(img)))
-	return 0
-}
-
-//export nox_xxx_wndSetIcon_46AE60
-func nox_xxx_wndSetIcon_46AE60(ptr, img C.int) C.int {
-	return C.int(uiWindowSetBackgroundImage(uint32(ptr), uint32(img)))
-}
-
-//export nox_xxx_wndSetIconLit_46AEA0
-func nox_xxx_wndSetIconLit_46AEA0(ptr, img C.int) C.int {
-	w := (*gui.Window)(unsafe.Pointer(uintptr(uint32(ptr))))
-	if w == nil {
-		return -2
-	}
-	w.DrawData().HlImageHnd = noxrender.ImageHandle(unsafe.Pointer(uintptr(uint32(img))))
 	return 0
 }
 
@@ -280,11 +148,6 @@ func uiWindowSetSelectedImage(ptr, img uint32) int32 {
 	}
 	w.DrawData().SelImageHnd = noxrender.ImageHandle(unsafe.Pointer(uintptr(img)))
 	return 0
-}
-
-//export sub_46AEC0
-func sub_46AEC0(ptr, img C.int) C.int {
-	return C.int(uiWindowSetSelectedImage(uint32(ptr), uint32(img)))
 }
 
 //export sub_46AEE0

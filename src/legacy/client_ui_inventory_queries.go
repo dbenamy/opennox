@@ -129,9 +129,6 @@ func uiInventorySelectedWeapon() *client.Drawable {
 	return nil
 }
 
-//export sub_4615C0
-func sub_4615C0() int { return int(uintptr(unsafe.Pointer(uiInventoryCurrentWeapon()))) }
-
 //export sub_461600
 func sub_461600(typ int) int {
 	return int(uintptr(unsafe.Pointer(uiInventoryEquippedType(uint32(typ)))))
@@ -149,11 +146,6 @@ func sub_461930() int {
 	return 0
 }
 
-//export sub_461EF0
-func sub_461EF0(code int) *C.char {
-	return (*C.char)(unsafe.Pointer(uiInventoryFindCode(uint32(code))))
-}
-
 func sub_4676D0(code int) int { return int(uintptr(unsafe.Pointer(uiInventoryItem(uint32(code))))) }
 
 //export sub_467700
@@ -165,22 +157,6 @@ func sub_467700(code int) int {
 		return 1
 	}
 	return 0
-}
-
-//export sub_467810
-func sub_467810(col, row int) int {
-	if col < 0 || col >= 4 || row < 0 || row >= 20 {
-		return 0
-	}
-	return int(uiInventoryGrid()[row+21*col].Count)
-}
-
-//export sub_467870
-func sub_467870(col, row int) *C.char {
-	if col < 0 || col >= 4 || row < 0 || row >= 20 {
-		return nil
-	}
-	return (*C.char)(unsafe.Pointer(&uiInventoryGrid()[row+21*col].Codes[0]))
 }
 
 //export sub_4678B0

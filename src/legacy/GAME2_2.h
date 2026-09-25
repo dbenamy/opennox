@@ -3,13 +3,9 @@
 
 #include "defs.h"
 
-void nox_xxx_cursorSetTooltip_4776B0(wchar2_t* a1);
 int sub_478030();
-int sub_478040();
 void sub_478850(int a1, short a2, int a3, int a4);
 int sub_478E50(int a1, int a2, unsigned int a3);
-int sub_479590();
-void sub_4795A0(int a1);
 int sub_479690(int a1, short a2, short a3, int a4);
 void sub_479810();
 int sub_479820(int a1, short a2);

@@ -23,10 +23,10 @@ func PortTestUIRenderOp(op int, a [6]int32) int32 {
 	case 2:
 		return int32(uiRenderNarrowClip(int(a[0]), int(a[1])))
 	case 3:
-		C.sub_49CD30(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3]), C.int(a[4]), C.int(a[5]))
+		uiRenderBorder(int(a[0]), int(a[1]), int(a[2]), int(a[3]), int(a[4]), int(a[5]))
 		return 0
 	case 4:
-		return int32(C.sub_430B50(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3])))
+		return int32(uiRenderBounds(int(a[0]), int(a[1]), int(a[2]), int(a[3])))
 	default:
 		panic("unknown UI render operation")
 	}
@@ -34,7 +34,8 @@ func PortTestUIRenderOp(op int, a [6]int32) int32 {
 func PortTestUIRenderFill(data []byte, offset int, color uint32, size int32, wrapper bool) int32 {
 	p := unsafe.Pointer(&data[offset])
 	if wrapper {
-		return int32(C.sub_49D1C0(p, C.int(color), C.int(size)))
+		uiRenderFill(p, color, size)
+		return 0
 	}
 	uiRenderFill(p, color, size)
 	return 0

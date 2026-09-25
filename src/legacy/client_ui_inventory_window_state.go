@@ -1,20 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2_2.h"
-#include "GAME5_2.h"
-#include "GAME1_2.h"
-#include "GAME1_3.h"
-#include "GAME2.h"
-#include "GAME2_1.h"
-#include "GAME3.h"
-#include "GAME3_1.h"
-#include "GAME5.h"
-
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -37,9 +22,6 @@ func uiInventoryCloseIdentify() int {
 	return 1
 }
 
-//export sub_462740
-func sub_462740() C.int { return C.int(uiInventoryCloseIdentify()) }
-
 func uiInventoryOpenIdentify() int {
 	uiInventoryIdentifyWindow().Show()
 	dword_5d4594_1049864 = 5
@@ -53,9 +35,6 @@ func uiInventoryWindowOpenState() bool {
 	state := memmap.Uint8(0x5D4594, 1049868)
 	return state == 1 || state == 2
 }
-
-//export sub_467C80
-func sub_467C80() C.int { return C.int(bool2int(uiInventoryWindowOpenState())) }
 
 func uiInventoryOpenWindow() int {
 	if v := int(sessionQuitShown()); v != 0 {
@@ -82,9 +61,6 @@ func uiInventoryOpenWindow() int {
 	return int(int32(dword_5d4594_1062516))
 }
 
-//export sub_467BB0
-func sub_467BB0() C.int { return C.int(uiInventoryOpenWindow()) }
-
 func uiInventoryCloseWindow() int {
 	if uiInventoryMode() == 6 {
 		return 1
@@ -101,8 +77,6 @@ func uiInventoryCloseWindow() int {
 	return 1
 }
 
-//export sub_467C10
-func sub_467C10() C.int { return C.int(uiInventoryCloseWindow()) }
 func uiInventoryToggleWindow() int {
 	if uiInventoryWindowOpenState() {
 		return uiInventoryCloseWindow()
@@ -118,9 +92,6 @@ func uiInventoryRepairMode() int {
 	}
 	return uiInventoryOpenWindow()
 }
-
-//export sub_467650
-func sub_467650() C.int { return C.int(uiInventoryRepairMode()) }
 
 func uiInventoryResetClosedScroll() int {
 	if uiInventoryWindowOpenState() {
@@ -138,8 +109,6 @@ func uiInventorySetWindowLevel(level int) int {
 	dword_5d4594_1049844 = uint32(level)
 	return int(nox_xxx_inventoryNameSignInit_4671E0())
 }
-
-func sub_465DE0(level C.int) C.int { return C.int(uiInventorySetWindowLevel(int(level))) }
 
 func uiInventoryCancelDrag() int {
 	ret := 0

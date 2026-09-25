@@ -18,7 +18,7 @@ import (
 func PortTestInventoryWindow(op int, a, b, c, d uintptr) uint32 {
 	switch op {
 	case 0:
-		return uint32(C.sub_462740())
+		return uint32(sub_462740())
 	case 1:
 		return uint32(uiInventoryMainEvents(uiInventoryWindowValue(uint32(a)), int(b), c, d))
 	case 2:
@@ -48,7 +48,7 @@ func PortTestInventoryWindow(op int, a, b, c, d uintptr) uint32 {
 		C.sub_465CD0((*C.uint32_t)(unsafe.Pointer(a)), C.int(b), C.int(c), C.int(d))
 		return 0
 	case 14:
-		return uint32(sub_465DE0(C.int(a)))
+		return uint32(uiInventorySetWindowLevel(int(int32(a))))
 	case 15:
 		return uint32(uiInventoryCreateWindow())
 	case 16:
@@ -72,17 +72,17 @@ func PortTestInventoryWindow(op int, a, b, c, d uintptr) uint32 {
 	case 25:
 		return uint32(uiInventoryLoadImages())
 	case 26:
-		return uint32(C.sub_467650())
+		return uint32(sub_467650())
 	case 27:
 		return uint32(uiInventoryResetWindow())
 	case 28:
-		return uint32(C.sub_467BB0())
+		return uint32(sub_467BB0())
 	case 29:
-		return uint32(C.sub_467C10())
+		return uint32(sub_467C10())
 	case 30:
 		return uint32(uiInventoryToggleWindow())
 	case 31:
-		return uint32(C.sub_467C80())
+		return uint32(sub_467C80())
 	case 32:
 		return uint32(uiInventoryResetClosedScroll())
 	case 33:

@@ -269,6 +269,9 @@ Apply these review rules learned from earlier batches:
   exact-width Go types where the fixture no longer needs a C interface, and create
   identity keys only for addresses with actual consumers. The server-fixture batch
   needed these corrections before its first build.
+  Derive the adapter list from actual calls too: a symbol referenced only by a
+  prototype or snapshot identity needs no callable replacement. The UI fixture
+  draft copied unused wrappers that primary removed before qualification.
 - Trace test selection through enclosing functions and fixture operation selectors.
   A captured callback slot does not prove a branch ran. Identify media by actual
   container/codec headers rather than filename extensions.

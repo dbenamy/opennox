@@ -1,14 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2_1.h"
-#include "GAME3_1.h"
-#include "client__gui__guiinv.h"
-#include "client__gui__guimsg.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/strman"
 	"github.com/opennox/opennox/v1/client"
@@ -63,10 +54,6 @@ func uiInventorySetAlternate(cell *uiInventoryCell) int {
 	return int(nox_xxx_clientReportSecondaryWeapon_4BF010(int32(uiInventoryPointer(cell.Drawable.C()))))
 }
 
-//export nox_xxx_clientSetAltWeapon_461550
-func nox_xxx_clientSetAltWeapon_461550(v C.int) C.int {
-	return C.int(uiInventorySetAlternate(uiInventoryCellRef(uint32(v))))
-}
 func uiInventoryAppend(code, typ uint32) *uiInventoryCell {
 	if uint32(GetClient().Cli().Things.TypeByInd(int(typ)).ObjClass)&0x4000000 != 0 {
 		return nil
@@ -246,9 +233,6 @@ func uiInventoryCompact() uintptr {
 	}
 	return base + 3096
 }
-
-//export sub_461B50
-func sub_461B50() *C.uchar { return (*C.uchar)(unsafe.Pointer(uiInventoryCompact())) }
 
 func sub_461A80(code int32) {
 	if found := uiInventoryFindCode(uint32(code)); found != nil {

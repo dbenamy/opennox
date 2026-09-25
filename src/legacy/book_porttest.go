@@ -31,10 +31,10 @@ func PortTestBookInvoke(op string, a [4]uint32) uint32 {
 	case "nox_xxx_bookSetColor_45AC40":
 		return uint32(bookSetColor())
 	case "nox_client_toggleSpellbook_45AC70":
-		C.nox_client_toggleSpellbook_45AC70()
+		nox_client_toggleSpellbook_45AC70()
 		return 0
 	case "nox_xxx_bookHideMB_45ACA0":
-		return uint32(C.nox_xxx_bookHideMB_45ACA0(C.int(a[0])))
+		return uint32(nox_xxx_bookHideMB_45ACA0(int32(a[0])))
 	case "nox_xxx_guiSpellSortList_45ADF0":
 		return uint32(bookSort(int(a[0])))
 	case "nox_xxx_book_45B010":
@@ -63,7 +63,7 @@ func PortTestBookInvoke(op string, a [4]uint32) uint32 {
 	case "nox_xxx_bookWndFn_45CC10":
 		return uint32(bookIconEvents(bookWindow(a[0]), int(a[1]), bookPoint(a[2])))
 	case "sub_45CFC0":
-		return uint32(C.sub_45CFC0())
+		return uint32(sub_45CFC0())
 	case "nox_xxx_netSpellRewardCli_45CFE0":
 		nox_xxx_netSpellRewardCli_45CFE0(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3]))
 		return 0
@@ -71,9 +71,9 @@ func PortTestBookInvoke(op string, a [4]uint32) uint32 {
 		nox_xxx_netGuideRewardCli_45D140(C.int(a[0]), C.int(a[1]))
 		return 0
 	case "nox_xxx_bookSetForward_45D200":
-		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_bookSetForward_45D200((*C.int)(unsafe.Pointer(uintptr(a[0]))), C.int(a[1]), (*C.int2)(unsafe.Pointer(uintptr(a[2])))))))
+		return uint32(uintptr(unsafe.Pointer(nox_xxx_bookSetForward_45D200(unsafe.Pointer(uintptr(a[0])), int32(a[1]), unsafe.Pointer(uintptr(a[2]))))))
 	case "nox_xxx_abilityReward_45D290":
-		C.nox_xxx_abilityReward_45D290(C.int(a[0]), (*C.char)(unsafe.Pointer(uintptr(a[1]))), C.int(a[2]))
+		nox_xxx_abilityReward_45D290(int32(a[0]), (*int8)(unsafe.Pointer(uintptr(a[1]))), int32(a[2]))
 		return 0
 	case "sub_45D320":
 		return uint32(sub_45D320(C.int(a[0])))
@@ -82,11 +82,11 @@ func PortTestBookInvoke(op string, a [4]uint32) uint32 {
 	case "nox_xxx_clientQuestDisableAbility_45D4A0":
 		return uint32(uintptr(unsafe.Pointer(nox_xxx_clientQuestDisableAbility_45D4A0(C.int(a[0])))))
 	case "sub_45D500":
-		return uint32(C.sub_45D500(C.int(a[0])))
+		return uint32(sub_45D500(int32(a[0])))
 	case "sub_45D550":
 		return uint32(bookIconPosition((*image.Point)(unsafe.Pointer(uintptr(a[0])))))
 	case "nox_xxx_bookFillAll_45D570":
-		C.nox_xxx_bookFillAll_45D570(C.int(a[0]), C.int(a[1]))
+		nox_xxx_bookFillAll_45D570(int32(a[0]), int32(a[1]))
 		return 0
 	case "sub_45D7D0":
 		return uint32(bookPath(AsPoint(unsafe.Pointer(uintptr(a[0]))), AsPoint(unsafe.Pointer(uintptr(a[1])))))
@@ -94,7 +94,7 @@ func PortTestBookInvoke(op string, a [4]uint32) uint32 {
 		bookStopAddition()
 		return 0
 	case "sub_45D9B0":
-		return uint32(C.sub_45D9B0())
+		return uint32(sub_45D9B0())
 	case "nox_xxx_bookShowMB_45AD70":
 		bookShow(int(a[0]))
 		return 0
@@ -105,7 +105,7 @@ func PortTestBookInvoke(op string, a [4]uint32) uint32 {
 	case "nox_xxx_bookDrawFn_45C7D0":
 		return uint32(bookDrawAddition(bookWindow(a[0])))
 	case "sub_45D870":
-		C.sub_45D870()
+		sub_45D870()
 		return 0
 	}
 	panic(op)
@@ -114,8 +114,8 @@ func PortTestBookCallbacks() map[string]unsafe.Pointer {
 	return map[string]unsafe.Pointer{
 		"nox_xxx_guiSpellSortFn_45ABC0":            nil,
 		"nox_xxx_bookSetColor_45AC40":              nil,
-		"nox_client_toggleSpellbook_45AC70":        unsafe.Pointer(C.nox_client_toggleSpellbook_45AC70),
-		"nox_xxx_bookHideMB_45ACA0":                unsafe.Pointer(C.nox_xxx_bookHideMB_45ACA0),
+		"nox_client_toggleSpellbook_45AC70":        clientUICallbackKey(clientUICallbackID_nox_client_toggleSpellbook_45AC70),
+		"nox_xxx_bookHideMB_45ACA0":                clientUICallbackKey(clientUICallbackID_nox_xxx_bookHideMB_45ACA0),
 		"nox_xxx_guiSpellSortList_45ADF0":          nil,
 		"nox_xxx_book_45B010":                      nil,
 		"nox_xxx_bookWndProc_45B070":               nil,
@@ -129,25 +129,25 @@ func PortTestBookCallbacks() map[string]unsafe.Pointer {
 		"nox_xxx_bookInit_45B9D0":                  nil,
 		"nox_xxx_bookDrawIconFn_45CB30":            nil,
 		"nox_xxx_bookWndFn_45CC10":                 nil,
-		"sub_45CFC0":                               unsafe.Pointer(C.sub_45CFC0),
+		"sub_45CFC0":                               clientUICallbackKey(clientUICallbackID_sub_45CFC0),
 		"nox_xxx_netSpellRewardCli_45CFE0":         nil, // Preserve stable capture IDs after retiring the C export.
 		"nox_xxx_netGuideRewardCli_45D140":         nil,
-		"nox_xxx_bookSetForward_45D200":            unsafe.Pointer(C.nox_xxx_bookSetForward_45D200),
-		"nox_xxx_abilityReward_45D290":             unsafe.Pointer(C.nox_xxx_abilityReward_45D290),
+		"nox_xxx_bookSetForward_45D200":            clientUICallbackKey(clientUICallbackID_nox_xxx_bookSetForward_45D200),
+		"nox_xxx_abilityReward_45D290":             clientUICallbackKey(clientUICallbackID_nox_xxx_abilityReward_45D290),
 		"sub_45D320":                               nil,
 		"sub_45D400":                               nil,
 		"nox_xxx_clientQuestDisableAbility_45D4A0": nil,
-		"sub_45D500":                               unsafe.Pointer(C.sub_45D500),
+		"sub_45D500":                               clientUICallbackKey(clientUICallbackID_sub_45D500),
 		"sub_45D550":                               nil,
-		"nox_xxx_bookFillAll_45D570":               unsafe.Pointer(C.nox_xxx_bookFillAll_45D570),
+		"nox_xxx_bookFillAll_45D570":               clientUICallbackKey(clientUICallbackID_nox_xxx_bookFillAll_45D570),
 		"sub_45D7D0":                               nil,
 		"sub_45D810":                               nil,
-		"sub_45D9B0":                               unsafe.Pointer(C.sub_45D9B0),
+		"sub_45D9B0":                               clientUICallbackKey(clientUICallbackID_sub_45D9B0),
 		"nox_xxx_bookShowMB_45AD70":                nil,
 		"nox_xxx_bookDrawList_45BD40":              nil,
 		"nox_xxx_book_45CF00":                      unsafe.Pointer(C.nox_xxx_book_45CF00),
 		"nox_xxx_bookDrawFn_45C7D0":                nil,
-		"sub_45D870":                               unsafe.Pointer(C.sub_45D870),
+		"sub_45D870":                               clientUICallbackKey(clientUICallbackID_sub_45D870),
 	}
 }
 func PortTestBookWords() (map[string]*uint32, func()) {

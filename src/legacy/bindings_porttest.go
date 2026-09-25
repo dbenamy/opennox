@@ -2,22 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-
-#include "GAME3_1.h"
-#include "client__gui__guiinput.h"
-#include "client__shell__inputcfg__inputcfg.h"
-
-
-
-
-
-
-
-
-*/
-import "C"
 import "unsafe"
 import "github.com/opennox/opennox/v1/client/gui"
 

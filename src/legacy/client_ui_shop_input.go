@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include "defs.h"
-int sub_45D9B0(void);
 void sub_478850(int,short,int,int);
 int sub_479690(int,short,short,int);
 void sub_479680(void);

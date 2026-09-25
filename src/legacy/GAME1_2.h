@@ -5,7 +5,6 @@
 
 void* nox_video_getImagePixdata_42FB30(nox_video_bag_image_t* img);
 nox_video_bag_image_t* nox_xxx_gLoadImg_42F970(char* name);
-int sub_430B50(int a1, int a2, int a3, int a4);
 nox_screenParticle* nox_client_newScreenParticle_431540(int a1, int a2, int a3, int a4, int a5, int a6, char a7,
 														char a8, char a9, char a10);
 void sub_434080(int a1);

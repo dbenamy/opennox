@@ -28,28 +28,10 @@ func uiInventoryUse(dr *client.Drawable) {
 	}
 }
 
-//export nox_xxx_clientEquip_4623B0
-func nox_xxx_clientEquip_4623B0(v C.int) C.int {
-	return C.int(uiInventoryEquipRequest(uiInventoryDrawable(uint32(v))))
-}
-
-//export nox_xxx_clientDequip_464B70
-func nox_xxx_clientDequip_464B70(v C.int) C.int {
-	return C.int(uiInventoryDequipRequest(uiInventoryDrawable(uint32(v))))
-}
-
-//export nox_xxx_clientUse_465C70
-func nox_xxx_clientUse_465C70(v C.int) { uiInventoryUse(uiInventoryDrawable(uint32(v))) }
 func uiInventoryTrade(op byte, code uint16) int {
 	msg := [4]byte{201, op, byte(code), byte(code >> 8)}
 	return bool2int(GetServer().S().NetList.AddToMsgListCli(31, netlist.Kind0, msg[:]))
 }
-
-//export nox_xxx_trade_4657B0
-func nox_xxx_trade_4657B0(v C.short) C.int { return C.int(uiInventoryTrade(30, uint16(v))) }
-
-//export nox_xxx_clientTrade_465870
-func nox_xxx_clientTrade_465870(v C.short) C.int { return C.int(uiInventoryTrade(28, uint16(v))) }
 
 func nox_xxx_send2ServInvenFail_461630(v int16) int32 {
 	msg := [3]byte{241, byte(v), byte(uint16(v) >> 8)}

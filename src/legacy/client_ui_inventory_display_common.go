@@ -89,14 +89,6 @@ func uiInventoryScaledDurability(dr *client.Drawable, current, maximum *float32)
 	return ret
 }
 
-//export sub_463370
-func sub_463370(w *C.uint32_t, pos *C.nox_point, out *C.uint32_t) C.int {
-	p := image.Pt(int(pos.x), int(pos.y)).Sub(uiWindowPosition((*gui.Window)(unsafe.Pointer(w))))
-	v := unsafe.Slice((*int32)(unsafe.Pointer(out)), 2)
-	v[0], v[1] = int32(p.X), int32(p.Y)
-	return C.int(p.Y)
-}
-
 func sub_463420(v C.int) C.int { *memmap.PtrUint32(0x5D4594, 1050012) = uint32(v); return v }
 
 func uiInventoryHitRect(p image.Point, offset uintptr) bool {

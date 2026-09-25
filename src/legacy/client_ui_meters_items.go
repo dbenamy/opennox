@@ -183,9 +183,6 @@ func uiMeterRefreshPotions() uintptr {
 	return 0
 }
 
-//export sub_472310
-func sub_472310() *C.uchar { return (*C.uchar)(unsafe.Pointer(uiMeterRefreshPotions())) }
-
 func uiMeterWeaponTooltip() int {
 	dr := uiInventoryCurrentWeapon()
 	if dr == nil {

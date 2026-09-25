@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2_2.h"
-#include "GAME3_2.h"
-*/
-import "C"
-
 import (
 	"image"
 	"unsafe"
@@ -209,10 +202,4 @@ func uiInventoryIdentify(pos image.Point) uint32 {
 	}
 	uiMeterSetIcon(icon, handle)
 	return 0
-}
-
-//export sub_4627F0
-func sub_4627F0(p *C.uint32_t) C.int {
-	v := unsafe.Slice(p, 2)
-	return C.int(uiInventoryIdentify(image.Pt(int(v[0]), int(v[1]))))
 }

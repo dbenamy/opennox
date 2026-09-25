@@ -56,7 +56,7 @@ func PortTestTradeUICallbacks() []unsafe.Pointer {
 		nil,
 		C.nox_gui_itemAmountDialog_4C0430,
 		nil,
-		C.sub_4C05F0,
+		clientUICallbackKey(clientUICallbackID_sub_4C05F0),
 		nil,
 		nil,
 		nil,

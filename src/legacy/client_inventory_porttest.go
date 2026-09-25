@@ -17,13 +17,13 @@ import (
 func PortTestUIInventoryCall(op int, a, b, c uint32) uint32 {
 	switch op {
 	case 0:
-		return uint32(C.sub_4615C0())
+		return uint32(sub_4615C0())
 	case 1:
 		return uint32(C.sub_461600(C.int(a)))
 	case 2:
 		return uint32(C.sub_461930())
 	case 3:
-		return uint32(uintptr(unsafe.Pointer(C.sub_461EF0(C.int(a)))))
+		return uint32(uintptr(unsafe.Pointer(sub_461EF0(int(a)))))
 	case 4:
 		return uint32(C.sub_4673F0(C.int(a), C.int(b)))
 	case 5:
@@ -60,7 +60,7 @@ func PortTestUIInventoryCall(op int, a, b, c uint32) uint32 {
 		C.sub_467680()
 		return 0
 	case 20:
-		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_wndGetHandle_4676A0())))
+		return uint32(uintptr(unsafe.Pointer(nox_xxx_wndGetHandle_4676A0())))
 	case 21:
 		return uint32(sub_4676D0(int(a)))
 	case 22:
@@ -68,11 +68,11 @@ func PortTestUIInventoryCall(op int, a, b, c uint32) uint32 {
 	case 23:
 		return uint32(sub_467740(int(a)))
 	case 24:
-		return uint32(C.sub_467810(C.int(a), C.int(b)))
+		return uint32(sub_467810(int(a), int(b)))
 	case 25:
 		return uint32(uiInventoryTypeCount(a))
 	case 26:
-		return uint32(uintptr(unsafe.Pointer(C.sub_467870(C.int(a), C.int(b)))))
+		return uint32(uintptr(unsafe.Pointer(sub_467870(int(a), int(b)))))
 	case 27:
 		return uint32(C.sub_4678B0())
 	case 28:

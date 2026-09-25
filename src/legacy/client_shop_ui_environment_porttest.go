@@ -45,7 +45,7 @@ func PortTestShopUIWords() (map[string]*uint32, func()) {
 func PortTestShopUICallbacks() []unsafe.Pointer {
 	return []unsafe.Pointer{
 		C.sub_478030,
-		C.sub_478040,
+		clientUICallbackKey(clientUICallbackID_sub_478040),
 		nil,
 		nil,
 		nil,
@@ -65,8 +65,8 @@ func PortTestShopUICallbacks() []unsafe.Pointer {
 		nil,
 		nil,
 		nil,
-		C.sub_479590,
-		C.sub_4795A0,
+		clientUICallbackKey(clientUICallbackID_sub_479590),
+		clientUICallbackKey(clientUICallbackID_sub_4795A0),
 		C.sub_479690,
 		nil,
 		nil,

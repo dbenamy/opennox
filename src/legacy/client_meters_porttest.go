@@ -89,7 +89,7 @@ func PortTestMeterCall(op int, w *gui.Window, a, b, c, d int) uint32 {
 	case 31:
 		return uint32(uintptr(unsafe.Pointer(C.sub_472280())))
 	case 32:
-		return uint32(uintptr(unsafe.Pointer(C.sub_472310())))
+		return uint32(uintptr(unsafe.Pointer(sub_472310())))
 	case 33:
 		return uint32(C.sub_4710B0())
 	case 34:

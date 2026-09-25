@@ -65,15 +65,10 @@ typedef struct nox_window_ref {
 } nox_window_ref;
 
 int nox_xxx_wndShowModalMB_46A8C0(nox_window* a1);
-void sub_46ACE0(unsigned int* a1, int a2, int a3, int a4);
-void sub_46AD20(unsigned int* a1, int a2, int a3, int a4);
 int nox_window_setPos_46A9B0(nox_window* win, int a2, int a3);
 int nox_gui_getWindowOffs_46AA20(nox_window* win, unsigned int* px, unsigned int* py);
 int nox_client_wndGetPosition_46AA60(nox_window* a1, unsigned int* a2, unsigned int* a3);
 bool nox_xxx_wndPointInWnd_46AAB0(unsigned int* a1, int a2, int a3);
-int sub_46AB20(unsigned int* a1, int a2, int a3);
-int nox_window_get_size(nox_window* win, int* outW, int* outH);
-int nox_xxx_wnd_46ABB0(nox_window* win, int a2);
 int wndIsShown_nox_xxx_wndIsShown_46ACC0(nox_window* win);
 void nox_gui_winSetFunc96_46B070(nox_window* win, void* fnc);
 int nox_xxx_wndGetID_46B0A0(nox_window* win);
@@ -82,15 +77,11 @@ int nox_window_call_field_94_fnc(nox_window* win, int a2, int a3, int a4, char* 
 #define nox_window_call_field_94(win, a2, a3, a4) nox_window_call_field_94_fnc(win, a2, a3, a4, __FILE__, __LINE__)
 int nox_window_call_field_93(nox_window* win, int a2, int a3, int a4);
 int nox_xxx_windowFocus_46B500(nox_window* win);
-int nox_xxx_wndClearFlag_46AD80(int a1, int a2);
-int nox_xxx_wndGetFlags_46ADA0(int a1);
 int nox_xxx_wndSetCaptureMain_46ADC0(nox_window* a1);
 int nox_xxx_wndClearCaptureMain_46ADE0(nox_window* a1);
 nox_window* nox_xxx_wndGetCaptureMain_46AE00();
 int nox_xxx_wnd_46C6E0(nox_window* a1);
 int nox_window_is_child(nox_window* a1, nox_window* a2);
-int nox_xxx_wnd_46B280(int a1, int a2);
 
-int nox_xxx_wnd_46AD60(int a1, int a2);
 
 #endif // NOX_CLIENT_GUI_WINDOW_H

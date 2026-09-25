@@ -32,18 +32,18 @@ func PortTestInventoryDisplay(op int, a, b, c uintptr) uint64 {
 	case 2:
 		return math.Float64bits(uiInventoryElementValue(uiInventoryDrawable(uint32(a)), true))
 	case 3:
-		return uint64(uint32(C.sub_4627F0((*C.uint32_t)(unsafe.Pointer(a)))))
+		return uint64(uint32(sub_4627F0(unsafe.Pointer(a))))
 	case 4:
-		return uint64(uint32(C.sub_463370((*C.uint32_t)(unsafe.Pointer(a)), (*C.nox_point)(unsafe.Pointer(b)), (*C.uint32_t)(unsafe.Pointer(c)))))
+		return uint64(uint32(sub_463370(unsafe.Pointer(a), unsafe.Pointer(b), unsafe.Pointer(c))))
 	case 5:
 		return uint64(uiInventoryScaledDurability(uiInventoryDrawable(uint32(a)), (*float32)(unsafe.Pointer(b)), (*float32)(unsafe.Pointer(c))))
 	case 6:
 		return uint64(uint32(sub_463420(C.int(a))))
 	case 7:
-		C.nox_client_makePlayerStatsDlg_463880((*C.int)(unsafe.Pointer(a)))
+		nox_client_makePlayerStatsDlg_463880(unsafe.Pointer(a))
 		return 0
 	case 8:
-		return uint64(uint32(C.nox_xxx_guiDrawInventoryTray_4643B0(C.int(a), C.int(b))))
+		return uint64(uint32(nox_xxx_guiDrawInventoryTray_4643B0(int32(a), int32(b))))
 	case 9:
 		return uint64(uint32(C.sub_465D50_draw(C.int(a))))
 	case 10:

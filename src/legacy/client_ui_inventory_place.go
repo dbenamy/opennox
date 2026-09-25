@@ -1,14 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2_1.h"
-#include "GAME1_2.h"
-#include "GAME2.h"
-#include "client__gui__guiinv.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/client"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -18,10 +9,6 @@ import (
 
 func uiInventoryValidCell(col, row int) bool { return col >= 0 && col < 4 && row >= 0 && row < 21 }
 
-//export sub_464B40
-func sub_464B40(col, row C.int) C.int {
-	return C.int(bool2int(uiInventoryValidCell(int(col), int(row))))
-}
 func uiInventoryPlace(dr *client.Drawable, col, row int) int {
 	if !uiInventoryValidCell(col, row) {
 		return 0
@@ -60,10 +47,6 @@ func uiInventoryPlace(dr *client.Drawable, col, row int) int {
 	return 1
 }
 
-//export sub_4649B0
-func sub_4649B0(v, col, row C.int) C.int {
-	return C.int(uiInventoryPlace(uiInventoryDrawable(uint32(v)), int(col), int(row)))
-}
 func uiInventorySetClick(col, row int) {
 	dword_5d4594_1049796_inventory_click_column_index = uint32(col)
 	dword_5d4594_1049800_inventory_click_row_index = uint32(row)
@@ -85,9 +68,6 @@ func uiInventoryDragCopy() {
 	uiInventoryCopyItem(dr, cell.Drawable)
 	uiInventoryRemoveStack(&uiInventoryLookup{Cell: cell})
 }
-
-//export nox_xxx_cliInventorySpriteUpd_465A30
-func nox_xxx_cliInventorySpriteUpd_465A30() { uiInventoryDragCopy() }
 
 func uiInventoryCapacity(typ, quantity int32) int32 {
 	count := 0
@@ -125,7 +105,7 @@ func uiInventoryAlterWeapon() {
 	if player == nil || *(*uint32)(unsafe.Add(playerDr.C(), 276)) == 34 {
 		return
 	}
-	if C.int(geometryRectInt((*[2]int32)(unsafe.Pointer(memmap.PtrOff(0x5D4594, 1062572))), (*[4]int32)(unsafe.Pointer(memmap.PtrOff(0x587000, 136336))))) == 1 {
+	if int32(geometryRectInt((*[2]int32)(unsafe.Pointer(memmap.PtrOff(0x5D4594, 1062572))), (*[4]int32)(unsafe.Pointer(memmap.PtrOff(0x587000, 136336))))) == 1 {
 		Nox_xxx_cursorSetDraggedItem_477690(nil)
 	}
 	alt := uiInventoryCellRef(uint32(dword_5d4594_1062480))
@@ -158,6 +138,3 @@ func uiInventoryAlterWeapon() {
 		audioEventPlay(895, 100, 0, 0)
 	}
 }
-
-//export nox_client_invAlterWeapon_4672C0
-func nox_client_invAlterWeapon_4672C0() { uiInventoryAlterWeapon() }

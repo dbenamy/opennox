@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-*/
-import "C"
-
 import (
 	"image"
 	"strconv"
@@ -150,10 +145,4 @@ func uiInventoryStats(pos image.Point) {
 	}
 	textColor(white)
 	text(normal, uiInventoryFormatInts("MinMaxFormat", weight, capacity), x+armorWidth+5, y, 0)
-}
-
-//export nox_client_makePlayerStatsDlg_463880
-func nox_client_makePlayerStatsDlg_463880(pos *C.int) {
-	v := unsafe.Slice(pos, 2)
-	uiInventoryStats(image.Pt(int(v[0]), int(v[1])))
 }

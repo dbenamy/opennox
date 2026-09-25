@@ -86,7 +86,7 @@ func PortTestInventoryWindowWords() (map[string]*uint32, func()) {
 
 func PortTestInventoryWindowCallbacks() []unsafe.Pointer {
 	return []unsafe.Pointer{
-		C.sub_462740,
+		clientUICallbackKey(clientUICallbackID_sub_462740),
 		nil,
 		C.sub_466160,
 		C.sub_4661D0,
@@ -112,12 +112,12 @@ func PortTestInventoryWindowCallbacks() []unsafe.Pointer {
 		nil,
 		nil,
 		nil,
-		C.sub_467650,
+		clientUICallbackKey(clientUICallbackID_sub_467650),
 		nil,
-		C.sub_467BB0,
-		C.sub_467C10,
+		clientUICallbackKey(clientUICallbackID_sub_467BB0),
+		clientUICallbackKey(clientUICallbackID_sub_467C10),
 		nil,
-		C.sub_467C80,
+		clientUICallbackKey(clientUICallbackID_sub_467C80),
 		nil,
 		nil,
 		C.sub_4625D0, C.sub_465D50_draw, C.nox_xxx_inventoryDrawProc_466580, C.sub_466E20, C.sub_466F50,

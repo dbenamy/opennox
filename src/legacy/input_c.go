@@ -16,7 +16,6 @@ package legacy
 #include "client__gui__tooltip.h"
 #include "client__gui__gamewin__gamewin.h"
 
-void sub_45D870();
 */
 import "C"
 import (
