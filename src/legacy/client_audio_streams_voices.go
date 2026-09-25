@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_1.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
@@ -32,9 +28,9 @@ func audioStreamVoiceFree(p *audioStreamVoice) {
 	alloc.Free(p)
 }
 func audioStreamVoiceInit(p *audioStreamVoice) unsafe.Pointer {
-	p.DataCallback = C.sub_4BD8C0
-	p.LoopCallback = C.sub_4BD940
-	p.EndCallback = C.sub_4BD9B0
+	p.DataCallback = unsafe.Pointer(&audioStreamCallbackKeys[1])
+	p.LoopCallback = unsafe.Pointer(&audioStreamCallbackKeys[2])
+	p.EndCallback = unsafe.Pointer(&audioStreamCallbackKeys[3])
 	p.OnData = nil
 	p.OnLoop = nil
 	p.OnEnd = nil

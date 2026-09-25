@@ -15,7 +15,6 @@ import (
 	"github.com/opennox/opennox/v1/legacy"
 	"github.com/opennox/opennox/v1/legacy/client/audio/ail"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/legacy/timer"
 )
 
@@ -36,7 +35,7 @@ func sub_43EFD0(a1 unsafe.Pointer) int {
 	if s.Flag7 == 0 {
 		ptr := s.Field1
 		fptr := (*unsafe.Pointer)(unsafe.Add(ptr, 284))
-		ccall.CallVoidPtr(*fptr, ptr)
+		legacy.AudioStreamCallbackVoid(*fptr, ptr)
 		s.Flag7 = 1
 	}
 	return 0
@@ -278,7 +277,7 @@ func sub_486EF0() {
 			v1 := *(*unsafe.Pointer)(unsafe.Add(legacy.Get_dword_587000_155144(), 12))
 			for it := unsafe.Add(legacy.Get_dword_587000_155144(), 12); v1 != it; v1 = *(*unsafe.Pointer)(v1) {
 				if (*(*int32)(unsafe.Add(v1, 4*3)) & 2) == 0 {
-					ccall.CallVoidPtr(*(*unsafe.Pointer)(unsafe.Add(v1, 4*54)), v1)
+					legacy.AudioStreamCallbackVoid(*(*unsafe.Pointer)(unsafe.Add(v1, 4*54)), v1)
 				}
 			}
 		}

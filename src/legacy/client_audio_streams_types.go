@@ -144,3 +144,10 @@ var (
 	_ = [1]struct{}{}[288-unsafe.Offsetof(audioStreamVoice{}.Buffer)]
 	_ = [1]struct{}{}[128-unsafe.Sizeof(audioStreamSystem{})]
 )
+
+var (
+	_ = [1]struct{}{}[216-unsafe.Offsetof(audioStreamContext{}.Tick)]
+	_ = [1]struct{}{}[276-unsafe.Offsetof(audioStreamVoice{}.DataCallback)]
+	_ = [1]struct{}{}[280-unsafe.Offsetof(audioStreamVoice{}.LoopCallback)]
+	_ = [1]struct{}{}[284-unsafe.Offsetof(audioStreamVoice{}.EndCallback)]
+)

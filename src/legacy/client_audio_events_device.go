@@ -2,7 +2,6 @@ package legacy
 
 import (
 	"github.com/opennox/opennox/v1/legacy/client/audio/ail"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"unsafe"
 )
 
@@ -20,7 +19,7 @@ func audioEventSampleEnded(sample ail.Sample) {
 	p := audioEventDeviceUser(sample)
 	if p.Flag7 == 0 {
 		v := (*audioStreamVoice)(p.Field1)
-		ccall.CallIntPtr(v.EndCallback, unsafe.Pointer(v))
+		AudioStreamCallbackInt(v.EndCallback, unsafe.Pointer(v))
 		p.Flag7 = 1
 	}
 }
@@ -38,10 +37,10 @@ func audioEventSampleRefill(p *AudioSample) int32 {
 			for total < 16384 {
 				remaining := int32(v.Remaining)
 				if remaining == 0 {
-					ccall.CallVoidPtr(v.DataCallback, unsafe.Pointer(v))
+					AudioStreamCallbackVoid(v.DataCallback, unsafe.Pointer(v))
 					remaining = int32(v.Remaining)
 					if remaining == 0 {
-						ccall.CallVoidPtr(v.LoopCallback, unsafe.Pointer(v))
+						AudioStreamCallbackVoid(v.LoopCallback, unsafe.Pointer(v))
 						remaining = int32(v.Remaining)
 						if remaining == 0 {
 							p.Field3 = 1

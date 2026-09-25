@@ -7,38 +7,37 @@ superseded status when updating it. The workflow and delegation rules live in
 ## Status: resumed; internal C-glue removal
 
 **Progress: 142,665/142,665 original standalone C lines ported or retired;
-internal glue: 293/463 cgo files eliminated on net (170 remain).**
-Selected legacy C export bridges: **1,405/1,890 retired (485 remain)**.
+internal glue: 296/463 cgo files eliminated on net (167 remain).**
+Selected legacy C export bridges: **1,425/1,890 retired (465 remain)**.
 
 These are selected project files in each Linux 386 production profile, not equal
 units of effort. Three project packages directly use cgo; 77 embedded C callback
 bodies remain. Production and test-reference standalone `.c` files both remain zero.
 
-Latest qualified chunk retires 71 client UI fixture C bridges across 19 owners,
-with native fixture adapters and 28 stable snapshot identities. Five production
-and one additional fixture cgo imports were removed. Existing root assertions
-and captures are unchanged; the full default corpus was rerun for these shared
-fixture owners. See [CLIENT_UI_FIXTURE_BRIDGES.md](docs/porting/CLIENT_UI_FIXTURE_BRIDGES.md).
+Latest qualified chunk retires 20 internal audio-stream C bridges, replacing
+four callback addresses with stable native identities and migrating all five
+production dispatch sites. Three production cgo imports were removed. Existing
+captures are unchanged; two new original-path root contracts cover service-loop
+and completion behavior. See [AUDIO_STREAM_CALLBACKS.md](docs/porting/AUDIO_STREAM_CALLBACKS.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. The next audio-stream batch has an accepted
-original-path baseline: 86 roots per profile plus repeated new root contracts.
-It targets 20 exports and four live internal callback identities; no conversion
-is installed yet. See [AUDIO_STREAM_CALLBACKS.md](docs/porting/AUDIO_STREAM_CALLBACKS.md).
-External audio backends remain outside scope. Stop at the milestone or a substantial question.
+recorded reversible decisions. Next scouting examines connected client
+entity/effect/particle/sprite fixture bridges; primary must accept scope and
+baseline before another conversion. External media backends remain outside scope.
+Stop at the milestone or a substantial question.
 
-Latest qualified artifacts: `build/port-client-ui-fixture-bridges/`.
+Latest qualified artifacts: `build/port-audio-stream-callbacks/`.
 
 ## What remains
 
-Counts below describe the qualified client UI fixture conversion. Zero `.c` lines
+Counts below describe the qualified audio-stream callback conversion. Zero `.c` lines
 is not a count of all C dependencies or remaining engineering effort.
 
 | Area | Remaining work or dependency |
 | --- | --- |
 | Embedded C callback glue | 77 production function bodies in Go preambles: 76 generic function-pointer dispatchers and one specialized adapter. |
 | Callback routes | Remaining Go owners still use C-compatible addresses. Continue migrating identities and every field/alias consumer before removing shared raw fallbacks. |
-| Declarations and C types | 157 tracked headers / 3,242 physical lines; each production profile selects 170 cgo files in three project packages (alloc, ccall, legacy). These are mostly interface/layout machinery, not unported algorithms. |
+| Declarations and C types | 157 tracked headers / 3,222 physical lines; each production profile selects 167 cgo files in three project packages (alloc, ccall, legacy). These are mostly interface/layout machinery, not unported algorithms. |
 | Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Ownership/lifetime work remains behind the centralized allocator. |
 | External libraries | SDL2, OpenGL, OpenAL and similar native dependencies/bindings stay for this phase; their future is a subsequent discussion. |
 | Portability and release validation | Qualified target is Linux 386/SSE2 with cgo. The complete engine is not qualified as cgo-free, 64-bit, native macOS or browser/WebAssembly. Physical display and audible playback remain manual checks. |
@@ -50,19 +49,20 @@ users are migrated; test-only C observers separately qualify that boundary.
 
 ## Latest qualification and evidence
 
-- All 383 default/highres and 382 server focused roots pass, no skips, matching
-  exact original baseline names. The server excludes one explicitly client-only test.
-- Full default corpus: 2,457 passes plus the established prerequisite-probe skip;
-  all 2,458 root names match the independent recorded set.
-- Safe/static and three production/ABI checks pass; all 71 retired exports absent.
+- All 86 focused roots pass in each of three profiles, no failures/skips, matching
+  exact original baseline names. Two new root contracts also passed original-path
+  repeats before conversion.
+- Full default corpus: 2,459 passes plus the established prerequisite-probe skip;
+  all 2,460 names match the previous independent set plus the two new contracts.
+- Safe/static and three production/ABI checks pass; all 20 retired exports absent.
 - Headless character creation and explicit save/load/resume pass.
 - Full asset suite matches known results: 304 failure events; 17 passing, two
   failing and 32 skipped packages. All 1,654 original asset hashes are unchanged.
-- All accepted phases share source fingerprints. All 46 source paths match review;
-  all three focused builds passed first try, with no expectation changes.
+- All accepted phases share source fingerprints. All ten changed source paths
+  match review; existing assertions/captures are unchanged.
 
-Report: [CLIENT_UI_FIXTURE_BRIDGES.md](docs/porting/CLIENT_UI_FIXTURE_BRIDGES.md).
-Evidence: [qualification](docs/porting/client-ui-fixture-bridges-qualification.json).
+Report: [AUDIO_STREAM_CALLBACKS.md](docs/porting/AUDIO_STREAM_CALLBACKS.md).
+Evidence: [qualification](docs/porting/audio-stream-callbacks-qualification.json).
 Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expected-suite.jsonl).
 
 ## Goal, next work and open review items
@@ -75,7 +75,7 @@ removal order and completion criteria. Client rendering/audio backend replacemen
 is outside this phase.
 
 The dependency inventory tool is `tools/porting/cgo_inventory.py`; the current
-qualified inventory is [client-ui-fixture-bridges-inventory-after.json](docs/porting/client-ui-fixture-bridges-inventory-after.json).
+qualified inventory is [audio-stream-callbacks-inventory-after.json](docs/porting/audio-stream-callbacks-inventory-after.json).
 The original phase baseline is under `build/port-cgo-leaves/inventory-before/`.
 The completed leaf cleanup leaves three project packages directly using cgo in
 all profiles, plus OpenGL/SDL2/OpenAL bindings in the clients. Metadata discovery
@@ -164,7 +164,7 @@ do not rerun them or infer deletion safety from age alone.
 | Completed damage scenario assets | Removed 1,654 verified duplicates; 559,915,008 allocated bytes reclaimed. Originals, saves and results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/damage-identities-save/deduplicated-assets.json`. Plan/result: `build/port-post-damage-cleanup/`. |
 | Completed creation/init scenario assets | Removed 1,654 SHA256-identical original-asset duplicates after host-use checks; 559,972,352 allocated bytes reclaimed. Originals, saves/results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/create-init-identities-save/deduplicated-assets.json`. Plan/result: `build/port-post-create-init-cleanup/`. |
 | Superseded collision/death qualified binaries | Removed 14 test/safe/production executables after exact committed-source, replacement/hash and host-use checks; 786,751,488 allocated bytes reclaimed. Rebuild qualified revisions `170b594a` and `e7ca9d31` using retained commands. Source, original baseline binaries, logs, manifests and current create/init and damage outputs remain. Plan/journal: `build/port-item-identities/cleanup-production-{approved.json,deleted.jsonl}`. |
-| Current qualified production/safe binaries | Retained under `build/port-client-ui-fixture-bridges/`; superseded modifier/server-fixture/duration/update outputs removed as recorded below. |
+| Current qualified production/safe binaries | Retained under `build/port-audio-stream-callbacks/` and `build/port-client-ui-fixture-bridges/`; superseded modifier/server-fixture/duration/update outputs removed as recorded below. |
 | Superseded modifier/server-fixture/duration/update binaries | Removed 28 verified test/safe/production executables after source/replacement hashes and host-use checks; 1,567,293,440 allocated bytes reclaimed. Rebuild qualified revisions `99b65896`, `a798ad1c`, `d5d80c42`, `a8d89bda` using retained commands and source maps. Current UI replacements, old logs/manifests and baseline evidence remain. Journals: `build/port-after-client-ui/binary-cleanup-deleted.jsonl` and `binary-cleanup-addendum-deleted.jsonl`. |
 | Completed UI-fixture scenario assets | Removed 1,654 verified original-asset duplicates; 559,943,680 allocated bytes reclaimed. Originals, saves and results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/client-ui-fixture-bridges-save/deduplicated-assets.json`. Plan/result: `build/port-post-client-ui-cleanup/`. |
 | Superseded primitive-interface binaries | Seven executables removed after source/replacement/hash and host-use checks; 395,362,304 allocated bytes reclaimed. All 3,062 source fingerprints match `78ff20f9`; current qualified replacements match `4214ea8f`. Rebuild the old revision using retained phase commands. Plan/journal: `build/port-go-layout-boundaries/cleanup-primitive-{approved.json,deleted.jsonl}`. |
@@ -203,3 +203,7 @@ after byte/hash and host-use checks: 3,308 duplicates / 1,119,789,056 allocated
 bytes. Saves, changed files and results remain. Restore either scenario with
 `python3 build/port-artifact-cleanup/restore-recent-scenario.py` followed by its
 `build/baseline/runs/SCENARIO/deduplicated-assets.json` path.
+
+Ten completed UI/audio-baseline logs are losslessly compressed; restore with
+`gzip -dk`. Hashes and commands: `build/port-audio-stream-callbacks/completed-log-archive.json`
+(107,732,992 allocated bytes reclaimed). Current audio qualification logs remain readable.

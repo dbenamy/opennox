@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "GAME2_2.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
@@ -123,7 +119,7 @@ func audioStreamContextNew(device *audioStreamDevice, slot int32, format *audioS
 	p.MaxElapsed = 0
 	p.Elapsed = 0
 	p.LastTick = 0
-	p.Tick = C.sub_4873C0
+	p.Tick = unsafe.Pointer(&audioStreamCallbackKeys[0])
 	if format != nil {
 		audioStreamContextFormat(p, format)
 	}

@@ -4,24 +4,6 @@
 #include "defs.h"
 
 int nox_xxx_updDrawMonsterGen_4BC920();
-uint32_t* sub_4BD280(int a1, int a2);
-void sub_4BD2D0(void* lpMem);
-uint32_t* sub_4BD2E0(uint32_t** a1);
-int sub_4BD300(uint32_t* a1, int a2);
-uint32_t* sub_4BD340(int a1, int a2, int a3, int a4);
-void sub_4BD3C0(void* lpMem);
-uint32_t* sub_4BD470(uint32_t** a1, int a2);
-int sub_4BD650(int a1);
-int sub_4BD660(int a1);
-int sub_4BD710(int a1);
-int sub_4BD8C0(int a1);
-int sub_4BD940(int a1);
-int sub_4BD9B0(uint32_t* a2);
-int sub_4BDA80(int a1);
-int sub_4BDB20(int a1);
-int sub_4BDB30(int a1);
-int sub_4BDB40(int a2);
-void sub_4BDB90(uint32_t* a1, uint32_t* a2);
 int nox_gui_itemAmountDialog_4C0430(wchar2_t* title, int x, int y, int a4, int a5, void* a6, int a7, int a8,
 									void* accept, void* cancel);
 int sub_4C1120(int a1, int a2, unsigned int a3);

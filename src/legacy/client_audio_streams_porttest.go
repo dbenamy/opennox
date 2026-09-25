@@ -3,8 +3,6 @@
 package legacy
 
 /*
-#include "GAME2_2.h"
-#include "GAME3_1.h"
 extern int nox_porttest_audio_stream_callback(int op, void* obj);
 static int nox_porttest_audio_cb0(void* p) {return nox_porttest_audio_stream_callback(0,p);}
 static int nox_porttest_audio_cb1(void* p) {return nox_porttest_audio_stream_callback(1,p);}
@@ -39,31 +37,6 @@ static void* nox_porttest_audio_callback_addr(int op) {
  case 13: return nox_porttest_audio_cb13;
  default: return 0;
  }
-}
-static uint32_t nox_porttest_audio_stream_call(int op, uintptr_t a0, uintptr_t a1, uintptr_t a2, uintptr_t a3) {
- switch (op) {
-case 22: return (uint32_t)(uintptr_t)sub_4873C0((int)a0);
-case 33: return (uint32_t)(uintptr_t)sub_487810((int)a0, (int)a1);
-case 42: return (uint32_t)(uintptr_t)sub_4BD280((int)a0, (int)a1);
-case 43: sub_4BD2D0((void*)a0); return 0;
-case 44: return (uint32_t)(uintptr_t)sub_4BD2E0((uint32_t**)a0);
-case 45: return (uint32_t)(uintptr_t)sub_4BD300((uint32_t*)a0, (int)a1);
-case 46: return (uint32_t)(uintptr_t)sub_4BD340((int)a0, (int)a1, (int)a2, (int)a3);
-case 47: sub_4BD3C0((void*)a0); return 0;
-case 49: return (uint32_t)(uintptr_t)sub_4BD470((uint32_t**)a0, (int)a1);
-case 51: return (uint32_t)(uintptr_t)sub_4BD650((int)a0);
-case 52: return (uint32_t)(uintptr_t)sub_4BD660((int)a0);
-case 55: return (uint32_t)(uintptr_t)sub_4BD710((int)a0);
-case 60: return (uint32_t)(uintptr_t)sub_4BD8C0((int)a0);
-case 61: return (uint32_t)(uintptr_t)sub_4BD940((int)a0);
-case 62: return (uint32_t)(uintptr_t)sub_4BD9B0((uint32_t*)a0);
-case 64: return (uint32_t)(uintptr_t)sub_4BDA80((int)a0);
-case 65: return (uint32_t)(uintptr_t)sub_4BDB20((int)a0);
-case 66: return (uint32_t)(uintptr_t)sub_4BDB30((int)a0);
-case 67: return (uint32_t)(uintptr_t)sub_4BDB40((int)a0);
-case 68: sub_4BDB90((uint32_t*)a0, (uint32_t*)a1); return 0;
- }
- return 0;
 }
 */
 import "C"
@@ -265,7 +238,53 @@ func PortTestAudioStreamCall(name string, args ...uint32) uint32 {
 	}
 	for op, n := range portTestAudioStreamNames {
 		if n == name {
-			return uint32(C.nox_porttest_audio_stream_call(C.int(op), C.uintptr_t(a[0]), C.uintptr_t(a[1]), C.uintptr_t(a[2]), C.uintptr_t(a[3])))
+			switch op {
+			case 22:
+				return uint32(audioStreamContextTick((*audioStreamContext)(unsafe.Pointer(uintptr(uint32(a[0]))))))
+			case 33:
+				return uint32(uintptr(unsafe.Pointer(audioStreamVoiceSelect((*audioStreamContext)(unsafe.Pointer(uintptr(uint32(a[0])))), int32(a[1])))))
+			case 42:
+				return uint32(uintptr(unsafe.Pointer(audioStreamPoolNew(int32(a[0]), int32(a[1])))))
+			case 43:
+				audioStreamPoolFree(unsafe.Pointer(uintptr(a[0])))
+				return 0
+			case 44:
+				return uint32(uintptr(audioStreamPoolPop((*unsafe.Pointer)(unsafe.Pointer(uintptr(a[0]))))))
+			case 45:
+				return uint32(uintptr(audioStreamPoolPush((*unsafe.Pointer)(unsafe.Pointer(uintptr(a[0]))), unsafe.Pointer(uintptr(uint32(a[1]))))))
+			case 46:
+				return uint32(uintptr(unsafe.Pointer(audioStreamCacheNew((*audioStreamCatalog)(unsafe.Pointer(uintptr(uint32(a[0])))), int32(a[1]), int32(a[2]), int32(a[3])))))
+			case 47:
+				audioStreamCacheFree((*audioStreamCache)(unsafe.Pointer(uintptr(a[0]))))
+				return 0
+			case 49:
+				return uint32(uintptr(unsafe.Pointer(audioStreamCacheLoad((*audioStreamCache)(unsafe.Pointer(uintptr(a[0]))), int32(a[1])))))
+			case 51:
+				return uint32(uintptr(unsafe.Pointer(audioStreamCacheRef((*audioStreamCacheEntry)(unsafe.Pointer(uintptr(uint32(a[0]))))))))
+			case 52:
+				return uint32(audioStreamCacheUnref((*audioStreamCacheEntry)(unsafe.Pointer(uintptr(uint32(a[0]))))))
+			case 55:
+				return uint32(uintptr(unsafe.Pointer(audioStreamCacheBuffer((*audioStreamCacheEntry)(unsafe.Pointer(uintptr(uint32(a[0]))))))))
+			case 60:
+				return uint32(audioStreamVoiceData((*audioStreamVoice)(unsafe.Pointer(uintptr(uint32(a[0]))))))
+			case 61:
+				return uint32(audioStreamVoiceLoop((*audioStreamVoice)(unsafe.Pointer(uintptr(uint32(a[0]))))))
+			case 62:
+				return uint32(audioStreamVoiceEnd((*audioStreamVoice)(unsafe.Pointer(uintptr(a[0])))))
+			case 64:
+				return uint32(audioStreamVoiceStop((*audioStreamVoice)(unsafe.Pointer(uintptr(uint32(a[0]))))))
+			case 65:
+				return uint32(uintptr(unsafe.Pointer(audioStreamVoiceReserve((*audioStreamVoice)(unsafe.Pointer(uintptr(uint32(a[0]))))))))
+			case 66:
+				return uint32(uintptr(unsafe.Pointer(audioStreamVoiceUnreserve((*audioStreamVoice)(unsafe.Pointer(uintptr(uint32(a[0]))))))))
+			case 67:
+				return uint32(audioStreamVoiceStart((*audioStreamVoice)(unsafe.Pointer(uintptr(uint32(a[0]))))))
+			case 68:
+				audioStreamVoiceBind((*audioStreamVoice)(unsafe.Pointer(uintptr(a[0]))), (*audioStreamBuffer)(unsafe.Pointer(uintptr(a[1]))))
+				return 0
+			default:
+				return 0 // Preserve the original dispatcher default.
+			}
 		}
 	}
 	panic("unknown audio stream operation: " + name)
