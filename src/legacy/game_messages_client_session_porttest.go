@@ -4,7 +4,6 @@ package legacy
 
 /*
 #include "defs.h"
-#include "GAME1_1.h"
 #include "GAME2_3.h"
 */
 import "C"
@@ -49,8 +48,8 @@ func PortTestClientSequenceOwner() (func(), func() PortTestClientSequenceState, 
 	reset := func() { clientSequenceFree(); clientSequenceInit() }
 	snapshot := func() PortTestClientSequenceState {
 		r := PortTestClientSequenceState{Current: memmap.Uint16(0x5D4594, 1197360)}
-		head := (*C.nox_list_item_t)(memmap.PtrOff(0x5D4594, 1197340))
-		for p := C.nox_common_list_getFirstSafe_425890(head); p != nil; p = C.nox_common_list_getNextSafe_4258A0(p) {
+		head := (*legacyListNode)(memmap.PtrOff(0x5D4594, 1197340))
+		for p := listNext(head); p != nil; p = listNext(p) {
 			if len(r.Nodes) > 65536 {
 				panic("sequence list cycle")
 			}

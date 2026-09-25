@@ -4,7 +4,6 @@ package legacy
 
 /*
 #include <stdlib.h>
-#include "GAME1_1.h"
 */
 import "C"
 import (
@@ -85,31 +84,33 @@ func (f *PortTestLists) Op(op string, a, b int) int {
 	p, q := f.ptr(a), f.ptr(b)
 	switch op {
 	case "append":
-		C.nox_common_list_append_4258E0((*C.nox_list_item_t)(p), (*C.nox_list_item_t)(q))
+		listAppend((*legacyListNode)(p), (*legacyListNode)(q))
 		return 0
 	case "prepend":
-		return f.id(unsafe.Pointer(C.sub_425900((*C.uint)(p), (*C.uint)(q))))
+		return f.id(unsafe.Pointer(listPrepend((*legacyListNode)(p), (*legacyListNode)(q))))
 	case "ascending":
 		return listAscending((*legacyListNode)(p), (*legacyListNode)(q))
 	case "descending":
-		C.sub_4257F0((*C.int)(p), (*C.uint)(q))
+		listDescending((*legacyListNode)(p), (*legacyListNode)(q))
 		return 0
 	case "remove":
-		C.nox_common_list_remove_425920(p)
+		listRemove((*legacyListNode)(p))
 		return 0
 	case "first":
-		return f.id(unsafe.Pointer(C.nox_common_list_getFirstSafe_425890((*C.nox_list_item_t)(p))))
+		return f.id(unsafe.Pointer(listNext((*legacyListNode)(p))))
 	case "next":
-		return f.id(unsafe.Pointer(C.nox_common_list_getNextSafe_4258A0((*C.nox_list_item_t)(p))))
+		return f.id(unsafe.Pointer(listNext((*legacyListNode)(p))))
 	case "raw-next":
-		return f.id(unsafe.Pointer(C.nox_common_list_getNext_425940((*C.nox_list_item_t)(p))))
+		return f.id(unsafe.Pointer(listNext((*legacyListNode)(p))))
 	case "prev":
-		return f.id(unsafe.Pointer(uintptr(C.sub_425960(C.int(uintptr(p))))))
+		raw := uint32(uintptr(p))
+		prev := listPrev((*legacyListNode)(unsafe.Pointer(uintptr(raw))))
+		return f.id(unsafe.Pointer(uintptr(uint32(uintptr(unsafe.Pointer(prev))))))
 	}
 	panic(op)
 }
 func (f *PortTestLists) At(head, index int) int {
-	return f.id(unsafe.Pointer(C.sub_4258C0((**C.uint)(f.ptr(head)), C.int(index))))
+	return f.id(unsafe.Pointer(listAt((*legacyListNode)(f.ptr(head)), int(int32(index)))))
 }
 
 type PortTestGroupState struct {
@@ -134,7 +135,7 @@ func (f *PortTestGroups) Close() {
 	copy(unsafe.Slice(memmap.PtrUint8(0x5D4594, 599460), 16), f.saved)
 }
 func (f *PortTestGroups) Find(id uint32) unsafe.Pointer {
-	return unsafe.Pointer(C.sub_425A70(C.int(id)))
+	return unsafe.Pointer(playerGroupFind(id))
 }
 func (f *PortTestGroups) Exists(id uint32) bool { return playerGroupFind(id) != nil }
 func (f *PortTestGroups) Add(id uint32, name []uint16) bool {
@@ -158,14 +159,14 @@ func (f *PortTestGroups) Remove(id uint32, index int32) bool {
 	if p == nil {
 		panic("missing fixture group")
 	}
-	// The C result can point into a freed group; compare address bits only.
-	result := C.sub_425B60(p, C.int(index))
-	return uintptr(unsafe.Pointer(result)) == uintptr(p)+40
+	// The returned address may be inside a group freed by its final removal; compare bits only.
+	result := playerGroupRemoveMember((*playerGroup)(p), int32(index))
+	return uintptr(result) == uintptr(p)+40
 }
 func (f *PortTestGroups) State() (out []PortTestGroupState) {
 	head := memmap.PtrOff(0x5D4594, 599460)
 	prev := head
-	for p := unsafe.Pointer(C.sub_425A50()); p != nil; p = unsafe.Pointer(C.sub_425A60((*C.int)(p))) {
+	for p := unsafe.Pointer(playerGroupsFirst()); p != nil; p = unsafe.Pointer(playerGroupsNext((*playerGroup)(p))) {
 		words := unsafe.Slice((*uint32)(p), 13)
 		if words[1] != uint32(uintptr(prev)) {
 			panic("group backward link")

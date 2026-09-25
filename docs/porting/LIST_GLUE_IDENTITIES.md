@@ -16,7 +16,7 @@ root wrappers, client sequence delivery/wrap and rule-file list ownership.
 See [baseline](list-glue-identities-baseline.json) and
 [test selection](list-glue-identities-tests.txt).
 
-## Review and qualification plan
+## Review and qualification
 
 Use the existing native owners directly in list/group, rules and session fixtures.
 Preserve the 12-byte node layout, 32-bit address results, signed indices, nil traversal
@@ -31,8 +31,23 @@ name-only primary test closure over-selected unrelated methods named Close/State
 The accepted selection follows unique fixture constructors and actual rules/session
 entrypoints instead. All 19 roots are available on every profile.
 
-After baseline commit, install and run all 19 affected roots per profile, safe/static,
+Qualification includes all 19 affected roots per profile, safe/static,
 three production/ABI checks, exact known-suite comparison, fresh preflight/final
 headless save/load, original asset hashes and measured inventory. No current-source
 full-root corpus is claimed; last full run was the earlier shared drawable batch.
-Conversion remains pending.
+Original baseline committed/pushed as `de620b12`; the reviewed conversion is
+fully qualified.
+
+
+## Qualified result
+
+All 19 original/converted roots pass per profile without failures/skips. Safe/static,
+three production/ABI builds, exact known-suite comparison, both fresh headless
+save/load scenarios and all 1,654 asset hashes pass on unchanged reviewed source.
+See [qualification](list-glue-identities-qualification.json).
+
+Exports fall 301→288; selected production cgo files fall to 149 client/150 server.
+The 157 tracked headers contain 3,050 physical lines. Embedded C
+bodies remain 77 and standalone production/test C remains zero. External bindings
+are unchanged. The bounded Luna draft needed only formatting; primary independently
+verified mappings, source hashes, reachability and the full qualification results.

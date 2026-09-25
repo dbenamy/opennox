@@ -177,7 +177,7 @@ func PortTestRules(spec PortTestRulesSpec) (out PortTestRulesResult, err error) 
 				panic("fixture allocation failed")
 			}
 			copy(unsafe.Slice((*uint16)(unsafe.Add(p, 12)), 256), text)
-			C.nox_common_list_append_4258E0(head, (*C.nox_list_item_t)(p))
+			listAppend((*legacyListNode)(unsafe.Pointer(head)), (*legacyListNode)(p))
 		}
 	}
 	files.RLock()

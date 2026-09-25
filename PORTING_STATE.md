@@ -7,38 +7,36 @@ superseded status when updating it. The workflow and delegation rules live in
 ## Status: resumed; internal C-glue removal
 
 **Progress: 142,665/142,665 original standalone C lines ported or retired;
-internal glue: 313/463 client cgo files eliminated on net (150 remain;
-server: 312/463 eliminated, 151 remain).**
-Selected legacy C export bridges: **1,589/1,890 retired (301 remain)**.
+internal glue: 314/463 client cgo files eliminated on net (149 remain;
+server: 313/463 eliminated, 150 remain).**
+Selected legacy C export bridges: **1,602/1,890 retired (288 remain)**.
 
 These are selected project files in Linux 386 production profiles, not equal
 units of effort. Three project packages directly use cgo; 77 embedded C callback
 bodies remain. Production and test-reference standalone `.c` files both remain zero.
 
-Latest qualified chunk removes 32 player-action export bridges and three private
-C-typed wrappers. Two export-only files are gone; actual callers invoke existing
-Go owners. Radial attack visitors use short-lived Go closures, preserving geometry
-and callback ordering. Independent C observers, signed return bits and stable
-fixture capture IDs remain. See
-[PLAYER_ACTION_IDENTITIES.md](docs/porting/PLAYER_ACTION_IDENTITIES.md).
+Latest qualified chunk removes 13 list/player-group C bridges and one export-only
+file. Remaining fixture callers use the existing Go owners directly. Production
+algorithms, node layout, allocation ownership and independent assertions are
+unchanged. See [LIST_GLUE_IDENTITIES.md](docs/porting/LIST_GLUE_IDENTITIES.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
 recorded reversible decisions. Select the next connected remaining callback or
 interface family from actual callers. External media backends remain outside
 scope. Stop at the milestone or a substantial question.
 
-Latest qualified artifacts: `build/port-player-action-identities/`.
+Latest qualified artifacts: `build/port-list-glue-identities/`.
 
 ## What remains
 
-Counts below describe the qualified player-action conversion. Zero `.c` lines
+Counts below describe the qualified list/group conversion. Zero `.c` lines
 is not a count of all C dependencies or remaining engineering effort.
 
 | Area | Remaining work or dependency |
 | --- | --- |
 | Embedded C callback glue | 77 production function bodies in Go preambles: 76 generic function-pointer dispatchers and one specialized adapter. |
 | Callback routes | Remaining Go owners still use C-compatible addresses. Continue migrating identities and every field/alias consumer before removing shared raw fallbacks. |
-| Declarations and C types | 157 tracked headers / 3,063 physical lines; client profiles select 150 cgo files and server selects 151 in three project packages (alloc, ccall, legacy). These are mostly interface/layout machinery, not unported algorithms. |
+| Declarations and C types | 157 tracked headers / 3,050 physical lines; client profiles select 149 cgo files and server selects 150 in three project packages (alloc, ccall, legacy). These are mostly interface/layout machinery, not unported algorithms. |
 | Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Ownership/lifetime work remains behind the centralized allocator. |
 | External libraries | SDL2, OpenGL, OpenAL and similar native dependencies/bindings stay for this phase; their future is a subsequent discussion. |
 | Portability and release validation | Qualified target is Linux 386/SSE2 with cgo. The complete engine is not qualified as cgo-free, 64-bit, native macOS or browser/WebAssembly. Physical display and audible playback remain manual checks. |
@@ -50,23 +48,24 @@ users are migrated; test-only C observers separately qualify that boundary.
 
 ## Latest qualification and evidence
 
-- All 565 affected roots pass in each default/server/highres profile, with exact
-  accepted original names and no failures/skips. Original evidence reused 558
-  exact-source results and freshly ran seven additional roots per profile.
-- Safe/static and three production/ABI checks pass; all 32 retired exports absent.
+- All 19 affected roots pass in each default/server/highres profile, with exact
+  original names and no failures/skips. The original selection ran freshly on
+  verified, identical-source player-action binaries before conversion.
+- Safe/static and three production/ABI checks pass; all 13 retired exports absent.
 - Fresh preflight and final headless character creation with explicit save/load/
   resume pass on the same final production binary.
 - Full asset suite matches known results: 304 failure events; 17 passing, two
   failing and 32 skipped packages. All 1,654 original asset hashes are unchanged.
-- All accepted phases share source fingerprints; all 19 changed source paths match
-  primary review. Existing assertions, captures and fixture operation IDs are unchanged.
-- The earlier shared drawable-update batch `024b2632` passed the complete
-  2,462-root default corpus (2,461 passes and the established prerequisite skip).
-  This bounded player-action batch uses affected coverage plus production gates;
-  that earlier full-corpus result is not a run of the current source.
+- All accepted phases share source fingerprints; all five changed source paths
+  match primary review. Existing assertions and captures are unchanged.
+- The preceding player-action batch `1ca13c2a` passed 565 affected roots per profile.
+  The last full default corpus was shared drawable-update `024b2632`: 2,461 passes
+  and the established prerequisite skip among 2,462 roots. Those earlier results
+  are not runs of this source; this fixture-interface batch uses affected coverage
+  plus production gates.
 
-Report: [PLAYER_ACTION_IDENTITIES.md](docs/porting/PLAYER_ACTION_IDENTITIES.md).
-Evidence: [qualification](docs/porting/player-action-identities-qualification.json).
+Report: [LIST_GLUE_IDENTITIES.md](docs/porting/LIST_GLUE_IDENTITIES.md).
+Evidence: [qualification](docs/porting/list-glue-identities-qualification.json).
 Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expected-suite.jsonl).
 
 ## Goal, next work and open review items
@@ -79,7 +78,7 @@ removal order and completion criteria. Client rendering/audio backend replacemen
 is outside this phase.
 
 The dependency inventory tool is `tools/porting/cgo_inventory.py`; the current
-qualified inventory is [player-action-identities-inventory-after.json](docs/porting/player-action-identities-inventory-after.json).
+qualified inventory is [list-glue-identities-inventory-after.json](docs/porting/list-glue-identities-inventory-after.json).
 The original phase baseline is under `build/port-cgo-leaves/inventory-before/`.
 The completed leaf cleanup leaves three project packages directly using cgo in
 all profiles, plus OpenGL/SDL2/OpenAL bindings in the clients. Metadata discovery
@@ -87,10 +86,9 @@ is not compilation or qualification. The helper's external-review draft is not
 accepted evidence: its suggestion that go-gl is residue is contradicted by the
 actual dependency graph (`libs/client/seat/opengl` imports it).
 
-Next batch: retire 13 list/player-group C wrappers used by fixtures. All 19 original
-roots passed per profile on identical-source `1ca13c2a` binaries. The reviewed
-five-path Luna overlay remains uninstalled until this baseline is committed.
-See [LIST_GLUE_IDENTITIES.md](docs/porting/LIST_GLUE_IDENTITIES.md).
+List/player-group bridges are now qualified. The next scout concerns internal
+audio forwarding bridges and fixture consumers. Review actual reachability and
+ownership before choosing that scope; external audio backends remain untouched.
 The earlier 25-export object-state proposal under
 `build/port-after-go-only-exports/` was rejected because it omitted fixture C calls.
 The qualified 37-export batch supersedes it with a complete caller/identity audit.
@@ -116,7 +114,7 @@ The current Go toolchain is `/usr/lib/go-1.26/bin`. Follow the
 [build environment instructions](PORT.md#build-and-test-environment), including
 sourcing `build/baseline/env.sh` in every Go shell.
 
-Latest local artifacts are under `build/port-player-action-identities/`:
+Latest local artifacts are under `build/port-list-glue-identities/`:
 `contracts/`, `preview/`, `safe/opennox-safe`, and
 `production/production/bin/{opennox,opennox-hd,opennox-server}`.
 Source, tests, reports and qualification metadata are committed; ignored local
@@ -130,6 +128,8 @@ do not rerun them or infer deletion safety from age alone.
 
 | Artifact | Recovery or current location |
 | --- | --- |
+| Completed list preview/final scenario assets | Removed 1,654 identical asset copies per run, reclaiming 559,976,448 / 560,001,024 allocated bytes. Originals, saves and results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py` followed by `build/baseline/runs/list-glue-identities-preview-save/deduplicated-assets.json` or `build/baseline/runs/list-glue-identities-save/deduplicated-assets.json`. Evidence: `build/port-list-glue-identities/{preview,final}-cleanup/`. |
+| Superseded monster binaries and old project caches | Removed seven verified unused monster executables (389,943,296 allocated bytes) and 14 root/legacy cache archives predating `44a9a065` (758,870,016 bytes), with committed source/replacement/hash and host-use checks. Rebuild monster `456bdf2d` and older caches normally. Current player/list baseline binaries, current caches, source and assets remain. Evidence: `build/port-list-glue-identities/binary-cleanup-{approved.json,deleted.jsonl}` and `cache-before-list/`. |
 | Completed player-action preview/final scenario assets | Removed 1,654 identical asset copies per run, reclaiming 559,988,736 / 559,992,832 allocated bytes. Originals, saves and results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py` followed by `build/baseline/runs/player-action-identities-preview-save/deduplicated-assets.json` or `build/baseline/runs/player-action-identities-save/deduplicated-assets.json`. Evidence: `build/port-player-action-identities/{preview,final}-cleanup/`. |
 | Superseded original monster test binaries | Removed three unused original-probe executables; 201,441,280 allocated bytes reclaimed after committed source/hash/replacement and host-use checks. Rebuild original `28642775`; its baseline records/logs and qualified `456bdf2d` replacement binaries remain. Evidence: `build/port-player-action-identities/cleanup-original-probe-{approved.json,deleted.jsonl}`. |
 | Superseded drawable-update binaries | Removed seven unused, source/hash/host-verified executables; 390,037,504 allocated bytes reclaimed. Rebuild `024b2632` with retained commands/source maps. Current qualified monster and player baseline binaries remain. Evidence: `build/port-player-action-identities/binary-cleanup-{approved.json,deleted.jsonl}`. |
@@ -179,7 +179,7 @@ do not rerun them or infer deletion safety from age alone.
 | Completed creation/init scenario assets | Removed 1,654 SHA256-identical original-asset duplicates after host-use checks; 559,972,352 allocated bytes reclaimed. Originals, saves/results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/create-init-identities-save/deduplicated-assets.json`. Plan/result: `build/port-post-create-init-cleanup/`. |
 | Superseded collision/death qualified binaries | Removed 14 test/safe/production executables after exact committed-source, replacement/hash and host-use checks; 786,751,488 allocated bytes reclaimed. Rebuild qualified revisions `170b594a` and `e7ca9d31` using retained commands. Source, original baseline binaries, logs, manifests and current create/init and damage outputs remain. Plan/journal: `build/port-item-identities/cleanup-production-{approved.json,deleted.jsonl}`. |
 | Obsolete pre-audio project cache | Removed 21 hash/stat-verified root/legacy Linux 386 archives older than original audio baseline `9f6b2b46`, after host-use checks; 1,100,709,888 allocated bytes reclaimed. Newer audio caches, all source/assets/binaries remain. Rebuild normally. Plan/journal: `build/port-after-audio/cache-luna/cache-cleanup-{approved.json,deleted.jsonl}`. |
-| Current qualified production/safe binaries | Retained under `build/port-player-action-identities/`; superseded outputs removed as recorded below. |
+| Current qualified production/safe binaries | Retained under `build/port-list-glue-identities/`; superseded outputs removed as recorded below. |
 | Superseded UI-fixture binaries | Removed seven verified test/safe/production executables after committed audio replacement and host-use checks; 390,643,712 allocated bytes reclaimed. Rebuild revision `3d47a346` using retained commands/source maps. Logs/manifests and current audio replacements remain. Plan/journal: `build/port-audio-stream-callbacks/binary-cleanup-{approved.json,deleted.jsonl}`. |
 | Completed audio-stream scenario assets | Removed 1,654 verified original-asset duplicates; 559,931,392 allocated bytes reclaimed. Originals, saves and results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/audio-stream-callbacks-save/deduplicated-assets.json`. Plan/result: `build/port-post-audio-stream-cleanup/`. |
 | Superseded modifier/server-fixture/duration/update binaries | Removed 28 verified test/safe/production executables after source/replacement hashes and host-use checks; 1,567,293,440 allocated bytes reclaimed. Rebuild qualified revisions `99b65896`, `a798ad1c`, `d5d80c42`, `a8d89bda` using retained commands and source maps. Current UI replacements, old logs/manifests and baseline evidence remain. Journals: `build/port-after-client-ui/binary-cleanup-deleted.jsonl` and `binary-cleanup-addendum-deleted.jsonl`. |

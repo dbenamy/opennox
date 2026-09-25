@@ -350,6 +350,7 @@ target build selection and linker evidence.
 | Retire 28 drawable update wrappers; selected client cgo 159→152, server 160→153, exports 387→359 | 0 | 0 | 0 | 0 |
 | Retire 26 monster callback wrappers; selected client/server cgo unchanged at 152/153, exports 359→333 | 0 | 0 | 0 | 0 |
 | Retire 32 player-action export bridges and three private wrappers; selected client/server cgo 152/153→150/151, exports 333→301 | 0 | 0 | 0 | 0 |
+| Retire 13 list/player-group bridges; selected client/server cgo 150/151→149/150, exports 301→288 | 0 | 0 | 0 | 0 |
 
 The 33 checksum test-reference lines were retired after differential validation;
 their original source remains recoverable at `66fa7bd4`.
