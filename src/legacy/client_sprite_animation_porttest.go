@@ -2,15 +2,6 @@
 
 package legacy
 
-/*
-#include "client__draw__animdraw.h"
-#include "client__draw__canidraw.h"
-#include "client__draw__staticdraw.h"
-#include "client__draw__boulderdraw.h"
-#include "client__draw__slavedraw.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"unsafe"
@@ -31,7 +22,7 @@ func PortTestSpriteAnimationCallback(op int) unsafe.Pointer {
 	case 5:
 		return drawableDrawKey(drawKey_nox_thing_slave_draw)
 	case 6:
-		return C.nox_thing_animate_state_draw
+		return drawableDrawKey(drawKey_nox_thing_animate_state_draw)
 	}
 	panic("unknown sprite animation callback")
 }

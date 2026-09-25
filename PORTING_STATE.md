@@ -7,41 +7,39 @@ superseded status when updating it. The workflow and delegation rules live in
 ## Status: resumed; internal C-glue removal
 
 **Progress: 142,665/142,665 original standalone C lines ported or retired;
-internal glue: 302/463 client cgo files eliminated on net (161 remain;
-server: 301/463 eliminated, 162 remain).**
-Selected legacy C export bridges: **1,491/1,890 retired (399 remain)**.
+internal glue: 304/463 client cgo files eliminated on net (159 remain;
+server: 303/463 eliminated, 160 remain).**
+Selected legacy C export bridges: **1,503/1,890 retired (387 remain)**.
 
 These are selected project files in Linux 386 production profiles, not equal
 units of effort. Three project packages directly use cgo; 77 embedded C callback
 bodies remain. Production and test-reference standalone `.c` files both remain zero.
 
-Latest qualified chunk retires 66 drawing/parser/light-helper C bridges. It uses
-56 distinct native drawing identities and migrates registrations, comparisons,
-parsers and every selected raw draw dispatch route. Existing algorithms, layouts,
-assertions and captures are unchanged. See
-[CLIENT_DRAW_IDENTITIES.md](docs/porting/CLIENT_DRAW_IDENTITIES.md).
+Latest qualified chunk retires the remaining 12 registered drawing C wrappers,
+using the existing native registry and preserving runtime root hooks, distinct
+identities and signed results. All 68 registered drawing identities are now native;
+unknown callbacks still retain the existing C fallback. Existing renderer
+algorithms and captures are unchanged. See
+[REMAINING_DRAW_IDENTITIES.md](docs/porting/REMAINING_DRAW_IDENTITIES.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. The next 12 drawing callback baseline is
-accepted: 763 client / 753 server roots pass, with the new dispatch contract
-repeated against the original wrappers;
-no next conversion is installed. See [REMAINING_DRAW_IDENTITIES.md](docs/porting/REMAINING_DRAW_IDENTITIES.md).
-The 25 update callbacks remain separate; their mixed return conventions
-need original-path investigation. External media backends remain outside scope.
-Stop at the milestone or a substantial question.
+recorded reversible decisions. The 25 drawing update callbacks remain separate;
+one void wrapper is observed through an integer-returning call, so establish its
+original-path behavior before migration. External media backends remain outside
+scope. Stop at the milestone or a substantial question.
 
-Latest qualified artifacts: `build/port-client-draw-identities/`.
+Latest qualified artifacts: `build/port-remaining-draw-identities/`.
 
 ## What remains
 
-Counts below describe the qualified drawing callback conversion. Zero `.c` lines
+Counts below describe the qualified remaining drawing callback conversion. Zero `.c` lines
 is not a count of all C dependencies or remaining engineering effort.
 
 | Area | Remaining work or dependency |
 | --- | --- |
 | Embedded C callback glue | 77 production function bodies in Go preambles: 76 generic function-pointer dispatchers and one specialized adapter. |
 | Callback routes | Remaining Go owners still use C-compatible addresses. Continue migrating identities and every field/alias consumer before removing shared raw fallbacks. |
-| Declarations and C types | 157 tracked headers / 3,156 physical lines; client profiles select 161 cgo files and server selects 162 in three project packages (alloc, ccall, legacy). These are mostly interface/layout machinery, not unported algorithms. |
+| Declarations and C types | 157 tracked headers / 3,149 physical lines; client profiles select 159 cgo files and server selects 160 in three project packages (alloc, ccall, legacy). These are mostly interface/layout machinery, not unported algorithms. |
 | Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Ownership/lifetime work remains behind the centralized allocator. |
 | External libraries | SDL2, OpenGL, OpenAL and similar native dependencies/bindings stay for this phase; their future is a subsequent discussion. |
 | Portability and release validation | Qualified target is Linux 386/SSE2 with cgo. The complete engine is not qualified as cgo-free, 64-bit, native macOS or browser/WebAssembly. Physical display and audible playback remain manual checks. |
@@ -53,20 +51,22 @@ users are migrated; test-only C observers separately qualify that boundary.
 
 ## Latest qualification and evidence
 
-- All 1,035 default/highres and 1,025 server focused roots pass, matching exact
-  original baseline names, without failures or skips.
-- Full default corpus: 2,459 passes and the established prerequisite-probe skip;
-  all 2,460 names match the previous independent set.
-- Safe/static and three production/ABI checks pass; all 66 retired exports absent.
-- Fresh default-client preflight and final headless character creation with
-  explicit save/load/resume pass using the same final production binary.
+- All 763 default/highres and 753 server focused roots pass with exact original
+  baseline names and no failures/skips. The new root-dispatch contract passed
+  twice per profile before conversion, then again after conversion.
+- Safe/static and three production/ABI checks pass; all 12 retired exports absent.
+- Fresh preflight and final headless character creation with explicit save/load/
+  resume pass on the same final production binary.
 - Full asset suite matches known results: 304 failure events; 17 passing, two
   failing and 32 skipped packages. All 1,654 original asset hashes are unchanged.
-- All accepted phases share source fingerprints; all 48 changed source paths
-  match primary review. Existing assertions/captures are unchanged.
+- All accepted phases share source fingerprints; all 13 changed production/fixture
+  source paths match primary review. Existing assertions/captures are unchanged.
+- The preceding common-dispatch batch `5687bc68` passed the complete 2,460-root
+  default corpus (2,459 passes and the established prerequisite skip). This smaller
+  adapter-only follow-on uses focused coverage plus the production gates.
 
-Report: [CLIENT_DRAW_IDENTITIES.md](docs/porting/CLIENT_DRAW_IDENTITIES.md).
-Evidence: [qualification](docs/porting/client-draw-identities-qualification.json).
+Report: [REMAINING_DRAW_IDENTITIES.md](docs/porting/REMAINING_DRAW_IDENTITIES.md).
+Evidence: [qualification](docs/porting/remaining-draw-identities-qualification.json).
 Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expected-suite.jsonl).
 
 ## Goal, next work and open review items
@@ -79,7 +79,7 @@ removal order and completion criteria. Client rendering/audio backend replacemen
 is outside this phase.
 
 The dependency inventory tool is `tools/porting/cgo_inventory.py`; the current
-qualified inventory is [client-draw-identities-inventory-after.json](docs/porting/client-draw-identities-inventory-after.json).
+qualified inventory is [remaining-draw-identities-inventory-after.json](docs/porting/remaining-draw-identities-inventory-after.json).
 The original phase baseline is under `build/port-cgo-leaves/inventory-before/`.
 The completed leaf cleanup leaves three project packages directly using cgo in
 all profiles, plus OpenGL/SDL2/OpenAL bindings in the clients. Metadata discovery
@@ -113,8 +113,8 @@ The current Go toolchain is `/usr/lib/go-1.26/bin`. Follow the
 [build environment instructions](PORT.md#build-and-test-environment), including
 sourcing `build/baseline/env.sh` in every Go shell.
 
-Latest local artifacts are under `build/port-client-draw-identities/`:
-`contracts/`, `corpus/`, `safe/opennox-safe`, and
+Latest local artifacts are under `build/port-remaining-draw-identities/`:
+`contracts/`, `preview/`, `safe/opennox-safe`, and
 `production/production/bin/{opennox,opennox-hd,opennox-server}`.
 Source, tests, reports and qualification metadata are committed; ignored local
 binaries/logs/drafts are not backed up by pushing Git. Completed finalizers are
@@ -169,7 +169,7 @@ do not rerun them or infer deletion safety from age alone.
 | Completed creation/init scenario assets | Removed 1,654 SHA256-identical original-asset duplicates after host-use checks; 559,972,352 allocated bytes reclaimed. Originals, saves/results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/create-init-identities-save/deduplicated-assets.json`. Plan/result: `build/port-post-create-init-cleanup/`. |
 | Superseded collision/death qualified binaries | Removed 14 test/safe/production executables after exact committed-source, replacement/hash and host-use checks; 786,751,488 allocated bytes reclaimed. Rebuild qualified revisions `170b594a` and `e7ca9d31` using retained commands. Source, original baseline binaries, logs, manifests and current create/init and damage outputs remain. Plan/journal: `build/port-item-identities/cleanup-production-{approved.json,deleted.jsonl}`. |
 | Obsolete pre-audio project cache | Removed 21 hash/stat-verified root/legacy Linux 386 archives older than original audio baseline `9f6b2b46`, after host-use checks; 1,100,709,888 allocated bytes reclaimed. Newer audio caches, all source/assets/binaries remain. Rebuild normally. Plan/journal: `build/port-after-audio/cache-luna/cache-cleanup-{approved.json,deleted.jsonl}`. |
-| Current qualified production/safe binaries | Retained under `build/port-audio-stream-callbacks/`; superseded modifier/server-fixture/duration/update outputs removed as recorded below. |
+| Current qualified production/safe binaries | Retained under `build/port-remaining-draw-identities/`; superseded outputs removed as recorded below. |
 | Superseded UI-fixture binaries | Removed seven verified test/safe/production executables after committed audio replacement and host-use checks; 390,643,712 allocated bytes reclaimed. Rebuild revision `3d47a346` using retained commands/source maps. Logs/manifests and current audio replacements remain. Plan/journal: `build/port-audio-stream-callbacks/binary-cleanup-{approved.json,deleted.jsonl}`. |
 | Completed audio-stream scenario assets | Removed 1,654 verified original-asset duplicates; 559,931,392 allocated bytes reclaimed. Originals, saves and results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/audio-stream-callbacks-save/deduplicated-assets.json`. Plan/result: `build/port-post-audio-stream-cleanup/`. |
 | Superseded modifier/server-fixture/duration/update binaries | Removed 28 verified test/safe/production executables after source/replacement hashes and host-use checks; 1,567,293,440 allocated bytes reclaimed. Rebuild qualified revisions `99b65896`, `a798ad1c`, `d5d80c42`, `a8d89bda` using retained commands and source maps. Current UI replacements, old logs/manifests and baseline evidence remain. Journals: `build/port-after-client-ui/binary-cleanup-deleted.jsonl` and `binary-cleanup-addendum-deleted.jsonl`. |
@@ -230,3 +230,8 @@ duplicate assets removed (559,861,760 allocated bytes); saves/results and origin
 remain. Restore:
 `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/client-draw-identities-save/deduplicated-assets.json`.
 Cleanup evidence: `build/port-post-client-draw-cleanup/`.
+
+The completed remaining-draw preview had 1,654 verified duplicate assets removed
+(559,861,760 allocated bytes); originals, saves and results remain. Restore:
+`python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/remaining-draw-identities-preview-save/deduplicated-assets.json`.
+Evidence: `build/port-remaining-draw-identities/preview-cleanup/`.

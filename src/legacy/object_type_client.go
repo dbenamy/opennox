@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include "GAME2_3.h"
-#include "client__draw__debugdraw.h"
 
 
 */
@@ -18,7 +17,7 @@ func init() {
 	client.RegisterThingParse("LIGHTPENUMBRA", resourceClientField("penumbra"))
 	client.RegisterThingParse("CLIENTUPDATE", resourceClientField("update"))
 	client.RegisterThingParse("PRETTYIMAGE", resourceClientField("image"))
-	client.ThingDrawDefault = C.nox_thing_debug_draw
+	client.ThingDrawDefault = drawableDrawKey(drawKey_nox_thing_debug_draw)
 }
 
 type nox_thing = C.nox_thing

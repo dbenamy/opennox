@@ -34,11 +34,10 @@ Primary review and original-path acceptance are complete: exact name sets passed
 in every profile without failures/skips, and the new contract passed twice per
 profile on identical verified source/binaries.
 
-Production source remains exactly the qualified drawing conversion `5687bc68`;
-only the new root test is added. Reuse its production baseline. Build and run the
-new contract, then repeat it within the complete affected selection on the same
-source and verified binaries before accepting the next baseline. Do not install
-the conversion before that acceptance.
+The original baseline reused production qualification from `5687bc68`: production
+source was identical, with only the new root test added. The new contract passed
+separately and again within the complete affected selection on verified binaries
+before the baseline was accepted and the conversion installed.
 
 After conversion run the full affected selection in all profiles, a fresh client
 preview, safe/static checks and all production/ABI/known-suite/save-load gates.
@@ -53,11 +52,33 @@ Luna owns an ignored legacy-only migration overlay and exact change manifest.
 Primary owns the new contract, selection, original-path acceptance, integration
 and final qualification. Artifacts: `build/port-remaining-draw-identities/`.
 The frozen scouting report is under the prior drawing batch's `luna/next/`.
-Baseline accepted; no conversion installed yet.
+Baseline `9f91acda` and the conversion preserve recovery; conversion fully qualified.
 
 Primary reviewed all 12 owner mappings, the unchanged first 56 registrations and
 indices, retained exports, and all selected identity consumers. The draft needed
 two mechanical corrections before installation: preserve the adjacent `//export`
 directive on the retained screen-particle function, and remove the remaining
 animation-state header prototype. The corrected overlay contains 13 source paths;
-all 68 identities are distinct. No conversion is installed during baseline runs.
+all 68 identities are distinct. The conversion was installed after baseline acceptance and commit.
+
+
+## Qualified result
+
+All 763 default/highres and 753 server focused roots pass with exact baseline names,
+no failures and no skips. Original-path root-dispatch contracts passed twice in each
+profile; post-conversion contracts preserve dynamic hooks, arguments and results.
+Safe/static checks, three production ABI checks, both fresh headless save/load
+scenarios and exact known asset-suite comparison pass. All 1,654 original asset
+hashes remain unchanged. See [qualification](remaining-draw-identities-qualification.json).
+
+Selected cgo files fall from 161 to 159 in clients and 162 to 160 on server;
+legacy exports fall from 399 to 387. Two production files and one fixture no longer
+import C. The 157 headers now contain 3,149 physical lines;
+77 embedded production C bodies remain, and standalone production/test C stay zero.
+External native dependencies are unchanged. The previous full-corpus qualification
+is explicitly retained as historical boundary evidence, not rerun or claimed for
+this source.
+
+Luna's bounded overlay was useful after the two documented primary corrections.
+Every owner/key mapping, retained export directive and retired prototype was
+checked before builds. No subscription savings estimate is inferred.

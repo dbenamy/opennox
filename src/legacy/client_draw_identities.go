@@ -8,7 +8,7 @@ import (
 	"github.com/opennox/opennox/v1/internal/binfile"
 )
 
-var drawableDrawIdentitySlots [56]byte
+var drawableDrawIdentitySlots [68]byte
 
 const (
 	drawKey_nox_thing_lightning_draw              = 0
@@ -67,6 +67,18 @@ const (
 	drawKey_nox_thing_static_random_draw          = 53
 	drawKey_nox_thing_slave_draw                  = 54
 	drawKey_nox_thing_boulder_draw                = 55
+	drawKey_nox_thing_debug_draw                  = 56
+	drawKey_nox_thing_monster_draw                = 57
+	drawKey_nox_thing_vector_animate_draw         = 58
+	drawKey_nox_thing_released_soul_draw          = 59
+	drawKey_nox_thing_animate_state_draw          = 60
+	drawKey_nox_thing_player_draw                 = 61
+	drawKey_nox_thing_npc_draw                    = 62
+	drawKey_nox_thing_harpoon_draw                = 63
+	drawKey_nox_thing_harpoon_rope_draw           = 64
+	drawKey_nox_thing_undead_killer_draw          = 65
+	drawKey_nox_thing_maiden_draw                 = 66
+	drawKey_nox_thing_player_waypoint_draw        = 67
 )
 
 func drawableDrawKey(id int) unsafe.Pointer {
@@ -242,6 +254,43 @@ func registerDrawableDrawCallbacks() {
 	})
 	client.RegisterDrawableDrawCallbackGo(drawableDrawKey(drawKey_nox_thing_boulder_draw), func(vp *noxrender.Viewport, dr *client.Drawable) int32 {
 		return int32(spriteBoulderDraw(vp, dr))
+	})
+
+	client.RegisterDrawableDrawCallbackGo(drawableDrawKey(drawKey_nox_thing_debug_draw), func(vp *noxrender.Viewport, dr *client.Drawable) int32 {
+		return int32(Nox_thing_debug_draw(vp, dr))
+	})
+	client.RegisterDrawableDrawCallbackGo(drawableDrawKey(drawKey_nox_thing_monster_draw), func(vp *noxrender.Viewport, dr *client.Drawable) int32 {
+		return int32(Nox_thing_monster_draw(vp, dr))
+	})
+	client.RegisterDrawableDrawCallbackGo(drawableDrawKey(drawKey_nox_thing_vector_animate_draw), func(vp *noxrender.Viewport, dr *client.Drawable) int32 {
+		return int32(Nox_thing_vector_animate_draw(vp, dr))
+	})
+	client.RegisterDrawableDrawCallbackGo(drawableDrawKey(drawKey_nox_thing_released_soul_draw), func(vp *noxrender.Viewport, dr *client.Drawable) int32 {
+		return int32(Nox_thing_vector_animate_draw(vp, dr))
+	})
+	client.RegisterDrawableDrawCallbackGo(drawableDrawKey(drawKey_nox_thing_animate_state_draw), func(vp *noxrender.Viewport, dr *client.Drawable) int32 {
+		return int32(Nox_thing_animate_state_draw(vp, dr))
+	})
+	client.RegisterDrawableDrawCallbackGo(drawableDrawKey(drawKey_nox_thing_player_draw), func(vp *noxrender.Viewport, dr *client.Drawable) int32 {
+		return int32(Nox_thing_player_draw(vp, dr))
+	})
+	client.RegisterDrawableDrawCallbackGo(drawableDrawKey(drawKey_nox_thing_npc_draw), func(vp *noxrender.Viewport, dr *client.Drawable) int32 {
+		return int32(Nox_thing_npc_draw(vp, dr))
+	})
+	client.RegisterDrawableDrawCallbackGo(drawableDrawKey(drawKey_nox_thing_harpoon_draw), func(vp *noxrender.Viewport, dr *client.Drawable) int32 {
+		return int32(spriteSlaveDraw(vp, dr))
+	})
+	client.RegisterDrawableDrawCallbackGo(drawableDrawKey(drawKey_nox_thing_harpoon_rope_draw), func(vp *noxrender.Viewport, dr *client.Drawable) int32 {
+		return int32(screenHarpoonRope(vp, dr))
+	})
+	client.RegisterDrawableDrawCallbackGo(drawableDrawKey(drawKey_nox_thing_undead_killer_draw), func(vp *noxrender.Viewport, dr *client.Drawable) int32 {
+		return int32(screenUndead(vp, dr))
+	})
+	client.RegisterDrawableDrawCallbackGo(drawableDrawKey(drawKey_nox_thing_maiden_draw), func(vp *noxrender.Viewport, dr *client.Drawable) int32 {
+		return int32(screenMaiden(vp, dr))
+	})
+	client.RegisterDrawableDrawCallbackGo(drawableDrawKey(drawKey_nox_thing_player_waypoint_draw), func(vp *noxrender.Viewport, dr *client.Drawable) int32 {
+		return int32(screenWaypoint(vp, dr))
 	})
 }
 

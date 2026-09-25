@@ -1,14 +1,5 @@
 package legacy
 
-/*
-#include <stdlib.h>
-#include "client__draw__animdraw.h"
-#include "client__draw__canidraw.h"
-#include "client__draw__staticdraw.h"
-#include "client__draw__slavedraw.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/client/noxrender"
@@ -164,7 +155,7 @@ func spriteParseState(obj *client.ObjectType, f *binfile.MemFile) bool {
 		}
 	}
 	obj.Field_54 = 2
-	obj.DrawFunc = C.nox_thing_animate_state_draw
+	obj.DrawFunc = drawableDrawKey(drawKey_nox_thing_animate_state_draw)
 	obj.DrawData = data
 	return true
 }

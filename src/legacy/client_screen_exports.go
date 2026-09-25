@@ -5,35 +5,9 @@ package legacy
 */
 import "C"
 import (
-	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/client/noxrender"
 	"unsafe"
 )
-
-//export nox_thing_harpoon_draw
-func nox_thing_harpoon_draw(vp *C.int, dr *C.nox_drawable) C.int {
-	return C.int(spriteSlaveDraw((*noxrender.Viewport)(unsafe.Pointer(vp)), (*client.Drawable)(unsafe.Pointer(dr))))
-}
-
-//export nox_thing_harpoon_rope_draw
-func nox_thing_harpoon_rope_draw(vp *C.int, dr *C.nox_drawable) C.int {
-	return C.int(screenHarpoonRope((*noxrender.Viewport)(unsafe.Pointer(vp)), (*client.Drawable)(unsafe.Pointer(dr))))
-}
-
-//export nox_thing_undead_killer_draw
-func nox_thing_undead_killer_draw(vp *C.int, dr *C.nox_drawable) C.int {
-	return C.int(screenUndead((*noxrender.Viewport)(unsafe.Pointer(vp)), (*client.Drawable)(unsafe.Pointer(dr))))
-}
-
-//export nox_thing_maiden_draw
-func nox_thing_maiden_draw(vp *C.uint32_t, dr *C.nox_drawable) C.int {
-	return C.int(screenMaiden((*noxrender.Viewport)(unsafe.Pointer(vp)), (*client.Drawable)(unsafe.Pointer(dr))))
-}
-
-//export nox_thing_player_waypoint_draw
-func nox_thing_player_waypoint_draw(vp C.int, dr *C.nox_drawable) C.int {
-	return C.int(screenWaypoint((*noxrender.Viewport)(unsafe.Pointer(uintptr(vp))), (*client.Drawable)(unsafe.Pointer(dr))))
-}
 
 //export nox_client_screenParticleDraw_489700
 func nox_client_screenParticleDraw_489700(vp unsafe.Pointer, p *C.nox_screenParticle) C.int {

@@ -7,10 +7,6 @@ package legacy
 #include "GAME2_3.h"
 #include "GAME3.h"
 #include "GAME3_1.h"
-#include "client__draw__maidendraw.h"
-#include "client__draw__harpoondraw.h"
-#include "client__draw__udeddraw.h"
-#include "client__draw__playerdraw.h"
 #include "client__draw__partscrn.h"
 */
 import "C"
@@ -22,19 +18,21 @@ import (
 	"unsafe"
 )
 
-func PortTestScreenMaidenCallback() unsafe.Pointer { return C.nox_thing_maiden_draw }
+func PortTestScreenMaidenCallback() unsafe.Pointer {
+	return drawableDrawKey(drawKey_nox_thing_maiden_draw)
+}
 func PortTestScreenEffectCallback(op int) unsafe.Pointer {
 	switch op {
 	case 0:
-		return C.nox_thing_harpoon_draw
+		return drawableDrawKey(drawKey_nox_thing_harpoon_draw)
 	case 1:
-		return C.nox_thing_harpoon_rope_draw
+		return drawableDrawKey(drawKey_nox_thing_harpoon_rope_draw)
 	case 2:
-		return C.nox_thing_undead_killer_draw
+		return drawableDrawKey(drawKey_nox_thing_undead_killer_draw)
 	case 3:
-		return C.nox_thing_player_waypoint_draw
+		return drawableDrawKey(drawKey_nox_thing_player_waypoint_draw)
 	case 4:
-		return C.nox_thing_maiden_draw
+		return drawableDrawKey(drawKey_nox_thing_maiden_draw)
 	}
 	panic("unknown screen effect callback")
 }
