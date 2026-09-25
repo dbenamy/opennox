@@ -64,7 +64,7 @@ func spriteParseAnimate(obj *client.ObjectType, f *binfile.MemFile, scratch []by
 		return false
 	}
 	obj.DrawData = unsafe.Pointer(data)
-	obj.DrawFunc = C.nox_thing_animate_draw
+	obj.DrawFunc = drawableDrawKey(drawKey_nox_thing_animate_draw)
 	return true
 }
 func spriteParseConditional(obj *client.ObjectType, f *binfile.MemFile, scratch []byte) bool {
@@ -81,7 +81,7 @@ func spriteParseConditional(obj *client.ObjectType, f *binfile.MemFile, scratch 
 		}
 	}
 	obj.DrawData = unsafe.Pointer(data)
-	obj.DrawFunc = C.nox_thing_cond_animate_draw
+	obj.DrawFunc = drawableDrawKey(drawKey_nox_thing_cond_animate_draw)
 	obj.Field_60 = 0
 	return true
 }
@@ -105,14 +105,14 @@ func spriteParseStatic(obj *client.ObjectType, f *binfile.MemFile, scratch []byt
 	*(*uint32)(data) = 8
 	*(*noxrender.ImageHandle)(unsafe.Add(data, 4)) = spriteReadImage(f, scratch, 830856)
 	obj.DrawData = data
-	obj.DrawFunc = C.nox_thing_static_draw
+	obj.DrawFunc = drawableDrawKey(drawKey_nox_thing_static_draw)
 	return true
 }
 func spriteParseRandom(obj *client.ObjectType, f *binfile.MemFile, scratch []byte, slave bool) bool {
 	if slave {
-		obj.DrawFunc = C.nox_thing_slave_draw
+		obj.DrawFunc = drawableDrawKey(drawKey_nox_thing_slave_draw)
 	} else {
-		obj.DrawFunc = C.nox_thing_static_random_draw
+		obj.DrawFunc = drawableDrawKey(drawKey_nox_thing_static_random_draw)
 	}
 	obj.DrawData = spriteStaticRandomData(f, scratch)
 	if slave {

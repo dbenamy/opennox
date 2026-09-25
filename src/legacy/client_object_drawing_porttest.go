@@ -47,47 +47,47 @@ func PortTestObjectDrawHelper(op int, dr *client.Drawable, arg unsafe.Pointer, v
 }
 
 func PortTestObjectDoorParse(obj *client.ObjectType, f *binfile.MemFile, attr unsafe.Pointer) bool {
-	return bool(C.nox_things_door_draw_parse((*C.nox_thing)(obj.C()), (*C.nox_memfile)(f.C()), (*C.char)(attr)))
+	return objectDoorDrawParse(obj, f, unsafe.Slice((*byte)(attr), 256))
 }
 
 func PortTestObjectDrawCallback(op int) unsafe.Pointer {
 	switch op {
 	case 0:
-		return C.nox_thing_door_draw
+		return drawableDrawKey(drawKey_nox_thing_door_draw)
 	case 1:
-		return C.nox_thing_arrow_draw
+		return drawableDrawKey(drawKey_nox_thing_arrow_draw)
 	case 2:
-		return C.nox_thing_weak_arrow_draw
+		return drawableDrawKey(drawKey_nox_thing_weak_arrow_draw)
 	case 3:
-		return C.nox_thing_arrow_tail_link_draw
+		return drawableDrawKey(drawKey_nox_thing_arrow_tail_link_draw)
 	case 4:
-		return C.nox_thing_weak_arrow_tail_link_draw
+		return drawableDrawKey(drawKey_nox_thing_weak_arrow_tail_link_draw)
 	case 5:
-		return C.nox_thing_glyph_draw
+		return drawableDrawKey(drawKey_nox_thing_glyph_draw)
 	case 6:
-		return C.nox_thing_summon_effect_draw
+		return drawableDrawKey(drawKey_nox_thing_summon_effect_draw)
 	case 7:
-		return C.nox_thing_weapon_draw
+		return drawableDrawKey(drawKey_nox_thing_weapon_draw)
 	case 8:
-		return C.nox_thing_weapon_animate_draw
+		return drawableDrawKey(drawKey_nox_thing_weapon_animate_draw)
 	case 9:
-		return C.nox_thing_armor_draw
+		return drawableDrawKey(drawKey_nox_thing_armor_draw)
 	case 10:
-		return C.nox_thing_armor_animate_draw
+		return drawableDrawKey(drawKey_nox_thing_armor_animate_draw)
 	case 11:
-		return C.nox_thing_spherical_shield_draw
+		return drawableDrawKey(drawKey_nox_thing_spherical_shield_draw)
 	case 12:
-		return C.nox_thing_monster_gen_draw
+		return drawableDrawKey(drawKey_nox_thing_monster_gen_draw)
 	case 13:
-		return C.nox_thing_pressure_plate_draw
+		return drawableDrawKey(drawKey_nox_thing_pressure_plate_draw)
 	case 14:
-		return C.nox_thing_trigger_draw
+		return drawableDrawKey(drawKey_nox_thing_trigger_draw)
 	case 15:
-		return C.nox_thing_black_powder_draw
+		return drawableDrawKey(drawKey_nox_thing_black_powder_draw)
 	case 16:
-		return C.nox_thing_base_draw
+		return drawableDrawKey(drawKey_nox_thing_base_draw)
 	case 17:
-		return C.nox_thing_flag_draw
+		return drawableDrawKey(drawKey_nox_thing_flag_draw)
 	}
 	panic("unknown object drawing callback")
 }

@@ -9,7 +9,6 @@ import (
 
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/client/noxrender"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 )
 
 func asDrawable(p *nox_drawable) *client.Drawable {
@@ -23,7 +22,7 @@ func AsDrawableP(p unsafe.Pointer) *client.Drawable {
 type nox_drawable = C.nox_drawable
 
 func CallDrawFunc(s *client.Drawable, vp *noxrender.Viewport) int {
-	return ccall.CallIntPtr2(s.DrawFuncPtr, vp.C(), s.C())
+	return s.CallDraw(vp)
 }
 
 func Nox_xxx_spriteGetMB_476F80() *client.Drawable {

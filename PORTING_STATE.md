@@ -7,40 +7,38 @@ superseded status when updating it. The workflow and delegation rules live in
 ## Status: resumed; internal C-glue removal
 
 **Progress: 142,665/142,665 original standalone C lines ported or retired;
-internal glue: 296/463 cgo files eliminated on net (167 remain).**
-Selected legacy C export bridges: **1,425/1,890 retired (465 remain)**.
+internal glue: 302/463 client cgo files eliminated on net (161 remain;
+server: 301/463 eliminated, 162 remain).**
+Selected legacy C export bridges: **1,491/1,890 retired (399 remain)**.
 
-These are selected project files in each Linux 386 production profile, not equal
+These are selected project files in Linux 386 production profiles, not equal
 units of effort. Three project packages directly use cgo; 77 embedded C callback
 bodies remain. Production and test-reference standalone `.c` files both remain zero.
 
-Latest qualified chunk retires 20 internal audio-stream C bridges, replacing
-four callback addresses with stable native identities and migrating all five
-production dispatch sites. Three production cgo imports were removed. Existing
-captures are unchanged; two new original-path root contracts cover service-loop
-and completion behavior. See [AUDIO_STREAM_CALLBACKS.md](docs/porting/AUDIO_STREAM_CALLBACKS.md).
+Latest qualified chunk retires 66 drawing/parser/light-helper C bridges. It uses
+56 distinct native drawing identities and migrates registrations, comparisons,
+parsers and every selected raw draw dispatch route. Existing algorithms, layouts,
+assertions and captures are unchanged. See
+[CLIENT_DRAW_IDENTITIES.md](docs/porting/CLIENT_DRAW_IDENTITIES.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. The next 66-export drawing/parser baseline is
-accepted: 1,035 default/highres roots and 1,025 server roots pass through verified
-reused and additional evidence; no conversion is installed. Its 56 draw
-identities and seven parsers are separate from the deferred update callbacks.
-See [CLIENT_DRAW_IDENTITIES.md](docs/porting/CLIENT_DRAW_IDENTITIES.md).
-External media backends remain outside scope.
+recorded reversible decisions. Next audit covers the remaining drawing registry
+callbacks. The 25 update callbacks remain separate; their mixed return conventions
+need original-path investigation. External media backends remain outside scope.
 Stop at the milestone or a substantial question.
 
-Latest qualified artifacts: `build/port-audio-stream-callbacks/`.
+Latest qualified artifacts: `build/port-client-draw-identities/`.
 
 ## What remains
 
-Counts below describe the qualified audio-stream callback conversion. Zero `.c` lines
+Counts below describe the qualified drawing callback conversion. Zero `.c` lines
 is not a count of all C dependencies or remaining engineering effort.
 
 | Area | Remaining work or dependency |
 | --- | --- |
 | Embedded C callback glue | 77 production function bodies in Go preambles: 76 generic function-pointer dispatchers and one specialized adapter. |
 | Callback routes | Remaining Go owners still use C-compatible addresses. Continue migrating identities and every field/alias consumer before removing shared raw fallbacks. |
-| Declarations and C types | 157 tracked headers / 3,222 physical lines; each production profile selects 167 cgo files in three project packages (alloc, ccall, legacy). These are mostly interface/layout machinery, not unported algorithms. |
+| Declarations and C types | 157 tracked headers / 3,156 physical lines; client profiles select 161 cgo files and server selects 162 in three project packages (alloc, ccall, legacy). These are mostly interface/layout machinery, not unported algorithms. |
 | Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Ownership/lifetime work remains behind the centralized allocator. |
 | External libraries | SDL2, OpenGL, OpenAL and similar native dependencies/bindings stay for this phase; their future is a subsequent discussion. |
 | Portability and release validation | Qualified target is Linux 386/SSE2 with cgo. The complete engine is not qualified as cgo-free, 64-bit, native macOS or browser/WebAssembly. Physical display and audible playback remain manual checks. |
@@ -52,20 +50,20 @@ users are migrated; test-only C observers separately qualify that boundary.
 
 ## Latest qualification and evidence
 
-- All 86 focused roots pass in each of three profiles, no failures/skips, matching
-  exact original baseline names. Two new root contracts also passed original-path
-  repeats before conversion.
-- Full default corpus: 2,459 passes plus the established prerequisite-probe skip;
-  all 2,460 names match the previous independent set plus the two new contracts.
-- Safe/static and three production/ABI checks pass; all 20 retired exports absent.
-- Headless character creation and explicit save/load/resume pass.
+- All 1,035 default/highres and 1,025 server focused roots pass, matching exact
+  original baseline names, without failures or skips.
+- Full default corpus: 2,459 passes and the established prerequisite-probe skip;
+  all 2,460 names match the previous independent set.
+- Safe/static and three production/ABI checks pass; all 66 retired exports absent.
+- Fresh default-client preflight and final headless character creation with
+  explicit save/load/resume pass using the same final production binary.
 - Full asset suite matches known results: 304 failure events; 17 passing, two
   failing and 32 skipped packages. All 1,654 original asset hashes are unchanged.
-- All accepted phases share source fingerprints. All ten changed source paths
-  match review; existing assertions/captures are unchanged.
+- All accepted phases share source fingerprints; all 48 changed source paths
+  match primary review. Existing assertions/captures are unchanged.
 
-Report: [AUDIO_STREAM_CALLBACKS.md](docs/porting/AUDIO_STREAM_CALLBACKS.md).
-Evidence: [qualification](docs/porting/audio-stream-callbacks-qualification.json).
+Report: [CLIENT_DRAW_IDENTITIES.md](docs/porting/CLIENT_DRAW_IDENTITIES.md).
+Evidence: [qualification](docs/porting/client-draw-identities-qualification.json).
 Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expected-suite.jsonl).
 
 ## Goal, next work and open review items
@@ -78,7 +76,7 @@ removal order and completion criteria. Client rendering/audio backend replacemen
 is outside this phase.
 
 The dependency inventory tool is `tools/porting/cgo_inventory.py`; the current
-qualified inventory is [audio-stream-callbacks-inventory-after.json](docs/porting/audio-stream-callbacks-inventory-after.json).
+qualified inventory is [client-draw-identities-inventory-after.json](docs/porting/client-draw-identities-inventory-after.json).
 The original phase baseline is under `build/port-cgo-leaves/inventory-before/`.
 The completed leaf cleanup leaves three project packages directly using cgo in
 all profiles, plus OpenGL/SDL2/OpenAL bindings in the clients. Metadata discovery
@@ -112,7 +110,7 @@ The current Go toolchain is `/usr/lib/go-1.26/bin`. Follow the
 [build environment instructions](PORT.md#build-and-test-environment), including
 sourcing `build/baseline/env.sh` in every Go shell.
 
-Latest local artifacts are under `build/port-client-ui-fixture-bridges/`:
+Latest local artifacts are under `build/port-client-draw-identities/`:
 `contracts/`, `corpus/`, `safe/opennox-safe`, and
 `production/production/bin/{opennox,opennox-hd,opennox-server}`.
 Source, tests, reports and qualification metadata are committed; ignored local
@@ -213,3 +211,9 @@ bytes. Saves, changed files and results remain. Restore either scenario with
 Ten completed UI/audio-baseline logs are losslessly compressed; restore with
 `gzip -dk`. Hashes and commands: `build/port-audio-stream-callbacks/completed-log-archive.json`
 (107,732,992 allocated bytes reclaimed). Current audio qualification logs remain readable.
+
+The current drawing conversion's completed preview asset copy is deduplicated:
+1,654 identical files / 559,869,952 allocated bytes reclaimed. Original assets,
+saves and logs remain. Restore with
+`python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/client-draw-identities-preview-save/deduplicated-assets.json`.
+Verification and deletion journal: `build/port-client-draw-identities/preview-cleanup/`.

@@ -9,7 +9,6 @@ import (
 	"github.com/opennox/opennox/v1/common/memmap/nox/blobdata"
 	"github.com/opennox/opennox/v1/legacy"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"image"
 	"testing"
 	"unsafe"
@@ -152,7 +151,7 @@ func TestClientPresentationShieldDraw(t *testing.T) {
 					t.Fatal("shield directional placement/height")
 				}
 				clear(o.pix.Pix)
-				ccall.CallIntPtr2(shield.DrawFuncPtr, o.c.Viewport().C(), shield.C())
+				client.CallDrawableDrawResult(shield.DrawFuncPtr, o.c.Viewport(), shield)
 				if got != effectsPixelHash(o.pix) {
 					t.Fatal("shield did not invoke drawable callback")
 				}

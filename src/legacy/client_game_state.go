@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "client__draw__animdraw.h"
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"image"
@@ -23,7 +18,7 @@ func clientGameLocalDrawable() *client.Drawable {
 	return *(**client.Drawable)(memmap.PtrOff(0x852978, 8))
 }
 func clientGameKeepDrawable(dr *client.Drawable) bool {
-	return dr == clientGameLocalDrawable() || dr.DrawFuncPtr == C.nox_thing_animate_draw && dr.DrawData != nil && *(*uint32)(unsafe.Add(dr.DrawData, 12)) == 1
+	return dr == clientGameLocalDrawable() || dr.DrawFuncPtr == drawableDrawKey(drawKey_nox_thing_animate_draw) && dr.DrawData != nil && *(*uint32)(unsafe.Add(dr.DrawData, 12)) == 1
 }
 func clientGameRemoveDrawable(dr *client.Drawable, code uint16) {
 	if code&0x8000 != 0 {

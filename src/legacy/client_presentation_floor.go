@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "client__draw__staticdraw.h"
-
-
-*/
-import "C"
 import (
 	"encoding/binary"
 	"github.com/opennox/opennox/v1/client"
@@ -65,7 +59,7 @@ func presentationCopy(dst, src unsafe.Pointer, n uint32) {
 }
 func presentationBake(_ *noxrender.Viewport, dr *client.Drawable) {
 	var handle noxrender.ImageHandle
-	if dr.DrawFuncPtr == C.nox_thing_static_draw {
+	if dr.DrawFuncPtr == drawableDrawKey(drawKey_nox_thing_static_draw) {
 		if dr.ObjClass&0x40000 != 0 && dr.ObjFlags&0x1000000 == 0 {
 			return
 		}

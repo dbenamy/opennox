@@ -14,7 +14,6 @@ import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/common/sound"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"image"
 	"math"
@@ -117,7 +116,7 @@ func presentationShieldDraw(vp *noxrender.Viewport, dr *client.Drawable) {
 	i := uintptr(dr.AnimDir)
 	shield := presentationShields()[i]
 	shield.PosVec = dr.PosVec.Add(image.Pt(int(memmap.Int32(0x587000, 161776+8*i)), int(int16(dr.ZVal))+int(memmap.Int32(0x587000, 161780+8*i))))
-	ccall.CallVoidPtr2(shield.DrawFuncPtr, vp.C(), shield.C())
+	client.CallDrawableDrawDiscard(shield.DrawFuncPtr, vp, shield)
 }
 func presentationTurnUndead(pos *[2]int16) {
 	typ := effectMapped(1217508)

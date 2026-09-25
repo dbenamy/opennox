@@ -2,18 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME2_2.h"
-#include "GAME3.h"
-#include "client__draw__magicdrw.h"
-#include "client__draw__bubbledraw.h"
-#include "client__draw__partrain.h"
-#include "client__draw__lvupdraw.h"
-#include "client__draw__spiderspitdraw.h"
-#include "client__draw__vortexdraw.h"
-*/
-import "C"
-
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/opennox/v1/client"
@@ -25,37 +13,32 @@ import (
 )
 
 func PortTestClientDrawParticle(op int, vp *noxrender.Viewport, dr *client.Drawable, a [4]int32) int64 {
-	view := (*C.int)(vp.C())
-	words := (*C.uint32_t)(vp.C())
-	drawable := (*C.nox_drawable)(dr.C())
-	vi := C.int(uintptr(vp.C()))
 	light := unsafe.Add(dr.C(), 136)
-	li := C.int(uintptr(light))
 	switch op {
 	case 0:
-		return int64(C.nox_thing_magic_draw(view, drawable))
+		return int64(particleMagicDraw(vp, dr, false))
 	case 1:
-		return int64(C.nox_thing_magic_missle_draw(view, drawable))
+		return int64(particleMagicDraw(vp, dr, true))
 	case 2:
-		return int64(C.nox_thing_magic_missle_tail_link_draw(words, drawable))
+		return int64(particleTailDraw(vp, dr, true))
 	case 3:
-		return int64(C.nox_thing_magic_tail_link_draw(words, drawable))
+		return int64(particleTailDraw(vp, dr, false))
 	case 4:
-		return int64(C.nox_thing_drain_mana_draw())
+		return 1
 	case 5:
-		return int64(C.nox_thing_bubble_draw(words, drawable))
+		return int64(particleBubbleDraw(vp, dr))
 	case 6:
-		return int64(C.nox_thing_blue_rain_draw(vi, drawable))
+		return int64(particleBlueRain(vp, dr))
 	case 7:
-		return int64(C.nox_thing_levelup_draw(vi, drawable))
+		return int64(particleLevelUp(vp, dr, false))
 	case 8:
-		return int64(C.nox_thing_oblivion_up_draw(vi, drawable))
+		return int64(particleLevelUp(vp, dr, true))
 	case 9:
 		return int64(uint32(uintptr(unsafe.Pointer(particleFallingSparks(int(a[0]), vp, dr)))))
 	case 10:
-		return int64(C.nox_thing_spider_spit_draw(words, drawable))
+		return int64(particleSpiderSpit(vp, dr))
 	case 11:
-		return int64(C.nox_thing_vortex_draw(view, drawable))
+		return int64(particleVortexDraw(vp, dr))
 	case 12:
 		got := particleLightColor(light, int(a[0]), int(a[1]), int(a[2]))
 		if got == light {
@@ -63,13 +46,13 @@ func PortTestClientDrawParticle(op int, vp *noxrender.Viewport, dr *client.Drawa
 		}
 		return 0
 	case 13:
-		return int64(C.sub_484C00(li, C.int(a[0])))
+		return particleLightAngle(light, int(a[0]), false)
 	case 14:
-		return int64(C.nox_xxx_spriteChangeLightSize_484C30(li, C.int(a[0])))
+		return particleLightAngle(light, int(a[0]), true)
 	case 15:
-		return int64(C.sub_484CE0(li, C.float(math.Float32frombits(uint32(a[0])))))
+		return int64(particleLightIntensity(light, math.Float32frombits(uint32(a[0])), false))
 	case 16:
-		return int64(nox_xxx_spriteChangeIntensity_484D70_light_intensity(li, C.float(math.Float32frombits(uint32(a[0])))))
+		return int64(particleLightIntensity(light, math.Float32frombits(uint32(a[0])), true))
 	case 17:
 		return int64(initParticlePalettes())
 	case 18:
@@ -139,25 +122,25 @@ func (e *PortTestClientParticleEnvironment) Snapshot() []uint32 {
 func PortTestClientParticleDrawCallback(op int) unsafe.Pointer {
 	switch op {
 	case 0:
-		return unsafe.Pointer(C.nox_thing_magic_draw)
+		return drawableDrawKey(drawKey_nox_thing_magic_draw)
 	case 1:
-		return unsafe.Pointer(C.nox_thing_magic_missle_draw)
+		return drawableDrawKey(drawKey_nox_thing_magic_missle_draw)
 	case 2:
-		return unsafe.Pointer(C.nox_thing_magic_missle_tail_link_draw)
+		return drawableDrawKey(drawKey_nox_thing_magic_missle_tail_link_draw)
 	case 3:
-		return unsafe.Pointer(C.nox_thing_magic_tail_link_draw)
+		return drawableDrawKey(drawKey_nox_thing_magic_tail_link_draw)
 	case 5:
-		return unsafe.Pointer(C.nox_thing_bubble_draw)
+		return drawableDrawKey(drawKey_nox_thing_bubble_draw)
 	case 6:
-		return unsafe.Pointer(C.nox_thing_blue_rain_draw)
+		return drawableDrawKey(drawKey_nox_thing_blue_rain_draw)
 	case 7:
-		return unsafe.Pointer(C.nox_thing_levelup_draw)
+		return drawableDrawKey(drawKey_nox_thing_levelup_draw)
 	case 8:
-		return unsafe.Pointer(C.nox_thing_oblivion_up_draw)
+		return drawableDrawKey(drawKey_nox_thing_oblivion_up_draw)
 	case 10:
-		return unsafe.Pointer(C.nox_thing_spider_spit_draw)
+		return drawableDrawKey(drawKey_nox_thing_spider_spit_draw)
 	case 11:
-		return unsafe.Pointer(C.nox_thing_vortex_draw)
+		return drawableDrawKey(drawKey_nox_thing_vortex_draw)
 	}
 	return nil
 }

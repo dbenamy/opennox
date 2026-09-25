@@ -11,9 +11,6 @@ void sub_479810();
 int sub_479820(int a1, short a2);
 int sub_479D00();
 void sub_47D370(int a1);
-long long sub_484C00(int a1, int a2);
-long long nox_xxx_spriteChangeLightSize_484C30(int a1, int a2);
-int sub_484CE0(int a1, float a2);
 int nox_xxx_wndStaticDrawNoImage_488D00(nox_window* a1p, nox_window_data* a2p);
 nox_window* nox_gui_newStaticText_489300(nox_window* a1, int a2, int a3, int a4, int a5, int a6, nox_window_data* a7p, nox_staticText_data* a8p);
 

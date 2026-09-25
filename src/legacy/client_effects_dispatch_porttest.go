@@ -52,53 +52,53 @@ func PortTestClientEffects(op int, vp *noxrender.Viewport, dr *client.Drawable, 
 	case 10:
 		return uint32(effectLightningPasses(AsPoint(data), AsPoint(unsafe.Add(data, 8)), int(a[0]), (*[4]int16)(unsafe.Add(data, 16)), int(a[1]), int(a[2]), int(a[3])))
 	case 11:
-		return uint32(C.nox_thing_lightning_draw((*C.int)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
+		return uint32(int32(effectLightningDraw(vp, dr, 0)))
 	case 12:
-		return uint32(C.nox_thing_chain_lightning_bolt_draw((*C.int)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
+		return uint32(int32(effectLightningDraw(vp, dr, 0)))
 	case 13:
-		return uint32(C.nox_thing_energy_bolt_draw((*C.int)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
+		return uint32(int32(effectLightningDraw(vp, dr, 1)))
 	case 14:
-		return uint32(C.nox_thing_green_bolt_draw((*C.int)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
+		return uint32(int32(effectLightningDraw(vp, dr, 2)))
 	case 15:
 		return uint32(effectPlasma(int(a[0]), image.Pt(int(a[1]), int(a[2])), image.Pt(int(a[3]), int(a[4]))))
 	case 16:
 		return uint32(effectPlasmaSegment(AsPoint(data), AsPoint(unsafe.Add(data, 8)), int(*(*int32)(unsafe.Add(data, 16)))))
 	case 17:
-		return uint32(C.nox_thing_plasma_draw((*C.int)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
+		return uint32(int32(effectPlasmaDraw(vp, dr)))
 	case 18:
 		return uint32(effectSparkDraw(vp, dr, uint32(a[0]), uint32(a[1]), true))
 	case 19:
-		return uint32(C.nox_thing_magic_sparkle_draw((*C.int)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
+		return uint32(int32(effectMagicSparkle(vp, dr)))
 	case 20:
-		return uint32(C.nox_thing_pixie_draw((*C.int)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
+		return uint32(int32(effectPixie(vp, dr)))
 	case 21:
-		return uint32(C.nox_thing_pixie_dust_draw((*C.int)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
+		return uint32(int32(effectPixieDust(vp, dr)))
 	case 22:
-		return uint32(C.nox_thing_blue_rain_spark_draw((*C.uint32_t)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
+		return uint32(int32(effectBlueRainSpark(vp, dr)))
 	case 23:
-		return uint32(C.nox_thing_rain_orb_draw((*C.uint32_t)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
+		return uint32(int32(effectRainOrb(vp, dr)))
 	case 24:
-		return uint32(C.nox_thing_red_spark_draw((*C.uint32_t)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
+		return uint32(int32(effectColoredSpark(vp, dr, 0)))
 	case 25:
-		return uint32(C.nox_thing_blue_spark_draw((*C.uint32_t)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
+		return uint32(int32(effectColoredSpark(vp, dr, 1)))
 	case 26:
-		return uint32(C.nox_thing_cyan_spark_draw((*C.uint32_t)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
+		return uint32(int32(effectColoredSpark(vp, dr, 2)))
 	case 27:
-		return uint32(C.nox_thing_green_spark_draw((*C.uint32_t)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
+		return uint32(int32(effectColoredSpark(vp, dr, 3)))
 	case 28:
-		return uint32(C.nox_thing_yellow_spark_draw((*C.uint32_t)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
+		return uint32(int32(effectColoredSpark(vp, dr, 4)))
 	case 29:
-		return uint32(C.nox_thing_violet_spark_draw((*C.uint32_t)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
+		return uint32(int32(effectColoredSpark(vp, dr, 5)))
 	case 30:
-		return uint32(C.nox_thing_death_ball_spark_draw((*C.uint32_t)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
+		return uint32(int32(effectColoredSpark(vp, dr, 6)))
 	case 31:
-		return uint32(C.nox_thing_white_spark_draw((*C.uint32_t)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
+		return uint32(int32(effectColoredSpark(vp, dr, 7)))
 	case 32:
-		return uint32(C.nox_thing_particle_draw(C.int(uintptr(unsafe.Pointer(vp))), (*C.nox_drawable)(unsafe.Pointer(dr))))
+		return uint32(int32(effectParticleUpdate(dr)))
 	case 33:
-		return uint32(C.nox_thing_glow_orb_draw((*C.int)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
+		return uint32(int32(effectOrb(vp, dr, false)))
 	case 34:
-		return uint32(C.nox_thing_glow_orb_move_draw((*C.int)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
+		return uint32(int32(effectOrb(vp, dr, true)))
 	case 35:
 		effectPlasmaSetup(int(a[0]), image.Pt(int(a[1]), int(a[2])), image.Pt(int(a[3]), int(a[4])))
 		return 0
@@ -127,47 +127,47 @@ func PortTestClientEffects(op int, vp *noxrender.Viewport, dr *client.Drawable, 
 func PortTestEffectsCallback(op int) unsafe.Pointer {
 	switch op {
 	case 11:
-		return unsafe.Pointer(C.nox_thing_lightning_draw)
+		return drawableDrawKey(drawKey_nox_thing_lightning_draw)
 	case 12:
-		return unsafe.Pointer(C.nox_thing_chain_lightning_bolt_draw)
+		return drawableDrawKey(drawKey_nox_thing_chain_lightning_bolt_draw)
 	case 13:
-		return unsafe.Pointer(C.nox_thing_energy_bolt_draw)
+		return drawableDrawKey(drawKey_nox_thing_energy_bolt_draw)
 	case 14:
-		return unsafe.Pointer(C.nox_thing_green_bolt_draw)
+		return drawableDrawKey(drawKey_nox_thing_green_bolt_draw)
 	case 17:
-		return unsafe.Pointer(C.nox_thing_plasma_draw)
+		return drawableDrawKey(drawKey_nox_thing_plasma_draw)
 	case 19:
-		return unsafe.Pointer(C.nox_thing_magic_sparkle_draw)
+		return drawableDrawKey(drawKey_nox_thing_magic_sparkle_draw)
 	case 20:
-		return unsafe.Pointer(C.nox_thing_pixie_draw)
+		return drawableDrawKey(drawKey_nox_thing_pixie_draw)
 	case 21:
-		return unsafe.Pointer(C.nox_thing_pixie_dust_draw)
+		return drawableDrawKey(drawKey_nox_thing_pixie_dust_draw)
 	case 22:
-		return unsafe.Pointer(C.nox_thing_blue_rain_spark_draw)
+		return drawableDrawKey(drawKey_nox_thing_blue_rain_spark_draw)
 	case 23:
-		return unsafe.Pointer(C.nox_thing_rain_orb_draw)
+		return drawableDrawKey(drawKey_nox_thing_rain_orb_draw)
 	case 24:
-		return unsafe.Pointer(C.nox_thing_red_spark_draw)
+		return drawableDrawKey(drawKey_nox_thing_red_spark_draw)
 	case 25:
-		return unsafe.Pointer(C.nox_thing_blue_spark_draw)
+		return drawableDrawKey(drawKey_nox_thing_blue_spark_draw)
 	case 26:
-		return unsafe.Pointer(C.nox_thing_cyan_spark_draw)
+		return drawableDrawKey(drawKey_nox_thing_cyan_spark_draw)
 	case 27:
-		return unsafe.Pointer(C.nox_thing_green_spark_draw)
+		return drawableDrawKey(drawKey_nox_thing_green_spark_draw)
 	case 28:
-		return unsafe.Pointer(C.nox_thing_yellow_spark_draw)
+		return drawableDrawKey(drawKey_nox_thing_yellow_spark_draw)
 	case 29:
-		return unsafe.Pointer(C.nox_thing_violet_spark_draw)
+		return drawableDrawKey(drawKey_nox_thing_violet_spark_draw)
 	case 30:
-		return unsafe.Pointer(C.nox_thing_death_ball_spark_draw)
+		return drawableDrawKey(drawKey_nox_thing_death_ball_spark_draw)
 	case 31:
-		return unsafe.Pointer(C.nox_thing_white_spark_draw)
+		return drawableDrawKey(drawKey_nox_thing_white_spark_draw)
 	case 32:
-		return unsafe.Pointer(C.nox_thing_particle_draw)
+		return drawableDrawKey(drawKey_nox_thing_particle_draw)
 	case 33:
-		return unsafe.Pointer(C.nox_thing_glow_orb_draw)
+		return drawableDrawKey(drawKey_nox_thing_glow_orb_draw)
 	case 34:
-		return unsafe.Pointer(C.nox_thing_glow_orb_move_draw)
+		return drawableDrawKey(drawKey_nox_thing_glow_orb_move_draw)
 	case 37:
 		return unsafe.Pointer(C.sub_4CA720)
 	default:

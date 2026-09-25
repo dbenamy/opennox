@@ -19,17 +19,17 @@ import (
 func PortTestSpriteAnimationCallback(op int) unsafe.Pointer {
 	switch op {
 	case 0:
-		return C.nox_thing_animate_draw
+		return drawableDrawKey(drawKey_nox_thing_animate_draw)
 	case 1:
-		return C.nox_thing_cond_animate_draw
+		return drawableDrawKey(drawKey_nox_thing_cond_animate_draw)
 	case 2:
-		return C.nox_thing_static_draw
+		return drawableDrawKey(drawKey_nox_thing_static_draw)
 	case 3:
-		return C.nox_thing_static_random_draw
+		return drawableDrawKey(drawKey_nox_thing_static_random_draw)
 	case 4:
-		return C.nox_thing_boulder_draw
+		return drawableDrawKey(drawKey_nox_thing_boulder_draw)
 	case 5:
-		return C.nox_thing_slave_draw
+		return drawableDrawKey(drawKey_nox_thing_slave_draw)
 	case 6:
 		return C.nox_thing_animate_state_draw
 	}

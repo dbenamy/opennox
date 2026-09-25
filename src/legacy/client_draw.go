@@ -2,24 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME1_2.h"
-#include "GAME1_3.h"
-#include "GAME2.h"
-#include "GAME2_1.h"
-#include "GAME2_2.h"
-#include "GAME2_3.h"
-#include "GAME3_1.h"
-#include "client__draw__glowdraw.h"
-#include "client__gui__guiggovr.h"
-void  nox_xxx_cliLight16_469140(nox_drawable* dr, nox_draw_viewport_t* vp);
-void nox_xxx_drawAllMB_475810_draw_A(nox_draw_viewport_t* vp);
-void nox_xxx_drawAllMB_475810_draw_C(nox_draw_viewport_t* vp, int v36, int v7);
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"unsafe"
@@ -89,7 +71,7 @@ func Sub_49B6E0() {
 }
 
 func Get_nox_thing_glow_orb_draw() unsafe.Pointer {
-	return C.nox_thing_glow_orb_draw
+	return drawableDrawKey(drawKey_nox_thing_glow_orb_draw)
 }
 
 func Nox_xxx_drawAllMB_475810_draw_B(vp *noxrender.Viewport) int {

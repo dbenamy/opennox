@@ -11,7 +11,6 @@ import (
 	"github.com/opennox/opennox/v1/client/noxrender"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -790,7 +789,7 @@ func (s *Drawable) SetActive() { // Nox_xxx_spriteSetActiveMB_45A990_drawable
 }
 
 func (s *Drawable) CallDraw(vp *noxrender.Viewport) int {
-	return ccall.CallIntPtr2(s.DrawFuncPtr, vp.C(), s.C())
+	return int(CallDrawableDrawResult(s.DrawFuncPtr, vp, s))
 }
 
 func (s *Drawable) HasFX(id int) bool {

@@ -345,6 +345,7 @@ target build selection and linker evidence.
 | Retire 81 server fixture C bridges; selected cgo files 193→175, exports 637→556 | 0 | 0 | 0 | 0 |
 | Retire 71 client UI fixture C bridges; selected cgo files 175→170, exports 556→485 | 0 | 0 | 0 | 0 |
 | Retire 20 internal audio-stream C bridges and four callback identities; selected cgo files 170→167, exports 485→465 | 0 | 0 | 0 | 0 |
+| Retire 66 drawing/parser C bridges; selected client cgo 167→161, server 167→162, exports 465→399 | 0 | 0 | 0 | 0 |
 
 The 33 checksum test-reference lines were retired after differential validation;
 their original source remains recoverable at `66fa7bd4`.

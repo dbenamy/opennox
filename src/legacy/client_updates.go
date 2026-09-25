@@ -241,11 +241,11 @@ func updateTrailSparks(dr *client.Drawable, magic bool) int {
 		if child := effectSpawn(int(typ), image.Pt(x, y)); child != nil {
 			pos := image.Pt(x, y)
 			if magic {
-				child.DrawFuncPtr = unsafe.Pointer(C.nox_thing_magic_sparkle_draw)
+				child.DrawFuncPtr = unsafe.Pointer(drawableDrawKey(drawKey_nox_thing_magic_sparkle_draw))
 				child.SetLightColor(128, 128, 255)
 				pos = dr.PosVec
 			} else {
-				child.DrawFuncPtr = unsafe.Pointer(C.nox_thing_pixie_dust_draw)
+				child.DrawFuncPtr = unsafe.Pointer(drawableDrawKey(drawKey_nox_thing_pixie_dust_draw))
 				child.SetLightColor(255, 200, 75)
 			}
 			*effectWord(child, 432) = uint32(pos.X) << 12
