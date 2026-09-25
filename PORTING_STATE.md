@@ -217,3 +217,13 @@ The current drawing conversion's completed preview asset copy is deduplicated:
 saves and logs remain. Restore with
 `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/client-draw-identities-preview-save/deduplicated-assets.json`.
 Verification and deletion journal: `build/port-client-draw-identities/preview-cleanup/`.
+
+Seven superseded audio executables were removed after committed replacement,
+source/hash and host-use checks (390,561,792 allocated bytes). Rebuild `c22c0edc`
+using retained commands and source maps. Evidence:
+`build/port-client-draw-identities/binary-cleanup-{approved.json,deleted.jsonl}`.
+Current drawing binaries remain. The final drawing scenario also had 1,654 verified
+duplicate assets removed (559,861,760 allocated bytes); saves/results and originals
+remain. Restore:
+`python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/client-draw-identities-save/deduplicated-assets.json`.
+Cleanup evidence: `build/port-post-client-draw-cleanup/`.
