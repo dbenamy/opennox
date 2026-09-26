@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-int sub_478E50(int,int,unsigned int);
-*/
-import "C"
 import (
 	"fmt"
 	"image"
@@ -25,7 +20,7 @@ func uiShopInit() int {
 		return 0
 	}
 	w.SetAllFuncs(uiInventoryWindowEvent(uiShopMouse), func(_ *gui.Window, _ *gui.WindowData) int { return uiShopDraw() }, nil)
-	w.ChildByID(3806).SetTooltipFunc(C.sub_478E50)
+	w.ChildByID(3806).SetTooltipFunc(uiAmountNativeKey(uiAmountShopTooltip))
 	for i := range uiShopGrid() {
 		uiShopGrid()[i].Drawable = nil
 	}

@@ -86,12 +86,6 @@ func uiInventoryDropQuantity(pos image.Point, code, typ uint32, count int) {
 	}
 }
 
-//export sub_465CD0
-func sub_465CD0(pos *C.uint32_t, code, typ, count C.int) {
-	p := (*[2]int32)(unsafe.Pointer(pos))
-	uiInventoryDropQuantity(image.Pt(int(p[0]), int(p[1])), uint32(code), uint32(typ), int(count))
-}
-
 func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 	screen := uiInventoryPackedPoint(a)
 	pos := screen.Sub(uiWindowPosition(uiInventoryMainWindow()))
@@ -226,7 +220,7 @@ func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 						mods = unsafe.Add(dr.C(), 432)
 					}
 					uiAmountPrice(0, 0)
-					uiAmountShow((*uint16)(unsafe.Pointer(internWStr(uiInventoryText("DropLabel")))), screen.X, screen.Y, dr.NetCode32, dr.TypeIDVal, mods, uint32(count+1), 0, C.sub_465CD0, nil)
+					uiAmountShow((*uint16)(unsafe.Pointer(internWStr(uiInventoryText("DropLabel")))), screen.X, screen.Y, dr.NetCode32, dr.TypeIDVal, mods, uint32(count+1), 0, uiAmountNativeKey(uiAmountDrop), nil)
 				} else if uiTradeActive() == 0 {
 					uiInventoryDropAt(world)
 				}

@@ -2,13 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2_2.h"
-#include "client__gui__guishop.h"
-void sub_479680(void);
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"unsafe"
@@ -44,18 +37,18 @@ func PortTestShopUIWords() (map[string]*uint32, func()) {
 }
 func PortTestShopUICallbacks() []unsafe.Pointer {
 	return []unsafe.Pointer{
-		C.sub_478030,
+		uiAmountNativeKey(uiAmountShopActive),
 		clientUICallbackKey(clientUICallbackID_sub_478040),
 		nil,
 		nil,
 		nil,
 		nil,
 		nil,
-		C.sub_478850,
+		uiAmountNativeKey(uiAmountShopBuy),
 		nil,
 		nil,
 		nil,
-		C.sub_478E50,
+		uiAmountNativeKey(uiAmountShopTooltip),
 		nil,
 		nil,
 		nil,
@@ -67,14 +60,11 @@ func PortTestShopUICallbacks() []unsafe.Pointer {
 		nil,
 		clientUICallbackKey(clientUICallbackID_sub_479590),
 		clientUICallbackKey(clientUICallbackID_sub_4795A0),
-		C.sub_479690,
+		uiAmountNativeKey(uiAmountShopSell),
 		nil,
 		nil,
-		C.sub_479810,
-		C.sub_479820,
-		nil,
-		nil,
-		nil,
+		uiAmountNativeKey(uiAmountShopRepairCancel),
+		uiAmountNativeKey(uiAmountShopRepair),
 		nil,
 		nil,
 		nil,
@@ -83,7 +73,10 @@ func PortTestShopUICallbacks() []unsafe.Pointer {
 		nil,
 		nil,
 		nil,
-		C.sub_479680,
+		nil,
+		nil,
+		nil,
+		uiAmountNativeKey(uiAmountShopSellCancel),
 		nil,
 		nil,
 	}

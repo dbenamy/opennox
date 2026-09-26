@@ -3,8 +3,8 @@
 ## Scope and preserved boundaries
 
 Retire ten C export bridges: six deferred amount callbacks (buy, sell, repair,
-these last two cancellations, and inventory drop), shop-active query, shop and
-trade tooltips, and the outer amount-dialog adapter. Retire the private C-typed
+sell cancellation, repair cancellation and inventory drop), the shop-active query,
+shop and trade tooltips, and the outer amount-dialog adapter. Retire the private C-typed
 trade-add fixture adapter. Move every producer, stored-identity comparison and
 fixture normalization with those boundaries. The two export-only files can then
 be deleted. Remove now-unused cgo preambles in their connected owners.
@@ -41,15 +41,33 @@ and the existing shared-registry dispatch contracts. No new mirror tests are
 needed for this boundary conversion. Primary also reviews adapter widths and
 argument/defer ordering before qualification.
 
-After conversion, rerun the full affected selection in three profiles, safe/static,
+Converted acceptance requires the full affected selection in three profiles, safe/static,
 three production/ABI builds, exact known-suite comparison, two headless save/load
-scenarios and original asset hashes. No converted results are accepted yet.
+scenarios and original asset hashes. The converted gates below are now accepted.
 
 ## Delegation and review
 
-One Luna helper drafts a bounded overlay under `build/port-quantity-identities/`;
+One Luna helper drafted a bounded overlay under `build/port-quantity-identities/`;
 primary owns scope, caller review, installation, qualification and acceptance.
 Primary corrected two scout claims: the export files contain no unrelated entries,
 and the temporary point is freed after the dialog toggle. A whole-file dependency
 review also identified four connected cgo imports that can retire with those two
-files. Expected metrics remain provisional until dependency discovery and builds.
+files. Dependency discovery and qualification confirmed those removals.
+
+## Qualified conversion
+
+All 394 client / 391 server roots pass with exact original names and no
+failures/skips. Safe/static, three production/ABI builds, exact known-suite
+comparison, two headless save/load scenarios and all 1,654 original asset hashes
+pass on the same reviewed source. See [qualification](quantity-identities-qualification.json).
+
+Legacy exports fall 220→210; selected production cgo files fall 136/137→130/131.
+Headers remain 157 files / 2,970 physical lines. Embedded production C bodies
+remain 77; standalone production and test-reference C remain zero.
+
+Luna supplied the bounded 18-path overlay. Primary verified all original/draft
+hashes, whole-source consumers, every changed function and all fixture callback
+table substitutions before installation. Pre-compile review removed the unused
+ccall import and the now-empty fixture preambles, and corrected stale adapter
+comments. Existing assertions and state/pixel captures were unchanged. No measured
+subscription savings are claimed.

@@ -45,7 +45,8 @@ func PortTestInventoryWindow(op int, a, b, c, d uintptr) uint32 {
 	case 12:
 		return uint32(uiInventoryOpenIdentify())
 	case 13:
-		C.sub_465CD0((*C.uint32_t)(unsafe.Pointer(a)), C.int(b), C.int(c), C.int(d))
+		p := (*[2]int32)(unsafe.Pointer(a))
+		uiInventoryDropQuantity(image.Pt(int(p[0]), int(p[1])), uint32(int32(b)), uint32(int32(c)), int(int32(d)))
 		return 0
 	case 14:
 		return uint32(uiInventorySetWindowLevel(int(int32(a))))

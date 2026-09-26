@@ -1,14 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-void sub_478850(int,short,int,int);
-int sub_479690(int,short,short,int);
-void sub_479680(void);
-int sub_479820(int,short);
-void sub_479810(void);
-*/
-import "C"
 import (
 	"fmt"
 	"image"
@@ -29,7 +20,7 @@ func uiShopPanel(w *gui.Window, event int, a, b uintptr) int {
 		*uiShopWord(1107036) = *uiShopWord(1098592) - uint32(b)
 		return 0
 	}
-	if event != 16391 || C.int(*bookWord(1047520)) != 0 {
+	if event != 16391 || *bookWord(1047520) != 0 {
 		return 0
 	}
 	id := uiInventoryWindowValue(uint32(a)).ID()
@@ -84,7 +75,7 @@ func uiShopPanel(w *gui.Window, event int, a, b uintptr) int {
 	return 0
 }
 func uiShopMouse(w *gui.Window, event int, a, b uintptr) int {
-	if C.int(*bookWord(1047520)) != 0 {
+	if *bookWord(1047520) != 0 {
 		return 1
 	}
 	p := uiInventoryPackedPoint(a)
@@ -146,7 +137,7 @@ func uiShopBuyShow(p image.Point) {
 		return
 	}
 	uiAmountPrice(1, c.Value)
-	uiAmountShow(alloc.InternCString16(uiShopString("BuyLabel")), p.X, p.Y, c.Codes[c.Count-1], c.Drawable.TypeIDVal, uiShopMods(c.Drawable), count, 0, C.sub_478850, nil)
+	uiAmountShow(alloc.InternCString16(uiShopString("BuyLabel")), p.X, p.Y, c.Codes[c.Count-1], c.Drawable.TypeIDVal, uiShopMods(c.Drawable), count, 0, uiAmountNativeKey(uiAmountShopBuy), nil)
 }
 func uiShopCarryWarning() {
 	uiTradeSound(925)
@@ -208,7 +199,7 @@ func uiShopSellShow(code, value uint32) int {
 	}
 	uiAmountPrice(1, value)
 	old := uiAmountItem()
-	ret = uiAmountShow(alloc.InternCString16(uiShopString("SellLabel")), p.X, p.Y, code, dr.TypeIDVal, uiShopMods(dr), uint32(sub_467700(int(code))), 0, C.sub_479690, C.sub_479680)
+	ret = uiAmountShow(alloc.InternCString16(uiShopString("SellLabel")), p.X, p.Y, code, dr.TypeIDVal, uiShopMods(dr), uint32(sub_467700(int(code))), 0, uiAmountNativeKey(uiAmountShopSell), uiAmountNativeKey(uiAmountShopSellCancel))
 	if uiAmountItem() != old {
 		*uiShopWord(1098616) = 1
 	}
@@ -231,7 +222,7 @@ func uiShopRepairShow(code, value uint32) {
 		return
 	}
 	old := uiAmountItem()
-	uiAmountShow(alloc.InternCString16(uiShopString("RepairLabel")), p.X, p.Y, code, dr.TypeIDVal, uiShopMods(dr), 1, 0, C.sub_479820, C.sub_479810)
+	uiAmountShow(alloc.InternCString16(uiShopString("RepairLabel")), p.X, p.Y, code, dr.TypeIDVal, uiShopMods(dr), 1, 0, uiAmountNativeKey(uiAmountShopRepair), uiAmountNativeKey(uiAmountShopRepairCancel))
 	if uiAmountItem() != old {
 		*uiShopWord(1098620) = 1
 	}

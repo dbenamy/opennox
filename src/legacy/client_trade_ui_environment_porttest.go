@@ -2,13 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME3_1.h"
-#include "client__gui__guitrade.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"unsafe"
@@ -54,7 +47,7 @@ func PortTestTradeUICallbacks() []unsafe.Pointer {
 		nil,
 		nil,
 		nil,
-		C.nox_gui_itemAmountDialog_4C0430,
+		uiAmountNativeKey(uiAmountDialogExport),
 		nil,
 		clientUICallbackKey(clientUICallbackID_sub_4C05F0),
 		nil,
@@ -64,7 +57,7 @@ func PortTestTradeUICallbacks() []unsafe.Pointer {
 		nil,
 		nil,
 		nil,
-		C.sub_4C1120,
+		uiAmountNativeKey(uiAmountTradeTooltip),
 		nil,
 		nil,
 		nil,

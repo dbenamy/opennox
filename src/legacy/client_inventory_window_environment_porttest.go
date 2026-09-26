@@ -99,7 +99,7 @@ func PortTestInventoryWindowCallbacks() []unsafe.Pointer {
 		nil,
 		nil,
 		nil,
-		C.sub_465CD0,
+		uiAmountNativeKey(uiAmountDrop),
 		nil,
 		nil,
 		nil,

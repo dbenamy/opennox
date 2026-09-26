@@ -10,7 +10,6 @@ import (
 	"github.com/opennox/opennox/v1/client/noxrender"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 )
 
 func uiAmountWindow() *gui.Window {
@@ -80,7 +79,7 @@ func uiAmountCallback(off uintptr) {
 		defer free()
 		pos := uiWindowPosition(uiAmountWindow())
 		*p = [2]int32{int32(pos.X) + int32(dword_587000_183456), int32(pos.Y) + int32(dword_587000_183460)}
-		ccall.CallVoidUPtr5(fn, uintptr(unsafe.Pointer(p)), uintptr(memmap.Uint32(0x5D4594, 1319244)), uintptr(memmap.Uint32(0x5D4594, 1319240)), uintptr(count), uintptr(memmap.Uint32(0x5D4594, 1319252)))
+		uiAmountCall(fn, uintptr(unsafe.Pointer(p)), uintptr(memmap.Uint32(0x5D4594, 1319244)), uintptr(memmap.Uint32(0x5D4594, 1319240)), uintptr(count), uintptr(memmap.Uint32(0x5D4594, 1319252)))
 	}
 	uiAmountToggle()
 }

@@ -3,12 +3,6 @@
 
 #include "defs.h"
 
-int sub_478030();
-void sub_478850(int a1, short a2, int a3, int a4);
-int sub_478E50(int a1, int a2, unsigned int a3);
-int sub_479690(int a1, short a2, short a3, int a4);
-void sub_479810();
-int sub_479820(int a1, short a2);
 int sub_479D00();
 void sub_47D370(int a1);
 int nox_xxx_wndStaticDrawNoImage_488D00(nox_window* a1p, nox_window_data* a2p);

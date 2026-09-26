@@ -2810,3 +2810,15 @@ layout, and request bytes keep uint16 narrowing. Five tooltips reuse the native
 GUI registry; eight fixture identities keep their indices. Keep the delayed
 quantity callback `sub_465CD0` for its owning dialog's follow-up, since that address
 is stored and called later. See [INVENTORY_GUI_IDENTITIES.md](INVENTORY_GUI_IDENTITIES.md).
+
+
+## Quantity/shop/trade callback identities
+
+Use six stable amount identities and direct owner dispatch while preserving the
+five-word foreign fallback. Keep all argument reads and temporary allocation/defer
+placement, including release after dialog toggle. Move shop-close identity checks
+with all producers; preserve signed drop count and each 16-bit narrowing. Two GUI
+tooltips reuse the existing registry. Retire the complete export-only files and
+connected empty cgo imports. The just-qualified exact source/environment provides
+the original baseline; all converted gates are rerun. See
+[QUANTITY_IDENTITIES.md](QUANTITY_IDENTITIES.md).

@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-void sub_478850(int,short,int,int);
-int sub_479690(int,short,short,int);
-int sub_479820(int,short);
-*/
-import "C"
 import (
 	"image"
 	"unsafe"
@@ -172,7 +165,7 @@ func uiShopClear() uint32 {
 }
 func uiShopCancelQuantity() {
 	cb := *(*unsafe.Pointer)(memmap.PtrOff(0x5D4594, 1319160))
-	if cb == C.sub_478850 || cb == C.sub_479690 || cb == C.sub_479820 {
+	if cb == uiAmountNativeKey(uiAmountShopBuy) || cb == uiAmountNativeKey(uiAmountShopSell) || cb == uiAmountNativeKey(uiAmountShopRepair) {
 		uiAmountCancel()
 	}
 }

@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-int sub_4C1120(int,int,unsigned int);
-*/
-import "C"
 import (
 	"fmt"
 	"github.com/opennox/opennox/v1/client/gui"
@@ -28,7 +23,7 @@ func uiTradeInit() int {
 		w.ChildByID(v.id).DrawData().SetTooltip(GetServer().S().Strings(), uiTradeString(v.key))
 	}
 	for _, id := range []uint{3704, 3705} {
-		w.ChildByID(id).SetTooltipFunc(C.sub_4C1120)
+		w.ChildByID(id).SetTooltipFunc(uiAmountNativeKey(uiAmountTradeTooltip))
 	}
 	w.Hide()
 	uiWindowEnable(w, 0)
