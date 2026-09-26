@@ -148,7 +148,6 @@ additional native admission contracts cover these formerly unsafe inputs.
 This reversible choice follows the standing decision policy; it is separate from
 byte-for-byte preservation of the valid-input painting corpus.
 
-
 ## Population stack records — review generated-layout compatibility
 
 Original C execution confirms a spell-name crash, a point-output stack abort,
@@ -164,7 +163,6 @@ records execution evidence and qualification status. After repairing spell-name 
 `free(): invalid size`. Route disposal through the existing engine object-free
 service; verify both the zero result and restored live-object count. This keeps
 object-pool ownership intact. It does not redesign the engine disposal service.
-
 
 ## Prefab candidate arrays — same stack-record prerequisite
 
@@ -275,7 +273,6 @@ observed runs, not a dedicated benchmark.
 Evidence: build/port-map-orchestration/cache-{variants,growth-timing}.json and
 cache-*.log. Commit separately from the subsequently exposed wall-list defect.
 
-
 ## 2026-09-14 — correct wall-list traversal before generator orchestration
 
 Decision for later review: `serverWalls.find` must traverse the global `Next20`
@@ -293,7 +290,6 @@ on allocator layout. Go-owned retained buffers plus saved grid-row identities
 remove that observer effect. This is test-only; no engine allocation ownership
 changes. Repeated complete captures and eight allocation layouts check stability.
 The separate shallow theme-cleanup ownership issue remains deferred for review.
-
 
 ## 2026-09-14 — unflagged backdrop decoration weights
 
@@ -484,7 +480,6 @@ locked C references or general renderer policy. Native float-to-int calls use
 the already qualified Go helper. Review these quirks before any later geometry
 cleanup; the port's compatibility tests remain the constraint.
 
-
 ### Drawable tail allocation retry — 2026-09-14
 
 Guard the two unchecked tail-link allocations before capturing the next C
@@ -498,7 +493,6 @@ accumulated standard suite and affected effects/update server/highres tests, all
 production builds and unchanged headless gameplay. The full asset suite was
 just qualified at the effects subsystem milestone; repeat it on evidence of
 shared regression rather than automatically for every callback batch.
-
 
 ### Particle drawing and color startup boundary — 2026-09-14
 
@@ -614,7 +608,6 @@ Keep CRT wide-character classification for locale compatibility on the current
 CGO target. All twelve routines qualified without changing the frozen C results;
 review these compatibility choices separately from future platform work.
 
-
 ### Listbox baseline corrections — review later
 
 Before translating listbox widgets, correct byte-offset scaling in middle row
@@ -627,7 +620,6 @@ These are local reversible fixes; qualification and exact preserved quirks are i
 selection comparison for now. Represent the ABI selection union as a uint32 word,
 which holds either a scalar index or an array address, preserving size/offsets.
 
-
 ### Window ID-range termination — review later
 
 Break after processing the final inclusive ID in hide/enable range loops. The
@@ -635,7 +627,6 @@ original signed loop counter wraps at INT_MAX; first=last=INT_MAX should process
 one child and finish. Source audit identified the nontermination; a corrected-C
 contract checks the actual maximum-ID child. This adds two C prerequisite lines
 and preserves ordinary ranges. See [CLIENT_WINDOW.md](CLIENT_WINDOW.md).
-
 
 ## Item tooltip native assembly bounds
 
@@ -664,7 +655,6 @@ Check the empty case explicitly through both draw paths. Both choices are local,
 reversible and made under the user's standing authorization; review them later.
 They do not change physical C LOC. Both corrections passed C-baseline and native
 qualification; see CLIENT_METERS.md for the completed evidence.
-
 
 ## Meter combined tooltip storage — review later
 
@@ -799,7 +789,6 @@ unrelated field stay unchanged. Only two hashes are updated. This is a small,
 reversible correctness fix under standing authorization; see
 [CLIENT_INVENTORY_CANCEL.md](CLIENT_INVENTORY_CANCEL.md) for qualification.
 
-
 ### Trade UI C baseline prerequisites — review later
 
 Before replacing the connected quantity dialog/trade routines, independent
@@ -855,7 +844,6 @@ correctness changes under standing authorization. Preserve the original failing
 runs and verify normal request/callback behavior before freezing the C oracle.
 See [CLIENT_SHOP_UI.md](CLIENT_SHOP_UI.md) for observed cases and qualification.
 
-
 ### Shop closure owns its quantity dialog — review later
 
 Independent C tests reproduced retained quantity drawables/windows when closing
@@ -867,7 +855,6 @@ three owned plus one unrelated callback; 100 shop recreation cycles also pass.
 This reversible prerequisite adds 11 C lines (22 total for this batch), precedes
 baseline freezing, and passes all affected targets/full-assets/gameplay checks.
 No algorithm is retained only for testing after translation.
-
 
 ### Qualification scope between subsystem milestones — review later
 
@@ -892,7 +879,6 @@ Capture and repeat the new baseline independently before freezing and committing
 This reversible workflow adjustment follows the user's request to improve pace
 and autonomously record reasonably confident implementation/testing choices.
 
-
 ### Journal shared storage and presentation
 
 Journal list/report/rendering logic is Go, with libc allocation/free for entries
@@ -904,7 +890,6 @@ and pixels remain identical. Local flag updates still omit cached-height rebuild
 as did both original callers; no correction is claimed. Review these choices if
 journal ownership/layout or update behavior changes. See JOURNAL.md (C baseline
 2c3ea111) for actual save/load, report, render and gameplay evidence.
-
 
 ### Briefing presentation compatibility
 
@@ -925,7 +910,6 @@ tracked/recoverable. Statistics and instructions use real render/GUI/sprite
 owners with the shipped Briefing.wnd, while ordinary chapter gameplay supplies
 the full-game integration check. See BRIEFING.md for qualification and limits.
 
-
 ### Briefing lifecycle completion
 
 Preserve existing resource-failure ownership, sprite-deletion order, nil event
@@ -943,7 +927,6 @@ execution was 598.823s, so give the next complete-corpus run a longer explicit
 timeout before adding further coverage; retain strict root completion/failure
 checks. Following batches resume the documented
 affected-corpus policy until another milestone or uncertain dependency scope.
-
 
 ### Scoreboard compatibility and scratch ownership
 
@@ -964,7 +947,6 @@ and chapter gameplay. Post-review callback-adapter cleanup repeats the full scor
 family in all three targets, with exact production fingerprints to reuse the broader
 checks. See SCOREBOARD.md for evidence and limits.
 
-
 ### Minimap compatibility and private interfaces
 
 Preserve the polygon predicate's existing first-query corner-ray miss and subsequent
@@ -981,7 +963,6 @@ algorithms solely as an oracle. Use affected three-target qualification after th
 briefing milestone, plus builds/ABI, exact full-assets comparison and twelve fresh
 minimap gameplay frames. Solo gameplay does not establish remote multiplayer
 coverage; populated team/objective and debug behavior have actual-owner fixtures.
-
 
 ### World-wall ownership and visibility compatibility
 
@@ -1002,7 +983,6 @@ remains exactly the known 1,553 entries, and fresh solo chapter/minimap gameplay
 matches twelve frames. Review pixel-row ownership consolidation with the remaining
 C tile callers later; it is separate from this behavioral translation.
 
-
 ### Wall-edge rasterizer compatibility and private API
 
 The only production caller discards the original edge routine's scratch/pointer
@@ -1020,7 +1000,6 @@ pixel-row/clip/configuration owners until their remaining tile callers move. Inv
 RLE buffers are outside the valid asset contract; actual image-owner load failures
 remain unchanged. Three-target frozen comparisons, actual caller tests, builds/ABI,
 exact known failures and fresh 12-frame gameplay qualify this conversion.
-
 
 ### Tile raster callback ABI, fill compatibility and integration
 
@@ -1040,7 +1019,6 @@ click does not establish that mode. Preserve the actual GUI scenario and pixel
 manifest, and compare both normal12 and GUI-flat14 frames. Flagged tile definitions
 may temporarily restore textures, as before. Invalid assets remain outside these
 valid-owner contracts; this batch makes no image-decoder behavior change.
-
 
 ### Tile composition baseline and milestone timeout
 
@@ -1379,7 +1357,6 @@ small test region. Correct bounds preserve the original spatial capture and allo
 [VISIBILITY_EFFECTS.md](VISIBILITY_EFFECTS.md) and
 [VISIBILITY_SCAN_DELAY.md](VISIBILITY_SCAN_DELAY.md) for evidence and validation.
 
-
 ### Object and recipient reports
 
 Qualified after C baseline `8b370caa`: move the private minimap-count helper with
@@ -1394,7 +1371,6 @@ targets and repeat independently. Completed native batches still receive the bro
 affected corpus, fresh builds/ABI, exact known suite and headless integration gates.
 See [OBJECT_REPORTS.md](OBJECT_REPORTS.md) for the evidence and fixture corrections.
 
-
 ### Reliable message queue pressure ownership
 
 Fix the independently reproduced original-C cleanup crash before freezing the next
@@ -1406,7 +1382,6 @@ reversible prerequisite correction within the authorized port workflow, not an
 expectation change made to accommodate Go. Fresh C production checks are required
 because production source changed. See [RELIABLE_REPORTS.md](RELIABLE_REPORTS.md).
 
-
 ### Reliable queue conversion and evidence counts
 
 Preserve the original shared C-owned allocation/list/rate layout while replacing
@@ -1416,7 +1391,6 @@ conversion changes no frozen expectation. Go callers avoid the C round trip and
 extra payload allocation. Treat unique terminal test names as leaf cases: recounting
 the original visibility/object-report logs corrects an 18-case overstatement in
 prior documentation. No tests were removed. See [RELIABLE_REPORTS.md](RELIABLE_REPORTS.md).
-
 
 ### World-collision arithmetic and callback contracts
 
@@ -1434,7 +1408,6 @@ fields that C left uninitialized are also zeroed. These are reversible choices
 outside the established valid-input contract, recorded for later review. No C
 algorithm is kept solely for tests. See [WORLD_COLLISIONS.md](WORLD_COLLISIONS.md).
 
-
 ### Quest score constant width and fixture data
 
 The shipped quest score exponent is an eight-byte double near 1.9. Original C
@@ -1449,7 +1422,6 @@ restore the shipped constant. Only three scoring groups are refrozen from correc
 C; the other 20 groups remain identical. Numeric/table input audits are now explicit
 in PORT.md so nontrivial production data is checked before freezing expectations.
 See [QUEST_RUNTIME.md](QUEST_RUNTIME.md) for qualification and limitations.
-
 
 ### Quest runtime native interfaces and absolute conversion
 
@@ -1553,7 +1525,6 @@ retry and tab/close contracts. They add four physical C lines before conversion.
 Because production source changes, qualify a fresh corrected C baseline rather
 than reusing the previous team's production result. See SERVER_OPTIONS.md.
 
-
 ### Server-panel baseline prerequisites and compatibility notes (review after port)
 
 Five panel constructors dereference missing window resources. Independent child-process
@@ -1579,7 +1550,6 @@ callers; Go callers and the advanced callback table use Go directly. The numeric
 parser, name-list owner and rule picker remain outside this batch. All frozen
 captures and fresh production qualification pass; no further behavior correction
 was needed during native conversion.
-
 
 ### Server-configuration baseline prerequisites (review after port)
 
@@ -1649,7 +1619,6 @@ are small, reversible corrections under the standing policy. Fresh production
 qualification and three-target regression checks pass. See
 [WORLD_GEOMETRY.md](WORLD_GEOMETRY.md) for evidence.
 
-
 ### Geometry arithmetic and interface ownership
 
 Preserve the qualified C calculation's observable rounding points. C float locals
@@ -1714,7 +1683,6 @@ still needs a C-backed temporary record for the remaining spatial C callback;
 its allocation can disappear with the next connected spatial-targeting batch.
 No C algorithm is kept solely as a reference implementation.
 
-
 ## Spatial targeting and opaque callback tokens — review after conversion
 
 Keep the eleven-function spatial batch connected rather than padding its LOC count.
@@ -1730,7 +1698,6 @@ pointers, reproduced the original panic, and passes after the correction. This
 preserves the callback ABI and curve captures; it does not weaken cgo checking.
 The small, reversible correction follows the standing authorization. See
 [SPATIAL_TARGETING.md](SPATIAL_TARGETING.md) for full evidence and qualification.
-
 
 ## Monster control ownership and bounded definitions — review after conversion
 
@@ -1748,7 +1715,6 @@ neighbors; preceding accepted records and the existing load return convention ar
 preserved. These reversible ownership/input corrections follow standing user
 authorization. Independent boundary/allocation-balance contracts supplement the
 unchanged original-C captures. See [MONSTER_CONTROL.md](MONSTER_CONTROL.md).
-
 
 ## Quest progress ownership and input limits — review after conversion
 
@@ -1772,7 +1738,6 @@ uses a separately rounded float32 product and the original converter. Compiled C
 confirms both paths. Preserve byte-wrapped generator caps, signed minion-stage
 admission and exact RNG order. See [QUEST_PROGRESS.md](QUEST_PROGRESS.md).
 
-
 ## Prefab prerequisites — review with the map-runtime conversion
 
 Connect the previously unimplemented C section bridge to the existing Go registry.
@@ -1789,7 +1754,6 @@ repair; consider stricter section validation separately. Audit tile/wall/waypoin
 payload lifetime in the larger batch: the current cleanup regression establishes
 node-wrapper ownership and explicitly owns its payload allocations. See
 [PREFAB_RUNTIME.md](PREFAB_RUNTIME.md).
-
 
 ## Prefab baseline — waypoint ownership and failed-file cleanup
 
@@ -1821,7 +1785,6 @@ authorized reversible correctness change, not exact preservation of the C defect
 Prefab ownership corrections now pass all three targets and fresh production;
 77 existing captures remain byte-identical. See the batch native qualification.
 
-
 ### Prefab script prerequisites and reachability
 
 Independent contracts reproduced operand narrowing, unconditional name replacement,
@@ -1831,7 +1794,6 @@ these reversibly before freezing the baseline; retain the C clock bridge's 32-bi
 truncation. All three targets and fresh production/integration qualify the repaired
 baseline. Remove two selection helpers with no production callers during conversion.
 Evidence and review details: [PREFAB_SCRIPTS.md](PREFAB_SCRIPTS.md).
-
 
 ### Prefab script native boundaries and dispatch
 
@@ -1867,7 +1829,6 @@ for the client decoder and move disposal's only caller directly to Go. Cast disp
 and window-show C returns become void because all actual callers discard their
 incidental results. See [VOTES.md](VOTES.md) for evidence and qualification status.
 
-
 ### Console command prerequisites and compatibility
 
 Two independent baseline contracts reproduced incorrect respawn-off flag handling
@@ -1886,7 +1847,6 @@ Unsupported argument-taking formats without arguments have no defined C result;
 Go's no-argument path treats them as text rather than reading nonexistent arguments.
 See [CONSOLE_COMMANDS.md](CONSOLE_COMMANDS.md) for evidence and qualification state.
 
-
 ### Player-state team-count prerequisite
 
 The original active-competitor team loop counted an empty team whenever any
@@ -1898,7 +1858,6 @@ distinct status0x20 rule in the multiple-participants query. This is a reversibl
 correctness fix for review; evidence and qualification state are in
 [PLAYER_STATE.md](PLAYER_STATE.md).
 
-
 ### Player-state native compatibility
 
 Keep the two different eligibility rules (active competitors versus multiple
@@ -1909,7 +1868,6 @@ modifier, minimap and reliable-message owners. Retain only the 11 C entrypoints
 needed by the decoder and server lifecycle; two unreferenced scalar helpers retire.
 All targets, frozen captures and fresh production qualify. See
 [PLAYER_STATE.md](PLAYER_STATE.md).
-
 
 ### Session entry baseline: save discovery and defined settings snapshots
 
@@ -2091,7 +2049,6 @@ known suite and gameplay/save-load qualify. C:21,083 /65 files /zero reference,
 −1,327 from the C baseline (which included ten test-adapter lines). See
 [CLIENT_AUDIO_EVENTS.md](CLIENT_AUDIO_EVENTS.md) for evidence and review details.
 
-
 ## Server-browser ownership and deterministic initialization
 
 Re-sort reuses nodes and snapshots the selected 169-byte record before replacing
@@ -2122,7 +2079,6 @@ reversible prerequisite under the user's standing authorization; see
 [SESSION_DIALOGS.md](SESSION_DIALOGS.md). All-target captures, fresh builds/ABI, exact known suite and filter/gameplay/
 save-load qualification pass.
 
-
 ## Session-dialog native ownership and boundary review
 
 Move nine window/file owners to Go while preserving the C heap lifetime of MOTD
@@ -2138,7 +2094,6 @@ corrected Go uses EndPos and an independent three-position regression. Preserve
 unrestricted-filter return-before-read ordering and the raw MOTD visibility flags.
 All frozen captures and final fresh production scenarios remain unchanged. See
 [SESSION_DIALOGS.md](SESSION_DIALOGS.md).
-
 
 ### Client interaction text prerequisites — qualified C baseline
 
@@ -2254,7 +2209,6 @@ affected tests; final production qualification
 is recorded in [SERVER_RUNTIME.md](SERVER_RUNTIME.md). No C converter or other
 algorithm remains solely for testing; x87 control-word instrumentation remains.
 
-
 ## Extension/name and listing baseline corrections
 
 Before freezing this C baseline, replace the player-name parsers' one-byte local
@@ -2301,7 +2255,6 @@ passes; runtime qualification remains default/server/highres. Continue one bound
 Luna helper after the two-batch review, with primary evidence checks and integration.
 See [ORPHAN_BRIDGES.md](ORPHAN_BRIDGES.md).
 
-
 ## Exact integer damage dispatch
 
 Add a separate int32 registry alongside the established boolean damage API.
@@ -2314,7 +2267,6 @@ Original132-root, three-profile baseline and2071 frozen owner cases and conversi
 are fully qualified, including fresh production and scenarios. Reviewable/reversible API decision authorized by standing user
 instructions. See DAMAGE_VALUES.md.
 
-
 ## Old reproducible compiler-cache eviction
 
 During exact damage-value qualification, disk space remained tight after archiving
@@ -2325,7 +2277,6 @@ This policy permits rebuilding older versions rather than retaining every compil
 cache entry; it does not delete source, module downloads, original assets, goldens,
 logs, binaries or qualification reports. No build was active during pruning.
 The bounded audit came from Luna; the primary reviewed and executed the cleanup.
-
 
 ## Batch all registered object updates together
 
@@ -2340,7 +2291,6 @@ covering the53rd name. Baseline and conversion281-root qualification are complet
 See UPDATE_REGISTRY.md. This reversible API/process choice follows standing user
 authorization for larger coherent batches with independent contracts.
 
-
 ## Preserve both initializer calling conventions
 
 Creation uses typed Go registry dispatch after normal object-template copying.
@@ -2353,7 +2303,6 @@ Monster/Shopkeeper share a C callback address but retain distinct data sizes, an
 both replaceable monster handlers remain resolved at invocation. All 208 roots per
 profile and fresh production/scenarios pass. This reversible design follows the
 standing authorization; see LIFECYCLE_REGISTRY.md for evidence and fixture corrections.
-
 
 ## Preserve collision argument and return conventions
 
@@ -2369,7 +2318,6 @@ The temporaryMagicMissile owner consumes an integer return and stays raw rather
 than receiving an invented result from a void API. Two damage-sound callbacks are
 also deferred for their own nil-default contract. These reversible scope decisions
 follow standing authorization. See COLLISION_REGISTRY.md for all qualification.
-
 
 ## Preserve distinct transfer and sound default contracts
 
@@ -2521,7 +2469,6 @@ expression. Keep an exact native helper or an explicit temporary where needed;
 string interning and subsequent reading must retain their original order too.
 This is a compatibility constraint, not a new game behavior.
 
-
 ## Native geometry/state boundaries and private wrappers
 
 Retire unused private Go wrappers when complete source/reference review proves
@@ -2536,7 +2483,6 @@ and point conversions; preserve raw word aliases and original ownership. Primary
 caught stale field selectors in a Luna scratch-array conversion before install.
 All frozen storage, complete root, production and gameplay qualification passes.
 See [GO_LAYOUT_BOUNDARIES.md](GO_LAYOUT_BOUNDARIES.md).
-
 
 ## Native record storage and fixture boundaries
 
@@ -2554,7 +2500,6 @@ record failed logs; resolve package names before future pruning. Frozen captures
 and root assertions remain unchanged. All completed-batch gates pass.
 See [GO_NATIVE_RECORD_STORAGE.md](GO_NATIVE_RECORD_STORAGE.md).
 
-
 ## Native owner calls and compiled constants
 
 Preserve legacy package-wide compiled constants even when root Go profile
@@ -2569,7 +2514,6 @@ three focused profiles, safe/static, fresh production/ABI, known-suite and headl
 save/load gates pass without changing frozen expectations. See
 [GO_NATIVE_OWNER_CONSTANTS.md](GO_NATIVE_OWNER_CONSTANTS.md).
 
-
 ## Object-state fixture identities and exports
 
 Retire the 37 object-state exports used only by fixture dispatch/address maps;
@@ -2583,7 +2527,6 @@ match and remain the acceptance boundary. Do not regenerate expectations to
 hide a difference. All conversion gates pass. See
 [OBJECT_STATE_OWNERS.md](OBJECT_STATE_OWNERS.md).
 
-
 ## Equipment, inventory and resource fixture routes
 
 Retire 61 wrappers whose remaining routes can use existing Go owners, preserving
@@ -2593,7 +2536,6 @@ as before. The retired functions have no fixture address registrations, so no
 identity reservation change is needed. Independent C modifier/drop/death observers
 remain. All three profiles and production gates pass without changing expectations.
 See [INVENTORY_RESOURCE_OWNERS.md](INVENTORY_RESOURCE_OWNERS.md).
-
 
 ## Shop/trade transport-only adapters
 
@@ -2605,7 +2547,6 @@ public cancel API and independent trade-pickup observer remain. The same frozen
 33-root profile selection and all production gates pass. See
 [SHOP_TRADE_OWNERS.md](SHOP_TRADE_OWNERS.md).
 
-
 ## Spell/reward fixture addresses
 
 Use raw addresses when probing function-map use: reward's normalized IDs overlap
@@ -2615,7 +2556,6 @@ with 13 spell and 12 reward reservations, keep nine live reward callbacks and th
 routes. Original raw map sizes vary in three records while frozen outputs and
 generated-ID counts agree. All converted gates pass without expectation changes.
 See [SPELL_REWARD_OWNERS.md](SPELL_REWARD_OWNERS.md).
-
 
 ## Map room/painting fixture dispatch
 
@@ -2628,7 +2568,6 @@ compilation. Pass the existing grid-config pointer directly to native Go. All
 89 roots in three profiles and production gates pass with unchanged expectations.
 See [MAP_ROOM_PAINT_OWNERS.md](MAP_ROOM_PAINT_OWNERS.md).
 
-
 ## Catalog/effect adapter retirement
 
 Retire eleven fixture-only production bridges and seven private C-typed wrappers;
@@ -2640,7 +2579,6 @@ lost. Add rain-orb creation boundary/failure/RNG contracts before conversion.
 Explicit int32 conversion preserves map-cycle C-int results. No candidate has an
 address registration, so identity reservations need no adjustment. All gates pass.
 See [CATALOG_EFFECT_OWNERS.md](CATALOG_EFFECT_OWNERS.md).
-
 
 ## Native collision identities and result dispatch
 
@@ -2657,7 +2595,6 @@ Chest fixtures deliberately reuse a collision owner as Death; register that
 fixture-only typed route explicitly rather than executing a native data address.
 See [COLLISION_IDENTITIES.md](COLLISION_IDENTITIES.md) for qualification and scope.
 
-
 ## Native death identities and equipment text
 
 Retire fourteen death C callback identities using distinct static Go slots and the
@@ -2668,7 +2605,6 @@ underlying string-interning helper remove the equipment death owner's remaining
 C type dependency without changing formatting or allocation behavior. Existing
 Glyph override coverage is reused; the new contract covers object/type storage
 and dispatch after GC. See [DEATH_IDENTITIES.md](DEATH_IDENTITIES.md).
-
 
 ## Native creation/init identities
 
@@ -2682,7 +2618,6 @@ byte extension. Gold accessor classification now follows the native registered
 key and has explicit signed/wraparound contracts. See
 [CREATE_INIT_IDENTITIES.md](CREATE_INIT_IDENTITIES.md).
 
-
 ## Native damage/sound identities and direct owners
 
 Retire thirteen registered C callback identities and fifteen adjacent wrappers
@@ -2693,7 +2628,6 @@ operation widths and first-NUL semantics. Reserve fifteen retired address entrie
 because map cardinality affects subsequent capture IDs; skip nil entries rather
 than identifying them. Independent C observers remain. See
 [DAMAGE_IDENTITIES.md](DAMAGE_IDENTITIES.md).
-
 
 ## Item callback identities and full Use results
 
@@ -2706,7 +2640,6 @@ integer widths. Also migrate the team-flag return caller found during review.
 This reversible shared API change was qualified with the full default port corpus.
 See [ITEM_IDENTITIES.md](ITEM_IDENTITIES.md).
 
-
 ## Transfer callback identities and adjacent wrappers
 
 Reuse the existing Go transfer registry for 28 native identities, retiring their C
@@ -2716,7 +2649,6 @@ semantics, actual serialization owners and all comparison/getter consumers. Add
 real invisible-light script-storage allocation and lifetime contracts. Remove the
 map-painting consumer's redundant C.int cast because its owner already returns
 int32; no width or arithmetic change. See [XFER_IDENTITIES.md](XFER_IDENTITIES.md).
-
 
 ## Object update callback identities
 
@@ -2747,7 +2679,6 @@ contracts confirm the owner ran and the secondary callback was suppressed.
 See [DRAWABLE_UPDATE_IDENTITIES.md](DRAWABLE_UPDATE_IDENTITIES.md) for qualification
 status, fixture correction and the expanded 28-wrapper scope.
 
-
 ## Monster callback identities
 
 Use a private legacy registry for the 26 strike/dying/dead table identities;
@@ -2774,7 +2705,6 @@ The map-start adapter uses a zeroed Go point after verifying its address never e
 the owner. These are reversible implementation choices within the existing 386 scope.
 See [PLAYER_ACTION_IDENTITIES.md](PLAYER_ACTION_IDENTITIES.md).
 
-
 ## Internal audio bridge identities
 
 Retain 13 distinct stream/device table identities, including the three currently
@@ -2788,7 +2718,6 @@ Primary restored the helper draft's omitted known-name zero fallback before inst
 and made the device-ready width explicit. These changes are reversible within the
 supported 386 target. See [AUDIO_BRIDGE_IDENTITIES.md](AUDIO_BRIDGE_IDENTITIES.md).
 
-
 ## UI meter callbacks and tooltip identities
 
 Use existing typed GUI event/draw functions for meter construction. A small
@@ -2800,7 +2729,6 @@ Include the two constructors and adjacent inventory weapon-draw bridge with thei
 callers to remove the complete connected C boundary. See
 [UI_METER_IDENTITIES.md](UI_METER_IDENTITIES.md).
 
-
 ## Inventory GUI interfaces and deferred quantity callback
 
 Migrate the 22 direct/GUI inventory bridges together with five private C-typed
@@ -2810,7 +2738,6 @@ layout, and request bytes keep uint16 narrowing. Five tooltips reuse the native
 GUI registry; eight fixture identities keep their indices. Keep the delayed
 quantity callback `sub_465CD0` for its owning dialog's follow-up, since that address
 is stored and called later. See [INVENTORY_GUI_IDENTITIES.md](INVENTORY_GUI_IDENTITIES.md).
-
 
 ## Quantity/shop/trade callback identities
 
@@ -2822,3 +2749,14 @@ tooltips reuse the existing registry. Retire the complete export-only files and
 connected empty cgo imports. The just-qualified exact source/environment provides
 the original baseline; all converted gates are rerun. See
 [QUANTITY_IDENTITIES.md](QUANTITY_IDENTITIES.md).
+
+## Window bridge retirement and raw state
+
+Retire 13 proven-unused GUI wrappers without replacements. Move two live inventory
+interfaces to native owners; keep four fixture-only interfaces in native fixture
+adapters/direct owner calls. Preserve raw offsets and sequential aliased output
+writes, including nil-query differences; guarded public GUI getters are not
+substitutes. Keep shared C window types/layout and unrelated private helpers.
+Original coverage reuses the exact qualified selection and adds seven existing
+roots run twice per profile; require the complete union after conversion. See
+[WINDOW_BRIDGES.md](WINDOW_BRIDGES.md).

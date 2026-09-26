@@ -24,8 +24,8 @@ helpers for their remaining users.
 
 The connected inventory input file's last C dependency after point migration is
 an integer cast in a nonzero word comparison. The equivalent native comparison
-allows that import to retire along with `client_ui_window.go`'s import. These
-expected counts require dependency discovery and build confirmation.
+allows that import to retire along with `client_ui_window.go`'s import.
+Dependency discovery and qualification confirmed both removals.
 
 ## Original baseline and qualification
 
@@ -41,14 +41,32 @@ bounds/ancestry, maximum ID ranges and aliased position outputs. Inventory, widg
 shop/trade, quickbar and other GUI contracts remain in the reused selection.
 After conversion require all selected roots in three profiles, safe/static, three
 production/ABI builds, exact known-suite comparison, two headless save/load runs
-and unchanged original asset hashes. No converted results are accepted yet.
+and unchanged original asset hashes. Converted results below are accepted.
 
 ## Delegation and review
 
-One Luna helper audited the 19 names and is drafting a bounded ignored overlay;
+One Luna helper audited the 19 names and drafted a bounded ignored overlay;
 primary owns reachability, source review and qualification. The two independent
 scans found 93 references across 13 files. Primary corrected the scout's claim
 that inventory input would retain other C calls, and that `gui_window.go` had
 another live C string helper; the actual remaining dependencies are described
 above. Shared C record types remain outside this batch. No measured usage savings
 are claimed.
+
+## Qualified conversion
+
+All 401 client / 398 server roots pass with exact original names and no
+failures/skips. Safe/static, three production/ABI builds, exact known-suite
+comparison, two headless save/load scenarios and all 1,654 original asset hashes
+pass on unchanged reviewed source. See [qualification](window-bridges-qualification.json).
+
+Exports fall 210→191; selected production cgo files fall 130/131→128/129.
+Headers remain 157 files / 2,947 physical lines: 19 prototypes, one unused macro
+and three blank lines retired. Embedded production C bodies remain 77; standalone
+production and test-reference C remain zero.
+
+Primary reviewed the eight-file overlay, every changed function, remaining symbol
+references and the unchanged C window record prefix. Raw offsets, sequential
+aliased writes, nil guards, strict ancestry, signed coordinates and text-pointer
+results are preserved. Pre-compile review corrected a stale fixture comment and
+removed an unused import. Root assertions and captures remain unchanged.

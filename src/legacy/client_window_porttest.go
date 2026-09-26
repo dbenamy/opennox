@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include "client__gui__window.h"
-#include "GAME2_1.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/client/noxrender"
@@ -14,25 +9,25 @@ import (
 	"unsafe"
 )
 
-// Exercises retained C entrypoints and native adapters for retired fixture-only bridges.
+// Exercises native window helpers and fixture adapters for retired C bridges.
 func PortTestWindowHelper(op int, w *gui.Window, a, b int, other unsafe.Pointer, flag int) (int, [2]uint32) {
 	p := (*nox_window)(w.C())
-	addr := C.int(uintptr(w.C()))
-	x, y := C.uint(0x13572468), C.uint(0x89abcdef)
+	addr := int32(uint32(uintptr(w.C())))
+	x, y := uint32(0x13572468), uint32(0x89abcdef)
 	ret := 0
 	switch op {
 	case 0:
-		ret = int(C.nox_gui_getWindowOffs_46AA20(p, &x, &y))
+		ret = int(portUIWindow_getWindowOffs(w, &x, &y))
 	case 1:
 		if flag != 0 {
-			ret = int(C.nox_client_wndGetPosition_46AA60(p, &x, &x))
+			ret = int(portUIWindow_getPosition(w, &x, &x))
 		} else {
-			ret = int(C.nox_client_wndGetPosition_46AA60(p, &x, &y))
+			ret = int(portUIWindow_getPosition(w, &x, &y))
 		}
 	case 2:
 		ret = int(portUIWindow_nox_window_get_size(p, (*int32)(unsafe.Pointer(&x)), (*int32)(unsafe.Pointer(&y))))
 	case 3:
-		if C.nox_xxx_wndPointInWnd_46AAB0((*C.uint)(w.C()), C.int(a), C.int(b)) {
+		if uiWindowPointIn(w, int32(a), int32(b)) {
 			ret = 1
 		}
 	case 4:
@@ -46,7 +41,7 @@ func PortTestWindowHelper(op int, w *gui.Window, a, b int, other unsafe.Pointer,
 	case 8:
 		ret = int(portUIWindow_nox_xxx_wndGetFlags_46ADA0(int32(addr)))
 	case 9:
-		ret = int(C.nox_window_is_child(p, (*nox_window)(other)))
+		ret = bool2int(uiWindowIsChild(w, (*gui.Window)(other)))
 	case 10:
 		ret = int(portUIWindow_nox_xxx_wnd_46B280(int32(addr), int32(uintptr(other))))
 	case 11:
@@ -60,9 +55,9 @@ func PortTestWindowHelper(op int, w *gui.Window, a, b int, other unsafe.Pointer,
 	case 15:
 		ret = int(portUIWindow_sub_46AEC0(int32(addr), int32(uintptr(other))))
 	case 16:
-		ret = int(C.sub_46AEE0(addr, C.int(uintptr(other))))
+		ret = int(portUIWindow_func94(addr, uint32(uintptr(other))))
 	case 17:
-		ret = int(uintptr(unsafe.Pointer(C.sub_46AF00(w.C()))))
+		ret = int(uintptr(uiWindowText(w)))
 	case 18:
 		ret = int(uintptr(uiWindowFont(w)))
 	case 19:
@@ -86,6 +81,38 @@ func PortTestWindowHelper(op int, w *gui.Window, a, b int, other unsafe.Pointer,
 }
 
 // Native adapters preserve the retired export boundaries, including output write order.
+func portUIWindow_getWindowOffs(w *gui.Window, x, y *uint32) int32 {
+	if w == nil {
+		*x = 0
+		*y = 0
+		return -2
+	}
+	*x = uint32(w.Off.X)
+	*y = uint32(w.Off.Y)
+	return 0
+}
+
+func portUIWindow_getPosition(w *gui.Window, x, y *uint32) int32 {
+	if w == nil {
+		return -2
+	}
+	*x = uint32(w.Off.X)
+	*y = uint32(w.Off.Y)
+	for p := w.Parent(); p != nil; p = p.Parent() {
+		*x += uint32(p.Off.X)
+		*y += uint32(p.Off.Y)
+	}
+	return 0
+}
+
+func portUIWindow_func94(ptr int32, text uint32) int32 {
+	w := (*gui.Window)(unsafe.Pointer(uintptr(uint32(ptr))))
+	if w != nil {
+		w.Func94(gui.AsWindowEvent(16385, uintptr(text), 0))
+	}
+	return 0
+}
+
 func portUIWindow_nox_window_get_size(w *nox_window, x, y *int32) int32 {
 	if w == nil {
 		*x = 0

@@ -145,7 +145,7 @@ func uiInventoryCancelDrag() int {
 	}
 	parent := (*gui.Window)(unsafe.Pointer(legacyGlobals.dword_5d4594_1062452))
 	captured := GetClient().Cli().GUI.Captured()
-	if nox_window_is_child((*nox_window)(parent.C()), (*nox_window)(captured.C())) == 1 {
+	if uiWindowIsChild(parent, captured) {
 		captured.Capture(false)
 	}
 	return ret

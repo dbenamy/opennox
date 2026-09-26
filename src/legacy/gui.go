@@ -44,31 +44,6 @@ func nox_client_onClientStatusA(v int) { Nox_client_onClientStatusA(v) }
 
 func nox_client_setRenderGUI(v int) { Nox_client_setRenderGUI(v) }
 
-//export nox_xxx_windowFocus_46B500
-func nox_xxx_windowFocus_46B500(win *nox_window) int {
-	GetClient().Cli().GUI.Focus(asWindow(win))
-	return 0
-}
-
-//export nox_xxx_wndSetCaptureMain_46ADC0
-func nox_xxx_wndSetCaptureMain_46ADC0(win *nox_window) int {
-	if !asWindow(win).Capture(true) {
-		return -4
-	}
-	return 0
-}
-
-//export nox_xxx_wndClearCaptureMain_46ADE0
-func nox_xxx_wndClearCaptureMain_46ADE0(win *nox_window) int {
-	asWindow(win).Capture(false)
-	return 0
-}
-
-//export nox_xxx_wndGetCaptureMain_46AE00
-func nox_xxx_wndGetCaptureMain_46AE00() *nox_window {
-	return (*nox_window)(GetClient().Cli().GUI.Captured().C())
-}
-
 func nox_color_rgb_4344A0(r, g, b int) C.uint32_t {
 	return C.uint32_t(noxcolor.RGB5551Color(byte(r), byte(g), byte(b)).Color32())
 }

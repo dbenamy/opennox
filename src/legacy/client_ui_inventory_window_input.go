@@ -1,15 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1_2.h"
-#include "GAME2.h"
-#include "GAME2_1.h"
-#include "GAME2_2.h"
-#include "GAME2_3.h"
-#include "GAME3_1.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -89,7 +79,7 @@ func uiInventoryDropQuantity(pos image.Point, code, typ uint32, count int) {
 func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 	screen := uiInventoryPackedPoint(a)
 	pos := screen.Sub(uiWindowPosition(uiInventoryMainWindow()))
-	if C.int(*bookWord(1047520)) != 0 || memmap.Uint8(0x5D4594, 1049868) != 2 {
+	if *bookWord(1047520) != 0 || memmap.Uint8(0x5D4594, 1049868) != 2 {
 		return 1
 	}
 	hit := func(off uintptr) bool { return uiInventoryHitRect(pos, off) }
@@ -205,7 +195,7 @@ func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 			return 1
 		}
 		defer uiInventoryFinishDrag()
-		if !bool(nox_xxx_wndPointInWnd_46AAB0((*C.uint)(uiInventoryMainWindow().C()), C.int(screen.X), C.int(screen.Y))) || hit(136384) || hit(136400) {
+		if !uiWindowPointIn(uiInventoryMainWindow(), int32(screen.X), int32(screen.Y)) || hit(136384) || hit(136400) {
 			world := Sub_473970(screen)
 			if dword_5d4594_1049856 == 1 {
 				if uiTradeActive() == 0 {
@@ -345,7 +335,7 @@ func uiInventoryAlternateEvents(w *gui.Window, event int, a, b uintptr) int {
 		dr := uiInventoryDragged()
 		if dr != nil {
 			pos := uiInventoryPackedPoint(a)
-			inside := bool(nox_xxx_wndPointInWnd_46AAB0((*C.uint)(uiInventoryMainWindow().C()), C.int(pos.X), C.int(pos.Y)))
+			inside := uiWindowPointIn(uiInventoryMainWindow(), int32(pos.X), int32(pos.Y))
 			if inside {
 				if dword_5d4594_1049856 != 0 {
 					if uint32(dr.Class())&0x1001000 != 0 {

@@ -355,6 +355,7 @@ target build selection and linker evidence.
 | Retire 20 UI meter/constructor/inventory-draw exports; selected client/server cgo 146/147→142/143, exports 262→242 | 0 | 0 | 0 | 0 |
 | Retire 22 inventory GUI exports and five private C-typed interfaces; selected client/server cgo 142/143→136/137, exports 242→220 | 0 | 0 | 0 | 0 |
 | Retire ten quantity/shop/trade exports and private trade-add interface; selected client/server cgo 136/137→130/131, exports 220→210 | 0 | 0 | 0 | 0 |
+| Retire 19 window exports (13 unused wrappers); selected client/server cgo 130/131→128/129, exports 210→191 | 0 | 0 | 0 | 0 |
 
 The 33 checksum test-reference lines were retired after differential validation;
 their original source remains recoverable at `66fa7bd4`.

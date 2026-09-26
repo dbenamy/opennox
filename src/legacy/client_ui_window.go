@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/client/noxrender"
@@ -78,37 +74,6 @@ func uiWindowChildAt(w *gui.Window, x, y int) *gui.Window {
 	}
 }
 
-//export nox_gui_getWindowOffs_46AA20
-func nox_gui_getWindowOffs_46AA20(w *nox_window, x, y *C.uint) C.int {
-	if w == nil {
-		*x = 0
-		*y = 0
-		return -2
-	}
-	*x = C.uint(asWindow(w).Off.X)
-	*y = C.uint(asWindow(w).Off.Y)
-	return 0
-}
-
-//export nox_client_wndGetPosition_46AA60
-func nox_client_wndGetPosition_46AA60(w *nox_window, x, y *C.uint) C.int {
-	if w == nil {
-		return -2
-	}
-	*x = C.uint(asWindow(w).Off.X)
-	*y = C.uint(asWindow(w).Off.Y)
-	for i := asWindow(w).Parent(); i != nil; i = i.Parent() {
-		*x += C.uint(i.Off.X)
-		*y += C.uint(i.Off.Y)
-	}
-	return 0
-}
-
-//export nox_xxx_wndPointInWnd_46AAB0
-func nox_xxx_wndPointInWnd_46AAB0(w *C.uint, x, y C.int) C.bool {
-	return C.bool(uiWindowPointIn((*gui.Window)(unsafe.Pointer(w)), int32(x), int32(y)))
-}
-
 func uiWindowPointIn(w *gui.Window, x, y int32) bool {
 	p, size := image.Point{}, image.Point{}
 	if w != nil {
@@ -117,19 +82,6 @@ func uiWindowPointIn(w *gui.Window, x, y int32) bool {
 		size = win.SizeVal
 	}
 	return int(x) >= p.X && int(x) <= p.X+size.X && int(y) >= p.Y && int(y) <= p.Y+size.Y
-}
-
-//export nox_window_is_child
-func nox_window_is_child(parent, child *nox_window) C.int {
-	if parent == nil || child == nil {
-		return 0
-	}
-	for c := asWindow(child).Parent(); c != nil; c = c.Parent() {
-		if c == asWindow(parent) {
-			return 1
-		}
-	}
-	return 0
 }
 
 func uiWindowSetBackgroundImage(ptr, img uint32) int32 {
@@ -150,18 +102,6 @@ func uiWindowSetSelectedImage(ptr, img uint32) int32 {
 	return 0
 }
 
-//export sub_46AEE0
-func sub_46AEE0(ptr, text C.int) C.int {
-	w := (*gui.Window)(unsafe.Pointer(uintptr(uint32(ptr))))
-	if w != nil {
-		w.Func94(gui.AsWindowEvent(16385, uintptr(uint32(text)), 0))
-	}
-	return 0
-}
-
-//export sub_46AF00
-func sub_46AF00(ptr unsafe.Pointer) *wchar2_t { return (*wchar2_t)(uiWindowText((*gui.Window)(ptr))) }
-
 func uiWindowFont(w *gui.Window) unsafe.Pointer {
 	ptr := w.C()
 	if ptr == nil {
@@ -180,4 +120,16 @@ func uiWindowHidden(w *gui.Window) int {
 		}
 	}
 	return 0
+}
+
+func uiWindowIsChild(parent, child *gui.Window) bool {
+	if parent == nil || child == nil {
+		return false
+	}
+	for p := child.Parent(); p != nil; p = p.Parent() {
+		if p == parent {
+			return true
+		}
+	}
+	return false
 }
