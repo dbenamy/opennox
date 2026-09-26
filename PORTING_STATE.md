@@ -85,10 +85,11 @@ is not compilation or qualification. The helper's external-review draft is not
 accepted evidence: its suggestion that go-gl is residue is contradicted by the
 actual dependency graph (`libs/client/seat/opengl` imports it).
 
-Inventory GUI conversion is qualified. Next audit the quantity dialog's stored
-callback and all producers together, including inventory `sub_465CD0`. Retain
-foreign fallback until all live users have migrated, and cover accept/cancel,
-re-entry and callback lifetime. No later conversion is installed or qualified.
+Inventory GUI conversion is qualified and pushed as `785c2d54`. The next connected
+batch covers quantity-dialog callbacks and shop/trade interfaces; its original
+baseline reuses that exact qualified source and environment. See
+[QUANTITY_IDENTITIES.md](docs/porting/QUANTITY_IDENTITIES.md). No quantity conversion
+is installed or qualified yet. Preserve foreign fallback and callback lifetime.
 
 The earlier 25-export object-state proposal under
 `build/port-after-go-only-exports/` was rejected because it omitted fixture C calls.
