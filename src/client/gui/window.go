@@ -2,6 +2,7 @@ package gui
 
 import (
 	"image"
+	"runtime"
 	"unsafe"
 
 	noxcolor "github.com/opennox/libs/color"
@@ -426,7 +427,13 @@ func (win *Window) TooltipFunc(a1 uintptr) {
 	if win.TooltipFuncPtr == nil || uintptr(win.TooltipFuncPtr) == deadWord {
 		return
 	}
+	if fn := tooltipCallbacksGo[win.TooltipFuncPtr]; fn != nil {
+		fn(win, win.DrawData(), a1)
+		runtime.KeepAlive(win)
+		return
+	}
 	ccall.CallVoidUPtr3(win.TooltipFuncPtr, uintptr(win.C()), uintptr(win.DrawData().C()), a1)
+	runtime.KeepAlive(win)
 }
 
 func (win *Window) Focus() {

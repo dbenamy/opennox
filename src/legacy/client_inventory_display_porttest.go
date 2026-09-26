@@ -13,6 +13,8 @@ import "C"
 import (
 	"math"
 	"unsafe"
+
+	"github.com/opennox/opennox/v1/client/gui"
 )
 
 // PortTestInventoryDisplayModifierFunctions exposes identities of existing
@@ -45,7 +47,7 @@ func PortTestInventoryDisplay(op int, a, b, c uintptr) uint64 {
 	case 8:
 		return uint64(uint32(nox_xxx_guiDrawInventoryTray_4643B0(int32(a), int32(b))))
 	case 9:
-		return uint64(uint32(C.sub_465D50_draw(C.int(a))))
+		return uint64(uint32(uiInventoryCurrentWeaponDraw((*gui.Window)(unsafe.Pointer(uintptr(uint32(a)))))))
 	case 10:
 		return uint64(uint32(C.nox_xxx_inventoryDrawProc_466580((*C.uint32_t)(unsafe.Pointer(a)))))
 	case 11:

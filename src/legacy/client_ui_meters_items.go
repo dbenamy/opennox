@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2_1.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/client/keybind"
 	noxcolor "github.com/opennox/libs/color"
@@ -70,11 +64,6 @@ func uiMeterPotionDraw(w *gui.Window) int {
 	return 1
 }
 
-//export nox_xxx_guiBottleSlotDrawFn_471A80
-func nox_xxx_guiBottleSlotDrawFn_471A80(p *C.uint32_t) int {
-	return uiMeterPotionDraw((*gui.Window)(unsafe.Pointer(p)))
-}
-
 func uiMeterInputResult(event int) int {
 	if event == 8 || event == 12 || event == 16 {
 		return 0
@@ -82,7 +71,6 @@ func uiMeterInputResult(event int) int {
 	return 1
 }
 
-//export sub_470E90
 func sub_470E90(window, event int) int {
 	if event == 5 {
 		uiInventoryAlterWeapon()
@@ -90,7 +78,6 @@ func sub_470E90(window, event int) int {
 	return uiMeterInputResult(event)
 }
 
-//export nox_xxx_guiBottleSlotProc_471B90
 func nox_xxx_guiBottleSlotProc_471B90(window, event int) int {
 	if event == 5 {
 		w := (*gui.Window)(unsafe.Pointer(uintptr(uint32(window))))
@@ -101,7 +88,6 @@ func nox_xxx_guiBottleSlotProc_471B90(window, event int) int {
 	return uiMeterInputResult(event)
 }
 
-//export nox_xxx_guiHealthManaTubeProc_472100
 func nox_xxx_guiHealthManaTubeProc_472100(window, event int) int {
 	if event == 7 {
 		old := uint32(dword_5d4594_1096252)
@@ -141,9 +127,6 @@ func uiMeterBindings() unsafe.Pointer {
 	}
 	return player
 }
-
-//export sub_472280
-func sub_472280() *C.wchar2_t { return (*C.wchar2_t)(uiMeterBindings()) }
 
 func uiMeterRefreshPotions() uintptr {
 	count := func(typ uint32) uint16 { return uint16(uiInventoryTypeCount(typ)) }
@@ -208,6 +191,3 @@ func uiMeterWeaponTooltip() int {
 	uiCursorTooltip(&dst[0])
 	return 1
 }
-
-//export sub_4710B0
-func sub_4710B0() int { return uiMeterWeaponTooltip() }

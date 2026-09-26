@@ -2787,3 +2787,15 @@ Fixture captures keep signed32/signed8 extension to64 and zero-extended pointer 
 Primary restored the helper draft's omitted known-name zero fallback before install
 and made the device-ready width explicit. These changes are reversible within the
 supported 386 target. See [AUDIO_BRIDGE_IDENTITIES.md](AUDIO_BRIDGE_IDENTITIES.md).
+
+
+## UI meter callbacks and tooltip identities
+
+Use existing typed GUI event/draw functions for meter construction. A small
+initialization-only tooltip identity registry preserves the stored callback word,
+Window layout, nil/dead guards and foreign three-word void fallback. Reject invalid
+or duplicate registrations. Preserve event argument evaluation and nil/nonzero
+response conventions, stable fixture callback IDs and unchanged owner algorithms.
+Include the two constructors and adjacent inventory weapon-draw bridge with their
+callers to remove the complete connected C boundary. See
+[UI_METER_IDENTITIES.md](UI_METER_IDENTITIES.md).

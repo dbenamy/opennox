@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -82,10 +77,8 @@ func nox_xxx_cliSetTotalHealth_470C80(current, maximum int) int {
 
 func sub_470CB0(current int) int { uiMeters()[0].Current = uint32(current); return current }
 
-//export sub_470CC0
 func sub_470CC0() int { return int(uiMeters()[0].Current) }
 
-//export sub_470CD0
 func sub_470CD0() int { return int(uiMeters()[0].Maximum) }
 
 func nox_xxx_cliSetManaAndMax_470CE0(current, maximum int) int {
@@ -105,10 +98,8 @@ func sub_470D20(current, maximum int) int {
 	return current
 }
 
-//export sub_470D70
 func sub_470D70() { uiMeterHide(uiMeters()[5].Window, true); uiMeterHide(uiMeters()[6].Window, true) }
 
-//export sub_470D90
 func sub_470D90(current, maximum int) int {
 	m := uiMeters()
 	uiMeterHide(m[5].Window, false)
@@ -118,7 +109,6 @@ func sub_470D90(current, maximum int) int {
 	return current
 }
 
-//export nox_xxx_cliGetMana_470DD0
 func nox_xxx_cliGetMana_470DD0() int { return int(uiMeters()[1].Current) }
 func uiMeterHeartbeat() int {
 	ret := uint32(nox_player_netCode_85319C)
@@ -154,7 +144,6 @@ func uiMeterAdvanceCharge() int {
 	return int(n)
 }
 
-//export sub_4721A0
 func sub_4721A0(show int) int {
 	return uiMeterHide((*gui.Window)(unsafe.Pointer(uintptr(dword_5d4594_1090276))), show == 0)
 }

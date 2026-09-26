@@ -47,9 +47,7 @@ func sub_4625D0(p *C.uint32_t) C.int {
 	return 1
 }
 
-//export sub_465D50_draw
-func sub_465D50_draw(p C.int) C.int {
-	w := (*gui.Window)(unsafe.Pointer(uintptr(uint32(p))))
+func uiInventoryCurrentWeaponDraw(w *gui.Window) int {
 	pos := uiWindowPosition(w.Parent())
 	if dr := uiInventoryCurrentWeapon(); dr != nil {
 		uiInventoryDrawItem(dr, pos.Add(image.Pt(51, 81)))

@@ -4,41 +4,39 @@ This file is the current resume checkpoint, not a chronological log. Replace
 superseded status when updating it. The workflow and delegation rules live in
 [PORT.md](PORT.md); detailed evidence belongs in the linked batch reports.
 
-## Status: paused at helper usage limit; original UI baseline saved
+## Status: resumed; internal C-glue removal
 
 **Progress: 142,665/142,665 original standalone C lines ported or retired;
-internal glue: 317/463 client cgo files eliminated on net (146 remain;
-server: 316/463 eliminated, 147 remain).**
-Selected legacy C export bridges: **1,628/1,890 retired (262 remain)**.
+internal glue: 321/463 client cgo files eliminated on net (142 remain;
+server: 320/463 eliminated, 143 remain).**
+Selected legacy C export bridges: **1,648/1,890 retired (242 remain)**.
 
 These are selected project files in Linux 386 production profiles, not equal
 units of effort. Three project packages directly use cgo; 77 embedded C callback
 bodies remain. Production and test-reference standalone `.c` files both remain zero.
 
-Latest qualified chunk removes 26 internal audio forwarding exports and replaces
-13 stream/device table addresses plus three event callbacks with Go identities.
-Mutable hooks, signed results, callback conventions and foreign callback fallback
-are preserved. External audio backends, owner algorithms, layouts and assertions
-are unchanged. See [AUDIO_BRIDGE_IDENTITIES.md](docs/porting/AUDIO_BRIDGE_IDENTITIES.md).
+Latest qualified chunk removes 20 meter/constructor/inventory-draw exports.
+Meter events and drawing use existing typed Go callback routes; tooltip dispatch
+recognizes native identities while preserving foreign fallback and Window layout.
+Existing owner algorithms, state/pixel captures and external backends are unchanged.
+See [UI_METER_IDENTITIES.md](docs/porting/UI_METER_IDENTITIES.md).
 
-Paused after Luna reached its usage limit during the UI meter scout. Primary
-finished the original baseline: 363 client/360 server roots pass and the two new tooltip
-contracts pass twice per profile. No UI production conversion is installed.
-On resume, continue the documented chunk/qualification/commit/push workflow;
-stop only at the milestone, usage limits or a substantial question.
+Continue chunk-by-chunk with one Luna helper, primary review, qualification,
+documentation, commit/push and recorded reversible decisions. Stop at the milestone,
+usage limits or a substantial question.
 
-Latest qualified artifacts: `build/port-audio-bridge-identities/`.
+Latest qualified artifacts: `build/port-ui-meter-identities/`.
 
 ## What remains
 
-Counts below describe the qualified audio bridge conversion. Zero `.c` lines
+Counts below describe the qualified UI meter conversion. Zero `.c` lines
 is not a count of all C dependencies or remaining engineering effort.
 
 | Area | Remaining work or dependency |
 | --- | --- |
 | Embedded C callback glue | 77 production function bodies in Go preambles: 76 generic function-pointer dispatchers and one specialized adapter. |
 | Callback routes | Remaining Go owners still use C-compatible addresses. Continue migrating identities and every field/alias consumer before removing shared raw fallbacks. |
-| Declarations and C types | 157 tracked headers / 3,024 physical lines; client profiles select 146 cgo files and server selects 147 in three project packages (alloc, ccall, legacy). These are mostly interface/layout machinery, not unported algorithms. |
+| Declarations and C types | 157 tracked headers / 3,002 physical lines; client profiles select 142 cgo files and server selects 143 in three project packages (alloc, ccall, legacy). These are mostly interface/layout machinery, not unported algorithms. |
 | Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Ownership/lifetime work remains behind the centralized allocator. |
 | External libraries | SDL2, OpenGL, OpenAL and similar native dependencies/bindings stay for this phase; their future is a subsequent discussion. |
 | Portability and release validation | Qualified target is Linux 386/SSE2 with cgo. The complete engine is not qualified as cgo-free, 64-bit, native macOS or browser/WebAssembly. Physical display and audible playback remain manual checks. |
@@ -50,23 +48,23 @@ users are migrated; test-only C observers separately qualify that boundary.
 
 ## Latest qualification and evidence
 
-- All 130 affected roots pass in default/server/highres with exact original names
-  and no failures/skips. New original C hook/table and slot-address contracts
-  passed twice per profile before conversion; baseline is `403efa06`.
-- Safe/static and three production/ABI checks pass; all 26 retired exports absent.
+- All 365 client / 362 server affected roots pass without failures/skips. This is
+  the original 363/360 baseline plus two new native callback contracts.
+  Original installed-tooltip and foreign ABI contracts passed twice per profile
+  before conversion; baseline is `4792e80b`. Three client-only tests require !server.
+- Safe/static and three production/ABI checks pass; all 20 retired exports absent.
 - Fresh preflight and final headless character creation with explicit save/load/
   resume pass on the same final production binary.
 - Full asset suite matches known results: 304 failure events; 17 passing, two
   failing and 32 skipped packages. All 1,654 original asset hashes are unchanged.
-- Accepted phases share source fingerprints; all 14 changed source paths match
-  primary review. Existing independent assertions/captures remain unchanged.
-- Earlier player-action `1ca13c2a` passed 565 affected roots per profile. Last full
-  default corpus was drawable-update `024b2632`: 2,461 passes and one established
-  prerequisite skip among 2,462 roots. Those are earlier-source results; this
-  callback-interface batch uses affected coverage plus production gates.
+- Accepted phases share source fingerprints and primary-reviewed changes.
+  Existing independent assertions and pixel/state captures remain unchanged.
+- Last full default corpus was drawable-update `024b2632`: 2,461 passes and one
+  established prerequisite skip among 2,462 roots. That is an earlier-source result;
+  this callback-interface batch uses affected coverage plus production gates.
 
-Report: [AUDIO_BRIDGE_IDENTITIES.md](docs/porting/AUDIO_BRIDGE_IDENTITIES.md).
-Evidence: [qualification](docs/porting/audio-bridge-identities-qualification.json).
+Report: [UI_METER_IDENTITIES.md](docs/porting/UI_METER_IDENTITIES.md).
+Evidence: [qualification](docs/porting/ui-meter-identities-qualification.json).
 Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expected-suite.jsonl).
 
 ## Goal, next work and open review items
@@ -79,7 +77,7 @@ removal order and completion criteria. Client rendering/audio backend replacemen
 is outside this phase.
 
 The dependency inventory tool is `tools/porting/cgo_inventory.py`; the current
-qualified inventory is [audio-bridge-identities-inventory-after.json](docs/porting/audio-bridge-identities-inventory-after.json).
+qualified inventory is [ui-meter-identities-inventory-after.json](docs/porting/ui-meter-identities-inventory-after.json).
 The original phase baseline is under `build/port-cgo-leaves/inventory-before/`.
 The completed leaf cleanup leaves three project packages directly using cgo in
 all profiles, plus OpenGL/SDL2/OpenAL bindings in the clients. Metadata discovery
@@ -87,20 +85,10 @@ is not compilation or qualification. The helper's external-review draft is not
 accepted evidence: its suggestion that go-gl is residue is contradicted by the
 actual dependency graph (`libs/client/seat/opengl` imports it).
 
-Audio bridge conversion is qualified and pushed as `9eac418e`. The next UI meter
-batch has an accepted original-only baseline: 363 client/360 server roots, including
-new installed-tooltip and foreign-callback contracts repeated per profile. Production
-source is identical to the qualified audio source; only two test files were added.
-See [UI_METER_IDENTITIES.md](docs/porting/UI_METER_IDENTITIES.md) and
-[original baseline](docs/porting/ui-meter-identities-baseline.json).
-
-Next: finish scope/caller review (17 meter exports plus two constructors and the
-adjacent inventory draw bridge), choose the narrow native tooltip route, then
-prepare/review the conversion and requalify. Existing typed event/draw support can
-be reused. Preserve Window layout, foreign fallback, callback capture IDs and
-frozen state/pixel assertions. No UI conversion overlay exists. The partial Luna
-scout under `build/port-ui-meter-bridge-scout-20260925/` is not acceptance evidence;
-its old Git-head label must be checked against its actual source hashes.
+UI meter conversion is qualified. Continue with the next connected internal GUI
+callback/interface family from actual callers. Reuse the native tooltip registry
+where appropriate, while auditing all field/alias consumers and fixture identities.
+External native backends remain outside scope. No later conversion is qualified.
 The earlier 25-export object-state proposal under
 `build/port-after-go-only-exports/` was rejected because it omitted fixture C calls.
 The qualified 37-export batch supersedes it with a complete caller/identity audit.
@@ -126,7 +114,7 @@ The current Go toolchain is `/usr/lib/go-1.26/bin`. Follow the
 [build environment instructions](PORT.md#build-and-test-environment), including
 sourcing `build/baseline/env.sh` in every Go shell.
 
-Latest local artifacts are under `build/port-audio-bridge-identities/`:
+Latest local artifacts are under `build/port-ui-meter-identities/`:
 `contracts/`, `preview/`, `safe/opennox-safe`, and
 `production/production/bin/{opennox,opennox-hd,opennox-server}`.
 Source, tests, reports and qualification metadata are committed; ignored local
@@ -140,7 +128,10 @@ do not rerun them or infer deletion safety from age alone.
 
 | Artifact | Recovery or current location |
 | --- | --- |
-| Current original UI meter baseline | Retained under `build/port-ui-meter-identities/original-profiles/`; 363 client/360 server roots plus separate-process repeats in `repeat-*.jsonl`. Production remains audio `9eac418e`. Source/report/test selection are committed; local binaries/logs can be rebuilt. |
+| UI meter preview/final duplicate assets | Removed 1,654 verified copies per scenario (559,853,568 / 559,964,160 allocated bytes). Originals, saves/results remain. Restore using `python3 build/port-artifact-cleanup/restore-recent-scenario.py` with `build/baseline/runs/ui-meter-identities-preview-save/deduplicated-assets.json` or `build/baseline/runs/ui-meter-identities-save/deduplicated-assets.json`. |
+| Obsolete pre-qualified-audio cache | Removed nine unused project archives predating `9eac418e` (421,228,544 allocated bytes), after hash/stat/source-family and host-use checks. Current UI baseline caches, binaries, source and assets preserved at cleanup. Evidence: `build/port-ui-meter-identities/cache-before-conversion/`. |
+| Superseded audio and original UI test binaries | Removed six source/hash/host-verified executables (402,395,136 allocated bytes), retaining current converted UI contract binaries. Rebuild audio `9eac418e` or original UI `4792e80b` normally; source/reports/logs remain. Evidence: `build/port-ui-meter-identities/old-tests-cleanup-{approved.json,deleted.jsonl}`. |
+| Original UI meter baseline | Committed as `4792e80b`; 363 client/360 server roots plus separate-process repeats. Records/logs remain under `build/port-ui-meter-identities/`; executable retention follows the superseded-binary row above. |
 | Obsolete pre-original-audio cache | Removed 14 unused root/legacy archives predating `403efa06`, reclaiming 757,334,016 allocated bytes after source-family/hash/stat and host-use checks. Current audio caches/binaries, all source and assets preserved. Evidence: `build/port-ui-meter-identities/cache-before-meters/`. Cleanup script consumed. |
 | Superseded list production/safe and older preview binaries | Removed four list production/safe executables (188,317,696 allocated bytes) after current audio builds/ABI and host-use checks, plus three monster/player/list preview executables (143,073,280 bytes) after source/hash/replacement checks. All logs/reports/source remain; rebuild the recorded revisions normally. Current audio production/safe/preview retained. Evidence: `build/port-audio-bridge-identities/old-{production,preview}-cleanup-{approved.json,deleted.jsonl}`. |
 | Audio preview/final duplicate assets | Removed 1,654 verified copies per scenario (559,976,448 / 560,005,120 allocated bytes). Originals, saves/results remain. Restore using `python3 build/port-artifact-cleanup/restore-recent-scenario.py` with `build/baseline/runs/audio-bridge-identities-preview-save/deduplicated-assets.json` or `build/baseline/runs/audio-bridge-identities-save/deduplicated-assets.json`. |
@@ -197,7 +188,7 @@ do not rerun them or infer deletion safety from age alone.
 | Completed creation/init scenario assets | Removed 1,654 SHA256-identical original-asset duplicates after host-use checks; 559,972,352 allocated bytes reclaimed. Originals, saves/results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/create-init-identities-save/deduplicated-assets.json`. Plan/result: `build/port-post-create-init-cleanup/`. |
 | Superseded collision/death qualified binaries | Removed 14 test/safe/production executables after exact committed-source, replacement/hash and host-use checks; 786,751,488 allocated bytes reclaimed. Rebuild qualified revisions `170b594a` and `e7ca9d31` using retained commands. Source, original baseline binaries, logs, manifests and current create/init and damage outputs remain. Plan/journal: `build/port-item-identities/cleanup-production-{approved.json,deleted.jsonl}`. |
 | Obsolete pre-audio project cache | Removed 21 hash/stat-verified root/legacy Linux 386 archives older than original audio baseline `9f6b2b46`, after host-use checks; 1,100,709,888 allocated bytes reclaimed. Newer audio caches, all source/assets/binaries remain. Rebuild normally. Plan/journal: `build/port-after-audio/cache-luna/cache-cleanup-{approved.json,deleted.jsonl}`. |
-| Current qualified production/safe binaries | Retained under `build/port-audio-bridge-identities/`; superseded outputs removed as recorded below. |
+| Current qualified production/safe binaries | Retained under `build/port-ui-meter-identities/`; superseded outputs removed as recorded below. |
 | Superseded UI-fixture binaries | Removed seven verified test/safe/production executables after committed audio replacement and host-use checks; 390,643,712 allocated bytes reclaimed. Rebuild revision `3d47a346` using retained commands/source maps. Logs/manifests and current audio replacements remain. Plan/journal: `build/port-audio-stream-callbacks/binary-cleanup-{approved.json,deleted.jsonl}`. |
 | Completed audio-stream scenario assets | Removed 1,654 verified original-asset duplicates; 559,931,392 allocated bytes reclaimed. Originals, saves and results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/audio-stream-callbacks-save/deduplicated-assets.json`. Plan/result: `build/port-post-audio-stream-cleanup/`. |
 | Superseded modifier/server-fixture/duration/update binaries | Removed 28 verified test/safe/production executables after source/replacement hashes and host-use checks; 1,567,293,440 allocated bytes reclaimed. Rebuild qualified revisions `99b65896`, `a798ad1c`, `d5d80c42`, `a8d89bda` using retained commands and source maps. Current UI replacements, old logs/manifests and baseline evidence remain. Journals: `build/port-after-client-ui/binary-cleanup-deleted.jsonl` and `binary-cleanup-addendum-deleted.jsonl`. |

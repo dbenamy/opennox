@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1_2.h"
-#include "GAME2_1.h"
-*/
-import "C"
-
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/opennox/v1/client/gui"
@@ -48,9 +41,6 @@ func uiMeterLabel(w *gui.Window) int {
 	return 1
 }
 
-//export sub_471450
-func sub_471450(p *C.uint32_t) int { return uiMeterLabel((*gui.Window)(unsafe.Pointer(p))) }
-
 func uiMeterMiniBar(w *gui.Window) int {
 	index := int(uintptr(w.WidgetData))
 	m := &uiMeters()[index]
@@ -79,11 +69,6 @@ func uiMeterMiniBar(w *gui.Window) int {
 	}
 	nox_client_drawBorderLines_49CC70(x-1, y-1, 4, 50)
 	return 1
-}
-
-//export nox_xxx_drawHealthManaBar_471C00
-func nox_xxx_drawHealthManaBar_471C00(p int) int {
-	return uiMeterMiniBar((*gui.Window)(unsafe.Pointer(uintptr(uint32(p)))))
 }
 
 type uiMeterBubble struct{ X, Y, Size, Speed, Active, Color int32 }
@@ -185,11 +170,6 @@ func uiMeterTube(w *gui.Window) int {
 	return 1
 }
 
-//export nox_xxx_guiHealthManaTubeDraw_471D10
-func nox_xxx_guiHealthManaTubeDraw_471D10(p int) int {
-	return uiMeterTube((*gui.Window)(unsafe.Pointer(uintptr(uint32(p)))))
-}
-
 func uiMeterChargeRaster(w *gui.Window) int {
 	m := &uiMeters()[uintptr(w.WidgetData)]
 	pos := uiWindowPosition(w)
@@ -255,9 +235,6 @@ func uiMeterChargeRaster(w *gui.Window) int {
 	return 1
 }
 
-//export sub_471250
-func sub_471250(p *C.uint32_t) int { return uiMeterChargeRaster((*gui.Window)(unsafe.Pointer(p))) }
-
 func uiMeterWeaponDraw(w *gui.Window) int {
 	m := &uiMeters()[uintptr(w.WidgetData)]
 	pos := uiWindowPosition(w)
@@ -291,9 +268,6 @@ func uiMeterWeaponDraw(w *gui.Window) int {
 		sub_4AE6F0(pos.X+width/2, pos.Y+height/2, width/2, sector, int(m.Alternate))
 		nox_client_drawEnableAlpha_434560(0)
 	}
-	sub_465D50_draw(C.int(uintptr(w.C())))
+	uiInventoryCurrentWeaponDraw(w)
 	return 1
 }
-
-//export sub_470F40_draw
-func sub_470F40_draw(p *C.nox_window) int { return uiMeterWeaponDraw((*gui.Window)(unsafe.Pointer(p))) }

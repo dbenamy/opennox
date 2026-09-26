@@ -1,15 +1,15 @@
-# UI meter bridge baseline and next conversion
+# UI meter bridge conversion
 
-## Scope under review
+## Scope and baseline
 
-The immediate candidate is the 17 remaining meter exports in the state, items
-and draw files, together with two meter constructors and the adjacent inventory
-weapon-draw adapter. These have Go owners and internal GUI/fixture consumers.
-The helper's initial 17-export recommendation retained those adjacent C bridges;
-primary review favors including them if the complete caller/fixture audit confirms
-that they can be removed together. No UI production conversion is installed yet.
+Remove 20 exports: 17 meter bridges in the state/items/draw files, the two meter
+constructors, and the adjacent inventory weapon-draw bridge. Primary audited all
+116 symbol-reference sites in 17 source files, including preambles, prototypes,
+callback installation and fixture normalization. The constructors have Go/fixture
+callers; the adjacent draw address is otherwise only a fixture normalization key.
+Move those consumers together. Keep owner algorithms and record layouts unchanged.
 
-Production source is qualified audio revision `9eac418e`. Two test-only files add
+The original baseline production source matches qualified audio revision `9eac418e`. Two test-only files add
 contracts for the installed weapon tooltip and the foreign tooltip ABI. The new
 installed-route test constructs the actual weapon window, checks its registered
 callback, and checks equipped/empty tooltip text with varied argument words.
@@ -28,7 +28,7 @@ both new roots also pass in separate repeat processes per profile. See the
 [accepted baseline](ui-meter-identities-baseline.json) and
 [test selection](ui-meter-identities-tests.txt).
 
-## Proposed implementation boundaries
+## Implementation boundaries
 
 Use existing typed `gui.WindowFunc` and `gui.WindowDrawFunc` support for meter
 events/drawing; a broad change to the generic C wrappers is unnecessary. Preserve
@@ -36,30 +36,48 @@ nil-versus-nonzero event response conventions, 386 argument/result widths, callb
 capture identities, owner algorithms, rendering order and mapped record layouts.
 
 Tooltip dispatch needs a native route while retaining the foreign callback path.
-Primary favors a small callback-identity registry consulted by `Window.TooltipFunc`
+Use a small callback-identity registry consulted by `Window.TooltipFunc`
 after its existing nil/dead checks; this preserves the stored callback word and
 normalization while avoiding changes to the C-compatible Window layout. The
-helper instead suggested an extension-field setter. Finalize this reversible
-implementation choice during the complete caller audit. Add native registry
-contracts when that code exists; the new original-path contracts protect the
-existing installed route and foreign fallback.
+helper initially suggested an extension-field setter; the registry preserves the
+existing callback-word identity without adding another per-window field. This is
+a reversible implementation choice. Add native registry contracts for exact
+arguments, distinct keys, replacement, foreign fallback, invalid registrations
+and destroyed-window guards; the original contracts protect the installed route.
 
-The inventory weapon draw edge has a C-typed wrapper with fixture consumers.
-Either migrate all consumers in the same batch or extract the typed owner while
-retaining that bridge; do not leave a native key entering raw C dispatch. The
-constructor's two adjacent C exports have only inventoried Go/fixture callers;
-check the full reference graph before removing their prototypes.
+The inventory weapon-draw bridge and its fixture callers migrate together. Keep
+its normalization entry at the same index with a stable identity. Preserve all
+10 meter callback operation IDs and every existing native fixture case. Event
+adapters retain the original event-code/argument evaluation and nil-versus-raw
+response conventions; draw functions retain their integer results.
 
-## Resume checkpoint
+## Qualification status
 
-Luna reached its usage limit during the read-only scout. Its partial proposal and
-reference inventory are under `build/port-ui-meter-bridge-scout-20260925/`; its
-reported Git head predates the audio commit, so verify actual recorded file hashes.
-It did not draft or install a UI conversion. Primary completed and accepted the original baseline, proving production source
-equality to `9eac418e`. This test/documentation checkpoint is ready for resumption;
-no conversion or converted qualification is claimed.
+Original baseline `4792e80b` is committed and pushed. Luna prepared the bounded
+14-path overlay; primary verified original/draft hashes, every source diff, exact
+prototype removals, callback mappings and retained function bodies. The installed
+conversion adds two primary contracts: native tooltip dispatch boundaries and the
+actual installed event callback's evaluation order. They supplement the original
+baseline and are not claimed as original-C differential captures.
 
-Requalify converted source with the selected profiles, safe/static, three
-production/ABI builds, exact known-suite comparison, both fresh headless save/load
-runs and original asset hashes. Reuse audio production evidence only for the
-original test-only baseline, after proving production source equality.
+Primary caught one draft ordering difference: argument evaluation preceded event
+code evaluation. Luna corrected it before compilation. The new contract mutates
+the event code while evaluating arguments, so reversing that order fails directly.
+The bounded implementation handoff was useful; final acceptance remains with the
+primary. No subscription savings have been measured.
+
+Converted qualification passed: 365 client / 362 server roots, safe/static,
+three production/ABI builds, exact known-suite comparison, both fresh headless
+save/load runs and original asset hashes. Audio production evidence is reused only
+for the original test-only baseline, whose production source is identical.
+
+
+## Qualified result
+
+All 365 client / 362 server roots pass: the original exact names plus the two new
+native tooltip/event contracts. Safe/static, three production/ABI builds, exact
+known-suite comparison, both fresh headless save/load scenarios and all 1,654 asset
+hashes pass on unchanged reviewed source. See [qualification](ui-meter-identities-qualification.json).
+Exports fall 262→242; selected production cgo files fall 146→142 client and 147→143
+server. Headers remain 157 files / 3,002 physical lines; embedded production C
+bodies remain 77; standalone production/test-reference C remains zero.

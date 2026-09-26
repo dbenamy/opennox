@@ -120,6 +120,6 @@ func PortTestInventoryWindowCallbacks() []unsafe.Pointer {
 		clientUICallbackKey(clientUICallbackID_sub_467C80),
 		nil,
 		nil,
-		C.sub_4625D0, C.sub_465D50_draw, C.nox_xxx_inventoryDrawProc_466580, C.sub_466E20, C.sub_466F50,
+		C.sub_4625D0, PortTestMeterInventoryWeaponDrawCallback(), C.nox_xxx_inventoryDrawProc_466580, C.sub_466E20, C.sub_466F50,
 	}
 }
