@@ -22,11 +22,11 @@ func PortTestInventoryWindow(op int, a, b, c, d uintptr) uint32 {
 	case 1:
 		return uint32(uiInventoryMainEvents(uiInventoryWindowValue(uint32(a)), int(b), c, d))
 	case 2:
-		return uint32(C.sub_466160())
+		return uint32(uiInventoryButtonTooltip())
 	case 3:
-		return uint32(C.sub_4661D0())
+		return uint32(uiInventoryAlternateTooltip())
 	case 4:
-		return uint32(C.nox_xxx_inventroryOnHovewerSub_4667E0(C.int(a), C.int(b), C.uint(c)))
+		return uint32(uiInventoryStatusTooltip(uiInventoryPackedPoint(uintptr(uint32(c)))))
 	case 5:
 		return uint32(uiInventoryDrawWindow(uiInventoryWindowValue(uint32(a))))
 	case 6:
@@ -58,7 +58,7 @@ func PortTestInventoryWindow(op int, a, b, c, d uintptr) uint32 {
 	case 18:
 		return uint32(uiInventoryToggleButton(uiInventoryWindowValue(uint32(a)), int(b), c, d))
 	case 19:
-		return uint32(C.sub_466620(C.int(a), C.int(b), C.uint(c)))
+		return uint32(uiInventoryHover(uiInventoryPackedPoint(uintptr(uint32(c)))))
 	case 20:
 		return uint32(uiInventoryNewScrollControls(uiInventoryWindowValue(uint32(a))))
 	case 21:

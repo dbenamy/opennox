@@ -2,15 +2,8 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2_1.h"
-#include "GAME3_2.h"
-#include "client__gui__guiinv.h"
-*/
-import "C"
-
 import (
+	"image"
 	"math"
 	"unsafe"
 
@@ -28,7 +21,7 @@ func PortTestInventoryDisplayModifierFunctions() [5]unsafe.Pointer {
 func PortTestInventoryDisplay(op int, a, b, c uintptr) uint64 {
 	switch op {
 	case 0:
-		return uint64(uint32(C.sub_4625D0((*C.uint32_t)(unsafe.Pointer(a)))))
+		return uint64(uint32(sub_4625D0((*gui.Window)(unsafe.Pointer(a)))))
 	case 1:
 		return math.Float64bits(uiInventoryElementValue(uiInventoryDrawable(uint32(a)), false))
 	case 2:
@@ -40,7 +33,7 @@ func PortTestInventoryDisplay(op int, a, b, c uintptr) uint64 {
 	case 5:
 		return uint64(uiInventoryScaledDurability(uiInventoryDrawable(uint32(a)), (*float32)(unsafe.Pointer(b)), (*float32)(unsafe.Pointer(c))))
 	case 6:
-		return uint64(uint32(sub_463420(C.int(a))))
+		return uint64(uint32(sub_463420(int32(a))))
 	case 7:
 		nox_client_makePlayerStatsDlg_463880(unsafe.Pointer(a))
 		return 0
@@ -49,17 +42,18 @@ func PortTestInventoryDisplay(op int, a, b, c uintptr) uint64 {
 	case 9:
 		return uint64(uint32(uiInventoryCurrentWeaponDraw((*gui.Window)(unsafe.Pointer(uintptr(uint32(a)))))))
 	case 10:
-		return uint64(uint32(C.nox_xxx_inventoryDrawProc_466580((*C.uint32_t)(unsafe.Pointer(a)))))
+		return uint64(uint32(nox_xxx_inventoryDrawProc_466580((*gui.Window)(unsafe.Pointer(a)))))
 	case 11:
-		return uint64(uintptr(unsafe.Pointer(C.sub_466660(C.int(a), (*C.int2)(unsafe.Pointer(b))))))
+		p := (*[2]int32)(unsafe.Pointer(b))
+		return uint64(uintptr(unsafe.Pointer(uiInventoryHoverText(image.Pt(int(p[0]), int(p[1]))))))
 	case 12:
-		return uint64(uint32(C.sub_466E20((*C.uint32_t)(unsafe.Pointer(a)))))
+		return uint64(uint32(sub_466E20((*uint32)(unsafe.Pointer(a)))))
 	case 13:
-		return uint64(uint32(C.sub_466F50((*C.uint32_t)(unsafe.Pointer(a)), (*C.int)(unsafe.Pointer(b)))))
+		return uint64(uint32(sub_466F50((*gui.Window)(unsafe.Pointer(a)), (*gui.WindowData)(unsafe.Pointer(b)))))
 	case 14:
-		return uint64(uint32(C.nox_xxx_inventoryNameSignInit_4671E0()))
+		return uint64(uint32(nox_xxx_inventoryNameSignInit_4671E0()))
 	case 15:
-		return uint64(uint32(sub_467750(C.int(a), C.char(b))))
+		return uint64(uint32(sub_467750(int32(a), int8(b))))
 	default:
 		panic("inventory display operation")
 	}

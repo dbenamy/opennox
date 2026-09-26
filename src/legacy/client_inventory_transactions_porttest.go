@@ -2,13 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2_1.h"
-#include "client__gui__guiinv.h"
-*/
-import "C"
-
 import "unsafe"
 
 type PortTestInventoryCell = uiInventoryCell
@@ -65,9 +58,9 @@ func PortTestInventoryTransaction(op int, a, b, c, d uintptr) uint32 {
 		nox_xxx_cliInventorySpriteUpd_465A30()
 		return 0
 	case 21:
-		return uint32(C.nox_xxx_clientDrop_465BE0((*C.int2)(unsafe.Pointer(a))))
+		return uint32(nox_xxx_clientDrop_465BE0((*[2]int32)(unsafe.Pointer(a))))
 	case 22:
-		return uint32(C.nox_xxx_clientKeyEquip_465C30(C.int(a), C.int(b)))
+		return uint32(nox_xxx_clientKeyEquip_465C30(int32(a), int32(b)))
 	case 23:
 		nox_xxx_clientUse_465C70(int32(a))
 		return 0

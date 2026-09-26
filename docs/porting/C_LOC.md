@@ -353,6 +353,7 @@ target build selection and linker evidence.
 | Retire 13 list/player-group bridges; selected client/server cgo 150/151→149/150, exports 301→288 | 0 | 0 | 0 | 0 |
 | Retire 26 internal audio forwarding exports; selected client/server cgo 149/150→146/147, exports 288→262 | 0 | 0 | 0 | 0 |
 | Retire 20 UI meter/constructor/inventory-draw exports; selected client/server cgo 146/147→142/143, exports 262→242 | 0 | 0 | 0 | 0 |
+| Retire 22 inventory GUI exports and five private C-typed interfaces; selected client/server cgo 142/143→136/137, exports 242→220 | 0 | 0 | 0 | 0 |
 
 The 33 checksum test-reference lines were retired after differential validation;
 their original source remains recoverable at `66fa7bd4`.

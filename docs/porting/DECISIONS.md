@@ -2799,3 +2799,14 @@ response conventions, stable fixture callback IDs and unchanged owner algorithms
 Include the two constructors and adjacent inventory weapon-draw bridge with their
 callers to remove the complete connected C boundary. See
 [UI_METER_IDENTITIES.md](UI_METER_IDENTITIES.md).
+
+
+## Inventory GUI interfaces and deferred quantity callback
+
+Migrate the 22 direct/GUI inventory bridges together with five private C-typed
+helpers and local request forwarding. Use signed32/signed8/byte types and preserve
+the pointer-shaped low32 result union. `[2]int32` retains the original drop-point
+layout, and request bytes keep uint16 narrowing. Five tooltips reuse the native
+GUI registry; eight fixture identities keep their indices. Keep the delayed
+quantity callback `sub_465CD0` for its owning dialog's follow-up, since that address
+is stored and called later. See [INVENTORY_GUI_IDENTITIES.md](INVENTORY_GUI_IDENTITIES.md).

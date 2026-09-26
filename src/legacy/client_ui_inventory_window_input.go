@@ -65,7 +65,7 @@ func uiInventoryStartDrag(w *gui.Window, pos image.Point) {
 	}
 }
 func uiInventoryDropAt(pos image.Point) int {
-	p := C.int2{field_0: C.int(pos.X), field_4: C.int(pos.Y)}
+	p := [2]int32{int32(pos.X), int32(pos.Y)}
 	return int(nox_xxx_clientDrop_465BE0(&p))
 }
 func uiInventoryDropQuantity(pos image.Point, code, typ uint32, count int) {
@@ -250,7 +250,7 @@ func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 					} else if cell.Equipped != 0 {
 						uiInventoryDequipRequest(dr)
 					} else {
-						nox_xxx_clientKeyEquip_465C30(C.int(dword_5d4594_1049796_inventory_click_column_index), C.int(dword_5d4594_1049800_inventory_click_row_index))
+						nox_xxx_clientKeyEquip_465C30(int32(dword_5d4594_1049796_inventory_click_column_index), int32(dword_5d4594_1049800_inventory_click_row_index))
 					}
 				} else {
 					uiInventoryUse(dr)

@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2_1.h"
-
-
-*/
-import "C"
-
 import (
 	"unsafe"
 
@@ -16,7 +8,6 @@ import (
 	"github.com/opennox/opennox/v1/common/memmap"
 )
 
-//export sub_4673F0
 func sub_4673F0(a, b int) int {
 	*memmap.PtrUint32(0x5D4594, 1062580) = uint32(a)
 	*memmap.PtrUint32(0x5D4594, 1062584) = uint32(b)
@@ -25,9 +16,9 @@ func sub_4673F0(a, b int) int {
 
 func sub_467410(v int) int { *memmap.PtrUint32(0x5D4594, 1062540) = uint32(v); return v }
 
-func sub_467420(v C.char) C.char { *memmap.PtrUint8(0x5D4594, 1062536) = byte(v); return v }
+func sub_467420(v int8) int8 { *memmap.PtrUint8(0x5D4594, 1062536) = byte(v); return v }
 
-func sub_467430() C.uchar { return C.uchar(memmap.Uint8(0x5D4594, 1062536)) }
+func sub_467430() byte { return memmap.Uint8(0x5D4594, 1062536) }
 
 func sub_467440(v int) int { *memmap.PtrUint32(0x5D4594, 1062544) = uint32(v); return v }
 
@@ -41,10 +32,8 @@ func sub_467470(index int, v float32) int {
 
 func sub_467490(v int) int { dword_5d4594_1062552 = uint32(v); return v }
 
-//export sub_4674A0
 func sub_4674A0() int { return int(dword_5d4594_1062552) }
 
-//export nox_window_set_visible_unk5
 func nox_window_set_visible_unk5(v int) {
 	uiMeterHide((*gui.Window)(unsafe.Pointer(legacyGlobals.nox_win_unk5)), v == 0)
 }
@@ -58,7 +47,6 @@ func uiInventoryUsePotion(typ uint32) {
 	}
 }
 
-//export sub_467590
 func sub_467590() int {
 	if p := uiMeterPlayer(); p != nil {
 		return int(*(*int8)(unsafe.Add(p, 3684)))
@@ -83,7 +71,6 @@ func uiInventoryItemHealth(code int, current, maximum int16) int16 {
 	return int16(uintptr(unsafe.Pointer(dr)))
 }
 
-//export sub_467680
 func sub_467680() {
 	if dword_5d4594_1049864 == 6 {
 		dword_5d4594_1049864 = 0
@@ -92,10 +79,9 @@ func sub_467680() {
 
 func sub_467740(v int) int { dword_5d4594_1062488 = uint32(v); return v }
 
-//export sub_4678C0
 func sub_4678C0() int { return int(dword_5d4594_1062488) }
 
-func sub_467930(code, current, maximum int) *C.char {
+func sub_467930(code, current, maximum int) unsafe.Pointer {
 	if code == 0 {
 		return nil
 	}
@@ -108,7 +94,7 @@ func sub_467930(code, current, maximum int) *C.char {
 	*(*uint16)(unsafe.Add(dr.C(), 448)) = uint16(current)
 	*(*uint16)(unsafe.Add(dr.C(), 450)) = uint16(maximum)
 	if cell.Equipped == 1 {
-		return (*C.char)(unsafe.Pointer(uintptr(uint32(sub_470D90(current, maximum)))))
+		return unsafe.Pointer(uintptr(uint32(sub_470D90(current, maximum))))
 	}
-	return (*C.char)(unsafe.Pointer(cell))
+	return unsafe.Pointer(cell)
 }

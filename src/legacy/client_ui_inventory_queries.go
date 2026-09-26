@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2_1.h"
-
-
-*/
-import "C"
-
 import (
 	"unsafe"
 
@@ -129,12 +121,10 @@ func uiInventorySelectedWeapon() *client.Drawable {
 	return nil
 }
 
-//export sub_461600
 func sub_461600(typ int) int {
 	return int(uintptr(unsafe.Pointer(uiInventoryEquippedType(uint32(typ)))))
 }
 
-//export sub_461930
 func sub_461930() int {
 	for _, v := range uiInventoryEquipment() {
 		for dr := uiInventoryDrawable(v); dr != nil; dr = uiInventoryNext(dr) {
@@ -148,7 +138,6 @@ func sub_461930() int {
 
 func sub_4676D0(code int) int { return int(uintptr(unsafe.Pointer(uiInventoryItem(uint32(code))))) }
 
-//export sub_467700
 func sub_467700(code int) int {
 	if found := uiInventoryFindCode(uint32(code)); found != nil {
 		return int(found.Cell.Count)
@@ -159,7 +148,6 @@ func sub_467700(code int) int {
 	return 0
 }
 
-//export sub_4678B0
 func sub_4678B0() int {
 	if cell := (*uiInventoryCell)(unsafe.Pointer(uintptr(dword_5d4594_1062480))); cell != nil {
 		return int(cell.Codes[0])

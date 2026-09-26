@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2_1.h"
-#include "GAME2_2.h"
-*/
-import "C"
-
 import (
 	"image"
 	"math"
@@ -27,12 +20,10 @@ func uiInventoryDrawItem(dr *client.Drawable, pos image.Point) {
 	dr.CallDraw((*noxrender.Viewport)(memmap.PtrOff(0x5D4594, 1049732)))
 }
 
-//export sub_4625D0
-func sub_4625D0(p *C.uint32_t) C.int {
+func sub_4625D0(w *gui.Window) int {
 	if uiInventoryMode() == 5 {
 		return 1
 	}
-	w := (*gui.Window)(unsafe.Pointer(p))
 	pos := uiWindowPosition(w)
 	size := w.SizeVal
 	if pos.Y+size.Y > 0 {
@@ -57,9 +48,7 @@ func uiInventoryCurrentWeaponDraw(w *gui.Window) int {
 	return 1
 }
 
-//export nox_xxx_inventoryDrawProc_466580
-func nox_xxx_inventoryDrawProc_466580(p *C.uint32_t) C.int {
-	w := (*gui.Window)(unsafe.Pointer(p))
+func nox_xxx_inventoryDrawProc_466580(w *gui.Window) int {
 	pos := uiWindowPosition(w)
 	img := w.DrawData().BgImageHnd
 	if memmap.Uint8(0x5D4594, 1049868) != 0 {
@@ -73,8 +62,7 @@ func nox_xxx_inventoryDrawProc_466580(p *C.uint32_t) C.int {
 	return 1
 }
 
-//export sub_466F50
-func sub_466F50(p *C.uint32_t, draw *C.int) C.int {
+func sub_466F50(w *gui.Window, data *gui.WindowData) int {
 	dr := uiInventorySelectedItem()
 	if dr == nil {
 		return 1
@@ -101,8 +89,7 @@ func sub_466F50(p *C.uint32_t, draw *C.int) C.int {
 			}
 		}
 	}
-	data := (*gui.WindowData)(unsafe.Pointer(draw))
-	pos := uiWindowPosition((*gui.Window)(unsafe.Pointer(p)))
+	pos := uiWindowPosition(w)
 	uiMeterImage(uint32(uintptr(data.BgImageHnd)), pos.Add(data.ImgPtVal))
 	return 1
 }

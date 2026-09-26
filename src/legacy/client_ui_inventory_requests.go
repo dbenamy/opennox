@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2_1.h"
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"github.com/opennox/opennox/v1/client"
@@ -17,7 +11,7 @@ import (
 func uiInventoryItemRequest(op byte, dr *client.Drawable) int {
 	var msg [3]byte
 	msg[0] = op
-	binary.LittleEndian.PutUint16(msg[1:], uint16(nox_xxx_netGetUnitCodeCli_578B00(C.int(uiInventoryPointer(unsafe.Pointer(dr))))))
+	binary.LittleEndian.PutUint16(msg[1:], uint16(drawableUnitCode(dr)))
 	return bool2int(GetServer().S().NetList.AddToMsgListCli(31, netlist.Kind0, msg[:]))
 }
 func uiInventoryEquipRequest(dr *client.Drawable) int  { return uiInventoryItemRequest(117, dr) }
@@ -38,25 +32,23 @@ func nox_xxx_send2ServInvenFail_461630(v int16) int32 {
 	return int32(reliableClientSend(31, msg[:], nil, 0))
 }
 
-//export nox_xxx_clientDrop_465BE0
-func nox_xxx_clientDrop_465BE0(pos *C.int2) C.int {
+func nox_xxx_clientDrop_465BE0(pos *[2]int32) int32 {
 	dr := uiInventoryDragged()
 	if dr == nil {
 		return 0
 	}
 	msg := [7]byte{114}
-	binary.LittleEndian.PutUint16(msg[1:], uint16(nox_xxx_netGetUnitCodeCli_578B00(C.int(uiInventoryPointer(dr.C())))))
-	binary.LittleEndian.PutUint16(msg[3:], uint16(pos.field_0))
-	binary.LittleEndian.PutUint16(msg[5:], uint16(pos.field_4))
-	return C.int(bool2int(GetServer().S().NetList.AddToMsgListCli(31, netlist.Kind0, msg[:])))
+	binary.LittleEndian.PutUint16(msg[1:], uint16(drawableUnitCode(dr)))
+	binary.LittleEndian.PutUint16(msg[3:], uint16(pos[0]))
+	binary.LittleEndian.PutUint16(msg[5:], uint16(pos[1]))
+	return int32(bool2int(GetServer().S().NetList.AddToMsgListCli(31, netlist.Kind0, msg[:])))
 }
 
-//export nox_xxx_clientKeyEquip_465C30
-func nox_xxx_clientKeyEquip_465C30(col, row C.int) C.int {
+func nox_xxx_clientKeyEquip_465C30(col, row int32) int32 {
 	uiInventorySetClick(int(col), int(row))
 	uiInventoryDragCopy()
 	uiInventoryEquipRequest(uiInventoryDragged())
-	return C.int(uiInventoryPlace(uiInventoryDragged(), int(col), int(row)))
+	return int32(uiInventoryPlace(uiInventoryDragged(), int(col), int(row)))
 }
 func uiInventorySetDragged(dr *client.Drawable) {
 	*memmap.PtrUint32(0x5D4594, 1049848) = uiInventoryPointer(unsafe.Pointer(dr))

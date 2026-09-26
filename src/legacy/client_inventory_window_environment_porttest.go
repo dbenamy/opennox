@@ -88,9 +88,9 @@ func PortTestInventoryWindowCallbacks() []unsafe.Pointer {
 	return []unsafe.Pointer{
 		clientUICallbackKey(clientUICallbackID_sub_462740),
 		nil,
-		C.sub_466160,
-		C.sub_4661D0,
-		C.nox_xxx_inventroryOnHovewerSub_4667E0,
+		inventoryCallbackKey(inventoryCallbackButton),
+		inventoryCallbackKey(inventoryCallbackAlt),
+		inventoryCallbackKey(inventoryCallbackStatus),
 		nil,
 		nil,
 		nil,
@@ -105,7 +105,7 @@ func PortTestInventoryWindowCallbacks() []unsafe.Pointer {
 		nil,
 		nil,
 		nil,
-		C.sub_466620,
+		inventoryCallbackKey(inventoryCallbackHover),
 		nil,
 		nil,
 		nil,
@@ -120,6 +120,6 @@ func PortTestInventoryWindowCallbacks() []unsafe.Pointer {
 		clientUICallbackKey(clientUICallbackID_sub_467C80),
 		nil,
 		nil,
-		C.sub_4625D0, PortTestMeterInventoryWeaponDrawCallback(), C.nox_xxx_inventoryDrawProc_466580, C.sub_466E20, C.sub_466F50,
+		inventoryCallbackKey(inventoryCallbackDrawAlt), PortTestMeterInventoryWeaponDrawCallback(), inventoryCallbackKey(inventoryCallbackDrawCur), inventoryCallbackKey(inventoryCallbackMode), inventoryCallbackKey(inventoryCallbackIdentify),
 	}
 }

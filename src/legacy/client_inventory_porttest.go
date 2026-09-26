@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2_1.h"
-*/
-import "C"
-
 import (
 	"math"
 	"unsafe"
@@ -19,17 +13,17 @@ func PortTestUIInventoryCall(op int, a, b, c uint32) uint32 {
 	case 0:
 		return uint32(sub_4615C0())
 	case 1:
-		return uint32(C.sub_461600(C.int(a)))
+		return uint32(sub_461600(int(a)))
 	case 2:
-		return uint32(C.sub_461930())
+		return uint32(sub_461930())
 	case 3:
 		return uint32(uintptr(unsafe.Pointer(sub_461EF0(int(a)))))
 	case 4:
-		return uint32(C.sub_4673F0(C.int(a), C.int(b)))
+		return uint32(sub_4673F0(int(a), int(b)))
 	case 5:
 		return uint32(sub_467410(int(a)))
 	case 6:
-		return uint32(sub_467420(C.char(a)))
+		return uint32(sub_467420(int8(a)))
 	case 7:
 		return uint32(sub_467430())
 	case 8:
@@ -41,9 +35,9 @@ func PortTestUIInventoryCall(op int, a, b, c uint32) uint32 {
 	case 11:
 		return uint32(sub_467490(int(a)))
 	case 12:
-		return uint32(C.sub_4674A0())
+		return uint32(sub_4674A0())
 	case 13:
-		C.nox_window_set_visible_unk5(C.int(a))
+		nox_window_set_visible_unk5(int(int32(a)))
 		return 0
 	case 14:
 		uiInventoryUsePotion(a)
@@ -51,20 +45,20 @@ func PortTestUIInventoryCall(op int, a, b, c uint32) uint32 {
 	case 15:
 		return uint32(uintptr(unsafe.Pointer(uiInventoryFindType(a))))
 	case 16:
-		return uint32(C.sub_467590())
+		return uint32(sub_467590())
 	case 17:
 		return uint32(uiInventoryMode())
 	case 18:
 		return uint32(uiInventoryItemHealth(int(a), int16(b), int16(c)))
 	case 19:
-		C.sub_467680()
+		sub_467680()
 		return 0
 	case 20:
 		return uint32(uintptr(unsafe.Pointer(nox_xxx_wndGetHandle_4676A0())))
 	case 21:
 		return uint32(sub_4676D0(int(a)))
 	case 22:
-		return uint32(C.sub_467700(C.int(a)))
+		return uint32(sub_467700(int(a)))
 	case 23:
 		return uint32(sub_467740(int(a)))
 	case 24:
@@ -74,13 +68,13 @@ func PortTestUIInventoryCall(op int, a, b, c uint32) uint32 {
 	case 26:
 		return uint32(uintptr(unsafe.Pointer(sub_467870(int(a), int(b)))))
 	case 27:
-		return uint32(C.sub_4678B0())
+		return uint32(sub_4678B0())
 	case 28:
-		return uint32(C.sub_4678C0())
+		return uint32(sub_4678C0())
 	case 29:
 		return uint32(uintptr(unsafe.Pointer(uiInventorySelectedWeapon())))
 	case 30:
-		return uint32(uintptr(unsafe.Pointer(sub_467930(int(a), int(b), int(c)))))
+		return uint32(uintptr(sub_467930(int(a), int(b), int(c))))
 	default:
 		panic("client inventory operation")
 	}

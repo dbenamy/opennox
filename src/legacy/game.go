@@ -474,7 +474,7 @@ func Sub_460EA0(a1 int) {
 	quickbarVisible(a1 != 0)
 }
 func Nox_window_set_visible_unk5(a1 int) {
-	nox_window_set_visible_unk5(int(C.int(a1)))
+	nox_window_set_visible_unk5(int(int32(a1)))
 }
 func Sub_45D500(a1 int) {
 	bookTemporaryShow(a1)

@@ -139,7 +139,7 @@ func clientGameSession(ind int, op netmsg.Op, data []byte) int {
 		quickbarSetFlash(int(dword(1)), data[5])
 		return size
 	case 224:
-		sub_467750(C.int(word(1)&0x7fff), C.char(data[3]))
+		sub_467750(int32(word(1)&0x7fff), int8(data[3]))
 		return size
 	case 225:
 		dword_5d4594_1062488 = uint32(word(1) & 0x7fff)

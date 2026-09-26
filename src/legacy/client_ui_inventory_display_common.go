@@ -1,14 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1_1.h"
-#include "GAME2_1.h"
-#include "GAME3_2.h"
-#include "noxstring.h"
-*/
-import "C"
-
 import (
 	"fmt"
 	"image"
@@ -89,7 +80,7 @@ func uiInventoryScaledDurability(dr *client.Drawable, current, maximum *float32)
 	return ret
 }
 
-func sub_463420(v C.int) C.int { *memmap.PtrUint32(0x5D4594, 1050012) = uint32(v); return v }
+func sub_463420(v int32) int32 { *memmap.PtrUint32(0x5D4594, 1050012) = uint32(v); return v }
 
 func uiInventoryHitRect(p image.Point, offset uintptr) bool {
 	r := unsafe.Slice((*int32)(memmap.PtrOff(0x587000, offset)), 4)
@@ -133,13 +124,7 @@ func uiInventoryHoverText(p image.Point) *uint16 {
 	return nil
 }
 
-//export sub_466660
-func sub_466660(_ C.int, p *C.int2) *C.wchar2_t {
-	return (*C.wchar2_t)(unsafe.Pointer(uiInventoryHoverText(image.Pt(int(p.field_0), int(p.field_4)))))
-}
-
-//export sub_466E20
-func sub_466E20(w *C.uint32_t) C.int {
+func sub_466E20(w *uint32) int32 {
 	var key string
 	switch uint32(*w) {
 	case 9105:
@@ -159,9 +144,8 @@ func sub_466E20(w *C.uint32_t) C.int {
 	return 1
 }
 
-//export nox_xxx_inventoryNameSignInit_4671E0
-func nox_xxx_inventoryNameSignInit_4671E0() C.int {
-	dst := (*C.wchar2_t)(memmap.PtrOff(0x5D4594, 1062588))
+func nox_xxx_inventoryNameSignInit_4671E0() int {
+	dst := (*uint16)(memmap.PtrOff(0x5D4594, 1062588))
 	textCopy((*uint16)(unsafe.Pointer(dst)), (*uint16)(memmap.PtrOff(0x5D4594, 1063676)))
 	p := uiMeterPlayer()
 	level := 0
@@ -171,15 +155,15 @@ func nox_xxx_inventoryNameSignInit_4671E0() C.int {
 		level = int(*(*int8)(unsafe.Add(p, 3684)))
 	}
 	if p == nil {
-		return C.int(level)
+		return level
 	}
 	class := *(*byte)(unsafe.Add(p, 2251))
 	className := alloc.GoString((*byte)(*memmap.PtrPtr(0x587000, 29456+uintptr(class)*4)))
 	title := uiInventoryText(fmt.Sprintf("experience:%s%d", className, level))
-	return C.int(textFormatBuffer(unsafe.Slice((*uint16)(unsafe.Pointer(dst)), 256), (*uint16)(unsafe.Pointer(internWStr(uiInventoryText("ElaborateNameFormat")))), textFormatPointer(unsafe.Add(p, 4704)), textFormatPointer(unsafe.Pointer(internWStr(title)))))
+	return textFormatBuffer(unsafe.Slice(dst, 256), (*uint16)(unsafe.Pointer(internWStr(uiInventoryText("ElaborateNameFormat")))), textFormatPointer(unsafe.Add(p, 4704)), textFormatPointer(unsafe.Pointer(internWStr(title))))
 }
 
-func sub_467750(code C.int, status C.char) C.int {
+func sub_467750(code int32, status int8) int32 {
 	if code != 0 {
 		if found := uiInventoryFindCode(uint32(code)); found != nil {
 			if old := uiInventoryAlternate(); old != nil {

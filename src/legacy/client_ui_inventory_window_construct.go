@@ -72,7 +72,7 @@ func uiInventoryNewModeControls(parent *gui.Window) int {
 			return 0
 		}
 		w.SetID(c.id)
-		w.SetTooltipFunc(C.sub_466E20)
+		w.SetTooltipFunc(inventoryCallbackKey(inventoryCallbackMode))
 	}
 	return 1
 }
@@ -86,7 +86,7 @@ func uiInventoryNewIdentifyWindow(parent *gui.Window) int {
 	w.SetParent(parent)
 	w.SetPos(image.Pt(51, 15))
 	w.ChildByID(9155).SetDraw(func(w *gui.Window, d *gui.WindowData) int {
-		return int(sub_466F50((*C.uint32_t)(w.C()), (*C.int)(d.C())))
+		return sub_466F50(w, d)
 	})
 	return 1
 }
@@ -104,17 +104,17 @@ func uiInventoryCreateWindow() int {
 	legacyGlobals.dword_5d4594_1062452 = root
 	root.SetAllFuncs(nil, drawOne, nil)
 	status := g.NewWindowRaw(root, 8, 0, 224, int(nox_win_width), 40, nil)
-	status.SetAllFuncs(func(*gui.Window, gui.WindowEvent) gui.WindowEventResp { return gui.RawEventResp(0) }, drawOne, C.nox_xxx_inventroryOnHovewerSub_4667E0)
+	status.SetAllFuncs(func(*gui.Window, gui.WindowEvent) gui.WindowEventResp { return gui.RawEventResp(0) }, drawOne, inventoryCallbackKey(inventoryCallbackStatus))
 	main := g.NewWindowRaw(root, 40, 0, 0, 563, 224, uiInventoryWindowEvent(uiInventoryPanelEvents))
 	dword_5d4594_1062456 = uint32(uiInventoryPointer(main.C()))
-	main.SetAllFuncs(uiInventoryWindowEvent(uiInventoryMainEvents), func(w *gui.Window, _ *gui.WindowData) int { return uiInventoryDrawWindow(w) }, C.sub_466620)
+	main.SetAllFuncs(uiInventoryWindowEvent(uiInventoryMainEvents), func(w *gui.Window, _ *gui.WindowData) int { return uiInventoryDrawWindow(w) }, inventoryCallbackKey(inventoryCallbackHover))
 	main.DrawData().Style |= 0x100
 	catcher := g.NewWindowRaw(root, 40, 0, 0, 1, 1, nil)
 	*memmap.PtrUint32(0x5D4594, 1062472) = uiInventoryPointer(catcher.C())
 	catcher.SetAllFuncs(uiInventoryWindowEvent(uiInventoryMainEvents), drawOne, nil)
 	alt := g.NewWindowRaw(main, 40, 173, 174, 50, 50, nil)
 	dword_5d4594_1062468 = uint32(uiInventoryPointer(alt.C()))
-	alt.SetAllFuncs(uiInventoryWindowEvent(uiInventoryAlternateEvents), func(w *gui.Window, _ *gui.WindowData) int { return int(sub_4625D0((*C.uint32_t)(w.C()))) }, C.sub_4661D0)
+	alt.SetAllFuncs(uiInventoryWindowEvent(uiInventoryAlternateEvents), func(w *gui.Window, _ *gui.WindowData) int { return sub_4625D0(w) }, inventoryCallbackKey(inventoryCallbackAlt))
 	alt.DrawData().Style |= 0x100
 	if uiInventoryNewScrollControls(main) == 0 || uiInventoryNewModeControls(main) == 0 || uiInventoryNewIdentifyWindow(main) == 0 {
 		return 0
@@ -125,7 +125,7 @@ func uiInventoryCreateWindow() int {
 		return 0
 	}
 	current.SetAllFuncs(uiInventoryWindowEvent(uiInventoryWindowAdmission), func(w *gui.Window, _ *gui.WindowData) int {
-		return int(nox_xxx_inventoryDrawProc_466580((*C.uint32_t)(w.C())))
+		return int(nox_xxx_inventoryDrawProc_466580(w))
 	}, nil)
 	current.DrawData().BgImageHnd = uiInventoryImage(uiMeterLoadImage("CurrentWeapon"))
 	current.DrawData().HlImageHnd = uiInventoryImage(uiMeterLoadImage("CurrentWeaponLit"))
@@ -134,7 +134,7 @@ func uiInventoryCreateWindow() int {
 	sub_471160(current, 79, 40, 20, 127)
 	sub_470D70()
 	button := g.NewWindowRaw(current, 8, 5, 11, 28, 29, nil)
-	button.SetAllFuncs(uiInventoryWindowEvent(uiInventoryToggleButton), drawOne, C.sub_466160)
+	button.SetAllFuncs(uiInventoryWindowEvent(uiInventoryToggleButton), drawOne, inventoryCallbackKey(inventoryCallbackButton))
 	grid := uiInventoryGrid()
 	clear(grid[:])
 	if dword_5d4594_1062560 == 0 {

@@ -1,15 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1_1.h"
-#include "GAME2_1.h"
-#include "GAME3_1.h"
-#include "common__magic__speltree.h"
-#include "common__object__modifier.h"
-*/
-import "C"
-
 import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -49,8 +39,6 @@ func uiInventoryButtonTooltip() int {
 	return 1
 }
 
-//export sub_466160
-func sub_466160() C.int { return C.int(uiInventoryButtonTooltip()) }
 func uiInventoryAlternateTooltip() int {
 	if cell := uiInventoryAlternate(); cell != nil {
 		uiCursorTooltip(uiItemTooltip(cell.Drawable))
@@ -60,14 +48,7 @@ func uiInventoryAlternateTooltip() int {
 	return 1
 }
 
-//export sub_4661D0
-func sub_4661D0() C.int                    { return C.int(uiInventoryAlternateTooltip()) }
 func uiInventoryHover(pos image.Point) int { uiCursorTooltip(uiInventoryHoverText(pos)); return 1 }
-
-//export sub_466620
-func sub_466620(w, event C.int, p C.uint) C.int {
-	return C.int(uiInventoryHover(uiInventoryPackedPoint(uintptr(p))))
-}
 
 func uiInventoryStatusTooltip(pos image.Point) int {
 	index := 0
@@ -80,7 +61,7 @@ func uiInventoryStatusTooltip(pos image.Point) int {
 			index--
 		}
 		if index < 0 {
-			spell := C.int(nox_xxx_getEnchantSpell_424920(int(C.int(i))))
+			spell := nox_xxx_getEnchantSpell_424920(i)
 			uiCursorTooltip((*uint16)(unsafe.Pointer(nox_xxx_spellTitle_424930(int(spell)))))
 			return 1
 		}
@@ -111,11 +92,6 @@ func uiInventoryStatusTooltip(pos image.Point) int {
 	}
 	uiCursorTooltip(nil)
 	return 1
-}
-
-//export nox_xxx_inventroryOnHovewerSub_4667E0
-func nox_xxx_inventroryOnHovewerSub_4667E0(w, event C.int, p C.uint) C.int {
-	return C.int(uiInventoryStatusTooltip(uiInventoryPackedPoint(uintptr(p))))
 }
 
 func uiInventoryTooltipKey(key string) {

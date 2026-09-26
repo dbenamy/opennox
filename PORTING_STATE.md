@@ -7,36 +7,37 @@ superseded status when updating it. The workflow and delegation rules live in
 ## Status: resumed; internal C-glue removal
 
 **Progress: 142,665/142,665 original standalone C lines ported or retired;
-internal glue: 321/463 client cgo files eliminated on net (142 remain;
-server: 320/463 eliminated, 143 remain).**
-Selected legacy C export bridges: **1,648/1,890 retired (242 remain)**.
+internal glue: 327/463 client cgo files eliminated on net (136 remain;
+server: 326/463 eliminated, 137 remain).**
+Selected legacy C export bridges: **1,670/1,890 retired (220 remain)**.
 
 These are selected project files in Linux 386 production profiles, not equal
 units of effort. Three project packages directly use cgo; 77 embedded C callback
 bodies remain. Production and test-reference standalone `.c` files both remain zero.
 
-Latest qualified chunk removes 20 meter/constructor/inventory-draw exports.
-Meter events and drawing use existing typed Go callback routes; tooltip dispatch
-recognizes native identities while preserving foreign fallback and Window layout.
-Existing owner algorithms, state/pixel captures and external backends are unchanged.
-See [UI_METER_IDENTITIES.md](docs/porting/UI_METER_IDENTITIES.md).
+Latest qualified chunk removes 22 inventory GUI export bridges and five private
+C-typed interfaces. Five installed tooltips use native identities; drawing and
+fixture calls reach the existing Go owners. Packed coordinates, signed result
+words, network message bytes, callback IDs and original captures are preserved.
+The delayed quantity-dialog callback remains for its connected follow-up.
+See [INVENTORY_GUI_IDENTITIES.md](docs/porting/INVENTORY_GUI_IDENTITIES.md).
 
 Continue chunk-by-chunk with one Luna helper, primary review, qualification,
 documentation, commit/push and recorded reversible decisions. Stop at the milestone,
 usage limits or a substantial question.
 
-Latest qualified artifacts: `build/port-ui-meter-identities/`.
+Latest qualified artifacts: `build/port-inventory-gui-identities/`.
 
 ## What remains
 
-Counts below describe the qualified UI meter conversion. Zero `.c` lines
+Counts below describe the qualified inventory GUI conversion. Zero `.c` lines
 is not a count of all C dependencies or remaining engineering effort.
 
 | Area | Remaining work or dependency |
 | --- | --- |
 | Embedded C callback glue | 77 production function bodies in Go preambles: 76 generic function-pointer dispatchers and one specialized adapter. |
 | Callback routes | Remaining Go owners still use C-compatible addresses. Continue migrating identities and every field/alias consumer before removing shared raw fallbacks. |
-| Declarations and C types | 157 tracked headers / 3,002 physical lines; client profiles select 142 cgo files and server selects 143 in three project packages (alloc, ccall, legacy). These are mostly interface/layout machinery, not unported algorithms. |
+| Declarations and C types | 157 tracked headers / 2,980 physical lines; client profiles select 136 cgo files and server selects 137 in three project packages (alloc, ccall, legacy). These are mostly interface/layout machinery, not unported algorithms. |
 | Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Ownership/lifetime work remains behind the centralized allocator. |
 | External libraries | SDL2, OpenGL, OpenAL and similar native dependencies/bindings stay for this phase; their future is a subsequent discussion. |
 | Portability and release validation | Qualified target is Linux 386/SSE2 with cgo. The complete engine is not qualified as cgo-free, 64-bit, native macOS or browser/WebAssembly. Physical display and audible playback remain manual checks. |
@@ -48,23 +49,22 @@ users are migrated; test-only C observers separately qualify that boundary.
 
 ## Latest qualification and evidence
 
-- All 365 client / 362 server affected roots pass without failures/skips. This is
-  the original 363/360 baseline plus two new native callback contracts.
-  Original installed-tooltip and foreign ABI contracts passed twice per profile
-  before conversion; baseline is `4792e80b`. Three client-only tests require !server.
-- Safe/static and three production/ABI checks pass; all 20 retired exports absent.
-- Fresh preflight and final headless character creation with explicit save/load/
+- All 394 client / 391 server affected roots pass with exact original names and
+  no failures/skips. The new installed-tooltip contract passed twice per profile
+  before conversion. Three client-only roots require !server.
+- Safe/static and three production/ABI checks pass; all 22 retired exports absent.
+- Fresh preview and final headless character creation with explicit save/load/
   resume pass on the same final production binary.
 - Full asset suite matches known results: 304 failure events; 17 passing, two
   failing and 32 skipped packages. All 1,654 original asset hashes are unchanged.
 - Accepted phases share source fingerprints and primary-reviewed changes.
-  Existing independent assertions and pixel/state captures remain unchanged.
+  Existing independent assertions and state/pixel captures remain unchanged.
 - Last full default corpus was drawable-update `024b2632`: 2,461 passes and one
   established prerequisite skip among 2,462 roots. That is an earlier-source result;
   this callback-interface batch uses affected coverage plus production gates.
 
-Report: [UI_METER_IDENTITIES.md](docs/porting/UI_METER_IDENTITIES.md).
-Evidence: [qualification](docs/porting/ui-meter-identities-qualification.json).
+Report: [INVENTORY_GUI_IDENTITIES.md](docs/porting/INVENTORY_GUI_IDENTITIES.md).
+Evidence: [qualification](docs/porting/inventory-gui-identities-qualification.json).
 Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expected-suite.jsonl).
 
 ## Goal, next work and open review items
@@ -77,7 +77,7 @@ removal order and completion criteria. Client rendering/audio backend replacemen
 is outside this phase.
 
 The dependency inventory tool is `tools/porting/cgo_inventory.py`; the current
-qualified inventory is [ui-meter-identities-inventory-after.json](docs/porting/ui-meter-identities-inventory-after.json).
+qualified inventory is [inventory-gui-identities-inventory-after.json](docs/porting/inventory-gui-identities-inventory-after.json).
 The original phase baseline is under `build/port-cgo-leaves/inventory-before/`.
 The completed leaf cleanup leaves three project packages directly using cgo in
 all profiles, plus OpenGL/SDL2/OpenAL bindings in the clients. Metadata discovery
@@ -85,14 +85,11 @@ is not compilation or qualification. The helper's external-review draft is not
 accepted evidence: its suggestion that go-gl is residue is contradicted by the
 actual dependency graph (`libs/client/seat/opengl` imports it).
 
-UI meter conversion is qualified and pushed as `541585fa`. Next is a connected
-22-export inventory GUI batch, with five private C-typed helpers and their callers.
-Reuse the native tooltip registry for five installed inventory callbacks. Keep the
-delayed quantity-dialog callback `sub_465CD0` for its connected follow-up; its stored
-address still reaches the quantity dialog's foreign dispatcher. The original baseline
-passes 394 client / 391 server roots; the new installed-tooltip contract also passes in
-separate repeat processes per profile. Production matches `541585fa` exactly. No
-inventory conversion is installed or qualified. See [inventory GUI report](docs/porting/INVENTORY_GUI_IDENTITIES.md).
+Inventory GUI conversion is qualified. Next audit the quantity dialog's stored
+callback and all producers together, including inventory `sub_465CD0`. Retain
+foreign fallback until all live users have migrated, and cover accept/cancel,
+re-entry and callback lifetime. No later conversion is installed or qualified.
+
 The earlier 25-export object-state proposal under
 `build/port-after-go-only-exports/` was rejected because it omitted fixture C calls.
 The qualified 37-export batch supersedes it with a complete caller/identity audit.
@@ -132,6 +129,10 @@ do not rerun them or infer deletion safety from age alone.
 
 | Artifact | Recovery or current location |
 | --- | --- |
+| Inventory GUI preview duplicate assets | Removed 1,654 verified copies (559,869,952 allocated bytes); originals and saves/results remain. Restore using `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/inventory-gui-identities-preview-save/deduplicated-assets.json`. |
+| Inventory GUI final duplicate assets | Removed 1,654 verified copies (559,960,064 allocated bytes); originals and saves/results remain. Restore using `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/inventory-gui-identities-save/deduplicated-assets.json`. |
+| Superseded UI meter and inventory test-failure binaries | Removed six verified executables (402,345,984 allocated bytes) after corrected baseline replacement and host-use checks. Rebuild UI meter `541585fa`; the first geometry-failure test source is saved in `build/port-inventory-gui-identities/primary/failed-geometry-contract.go`. Current converted binaries and all records/logs/source remain; original baseline retention is described separately. Journal: `build/port-inventory-gui-identities/old-tests-cleanup-{approved.json,deleted.jsonl}`. |
+| Superseded original inventory binaries and cache | Removed three original test executables (201,183,232 allocated bytes) after converted replacement passed; rebuild original baseline `44a780d9`. Also removed eight unused older project archives (589,676,544 bytes). Current converted tests and production binaries, all source/log records and original assets remain. Evidence: `build/port-inventory-gui-identities/original-tests-cleanup-{approved.json,deleted.jsonl}` and `cache-before-production/`. |
 | Inventory baseline cleanup | Removed six superseded UI meter / first geometry-failure test binaries (402,345,984 allocated bytes) after accepted replacement and host checks. Removed seven unused project archives predating `541585fa` (339,312,640 bytes). Current corrected inventory baseline binaries, original assets and all source/log records remain. Rebuild UI meter `541585fa`; failed new-test source is `build/port-inventory-gui-identities/primary/failed-geometry-contract.go`. Journals: `old-tests-cleanup-{approved.json,deleted.jsonl}` and `cache-before-conversion/` under that batch directory. |
 | Pre-inventory disk cleanup | Removed five unused project cache archives predating original UI baseline `4792e80b` (335,773,696 allocated bytes), and four superseded audio production/safe binaries (188,211,200 bytes), after source/hash/replacement and host-use checks. Current UI binaries/caches, original assets and all logs/source records remain. Rebuild audio `9eac418e` as needed. Evidence: `build/port-inventory-gui-identities/cache-before-inventory/` and `old-production-cleanup-{approved.json,deleted.jsonl}`. |
 | UI meter preview/final duplicate assets | Removed 1,654 verified copies per scenario (559,853,568 / 559,964,160 allocated bytes). Originals, saves/results remain. Restore using `python3 build/port-artifact-cleanup/restore-recent-scenario.py` with `build/baseline/runs/ui-meter-identities-preview-save/deduplicated-assets.json` or `build/baseline/runs/ui-meter-identities-save/deduplicated-assets.json`. |
@@ -194,7 +195,7 @@ do not rerun them or infer deletion safety from age alone.
 | Completed creation/init scenario assets | Removed 1,654 SHA256-identical original-asset duplicates after host-use checks; 559,972,352 allocated bytes reclaimed. Originals, saves/results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/create-init-identities-save/deduplicated-assets.json`. Plan/result: `build/port-post-create-init-cleanup/`. |
 | Superseded collision/death qualified binaries | Removed 14 test/safe/production executables after exact committed-source, replacement/hash and host-use checks; 786,751,488 allocated bytes reclaimed. Rebuild qualified revisions `170b594a` and `e7ca9d31` using retained commands. Source, original baseline binaries, logs, manifests and current create/init and damage outputs remain. Plan/journal: `build/port-item-identities/cleanup-production-{approved.json,deleted.jsonl}`. |
 | Obsolete pre-audio project cache | Removed 21 hash/stat-verified root/legacy Linux 386 archives older than original audio baseline `9f6b2b46`, after host-use checks; 1,100,709,888 allocated bytes reclaimed. Newer audio caches, all source/assets/binaries remain. Rebuild normally. Plan/journal: `build/port-after-audio/cache-luna/cache-cleanup-{approved.json,deleted.jsonl}`. |
-| Current qualified production/safe binaries | Retained under `build/port-ui-meter-identities/`; superseded outputs removed as recorded below. |
+| Current qualified production/safe binaries | Retained under `build/port-inventory-gui-identities/`; superseded outputs removed as recorded below. |
 | Superseded UI-fixture binaries | Removed seven verified test/safe/production executables after committed audio replacement and host-use checks; 390,643,712 allocated bytes reclaimed. Rebuild revision `3d47a346` using retained commands/source maps. Logs/manifests and current audio replacements remain. Plan/journal: `build/port-audio-stream-callbacks/binary-cleanup-{approved.json,deleted.jsonl}`. |
 | Completed audio-stream scenario assets | Removed 1,654 verified original-asset duplicates; 559,931,392 allocated bytes reclaimed. Originals, saves and results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/audio-stream-callbacks-save/deduplicated-assets.json`. Plan/result: `build/port-post-audio-stream-cleanup/`. |
 | Superseded modifier/server-fixture/duration/update binaries | Removed 28 verified test/safe/production executables after source/replacement hashes and host-use checks; 1,567,293,440 allocated bytes reclaimed. Rebuild qualified revisions `99b65896`, `a798ad1c`, `d5d80c42`, `a8d89bda` using retained commands and source maps. Current UI replacements, old logs/manifests and baseline evidence remain. Journals: `build/port-after-client-ui/binary-cleanup-deleted.jsonl` and `binary-cleanup-addendum-deleted.jsonl`. |
