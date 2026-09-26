@@ -85,11 +85,12 @@ is not compilation or qualification. The helper's external-review draft is not
 accepted evidence: its suggestion that go-gl is residue is contradicted by the
 actual dependency graph (`libs/client/seat/opengl` imports it).
 
-Window-helper conversion is qualified. Next review the connected rendering/image
-interfaces: apparently unused forwarding exports, unused viewport adapters and
-opaque image-handle types. Preserve existing renderer owners and callback lookup
-order. A read-only scout is under `build/port-after-window-scout/`; no later
-conversion is installed or qualified.
+Window-helper conversion is qualified and pushed as `3838462b`. The next rendering/
+image batch retires 17 unused exports and replaces private C image aliases with
+native handles. Its original baseline covers 92 client / 89 server roots, reusing
+88 exact-source roots and adding repeated main-menu/status-overlay checks.
+See [RENDER_IMAGE_BRIDGES.md](docs/porting/RENDER_IMAGE_BRIDGES.md).
+No rendering/image conversion is installed or qualified yet.
 
 The earlier 25-export object-state proposal under
 `build/port-after-go-only-exports/` was rejected because it omitted fixture C calls.
