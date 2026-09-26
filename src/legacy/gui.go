@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_3.h"
-#include "GAME2_1.h"
-#include "GAME2_2.h"
-#include "GAME2_3.h"
-#include "client__gui__guicon.h"
-*/
-import "C"
 import (
 	"os"
 	"unsafe"
@@ -32,20 +24,12 @@ var (
 
 var _ = [1]struct{}{}[332-unsafe.Sizeof(gui.WindowData{})]
 
-func asWindowDataP(data unsafe.Pointer) *gui.WindowData {
-	return (*gui.WindowData)(data)
-}
-
-func asWindowData(data *C.nox_window_data) *gui.WindowData {
-	return asWindowDataP(unsafe.Pointer(data))
-}
-
 func nox_client_onClientStatusA(v int) { Nox_client_onClientStatusA(v) }
 
 func nox_client_setRenderGUI(v int) { Nox_client_setRenderGUI(v) }
 
-func nox_color_rgb_4344A0(r, g, b int) C.uint32_t {
-	return C.uint32_t(noxcolor.RGB5551Color(byte(r), byte(g), byte(b)).Color32())
+func nox_color_rgb_4344A0(r, g, b int) uint32 {
+	return noxcolor.RGB5551Color(byte(r), byte(g), byte(b)).Color32()
 }
 
 func nox_set_color_rgb_434430(r, g, b int) {

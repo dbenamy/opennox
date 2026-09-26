@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "GAME2_2.h"
-#include "GAME3.h"
-#include "GAME3_1.h"
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -19,16 +13,6 @@ var _ = [1]struct{}{}[1056-unsafe.Sizeof(gui.EntryFieldData{})]
 var (
 	NewButtonOrCheckbox func(parent *gui.Window, status gui.StatusFlags, px, py, w, h int, draw *gui.WindowData) *gui.Window
 )
-
-//export nox_gui_newStaticText_489300
-func nox_gui_newStaticText_489300(par *nox_window, status C.int, px, py, w, h C.int, draw *C.nox_window_data, data *C.nox_staticText_data) *nox_window {
-	return (*nox_window)(GetClient().Cli().GUI.NewStaticTextRaw(asWindow(par), gui.StatusFlags(status), int(px), int(py), int(w), int(h), asWindowData(draw), (*gui.StaticTextData)(unsafe.Pointer(data))).C())
-}
-
-//export nox_xxx_wndStaticDrawNoImage_488D00
-func nox_xxx_wndStaticDrawNoImage_488D00(win *nox_window, draw *C.nox_window_data) int {
-	return gui.StaticTextDrawNoImage(asWindow(win), asWindowData(draw))
-}
 
 func Nox_gui_newScrollListBox_4A4310(par *gui.Window, status gui.StatusFlags, px, py, w, h int, draw *gui.WindowData, tdata *gui.ScrollListBoxData) *gui.Window {
 	return uiListNew(par, status, px, py, w, h, draw, tdata)

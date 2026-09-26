@@ -1,17 +1,7 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1_1.h"
-#include "GAME1_3.h"
-#include "GAME2_2.h"
-*/
-import "C"
 import (
-	"unsafe"
-
 	"github.com/opennox/opennox/v1/client/gui"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 )
 
 var (
@@ -25,23 +15,6 @@ var (
 	Sub_44A4B0                        func()
 	Sub_44A360                        func(a1 int)
 )
-
-//export nox_xxx_dialogMsgBoxCreate_449A10
-func nox_xxx_dialogMsgBoxCreate_449A10(win *nox_window, title, text *wchar2_t, a4 int, a5, a6 unsafe.Pointer) unsafe.Pointer {
-	var fnc5, fnc6 func()
-	if a5 != nil {
-		fnc5 = func() {
-			ccall.CallVoidVoid(a5)
-		}
-	}
-	if a6 != nil {
-		fnc6 = func() {
-			ccall.CallVoidVoid(a6)
-		}
-	}
-	Nox_xxx_dialogMsgBoxCreate_449A10(asWindow(win), GoWString(title), GoWString(text), gui.DialogFlags(a4), fnc5, fnc6)
-	return nil
-}
 
 func Sub_41DA70(a1, a2 int) {
 	onlineSessionEvent()

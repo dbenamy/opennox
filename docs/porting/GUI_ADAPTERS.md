@@ -50,4 +50,18 @@ unused, and the separate color setter has no C signature. The two includes-only
 imports were identified separately from the GUI behavior change. Source review
 and qualification remain primary-owned; no usage savings are inferred.
 
-No converted results are accepted yet.
+The conversion below is qualified.
+
+## Qualified conversion
+
+All 36 roots pass in each profile with exact original names and no failures/skips.
+Safe/static, three production/ABI builds, exact known-suite comparison, two headless
+save/load scenarios and all 1,654 original asset hashes qualify unchanged reviewed
+source. Root tests and frozen captures remain unchanged. See
+[qualification](gui-adapters-qualification.json) and [baseline](gui-adapters-baseline.json).
+
+Exports fall 174→169; selected production cgo files fall 126/127→119/120.
+Headers remain 157 files / 2,924 physical lines: five prototypes occupied six lines.
+Embedded production C bodies remain 77; standalone production and test-reference C
+remain zero. Primary accepted the source draft without code corrections and
+independently reconstructed both headers and the two includes-only source edits.

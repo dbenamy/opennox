@@ -2772,3 +2772,13 @@ of inheriting the unrelated window selection. Add repeated original main-menu an
 status-overlay checks; keep production, known-suite and headless gates unchanged.
 Record the meter conditional-image branch coverage limitation and known renderer
 package failures explicitly. See [RENDER_IMAGE_BRIDGES.md](RENDER_IMAGE_BRIDGES.md).
+
+## GUI adapter and includes-only cleanup
+
+Retire five proven-unused internal GUI wrappers and their unused C-only conversion
+helpers. Keep native owners, shared records and layout assertions. Return native
+uint32 from the private RGB helper without changing byte narrowing or color math.
+Remove two separately audited includes-only cgo imports while preserving compiler
+settings. The unused dialog adapter's raw callback bridge follows the established
+internal-export retirement policy; live native hooks and callbacks remain. See
+[GUI_ADAPTERS.md](GUI_ADAPTERS.md).

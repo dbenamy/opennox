@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_3.h"
-*/
-import "C"
-
 import (
 	"unsafe"
 

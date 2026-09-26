@@ -7,35 +7,36 @@ superseded status when updating it. The workflow and delegation rules live in
 ## Status: resumed; internal C-glue removal
 
 **Progress: 142,665/142,665 original standalone C lines ported or retired;
-internal glue: 337/463 client cgo files eliminated on net (126 remain;
-server: 336/463 eliminated, 127 remain).**
-Selected legacy C export bridges: **1,716/1,890 retired (174 remain)**.
+internal glue: 344/463 client cgo files eliminated on net (119 remain;
+server: 343/463 eliminated, 120 remain).**
+Selected legacy C export bridges: **1,721/1,890 retired (169 remain)**.
 
 These are selected project files in Linux 386 production profiles, not equal
 units of effort. Three project packages directly use cgo; 77 embedded C callback
 bodies remain. Production and test-reference standalone `.c` files both remain zero.
 
-Latest qualified chunk retires 17 unused rendering/image exports and moves private
-image interfaces to the existing native handle type. It preserves renderer owners,
-shared C records, allocation/lifetimes and ordered client lookups. See
-[RENDER_IMAGE_BRIDGES.md](docs/porting/RENDER_IMAGE_BRIDGES.md).
+Latest qualified chunk retires five unused GUI exports, their C-only conversion
+helpers and a private C color return type. It removes seven production cgo imports,
+including two leftover includes-only imports. Native GUI owners, live callbacks,
+shared layouts and compiler settings are preserved. See
+[GUI_ADAPTERS.md](docs/porting/GUI_ADAPTERS.md).
 
 Continue chunk-by-chunk with one Luna helper, primary review, qualification,
 documentation, commit/push and recorded reversible decisions. Stop at the milestone,
 usage limits or a substantial question.
 
-Latest qualified artifacts: `build/port-render-image-bridges/`.
+Latest qualified artifacts: `build/port-gui-adapters/`.
 
 ## What remains
 
-Counts below describe the qualified rendering/image conversion. Zero `.c` lines
+Counts below describe the qualified GUI-adapter conversion. Zero `.c` lines
 is not a count of all C dependencies or remaining engineering effort.
 
 | Area | Remaining work or dependency |
 | --- | --- |
 | Embedded C callback glue | 77 production function bodies in Go preambles: 76 generic function-pointer dispatchers and one specialized adapter. |
 | Callback routes | Remaining Go owners still use C-compatible addresses. Continue migrating identities and every field/alias consumer before removing shared raw fallbacks. |
-| Declarations and C types | 157 tracked headers / 2,930 physical lines; client profiles select 126 cgo files and server selects 127 in three project packages (alloc, ccall, legacy). These are mostly interface/layout machinery, not unported algorithms. |
+| Declarations and C types | 157 tracked headers / 2,924 physical lines; client profiles select 119 cgo files and server selects 120 in three project packages (alloc, ccall, legacy). These are mostly interface/layout machinery, not unported algorithms. |
 | Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Ownership/lifetime work remains behind the centralized allocator. |
 | External libraries | SDL2, OpenGL, OpenAL and similar native dependencies/bindings stay for this phase; their future is a subsequent discussion. |
 | Portability and release validation | Qualified target is Linux 386/SSE2 with cgo. The complete engine is not qualified as cgo-free, 64-bit, native macOS or browser/WebAssembly. Physical display and audible playback remain manual checks. |
@@ -47,11 +48,11 @@ users are migrated; test-only C observers separately qualify that boundary.
 
 ## Latest qualification and evidence
 
-- All 92 client / 89 server affected roots pass with exact original names and
-  no failures/skips. The baseline reused 88 roots from exact qualified `3838462b`
-  source/environment and ran four additional client roots (one server root) twice.
-  The focused union was rerun after conversion in all three profiles.
-- Safe/static and three production/ABI checks pass; all 17 retired exports absent.
+- All 36 affected roots pass in each of three profiles with exact original names
+  and no failures/skips. The baseline reused 26 meter roots from exact qualified
+  `46f07aba` source/environment and ran ten additional GUI-owner roots twice per
+  profile. The complete union was rerun after conversion.
+- Safe/static and three production/ABI checks pass; all five retired exports absent.
 - Fresh preview and final headless character creation with explicit save/load/
   resume pass on the same final production binary.
 - Full asset suite matches known results: 304 failure events; 17 passing, two
@@ -62,8 +63,8 @@ users are migrated; test-only C observers separately qualify that boundary.
   established prerequisite skip among 2,462 roots. That is an earlier-source result;
   this callback-interface batch uses affected coverage plus production gates.
 
-Report: [RENDER_IMAGE_BRIDGES.md](docs/porting/RENDER_IMAGE_BRIDGES.md).
-Evidence: [qualification](docs/porting/render-image-bridges-qualification.json).
+Report: [GUI_ADAPTERS.md](docs/porting/GUI_ADAPTERS.md).
+Evidence: [qualification](docs/porting/gui-adapters-qualification.json).
 Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expected-suite.jsonl).
 
 ## Goal, next work and open review items
@@ -76,7 +77,7 @@ removal order and completion criteria. Client rendering/audio backend replacemen
 is outside this phase.
 
 The dependency inventory tool is `tools/porting/cgo_inventory.py`; the current
-qualified inventory is [render-image-bridges-inventory-after.json](docs/porting/render-image-bridges-inventory-after.json).
+qualified inventory is [gui-adapters-inventory-after.json](docs/porting/gui-adapters-inventory-after.json).
 The original phase baseline is under `build/port-cgo-leaves/inventory-before/`.
 The completed leaf cleanup leaves three project packages directly using cgo in
 all profiles, plus OpenGL/SDL2/OpenAL bindings in the clients. Metadata discovery
@@ -84,13 +85,11 @@ is not compilation or qualification. The helper's external-review draft is not
 accepted evidence: its suggestion that go-gl is residue is contradicted by the
 actual dependency graph (`libs/client/seat/opengl` imports it).
 
-Rendering/image conversion is qualified and pushed as `46f07aba`. The next GUI
-adapter baseline combines 26 reused meter roots with ten additional GUI-owner
-roots run twice per profile. The scope retires five unused wrappers, their C-only
-converters, a private C color return type and two leftover includes-only imports.
-Keep live animation callback addresses and compiler settings. See
-[GUI_ADAPTERS.md](docs/porting/GUI_ADAPTERS.md). No GUI conversion is installed
-or qualified yet.
+GUI-adapter conversion is qualified. Next audit the connected animation callback
+fields, their getter aliases and saved-pointer consumers across menus, character
+creation, options and browser owners. Preserve the 68-byte animation layout and
+foreign callback behavior. The scout is under `build/port-after-gui-scout/`;
+no later conversion is installed or qualified.
 
 The earlier 25-export object-state proposal under
 `build/port-after-go-only-exports/` was rejected because it omitted fixture C calls.
@@ -117,7 +116,7 @@ The current Go toolchain is `/usr/lib/go-1.26/bin`. Follow the
 [build environment instructions](PORT.md#build-and-test-environment), including
 sourcing `build/baseline/env.sh` in every Go shell.
 
-Latest local artifacts are under `build/port-render-image-bridges/`:
+Latest local artifacts are under `build/port-gui-adapters/`:
 `contracts/`, `preview/`, `safe/opennox-safe`, and
 `production/production/bin/{opennox,opennox-hd,opennox-server}`.
 Source, tests, reports and qualification metadata are committed; ignored local
@@ -131,6 +130,7 @@ do not rerun them or infer deletion safety from age alone.
 
 | Artifact | Recovery or current location |
 | --- | --- |
+| GUI-adapter cleanup | Removed 9 obsolete project cache archives (420,384,768 allocated bytes), four superseded window production/safe binaries (187,895,808 bytes; rebuild `3838462b`), and three superseded rendering test binaries (200,912,896 bytes; rebuild `46f07aba`). Current replacements, source and logs retained. Journals under `build/port-gui-adapters/`. Preview/final each removed 1,654 verified asset copies; original assets, saves and results retained. Restore with `build/port-artifact-cleanup/restore-recent-scenario.py` and `build/baseline/runs/gui-adapters[-preview]-save/deduplicated-assets.json`. |
 | Rendering/image cleanup | Removed 9 obsolete project cache archives (420,610,048 allocated bytes), four superseded quantity production/safe binaries (188,002,304 bytes; rebuild `5585ab65`), and three superseded window test binaries (200,974,336 bytes; rebuild `3838462b`). Current replacements, source and logs retained. Journals under `build/port-render-image-bridges/`. Preview/final each removed 1,654 verified asset copies; original assets, saves and results retained. Restore with `build/port-artifact-cleanup/restore-recent-scenario.py` and `build/baseline/runs/render-image-bridges[-preview]-save/deduplicated-assets.json`. |
 | Window bridge cleanup | Removed 9 unused project cache archives older than `5585ab65` (420,876,288 allocated bytes), four superseded inventory production/safe binaries (188,059,648 bytes; rebuild `785c2d54`), and three superseded quantity test binaries (201,060,352 bytes; rebuild `5585ab65`). Current replacements and all source/logs retained. Plans/journals under `build/port-window-bridges/`. Preview/final scenarios each removed 1,654 verified asset copies; original assets and saves/results retained. Restore each with `build/port-artifact-cleanup/restore-recent-scenario.py` and `build/baseline/runs/window-bridges[-preview]-save/deduplicated-assets.json`. |
 | Superseded audio/UI/inventory previews | Removed three hash/source/host-use-verified preview executables (142,897,152 allocated bytes); rebuild `9eac418e`, `541585fa` or `785c2d54` from retained source/commands. Qualified quantity and current window replacements remain. Proposal and journal: `build/port-window-bridges/old-preview-cleanup/`. |
@@ -201,7 +201,7 @@ do not rerun them or infer deletion safety from age alone.
 | Completed creation/init scenario assets | Removed 1,654 SHA256-identical original-asset duplicates after host-use checks; 559,972,352 allocated bytes reclaimed. Originals, saves/results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/create-init-identities-save/deduplicated-assets.json`. Plan/result: `build/port-post-create-init-cleanup/`. |
 | Superseded collision/death qualified binaries | Removed 14 test/safe/production executables after exact committed-source, replacement/hash and host-use checks; 786,751,488 allocated bytes reclaimed. Rebuild qualified revisions `170b594a` and `e7ca9d31` using retained commands. Source, original baseline binaries, logs, manifests and current create/init and damage outputs remain. Plan/journal: `build/port-item-identities/cleanup-production-{approved.json,deleted.jsonl}`. |
 | Obsolete pre-audio project cache | Removed 21 hash/stat-verified root/legacy Linux 386 archives older than original audio baseline `9f6b2b46`, after host-use checks; 1,100,709,888 allocated bytes reclaimed. Newer audio caches, all source/assets/binaries remain. Rebuild normally. Plan/journal: `build/port-after-audio/cache-luna/cache-cleanup-{approved.json,deleted.jsonl}`. |
-| Current qualified production/safe binaries | Retained under `build/port-render-image-bridges/`; superseded outputs removed as recorded below. |
+| Current qualified production/safe binaries | Retained under `build/port-gui-adapters/`; superseded outputs removed as recorded below. |
 | Superseded UI-fixture binaries | Removed seven verified test/safe/production executables after committed audio replacement and host-use checks; 390,643,712 allocated bytes reclaimed. Rebuild revision `3d47a346` using retained commands/source maps. Logs/manifests and current audio replacements remain. Plan/journal: `build/port-audio-stream-callbacks/binary-cleanup-{approved.json,deleted.jsonl}`. |
 | Completed audio-stream scenario assets | Removed 1,654 verified original-asset duplicates; 559,931,392 allocated bytes reclaimed. Originals, saves and results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/audio-stream-callbacks-save/deduplicated-assets.json`. Plan/result: `build/port-post-audio-stream-cleanup/`. |
 | Superseded modifier/server-fixture/duration/update binaries | Removed 28 verified test/safe/production executables after source/replacement hashes and host-use checks; 1,567,293,440 allocated bytes reclaimed. Rebuild qualified revisions `99b65896`, `a798ad1c`, `d5d80c42`, `a8d89bda` using retained commands and source maps. Current UI replacements, old logs/manifests and baseline evidence remain. Journals: `build/port-after-client-ui/binary-cleanup-deleted.jsonl` and `binary-cleanup-addendum-deleted.jsonl`. |
