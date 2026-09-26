@@ -27,6 +27,13 @@ usage limits or a substantial question.
 
 Latest qualified artifacts: `build/port-gui-adapters/`.
 
+Active batch: animation callback identities. Five new original-path contracts
+and all 68 affected roots have passed twice per profile on the original callbacks.
+The only source additions are two porttest-only Go files; qualified production
+remains `2bca8420`. Baseline: [ANIMATION_IDENTITIES.md](docs/porting/ANIMATION_IDENTITIES.md).
+Luna is preparing an isolated migration draft. Next: review/install, qualify
+all affected profiles plus the full default corpus and production gates.
+
 ## What remains
 
 Counts below describe the qualified GUI-adapter conversion. Zero `.c` lines
