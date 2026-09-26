@@ -85,11 +85,12 @@ is not compilation or qualification. The helper's external-review draft is not
 accepted evidence: its suggestion that go-gl is residue is contradicted by the
 actual dependency graph (`libs/client/seat/opengl` imports it).
 
-Quantity/shop/trade conversion is qualified. Next review the window-helper family:
-live geometry/ancestry/text adapters and apparently unused GUI export wrappers.
-Keep shared C window types until their remaining users migrate. A read-only scout
-is under `build/port-after-quantity-scout/`; no later conversion is installed or
-qualified. Verify reachability and original coverage before freezing that scope.
+Quantity/shop/trade conversion is qualified and pushed as `5585ab65`. The next
+window-helper batch covers 19 exports, including 13 unused wrappers. Its baseline
+combines the exact reused 394/391 roots with seven original window roots newly run
+twice per profile. See [WINDOW_BRIDGES.md](docs/porting/WINDOW_BRIDGES.md).
+Keep shared C window types for remaining users. No window conversion is installed
+or qualified yet.
 
 The earlier 25-export object-state proposal under
 `build/port-after-go-only-exports/` was rejected because it omitted fixture C calls.
