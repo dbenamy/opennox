@@ -84,11 +84,13 @@ is not compilation or qualification. The helper's external-review draft is not
 accepted evidence: its suggestion that go-gl is residue is contradicted by the
 actual dependency graph (`libs/client/seat/opengl` imports it).
 
-Rendering/image conversion is qualified. Next retire five unused GUI adapters,
-their unused conversion helpers, a private C color return type and two leftover
-includes-only imports. Keep live animation callback addresses and compiler settings.
-The read-only audit and ignored draft are under `build/port-after-render-scout/`
-and `build/port-gui-adapters/`; no later conversion is installed or qualified.
+Rendering/image conversion is qualified and pushed as `46f07aba`. The next GUI
+adapter baseline combines 26 reused meter roots with ten additional GUI-owner
+roots run twice per profile. The scope retires five unused wrappers, their C-only
+converters, a private C color return type and two leftover includes-only imports.
+Keep live animation callback addresses and compiler settings. See
+[GUI_ADAPTERS.md](docs/porting/GUI_ADAPTERS.md). No GUI conversion is installed
+or qualified yet.
 
 The earlier 25-export object-state proposal under
 `build/port-after-go-only-exports/` was rejected because it omitted fixture C calls.
