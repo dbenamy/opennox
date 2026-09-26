@@ -2760,3 +2760,15 @@ substitutes. Keep shared C window types/layout and unrelated private helpers.
 Original coverage reuses the exact qualified selection and adds seven existing
 roots run twice per profile; require the complete union after conversion. See
 [WINDOW_BRIDGES.md](WINDOW_BRIDGES.md).
+
+
+## Native image handles and affected coverage
+
+Retire 17 proven-unused wrappers without replacement; keep renderer owners and
+shared C records. Use the existing native opaque handle for private interfaces,
+preserving the two ordered client lookups around image resolution. Select 92
+client / 89 server roots from actual callers and related owner families instead
+of inheriting the unrelated window selection. Add repeated original main-menu and
+status-overlay checks; keep production, known-suite and headless gates unchanged.
+Record the meter conditional-image branch coverage limitation and known renderer
+package failures explicitly. See [RENDER_IMAGE_BRIDGES.md](RENDER_IMAGE_BRIDGES.md).

@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -16,14 +12,8 @@ var (
 	Nox_xxx_gLoadAnim func(name string) *ImageRef
 )
 
-type nox_video_bag_image_t = C.nox_video_bag_image_t
-
-func asImageH(p *nox_video_bag_image_t) noxrender.ImageHandle {
-	return noxrender.ImageHandle(unsafe.Pointer(p))
-}
-
-func asImage(p *nox_video_bag_image_t) *noxrender.Image {
-	return GetClient().R2().GetBag().AsImage(asImageH(p))
+func asImage(p noxrender.ImageHandle) *noxrender.Image {
+	return GetClient().R2().GetBag().AsImage(p)
 }
 
 type ImageRefAnim struct {
@@ -48,7 +38,6 @@ func AsImageRefP(p unsafe.Pointer) *ImageRef {
 	return (*ImageRef)(p)
 }
 
-type nox_things_imageRef_t = C.nox_things_imageRef_t
 type ImageRef struct {
 	NameBuf    [32]byte       // 0, 0
 	Name2Buf   [64]byte       // 8, 32
@@ -94,9 +83,4 @@ func (r *ImageRef) Field24ptr() *ImageRefAnim {
 		panic("not an animation")
 	}
 	return (*ImageRefAnim)(r.Field_24)
-}
-
-//export nox_xxx_gLoadImg_42F970
-func nox_xxx_gLoadImg_42F970(name *C.char) *nox_video_bag_image_t {
-	return (*nox_video_bag_image_t)(Nox_xxx_gLoadImg(GoString(name)).C())
 }

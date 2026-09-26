@@ -47,11 +47,26 @@ The renderer package is not all green: `TestDrawImage` has established failures;
 particle, pixel-hash, circle and line tests pass in the recorded suite. Require
 exact known failure/package outcomes, alongside all selected contracts, safe/static,
 three production/ABI builds, two headless save/load runs and original asset hashes.
-See the baseline and qualification JSON records when accepted.
+The accepted baseline and qualification records are linked below.
 
 ## Delegation
 
-One GPT-6 Luna helper audited references and test scope and drafts the bounded
+One GPT-6 Luna helper audited references and test scope and drafted the bounded
 conversion. Primary independently checks reachability, native pointer interfaces,
 evaluation order, test selection and all acceptance evidence. No usage savings
-are inferred. No converted results have been accepted yet.
+are inferred. Primary accepted the source draft without code corrections and
+corrected a stale sentence in its formatting report. The converted results below
+are accepted.
+
+## Qualified conversion
+
+All 92 client / 89 server roots pass with exact expected names and no skips or
+failures. Safe/static, three production/ABI builds, exact known-suite comparison,
+two headless save/load scenarios and unchanged hashes for all 1,654 original
+assets qualify the same reviewed source. Root tests and frozen captures are unchanged.
+See [qualification](render-image-bridges-qualification.json) and
+[baseline](render-image-bridges-baseline.json).
+
+Exports fall 191→174; selected production cgo files fall 128/129→126/127.
+Headers remain 157 files / 2,930 physical lines. Embedded production C
+bodies remain 77; standalone production and test-reference C remain zero.

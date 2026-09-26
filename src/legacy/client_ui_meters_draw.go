@@ -16,7 +16,7 @@ func uiMeterMainWindow() *gui.Window {
 	return (*gui.Window)(unsafe.Pointer(uintptr(dword_5d4594_1090276)))
 }
 func uiMeterImage(handle uint32, pos image.Point) {
-	nox_client_drawImageAt_47D2C0((*nox_video_bag_image_t)(unsafe.Pointer(uintptr(handle))), pos.X, pos.Y)
+	nox_client_drawImageAt_47D2C0(noxrender.ImageHandle(unsafe.Pointer(uintptr(handle))), pos.X, pos.Y)
 }
 func uiMeterSetIcon(w *gui.Window, handle uint32) {
 	if w != nil {

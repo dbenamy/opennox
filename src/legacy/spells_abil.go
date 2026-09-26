@@ -43,8 +43,8 @@ func nox_xxx_abilityCooldown_4252D0(ca int) int { return Nox_xxx_abilityCooldown
 
 func sub_4252F0(ca int) *wchar2_t { return internWStr(Sub_4252F0(ca)) }
 
-func nox_xxx_spellGetAbilityIcon_425310(abil, icon int) *nox_video_bag_image_t {
-	return (*nox_video_bag_image_t)(Nox_xxx_spellGetAbilityIcon_425310(abil, icon))
+func nox_xxx_spellGetAbilityIcon_425310(abil, icon int) noxrender.ImageHandle {
+	return Nox_xxx_spellGetAbilityIcon_425310(abil, icon)
 }
 
 func nox_xxx_bookFirstKnownAbil_425330() int { return Nox_xxx_bookFirstKnownAbil_425330() }

@@ -1,23 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME1_2.h"
-#include "GAME1_3.h"
-#include "GAME2.h"
-#include "GAME2_1.h"
-#include "GAME2_2.h"
-#include "GAME2_3.h"
-#include "GAME3_1.h"
-#include "GAME5_2.h"
-#include "common__system__team.h"
-#include "client__gui__guiquit.h"
-#include "client__draw__debugdraw.h"
-#include "client__draw__fx.h"
-*/
-import "C"
 import (
 	"image"
 	"unsafe"
@@ -38,16 +20,6 @@ var (
 	Nox_video_inFadeTransition_44E0D0    func() int
 )
 
-type nox_draw_viewport_t = C.nox_draw_viewport_t
-
-func asViewportP(p unsafe.Pointer) *noxrender.Viewport {
-	return (*noxrender.Viewport)(p)
-}
-
-func asViewport(p *nox_draw_viewport_t) *noxrender.Viewport {
-	return asViewportP(unsafe.Pointer(p))
-}
-
 func nox_xxx_cliUpdateCameraPos_435600(x, y int) {
 	Nox_xxx_cliUpdateCameraPos_435600(x, y)
 }
@@ -56,18 +28,8 @@ func nox_draw_setMaterial_4340A0(ind, r, g, b int) {
 	GetClient().R2().Data().SetMaterialRGB(ind, r, g, b)
 }
 
-//export sub_434080
-func sub_434080(a1 int) {
-	GetClient().R2().Data().SetField262(a1)
-}
-
 func nox_xxx_drawSetTextColor_434390(a1 int) {
 	GetClient().R2().Data().SetTextColor(noxcolor.RGBA5551(a1))
-}
-
-//export nox_xxx_drawSetColor_4343E0
-func nox_xxx_drawSetColor_4343E0(a1 int) {
-	GetClient().R2().Data().SetColor(noxcolor.RGBA5551(a1))
 }
 
 func nox_client_drawSetColor_434460(a1 int) {
@@ -76,26 +38,6 @@ func nox_client_drawSetColor_434460(a1 int) {
 
 func nox_client_drawEnableAlpha_434560(a1 int) {
 	GetClient().R2().Data().SetAlphaEnabled(a1 != 0)
-}
-
-//export sub_4345F0
-func sub_4345F0(a1 int) {
-	GetClient().R2().Data().SetMultiply14(a1)
-}
-
-//export nox_xxx_draw_434600
-func nox_xxx_draw_434600(a1 int) {
-	GetClient().R2().Data().SetColorize17(a1)
-}
-
-//export sub_47D370
-func sub_47D370(a1 int) {
-	GetClient().R2().Set_dword_5d4594_3799484(a1)
-}
-
-//export nox_client_drawSetAlpha_434580
-func nox_client_drawSetAlpha_434580(a C.uchar) {
-	GetClient().R2().Data().SetAlpha(byte(a))
 }
 
 func nox_client_drawAddPoint_49F500(x, y int) {
@@ -118,11 +60,6 @@ func nox_draw_set54RGB32_434040(cl int) {
 		G: int(c.G),
 		B: int(c.B),
 	})
-}
-
-//export sub_437290
-func sub_437290() {
-	GetClient().R2().SetRectFullScreen()
 }
 
 func nox_client_drawRectFilledOpaque_49CE30(a1, a2, a3, a4 int) {
@@ -154,82 +91,17 @@ func nox_xxx_guiFontHeightMB_43F320(fnt unsafe.Pointer) int {
 	return r.FontHeight(r.GetFonts().AsFont(fnt))
 }
 
-//export nox_xxx_drawGetStringSize_43F840
-func nox_xxx_drawGetStringSize_43F840(font unsafe.Pointer, sp *wchar2_t, outW, outH *C.int, maxW int) int {
-	r := GetClient().R2()
-	sz := r.GetStringSizeWrapped(r.GetFonts().AsFont(font), GoWString(sp), maxW)
-	if outW != nil {
-		*outW = C.int(sz.X)
-	}
-	if outH != nil {
-		*outH = C.int(sz.Y)
-	}
-	return bool2int(sz != (image.Point{}))
-}
-
-//export nox_xxx_bookGetStringSize_43FA80
-func nox_xxx_bookGetStringSize_43FA80(font unsafe.Pointer, sp *wchar2_t, outW, outH *C.int, maxW int) int {
-	r := GetClient().R2()
-	sz := r.GetStringSizeWrappedStyle(r.GetFonts().AsFont(font), GoWString(sp), maxW)
-	if outW != nil {
-		*outW = C.int(sz.X)
-	}
-	if outH != nil {
-		*outH = C.int(sz.Y)
-	}
-	return bool2int(sz != (image.Point{}))
-}
-
-//export nox_xxx_drawString_43F6E0
-func nox_xxx_drawString_43F6E0(font unsafe.Pointer, sp *wchar2_t, x, y int) int {
-	r := GetClient().R2()
-	return r.DrawString(r.GetFonts().AsFont(font), GoWString(sp), image.Point{X: x, Y: y})
-}
-
-//export nox_draw_drawStringHL_43F730
-func nox_draw_drawStringHL_43F730(font unsafe.Pointer, sp *wchar2_t, x, y int) int {
-	r := GetClient().R2()
-	return r.DrawStringHL(r.GetFonts().AsFont(font), GoWString(sp), image.Point{X: x, Y: y})
-}
-
 func nox_xxx_drawStringWrap_43FAF0(font unsafe.Pointer, sp *wchar2_t, x, y, maxW, maxH int) int {
 	r := GetClient().R2()
 	return r.DrawStringWrapped(r.GetFonts().AsFont(font), GoWString(sp), image.Rect(x, y, x+maxW, y+maxH))
-}
-
-//export nox_xxx_drawStringWrapHL_43FD00
-func nox_xxx_drawStringWrapHL_43FD00(font unsafe.Pointer, sp *wchar2_t, x, y, maxW, maxH int) int {
-	r := GetClient().R2()
-	return r.DrawStringWrappedHL(r.GetFonts().AsFont(font), GoWString(sp), image.Rect(x, y, x+maxW, y+maxH))
-}
-
-//export nox_xxx_bookDrawString_43FA80_43FD80
-func nox_xxx_bookDrawString_43FA80_43FD80(font unsafe.Pointer, s *wchar2_t, x, y, maxW, maxH int) int {
-	r := GetClient().R2()
-	return r.DrawStringWrappedStyle(r.GetFonts().AsFont(font), GoWString(s), image.Rect(x, y, x+maxW, y+maxH))
-}
-
-//export nox_xxx_drawStringStyle_43F7B0
-func nox_xxx_drawStringStyle_43F7B0(font unsafe.Pointer, sp *wchar2_t, x, y int) int {
-	r := GetClient().R2()
-	return r.DrawStringStyle(r.GetFonts().AsFont(font), GoWString(sp), image.Point{X: x, Y: y})
 }
 
 func nox_video_drawCircleColored_4C3270(a1, a2, a3, a4 int) {
 	GetClient().R2().DrawCircle(a1, a2, a3, noxcolor.RGBA5551(a4))
 }
 
-func nox_client_drawImageAt_47D2C0(img *nox_video_bag_image_t, x, y int) {
+func nox_client_drawImageAt_47D2C0(img noxrender.ImageHandle, x, y int) {
 	GetClient().R2().DrawImageAt(asImage(img), image.Point{X: x, Y: y})
-}
-
-//export nox_video_getImagePixdata_42FB30
-func nox_video_getImagePixdata_42FB30(img *nox_video_bag_image_t) unsafe.Pointer {
-	data := asImage(img).Pixdata()
-	if len(data) == 0 {
-		return nil
-	}
-	return unsafe.Pointer(&data[0])
 }
 
 func sub_4AE6F0(cx, cy, rad, ang, ccl int) {
@@ -238,11 +110,6 @@ func sub_4AE6F0(cx, cy, rad, ang, ccl int) {
 
 func nox_client_isConnected_43C700() int {
 	return bool2int(Nox_client_isConnected())
-}
-
-//export sub_4B6720
-func sub_4B6720(a1 *C.int2, a2, a3 C.int, a4 C.char) {
-	GetClient().R2().DrawGlow(AsPoint(unsafe.Pointer(a1)), noxcolor.RGBA5551(a2), int(a3), int(a4))
 }
 
 func Sub_437180() {
