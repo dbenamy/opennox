@@ -85,10 +85,14 @@ is not compilation or qualification. The helper's external-review draft is not
 accepted evidence: its suggestion that go-gl is residue is contradicted by the
 actual dependency graph (`libs/client/seat/opengl` imports it).
 
-UI meter conversion is qualified. Continue with the next connected internal GUI
-callback/interface family from actual callers. Reuse the native tooltip registry
-where appropriate, while auditing all field/alias consumers and fixture identities.
-External native backends remain outside scope. No later conversion is qualified.
+UI meter conversion is qualified and pushed as `541585fa`. Next is a connected
+22-export inventory GUI batch, with five private C-typed helpers and their callers.
+Reuse the native tooltip registry for five installed inventory callbacks. Keep the
+delayed quantity-dialog callback `sub_465CD0` for its connected follow-up; its stored
+address still reaches the quantity dialog's foreign dispatcher. The original baseline
+passes 394 client / 391 server roots; the new installed-tooltip contract also passes in
+separate repeat processes per profile. Production matches `541585fa` exactly. No
+inventory conversion is installed or qualified. See [inventory GUI report](docs/porting/INVENTORY_GUI_IDENTITIES.md).
 The earlier 25-export object-state proposal under
 `build/port-after-go-only-exports/` was rejected because it omitted fixture C calls.
 The qualified 37-export batch supersedes it with a complete caller/identity audit.
@@ -128,6 +132,8 @@ do not rerun them or infer deletion safety from age alone.
 
 | Artifact | Recovery or current location |
 | --- | --- |
+| Inventory baseline cleanup | Removed six superseded UI meter / first geometry-failure test binaries (402,345,984 allocated bytes) after accepted replacement and host checks. Removed seven unused project archives predating `541585fa` (339,312,640 bytes). Current corrected inventory baseline binaries, original assets and all source/log records remain. Rebuild UI meter `541585fa`; failed new-test source is `build/port-inventory-gui-identities/primary/failed-geometry-contract.go`. Journals: `old-tests-cleanup-{approved.json,deleted.jsonl}` and `cache-before-conversion/` under that batch directory. |
+| Pre-inventory disk cleanup | Removed five unused project cache archives predating original UI baseline `4792e80b` (335,773,696 allocated bytes), and four superseded audio production/safe binaries (188,211,200 bytes), after source/hash/replacement and host-use checks. Current UI binaries/caches, original assets and all logs/source records remain. Rebuild audio `9eac418e` as needed. Evidence: `build/port-inventory-gui-identities/cache-before-inventory/` and `old-production-cleanup-{approved.json,deleted.jsonl}`. |
 | UI meter preview/final duplicate assets | Removed 1,654 verified copies per scenario (559,853,568 / 559,964,160 allocated bytes). Originals, saves/results remain. Restore using `python3 build/port-artifact-cleanup/restore-recent-scenario.py` with `build/baseline/runs/ui-meter-identities-preview-save/deduplicated-assets.json` or `build/baseline/runs/ui-meter-identities-save/deduplicated-assets.json`. |
 | Obsolete pre-qualified-audio cache | Removed nine unused project archives predating `9eac418e` (421,228,544 allocated bytes), after hash/stat/source-family and host-use checks. Current UI baseline caches, binaries, source and assets preserved at cleanup. Evidence: `build/port-ui-meter-identities/cache-before-conversion/`. |
 | Superseded audio and original UI test binaries | Removed six source/hash/host-verified executables (402,395,136 allocated bytes), retaining current converted UI contract binaries. Rebuild audio `9eac418e` or original UI `4792e80b` normally; source/reports/logs remain. Evidence: `build/port-ui-meter-identities/old-tests-cleanup-{approved.json,deleted.jsonl}`. |

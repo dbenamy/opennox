@@ -80,7 +80,12 @@ may precede full qualification when their evidence and remaining gates are expli
    nontrivial result so zero-filled fixture state cannot hide behavior. The quest
    scoring review found a real width bug that zero-exponent fixtures had masked.
 3. Add independent contracts so matching a baseline is not the only correctness
-   check. If these uncover an existing bug, make a justified, reversible correction
+   check. First run newly authored fixture contracts alone on the target build,
+   then launch the broad baseline selection. Check integer constant arithmetic on
+   386 and read actual geometry tables before asserting adjacent-region behavior.
+   The inventory tooltip draft initially overflowed a callback-ID expression and
+   mistook the neighboring special tray for empty space; a focused preflight
+   catches such test assumptions without repeating a long baseline sweep. If these uncover an existing bug, make a justified, reversible correction
    before freezing the baseline and record it for later review. Commit the baseline.
 4. Translate the batch, keeping C exports only for remaining C callers/callbacks.
    Go callers should invoke Go directly. Compare against frozen expectations while
