@@ -2999,3 +2999,13 @@ through shared strings/initialization. Repeat the four new contracts twice in
 every profile, but run each established broad original selection once. Require
 the same broad converted coverage and all production/integration gates.
 See [STRING_BOUNDARIES.md](STRING_BOUNDARIES.md).
+
+## Native spell scalar boundaries
+
+Keep the four live spell flag/validity/enabled helpers and their Go owner calls;
+replace only C-named scalar return types. Retire the specialized spell-call
+adapter after whole tracked-code reference checks. Reuse the exact-source
+qualified original baseline under binary/environment/discovered-name checks;
+require matching converted consumer/regression and production qualification.
+Check generated C adapter retirement by symbol substring because cgo prefixes
+vary per build. See [SPELL_SCALAR_BOUNDARIES.md](SPELL_SCALAR_BOUNDARIES.md).

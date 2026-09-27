@@ -370,6 +370,7 @@ target build selection and linker evidence.
 | Native libc helper boundaries; selected client/server cgo 13/14→9/10; exports remain 0, embedded bodies 20, headers 2,731 lines | 0 | 0 | 0 | 0 |
 | Native placement trigonometry; selected client/server cgo 9/10→7/8; exports remain 0, embedded bodies 20, headers 2,731 lines | 0 | 0 | 0 | 0 |
 | Native string boundaries; selected client/server cgo 7/8→6/7; allocator remains centralized cgo, exports 0, embedded bodies 20 | 0 | 0 | 0 | 0 |
+| Native spell scalar helpers / unused spell adapter retired | 0 | 0 | 0 | 0 |
 
 The 33 checksum test-reference lines were retired after differential validation;
 their original source remains recoverable at `66fa7bd4`.

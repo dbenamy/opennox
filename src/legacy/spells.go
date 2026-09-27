@@ -1,23 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "server__magic__plyrspel.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_2.h"
-#include "GAME4_3.h"
-#include "GAME5_2.h"
-#include "server__magic__spell__execdur.h"
-
-
-
-
-
-static int nox_spells_call_intint6_go(int (*f)(int, void*, nox_object_t*, nox_object_t*, void*, int), int a1, nox_object_t* a2, nox_object_t* a3, nox_object_t* a4, void* a5, int a6) { return f(a1, a2, a3, a4, a5, a6); }
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -75,12 +57,12 @@ func nox_xxx_spellManaCost_4249A0(ind, a2 int) int {
 	return GetServer().S().Spells.ManaCost(spell.ID(ind), a2)
 }
 
-func nox_xxx_spellHasFlags_424A50(ind, flags int) C.bool {
-	return C.bool(GetServer().S().Spells.HasFlags(spell.ID(ind), things.SpellFlags(flags)))
+func nox_xxx_spellHasFlags_424A50(ind, flags int) bool {
+	return GetServer().S().Spells.HasFlags(spell.ID(ind), things.SpellFlags(flags))
 }
 
-func nox_xxx_spellFlags_424A70(ind int) C.uint {
-	return C.uint(GetServer().S().Spells.Flags(spell.ID(ind)))
+func nox_xxx_spellFlags_424A70(ind int) uint32 {
+	return uint32(GetServer().S().Spells.Flags(spell.ID(ind)))
 }
 
 func nox_xxx_spellIcon_424A90(ind int) unsafe.Pointer { return Nox_xxx_spellIcon_424A90(ind) }
@@ -95,12 +77,12 @@ func nox_xxx_spellNextValid_424AF0(ind int) int {
 	return int(GetServer().S().Spells.NextValid(spell.ID(ind)))
 }
 
-func nox_xxx_spellIsValid_424B50(ind int) C.bool {
-	return C.bool(GetServer().S().Spells.DefByInd(spell.ID(ind)).IsValid())
+func nox_xxx_spellIsValid_424B50(ind int) bool {
+	return GetServer().S().Spells.DefByInd(spell.ID(ind)).IsValid()
 }
 
-func nox_xxx_spellIsEnabled_424B70(ind int) C.bool {
-	return C.bool(GetServer().S().Spells.DefByInd(spell.ID(ind)).IsEnabled())
+func nox_xxx_spellIsEnabled_424B70(ind int) bool {
+	return GetServer().S().Spells.DefByInd(spell.ID(ind)).IsEnabled()
 }
 
 func nox_xxx_castSpellByUser_4FDD20(a1 int, a2 *nox_object_t, a3 unsafe.Pointer) int {
@@ -124,9 +106,6 @@ func Nox_xxx_spellGrantToPlayer_4FB550(a1 *server.Object, a2 spell.ID, a3 int, a
 }
 func Nox_xxx_gameCaptureMagic_4FDC10(a1 spell.ID, a2 *server.Object) int {
 	return int(spellLifeCaptureAllowed(int32(a1), a2))
-}
-func Nox_spells_call_intint6_go(a1 unsafe.Pointer, a2 spell.ID, a3 *server.Object, a4 *server.Object, a5 *server.Object, a6 *server.SpellAcceptArg, a7 int) int {
-	return int(C.nox_spells_call_intint6_go((*[0]byte)(a1), C.int(a2), (*C.nox_object_t)(unsafe.Pointer(asObjectC(a3))), (*C.nox_object_t)(unsafe.Pointer(asObjectC(a4))), (*C.nox_object_t)(unsafe.Pointer(asObjectC(a5))), unsafe.Pointer(a6), C.int(a7)))
 }
 func Nox_xxx_createSpellFly_4FDDA0(a1 *server.Object, a2 *server.Object, a3 spell.ID) {
 	spellLifeCreateFly(a1, a2, int32(a3))
