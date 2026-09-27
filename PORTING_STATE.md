@@ -61,8 +61,12 @@ The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
 removal. Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md).
 Metadata discovery is not compilation evidence.
 
-Next, audit callback retirement by owner, starting with fixture-only adapters and
-observer dispatch. Read-only notes: `build/port-callback-retirement-audit/`.
+In progress: callback fixture retirement has an accepted original baseline and
+a reviewed, uninstalled nine-file draft plus one obsolete test deletion. See
+[CALLBACK_FIXTURE_RETIREMENT.md](docs/porting/CALLBACK_FIXTURE_RETIREMENT.md).
+29 original roots passed in all three profiles; private adapter/safe radial
+checks passed too. Require the 28 surviving roots after conversion.
+Artifacts: `build/port-callback-retirement-audit/`.
 The object-construction wrapper has only its own fixture as caller; prefab group
 traversal has only recursive/fixture callers. Confirm full reference scope before
 retirement. An animation callback has no named non-nil writes, but raw-offset
@@ -87,7 +91,10 @@ Do not change source consumed by running builds/tests.
 
 Current converted root/safe/production binaries live under
 `build/port-spell-scalar-boundaries/{contracts/profiles,safe,production/production/bin}`.
-Original baseline binaries/logs remain in `build/port-string-boundaries/`.
+The current original baseline uses these qualified spell binaries. Seven older
+string binaries were removed after replacement/source/hash and host-use checks
+(387,117,056 bytes); their logs/source maps remain, and `32df9553` can be rebuilt.
+Cleanup records: `build/port-callback-retirement-audit/string-cleanup-*`.
 Spell baseline/qualification metadata and reports are committed; ignored local
 binaries/logs/drafts are not backed up by Git. Completed scripts are consumed.
 

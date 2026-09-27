@@ -1,0 +1,16 @@
+src/legacy/callback_adapter_porttest_test.go:52:		legacy.Nox_call_objectType_new_go(legacy.PortTestAdapterObjectCallback(), objArg)
+src/legacy/collision_core_porttest.go:178:		ccall.CallVoidUPtr2(observer, uintptr(unsafe.Pointer(u)), uintptr(code))
+src/legacy/common/ccall/callgen/main.go:123:	"CallVoidInt2":  true,
+src/legacy/common/ccall/callgen/main.go:129:	"CallVoidUPtr2": true,
+src/legacy/common/ccall/ccall.go:36:func CallVoidUPtr2(fnc unsafe.Pointer, a1 uintptr, a2 uintptr) {
+src/legacy/common/ccall/ccall.go:68:func CallVoidInt2(fnc unsafe.Pointer, a1 int, a2 int) {
+src/legacy/object_type.go:74:func Nox_call_objectType_new_go(a1 unsafe.Pointer, a2 *server.Object) {
+src/legacy/prefab_runtime_dispatch_porttest.go:36:		prefabGroupEach((*server.MapGroup)(mapRoomPointer(v[0])), int32(v[1]), mapRoomPointer(v[2]), v[3])
+src/legacy/prefab_runtime_dispatch_porttest.go:121:func PortTestPrefabObserver() unsafe.Pointer { return C.prefabObserver() }
+src/legacy/prefab_runtime_dispatch_porttest.go:122:func PortTestPrefabCalls() [][2]uint32 {
+src/legacy/prefab_runtime_sections.go:336:func prefabGroupEach(g *server.MapGroup, expected int32, callback unsafe.Pointer, data uint32) {
+src/legacy/prefab_runtime_sections.go:343:			ccall.CallVoidInt2(callback, int(mapRoomRaw(p)), int(data))
+src/legacy/prefab_runtime_sections.go:377:			prefabGroupEach(s.MapGroups.GroupByInd(int(p.Raw0)), expected, callback, data)
+src/legacy/world_motion_porttest.go:169:		ccall.CallVoidUPtr2(observer, uintptr(unsafe.Pointer(u)), uintptr(code))
+src/prefab_runtime_traversal_porttest_test.go:84:				callback := legacy.PortTestPrefabObserver()
+src/prefab_runtime_traversal_porttest_test.go:90:				calls := legacy.PortTestPrefabCalls()
