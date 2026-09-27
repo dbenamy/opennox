@@ -84,13 +84,17 @@ is not compilation or qualification. The helper's external-review draft is not
 accepted evidence: its suggestion that go-gl is residue is contradicted by the
 actual dependency graph (`libs/client/seat/opengl` imports it).
 
-Unused ABI adapters are qualified. Next audit the connected book/quickbar/summoning
-callback routes: five tooltip callbacks and two image-animation completion
-callbacks. Existing tooltip dispatch can be reused; image completion must preserve
-its last-frame timing, repeated calls, image-reference argument and lookup after
-callback invocation. Scout: `build/port-after-unused-abi-scout/`. No subsequent
-conversion is installed or qualified. Luna remains unavailable due to usage limits;
-resume the one-helper policy when available, without substituting another model.
+Unused ABI adapters are qualified and pushed as `1238c985`. Active next batch:
+book/quickbar/summoning callbacks (five tooltips, two image completions, one unused
+export and five fixture-only C-typed wrappers). Four new original-path completion
+contracts and static-memory checks pass. Original captures pass twice per profile
+(256 default/highres roots,254 server roots; two !server build exclusions and no
+runtime skips). Production is still unchanged. Draft, controller scripts and review: `build/port-book-callbacks/`;
+initial caller scout: `build/port-after-unused-abi-scout/`. Do not install the draft
+until all original controllers have joined, exact test-name sets are accepted,
+and the baseline is committed. Completed scripts are consumed. Luna remains
+unavailable due to usage limits; resume the one-helper policy when available,
+without substituting another model.
 
 The earlier 25-export object-state proposal under
 `build/port-after-go-only-exports/` was rejected because it omitted fixture C calls.
@@ -131,6 +135,7 @@ do not rerun them or infer deletion safety from age alone.
 
 | Artifact | Recovery or current location |
 | --- | --- |
+| Book callback preparation cleanup | Removed four superseded animation production/safe binaries (187,686,912 allocated bytes; rebuild `f8332e3d`) after matching qualified `1238c985` replacements and host-use checks. Removed nine obsolete project cache archives (419,586,048 bytes) after confirming only prebuilt tests were running. Plans/journals: `build/port-book-callbacks/old-production-cleanup-*` and `cache-before-conversion/`. Original assets, source, logs and current binaries remain. |
 | Unused-adapter cleanup | Removed nine obsolete project cache archives (420,343,808 allocated bytes) and four superseded GUI production/safe executables (187,723,776 bytes; rebuild `2bca8420`) and three superseded animation test binaries (200,912,896 bytes; rebuild `f8332e3d`) plus 6 superseded previews (285,929,472 bytes; exact rebuild revisions in `preview-binaries-cleanup-approved.json`) after source/hash and host-use checks. Preview/final each deduplicated 1,654 verified original-asset copies; source, originals, saves and logs retained. Journals under `build/port-unused-abi-adapters/`; restore scenarios with `build/port-artifact-cleanup/restore-recent-scenario.py` and `build/baseline/runs/unused-abi-adapters[-preview]-save/deduplicated-assets.json`. |
 | Animation cleanup | Removed 14 obsolete cache archives (755,200,000 allocated bytes) and four superseded rendering production/safe executables (187,789,312 bytes; rebuild `46f07aba`) plus five superseded GUI test/window-render previews (296,013,824 bytes; rebuild `2bca8420`, `3838462b`, `46f07aba`) and three original animation test binaries (200,945,664 bytes; rebuild `c6ffcb75`) after source/hash and host-use checks. Preview/final each deduplicated 1,654 verified original-asset copies; source, originals, saves and logs retained. Journals under `build/port-animation-identities/`; restore scenarios with `build/port-artifact-cleanup/restore-recent-scenario.py` and `build/baseline/runs/animation-identities[-preview]-save/deduplicated-assets.json`. |
 | GUI-adapter cleanup | Removed 9 obsolete project cache archives (420,384,768 allocated bytes), four superseded window production/safe binaries (187,895,808 bytes; rebuild `3838462b`), and three superseded rendering test binaries (200,912,896 bytes; rebuild `46f07aba`). Current replacements, source and logs retained. Journals under `build/port-gui-adapters/`. Preview/final each removed 1,654 verified asset copies; original assets, saves and results retained. Restore with `build/port-artifact-cleanup/restore-recent-scenario.py` and `build/baseline/runs/gui-adapters[-preview]-save/deduplicated-assets.json`. |
