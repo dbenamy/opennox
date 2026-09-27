@@ -27,6 +27,13 @@ usage limits or a substantial question.
 
 Latest qualified artifacts: `build/port-animation-identities/`.
 
+Active batch: unused ABI adapters, original source `f8332e3d`. The 357-root
+baseline reuses exact-source default corpus evidence and 68 server/highres roots;
+289 additional server/highres roots have passed twice per profile. The reviewed
+56-export/33-private-wrapper draft is uninstalled. Next: commit this baseline,
+install the reviewed deletion-only draft, then qualify and commit/push. See
+[UNUSED_ABI_ADAPTERS.md](docs/porting/UNUSED_ABI_ADAPTERS.md).
+
 ## What remains
 
 Counts below describe the qualified animation-callback conversion. Zero `.c` lines
