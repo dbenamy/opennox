@@ -2,27 +2,22 @@
 
 package legacy
 
-/*
-#include "GAME3.h"
-#include "client__shell__noxworld.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"unsafe"
 )
 
 func PortTestServerBrowserMode(mode uint16) string {
-	return alloc.GoString16((*uint16)(unsafe.Pointer(nox_gui_wol_gameModeString_43BCB0(C.short(mode)))))
+	return alloc.GoString16((*uint16)(unsafe.Pointer(nox_gui_wol_gameModeString_43BCB0(int16(mode)))))
 }
 func PortTestServerBrowserHit(point, record unsafe.Pointer) int {
-	return int(sub_4A2560((*C.uint32_t)(point), C.int(uintptr(record))))
+	return int(sub_4A2560((*uint32)(point), int32(uintptr(record))))
 }
 func PortTestServerBrowserClamp(x, y int32, out unsafe.Pointer) uintptr {
-	return uintptr(unsafe.Pointer(sub_4A2830(C.int(x), C.int(y), (*C.uint32_t)(out))))
+	return uintptr(unsafe.Pointer(sub_4A2830(int32(x), int32(y), (*uint32)(out))))
 }
 func PortTestServerBrowserCount(point, head unsafe.Pointer) int {
-	return int(sub_4A25C0((*C.uint32_t)(point), (*C.int)(head)))
+	return int(sub_4A25C0((*uint32)(point), (*int32)(head)))
 }
 func PortTestServerBrowserList(items []unsafe.Pointer) (unsafe.Pointer, func()) {
 	head, free := alloc.New(legacyListNode{})

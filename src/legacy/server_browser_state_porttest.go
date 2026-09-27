@@ -2,14 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1_2.h"
-#include "GAME1_3.h"
-#include "GAME2_3.h"
-#include "client__shell__noxworld.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"unsafe"
@@ -78,8 +70,8 @@ func PortTestServerBrowserClocks() (map[string]*uint64, func()) {
 		}
 	}
 }
-func PortTestServerBrowserStateSet(v int32) int32 { return int32(sub_43AF90(C.int(v))) }
-func PortTestServerBrowserErrorSet(v int32)       { nox_client_setConnError_43AFA0(C.int(v)) }
+func PortTestServerBrowserStateSet(v int32) int32 { return int32(sub_43AF90(int32(v))) }
+func PortTestServerBrowserErrorSet(v int32)       { nox_client_setConnError_43AFA0(int32(v)) }
 func PortTestServerBrowserStateGet(which int) uint32 {
 	switch which {
 	case 0:
@@ -103,14 +95,14 @@ func PortTestServerBrowserSortClick(id int) { nox_wol_servers_sortBtnHandler_4A0
 func PortTestServerBrowserFormat(addr string, port uint16, out unsafe.Pointer) int {
 	p := CString(addr)
 	defer StrFree(p)
-	return int(nox_sprintAddrPort_43BC80(p, C.ushort(port), (*C.char)(out)))
+	return int(nox_sprintAddrPort_43BC80((*int8)(unsafe.Pointer(p)), uint16(port), (*int8)(out)))
 }
 
 func PortTestServerBrowserRow(record unsafe.Pointer) {
 	browserRow((*Nox_gui_server_ent_t)(record))
 }
 func PortTestServerBrowserTrimName(text unsafe.Pointer, width byte) uintptr {
-	return uintptr(unsafe.Pointer(sub_43BC10((*C.wchar2_t)(text), C.uchar(width))))
+	return uintptr(unsafe.Pointer(sub_43BC10((*wchar2_t)(text), uint8(width))))
 }
 
 func PortTestServerBrowserDetails(record unsafe.Pointer) {

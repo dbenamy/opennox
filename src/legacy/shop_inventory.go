@@ -1,20 +1,12 @@
 package legacy
 
-/*
-#include <string.h>
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_3.h"
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"unsafe"
 
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
+	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -59,7 +51,7 @@ func shopRepair(u *server.Object, s *shopSession, code uint32) uint32 {
 	}
 	shopSubGold(u, uint32(shopPrice(2, s, item)))
 	resourceSetHP(item, item.HealthData.Max)
-	ind := C.int(uint8(u.UpdateDataPlayer().Player.PlayerInd))
+	ind := int32(uint8(u.UpdateDataPlayer().Player.PlayerInd))
 	gameplayReportItemHealth(int(ind), item)
 	if item.ObjClass&0x1000 != 0 && item.ObjSubClass&0x47f0000 != 0 {
 		data := unsafe.Slice((*byte)(item.UseData.Ptr), 110)
@@ -149,7 +141,7 @@ func shopLoad(s *shopSession) {
 	for i := 0; i < int(*(*byte)(data)); i++ {
 		e := (*shopStockEntry)(unsafe.Add(data, 4+28*i))
 		for j := 0; j < int(e.Count); j++ {
-			u := asObjectS(nox_xxx_newObjectWithTypeInd_4E3450(int(C.int(e.Type))))
+			u := asObjectS(nox_xxx_newObjectWithTypeInd_4E3450(int(int32(e.Type))))
 			if u == nil {
 				continue
 			}
@@ -169,7 +161,7 @@ func shopLoad(s *shopSession) {
 				*(*byte)(u.UseData.Ptr) = byte(e.Reward)
 			}
 			if u.Xfer == xferIdentityKey(xferIDFieldGuide) {
-				C.strcpy((*C.char)(u.UseData.Ptr), (*C.char)(nox_xxx_getUnitNameByThingType_4E3A80(int(C.int(e.Reward)))))
+				alloc.Strcpy(u.UseData.Ptr, unsafe.Pointer(nox_xxx_getUnitNameByThingType_4E3A80(int(int32(e.Reward)))))
 			}
 			shopAdd(s, u)
 		}

@@ -3,14 +3,12 @@
 package legacy
 
 /*
-#cgo LDFLAGS: -Wl,--wrap=calloc -Wl,--wrap=free -Wl,--wrap=time
+#cgo LDFLAGS: -Wl,--wrap=calloc -Wl,--wrap=free
 #include <stdint.h>
 #include <stdlib.h>
-#include <time.h>
 #include <pthread.h>
 void* __real_calloc(size_t, size_t);
 void __real_free(void*);
-time_t __real_time(time_t*);
 extern void themeTestAllocated(void*, size_t);
 extern void themeTestReleased(void*);
 static _Thread_local int theme_observe_active;
@@ -42,7 +40,6 @@ int resourceFreeStop(void) {
  resource_free_events = NULL;
  return resource_free_count;
 }
-static _Thread_local uint32_t theme_observe_time;
 // Probe observer scope without entering Go from the foreign thread.
 static void* themeTestThreadProbe(void* out) {
  *(int*)out = theme_observe_active;
@@ -56,8 +53,7 @@ int themeTestOtherThreadState(void) {
  return state;
 }
 int themeTestCurrentThreadState(void) { return theme_observe_active; }
-void themeTestObserve(int active, uint32_t epoch) {
- theme_observe_time = epoch;
+void themeTestObserve(int active) {
  theme_observe_active = active;
 }
 void* __wrap_calloc(size_t n, size_t size) {
@@ -85,17 +81,12 @@ void __wrap_free(void* p) {
  if (theme_observe_active && p) themeTestReleased(p);
  __real_free(p);
 }
-time_t __wrap_time(time_t* out) {
- if (!theme_observe_active) return __real_time(out);
- time_t value = (time_t)theme_observe_time;
- if (out) *out = value;
- return value;
-}
 */
 import "C"
 import "runtime"
 
 var themeObserverPinned bool
+var themeObserverOldClock func() uint32
 
 func themeObserve(active bool, epoch uint32) {
 	// Linker wrappers also intercept Go runtime thread startup. Only the fixture
@@ -103,11 +94,17 @@ func themeObserve(active bool, epoch uint32) {
 	if active && !themeObserverPinned {
 		runtime.LockOSThread()
 		themeObserverPinned = true
+		themeObserverOldClock = mapThemeClock
 	}
-	C.themeTestObserve(C.int(bool2int(active)), C.uint32_t(epoch))
+	if active {
+		mapThemeClock = func() uint32 { return epoch }
+	}
+	C.themeTestObserve(C.int(bool2int(active)))
 	// Fixtures reset observation more than once during teardown. Pin only the
 	// active interval, preserving any outer LockOSThread held by the fixture.
 	if !active && themeObserverPinned {
+		mapThemeClock = themeObserverOldClock
+		themeObserverOldClock = nil
 		themeObserverPinned = false
 		runtime.UnlockOSThread()
 	}
@@ -127,5 +124,5 @@ func PortTestThemeObserverThreadScope() [4]int {
 	return [4]int{before, own, other, int(C.themeTestCurrentThreadState())}
 }
 
-// Exercise the same clock call used by the original theme loader.
-func portTestThemeClock() uint32 { return uint32(C.time(nil)) }
+// Exercise the same clock source used by the theme loader.
+func portTestThemeClock() uint32 { return mapThemeClock() }

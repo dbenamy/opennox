@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-*/
-import "C"
 import (
 	"image"
 	"unicode/utf16"
@@ -16,9 +12,11 @@ import (
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 )
 
-// Preserve libc classification of legacy 16-bit text units, including its locale.
-func uiEntryDigit(v uint16) bool { return C.iswdigit(C.wint_t(v)) != 0 }
-func uiEntryAlnum(v uint16) bool { return C.iswalnum(C.wint_t(v)) != 0 }
+// These ASCII predicates match the exhaustive legacy C-locale capture.
+func uiEntryDigit(v uint16) bool { return v >= '0' && v <= '9' }
+func uiEntryAlnum(v uint16) bool {
+	return uiEntryDigit(v) || v >= 'A' && v <= 'Z' || v >= 'a' && v <= 'z'
+}
 
 var uiEntryContext bool
 var uiEntryActive *gui.Window

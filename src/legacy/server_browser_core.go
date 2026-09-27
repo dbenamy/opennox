@@ -1,14 +1,5 @@
 package legacy
 
-/*
-#include <arpa/inet.h>
-#include "GAME1_2.h"
-#include "GAME1_3.h"
-#include "GAME2_3.h"
-#include "GAME3.h"
-#include "client__shell__noxworld.h"
-*/
-import "C"
 import (
 	"fmt"
 	"github.com/opennox/libs/strman"
@@ -95,25 +86,24 @@ func browserFormatEndpoint(addr string, port uint16, dst *byte) int {
 	return len(s)
 }
 
-// Only the reviewed callback/entry adapters remain exported to C.
-// The remaining compatibility helpers are ordinary Go calls.
+// Browser compatibility helpers call the native owners.
 
-func nox_gui_wol_gameModeString_43BCB0(v C.short) *C.wchar2_t {
-	return (*C.wchar2_t)(unsafe.Pointer(alloc.InternCString16(browserModeName(uint16(v)))))
+func nox_gui_wol_gameModeString_43BCB0(v int16) *wchar2_t {
+	return (*wchar2_t)(unsafe.Pointer(alloc.InternCString16(browserModeName(uint16(v)))))
 }
 
-func sub_4A2560(point *C.uint32_t, record C.int) C.int {
+func sub_4A2560(point *uint32, record int32) int32 {
 	if browserHit((*[2]uint32)(unsafe.Pointer(point)), unsafe.Pointer(uintptr(uint32(record)))) {
 		return 1
 	}
 	return 0
 }
 
-func sub_4A25C0(point *C.uint32_t, head *C.int) C.int {
-	return C.int(browserCount((*[2]uint32)(unsafe.Pointer(point)), (*legacyListNode)(unsafe.Pointer(head))))
+func sub_4A25C0(point *uint32, head *int32) int32 {
+	return int32(browserCount((*[2]uint32)(unsafe.Pointer(point)), (*legacyListNode)(unsafe.Pointer(head))))
 }
 
-func sub_4A2830(x, y C.int, out *C.uint32_t) *C.uint32_t {
+func sub_4A2830(x, y int32, out *uint32) *uint32 {
 	browserPopupClamp(int32(x), int32(y), (*[2]uint32)(unsafe.Pointer(out)))
 	return out
 }
@@ -129,47 +119,47 @@ func sub_438DD0(x, y uint32) int32 {
 	return 0
 }
 
-func sub_43AF40() C.int { return C.int(browserUI.creating) }
+func sub_43AF40() int32 { return int32(browserUI.creating) }
 
-func sub_43AF80() C.int { return C.int(browserUI.connectionState) }
+func sub_43AF80() int32 { return int32(browserUI.connectionState) }
 
-func sub_43AF90(v C.int) C.int { browserUI.connectionState = uint32(v); return v }
+func sub_43AF90(v int32) int32 { browserUI.connectionState = uint32(v); return v }
 
-func nox_client_setConnError_43AFA0(v C.int) {
+func nox_client_setConnError_43AFA0(v int32) {
 	browserUI.connectionError = uint32(v)
 	browserUI.connectionState = 2
 }
 
-func nox_client_getServerAddr_43B300() C.uint {
+func nox_client_getServerAddr_43B300() uint32 {
 	if browserUI.hasSelection == 0 {
 		return 0
 	}
-	// Preserve libc's established short/octal/hex IPv4 forms at this boundary.
-	return C.uint(C.inet_addr((*C.char)(unsafe.Add(browserUI.selected, 12))))
+	// Preserve the established short/octal/hex IPv4 forms at this boundary.
+	return browserIPv4(GoStringP(unsafe.Add(browserUI.selected, 12)))
 }
 
-func nox_client_getServerPort_43B320() C.int {
+func nox_client_getServerPort_43B320() int32 {
 	if browserUI.hasSelection == 0 {
 		return 0
 	}
-	return C.int(memmap.Uint32(0x5D4594, 814604))
+	return int32(memmap.Uint32(0x5D4594, 814604))
 }
 
-func sub_43B340() C.int {
+func sub_43B340() int32 {
 	if browserUI.hasSelection == 0 {
 		return 0
 	}
-	return C.int(*(*uint16)(unsafe.Add(browserUI.selected, 163)))
+	return int32(*(*uint16)(unsafe.Add(browserUI.selected, 163)))
 }
 
-func sub_43B6D0() C.int { return C.int(browserUI.transition) }
+func sub_43B6D0() int32 { return int32(browserUI.transition) }
 
-func sub_43BC10(text *C.wchar2_t, width C.uchar) *C.ushort {
-	return (*C.ushort)(unsafe.Pointer(browserTrimName((*uint16)(unsafe.Pointer(text)), byte(width))))
+func sub_43BC10(text *wchar2_t, width uint8) *uint16 {
+	return (*uint16)(unsafe.Pointer(browserTrimName((*uint16)(unsafe.Pointer(text)), byte(width))))
 }
 
-func nox_sprintAddrPort_43BC80(addr *C.char, port C.ushort, dst *C.char) C.int {
-	return C.int(browserFormatEndpoint(GoString(addr), uint16(port), (*byte)(unsafe.Pointer(dst))))
+func nox_sprintAddrPort_43BC80(addr *int8, port uint16, dst *int8) int32 {
+	return int32(browserFormatEndpoint(GoStringP(unsafe.Pointer(addr)), uint16(port), (*byte)(unsafe.Pointer(dst))))
 }
 
 func nox_wol_servers_sortBtnHandler_4A0290(id int32) {

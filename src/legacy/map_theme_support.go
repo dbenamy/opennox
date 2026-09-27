@@ -1,30 +1,36 @@
 package legacy
 
-/*
-#include <stdlib.h>
-#include <stdint.h>
-#include <time.h>
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/internal/binfile"
+	"math"
 	"os"
+	"time"
 	"unsafe"
 )
 
 // Theme records remain owned by the shared C allocator while the rest of the
-// map generator consumes them. Numeric conversion and clock retain libc semantics.
+// map generator consumes them. Numeric conversion preserves the libc boundaries.
 func mapThemeAlloc(n, size uint32) uint32 { return mapRoomRaw(legacyCalloc(uintptr(n), uintptr(size))) }
 func mapThemeFree(p uint32)               { legacyFree(mapRoomPointer(p)) }
 func mapThemeTemplate() *uint32           { return (*uint32)(unsafe.Pointer(&dword_5d4594_2487524)) }
-func mapThemeInt(s string) int32 {
-	b := append([]byte(s), 0)
-	return int32(C.atoi((*C.char)(unsafe.Pointer(&b[0]))))
-}
+
+var mapThemeClock = func() uint32 { return uint32(time.Now().Unix()) }
+
+func mapThemeInt(s string) int32 { return resourceAtoi(s) }
 func mapThemeFloat(s string) float64 {
-	b := append([]byte(s), 0)
-	return float64(C.atof((*C.char)(unsafe.Pointer(&b[0]))))
+	v, _, ok := resourceParseFloat(s, 64, false)
+	if !ok {
+		for len(s) != 0 && resourceSpace(s[0]) {
+			s = s[1:]
+		}
+		// strtod consumes the signed zero before an incomplete hexadecimal prefix.
+		// Keep this compatibility correction local to the former atof boundary.
+		if len(s) >= 3 && s[0] == '-' && s[1] == '0' && (s[2] == 'x' || s[2] == 'X') {
+			return math.Copysign(0, -1)
+		}
+	}
+	return v
 }
 func mapThemeTable(off uintptr, s string) int {
 	for i := 0; ; i++ {
@@ -48,7 +54,7 @@ func mapThemeReadByte(f uint32) (byte, bool) {
 }
 func mapThemeFile(cfg, name uint32) uint32 {
 	clear(unsafe.Slice(mapThemeByte(cfg, 0), 1116))
-	defaults := map[int]uint32{4: 5, 8: 2, 12: 3, 16: 1, 20: 3, 24: 40, 28: 20, 32: 10, 36: 5, 40: 20, 48: 100, 52: 100, 56: 1, 64: 1157234688, 72: 100, 76: uint32(C.time(nil))}
+	defaults := map[int]uint32{4: 5, 8: 2, 12: 3, 16: 1, 20: 3, 24: 40, 28: 20, 32: 10, 36: 5, 40: 20, 48: 100, 52: 100, 56: 1, 64: 1157234688, 72: 100, 76: mapThemeClock()}
 	for off, v := range defaults {
 		*populationWord(cfg, off) = v
 	}

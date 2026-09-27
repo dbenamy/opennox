@@ -1,0 +1,905 @@
+{
+  "revision": "e1926909e9f0bb59a3fd37f1f0c570e5a3b63ba6",
+  "toolchain": "go version go1.26.0 linux/amd64",
+  "target": "linux/386/SSE2",
+  "entrypoint": "./cmd/opennox",
+  "scope": "Production dependency metadata; no porttest/safe; not compilation or qualification",
+  "selector_metric": "Lexical C.selector mentions (including comments), not resolved calls",
+  "profiles": {
+    "default-cgo1": {
+      "command": [
+        "go",
+        "list",
+        "-mod=readonly",
+        "-e",
+        "-deps",
+        "-json",
+        "./cmd/opennox"
+      ],
+      "go_list_exit": 0,
+      "package_count": 495,
+      "direct_cgo": [
+        {
+          "package": "runtime/cgo",
+          "standard": true,
+          "files": [
+            "cgo.go"
+          ],
+          "imported_by": []
+        },
+        {
+          "package": "net",
+          "standard": true,
+          "files": [
+            "cgo_linux.go",
+            "cgo_resnew.go",
+            "cgo_socknew.go",
+            "cgo_unix_cgo.go",
+            "cgo_unix_cgo_res.go"
+          ],
+          "imported_by": [
+            "crypto/tls",
+            "crypto/x509",
+            "github.com/huin/goupnp",
+            "github.com/huin/goupnp/httpu",
+            "github.com/mitchellh/mapstructure",
+            "github.com/opennox/libs/noxnet/udpconn",
+            "github.com/opennox/lobby",
+            "github.com/opennox/nat",
+            "github.com/opennox/opennox/v1",
+            "github.com/opennox/opennox/v1/common/discover",
+            "github.com/opennox/opennox/v1/internal/netstr",
+            "github.com/opennox/opennox/v1/legacy",
+            "github.com/opennox/opennox/v1/server",
+            "github.com/opennox/xwis",
+            "github.com/prometheus/client_golang/prometheus/promhttp",
+            "github.com/prometheus/procfs",
+            "github.com/spf13/pflag",
+            "golang.org/x/crypto/ssh",
+            "net/http",
+            "net/http/httptrace",
+            "net/textproto",
+            "vendor/golang.org/x/net/http/httpguts",
+            "vendor/golang.org/x/net/http/httpproxy"
+          ]
+        },
+        {
+          "package": "github.com/go-gl/gl/v3.3-core/gl",
+          "standard": false,
+          "files": [
+            "conversions.go",
+            "debug.go",
+            "package.go",
+            "procaddr.go"
+          ],
+          "imported_by": [
+            "github.com/opennox/libs/client/seat/opengl"
+          ]
+        },
+        {
+          "package": "github.com/veandco/go-sdl2/sdl",
+          "standard": false,
+          "files": [
+            "audio.go",
+            "blendmode.go",
+            "clipboard.go",
+            "cpuinfo.go",
+            "endian.go",
+            "error.go",
+            "events.go",
+            "filesystem.go",
+            "gamecontroller.go",
+            "gesture.go",
+            "guid.go",
+            "haptic.go",
+            "hidapi.go",
+            "hints.go",
+            "joystick.go",
+            "keyboard.go",
+            "keycode.go",
+            "loadso.go",
+            "locale.go",
+            "log.go",
+            "metal.go",
+            "misc.go",
+            "mouse.go",
+            "mutex.go",
+            "pixels.go",
+            "power.go",
+            "rect.go",
+            "render.go",
+            "rwops.go",
+            "scancode.go",
+            "sdl.go",
+            "sdl_cgo.go",
+            "sensor.go",
+            "surface.go",
+            "sysrender.go",
+            "system.go",
+            "system_linux.go",
+            "syswm.go",
+            "thread.go",
+            "timer.go",
+            "touch.go",
+            "version.go",
+            "video.go",
+            "vulkan.go"
+          ],
+          "imported_by": [
+            "github.com/opennox/libs/client/seat/sdl"
+          ]
+        },
+        {
+          "package": "github.com/opennox/opennox/v1/legacy/common/alloc",
+          "standard": false,
+          "files": [
+            "raw.go"
+          ],
+          "imported_by": [
+            "github.com/opennox/opennox/v1",
+            "github.com/opennox/opennox/v1/client",
+            "github.com/opennox/opennox/v1/client/gui",
+            "github.com/opennox/opennox/v1/client/noxrender",
+            "github.com/opennox/opennox/v1/internal/binfile",
+            "github.com/opennox/opennox/v1/legacy",
+            "github.com/opennox/opennox/v1/server"
+          ],
+          "source_sha256": {
+            "src/legacy/common/alloc/raw.go": "05d5cc1daa52dad6c7474daef848b83f899a031750c73e4a0b75925ebb5d41fd"
+          },
+          "export_directives": 0,
+          "c_selector_mentions": {
+            "calloc": 1,
+            "free": 1,
+            "realloc": 1,
+            "size_t": 3
+          },
+          "apparently_unused_import_candidates": []
+        },
+        {
+          "package": "github.com/opennox/opennox/v1/legacy/common/ccall",
+          "standard": false,
+          "files": [
+            "ccall.go"
+          ],
+          "imported_by": [
+            "github.com/opennox/opennox/v1/client",
+            "github.com/opennox/opennox/v1/client/gui",
+            "github.com/opennox/opennox/v1/legacy",
+            "github.com/opennox/opennox/v1/server"
+          ],
+          "source_sha256": {
+            "src/legacy/common/ccall/ccall.go": "0ee65b0243b83a01cd3d593de4642ccafa7f1ba4b62f40b396210a63c770bc82"
+          },
+          "export_directives": 0,
+          "c_selector_mentions": {
+            "go_call_int_ptr2_func": 1,
+            "go_call_int_ptr3_func": 1,
+            "go_call_int_ptr_func": 1,
+            "go_call_int_uptr3_func": 1,
+            "go_call_int_uptr4_func": 1,
+            "go_call_int_uptr5_func": 1,
+            "go_call_int_uptr_func": 1,
+            "go_call_int_void_func": 1,
+            "go_call_uptr_uptr4_func": 1,
+            "go_call_void_int2_func": 1,
+            "go_call_void_ptr2_func": 1,
+            "go_call_void_ptr3_func": 1,
+            "go_call_void_ptr5_func": 1,
+            "go_call_void_ptr6_func": 1,
+            "go_call_void_ptr_func": 1,
+            "go_call_void_uptr2_func": 1,
+            "go_call_void_uptr3_func": 1,
+            "go_call_void_uptr5_func": 1,
+            "go_call_void_void_func": 1,
+            "int": 2,
+            "uintptr_t": 27
+          },
+          "apparently_unused_import_candidates": []
+        },
+        {
+          "package": "github.com/timshannon/go-openal/openal",
+          "standard": false,
+          "files": [
+            "alcCore.go",
+            "buffer.go",
+            "core.go",
+            "listener.go",
+            "source.go"
+          ],
+          "imported_by": [
+            "github.com/opennox/opennox/v1/client/noxmovie",
+            "github.com/opennox/opennox/v1/legacy/client/audio/ail"
+          ]
+        },
+        {
+          "package": "github.com/opennox/opennox/v1/legacy",
+          "standard": false,
+          "files": [
+            "cgo_common.go",
+            "cgo_strings.go",
+            "generator.go",
+            "inventory_placement.go",
+            "object_xfer_world.go",
+            "spells.go",
+            "video_highres.go"
+          ],
+          "imported_by": [
+            "github.com/opennox/opennox/v1"
+          ],
+          "source_sha256": {
+            "src/legacy/cgo_common.go": "188696a068e2b278ae906a7b056d3d02e7b39427e982024e3844037207ce0a59",
+            "src/legacy/cgo_strings.go": "6e4040698c6236f6eb3eae7194a4a834eff309318130d854f90d57cc862f1205",
+            "src/legacy/generator.go": "ff87ac3b55a6aa54e25853ee770519f1e174858a9f03a94932cb00a32d077440",
+            "src/legacy/inventory_placement.go": "f75ae9369451ae2ddbfb2b2793eecb0478b17ed0084eed81fe713af9e8e7a05d",
+            "src/legacy/object_xfer_world.go": "f101ff8eba1ee68309642ca2f7b6f37ceb5fca2682e5efd919c7d2db9054255e",
+            "src/legacy/spells.go": "ca13534830f12cf0ff5f0d7ad5c102a5e57a5eef6db66c78b0bf43104a06efec",
+            "src/legacy/video_highres.go": "8f7e909e0dde6f8e1b1b57512d3268776cae4d477e0f3b72931a8964befb4ccc"
+          },
+          "export_directives": 0,
+          "c_selector_mentions": {
+            "CString": 1,
+            "GoString": 1,
+            "abort": 1,
+            "bool": 6,
+            "char": 7,
+            "cos": 2,
+            "double": 4,
+            "int": 2,
+            "nox_object_t": 3,
+            "nox_spells_call_intint6_go": 1,
+            "sin": 2,
+            "uint": 2,
+            "wchar2_t": 3
+          },
+          "apparently_unused_import_candidates": []
+        }
+      ],
+      "project_packages_reaching_cgo": [
+        "github.com/opennox/opennox/v1/client",
+        "github.com/opennox/opennox/v1/client/gui",
+        "github.com/opennox/opennox/v1/client/noxmovie",
+        "github.com/opennox/opennox/v1/client/noxrender",
+        "github.com/opennox/opennox/v1/cmd/opennox",
+        "github.com/opennox/opennox/v1/common/discover",
+        "github.com/opennox/opennox/v1/internal/binfile",
+        "github.com/opennox/opennox/v1/internal/cryptfile",
+        "github.com/opennox/opennox/v1/internal/netstr",
+        "github.com/opennox/opennox/v1/internal/version",
+        "github.com/opennox/opennox/v1/legacy",
+        "github.com/opennox/opennox/v1/legacy/client/audio/ail",
+        "github.com/opennox/opennox/v1/legacy/common/alloc",
+        "github.com/opennox/opennox/v1/legacy/common/ccall",
+        "github.com/opennox/opennox/v1/legacy/dialog",
+        "github.com/opennox/opennox/v1/legacy/music",
+        "github.com/opennox/opennox/v1/server"
+      ],
+      "metadata_errors": []
+    },
+    "highres-cgo1": {
+      "command": [
+        "go",
+        "list",
+        "-mod=readonly",
+        "-e",
+        "-deps",
+        "-json",
+        "-tags",
+        "highres",
+        "./cmd/opennox"
+      ],
+      "go_list_exit": 0,
+      "package_count": 495,
+      "direct_cgo": [
+        {
+          "package": "runtime/cgo",
+          "standard": true,
+          "files": [
+            "cgo.go"
+          ],
+          "imported_by": []
+        },
+        {
+          "package": "net",
+          "standard": true,
+          "files": [
+            "cgo_linux.go",
+            "cgo_resnew.go",
+            "cgo_socknew.go",
+            "cgo_unix_cgo.go",
+            "cgo_unix_cgo_res.go"
+          ],
+          "imported_by": [
+            "crypto/tls",
+            "crypto/x509",
+            "github.com/huin/goupnp",
+            "github.com/huin/goupnp/httpu",
+            "github.com/mitchellh/mapstructure",
+            "github.com/opennox/libs/noxnet/udpconn",
+            "github.com/opennox/lobby",
+            "github.com/opennox/nat",
+            "github.com/opennox/opennox/v1",
+            "github.com/opennox/opennox/v1/common/discover",
+            "github.com/opennox/opennox/v1/internal/netstr",
+            "github.com/opennox/opennox/v1/legacy",
+            "github.com/opennox/opennox/v1/server",
+            "github.com/opennox/xwis",
+            "github.com/prometheus/client_golang/prometheus/promhttp",
+            "github.com/prometheus/procfs",
+            "github.com/spf13/pflag",
+            "golang.org/x/crypto/ssh",
+            "net/http",
+            "net/http/httptrace",
+            "net/textproto",
+            "vendor/golang.org/x/net/http/httpguts",
+            "vendor/golang.org/x/net/http/httpproxy"
+          ]
+        },
+        {
+          "package": "github.com/go-gl/gl/v3.3-core/gl",
+          "standard": false,
+          "files": [
+            "conversions.go",
+            "debug.go",
+            "package.go",
+            "procaddr.go"
+          ],
+          "imported_by": [
+            "github.com/opennox/libs/client/seat/opengl"
+          ]
+        },
+        {
+          "package": "github.com/veandco/go-sdl2/sdl",
+          "standard": false,
+          "files": [
+            "audio.go",
+            "blendmode.go",
+            "clipboard.go",
+            "cpuinfo.go",
+            "endian.go",
+            "error.go",
+            "events.go",
+            "filesystem.go",
+            "gamecontroller.go",
+            "gesture.go",
+            "guid.go",
+            "haptic.go",
+            "hidapi.go",
+            "hints.go",
+            "joystick.go",
+            "keyboard.go",
+            "keycode.go",
+            "loadso.go",
+            "locale.go",
+            "log.go",
+            "metal.go",
+            "misc.go",
+            "mouse.go",
+            "mutex.go",
+            "pixels.go",
+            "power.go",
+            "rect.go",
+            "render.go",
+            "rwops.go",
+            "scancode.go",
+            "sdl.go",
+            "sdl_cgo.go",
+            "sensor.go",
+            "surface.go",
+            "sysrender.go",
+            "system.go",
+            "system_linux.go",
+            "syswm.go",
+            "thread.go",
+            "timer.go",
+            "touch.go",
+            "version.go",
+            "video.go",
+            "vulkan.go"
+          ],
+          "imported_by": [
+            "github.com/opennox/libs/client/seat/sdl"
+          ]
+        },
+        {
+          "package": "github.com/opennox/opennox/v1/legacy/common/alloc",
+          "standard": false,
+          "files": [
+            "raw.go"
+          ],
+          "imported_by": [
+            "github.com/opennox/opennox/v1",
+            "github.com/opennox/opennox/v1/client",
+            "github.com/opennox/opennox/v1/client/gui",
+            "github.com/opennox/opennox/v1/client/noxrender",
+            "github.com/opennox/opennox/v1/internal/binfile",
+            "github.com/opennox/opennox/v1/legacy",
+            "github.com/opennox/opennox/v1/server"
+          ],
+          "source_sha256": {
+            "src/legacy/common/alloc/raw.go": "05d5cc1daa52dad6c7474daef848b83f899a031750c73e4a0b75925ebb5d41fd"
+          },
+          "export_directives": 0,
+          "c_selector_mentions": {
+            "calloc": 1,
+            "free": 1,
+            "realloc": 1,
+            "size_t": 3
+          },
+          "apparently_unused_import_candidates": []
+        },
+        {
+          "package": "github.com/opennox/opennox/v1/legacy/common/ccall",
+          "standard": false,
+          "files": [
+            "ccall.go"
+          ],
+          "imported_by": [
+            "github.com/opennox/opennox/v1/client",
+            "github.com/opennox/opennox/v1/client/gui",
+            "github.com/opennox/opennox/v1/legacy",
+            "github.com/opennox/opennox/v1/server"
+          ],
+          "source_sha256": {
+            "src/legacy/common/ccall/ccall.go": "0ee65b0243b83a01cd3d593de4642ccafa7f1ba4b62f40b396210a63c770bc82"
+          },
+          "export_directives": 0,
+          "c_selector_mentions": {
+            "go_call_int_ptr2_func": 1,
+            "go_call_int_ptr3_func": 1,
+            "go_call_int_ptr_func": 1,
+            "go_call_int_uptr3_func": 1,
+            "go_call_int_uptr4_func": 1,
+            "go_call_int_uptr5_func": 1,
+            "go_call_int_uptr_func": 1,
+            "go_call_int_void_func": 1,
+            "go_call_uptr_uptr4_func": 1,
+            "go_call_void_int2_func": 1,
+            "go_call_void_ptr2_func": 1,
+            "go_call_void_ptr3_func": 1,
+            "go_call_void_ptr5_func": 1,
+            "go_call_void_ptr6_func": 1,
+            "go_call_void_ptr_func": 1,
+            "go_call_void_uptr2_func": 1,
+            "go_call_void_uptr3_func": 1,
+            "go_call_void_uptr5_func": 1,
+            "go_call_void_void_func": 1,
+            "int": 2,
+            "uintptr_t": 27
+          },
+          "apparently_unused_import_candidates": []
+        },
+        {
+          "package": "github.com/timshannon/go-openal/openal",
+          "standard": false,
+          "files": [
+            "alcCore.go",
+            "buffer.go",
+            "core.go",
+            "listener.go",
+            "source.go"
+          ],
+          "imported_by": [
+            "github.com/opennox/opennox/v1/client/noxmovie",
+            "github.com/opennox/opennox/v1/legacy/client/audio/ail"
+          ]
+        },
+        {
+          "package": "github.com/opennox/opennox/v1/legacy",
+          "standard": false,
+          "files": [
+            "cgo_common.go",
+            "cgo_strings.go",
+            "generator.go",
+            "inventory_placement.go",
+            "object_xfer_world.go",
+            "spells.go",
+            "video_highres.go"
+          ],
+          "imported_by": [
+            "github.com/opennox/opennox/v1"
+          ],
+          "source_sha256": {
+            "src/legacy/cgo_common.go": "188696a068e2b278ae906a7b056d3d02e7b39427e982024e3844037207ce0a59",
+            "src/legacy/cgo_strings.go": "6e4040698c6236f6eb3eae7194a4a834eff309318130d854f90d57cc862f1205",
+            "src/legacy/generator.go": "ff87ac3b55a6aa54e25853ee770519f1e174858a9f03a94932cb00a32d077440",
+            "src/legacy/inventory_placement.go": "f75ae9369451ae2ddbfb2b2793eecb0478b17ed0084eed81fe713af9e8e7a05d",
+            "src/legacy/object_xfer_world.go": "f101ff8eba1ee68309642ca2f7b6f37ceb5fca2682e5efd919c7d2db9054255e",
+            "src/legacy/spells.go": "ca13534830f12cf0ff5f0d7ad5c102a5e57a5eef6db66c78b0bf43104a06efec",
+            "src/legacy/video_highres.go": "8f7e909e0dde6f8e1b1b57512d3268776cae4d477e0f3b72931a8964befb4ccc"
+          },
+          "export_directives": 0,
+          "c_selector_mentions": {
+            "CString": 1,
+            "GoString": 1,
+            "abort": 1,
+            "bool": 6,
+            "char": 7,
+            "cos": 2,
+            "double": 4,
+            "int": 2,
+            "nox_object_t": 3,
+            "nox_spells_call_intint6_go": 1,
+            "sin": 2,
+            "uint": 2,
+            "wchar2_t": 3
+          },
+          "apparently_unused_import_candidates": []
+        }
+      ],
+      "project_packages_reaching_cgo": [
+        "github.com/opennox/opennox/v1/client",
+        "github.com/opennox/opennox/v1/client/gui",
+        "github.com/opennox/opennox/v1/client/noxmovie",
+        "github.com/opennox/opennox/v1/client/noxrender",
+        "github.com/opennox/opennox/v1/cmd/opennox",
+        "github.com/opennox/opennox/v1/common/discover",
+        "github.com/opennox/opennox/v1/internal/binfile",
+        "github.com/opennox/opennox/v1/internal/cryptfile",
+        "github.com/opennox/opennox/v1/internal/netstr",
+        "github.com/opennox/opennox/v1/internal/version",
+        "github.com/opennox/opennox/v1/legacy",
+        "github.com/opennox/opennox/v1/legacy/client/audio/ail",
+        "github.com/opennox/opennox/v1/legacy/common/alloc",
+        "github.com/opennox/opennox/v1/legacy/common/ccall",
+        "github.com/opennox/opennox/v1/legacy/dialog",
+        "github.com/opennox/opennox/v1/legacy/music",
+        "github.com/opennox/opennox/v1/server"
+      ],
+      "metadata_errors": []
+    },
+    "server-cgo1": {
+      "command": [
+        "go",
+        "list",
+        "-mod=readonly",
+        "-e",
+        "-deps",
+        "-json",
+        "-tags",
+        "server",
+        "./cmd/opennox"
+      ],
+      "go_list_exit": 0,
+      "package_count": 474,
+      "direct_cgo": [
+        {
+          "package": "runtime/cgo",
+          "standard": true,
+          "files": [
+            "cgo.go"
+          ],
+          "imported_by": []
+        },
+        {
+          "package": "net",
+          "standard": true,
+          "files": [
+            "cgo_linux.go",
+            "cgo_resnew.go",
+            "cgo_socknew.go",
+            "cgo_unix_cgo.go",
+            "cgo_unix_cgo_res.go"
+          ],
+          "imported_by": [
+            "crypto/tls",
+            "crypto/x509",
+            "github.com/huin/goupnp",
+            "github.com/huin/goupnp/httpu",
+            "github.com/mitchellh/mapstructure",
+            "github.com/opennox/libs/noxnet/udpconn",
+            "github.com/opennox/lobby",
+            "github.com/opennox/nat",
+            "github.com/opennox/opennox/v1",
+            "github.com/opennox/opennox/v1/common/discover",
+            "github.com/opennox/opennox/v1/internal/netstr",
+            "github.com/opennox/opennox/v1/legacy",
+            "github.com/opennox/opennox/v1/server",
+            "github.com/opennox/xwis",
+            "github.com/prometheus/client_golang/prometheus/promhttp",
+            "github.com/prometheus/procfs",
+            "github.com/spf13/pflag",
+            "golang.org/x/crypto/ssh",
+            "net/http",
+            "net/http/httptrace",
+            "net/textproto",
+            "vendor/golang.org/x/net/http/httpguts",
+            "vendor/golang.org/x/net/http/httpproxy"
+          ]
+        },
+        {
+          "package": "github.com/opennox/opennox/v1/legacy/common/alloc",
+          "standard": false,
+          "files": [
+            "raw.go"
+          ],
+          "imported_by": [
+            "github.com/opennox/opennox/v1",
+            "github.com/opennox/opennox/v1/client",
+            "github.com/opennox/opennox/v1/client/gui",
+            "github.com/opennox/opennox/v1/client/noxrender",
+            "github.com/opennox/opennox/v1/internal/binfile",
+            "github.com/opennox/opennox/v1/legacy",
+            "github.com/opennox/opennox/v1/server"
+          ],
+          "source_sha256": {
+            "src/legacy/common/alloc/raw.go": "05d5cc1daa52dad6c7474daef848b83f899a031750c73e4a0b75925ebb5d41fd"
+          },
+          "export_directives": 0,
+          "c_selector_mentions": {
+            "calloc": 1,
+            "free": 1,
+            "realloc": 1,
+            "size_t": 3
+          },
+          "apparently_unused_import_candidates": []
+        },
+        {
+          "package": "github.com/opennox/opennox/v1/legacy/common/ccall",
+          "standard": false,
+          "files": [
+            "ccall.go"
+          ],
+          "imported_by": [
+            "github.com/opennox/opennox/v1/client",
+            "github.com/opennox/opennox/v1/client/gui",
+            "github.com/opennox/opennox/v1/legacy",
+            "github.com/opennox/opennox/v1/server"
+          ],
+          "source_sha256": {
+            "src/legacy/common/ccall/ccall.go": "0ee65b0243b83a01cd3d593de4642ccafa7f1ba4b62f40b396210a63c770bc82"
+          },
+          "export_directives": 0,
+          "c_selector_mentions": {
+            "go_call_int_ptr2_func": 1,
+            "go_call_int_ptr3_func": 1,
+            "go_call_int_ptr_func": 1,
+            "go_call_int_uptr3_func": 1,
+            "go_call_int_uptr4_func": 1,
+            "go_call_int_uptr5_func": 1,
+            "go_call_int_uptr_func": 1,
+            "go_call_int_void_func": 1,
+            "go_call_uptr_uptr4_func": 1,
+            "go_call_void_int2_func": 1,
+            "go_call_void_ptr2_func": 1,
+            "go_call_void_ptr3_func": 1,
+            "go_call_void_ptr5_func": 1,
+            "go_call_void_ptr6_func": 1,
+            "go_call_void_ptr_func": 1,
+            "go_call_void_uptr2_func": 1,
+            "go_call_void_uptr3_func": 1,
+            "go_call_void_uptr5_func": 1,
+            "go_call_void_void_func": 1,
+            "int": 2,
+            "uintptr_t": 27
+          },
+          "apparently_unused_import_candidates": []
+        },
+        {
+          "package": "github.com/opennox/opennox/v1/legacy",
+          "standard": false,
+          "files": [
+            "cgo_common.go",
+            "cgo_server.go",
+            "cgo_strings.go",
+            "generator.go",
+            "inventory_placement.go",
+            "object_xfer_world.go",
+            "spells.go",
+            "video_highres.go"
+          ],
+          "imported_by": [
+            "github.com/opennox/opennox/v1"
+          ],
+          "source_sha256": {
+            "src/legacy/cgo_common.go": "188696a068e2b278ae906a7b056d3d02e7b39427e982024e3844037207ce0a59",
+            "src/legacy/cgo_server.go": "cfef660fa51c9458150ddc2fd0d56da2d06030c96eb647f74b7ae808881388bb",
+            "src/legacy/cgo_strings.go": "6e4040698c6236f6eb3eae7194a4a834eff309318130d854f90d57cc862f1205",
+            "src/legacy/generator.go": "ff87ac3b55a6aa54e25853ee770519f1e174858a9f03a94932cb00a32d077440",
+            "src/legacy/inventory_placement.go": "f75ae9369451ae2ddbfb2b2793eecb0478b17ed0084eed81fe713af9e8e7a05d",
+            "src/legacy/object_xfer_world.go": "f101ff8eba1ee68309642ca2f7b6f37ceb5fca2682e5efd919c7d2db9054255e",
+            "src/legacy/spells.go": "ca13534830f12cf0ff5f0d7ad5c102a5e57a5eef6db66c78b0bf43104a06efec",
+            "src/legacy/video_highres.go": "8f7e909e0dde6f8e1b1b57512d3268776cae4d477e0f3b72931a8964befb4ccc"
+          },
+          "export_directives": 0,
+          "c_selector_mentions": {
+            "CString": 1,
+            "GoString": 1,
+            "abort": 1,
+            "bool": 6,
+            "char": 7,
+            "cos": 2,
+            "double": 4,
+            "int": 2,
+            "nox_object_t": 3,
+            "nox_spells_call_intint6_go": 1,
+            "sin": 2,
+            "uint": 2,
+            "wchar2_t": 3
+          },
+          "apparently_unused_import_candidates": []
+        }
+      ],
+      "project_packages_reaching_cgo": [
+        "github.com/opennox/opennox/v1/client",
+        "github.com/opennox/opennox/v1/client/gui",
+        "github.com/opennox/opennox/v1/client/noxrender",
+        "github.com/opennox/opennox/v1/cmd/opennox",
+        "github.com/opennox/opennox/v1/common/discover",
+        "github.com/opennox/opennox/v1/internal/binfile",
+        "github.com/opennox/opennox/v1/internal/cryptfile",
+        "github.com/opennox/opennox/v1/internal/netstr",
+        "github.com/opennox/opennox/v1/internal/version",
+        "github.com/opennox/opennox/v1/legacy",
+        "github.com/opennox/opennox/v1/legacy/common/alloc",
+        "github.com/opennox/opennox/v1/legacy/common/ccall",
+        "github.com/opennox/opennox/v1/server"
+      ],
+      "metadata_errors": []
+    },
+    "default-cgo0": {
+      "command": [
+        "go",
+        "list",
+        "-mod=readonly",
+        "-e",
+        "-deps",
+        "-json",
+        "./cmd/opennox"
+      ],
+      "go_list_exit": 0,
+      "package_count": 494,
+      "direct_cgo": [],
+      "project_packages_reaching_cgo": [],
+      "metadata_errors": [
+        {
+          "package": "github.com/go-gl/gl/v3.3-core/gl",
+          "error": "build constraints exclude all Go files in <repo>/build/cache/gomod/github.com/go-gl/gl@v0.0.0-20211210172815-726fda9656d6/v3.3-core/gl",
+          "import_stack": [
+            "github.com/opennox/opennox/v1/cmd/opennox",
+            "github.com/opennox/opennox/v1",
+            "github.com/opennox/libs/client/seat/sdl",
+            "github.com/opennox/libs/client/seat/opengl",
+            "github.com/go-gl/gl/v3.3-core/gl"
+          ]
+        },
+        {
+          "package": "github.com/opennox/libs/client/seat/opengl",
+          "error": "build constraints exclude all Go files in <repo>/build/cache/gomod/github.com/go-gl/gl@v0.0.0-20211210172815-726fda9656d6/v3.3-core/gl",
+          "import_stack": [
+            "github.com/opennox/opennox/v1/cmd/opennox",
+            "github.com/opennox/opennox/v1",
+            "github.com/opennox/libs/client/seat/sdl",
+            "github.com/opennox/libs/client/seat/opengl",
+            "github.com/go-gl/gl/v3.3-core/gl"
+          ]
+        },
+        {
+          "package": "github.com/opennox/libs/client/seat/sdl",
+          "error": "build constraints exclude all Go files in <repo>/build/cache/gomod/github.com/go-gl/gl@v0.0.0-20211210172815-726fda9656d6/v3.3-core/gl",
+          "import_stack": [
+            "github.com/opennox/opennox/v1/cmd/opennox",
+            "github.com/opennox/opennox/v1",
+            "github.com/opennox/libs/client/seat/sdl",
+            "github.com/opennox/libs/client/seat/opengl",
+            "github.com/go-gl/gl/v3.3-core/gl"
+          ]
+        },
+        {
+          "package": "github.com/opennox/opennox/v1",
+          "error": "build constraints exclude all Go files in <repo>/build/cache/gomod/github.com/go-gl/gl@v0.0.0-20211210172815-726fda9656d6/v3.3-core/gl",
+          "import_stack": [
+            "github.com/opennox/opennox/v1/cmd/opennox",
+            "github.com/opennox/opennox/v1",
+            "github.com/opennox/libs/client/seat/sdl",
+            "github.com/opennox/libs/client/seat/opengl",
+            "github.com/go-gl/gl/v3.3-core/gl"
+          ]
+        },
+        {
+          "package": "github.com/opennox/opennox/v1/cmd/opennox",
+          "error": "build constraints exclude all Go files in <repo>/build/cache/gomod/github.com/go-gl/gl@v0.0.0-20211210172815-726fda9656d6/v3.3-core/gl",
+          "import_stack": [
+            "github.com/opennox/opennox/v1/cmd/opennox",
+            "github.com/opennox/opennox/v1",
+            "github.com/opennox/libs/client/seat/sdl",
+            "github.com/opennox/libs/client/seat/opengl",
+            "github.com/go-gl/gl/v3.3-core/gl"
+          ]
+        }
+      ]
+    },
+    "highres-cgo0": {
+      "command": [
+        "go",
+        "list",
+        "-mod=readonly",
+        "-e",
+        "-deps",
+        "-json",
+        "-tags",
+        "highres",
+        "./cmd/opennox"
+      ],
+      "go_list_exit": 0,
+      "package_count": 494,
+      "direct_cgo": [],
+      "project_packages_reaching_cgo": [],
+      "metadata_errors": [
+        {
+          "package": "github.com/go-gl/gl/v3.3-core/gl",
+          "error": "build constraints exclude all Go files in <repo>/build/cache/gomod/github.com/go-gl/gl@v0.0.0-20211210172815-726fda9656d6/v3.3-core/gl",
+          "import_stack": [
+            "github.com/opennox/opennox/v1/cmd/opennox",
+            "github.com/opennox/opennox/v1",
+            "github.com/opennox/libs/client/seat/sdl",
+            "github.com/opennox/libs/client/seat/opengl",
+            "github.com/go-gl/gl/v3.3-core/gl"
+          ]
+        },
+        {
+          "package": "github.com/opennox/libs/client/seat/opengl",
+          "error": "build constraints exclude all Go files in <repo>/build/cache/gomod/github.com/go-gl/gl@v0.0.0-20211210172815-726fda9656d6/v3.3-core/gl",
+          "import_stack": [
+            "github.com/opennox/opennox/v1/cmd/opennox",
+            "github.com/opennox/opennox/v1",
+            "github.com/opennox/libs/client/seat/sdl",
+            "github.com/opennox/libs/client/seat/opengl",
+            "github.com/go-gl/gl/v3.3-core/gl"
+          ]
+        },
+        {
+          "package": "github.com/opennox/libs/client/seat/sdl",
+          "error": "build constraints exclude all Go files in <repo>/build/cache/gomod/github.com/go-gl/gl@v0.0.0-20211210172815-726fda9656d6/v3.3-core/gl",
+          "import_stack": [
+            "github.com/opennox/opennox/v1/cmd/opennox",
+            "github.com/opennox/opennox/v1",
+            "github.com/opennox/libs/client/seat/sdl",
+            "github.com/opennox/libs/client/seat/opengl",
+            "github.com/go-gl/gl/v3.3-core/gl"
+          ]
+        },
+        {
+          "package": "github.com/opennox/opennox/v1",
+          "error": "build constraints exclude all Go files in <repo>/build/cache/gomod/github.com/go-gl/gl@v0.0.0-20211210172815-726fda9656d6/v3.3-core/gl",
+          "import_stack": [
+            "github.com/opennox/opennox/v1/cmd/opennox",
+            "github.com/opennox/opennox/v1",
+            "github.com/opennox/libs/client/seat/sdl",
+            "github.com/opennox/libs/client/seat/opengl",
+            "github.com/go-gl/gl/v3.3-core/gl"
+          ]
+        },
+        {
+          "package": "github.com/opennox/opennox/v1/cmd/opennox",
+          "error": "build constraints exclude all Go files in <repo>/build/cache/gomod/github.com/go-gl/gl@v0.0.0-20211210172815-726fda9656d6/v3.3-core/gl",
+          "import_stack": [
+            "github.com/opennox/opennox/v1/cmd/opennox",
+            "github.com/opennox/opennox/v1",
+            "github.com/opennox/libs/client/seat/sdl",
+            "github.com/opennox/libs/client/seat/opengl",
+            "github.com/go-gl/gl/v3.3-core/gl"
+          ]
+        }
+      ]
+    },
+    "server-cgo0": {
+      "command": [
+        "go",
+        "list",
+        "-mod=readonly",
+        "-e",
+        "-deps",
+        "-json",
+        "-tags",
+        "server",
+        "./cmd/opennox"
+      ],
+      "go_list_exit": 0,
+      "package_count": 473,
+      "direct_cgo": [],
+      "project_packages_reaching_cgo": [],
+      "metadata_errors": []
+    }
+  }
+}

@@ -2936,3 +2936,28 @@ audit found 82 additional roots. All 1,312/1,310/1,312 original selected roots p
 twice per profile. Converted full default corpus, selected server/highres,
 production/ABI/known-suite and fresh save/load qualification pass. Existing root
 assertions and goldens are unchanged. See [NATIVE_LAYOUT_TYPES.md](NATIVE_LAYOUT_TYPES.md).
+
+## Native libc helper boundaries
+
+Preserve browser inet_addr compatibility with a native parser, including legacy
+short/octal/hex forms, remaining-width checks, ASCII-whitespace suffix acceptance
+and the shared invalid/broadcast sentinel. Freeze independent 386 libc results
+rather than substituting a stricter modern address parser. Entry predicates use
+ASCII after exhaustive original C-locale comparison; do not broaden to Unicode.
+
+Reuse established numeric helpers, keeping the incomplete negative-hex zero
+correction local to theme atof compatibility. Move the theme fixture clock to a
+saved/restored native hook while retaining allocation-observer TLS/pinning.
+This hook is serial/global, not a replacement claim about TLS semantics; the
+qualified target is the current Linux386 runtime, not new future time_t support.
+
+Shop copying uses the existing native Strcpy and preserves its owners and NUL.
+An initial compile caught the missing explicit cast from the name helper's *int8
+return; corrected without changing any frozen expectation. Defer CString until
+raw/tracked ownership and allocation-failure behavior are reviewed together, and
+sin/cos until double/stored-float rounding is independently captured.
+
+All three affected profile selections, private default/server/highres/safe
+contracts, safe/static, production/ABI/known-suite and early/final save-load pass.
+See [LIBC_BOUNDARIES.md](LIBC_BOUNDARIES.md). Luna remained quota-limited; the
+primary handled this bounded batch without substituting a model.
