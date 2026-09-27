@@ -2,10 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME1_1.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
@@ -76,7 +72,7 @@ func PortTestPlayerFileCall(name string, args ...uint32) uint32 {
 	case "nox_xxx_netSavePlayer_41CE00":
 		return uint32(nox_xxx_netSavePlayer_41CE00())
 	case "sub_41CEE0":
-		return uint32(sub_41CEE0(p0, C.int(a[1])))
+		return uint32(playerFileClientWrite(p0, int(int32(a[1]))))
 	case "sub_41CAC0":
 		playerFileExtract(alloc.GoString((*byte)(p0)), unsafe.Pointer(uintptr(a[1])))
 		return 0

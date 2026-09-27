@@ -2,41 +2,41 @@
 
 package legacy
 
-/*
-extern int nox_porttest_final_ptr(void*);
-extern int nox_porttest_final_ptr2(void*, void*);
-*/
-import "C"
-
 import (
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/client/gui"
+	"github.com/opennox/opennox/v1/client/noxrender"
 )
 
 var portTestFinalPtr func(unsafe.Pointer) int32
 var portTestFinalPtr2 func(unsafe.Pointer, unsafe.Pointer) int32
 
-//export nox_porttest_final_ptr
-func nox_porttest_final_ptr(p unsafe.Pointer) C.int { return C.int(portTestFinalPtr(p)) }
+var portTestFinalKeys [2]byte
 
-//export nox_porttest_final_ptr2
-func nox_porttest_final_ptr2(a, b unsafe.Pointer) C.int { return C.int(portTestFinalPtr2(a, b)) }
+func init() {
+	playerFileCallbacks[unsafe.Pointer(&portTestFinalKeys[0])] = func(p unsafe.Pointer) int { return int(portTestFinalPtr(p)) }
+	screenParticleCallbacks[unsafe.Pointer(&portTestFinalKeys[1])] = func(vp *noxrender.Viewport, p *Nox_screenParticle) int {
+		return int(portTestFinalPtr2(vp.C(), unsafe.Pointer(p)))
+	}
+}
 
-// These callbacks observe the foreign boundary; they contain no engine algorithms.
+// These observers preserve the callback arguments and signed results.
 func PortTestObserveFinalPtr(fn func(unsafe.Pointer) int32) (unsafe.Pointer, func()) {
 	old := portTestFinalPtr
 	portTestFinalPtr = fn
-	return C.nox_porttest_final_ptr, func() { portTestFinalPtr = old }
+	return unsafe.Pointer(&portTestFinalKeys[0]), func() { portTestFinalPtr = old }
 }
 
 func PortTestObserveFinalPtr2(fn func(unsafe.Pointer, unsafe.Pointer) int32) (unsafe.Pointer, func()) {
 	old := portTestFinalPtr2
 	portTestFinalPtr2 = fn
-	return C.nox_porttest_final_ptr2, func() { portTestFinalPtr2 = old }
+	return unsafe.Pointer(&portTestFinalKeys[1]), func() { portTestFinalPtr2 = old }
 }
 
 func PortTestFinalMenuCallback() gui.WindowFunc             { return MainMenuEvent }
 func PortTestFinalConversationTooltip() unsafe.Pointer      { return finalTooltipKey(tooltipConversation) }
 func PortTestFinalFlameCallback() unsafe.Pointer            { return flameCleanseCallbackKey() }
 func PortTestFinalPlayerSectionCall(key unsafe.Pointer) int { return callPlayerFileSection(key) }
+
+func PortTestFinalPointerCall(key, arg unsafe.Pointer) int { return callPlayerFileCallback(key, arg) }

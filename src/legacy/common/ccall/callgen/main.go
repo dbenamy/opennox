@@ -114,7 +114,6 @@ var retainedCalls = map[string]bool{
 	"CallIntPtr":    true,
 	"CallIntPtr2":   true,
 	"CallIntPtr3":   true,
-	"CallIntUPtr":   true,
 	"CallIntUPtr3":  true,
 	"CallIntUPtr4":  true,
 	"CallIntUPtr5":  true,

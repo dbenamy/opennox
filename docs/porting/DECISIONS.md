@@ -3052,3 +3052,13 @@ checks rather than C out-of-bounds behavior; valid-domain expectations are uncha
 Use the broad audited root selection for these shared nested fixtures, with focused
 preflight covering each newly translated observer before long sweeps. See
 [MODIFIER_DISPATCH.md](MODIFIER_DISPATCH.md).
+
+## Native player-section and screen-particle callbacks
+
+Reject unregistered keys only for these audited families. Preserve the mutable
+player-section table and stable particle key; migrate the shared map observer
+adapter together with its callback. Keep nil/non-nil arguments and signed results,
+late observer hook reads, table restoration, particle traversal and 32-bit scalar
+conversions. Retire three fixture-only C-typed wrappers after whole-source caller
+search. No frozen expectations changed. See
+[SECTION_PARTICLE_DISPATCH.md](SECTION_PARTICLE_DISPATCH.md).

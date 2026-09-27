@@ -18,8 +18,7 @@ Baseline accepted: 139/139/139 owner roots, six separately repeated focused
 contracts per profile, and two safe contracts passed without skips. Original
 production evidence is reused from the identical source at `5ba6fce6`; all
 production gates will run again after conversion. See
-[baseline](section-particle-dispatch-baseline.json). Conversion remains an ignored
-eight-file draft.
+[baseline](section-particle-dispatch-baseline.json). Native eight-file conversion qualified against baseline `18d66990`.
 
 ## Reviewed behavior
 
@@ -64,3 +63,24 @@ Twelve historical JSONL logs were gzip-compressed and verified by decompressed
 SHA256 before removing originals, reclaiming 1,097,605,120 bytes. Restore with
 `gzip -dk FILE.jsonl.gz`; exact paths, hashes and commands: `log-archive.json`.
 Current modifier binaries/raw logs, original assets and archive remain intact.
+
+## Native qualification and counts
+
+All matching 139/139/139 owner roots and six separately repeated focused contracts
+per profile passed without skips. Both original/native safe contracts passed.
+Safe build/static, three production builds/ABI, exact known-suite outcomes and
+fresh headless save/load passed. All 1,654 original asset hashes are unchanged.
+Retired observer/dispatcher symbols are absent; retained embedded C bodies,
+engine helpers, assertions and layouts are unchanged.
+
+Embedded production C bodies: **12→11** (68/79 retired). Fixture C imports:
+**94→91**. Production cgo files remain **5 client/highres, 6 server**; project cgo
+packages remain three. Selected legacy exports remain zero. Headers remain
+157 files /2,731 physical lines. Standalone C remains **0 production /0 test**.
+
+Evidence: [qualification](section-particle-dispatch-qualification.json),
+[inventory](section-particle-dispatch-inventory-after.json).
+The initial ignored generator invocation was corrected from `go run` to a built
+host generator after argument handling failed; generated output then matched
+byte-for-byte before installation. No source/test correction was needed during
+native qualification.

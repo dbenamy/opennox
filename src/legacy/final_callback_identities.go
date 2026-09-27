@@ -3,7 +3,6 @@ package legacy
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/client/noxrender"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
@@ -18,35 +17,18 @@ var playerSectionKeys [3]byte
 
 func playerSectionKey(id int) unsafe.Pointer { return unsafe.Pointer(&playerSectionKeys[id]) }
 
-// The client section table remains mutable. Unknown callbacks keep its original
-// foreign dispatch, including the nil argument and signed return value.
-func callPlayerFileSection(key unsafe.Pointer) int {
-	if ret, ok := callPlayerFileSectionGo(key); ok {
-		return ret
+var playerFileCallbacks = make(map[unsafe.Pointer]func(unsafe.Pointer) int)
+var screenParticleCallbacks = make(map[unsafe.Pointer]func(*noxrender.Viewport, *Nox_screenParticle) int)
+
+func callPlayerFileCallback(key, arg unsafe.Pointer) int {
+	if fn := playerFileCallbacks[key]; fn != nil {
+		return fn(arg)
 	}
-	return ccall.CallIntPtr(key, nil)
+	panic("unregistered player file callback")
 }
 
-// Save metadata reads the same mutable table through a uintptr callback ABI.
-func callPlayerFileMetadata(key unsafe.Pointer) int {
-	if ret, ok := callPlayerFileSectionGo(key); ok {
-		return ret
-	}
-	return ccall.CallIntUPtr(key, 0)
-}
-
-func callPlayerFileSectionGo(key unsafe.Pointer) (int, bool) {
-	switch key {
-	case playerSectionKey(playerSectionGUI):
-		return playerFileGUI(), true
-	case playerSectionKey(playerSectionMetadata):
-		return playerFileMetadata(), true
-	case playerSectionKey(playerSectionMusic):
-		return playerFileMusic(), true
-	default:
-		return 0, false
-	}
-}
+func callPlayerFileSection(key unsafe.Pointer) int  { return callPlayerFileCallback(key, nil) }
+func callPlayerFileMetadata(key unsafe.Pointer) int { return callPlayerFileCallback(key, nil) }
 
 const (
 	tooltipConversation = iota
@@ -64,6 +46,11 @@ func screenParticleCallbackKey() unsafe.Pointer { return unsafe.Pointer(&screenP
 func flameCleanseCallbackKey() unsafe.Pointer   { return unsafe.Pointer(&flameCleanseKey) }
 
 func init() {
+	playerFileCallbacks[playerSectionKey(playerSectionGUI)] = func(unsafe.Pointer) int { return playerFileGUI() }
+	playerFileCallbacks[playerSectionKey(playerSectionMetadata)] = func(unsafe.Pointer) int { return playerFileMetadata() }
+	playerFileCallbacks[playerSectionKey(playerSectionMusic)] = func(unsafe.Pointer) int { return playerFileMusic() }
+	screenParticleCallbacks[screenParticleCallbackKey()] = screenParticleDraw
+
 	gui.RegisterTooltipCallbackGo(finalTooltipKey(tooltipConversation), func(*gui.Window, *gui.WindowData, uintptr) {})
 	gui.RegisterTooltipCallbackGo(finalTooltipKey(tooltipTeamAssign), func(_ *gui.Window, data *gui.WindowData, _ uintptr) {
 		serverOptionsTooltip(false, *(*byte)(unsafe.Pointer(data)))
@@ -76,8 +63,8 @@ func init() {
 }
 
 func callScreenParticleDraw(key unsafe.Pointer, vp *noxrender.Viewport, p *Nox_screenParticle) int {
-	if key == screenParticleCallbackKey() {
-		return screenParticleDraw(vp, p)
+	if fn := screenParticleCallbacks[key]; fn != nil {
+		return fn(vp, p)
 	}
-	return ccall.CallIntPtr2(key, vp.C(), unsafe.Pointer(p))
+	panic("unregistered screen particle callback")
 }

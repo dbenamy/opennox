@@ -2,14 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME1_2.h"
-#include "GAME2_3.h"
-#include "GAME3.h"
-#include "GAME3_1.h"
-#include "client__draw__partscrn.h"
-*/
-import "C"
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/opennox/v1/client/noxrender"
@@ -37,7 +29,7 @@ func PortTestScreenEffectCallback(op int) unsafe.Pointer {
 	panic("unknown screen effect callback")
 }
 func PortTestScreenParticleCreate(a [10]int32) *Nox_screenParticle {
-	return (*Nox_screenParticle)(unsafe.Pointer(nox_client_newScreenParticle_431540(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3]), C.int(a[4]), C.int(a[5]), C.char(a[6]), C.char(a[7]), C.char(a[8]), C.char(a[9]))))
+	return screenParticleCreate(int(a[0]), int(a[1]), int(a[2]), int(a[3]), int(a[4]), int(a[5]), byte(a[6]), byte(a[7]), byte(a[8]), byte(a[9]))
 }
 func PortTestScreenParticleDraw(p *Nox_screenParticle, vp *noxrender.Viewport) int {
 	return callScreenParticleDraw(screenParticleCallbackKey(), vp, p)
@@ -50,7 +42,7 @@ func PortTestScreenPrimitive(op int, a [4]int32) uint32 {
 	case 0:
 		return screenSqrt(uint32(a[0]))
 	case 1:
-		return uint32(sub_48C6B0(C.int(a[0]), C.int(a[1])))
+		return screenDistance(a[0], a[1])
 	case 2:
 		return screenDistanceBetween(a[0], a[1], a[2], a[3])
 	case 3:

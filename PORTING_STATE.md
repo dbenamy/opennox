@@ -9,27 +9,27 @@ This is the current resume checkpoint. Workflow and delegation rules live in
 internal glue: 458/463 client cgo files eliminated on net (5 remain;
 server: 457/463 eliminated, 6 remain).**
 Selected legacy C export bridges: **1,890/1,890 retired (0 remain)**.
-Embedded production C bodies: **67/79 retired (12 remain)**.
+Embedded production C bodies: **68/79 retired (11 remain)**.
 
 These are selected Linux 386 production files, not equal units of effort.
 Three project packages directly use cgo. Standalone production/test C remain zero.
-Latest qualified chunk removes modifier dispatch's foreign fallbacks and translates
-four shared observers (modifier forwarding, equipment, damage and melee). Two
-C dispatch signatures and four fixture C imports are retired. All 2,482/2,471/2,482
-audited roots passed in default/server/highres. See
-[MODIFIER_DISPATCH.md](docs/porting/MODIFIER_DISPATCH.md).
+Latest qualified chunk removes player-section/metadata and screen-particle foreign
+fallbacks and converts their connected fixture adapters. One C dispatcher and
+three fixture C imports are retired. All 139 affected owner roots passed in each
+of default/server/highres. See
+[SECTION_PARTICLE_DISPATCH.md](docs/porting/SECTION_PARTICLE_DISPATCH.md).
 
 Continue chunk-by-chunk with primary review, qualification, documentation and
 commit/push. Use one Luna helper when its quota is available; no substitute model.
 Stop at the milestone, usage limits or a substantial question. Latest qualified
-artifacts: `build/port-modifier-dispatch/`.
+artifacts: `build/port-section-particle-dispatch/`.
 
 ## What remains
 
 | Area | Remaining work or dependency |
 | --- | --- |
-| Embedded C callback glue | 12 generic dispatch bodies. Trace all owners/registrations before removing raw fallbacks. |
-| Types and declarations | 157 tracked headers / 2,731 physical lines. 94 porttest-tagged source files still import C across all build tags (not one selected profile). Fixture C observers/types still need retirement or explicit qualification scope. |
+| Embedded C callback glue | 11 generic dispatch bodies. Trace all owners/registrations before removing raw fallbacks. |
+| Types and declarations | 157 tracked headers / 2,731 physical lines. 91 porttest-tagged source files still import C across all build tags (not one selected profile). Fixture C observers/types still need retirement or explicit qualification scope. |
 | Production C imports | alloc/raw.go, ccall/ccall.go, legacy/object_xfer_world.go (reachable abort), legacy/cgo_common.go and legacy/video_highres.go (flags). Server adds legacy/cgo_server.go. |
 | Memory and layout | C-heap allocator, raw pointers, fixed offsets and 32-bit address assumptions remain. Preserve ownership/lifetime/failure semantics behind the centralized allocator. |
 | External libraries | SDL2, OpenGL, OpenAL and similar bindings remain for this phase; later replacement requires a separate discussion. |
@@ -37,27 +37,25 @@ artifacts: `build/port-modifier-dispatch/`.
 
 ## Latest qualification
 
-Original and native broad selections passed 2,482/2,471/2,482 roots without skips
-in default/server/highres. Four focused contracts ran separately in each profile
-on both versions; native preflight also covered damage/melee captures. Three safe
-contracts passed on both versions. Safe build/static, three production builds/ABI,
-exact known-suite outcomes and fresh save/load passed. Retired symbols are absent;
-remaining C bodies, 40 native registrations, assertions and assets are unchanged.
+Original and native owner selections passed 139 roots without skips in each of
+three profiles; six focused contracts ran separately in each profile on both
+versions. Two safe contracts passed on both versions. Safe build/static, three
+production builds/ABI, exact known-suite outcomes and fresh save/load passed.
+Retired symbols are absent; remaining C bodies, assertions and assets unchanged.
 
-Evidence: [qualification](docs/porting/modifier-dispatch-qualification.json),
-[inventory](docs/porting/modifier-dispatch-inventory-after.json).
+Evidence: [qualification](docs/porting/section-particle-dispatch-qualification.json),
+[inventory](docs/porting/section-particle-dispatch-inventory-after.json).
 Known-suite expectation: [record](docs/porting/mp3-go-expected-suite.jsonl).
 Standalone metric/history: [C_LOC.md](docs/porting/C_LOC.md).
-Latest broad regression: this modifier batch, 2,482/2,471/2,482 audited roots, no skips.
+Latest broad regression: `5ba6fce6`, 2,482/2,471/2,482 audited roots, no skips.
 Last complete default corpus: `6e9681f2`, 2,489 passes plus diagnostic skip.
 
 ## Next work and review items
 
-Active batch: player-section/metadata and screen-particle dispatch. Original
-baseline accepted: 139 owner roots and six focused contracts in each profile,
-plus two safe contracts. Source remains at the qualified modifier conversion;
-reviewed eight-file draft is not installed yet. Next: install and qualify. See
-[SECTION_PARTICLE_DISPATCH.md](docs/porting/SECTION_PARTICLE_DISPATCH.md).
+Next candidate: duration-spell and internal audio-stream callback dispatch,
+including their observer fixtures. Producer audit remains required. Monster
+callbacks have separate combat/lifecycle fixture observers; move them with the
+connected object/AI family. Read-only notes: `build/port-single-pointer-dispatch/`.
 
 The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
 removal. Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md).
@@ -70,7 +68,8 @@ keys; migrate shared observers and preserve existing captures. Also remaining:
 allocator ownership, reachable abort, compiler flags and fixture dependencies.
 Literal allocator calls occur in 40 C-using fixture files; avoid cross-domain frees.
 
-Animation, quantity, image completion and modifier dispatch reject unregistered
+Animation, quantity, image completion, modifier, player-section and screen-particle
+dispatch reject unregistered
 keys with an explicit panic after producer audits. These reversible corrections
 apply only to those families. Native fixture arrays also make invalid overflow
 explicit; valid-domain captures remain unchanged.
@@ -92,11 +91,12 @@ first on PATH. Linux 386 execution needs host execution in this VM.
 Do not change source consumed by running builds/tests.
 
 Current root/safe/production binaries live under
-`build/port-modifier-dispatch/{contracts/profiles,safe,production/production/bin}`.
-Original modifier captures live under `build/port-modifier-dispatch/original`,
-with safe contracts in `original-safe`. Baseline runs use retained qualified UI
-completion binaries at `defbdb98`. Older cleanup records retain source revisions,
-hashes and rebuild information for superseded binaries.
+`build/port-section-particle-dispatch/{contracts/profiles,safe,production/production/bin}`.
+Original section/particle captures live under
+`build/port-section-particle-dispatch/original`, with safe contracts in
+`original-safe`. Baseline runs use retained qualified modifier binaries at
+`5ba6fce6`. Current scenario assets have not yet been deduplicated. Older cleanup
+records retain source revisions, hashes and rebuild information.
 
 Six completed string/spell regression logs were losslessly archived, reclaiming
 613,769,216 bytes. Restore with `gzip -dk FILE.jsonl.gz`; exact hashes/paths and

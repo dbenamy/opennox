@@ -27,10 +27,6 @@ func nox_client_copyRect_49F6F0(x, y, w, h C.int) C.int {
 	return C.int(uiRenderCopyRect(int(x), int(y), int(w), int(h)))
 }
 
-func nox_client_newScreenParticle_431540(kind, x, y, vx, vy, gravity C.int, size, timer, phase, mode C.char) *C.nox_screenParticle {
-	return (*C.nox_screenParticle)(unsafe.Pointer(screenParticleCreate(int(kind), int(x), int(y), int(vx), int(vy), int(gravity), byte(size), byte(timer), byte(phase), byte(mode))))
-}
-
 func nox_drawable_next_45A070(dr *nox_drawable) *nox_drawable {
 	if dr == nil {
 		return nil
@@ -160,17 +156,11 @@ func sub_411490(index, edge C.int) C.int {
 	return C.int(normalizeBorderEdge(int32(index), int32(edge)))
 }
 
-func sub_41CEE0(info unsafe.Pointer, all C.int) C.int {
-	return C.int(playerFileClientWrite(info, int(all)))
-}
-
 func sub_436550() C.int { return C.int(interactionFrameGate()) }
 
 func sub_43AF30() C.int { return C.int(browserUI.hosting) }
 
 func sub_45A010(dr *nox_drawable) *nox_drawable { return (*nox_drawable)(asDrawable(dr).Field_104.C()) }
-
-func sub_48C6B0(x, y C.int) C.uint { return C.uint(screenDistance(int32(x), int32(y))) }
 
 func sub_49F860() C.int { return C.int(objectRenderRestoreClip()) }
 
