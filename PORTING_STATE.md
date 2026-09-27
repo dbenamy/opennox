@@ -9,26 +9,28 @@ This is the current resume checkpoint. Workflow and delegation rules live in
 internal glue: 458/463 client cgo files eliminated on net (5 remain;
 server: 457/463 eliminated, 6 remain).**
 Selected legacy C export bridges: **1,890/1,890 retired (0 remain)**.
-Embedded production C bodies: **60/79 retired (19 remain)**.
+Embedded production C bodies: **62/79 retired (17 remain)**.
 
 These are selected Linux 386 production files, not equal units of effort.
 Three project packages directly use cgo. Standalone production/test C remain zero.
-Latest qualified chunk retires an unused spell-call adapter and makes four live
-spell scalar helper return types native Go. Source changes only in legacy/spells.go.
-All 2,482/2,471/2,482 selected default/server/highres roots passed without skips.
-See [SPELL_SCALAR_BOUNDARIES.md](docs/porting/SPELL_SCALAR_BOUNDARIES.md).
+Latest qualified chunk retires two generic C dispatch signatures and fixture-only
+object/prefab adapters; radial observations now use native Go closures. Two fixture
+C imports are removed. All 28 surviving selected roots passed in each production
+profile; private adapter and safe radial contracts passed too. The retired root
+exclusively tested the unused traversal helper.
+See [CALLBACK_FIXTURE_RETIREMENT.md](docs/porting/CALLBACK_FIXTURE_RETIREMENT.md).
 
 Continue chunk-by-chunk with primary review, qualification, documentation and
 commit/push. Use one Luna helper when its quota is available; no substitute model.
 Stop at the milestone, usage limits or a substantial question. Latest qualified
-artifacts: `build/port-spell-scalar-boundaries/`.
+artifacts: `build/port-callback-retirement-audit/`.
 
 ## What remains
 
 | Area | Remaining work or dependency |
 | --- | --- |
-| Embedded C callback glue | 19 generic dispatch bodies; one signature is used only by fixtures. Trace all owners/registrations before removing raw fallbacks. |
-| Types and declarations | 157 tracked headers / 2,731 physical lines. 103 porttest-tagged source files still import C across all build tags (not one selected profile). Fixture C observers/types still need retirement or explicit qualification scope. |
+| Embedded C callback glue | 17 generic dispatch bodies. Trace all owners/registrations before removing raw fallbacks. |
+| Types and declarations | 157 tracked headers / 2,731 physical lines. 101 porttest-tagged source files still import C across all build tags (not one selected profile). Fixture C observers/types still need retirement or explicit qualification scope. |
 | Production C imports | alloc/raw.go, ccall/ccall.go, legacy/object_xfer_world.go (reachable abort), legacy/cgo_common.go and legacy/video_highres.go (flags). Server adds legacy/cgo_server.go. |
 | Memory and layout | C-heap allocator, raw pointers, fixed offsets and 32-bit address assumptions remain. Preserve ownership/lifetime/failure semantics behind the centralized allocator. |
 | External libraries | SDL2, OpenGL, OpenAL and similar bindings remain for this phase; later replacement requires a separate discussion. |
@@ -36,24 +38,22 @@ artifacts: `build/port-spell-scalar-boundaries/`.
 
 ## Latest qualification
 
-Original baseline `b6049004` reuses exact-source `32df9553` results after source,
-supplemental-source, environment, binary-hash and discovered-name checks. The
-selected compiled roots are strict subsets of those previously accepted. New
-94-root native spellbook/quickbar/objective preflight passed, followed by matching
-three-profile roots, safe build/static, all three production builds/ABI, exact
-known-suite failure/package outcomes and fresh headless save/load/resume.
-The specialized adapter symbol is absent from all three production binaries.
-All 1,654 original asset hashes are unchanged. No source expectations changed.
+Baseline `cb30ad07` reused 29 original roots in each profile from exact-source
+`b2c975dc`, with fresh private adapter tests in four profiles and two original
+safe radial contracts. Converted qualification passed all 28 surviving roots in
+default/server/highres, the private adapter in default/server/highres/safe, and
+two safe radial contracts. Focused native preflight/static, safe build, three
+production builds/ABI, exact known-suite outcomes and fresh headless save/load
+also passed. Both retired dispatcher symbol substrings are absent; retained
+C dispatcher bodies are unchanged. All 1,654 original asset hashes are unchanged.
+No live-behavior expectations changed.
 
-Selection is conservative through shared initialization, not a claim to every
-root in the repository. The opt-in map-population diagnostic and roots outside
-the audited graph are excluded; profile-specific uncompiled names are recorded.
-Last complete default corpus: `6e9681f2` (2,489 passes plus diagnostic skip).
-
-Evidence: [qualification](docs/porting/spell-scalar-boundaries-qualification.json),
-[inventory](docs/porting/spell-scalar-boundaries-inventory-after.json).
+Evidence: [qualification](docs/porting/callback-fixture-retirement-qualification.json),
+[inventory](docs/porting/callback-fixture-retirement-inventory-after.json).
 Known-suite expectation: [record](docs/porting/mp3-go-expected-suite.jsonl).
 Standalone metric/history: [C_LOC.md](docs/porting/C_LOC.md).
+Latest broad regression: `b2c975dc`, 2,482/2,471/2,482 audited roots, no skips.
+Last complete default corpus: `6e9681f2`, 2,489 passes plus diagnostic skip.
 
 ## Next work and review items
 
@@ -61,17 +61,14 @@ The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
 removal. Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md).
 Metadata discovery is not compilation evidence.
 
-In progress: callback fixture retirement has an accepted original baseline and
-a reviewed, uninstalled nine-file draft plus one obsolete test deletion. See
-[CALLBACK_FIXTURE_RETIREMENT.md](docs/porting/CALLBACK_FIXTURE_RETIREMENT.md).
-29 original roots passed in all three profiles; private adapter/safe radial
-checks passed too. Require the 28 surviving roots after conversion.
-Artifacts: `build/port-callback-retirement-audit/`.
-The object-construction wrapper has only its own fixture as caller; prefab group
-traversal has only recursive/fixture callers. Confirm full reference scope before
-retirement. An animation callback has no named non-nil writes, but raw-offset
-writes still need checking. None of this proves every generic fallback unused.
-Then close allocator, reachable abort, compiler flags and fixture dependencies.
+Next, audit the remaining callback fallbacks by owner and registration. Animation
+has an unused-looking completion slot but still needs a raw-write/constructor
+trace; do not infer all foreign fallbacks are unreachable. Read-only inventories
+and notes remain in `build/port-callback-retirement-audit/`. Literal allocator
+calls occur in 40 C-using fixture files: audit actual ownership before replacing
+the centralized allocator, so fixture frees cannot cross incompatible domains.
+Close the reachable abort, compiler flags and fixture dependencies too. No next
+conversion is installed.
 
 CString retains raw malloc/free normally and tracked Malloc/FreePtr in safe.
 RawMalloc intentionally still uses cgo's process-fatal malloc wrapper. Keep normal
@@ -89,34 +86,32 @@ Source `build/baseline/env.sh` in every Go shell and put `/usr/lib/go-1.26/bin`
 first on PATH. Linux 386 execution needs host execution in this VM.
 Do not change source consumed by running builds/tests.
 
-Current converted root/safe/production binaries live under
-`build/port-spell-scalar-boundaries/{contracts/profiles,safe,production/production/bin}`.
-The current original baseline uses these qualified spell binaries. Seven older
-string binaries were removed after replacement/source/hash and host-use checks
-(387,117,056 bytes); their logs/source maps remain, and `32df9553` can be rebuilt.
+Current root/safe/production binaries live under
+`build/port-callback-retirement-audit/{contracts/profiles,safe,production/production/bin}`.
+Current original baseline uses qualified `b2c975dc` spell binaries. Private/safe
+baseline records are in the callback batch directory. Seven older string
+executables were removed after committed-source, replacement/hash and host-use
+checks (387,117,056 bytes); rebuild `32df9553` with retained source records.
 Cleanup records: `build/port-callback-retirement-audit/string-cleanup-*`.
-Spell baseline/qualification metadata and reports are committed; ignored local
-binaries/logs/drafts are not backed up by Git. Completed scripts are consumed.
 
-Seven superseded placement binaries were removed after committed-source,
-qualified-replacement/hash and host-use checks (387,072,000 allocated bytes).
-Rebuild `81cf750f` with retained commands/source maps. Cleanup records:
-`build/port-spell-scalar-boundaries/placement-cleanup-{approved.json,deleted.jsonl}`.
-Final spell-scenario duplicate assets were verified and removed; saves/results
-remain. Restore before replay:
-`python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/spell-scalar-boundaries-save/deduplicated-assets.json`.
-
-Check free disk before large runs. Historical artifacts may be gzip-archived or
-deduplicated; retain source/rebuild commands and verify manifests before reuse.
-Placement original/repeat/converted logs and string original logs restore with
-`gzip -dk FILE.jsonl.gz`; exact hashes/paths are recorded in
+Six completed string/spell regression logs were losslessly archived, reclaiming
+613,769,216 bytes. Restore with `gzip -dk FILE.jsonl.gz`; exact hashes/paths and
+commands: `build/port-callback-retirement-audit/log-archive.json`.
+Older placement and string-original log archive records remain in
 `build/port-string-boundaries/log-archive.json`.
-Earlier cleanup/recovery inventories remain in the corresponding batch reports,
-ignored manifests and checkpoint history at `32df9553` (historical instructions
-there are not current). Do not rerun old cleanup scripts or infer safety from age.
 
-Six older original-baseline executables from `9dcf1b9a` and `7034a7e4` were also
-removed after committed-source, replacement/hash and host-use checks
-(400,736,256 allocated bytes). Rebuild those revisions with retained binary
-records; current original evidence uses the qualified string binaries.
-Records: `build/port-spell-scalar-boundaries/old-baselines-{approved.json,deleted.jsonl}`.
+Final callback scenario duplicate assets were verified and removed; originals,
+saves/results remain. Restore before replay:
+`python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/callback-fixture-retirement-save/deduplicated-assets.json`.
+
+Check disk before large runs. Source, reports and qualification metadata are
+committed; ignored artifacts are not backed up by Git. Completed scripts are
+consumed. Historical cleanup/recovery details live in batch reports, ignored
+manifests and checkpoint history (`b2c975dc` / `32df9553`); historical current/next
+instructions are not the active plan. Do not infer deletion safety from age.
+
+After all qualification jobs joined, removed 31 inactive Linux386 Go
+cache archives untouched for six hours (1,413,988,352 allocated bytes),
+with path/stat/hash and host compiler/fd/maps checks. Caches rebuild normally;
+module sources and current artifacts remain. Records:
+`build/port-callback-retirement-audit/cache-headroom-*`.

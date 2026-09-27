@@ -3,7 +3,6 @@ package legacy
 import (
 	"unsafe"
 
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -70,7 +69,4 @@ func Get_nox_xxx_XFerInvLight_4F5AA0() unsafe.Pointer {
 }
 func Get_nox_xxx_unitInitGold_4F04B0() unsafe.Pointer {
 	return lifecycleInitKey(initIDGold)
-}
-func Nox_call_objectType_new_go(a1 unsafe.Pointer, a2 *server.Object) {
-	ccall.CallVoidPtr(a1, a2.CObj())
 }

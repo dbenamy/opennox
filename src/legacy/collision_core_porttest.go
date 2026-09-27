@@ -19,18 +19,11 @@ static void __attribute__((aligned(256))) coreContact(void* a,void* b,float2* p)
 static void* coreContactPtr(void){return coreContact;}
 static uint32_t* coreContactData(void){return coreContacts;}
 static unsigned* coreContactN(void){return &coreContactCount;}
-static uint32_t coreRadialResult[3];
-static void coreRadialObserve(int obj, uint32_t code) {
- coreRadialResult[0]++; coreRadialResult[1]=obj; coreRadialResult[2]=code;
-}
-static void* coreRadialCallback(void) {return coreRadialObserve;}
-static uint32_t* coreRadialData(void) {return coreRadialResult;}
 */
 import "C"
 
 import (
 	"github.com/opennox/libs/types"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"runtime"
 	"unsafe"
@@ -169,16 +162,14 @@ func PortTestCollisionCoreBuckets(ids map[unsafe.Pointer]uint32) map[uint32][][2
 	return out
 }
 
-// Exercise the retained production C caller as well as its distance helper.
+// Observe the production radial predicate through its native callback.
 func PortTestCollisionCoreRadial(u *server.Object, p *types.Pointf, radius float32, code uint32) [3]uint32 {
-	data := unsafe.Slice((*uint32)(unsafe.Pointer(C.coreRadialData())), 3)
-	clear(data)
-	observer := C.coreRadialCallback()
+	var out [3]uint32
 	motionRadialCandidate(u, p, radius, func(u *server.Object) {
-		ccall.CallVoidUPtr2(observer, uintptr(unsafe.Pointer(u)), uintptr(code))
+		out[0]++
+		out[1] = uint32(uintptr(unsafe.Pointer(u)))
+		out[2] = code
 		runtime.KeepAlive(u)
 	})
-	out := [3]uint32{data[0], data[1], data[2]}
-	clear(data)
 	return out
 }

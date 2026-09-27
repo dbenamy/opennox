@@ -3009,3 +3009,13 @@ qualified original baseline under binary/environment/discovered-name checks;
 require matching converted consumer/regression and production qualification.
 Check generated C adapter retirement by symbol substring because cgo prefixes
 vary per build. See [SPELL_SCALAR_BOUNDARIES.md](SPELL_SCALAR_BOUNDARIES.md).
+
+## Fixture-only callback retirement
+
+Retire unreachable production helpers together with assertions that exclusively
+exercise those helpers; keep all live-owner assertions and frozen expectations.
+Record radial fixture observations directly in native callback closures. Preserve
+the 32-row observer limit, but report overflow with a Go panic instead of C.abort:
+this is a fixture diagnostic, not changed gameplay failure behavior. Remove the
+two unused signatures from both generated ccall code and its allowlist.
+See [CALLBACK_FIXTURE_RETIREMENT.md](CALLBACK_FIXTURE_RETIREMENT.md).

@@ -46,20 +46,6 @@ static uintptr_t adapter_draw_value(int field) {
     }
 }
 
-static uintptr_t adapter_object_pointer;
-static int adapter_object_calls;
-static void adapter_object_new(nox_object_t *obj) {
-    adapter_object_pointer = (uintptr_t)obj;
-    adapter_object_calls++;
-}
-static void *adapter_object_callback(void) { return (void *)adapter_object_new; }
-static void adapter_object_reset(void) {
-    adapter_object_pointer = 0;
-    adapter_object_calls = 0;
-}
-static uintptr_t adapter_object_value(int field) {
-    return field == 0 ? adapter_object_pointer : (uintptr_t)adapter_object_calls;
-}
 */
 import "C"
 
@@ -71,9 +57,4 @@ func PortTestAdapterDrawCallback(which int) unsafe.Pointer {
 func PortTestAdapterDrawReset(result int) { C.adapter_draw_reset(C.int(result)) }
 func PortTestAdapterDrawValue(field int) uintptr {
 	return uintptr(C.adapter_draw_value(C.int(field)))
-}
-func PortTestAdapterObjectCallback() unsafe.Pointer { return C.adapter_object_callback() }
-func PortTestAdapterObjectReset()                   { C.adapter_object_reset() }
-func PortTestAdapterObjectValue(field int) uintptr {
-	return uintptr(C.adapter_object_value(C.int(field)))
 }

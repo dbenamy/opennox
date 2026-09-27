@@ -2,21 +2,10 @@
 
 package legacy
 
-/*
-#include <stdlib.h>
-#include <stdint.h>
-static uint32_t motionRadialWords[65];
-static void motionRadialObserve(uint32_t* unit,uint32_t code) {uint32_t n=motionRadialWords[0];if(n>=32)abort();motionRadialWords[1+2*n]=(uintptr_t)unit;motionRadialWords[2+2*n]=code;motionRadialWords[0]=n+1;}
-static void* motionRadialCallback(void) { return motionRadialObserve; }
-
-static uint32_t* motionRadialSnapshot(void) {return motionRadialWords;}
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"runtime"
 	"unsafe"
@@ -164,16 +153,13 @@ func PortTestWorldMotionTimed(op string, u, target *server.Object, arg int32) in
 }
 
 func PortTestWorldMotionRadial(p *types.Pointf, radius float32, code uint32) (uint32, [][2]uint32) {
-	observer := C.motionRadialCallback()
+	var rows [][2]uint32
 	rv := motionRadial(p, radius, func(u *server.Object) {
-		ccall.CallVoidUPtr2(observer, uintptr(unsafe.Pointer(u)), uintptr(code))
+		if len(rows) >= 32 {
+			panic("radial observer capacity exceeded")
+		}
+		rows = append(rows, [2]uint32{uint32(uintptr(unsafe.Pointer(u))), code})
 		runtime.KeepAlive(u)
 	})
-	words := (*[65]uint32)(unsafe.Pointer(C.motionRadialSnapshot()))
-	var rows [][2]uint32
-	for i := uint32(0); i < words[0]; i++ {
-		rows = append(rows, [2]uint32{words[1+2*i], words[2+2*i]})
-	}
-	*words = [65]uint32{}
 	return rv, rows
 }

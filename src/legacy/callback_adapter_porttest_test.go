@@ -10,7 +10,6 @@ import (
 	"github.com/opennox/opennox/v1/client/noxrender"
 	"github.com/opennox/opennox/v1/legacy"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/server"
 )
 
 func TestLegacyCallbackAdapters(t *testing.T) {
@@ -45,16 +44,4 @@ func TestLegacyCallbackAdapters(t *testing.T) {
 
 	}
 
-	obj, freeObject := alloc.New(server.Object{})
-	defer freeObject()
-	legacy.PortTestAdapterObjectReset()
-	for i, objArg := range []*server.Object{obj, nil, obj, nil} {
-		legacy.Nox_call_objectType_new_go(legacy.PortTestAdapterObjectCallback(), objArg)
-		if got := legacy.PortTestAdapterObjectValue(0); got != uintptr(unsafe.Pointer(objArg)) {
-			t.Fatalf("object callback pointer: got %#x want %#x", got, uintptr(unsafe.Pointer(objArg)))
-		}
-		if got := legacy.PortTestAdapterObjectValue(1); got != uintptr(i+1) {
-			t.Fatalf("object callback count: got %d want %d", got, i+1)
-		}
-	}
 }

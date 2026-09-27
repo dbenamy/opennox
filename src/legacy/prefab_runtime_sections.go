@@ -3,7 +3,6 @@ package legacy
 import (
 	"bytes"
 	"encoding/binary"
-	"image"
 	"io"
 	"math"
 	"path/filepath"
@@ -17,7 +16,6 @@ import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/internal/cryptfile"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -332,49 +330,4 @@ func prefabIntroSection() uint32 {
 	}
 	w.word(0)
 	return w.result()
-}
-func prefabGroupEach(g *server.MapGroup, expected int32, callback unsafe.Pointer, data uint32) {
-	if g == nil {
-		return
-	}
-	s := GetServer().S()
-	call := func(p unsafe.Pointer) {
-		if p != nil {
-			ccall.CallVoidInt2(callback, int(mapRoomRaw(p)), int(data))
-		}
-	}
-	switch g.GroupType() {
-	case server.MapGroupObjects:
-		if expected != 0 {
-			return
-		}
-		for p := g.List; p != nil; p = p.Next8 {
-			if u := s.Objs.GetObjectByInd(int(p.Raw0)); u != nil {
-				call(u.CObj())
-			}
-		}
-	case server.MapGroupWaypoints:
-		if expected != 1 {
-			return
-		}
-		for p := g.List; p != nil; p = p.Next8 {
-			if wp := s.WPs.ByInd(int(p.Raw0)); wp != nil {
-				call(wp.C())
-			}
-		}
-	case server.MapGroupWalls:
-		if expected != 2 {
-			return
-		}
-		for p := g.List; p != nil; p = p.Next8 {
-			if wall := s.Walls.GetWallAtGrid(image.Pt(int(p.Raw0), int(p.Raw4))); wall != nil {
-				call(wall.C())
-			}
-		}
-		fallthrough
-	case server.MapGroupGroups:
-		for p := g.List; p != nil; p = p.Next8 {
-			prefabGroupEach(s.MapGroups.GroupByInd(int(p.Raw0)), expected, callback, data)
-		}
-	}
 }

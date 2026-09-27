@@ -1,6 +1,6 @@
 # Fixture callback retirement
 
-Status: original baseline accepted; reviewed draft not installed.
+Status: converted and qualified; baseline `cb30ad07`.
 
 Remove two generic C dispatch signatures whose remaining uses are fixture-only:
 `CallVoidUPtr2` and `CallVoidInt2`. Keep every live production callback route.
@@ -36,14 +36,13 @@ capture set is needed. The sole removed root exclusively tests the retired helpe
 require all other 28 exact roots after conversion, plus private adapter and safe
 radial checks. Frozen live-behavior expectations do not change.
 
-Qualification requires focused radial preflight/static, the matching 28-root
+Qualification passed focused radial preflight/static, the matching 28-root
 three-profile selection, private adapter checks in four profiles, safe radial
 contracts, safe build, three production builds/ABI, exact known-suite outcomes,
-fresh headless save/load and original-asset integrity. Check both retired C
-signature substrings are absent in production symbols. Regeneration and source
-review must prove all retained dispatcher bodies are unchanged.
+fresh headless save/load and original-asset integrity. Both retired C signature substrings are absent from all three production binaries.
+Regeneration and source review confirm every retained dispatcher body is unchanged.
 
-Expected qualified counts: five client / six server production cgo files,
+Qualified counts: five client / six server production cgo files,
 17 embedded C bodies, zero legacy exports and zero standalone C lines. Two
 fixture C imports disappear: 103 to 101 source files across build tags, distinct
 from selected production counts. Headers remain 157 files / 2,731 lines.
@@ -54,3 +53,21 @@ Seven obsolete string-batch executables were removed only after committed-source
 qualified-replacement/hash and host-use checks (387,117,056 allocated bytes).
 Rebuild `32df9553` using retained commands/source records; current baseline uses
 qualified spell binaries. Original logs and source maps remain.
+
+All exact surviving test names passed without skips; no live-behavior expectations
+changed. Six earlier completed string/spell regression logs were losslessly
+archived after committed-hash and host-use checks (613,769,216 bytes reclaimed).
+Restore with `gzip -dk FILE.jsonl.gz`; exact paths/hashes/commands are in
+`build/port-callback-retirement-audit/log-archive.json`.
+
+Final scenario cleanup removed 1654 verified duplicate original assets
+(559980544 allocated bytes); originals, saves and results remain.
+Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py
+build/baseline/runs/callback-fixture-retirement-save/deduplicated-assets.json`.
+Completed batch scripts are consumed; do not rerun them.
+
+After all qualification jobs joined, removed 31 inactive Linux386 Go
+cache archives untouched for six hours (1,413,988,352 allocated bytes),
+with path/stat/hash and host compiler/fd/maps checks. Caches rebuild normally;
+module sources and current artifacts remain. Records:
+`build/port-callback-retirement-audit/cache-headroom-*`.
