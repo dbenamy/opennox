@@ -3040,3 +3040,15 @@ now panic after a producer/storage audit found no engine foreign-key dependency;
 this reversible decision applies only to these families. Profile selections must
 respect build tags: the inventory-world contract is explicitly excluded on server.
 See [UI_COMPLETION.md](UI_COMPLETION.md).
+
+## Native modifier dispatch and shared observers
+
+Retain all 40 production registrations, native handlers and KeepAlive calls; reject
+unregistered modifier keys after auditing named tables, parser slots and fixture
+writers. Translate equipment, damage and melee observers together with the generic
+one. Preserve raw capture words, padding masks, persistent equipment configuration
+and capacity/count behavior. Invalid fixture indexing now receives Go bounds
+checks rather than C out-of-bounds behavior; valid-domain expectations are unchanged.
+Use the broad audited root selection for these shared nested fixtures, with focused
+preflight covering each newly translated observer before long sweeps. See
+[MODIFIER_DISPATCH.md](MODIFIER_DISPATCH.md).

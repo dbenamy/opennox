@@ -1,6 +1,6 @@
 # Native modifier dispatch and observers
 
-Status: original baseline accepted; seven-file draft is not installed.
+Status: native modifier dispatch and all four observers qualified against `f77b9d51`.
 Qualified parent: `defbdb98`.
 
 Keep the existing native modifier registries and production handler registrations,
@@ -69,7 +69,7 @@ source, binary hashes and environment. Repeat matching selections after conversi
 plus safe contracts/build/static, three production builds/ABI, exact known-suite
 outcomes, fresh save/load and all original asset hashes. No goldens change.
 
-Expected counts: embedded production C bodies 14→12; fixture C-import files 98→94;
+Qualified counts: embedded production C bodies 14→12; fixture C-import files 98→94;
 production cgo files remain 5 client / 6 server; standalone C and legacy exports
 remain zero; headers remain 157 files / 2,731 lines.
 
@@ -89,4 +89,21 @@ Original acceptance: all 2,482/2,471/2,482 roots passed without skips; four focu
 contracts passed separately in each profile; three safe contracts passed. Verified
 exact discovered/run/pass name sets, source and binary hashes, and relevant
 environment values. [Original baseline](modifier-dispatch-baseline.json).
-Native qualification remains pending.
+Native qualification passed against this accepted baseline.
+
+All original and matching native broad roots passed without skips: 2,482 default,
+2,471 server, 2,482 highres. Four focused contracts passed separately in each
+profile on both versions; native preflight also passed the damage/melee captures.
+Three original and native safe contracts passed. Safe build/static, three production
+builds/ABI, exact known-suite outcomes and fresh save/load passed. All 1,654
+original asset hashes are unchanged. Retired dispatcher/observer symbols are
+absent, remaining C bodies unchanged, and all 40 production registrations unchanged.
+No assertions or frozen captures changed. Evidence:
+[baseline](modifier-dispatch-baseline.json),
+[qualification](modifier-dispatch-qualification.json),
+[inventory](modifier-dispatch-inventory-after.json).
+
+After all jobs joined, removed 1,654 verified duplicate scenario assets
+(560,107,520 allocated bytes), preserving originals and recovery records.
+Restore before replay: `python3 build/port-artifact-cleanup/restore-recent-scenario.py
+build/baseline/runs/modifier-dispatch-save/deduplicated-assets.json`.

@@ -3,8 +3,6 @@ package server
 import (
 	"runtime"
 	"unsafe"
-
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 )
 
 // Modifier callback registrations are initialization-only. Keys have stable
@@ -32,7 +30,7 @@ func CallModifierEffect3Result(key unsafe.Pointer, mod *ModifierEff, a, b *Objec
 	if fn := modifierEffects3[key]; fn != nil {
 		result = fn(mod, a, b)
 	} else {
-		result = int32(ccall.CallIntPtr3(key, mod.C(), a.CObj(), b.CObj()))
+		panic("unregistered modifier callback")
 	}
 	runtime.KeepAlive(mod)
 	runtime.KeepAlive(a)
@@ -44,7 +42,7 @@ func CallModifierEffect3Discard(key unsafe.Pointer, mod *ModifierEff, a, b *Obje
 	if fn := modifierEffects3[key]; fn != nil {
 		fn(mod, a, b)
 	} else {
-		ccall.CallVoidPtr3(key, mod.C(), a.CObj(), b.CObj())
+		panic("unregistered modifier callback")
 	}
 	runtime.KeepAlive(mod)
 	runtime.KeepAlive(a)
@@ -55,7 +53,7 @@ func CallModifierEffect5(key unsafe.Pointer, mod *ModifierEff, a, b, c *Object, 
 	if fn := modifierEffects5[key]; fn != nil {
 		fn(mod, a, b, c, data)
 	} else {
-		ccall.CallVoidPtr5(key, mod.C(), a.CObj(), b.CObj(), c.CObj(), data)
+		panic("unregistered modifier callback")
 	}
 	runtime.KeepAlive(mod)
 	runtime.KeepAlive(a)
@@ -68,7 +66,7 @@ func CallModifierEffect6(key unsafe.Pointer, mod *ModifierEff, a, b, c, d *Objec
 	if fn := modifierEffects6[key]; fn != nil {
 		fn(mod, a, b, c, d, data)
 	} else {
-		ccall.CallVoidPtr6(key, mod.C(), a.CObj(), b.CObj(), c.CObj(), d.CObj(), data)
+		panic("unregistered modifier callback")
 	}
 	runtime.KeepAlive(mod)
 	runtime.KeepAlive(a)

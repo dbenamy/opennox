@@ -2,36 +2,6 @@
 
 package legacy
 
-/*
-#include <string.h>
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_3.h"
-#include "MixPatch.h"
-static uint32_t eqTrace[4097],eqReturn[4],eqOutput[4];
-static uint32_t* eqTracePtr(void){return eqTrace;}
-static void eqReset(void){memset(eqTrace,0,sizeof(eqTrace));}
-static void eqConfigure(int i,uint32_t ret,uint32_t out){eqReturn[i]=ret;eqOutput[i]=out;}
-static uint32_t eqRecord(int kind,void* mod,void* u,void* it,uint32_t before,uint32_t after){
- uint32_t n=1+6*eqTrace[0]++;
- if(n+5<4097){eqTrace[n]=kind;eqTrace[n+1]=(uint32_t)mod;eqTrace[n+2]=(uint32_t)u;eqTrace[n+3]=(uint32_t)it;eqTrace[n+4]=before;eqTrace[n+5]=after;}
- return after;
-}
-static int eqEngage(void* mod,void* u,void* it){return eqRecord(1,mod,u,it,0,eqReturn[((uint32_t*)mod)[1]-40]);}
-static int eqDisengage(void* mod,void* u,void* it){return eqRecord(2,mod,u,it,0,eqReturn[((uint32_t*)mod)[1]-40]);}
-static void eqDefend(void* mod,void* u,int a,void* it,int b,float* value){
- uint32_t before;memcpy(&before,value,4);uint32_t out=eqOutput[((uint32_t*)mod)[1]-40];
- eqRecord(3,mod,u,it,before,out);eqRecord(4,mod,(void*)(uintptr_t)a,(void*)(uintptr_t)b,0,0);memcpy(value,&out,4);
-}
-static void* eqEngagePtr(void){return eqEngage;}
-static void* eqDisengagePtr(void){return eqDisengage;}
-static void* eqDefendPtr(void){return eqDefend;}
-
-*/
-import "C"
-
 import (
 	"bytes"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -40,6 +10,46 @@ import (
 	"math"
 	"unsafe"
 )
+
+var portTestEqKeys [3]byte
+var portTestEqTrace [4097]uint32
+var portTestEqReturn, portTestEqOutput [4]uint32
+
+func portTestEqKey(i int) unsafe.Pointer { return unsafe.Pointer(&portTestEqKeys[i]) }
+func portTestEqIndex(m *server.ModifierEff) uint32 {
+	return *(*uint32)(unsafe.Add(unsafe.Pointer(m), 4)) - 40
+}
+func portTestEqRecord(kind uint32, mod unsafe.Pointer, u, it *server.Object, before, after uint32) uint32 {
+	n := 1 + 6*portTestEqTrace[0]
+	portTestEqTrace[0]++
+	if n+5 < 4097 {
+		portTestEqTrace[n] = kind
+		portTestEqTrace[n+1] = uint32(uintptr(mod))
+		portTestEqTrace[n+2] = uint32(uintptr(unsafe.Pointer(u)))
+		portTestEqTrace[n+3] = uint32(uintptr(unsafe.Pointer(it)))
+		portTestEqTrace[n+4], portTestEqTrace[n+5] = before, after
+	}
+	return after
+}
+func portTestEqConfigure(i int, ret, out uint32) {
+	portTestEqReturn[i] = ret
+	portTestEqOutput[i] = out
+}
+func init() {
+	server.RegisterModifierEffect3(portTestEqKey(0), func(m *server.ModifierEff, u, it *server.Object) int32 {
+		return int32(portTestEqRecord(1, unsafe.Pointer(m), u, it, 0, portTestEqReturn[portTestEqIndex(m)]))
+	})
+	server.RegisterModifierEffect3(portTestEqKey(1), func(m *server.ModifierEff, u, it *server.Object) int32 {
+		return int32(portTestEqRecord(2, unsafe.Pointer(m), u, it, 0, portTestEqReturn[portTestEqIndex(m)]))
+	})
+	server.RegisterModifierEffect6(portTestEqKey(2), func(m *server.ModifierEff, u, a, it, b *server.Object, value unsafe.Pointer) {
+		before := *(*uint32)(value)
+		out := portTestEqOutput[portTestEqIndex(m)]
+		portTestEqRecord(3, unsafe.Pointer(m), u, it, before, out)
+		portTestEqRecord(4, unsafe.Pointer(m), a, b, 0, 0)
+		*(*uint32)(value) = out
+	})
+}
 
 type PortTestEquipmentDef struct {
 	Words    map[int]uint32
@@ -83,10 +93,10 @@ func (p *portTestShopPools) equipmentPrepare() func() {
 		panic("equipment requires inventory fixture")
 	}
 	p.equipment = &portTestEquipment{}
-	C.eqReset()
-	p.identify(C.eqEngagePtr(), 65000)
-	p.identify(C.eqDisengagePtr(), 65001)
-	p.identify(C.eqDefendPtr(), 65002)
+	clear(portTestEqTrace[:])
+	p.identify(portTestEqKey(0), 65000)
+	p.identify(portTestEqKey(1), 65001)
+	p.identify(portTestEqKey(2), 65002)
 	oldGameEx, oldCheat, oldThreshold := gameex_flags, nox_cheat_allowall, qword_581450_9512
 	gameex_flags = uint32(sp.GameEx)
 	nox_cheat_allowall = int32(bool2int(sp.Cheat))
@@ -188,15 +198,15 @@ func (p *portTestShopPools) equipmentItems() {
 	for i, e := range sp.Effects {
 		m := (*server.ModifierEff)(unsafe.Add(p.proxy.callbacks.shop.ptr(8), i*int(unsafe.Sizeof(server.ModifierEff{}))))
 		if e.Engage {
-			m.Engage112 = C.eqEngagePtr()
+			m.Engage112 = portTestEqKey(0)
 		}
 		if e.Disengage {
-			m.Disengage116 = C.eqDisengagePtr()
+			m.Disengage116 = portTestEqKey(1)
 		}
 		if e.Defend {
-			m.Defend76.Fnc = C.eqDefendPtr()
+			m.Defend76.Fnc = portTestEqKey(2)
 		}
-		C.eqConfigure(C.int(i), C.uint32_t(e.Return), C.uint32_t(e.Output))
+		portTestEqConfigure(i, e.Return, e.Output)
 	}
 	if sp.HolderOnly {
 		for _, item := range p.items {
@@ -315,7 +325,7 @@ func (p *portTestShopPools) equipmentSnapshot() []uint32 {
 	}
 	s := p.equipment
 	out := []uint32{p.normalize(uint32(s.result)), uint32(s.result >> 32), uint32(gameex_flags), uint32(nox_cheat_allowall), uint32(qword_581450_9512), uint32(qword_581450_9512 >> 32)}
-	trace := unsafe.Slice((*uint32)(unsafe.Pointer(C.eqTracePtr())), 4097)
+	trace := portTestEqTrace[:]
 	if trace[0] > 680 {
 		panic("equipment callback trace overflow")
 	}

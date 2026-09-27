@@ -2,62 +2,55 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-static uintptr_t portModifierArgs[6];
-static int32_t portModifierResult;
-static int portModifierCalls;
-static int portModifierKind;
-static void portModifierReset(int32_t value) {
-    for (int i=0;i<6;i++) portModifierArgs[i]=0;
-    portModifierResult=value;portModifierCalls=0;portModifierKind=0;
-}
-static void portModifierRecord3(void* a,void* b,void* c) {
-    portModifierArgs[0]=(uintptr_t)a;portModifierArgs[1]=(uintptr_t)b;
-    portModifierArgs[2]=(uintptr_t)c;portModifierCalls++;
-}
-static int portModifierInt3(void* a,void* b,void* c) {
-    portModifierRecord3(a,b,c);portModifierKind=1;return portModifierResult;
-}
-static void portModifierVoid3(void* a,void* b,void* c) {
-    portModifierRecord3(a,b,c);portModifierKind=2;
-}
-static void portModifierVoid5(void* a,void* b,void* c,void* d,void* e) {
-    portModifierRecord3(a,b,c);portModifierKind=3;
-    portModifierArgs[3]=(uintptr_t)d;portModifierArgs[4]=(uintptr_t)e;
-    if(e) *(uint32_t*)e=~(uint32_t)portModifierResult;
-}
-static void portModifierVoid6(void* a,void* b,void* c,void* d,void* e,void* f) {
-    portModifierRecord3(a,b,c);portModifierKind=4;
-    portModifierArgs[3]=(uintptr_t)d;portModifierArgs[4]=(uintptr_t)e;portModifierArgs[5]=(uintptr_t)f;
-    if(f) *(uint32_t*)f=~(uint32_t)portModifierResult;
-}
-static void* portModifierObserver(int kind) {
-    switch(kind) {case 1:return portModifierInt3;case 2:return portModifierVoid3;
-    case 3:return portModifierVoid5;case 4:return portModifierVoid6;default:return 0;}
-}
-static uintptr_t portModifierArgument(int i) {return portModifierArgs[i];}
-static int portModifierCount(void) {return portModifierCalls;}
-static int portModifierLastKind(void) {return portModifierKind;}
-*/
-import "C"
-
 import (
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/server"
 )
 
+var portTestModifierKeys [4]byte
+var portTestModifierArgs [6]uintptr
+var portTestModifierResult int32
+var portTestModifierCalls, portTestModifierKind int
+
+func portTestModifierRecord3(kind int, m *server.ModifierEff, a, b *server.Object) {
+	portTestModifierArgs[0] = uintptr(unsafe.Pointer(m))
+	portTestModifierArgs[1] = uintptr(unsafe.Pointer(a))
+	portTestModifierArgs[2] = uintptr(unsafe.Pointer(b))
+	portTestModifierCalls++
+	portTestModifierKind = kind
+}
+func init() {
+	server.RegisterModifierEffect3(unsafe.Pointer(&portTestModifierKeys[0]), func(m *server.ModifierEff, a, b *server.Object) int32 {
+		portTestModifierRecord3(1, m, a, b)
+		return portTestModifierResult
+	})
+	server.RegisterModifierEffect3(unsafe.Pointer(&portTestModifierKeys[1]), func(m *server.ModifierEff, a, b *server.Object) int32 {
+		portTestModifierRecord3(2, m, a, b)
+		return 0
+	})
+	server.RegisterModifierEffect5(unsafe.Pointer(&portTestModifierKeys[2]), func(m *server.ModifierEff, a, b, c *server.Object, data unsafe.Pointer) {
+		portTestModifierRecord3(3, m, a, b)
+		portTestModifierArgs[3], portTestModifierArgs[4] = uintptr(unsafe.Pointer(c)), uintptr(data)
+		if data != nil {
+			*(*uint32)(data) = ^uint32(portTestModifierResult)
+		}
+	})
+	server.RegisterModifierEffect6(unsafe.Pointer(&portTestModifierKeys[3]), func(m *server.ModifierEff, a, b, c, d *server.Object, data unsafe.Pointer) {
+		portTestModifierRecord3(4, m, a, b)
+		portTestModifierArgs[3], portTestModifierArgs[4], portTestModifierArgs[5] = uintptr(unsafe.Pointer(c)), uintptr(unsafe.Pointer(d)), uintptr(data)
+		if data != nil {
+			*(*uint32)(data) = ^uint32(portTestModifierResult)
+		}
+	})
+}
 func PortTestModifierObserverReset(value int32) [4]unsafe.Pointer {
-	C.portModifierReset(C.int32_t(value))
-	return [4]unsafe.Pointer{C.portModifierObserver(1), C.portModifierObserver(2), C.portModifierObserver(3), C.portModifierObserver(4)}
+	portTestModifierArgs = [6]uintptr{}
+	portTestModifierResult, portTestModifierCalls, portTestModifierKind = value, 0, 0
+	return [4]unsafe.Pointer{unsafe.Pointer(&portTestModifierKeys[0]), unsafe.Pointer(&portTestModifierKeys[1]), unsafe.Pointer(&portTestModifierKeys[2]), unsafe.Pointer(&portTestModifierKeys[3])}
 }
 func PortTestModifierObserverSnapshot() ([6]uintptr, int, int) {
-	var args [6]uintptr
-	for i := range args {
-		args[i] = uintptr(C.portModifierArgument(C.int(i)))
-	}
-	return args, int(C.portModifierCount()), int(C.portModifierLastKind())
+	return portTestModifierArgs, portTestModifierCalls, portTestModifierKind
 }
 func PortTestModifierCall3Result(key unsafe.Pointer, m *server.ModifierEff, a, b *server.Object) int32 {
 	return server.CallModifierEffect3Result(key, m, a, b)

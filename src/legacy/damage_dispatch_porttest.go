@@ -2,31 +2,6 @@
 
 package legacy
 
-/*
-#include <string.h>
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-static uint32_t damageEvents[2048];static int damageN,damageSet;static uint32_t damageOutput;
-static void damageReset(int set,uint32_t out){damageN=0;damageSet=set;damageOutput=out;}
-static void damageDefend(int m,int it,int u,int a,int w,int* data){
- damageEvents[damageN++]=1;damageEvents[damageN++]=m;damageEvents[damageN++]=it;damageEvents[damageN++]=u;damageEvents[damageN++]=a;damageEvents[damageN++]=w;damageEvents[damageN++]=data[0];damageEvents[damageN++]=data[1];
- if(damageSet)data[0]=damageOutput;
-}
-static void damageDefendScalar(int m,int it,int u,int a,int w,int* data){
- damageEvents[damageN++]=3;damageEvents[damageN++]=m;damageEvents[damageN++]=it;damageEvents[damageN++]=u;damageEvents[damageN++]=a;damageEvents[damageN++]=w;damageEvents[damageN++]=data[0];
- if(damageSet)data[0]=damageOutput;
-}
-static void* damageDefendScalarPtr(void){return damageDefendScalar;}
-static void damagePre(int m,int u,int a,int it,int* data){
- damageEvents[damageN++]=2;damageEvents[damageN++]=m;damageEvents[damageN++]=u;damageEvents[damageN++]=a;damageEvents[damageN++]=it;damageEvents[damageN++]=*data;
- if(damageSet)*data=damageOutput;
-}
-static void* damageDefendPtr(void){return damageDefend;}
-static void* damagePrePtr(void){return damagePre;}
-static int damageCount(void){return damageN;}
-static uint32_t damageEvent(int i){return damageEvents[i];}
-*/
-import "C"
 import (
 	"bytes"
 	"github.com/opennox/libs/object"
@@ -37,6 +12,48 @@ import (
 	"math"
 	"unsafe"
 )
+
+var portTestDamageKeys [3]byte
+var portTestDamageEvents [2048]uint32
+var portTestDamageN int
+var portTestDamageSet bool
+var portTestDamageOutput uint32
+
+func portTestDamageKey(i int) unsafe.Pointer { return unsafe.Pointer(&portTestDamageKeys[i]) }
+func portTestDamageRecord(values ...uint32) {
+	for _, v := range values {
+		portTestDamageEvents[portTestDamageN] = v
+		portTestDamageN++
+	}
+}
+func portTestDamageReset(set bool, output uint32) {
+	portTestDamageN = 0
+	portTestDamageSet = set
+	portTestDamageOutput = output
+}
+func init() {
+	server.RegisterModifierEffect6(portTestDamageKey(0), func(m *server.ModifierEff, it, u, a, w *server.Object, data unsafe.Pointer) {
+		words := (*[2]uint32)(data)
+		portTestDamageRecord(1, uint32(uintptr(unsafe.Pointer(m))), uint32(uintptr(unsafe.Pointer(it))), uint32(uintptr(unsafe.Pointer(u))), uint32(uintptr(unsafe.Pointer(a))), uint32(uintptr(unsafe.Pointer(w))), words[0], words[1])
+		if portTestDamageSet {
+			words[0] = portTestDamageOutput
+		}
+	})
+	server.RegisterModifierEffect5(portTestDamageKey(1), func(m *server.ModifierEff, u, a, it *server.Object, data unsafe.Pointer) {
+		word := (*uint32)(data)
+		portTestDamageRecord(2, uint32(uintptr(unsafe.Pointer(m))), uint32(uintptr(unsafe.Pointer(u))), uint32(uintptr(unsafe.Pointer(a))), uint32(uintptr(unsafe.Pointer(it))), *word)
+		if portTestDamageSet {
+			*word = portTestDamageOutput
+		}
+	})
+	server.RegisterModifierEffect6(portTestDamageKey(2), func(m *server.ModifierEff, it, u, a, w *server.Object, data unsafe.Pointer) {
+		word := (*uint32)(data)
+		portTestDamageRecord(3, uint32(uintptr(unsafe.Pointer(m))), uint32(uintptr(unsafe.Pointer(it))), uint32(uintptr(unsafe.Pointer(u))), uint32(uintptr(unsafe.Pointer(a))), uint32(uintptr(unsafe.Pointer(w))), *word)
+		if portTestDamageSet {
+			*word = portTestDamageOutput
+		}
+	})
+}
 
 type PortTestDamageSpec struct {
 	Registry                  string
@@ -104,7 +121,7 @@ func (p *portTestShopPools) damageItems() {
 	if sp == nil {
 		return
 	}
-	C.damageReset(C.int(bool2int(sp.SetOutput)), C.uint32_t(sp.Output))
+	portTestDamageReset(sp.SetOutput, sp.Output)
 	// Retired non-registry adapters occupied fifteen entries in the capture map.
 	// Keep later dynamically allocated IDs stable without identifying nil.
 	p.reservedFunctionIDs += 15
@@ -113,9 +130,9 @@ func (p *portTestShopPools) damageItems() {
 			p.identify(key, 88000+uint32(i))
 		}
 	}
-	p.identify(C.damageDefendPtr(), 88050)
-	p.identify(C.damagePrePtr(), 88051)
-	p.identify(C.damageDefendScalarPtr(), 88052)
+	p.identify(portTestDamageKey(0), 88050)
+	p.identify(portTestDamageKey(1), 88051)
+	p.identify(portTestDamageKey(2), 88052)
 	for _, id := range []int{1, 2, 100, 101, 102} {
 		if u := p.temporaryRef(id); u != nil {
 			u.Damage = p.proxy.combat.target.Damage
@@ -131,13 +148,13 @@ func (p *portTestShopPools) damageItems() {
 	for i := 0; i < 4; i++ {
 		m := (*server.ModifierEff)(unsafe.Add(p.proxy.callbacks.shop.ptr(8), i*144))
 		if sp.DefendMask&(1<<i) != 0 {
-			m.Defend76.Fnc = C.damageDefendPtr()
+			m.Defend76.Fnc = portTestDamageKey(0)
 			if i == 1 {
-				m.Defend76.Fnc = C.damageDefendScalarPtr()
+				m.Defend76.Fnc = portTestDamageKey(2)
 			}
 		}
 		if sp.PreDamageMask&(1<<i) != 0 {
-			m.AttackPreDmg64.Fnc = C.damagePrePtr()
+			m.AttackPreDmg64.Fnc = portTestDamageKey(1)
 		}
 	}
 }
@@ -169,9 +186,9 @@ func (p *portTestShopPools) damageSnapshot(out []uint32) []uint32 {
 		return out
 	}
 	out = append(out, *(*uint32)(p.temporary.world.objectives.attack.record))
-	out = append(out, p.normalize(uint32(d.result)), uint32(d.result>>32), uint32(C.damageCount()))
-	for i := 0; i < int(C.damageCount()); i++ {
-		out = append(out, p.normalize(uint32(C.damageEvent(C.int(i)))))
+	out = append(out, p.normalize(uint32(d.result)), uint32(d.result>>32), uint32(portTestDamageN))
+	for i := 0; i < int(portTestDamageN); i++ {
+		out = append(out, p.normalize(uint32(portTestDamageEvents[i])))
 	}
 	for _, off := range damageOffsets {
 		out = append(out, *memmap.PtrUint32(0x5d4594, off))

@@ -9,27 +9,27 @@ This is the current resume checkpoint. Workflow and delegation rules live in
 internal glue: 458/463 client cgo files eliminated on net (5 remain;
 server: 457/463 eliminated, 6 remain).**
 Selected legacy C export bridges: **1,890/1,890 retired (0 remain)**.
-Embedded production C bodies: **65/79 retired (14 remain)**.
+Embedded production C bodies: **67/79 retired (12 remain)**.
 
 These are selected Linux 386 production files, not equal units of effort.
 Three project packages directly use cgo. Standalone production/test C remain zero.
-Latest qualified chunk routes quantity-dialog and image completions through native
-callbacks, retiring one generic C signature and two fixture C imports. All
-133/132/133 selected roots passed in default/server/highres, with six focused
-contracts repeated in each profile. See
-[UI_COMPLETION.md](docs/porting/UI_COMPLETION.md).
+Latest qualified chunk removes modifier dispatch's foreign fallbacks and translates
+four shared observers (modifier forwarding, equipment, damage and melee). Two
+C dispatch signatures and four fixture C imports are retired. All 2,482/2,471/2,482
+audited roots passed in default/server/highres. See
+[MODIFIER_DISPATCH.md](docs/porting/MODIFIER_DISPATCH.md).
 
 Continue chunk-by-chunk with primary review, qualification, documentation and
 commit/push. Use one Luna helper when its quota is available; no substitute model.
 Stop at the milestone, usage limits or a substantial question. Latest qualified
-artifacts: `build/port-ui-completion/`.
+artifacts: `build/port-modifier-dispatch/`.
 
 ## What remains
 
 | Area | Remaining work or dependency |
 | --- | --- |
-| Embedded C callback glue | 14 generic dispatch bodies. Trace all owners/registrations before removing raw fallbacks. |
-| Types and declarations | 157 tracked headers / 2,731 physical lines. 98 porttest-tagged source files still import C across all build tags (not one selected profile). Fixture C observers/types still need retirement or explicit qualification scope. |
+| Embedded C callback glue | 12 generic dispatch bodies. Trace all owners/registrations before removing raw fallbacks. |
+| Types and declarations | 157 tracked headers / 2,731 physical lines. 94 porttest-tagged source files still import C across all build tags (not one selected profile). Fixture C observers/types still need retirement or explicit qualification scope. |
 | Production C imports | alloc/raw.go, ccall/ccall.go, legacy/object_xfer_world.go (reachable abort), legacy/cgo_common.go and legacy/video_highres.go (flags). Server adds legacy/cgo_server.go. |
 | Memory and layout | C-heap allocator, raw pointers, fixed offsets and 32-bit address assumptions remain. Preserve ownership/lifetime/failure semantics behind the centralized allocator. |
 | External libraries | SDL2, OpenGL, OpenAL and similar bindings remain for this phase; later replacement requires a separate discussion. |
@@ -37,19 +37,18 @@ artifacts: `build/port-ui-completion/`.
 
 ## Latest qualification
 
-Baseline `e1f46ce8` captured 133/132/133 original owner roots on exact-source
-qualified parent binaries; six focused contracts ran again in each profile.
-The matching native selections/repeats passed without skips. Focused preflight,
-safe build/static, three production builds/ABI, exact known-suite outcomes and
-fresh headless save/load passed. Retired dispatcher and fixture-export symbols
-are absent. Remaining C bodies and original assets are unchanged; frozen
-expectations remain unchanged.
+Original and native broad selections passed 2,482/2,471/2,482 roots without skips
+in default/server/highres. Four focused contracts ran separately in each profile
+on both versions; native preflight also covered damage/melee captures. Three safe
+contracts passed on both versions. Safe build/static, three production builds/ABI,
+exact known-suite outcomes and fresh save/load passed. Retired symbols are absent;
+remaining C bodies, 40 native registrations, assertions and assets are unchanged.
 
-Evidence: [qualification](docs/porting/ui-completion-qualification.json),
-[inventory](docs/porting/ui-completion-inventory-after.json).
+Evidence: [qualification](docs/porting/modifier-dispatch-qualification.json),
+[inventory](docs/porting/modifier-dispatch-inventory-after.json).
 Known-suite expectation: [record](docs/porting/mp3-go-expected-suite.jsonl).
 Standalone metric/history: [C_LOC.md](docs/porting/C_LOC.md).
-Latest broad regression: `b2c975dc`, 2,482/2,471/2,482 audited roots, no skips.
+Latest broad regression: this modifier batch, 2,482/2,471/2,482 audited roots, no skips.
 Last complete default corpus: `6e9681f2`, 2,489 passes plus diagnostic skip.
 
 ## Next work and review items
@@ -58,21 +57,17 @@ The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
 removal. Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md).
 Metadata discovery is not compilation evidence.
 
-In progress: modifier dispatch and four C observer fixtures. A seven-file native
-draft is uninstalled; original broad baselines passed (2,482/2,471/2,482 roots),
-as did focused repetitions and three safe contracts. Baseline accepted; native
-qualification pending.
-Equipment, damage and melee observers must move with the generic observer.
-Preserve signed results, nil masks, mutations, GC lifetimes and normalization.
-See [MODIFIER_DISPATCH.md](docs/porting/MODIFIER_DISPATCH.md) and
-`build/port-modifier-dispatch/`.
-Then continue allocator ownership, reachable abort, compiler flags and fixture
-work. Literal allocator calls occur in 40 C-using fixture files; avoid incompatible
-cross-domain frees when the centralized allocator changes.
+Continue callback removal by tracing all producers, registrations and fixture
+observers. Remaining families include GUI/drawable, object/AI, sustained spells,
+audio streams and smaller legacy callbacks. Audit by owner before rejecting foreign
+keys; migrate shared observers and preserve existing captures. Also remaining:
+allocator ownership, reachable abort, compiler flags and fixture dependencies.
+Literal allocator calls occur in 40 C-using fixture files; avoid cross-domain frees.
 
-Animation, quantity and image completion now reject unregistered keys with an
-explicit panic after auditing production producers. These reversible invalid-input
-corrections do not authorize the same conclusion for other callback families.
+Animation, quantity, image completion and modifier dispatch reject unregistered
+keys with an explicit panic after producer audits. These reversible corrections
+apply only to those families. Native fixture arrays also make invalid overflow
+explicit; valid-domain captures remain unchanged.
 
 CString retains raw malloc/free normally and tracked Malloc/FreePtr in safe.
 RawMalloc intentionally still uses cgo's process-fatal malloc wrapper. Keep normal
@@ -91,13 +86,11 @@ first on PATH. Linux 386 execution needs host execution in this VM.
 Do not change source consumed by running builds/tests.
 
 Current root/safe/production binaries live under
-`build/port-ui-completion/{contracts/profiles,safe,production/production/bin}`.
-Original UI completion captures live under `build/port-ui-completion/original`;
-its baseline used animation binaries at `5233d084`, now removed after replacement
-checks. Rebuild that revision if needed. Current modifier baseline runs use
-retained UI completion binaries at `defbdb98`.
-Older executable cleanup records remain under the preceding callback batch;
-rebuild the recorded revisions when those historical binaries are needed.
+`build/port-modifier-dispatch/{contracts/profiles,safe,production/production/bin}`.
+Original modifier captures live under `build/port-modifier-dispatch/original`,
+with safe contracts in `original-safe`. Baseline runs use retained qualified UI
+completion binaries at `defbdb98`. Older cleanup records retain source revisions,
+hashes and rebuild information for superseded binaries.
 
 Six completed string/spell regression logs were losslessly archived, reclaiming
 613,769,216 bytes. Restore with `gzip -dk FILE.jsonl.gz`; exact hashes/paths and
@@ -105,9 +98,9 @@ commands: `build/port-callback-retirement-audit/log-archive.json`.
 Older placement and string-original log archive records remain in
 `build/port-string-boundaries/log-archive.json`.
 
-Final UI completion scenario duplicate assets were verified and removed; originals,
+Final modifier scenario duplicate assets were verified and removed; originals,
 saves/results remain. Restore before replay:
-`python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/ui-completion-save/deduplicated-assets.json`.
+`python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/modifier-dispatch-save/deduplicated-assets.json`.
 
 Check disk before large runs. Source, reports and qualification metadata are
 committed; ignored artifacts are not backed up by Git. Completed scripts are

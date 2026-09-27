@@ -2,31 +2,40 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include <string.h>
-#include <stdlib.h>
-static uint32_t attackTrace[8192];static int attackCount,attackSet;static uint32_t attackOutput;static uint32_t attackFrontMask;
-static void attackReset(int set,uint32_t output){attackFrontMask=255;attackCount=0;attackSet=set;attackOutput=output;}
-static int attackEffect(int m,int it,int target,int actor,int record){
- attackTrace[attackCount++]=m;attackTrace[attackCount++]=it;attackTrace[attackCount++]=target;attackTrace[attackCount++]=actor;
- // Bytes 5..7 and 33..35 are unused padding in the original stack record.
- memcpy(&attackTrace[attackCount],(void*)record,36);
- attackTrace[attackCount+1]&=255;attackTrace[attackCount+8]&=attackFrontMask;attackCount+=9;
- if(attackSet) *(uint32_t*)record=attackOutput;
- return 0;
-}
-// Collision owners leave the entire Front word unused and uninitialized.
-static void attackCollisionRecord(void){attackFrontMask=0;}
-static void* attackEffectPtr(void){return attackEffect;}
-static int attackN(void){return attackCount;}
-static uint32_t attackValue(int i){return attackTrace[i];}
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
+
+var portTestAttackKey byte
+var portTestAttackTrace [8192]uint32
+var portTestAttackCount int
+var portTestAttackSet bool
+var portTestAttackOutput, portTestAttackFrontMask uint32
+
+func portTestAttackEffectKey() unsafe.Pointer { return unsafe.Pointer(&portTestAttackKey) }
+func portTestAttackReset(set bool, output uint32) {
+	portTestAttackFrontMask = 255
+	portTestAttackCount = 0
+	portTestAttackSet = set
+	portTestAttackOutput = output
+}
+func init() {
+	server.RegisterModifierEffect5(portTestAttackEffectKey(), func(m *server.ModifierEff, it, target, actor *server.Object, record unsafe.Pointer) {
+		for _, v := range [4]uint32{uint32(uintptr(unsafe.Pointer(m))), uint32(uintptr(unsafe.Pointer(it))), uint32(uintptr(unsafe.Pointer(target))), uint32(uintptr(unsafe.Pointer(actor)))} {
+			portTestAttackTrace[portTestAttackCount] = v
+			portTestAttackCount++
+		}
+		// Preserve the C capture's nine words and padding normalization before mutation.
+		copy(portTestAttackTrace[portTestAttackCount:portTestAttackCount+9], unsafe.Slice((*uint32)(record), 9))
+		portTestAttackTrace[portTestAttackCount+1] &= 255
+		portTestAttackTrace[portTestAttackCount+8] &= portTestAttackFrontMask
+		portTestAttackCount += 9
+		if portTestAttackSet {
+			*(*uint32)(record) = portTestAttackOutput
+		}
+	})
+}
 
 const (
 	PortTestAttack538290 = 900
@@ -128,11 +137,11 @@ func (p *portTestShopPools) attackItems() {
 		return
 	}
 	r := p.temporary.world.objectives.attack
-	C.attackReset(C.int(bool2int(sp.SetOutput)), C.uint32_t(sp.Output))
+	portTestAttackReset(sp.SetOutput, sp.Output)
 	if sp.Collision != nil {
-		C.attackCollisionRecord()
+		portTestAttackFrontMask = 0
 	}
-	p.identify(C.attackEffectPtr(), 86000)
+	p.identify(portTestAttackEffectKey(), 86000)
 	p.reservedFunctionIDs += 12
 	apply := func(ptr unsafe.Pointer, size int, words map[int]uint32, refs map[int]int) {
 		for off, v := range words {
@@ -171,13 +180,13 @@ func (p *portTestShopPools) attackItems() {
 	for i := 0; i < 4; i++ {
 		m := (*server.ModifierEff)(unsafe.Add(p.proxy.callbacks.shop.ptr(8), i*144))
 		if sp.AttackMask&(1<<i) != 0 {
-			m.Attack40.Fnc = C.attackEffectPtr()
+			m.Attack40.Fnc = portTestAttackEffectKey()
 		}
 		if sp.RecoilMask&(1<<i) != 0 {
 			m.AttackPreHit52.Fnc = modifierKey(modifierIDRecoilEffect)
 		}
 		if sp.PreMask&(1<<i) != 0 {
-			m.AttackPreHit52.Fnc = C.attackEffectPtr()
+			m.AttackPreHit52.Fnc = portTestAttackEffectKey()
 		}
 	}
 	dword_5d4594_2488660 = uint32(uintptr(p.temporaryRef(sp.NearestTarget).CObj()))
@@ -246,9 +255,9 @@ func (p *portTestShopPools) attackSnapshot(out []uint32) []uint32 {
 	if p.temporary.world.objectives.attack == nil {
 		return out
 	}
-	out = append(out, uint32(dword_5d4594_2488652), uint32(dword_5d4594_2488656), p.normalize(uint32(dword_5d4594_2488660)), uint32(C.attackN()))
-	for i := 0; i < int(C.attackN()); i++ {
-		out = append(out, p.normalize(uint32(C.attackValue(C.int(i)))))
+	out = append(out, uint32(dword_5d4594_2488652), uint32(dword_5d4594_2488656), p.normalize(uint32(dword_5d4594_2488660)), uint32(portTestAttackCount))
+	for i := 0; i < int(portTestAttackCount); i++ {
+		out = append(out, p.normalize(uint32(portTestAttackTrace[i])))
 	}
 	for _, u := range p.proxy.life.created {
 		if u.InitData != nil {
