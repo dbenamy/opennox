@@ -52,10 +52,12 @@ Last complete default corpus: `6e9681f2`, 2,489 passes plus diagnostic skip.
 
 ## Next work and review items
 
-Next candidate: duration-spell and internal audio-stream callback dispatch,
-including their observer fixtures. Producer audit remains required. Monster
-callbacks have separate combat/lifecycle fixture observers; move them with the
-connected object/AI family. Read-only notes: `build/port-single-pointer-dispatch/`.
+Active batch: duration-spell and internal audio-stream dispatch. Baseline accepted
+at `6f03cc39`: 118 owner roots and six focused contracts per profile, three safe
+contracts. Reviewed four-file conversion not yet installed. Next: install and
+qualify. See [DURATION_AUDIO_DISPATCH.md](docs/porting/DURATION_AUDIO_DISPATCH.md).
+Monster callbacks have separate combat/lifecycle fixture observers; move them
+with the connected object/AI family.
 
 The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
 removal. Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md).
@@ -95,7 +97,9 @@ Current root/safe/production binaries live under
 Original section/particle captures live under
 `build/port-section-particle-dispatch/original`, with safe contracts in
 `original-safe`. Baseline runs use retained qualified modifier binaries at
-`5ba6fce6`. Current scenario assets have not yet been deduplicated. Older cleanup
+`5ba6fce6`. Completed scenario duplicate assets were verified and removed (560,037,888 bytes).
+Restore before replay with `python3 build/port-artifact-cleanup/restore-recent-scenario.py
+build/baseline/runs/section-particle-dispatch-save/deduplicated-assets.json`. Older cleanup
 records retain source revisions, hashes and rebuild information.
 
 Six completed string/spell regression logs were losslessly archived, reclaiming
@@ -136,3 +140,7 @@ superseded binaries and twelve losslessly gzipped historical logs. Current modif
 artifacts remain. Exact paths/hashes and restore commands are in
 `build/port-section-particle-dispatch/{old-binaries-result,log-archive}.json`;
 see the batch report for source revisions and recovery.
+
+Duration/audio preparation removed seven superseded UI-completion binaries
+(387,067,904 bytes; rebuild `defbdb98`) after source/replacement/hash/host-use
+checks. Logs/records remain: `build/port-single-pointer-dispatch/ui-cleanup-*`.

@@ -84,3 +84,8 @@ The initial ignored generator invocation was corrected from `go run` to a built
 host generator after argument handling failed; generated output then matched
 byte-for-byte before installation. No source/test correction was needed during
 native qualification.
+
+After qualification and push, removed 1,654 verified duplicate scenario assets
+(560,037,888 allocated bytes). Originals and saves/results remain. Restore before
+replay: `python3 build/port-artifact-cleanup/restore-recent-scenario.py
+build/baseline/runs/section-particle-dispatch-save/deduplicated-assets.json`.
