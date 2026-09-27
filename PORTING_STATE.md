@@ -53,10 +53,12 @@ Last complete default corpus: `6e9681f2`, 2,489 passes plus diagnostic skip.
 
 ## Next work and review items
 
-Next candidate: GUI window/event/draw/tooltip dispatch. Audit raw callback fields,
-extension priority, deferred destroy and popup parent forwarding before selection.
-Read-only notes: `build/port-window-dispatch/`. Monster callbacks have separate
-combat/lifecycle fixture observers; move them with the connected object/AI family.
+Active batch: GUI window dispatch and tooltip observation. Original baseline
+accepted at `d3d759ba`: 2,482/2,471/2,482 broad roots, six focused repeats per
+profile, safe deferred cleanup. Reviewed seven-file draft not installed yet.
+Next: install, focused/default-client scenario preflight, then complete qualification.
+See [WINDOW_DISPATCH.md](docs/porting/WINDOW_DISPATCH.md). Remaining object/AI
+observer connections are inventoried in `build/port-object-dispatch-audit/`.
 
 The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
 removal. Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md).
@@ -126,7 +128,7 @@ module sources and current artifacts remain. Records:
 After the animation commit, removed seven superseded spell binaries (387,080,192
 bytes) with committed-source, replacement and host-use checks. Rebuild `b2c975dc`
 if those historical binaries are needed; metadata/logs remain. Also removed 12
-inactive Linux386 cache archives untouched for six hours (496,467,968 bytes).
+inactive Linux 386 cache archives untouched for six hours (496,467,968 bytes).
 Records: `build/port-animation-dispatch/{spell-cleanup-*,cache-headroom-*}`.
 
 During modifier preparation, removed seven superseded callback binaries
@@ -143,3 +145,8 @@ see the batch report for source revisions and recovery.
 Duration/audio preparation removed seven superseded UI-completion binaries
 (387,067,904 bytes; rebuild `defbdb98`) after source/replacement/hash/host-use
 checks. Logs/records remain: `build/port-single-pointer-dispatch/ui-cleanup-*`.
+
+GUI preparation removed seven superseded modifier binaries (387,018,752 bytes;
+rebuild `5ba6fce6`) and 39 inactive Linux 386 cache archives (1,941,274,624 bytes)
+after source/replacement/host-use or cache metadata/hash checks. Records and
+recovery: [WINDOW_DISPATCH.md](docs/porting/WINDOW_DISPATCH.md).
