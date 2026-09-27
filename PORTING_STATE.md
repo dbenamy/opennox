@@ -7,8 +7,8 @@ superseded status when updating it. The workflow and delegation rules live in
 ## Status: resumed; internal C-glue removal
 
 **Progress: 142,665/142,665 original standalone C lines ported or retired;
-internal glue: 456/463 client cgo files eliminated on net (7 remain;
-server: 455/463 eliminated, 8 remain).**
+internal glue: 457/463 client cgo files eliminated on net (6 remain;
+server: 456/463 eliminated, 7 remain).**
 Selected legacy C export bridges: **1,890/1,890 retired (0 remain)**.
 Embedded production C bodies: **59/79 retired (20 remain)**.
 
@@ -16,27 +16,28 @@ These are selected project files in Linux 386 production profiles, not equal
 units of effort. Three project packages directly use cgo. Production and
 test-reference standalone `.c` files both remain zero.
 
-Latest qualified chunk replaces generator/inventory placement sin/cos with native
-Go helpers that preserve the original libc rounding for every reachable RNG
-angle. Two production and one fixture C imports are retired. All 992/989/992
-selected roots pass in default/server/highres; private numerical contracts pass
-twice in those profiles and safe. See [PLACEMENT_TRIG.md](docs/porting/PLACEMENT_TRIG.md).
+Latest qualified chunk makes legacy string copying/scanning and character types
+native Go, with CString allocation centralized behind the existing raw/safe
+allocator boundary. One production and one fixture C import are retired. All
+2,483/2,472/2,483 selected roots pass in default/server/highres; four private
+contracts pass twice per profile including safe. See
+[STRING_BOUNDARIES.md](docs/porting/STRING_BOUNDARIES.md).
 
 Continue chunk-by-chunk with one Luna helper when available, primary review,
 qualification, documentation, commit/push and recorded reversible decisions.
 Stop at the milestone, usage limits or a substantial question.
-Latest qualified artifacts: `build/port-placement-trig/`.
+Latest qualified artifacts: `build/port-string-boundaries/`.
 
 ## What remains
 
-Counts describe the qualified placement-math conversion. Zero `.c` lines is not a
+Counts describe the qualified native string conversion. Zero `.c` lines is not a
 count of all C dependencies or remaining engineering effort.
 
 | Area | Remaining work or dependency |
 | --- | --- |
 | Embedded C callback glue | 20 production bodies: 19 generated dispatchers (one used only by fixtures) and one specialized spell adapter. All 57 unreferenced generated signatures are retired. |
 | Callback routes | Zero selected legacy C exports remain. Native identities and typed dispatch cover known owners; foreign fallbacks still need a complete reachability audit before removal. |
-| Declarations and C types | 157 tracked headers / 2,731 physical lines; client profiles select 7 cgo files and server selects 8 in three project packages (alloc, ccall, legacy). Remaining uses include string allocation/types, a reachable abort, callback adapters, compiler flags and transitional fixture types. |
+| Declarations and C types | 157 tracked headers / 2,731 physical lines; client profiles select 6 cgo files and server selects 7 in three project packages (alloc, ccall, legacy). Remaining uses include allocation, four scalar spell helper types, a reachable abort, callback adapters, compiler flags and transitional fixture types. |
 | Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Ownership/lifetime work stays behind the centralized allocator. |
 | External libraries | SDL2, OpenGL, OpenAL and similar native dependencies/bindings stay for this phase; their future is a subsequent discussion. |
 | Portability and release validation | Qualified target is Linux 386/SSE2 with cgo. The complete engine is not qualified as cgo-free, 64-bit, native macOS or browser/WebAssembly. Physical display and audible playback remain manual checks. |
@@ -46,26 +47,28 @@ Test-only C observers still qualify raw boundaries.
 
 ## Latest qualification and evidence
 
-- Original baseline `9dcf1b9a`: 992 default/high-resolution and 989 server roots
-  pass twice per profile, with exact names and no skips. Production source is
-  identical to preceding qualified `79b7e9e3`.
-- Independent libc captures cover all 4,096 RNG starts × 64 placement attempts
-  (524,288 exact sin/cos double results), plus 70 numerical boundaries. The
-  440-entry Go table matches independently decoded upstream bits. Direct Go math
-  changed two ordinary final-coordinate cases, so it was not used for this domain.
-- Converted 992/989/992-root selections pass with exact original names and no
-  skips. Both private contracts pass twice in default/server/highres/safe.
-  Existing assertions and captures remain unchanged.
-- Native preflight/static, safe build/static, all three production builds/ABI,
-  exact known-suite failure/package outcomes and a fresh headless save/load/resume
-  pass. All 1,654 original asset hashes remain unchanged; source hashes match.
-- The last full accumulated default port corpus was at `6e9681f2`: 2,489 passes
-  plus the established opt-in diagnostic skip. This bounded placement batch uses
-  its audited affected selection; shared allocator/callback implementations did
-  not change.
+- Original baseline `7034a7e4`: 2,483 default/high-resolution and 2,472 server
+  roots pass once per profile with exact names and no skips. Four new private
+  contracts pass twice in default/server/highres/safe. Production source was
+  identical to preceding qualified `81cf750f`; only the new fixtures differed.
+- Independent checks cover byte/NUL copying, bounds and guards, copy ownership,
+  UTF-16/malformed sequences, raw versus tracked allocations and balanced release.
+  Child processes preserve normal fatal allocation failure and safe recoverability.
+- Converted selections match all original names, with no skips. Both before and
+  after conversion, private contracts pass twice in each of the four profiles.
+  An initial compile caught a fixture pointer cast; assertions/goldens did not change.
+- Corrected native preflight/static, early preview/save-load, safe build/static,
+  all three production builds/ABI, exact known-suite failure/package outcomes and
+  final fresh headless save/load/resume pass. All 1,654 original asset hashes are
+  unchanged; accepted source/binary hashes match.
+- Package-aware caller/type analysis selects nearly the entire accumulated corpus
+  through shared strings/initialization. Six independent roots selected only by
+  the unscoped name scan are excluded; the opt-in map-population diagnostic is also
+  excluded. The last complete default corpus was at `6e9681f2` (2,489 passes plus
+  that diagnostic skip). See the accepted selection for exact scope.
 
-Report: [PLACEMENT_TRIG.md](docs/porting/PLACEMENT_TRIG.md).
-Evidence: [qualification](docs/porting/placement-trig-qualification.json).
+Report: [STRING_BOUNDARIES.md](docs/porting/STRING_BOUNDARIES.md).
+Evidence: [qualification](docs/porting/string-boundaries-qualification.json).
 Earlier fixture repair: [THEME_OBSERVER_SCOPE.md](docs/porting/THEME_OBSERVER_SCOPE.md).
 Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expected-suite.jsonl).
 
@@ -79,28 +82,25 @@ order and completion criteria. Metadata discovery is not successful compilation.
 Client rendering/audio backend replacement is outside this phase.
 
 The current dependency inventory is
-[placement-trig-inventory-after.json](docs/porting/placement-trig-inventory-after.json),
+[string-boundaries-inventory-after.json](docs/porting/string-boundaries-inventory-after.json),
 produced by `tools/porting/cgo_inventory.py`. Three project packages still directly
 use cgo, plus external client bindings. The earlier helper suggestion that go-gl
 was residue remains rejected: `libs/client/seat/opengl` actually imports it.
 
-Current batch: native string boundaries. Production is still `81cf750f`; two new
-private fixture/assertion files are staged and an 11-file draft remains uninstalled
-under `build/port-string-boundaries/`. Original default/safe preflight passes four
-contracts covering byte/wide text, guards, ownership and failure disposition.
-The original baseline is accepted: 2,483/2,472/2,483 actual roots passed once
-per default/server/highres profile, and new private contracts passed twice in
-default/server/highres/safe. This avoids a
-second identical broad baseline run while retaining repeated new original-path
-contracts. See [STRING_BOUNDARIES.md](docs/porting/STRING_BOUNDARIES.md).
+Next: confirm whole-repository reachability of the specialized spell-call adapter,
+then retire it if unused and convert the four live C-typed spell scalar helpers.
+A read-only preaudit is in `build/port-remaining-boundaries/`; no conversion is
+installed there. Reuse the just-qualified original selection only under exact
+source/environment and discovered-name checks. Then audit allocator and generic
+callback fallback removal, reachable abort, compiler flags and fixture C types.
+The 57 recorded production ccall references still need full field/registration
+tracing; a few examined fallback branches do not prove all of them unused.
 
-Next: commit the accepted original baseline, install the reviewed string draft and
-qualify it. CString retains raw allocation normally and tracked allocation in safe;
-normal process-fatal allocation failure and safe recoverable panic are preserved
-through the centralized allocator. A new RawMalloc entry still uses cgo malloc;
-allocator removal follows this batch. Keep the browser round trip unchanged.
-Then audit allocator and callback fallback removal, reachable abort, compiler flags
-and remaining fixture C observers.
+CString retains its browser round trip, raw malloc/free normally and tracked
+Malloc/FreePtr in safe. RawMalloc intentionally still uses cgo's fatal malloc
+wrapper in the centralized allocator; this batch does not claim allocation is
+C-free. Native GoString scanning adds no allocator memlog observation. Normal
+fatal failure and safe recoverable panic remain distinct, tested behaviors.
 
 Placement helpers retain libc rounding only in the qualified domain; standard Go
 math is the fallback outside the adapted range. Every current caller's argument
@@ -231,7 +231,7 @@ do not rerun them or infer deletion safety from age alone.
 | Completed creation/init scenario assets | Removed 1,654 SHA256-identical original-asset duplicates after host-use checks; 559,972,352 allocated bytes reclaimed. Originals, saves/results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/create-init-identities-save/deduplicated-assets.json`. Plan/result: `build/port-post-create-init-cleanup/`. |
 | Superseded collision/death qualified binaries | Removed 14 test/safe/production executables after exact committed-source, replacement/hash and host-use checks; 786,751,488 allocated bytes reclaimed. Rebuild qualified revisions `170b594a` and `e7ca9d31` using retained commands. Source, original baseline binaries, logs, manifests and current create/init and damage outputs remain. Plan/journal: `build/port-item-identities/cleanup-production-{approved.json,deleted.jsonl}`. |
 | Obsolete pre-audio project cache | Removed 21 hash/stat-verified root/legacy Linux 386 archives older than original audio baseline `9f6b2b46`, after host-use checks; 1,100,709,888 allocated bytes reclaimed. Newer audio caches, all source/assets/binaries remain. Rebuild normally. Plan/journal: `build/port-after-audio/cache-luna/cache-cleanup-{approved.json,deleted.jsonl}`. |
-| Current qualified production/safe binaries | Retained under `build/port-placement-trig/`; historical outputs follow the batch-specific recovery rows. |
+| Current qualified production/safe binaries | Retained under `build/port-string-boundaries/`; historical outputs follow the batch-specific recovery rows. |
 | Superseded UI-fixture binaries | Removed seven verified test/safe/production executables after committed audio replacement and host-use checks; 390,643,712 allocated bytes reclaimed. Rebuild revision `3d47a346` using retained commands/source maps. Logs/manifests and current audio replacements remain. Plan/journal: `build/port-audio-stream-callbacks/binary-cleanup-{approved.json,deleted.jsonl}`. |
 | Completed audio-stream scenario assets | Removed 1,654 verified original-asset duplicates; 559,931,392 allocated bytes reclaimed. Originals, saves and results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/audio-stream-callbacks-save/deduplicated-assets.json`. Plan/result: `build/port-post-audio-stream-cleanup/`. |
 | Superseded modifier/server-fixture/duration/update binaries | Removed 28 verified test/safe/production executables after source/replacement hashes and host-use checks; 1,567,293,440 allocated bytes reclaimed. Rebuild qualified revisions `99b65896`, `a798ad1c`, `d5d80c42`, `a8d89bda` using retained commands and source maps. Current UI replacements, old logs/manifests and baseline evidence remain. Journals: `build/port-after-client-ui/binary-cleanup-deleted.jsonl` and `binary-cleanup-addendum-deleted.jsonl`. |
@@ -362,3 +362,21 @@ after exact committed-source, replacement hashes and host-use checks: 605,700,09
 allocated bytes. Rebuild `09f15464`, `9f6b2b46` and `9f91acda` with retained commands
 and source maps; logs/captures remain. Evidence:
 `build/port-string-boundaries/more-baselines-{approved.json,deleted.jsonl}`.
+
+The completed string preview's 1,654 verified duplicate assets were removed:
+559,878,144 allocated bytes reclaimed. Original assets, saves/results and recovery
+records remain. Restore with
+`python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/string-boundaries-preview-save/deduplicated-assets.json`.
+Evidence: `build/port-string-boundaries/preview-cleanup/`.
+
+Twelve completed placement/string original or qualification JSONL logs are now
+losslessly compressed, reclaiming 522,993,664 allocated bytes. Committed log hashes
+were checked before compression and against decompressed output; host-use checks
+passed. Restore with `gzip -dk FILE.jsonl.gz`. Exact paths, hashes and commands:
+`build/port-string-boundaries/log-archive.json`. Current converted logs remain live.
+
+The completed string final scenario's 1,654 verified duplicate assets
+were removed, reclaiming 559,984,640 allocated bytes. Originals,
+saves/results and the restore manifest remain. Restore with
+`python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/string-boundaries-save/deduplicated-assets.json`.
+Evidence: `build/port-string-boundaries/final-cleanup/`.

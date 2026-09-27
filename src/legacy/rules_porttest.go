@@ -281,11 +281,11 @@ func portTestInvoke_sub_57A1E0(a1 *C.int, a2 *C.char, a3 *C.int, a4 C.char, a5 C
 	st := (*server.Settings2)(unsafe.Pointer(a1))
 	name := "user.rul"
 	if a2 != nil {
-		name = GoString(a2)
+		name = GoStringP(unsafe.Pointer(a2))
 	}
 	return C.char(ruleLoad(st, name, (*legacyListNode)(unsafe.Pointer(a3)), byte(a4), uint16(a5)))
 }
 
 func portTestInvoke_sub_57AAA0(name *C.char, settings *C.char, list *C.int) C.char {
-	return C.char(ruleWrite(GoString(name), (*server.Settings2)(unsafe.Pointer(settings)), (*legacyListNode)(unsafe.Pointer(list))))
+	return C.char(ruleWrite(GoStringP(unsafe.Pointer(name)), (*server.Settings2)(unsafe.Pointer(settings)), (*legacyListNode)(unsafe.Pointer(list))))
 }

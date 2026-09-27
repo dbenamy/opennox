@@ -56,7 +56,7 @@ func PortTestPrefabSecretList() (*uint32, func()) {
 
 // Fixture-native copies preserve the original wrapper ABI conversions.
 func portTestInvoke_nox_xxx_mapReadSection_426EA0(a1 unsafe.Pointer, cname *C.char, cerr *C.uint) int {
-	ok, err := Nox_xxx_mapReadSection(cryptfile.Global(), a1, GoString(cname))
+	ok, err := Nox_xxx_mapReadSection(cryptfile.Global(), a1, GoStringP(unsafe.Pointer(cname)))
 	*cerr = C.uint(bool2int(err != nil))
 	if err != nil {
 		mapLog.Println(err)

@@ -111,5 +111,5 @@ func PortTestRuleRemove(spec PortTestRuleRemoveSpec) (out PortTestRuleRemoveResu
 
 // Fixture-native copies preserve the original wrapper ABI conversions.
 func portTestInvoke_sub_57A9F0(mapName, fileName *C.char) C.int {
-	return C.int(bool2int(ifs.Remove("maps\\"+GoString(mapName)+"\\"+GoString(fileName)) == nil))
+	return C.int(bool2int(ifs.Remove("maps\\"+GoStringP(unsafe.Pointer(mapName))+"\\"+GoStringP(unsafe.Pointer(fileName))) == nil))
 }

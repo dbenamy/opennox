@@ -112,7 +112,7 @@ func nox_xxx_sendArrowTrapFX_5238A0(pos *C.float, extra C.char) {
 }
 
 func nox_xxx_serverHandleClientConsole_443E90(pl *nox_playerInfo, action C.char, text *C.wchar2_t) C.int {
-	return C.int(consoleCommandRemote(asPlayerS(pl), byte(action), GoWString(text)))
+	return C.int(consoleCommandRemote(asPlayerS(pl), byte(action), GoWStringP(unsafe.Pointer(text))))
 }
 
 func nox_xxx_tileAllocTileInCoordList_5040A0(a0 C.int, a1 C.int, a2 C.float) *C.uint32_t {

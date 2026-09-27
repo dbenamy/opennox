@@ -2981,3 +2981,21 @@ fallback beyond the adapted reduction range; do not expand these private helpers
 callers without requalifying the domain. External SDL/OpenGL/OpenAL and shared
 allocation/callback routes are unchanged. Detailed qualification status and
 provenance: [PLACEMENT_TRIG.md](PLACEMENT_TRIG.md).
+
+## Native string boundaries
+
+Keep the browser CString round trip and its ownership semantics. Copy and scan
+bytes in Go; use native int8/uint16 types and explicit fixture pointer adapters.
+Centralize the existing malloc boundary: raw, process-fatal cgo malloc normally;
+tracked Malloc and recoverable allocation panic in safe. Do not conflate these
+with the always-tracked alloc.CString API. Preserve embedded NUL bytes plus the
+final terminator, independent returned Go strings, wide decoding and memlog scope.
+Allocator C removal remains a subsequent batch.
+
+A compiler preflight caught a missing cast from internCStr's *int8 to unsafe.Pointer.
+Corrected only that fixture line; no assertions or captured results changed.
+Package-aware caller/type analysis still reaches almost the entire root corpus
+through shared strings/initialization. Repeat the four new contracts twice in
+every profile, but run each established broad original selection once. Require
+the same broad converted coverage and all production/integration gates.
+See [STRING_BOUNDARIES.md](STRING_BOUNDARIES.md).

@@ -18,3 +18,7 @@ func RawRealloc(ptr unsafe.Pointer, size uintptr) unsafe.Pointer {
 
 // RawFree releases libc memory without consulting or changing allocs.
 func RawFree(ptr unsafe.Pointer) { C.free(ptr) }
+
+// RawMalloc allocates untracked libc memory. Like cgo CString's allocator,
+// cgo's special malloc wrapper terminates the process on allocation failure.
+func RawMalloc(size uintptr) unsafe.Pointer { return C.malloc(C.size_t(size)) }

@@ -126,7 +126,7 @@ func (f *PortTestMapCatalog) RestoreState(s PortTestMapCatalogState) {
 	copy(unsafe.Slice(memmap.PtrUint32(0x5D4594, 1548452), 6), s.Indices[:])
 }
 func PortTestMapCycleGroup(name string) int {
-	return mapCycleGroup(GoString((*C.char)(internCStr(name))))
+	return mapCycleGroup(GoStringP(unsafe.Pointer(internCStr(name))))
 }
 func PortTestMapCycleMask(group int) uint32      { return mapCycleMask(group) }
 func PortTestMapCycleFlagGroup(flags uint32) int { return mapCycleFlagGroup(flags) }

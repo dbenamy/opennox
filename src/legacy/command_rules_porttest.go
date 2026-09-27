@@ -185,5 +185,5 @@ func PortTestCommandRules(spec PortTestCommandRulesSpec) (out PortTestCommandRul
 
 // Fixture-native copies preserve the original wrapper ABI conversions.
 func portTestInvoke_sub_57A950(name *C.char) C.int {
-	return C.int(commandRulesMap(GoString(name)))
+	return C.int(commandRulesMap(GoStringP(unsafe.Pointer(name))))
 }

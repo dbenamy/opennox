@@ -13,3 +13,5 @@ func legacyRealloc(ptr unsafe.Pointer, size uintptr) unsafe.Pointer {
 	return alloc.RawRealloc(ptr, size)
 }
 func legacyFree(ptr unsafe.Pointer) { alloc.RawFree(ptr) }
+
+func legacyMalloc(size uintptr) unsafe.Pointer { return alloc.RawMalloc(size) }

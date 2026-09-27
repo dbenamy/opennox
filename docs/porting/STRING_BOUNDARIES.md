@@ -2,8 +2,9 @@
 
 ## Scope and decision
 
-Production baseline is `81cf750f`. Production is unchanged; an 11-file draft is
-uninstalled under `build/port-string-boundaries/`. Remove the legacy string file's
+Production baseline is `81cf750f`; accepted original baseline `7034a7e4` is pushed.
+The reviewed 11-file conversion is installed and fully qualified; artifacts are
+under `build/port-string-boundaries/`. Remove the legacy string file's
 C import: native int8/uint16 signatures, byte copying and terminated-string scan.
 Update six fixture call sites to pass pointers through existing native adapters.
 
@@ -46,8 +47,7 @@ Run an early converted headless save/load after native preflight, before the bro
 converted sweep; preserve reference screens/captures and repeat final integration.
 
 Luna remains quota-limited. Primary owns the bounded draft, caller/type review and
-qualification. No substitute model. The original baseline is accepted; conversion remains uninstalled and production
-source has not changed.
+qualification. No substitute model. The original baseline and corrected native conversion are accepted.
 
 ## Artifact headroom
 
@@ -74,3 +74,48 @@ private contracts passed twice in default/server/highres/safe. Only the two new
 porttest files differ from qualified production `81cf750f`; its production gates
 are reused for this original baseline only. See
 [string-boundaries-baseline.json](string-boundaries-baseline.json).
+
+## Native preflight correction
+
+The first native preflight stopped at compilation: the map-catalog fixture passed
+`internCStr`'s native `*int8` directly to `GoStringP`, which accepts `unsafe.Pointer`.
+Add that explicit pointer conversion. No test had run; assertions and frozen
+expectations are unchanged. Original attempt/source metadata are retained under
+`build/port-string-boundaries/preflight-initial/`; the correction and initial/final
+draft hashes are recorded in `preflight-correction.json` and the manifests.
+Corrected native preflight/static and early fresh save/load pass. Broad converted
+regressions and remaining production qualification also pass.
+
+The preview's 1,654 verified duplicate assets were removed after completion:
+559,878,144 allocated bytes. Original assets, saves/results and restore records
+remain. Restore with
+`python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/string-boundaries-preview-save/deduplicated-assets.json`.
+Evidence: `build/port-string-boundaries/preview-cleanup/`.
+
+Twelve completed placement/string original or qualification JSONL logs are now
+losslessly compressed, reclaiming 522,993,664 allocated bytes. Committed log hashes
+were checked before compression and against decompressed output; host-use checks
+passed. Restore with `gzip -dk FILE.jsonl.gz`. Exact paths, hashes and commands:
+`build/port-string-boundaries/log-archive.json`. Current converted logs remain live.
+
+## Completed qualification
+
+Converted 2,483 default, 2,472 server and 2,483 high-resolution roots match the
+exact original selections without skips. Four private contracts pass twice in
+all four profiles. Corrected preflight/static, early headless save/load, safe
+build/static, all three production builds/ABI, exact known-suite failure/package
+outcomes and a final fresh headless save/load/resume pass. All 1,654 original
+asset hashes remain unchanged. The collector verifies the one-line fixture cast
+correction, final draft/source hashes, and unchanged assertions/captures.
+
+Selected production cgo files: **7/8 → 6/7 client/server**. Three project cgo
+packages, 20 embedded production bodies, zero selected C exports and 157 headers /
+2,731 physical lines remain. Standalone production/test-reference C remains
+**0/0 lines**. External bindings are unchanged. Evidence: [qualification](string-boundaries-qualification.json)
+and [inventory](string-boundaries-inventory-after.json).
+
+The completed string final scenario's 1,654 verified duplicate assets
+were removed, reclaiming 559,984,640 allocated bytes. Originals,
+saves/results and the restore manifest remain. Restore with
+`python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/string-boundaries-save/deduplicated-assets.json`.
+Evidence: `build/port-string-boundaries/final-cleanup/`.
