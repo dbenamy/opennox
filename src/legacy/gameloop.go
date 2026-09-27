@@ -1,27 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_2.h"
-#include "GAME1_1.h"
-#include "GAME1_3.h"
-#include "GAME2.h"
-#include "GAME2_1.h"
-#include "GAME2_2.h"
-#include "GAME3.h"
-#include "GAME3_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME5.h"
-#include "GAME5_2.h"
-#include "GAME2_3.h"
-#include "common__system__team.h"
-#include "common__net_list.h"
-#include "client__gui__guimsg.h"
-#include "client__drawable__drawable.h"
-
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"unsafe"
@@ -89,7 +67,7 @@ func Sub_43AA70() {
 	sub_43AA70()
 }
 func Nox_server_gameDoSwitchMap_40A680() int {
-	return int(C.int(serverConfigUpdatedGet()))
+	return int(int32(serverConfigUpdatedGet()))
 }
 func Sub_459D60() int {
 	return int(*serverOptionsWord(1046544))

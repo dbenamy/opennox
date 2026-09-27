@@ -39,12 +39,12 @@ func PortTestClientCodes(specs []PortTestClientCode) []PortTestClientCodeResult 
 		if !spec.Nil {
 			arg = C.int(uintptr(unsafe.Pointer(dr)))
 		}
-		code := uint32(nox_xxx_netGetUnitCodeCli_578B00(arg))
+		code := uint32(nox_xxx_netGetUnitCodeCli_578B00(int32(arg)))
 		out = append(out, PortTestClientCodeResult{Code: code, Unchanged: bytes.Equal(raw, before)})
 	}
 	return out
 }
 
 func PortTestNetworkBits(value uint32) (clear, flag uint32) {
-	return uint32(nox_xxx_netClearHighBit_578B30(C.short(value))), uint32(nox_xxx_netTestHighBit_578B70(C.uint(value)))
+	return uint32(nox_xxx_netClearHighBit_578B30(int16(value))), uint32(nox_xxx_netTestHighBit_578B70(uint32(value)))
 }

@@ -1,12 +1,7 @@
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
-
-func nox_xxx_packetDynamicUnitCode_578B40(value C.int) C.int {
-	return C.int(networkDynamicUnitCode(uint32(value)))
+func nox_xxx_packetDynamicUnitCode_578B40(value int32) int32 {
+	return int32(networkDynamicUnitCode(uint32(value)))
 }
 
 func networkDynamicUnitCode(code uint32) uint32 {

@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/client/noxrender"
@@ -96,7 +91,7 @@ func PortTestObjectRenderBeam(op int, vp *noxrender.Viewport, a [4]int32) uint32
 		*(*uint16)(unsafe.Pointer(&packet[3])) = uint16(a[1])
 		*(*uint16)(unsafe.Pointer(&packet[5])) = uint16(a[2])
 		*(*uint16)(unsafe.Pointer(&packet[7])) = uint16(a[3])
-		return uint32(sub_4C5020(C.int(uintptr(unsafe.Pointer(&packet[0])))))
+		return uint32(sub_4C5020(int32(uintptr(unsafe.Pointer(&packet[0])))))
 	case 2:
 		sub_4C5050()
 		return 0

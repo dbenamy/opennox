@@ -1,15 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4_1.h"
-#include "GAME4_2.h"
-#include "GAME4_3.h"
-#include "GAME5.h"
-*/
-import "C"
-
 import (
 	"unsafe"
 
@@ -123,11 +113,11 @@ func generatorSpawn(gen *server.Object, point *types.Pointf, src *server.Object)
 	dir, freeDir := alloc.New(types.Pointf{})
 	*dir = pos.Sub(gen.PosVec)
 	geometryNormalize((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(dir))))
-	fx := [4]C.int{
-		C.int(floatToInt32(gen.PosVec.X)),
-		C.int(floatToInt32(gen.PosVec.Y)) - 50,
-		C.int(floatToInt32(float32(float64(dir.X)*30 + float64(pos.X)))),
-		C.int(floatToInt32(float32(float64(dir.Y)*30 + float64(pos.Y)))),
+	fx := [4]int32{
+		int32(floatToInt32(gen.PosVec.X)),
+		int32(floatToInt32(gen.PosVec.Y)) - 50,
+		int32(floatToInt32(float32(float64(dir.X)*30 + float64(pos.X)))),
+		int32(floatToInt32(float32(float64(dir.Y)*30 + float64(pos.Y)))),
 	}
 	freeDir()
 	visibilityFXGeneratorSpawn([4]int32{int32(fx[0]), int32(fx[1]), int32(fx[2]), int32(fx[3])}, 10)

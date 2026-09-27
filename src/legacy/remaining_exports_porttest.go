@@ -58,7 +58,7 @@ func nox_xxx_collideReflect_57B810(normal *C.float, velocity C.int) C.int {
 }
 
 func nox_xxx_createSpark_54FD80(a1 C.float, a2 C.float, a3 C.int, a4 C.int, a5 C.float, a6 C.float, a7 C.float, a8 C.int) *C.float {
-	return (*C.float)(temporarySpark(types.Ptf(float32(a1), float32(a2)), types.Ptf(float32(a5), float32(a6)), int32(a3), int32(a4), float32(a7), objectFromInt(a8)).CObj())
+	return (*C.float)(temporarySpark(types.Ptf(float32(a1), float32(a2)), types.Ptf(float32(a5), float32(a6)), int32(a3), int32(a4), float32(a7), objectFromInt(int32(a8))).CObj())
 }
 
 func nox_xxx_mapGenEdge_543EB0(index, edge C.int) C.int {
@@ -140,7 +140,7 @@ func nox_xxx_tile_51D5C0(value C.int) C.int {
 }
 
 func nox_xxx_toxicCloudPoison_53D9D0(a1 C.int, a2 C.int) {
-	temporaryCloudCandidate(objectFromInt(a1), objectFromInt(a2), true)
+	temporaryCloudCandidate(objectFromInt(int32(a1)), objectFromInt(int32(a2)), true)
 }
 
 func nox_xxx_waterBarrel_53CC30(a1 *C.float, a2 C.int) {
@@ -151,7 +151,7 @@ func nox_xxx_waypointNext_579870(a1 C.int) C.int {
 	if a1 == 0 {
 		return 0
 	}
-	return waypointRaw(waypointFromRaw(a1).WpNext)
+	return C.int(waypointRaw(waypointFromRaw(int32(a1)).WpNext))
 }
 
 func nox_xxx_wndDraw_49F7F0() { objectRenderSaveClip() }
@@ -191,11 +191,11 @@ func sub_504290(a0 C.char, a1 C.char) *C.uint32_t {
 }
 
 func sub_51D2C0(source, target C.int) C.int {
-	return C.int(bool2int(appendWaypointLink(waypointFromRaw(source), waypointFromRaw(target), int8(memmap.Uint8(0x973F18, 35972)))))
+	return C.int(bool2int(appendWaypointLink(waypointFromRaw(int32(source)), waypointFromRaw(int32(target)), int8(memmap.Uint8(0x973F18, 35972)))))
 }
 
 func sub_51D300(source, target C.int, kind C.char) C.int {
-	return C.int(bool2int(appendWaypointLink(waypointFromRaw(source), waypointFromRaw(target), int8(kind))))
+	return C.int(bool2int(appendWaypointLink(waypointFromRaw(int32(source)), waypointFromRaw(int32(target)), int8(kind))))
 }
 
 func sub_51DD50(x, y, flags, key C.int) {
@@ -206,10 +206,12 @@ func sub_51DE30(x, y, flags *C.uint32_t) C.int {
 	return C.int(bool2int(popTileFill((*uint32)(unsafe.Pointer(x)), (*uint32)(unsafe.Pointer(y)), (*uint32)(unsafe.Pointer(flags)))))
 }
 
-func sub_53BD10(a1 C.int, a2 C.int) { temporaryAntiCandidate(objectFromInt(a1), objectFromInt(a2)) }
+func sub_53BD10(a1 C.int, a2 C.int) {
+	temporaryAntiCandidate(objectFromInt(int32(a1)), objectFromInt(int32(a2)))
+}
 
 func sub_53D8C0(a1 C.int, a2 C.int) {
-	temporaryCloudCandidate(objectFromInt(a1), objectFromInt(a2), false)
+	temporaryCloudCandidate(objectFromInt(int32(a1)), objectFromInt(int32(a2)), false)
 }
 
 func sub_543E60(record, category C.int) C.int {
@@ -233,7 +235,7 @@ func sub_5798A0(a1 C.int) C.int {
 	if a1 == 0 {
 		return 0
 	}
-	return waypointRaw(waypointFromRaw(a1).WpNext)
+	return C.int(waypointRaw(waypointFromRaw(int32(a1)).WpNext))
 }
 
 func sub_579E70() *C.uint32_t {

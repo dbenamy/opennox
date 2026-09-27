@@ -17,7 +17,7 @@ func PortTestProtectionSet(initial [][2]uint32, key, sum, sequence, swapCount, r
 		case 0:
 			return uint32(sub_56F780(C.int(id), C.int(value)))
 		case 1:
-			return uint32(nox_xxx_playerResetProtectionCRC_56F7D0(C.int(id), C.int(value)))
+			return uint32(nox_xxx_playerResetProtectionCRC_56F7D0(int32(id), int32(value)))
 		case 2:
 			return uint32(sub_56F820(C.int(id), C.uchar(value)))
 		case 3:

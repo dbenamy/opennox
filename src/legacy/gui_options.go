@@ -1,15 +1,5 @@
 package legacy
 
-/*
-#include "client__gui__window.h"
-#include "GAME1_2.h"
-#include "GAME3.h"
-#include "GAME3_1.h"
-#include "client__shell__inputcfg__inputcfg.h"
-
-
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -33,7 +23,7 @@ func Sub_4CBD30() {
 }
 
 func Sub_430AA0(v int) {
-	sub_430AA0(C.int(v))
+	interactionMouseMode(int32(v))
 }
 
 func Sub_4C35B0(v int) {

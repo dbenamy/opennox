@@ -45,7 +45,7 @@ func PortTestWaypointMasks(specs []PortTestWaypointMask) []PortTestWaypointMaskR
 				mask = 1
 			}
 		}
-		enabled := bool2int(waypointEnabledMask(waypointFromRaw(arg), spec.Mask))
+		enabled := bool2int(waypointEnabledMask(waypointFromRaw(int32(arg)), spec.Mask))
 		out = append(out, PortTestWaypointMaskResult{Mask: mask, EnabledMask: enabled, Unchanged: bytes.Equal(raw, before)})
 	}
 	return out

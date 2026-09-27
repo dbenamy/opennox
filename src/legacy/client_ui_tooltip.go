@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1_1.h"
-#include "noxstring.h"
-// Adapt the existing variadic formatter; item selection and assembly live in Go.
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"unsafe"
@@ -63,7 +55,7 @@ func uiItemTooltip(dr *client.Drawable) *uint16 {
 		if metadata == 0 {
 			var request [4]byte
 			request[0], request[3] = 0xe2, kind
-			binary.LittleEndian.PutUint16(request[1:3], uint16(nox_xxx_netGetUnitCodeCli_578B00(C.int(uintptr(unsafe.Pointer(dr))))))
+			binary.LittleEndian.PutUint16(request[1:3], uint16(nox_xxx_netGetUnitCodeCli_578B00(int32(uintptr(unsafe.Pointer(dr))))))
 			item.Field_108 = sentinel
 			Nox_xxx_netClientSend2_4E53C0(31, unsafe.Pointer(&request[0]), 4, 0, 1)
 			return &dst[0]

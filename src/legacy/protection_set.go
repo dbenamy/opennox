@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
-
 import "github.com/opennox/opennox/v1/internal/protection"
 
 func setProtectionRecord(id int32, value uint32) uint32 {
@@ -22,6 +17,6 @@ func setProtectionRecord(id int32, value uint32) uint32 {
 	return uint32(nox_xxx_protectData_56F5C0())
 }
 
-func nox_xxx_playerResetProtectionCRC_56F7D0(id, value C.int) C.uint32_t {
-	return C.uint32_t(setProtectionRecord(int32(id), uint32(value)))
+func nox_xxx_playerResetProtectionCRC_56F7D0(id, value int32) uint32 {
+	return uint32(setProtectionRecord(int32(id), uint32(value)))
 }

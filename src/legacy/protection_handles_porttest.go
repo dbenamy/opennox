@@ -65,7 +65,7 @@ func PortTestHandles(initial [][2]uint32, key, sum, sequence uint32, seed int, o
 	}
 	dword_5d4594_2516344 = uint32(uintptr(unsafe.Pointer(first)))
 	dword_5d4594_2516352 = uint32(uintptr(unsafe.Pointer(last)))
-	snapshot := func(result C.int) PortTestHandleSnapshot {
+	snapshot := func(result int32) PortTestHandleSnapshot {
 		out := PortTestHandleSnapshot{
 			Result:     uint32(result),
 			Sum:        uint32(dword_5d4594_2516328),
@@ -91,11 +91,11 @@ func PortTestHandles(initial [][2]uint32, key, sum, sequence uint32, seed int, o
 	}
 	var out []PortTestHandleSnapshot
 	for _, op := range ops {
-		var result C.int
+		var result int32
 		if op.Reserved {
 			result = sub_56F250()
 		} else {
-			result = nox_xxx_protectionCreateInt_56F400(C.int(op.Value))
+			result = nox_xxx_protectionCreateInt_56F400(int32(op.Value))
 		}
 		out = append(out, snapshot(result))
 	}

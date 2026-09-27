@@ -1,14 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME4_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_2.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/types"
 	"math"
@@ -125,7 +116,7 @@ func monsterCalcDir(u *server.Object, p *float32) {
 		return
 	}
 	q := [2]float32{*p - u.PosVec.X, *(*float32)(unsafe.Add(unsafe.Pointer(p), 4)) - u.PosVec.Y}
-	u.Direction2 = server.Dir16(C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&q[0]))))))
+	u.Direction2 = server.Dir16(int32(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&q[0]))))))
 }
 func monsterNPCAnim(u *server.Object) unsafe.Pointer {
 	ud := u.UpdateDataMonster()
@@ -346,11 +337,11 @@ func monsterEnactOrder(source, u *server.Object, order int) {
 	}
 }
 
-func nox_xxx_orderUnit_533900(a, b *nox_object_t, o C.int) {
+func nox_xxx_orderUnit_533900(a, b *nox_object_t, o int32) {
 	monsterOrder(asObjectS(a), asObjectS(b), int(o))
 }
 
-func objectFromInt(p C.int) *server.Object {
+func objectFromInt(p int32) *server.Object {
 	return objectFromWord(uint32(p))
 }
 

@@ -292,15 +292,15 @@ func (p *portTestShopPools) worldSnapshot(out []uint32) []uint32 {
 
 // Fixture-native copies preserve the original wrapper ABI conversions.
 func portTestInvoke_nox_xxx_elevatorAud_53B490(a1 C.int, a2 C.int) {
-	worldElevatorSound(objectFromInt(a1), a2 != 0)
+	worldElevatorSound(objectFromInt(int32(a1)), a2 != 0)
 }
 
 func portTestInvoke_nox_xxx_elevatorFn_53B750(a1 C.int, a2 C.int) {
-	worldElevatorCandidate(objectFromInt(a1), objectFromInt(a2))
+	worldElevatorCandidate(objectFromInt(int32(a1)), objectFromInt(int32(a2)))
 }
 
 func portTestInvoke_nox_xxx_fnElevatorShaft_53B410(a1 C.int, a2 C.int) {
-	worldShaftCandidate(objectFromInt(a1), objectFromInt(a2))
+	worldShaftCandidate(objectFromInt(int32(a1)), objectFromInt(int32(a2)))
 }
 
 func portTestInvoke_nox_xxx_fnPentagramTeleport_53C060(a1 *C.float, a2 C.int) {
@@ -312,9 +312,9 @@ func portTestInvoke_sub_53C140(a1 *C.float, a2 C.int) {
 }
 
 func portTestInvoke_sub_53C240(a1 *C.float, arg4 C.int) {
-	worldBlowCandidate((*server.Object)(unsafe.Pointer(a1)), objectFromInt(arg4))
+	worldBlowCandidate((*server.Object)(unsafe.Pointer(a1)), objectFromInt(int32(arg4)))
 }
 
 func portTestInvoke_sub_548830(a1 C.int) { worldAngleQueue(unsafe.Pointer(uintptr(uint32(a1)))) }
 
-func portTestInvoke_sub_548860(a1 C.int, a2 C.short) { worldAngle(objectFromInt(a1), int16(a2)) }
+func portTestInvoke_sub_548860(a1 C.int, a2 C.short) { worldAngle(objectFromInt(int32(a1)), int16(a2)) }

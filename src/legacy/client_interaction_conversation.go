@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-*/
-import "C"
-
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/opennox/v1/client/gui"
@@ -104,24 +99,24 @@ func interactionConversationDestroy() int {
 	return 0
 }
 
-func sub_479950() C.int { return C.int(interactionConversationCancel()) }
+func sub_479950() int32 { return int32(interactionConversationCancel()) }
 
-func sub_4799A0() C.int { return C.int(interactionConversationOpen()) }
+func sub_4799A0() int32 { return int32(interactionConversationOpen()) }
 
-func nox_xxx_guiDialog_479B00(w, code C.int, a *C.int, b C.int) C.int {
-	return C.int(gui.EventRespInt(interactionConversationEvent((*gui.Window)(unsafe.Pointer(uintptr(uint32(w)))), &gui.RawEvent{Event: int(code), Arg1: uintptr(unsafe.Pointer(a)), Arg2: uintptr(uint32(b))})))
+func nox_xxx_guiDialog_479B00(w, code int32, a *int32, b int32) int32 {
+	return int32(gui.EventRespInt(interactionConversationEvent((*gui.Window)(unsafe.Pointer(uintptr(uint32(w)))), &gui.RawEvent{Event: int(code), Arg1: uintptr(unsafe.Pointer(a)), Arg2: uintptr(uint32(b))})))
 }
 
-func sub_479BE0(w *C.uint32_t, code C.int, a C.uint, b C.int) C.int { return 1 }
+func sub_479BE0(w *uint32, code int32, a uint32, b int32) int32 { return 1 }
 
-func sub_479C40(w *C.uint32_t, d C.int) C.int {
-	return C.int(interactionConversationBlink((*gui.Window)(unsafe.Pointer(w)), (*gui.WindowData)(unsafe.Pointer(uintptr(uint32(d))))))
+func sub_479C40(w *uint32, d int32) int32 {
+	return int32(interactionConversationBlink((*gui.Window)(unsafe.Pointer(w)), (*gui.WindowData)(unsafe.Pointer(uintptr(uint32(d))))))
 }
 
-func sub_479CB0(w, d C.int) C.int {
-	return C.int(interactionConversationDraw((*gui.Window)(unsafe.Pointer(uintptr(uint32(w)))), (*gui.WindowData)(unsafe.Pointer(uintptr(uint32(d))))))
+func sub_479CB0(w, d int32) int32 {
+	return int32(interactionConversationDraw((*gui.Window)(unsafe.Pointer(uintptr(uint32(w)))), (*gui.WindowData)(unsafe.Pointer(uintptr(uint32(d))))))
 }
 
-func sub_479D10() C.int { return C.int(interactionConversationDestroy()) }
+func sub_479D10() int32 { return int32(interactionConversationDestroy()) }
 
-func sub_47A260() C.int { return C.int(interactionConversationActive) }
+func sub_47A260() int32 { return int32(interactionConversationActive) }

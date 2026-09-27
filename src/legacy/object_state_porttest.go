@@ -2,13 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-
-*/
-import "C"
-
 import (
 	"bytes"
 	"math"
@@ -263,9 +256,9 @@ func (p *portTestShopPools) objectStateAction(a PortTestShopAction) uint32 {
 	} else if a.Op == 1222 {
 		state.state.result = uint64(stateChecksum(u))
 	} else if a.Op == 1223 {
-		state.state.result = uint64(uint32(nox_xxx_inventoryGetFirst_4E7980(C.int(uintptr(u.CObj())))))
+		state.state.result = uint64(uint32(nox_xxx_inventoryGetFirst_4E7980(int32(uintptr(u.CObj())))))
 	} else if a.Op == 1224 {
-		state.state.result = uint64(uint32(nox_xxx_inventoryGetNext_4E7990(C.int(uintptr(u.CObj())))))
+		state.state.result = uint64(uint32(nox_xxx_inventoryGetNext_4E7990(int32(uintptr(u.CObj())))))
 	} else {
 		state.state.result = objectStateCall(int(a.Op-1200), p.temporaryRef(attack.Actor), p.temporaryRef(sp.Target), sp.X, sp.Y, sp.Z, sp.FloatBits, state.record)
 	}

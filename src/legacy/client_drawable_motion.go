@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME2.h"
-#include "GAME3_1.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/client/noxrender"
@@ -16,12 +11,12 @@ func drawableStatePredicate(dr *client.Drawable) int {
 	return bool2int(dr.ObjClass&0x400000 != 0 && dr.ObjSubClass&8 != 0)
 }
 
-func nox_xxx_spriteSetActiveMB_45A990_drawable(p C.int) C.int {
+func nox_xxx_spriteSetActiveMB_45A990_drawable(p int32) int32 {
 	(*client.Drawable)(unsafe.Pointer(uintptr(uint32(p)))).SetActive()
 	return p
 }
 
-func nox_xxx_spriteSetFrameMB_45AB80(p, value C.int) C.int {
+func nox_xxx_spriteSetFrameMB_45AB80(p, value int32) int32 {
 	(*client.Drawable)(unsafe.Pointer(uintptr(uint32(p)))).SetFrameMB(int(value))
 	return p
 }

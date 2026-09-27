@@ -2872,3 +2872,22 @@ Flush test-driver root lifecycle events for timely monitoring; buffering briefly
 looked like a stalled test. No diagnostic signal was sent, and test execution,
 selection and acceptance are unchanged. Continue with native scalar/caller types;
 zero selected C exports does not complete the internal-glue milestone.
+
+
+## Native integer boundaries
+
+Use explicit int32/uint32/int16 for the private Go APIs that still used C integer
+types. Preserve pointer-word conversion and signed narrowing; do not broaden the
+target to 64-bit or alter arithmetic/ownership. Two informational-message calls
+and the mouse-mode setter invoke their existing Go owner directly with equivalent
+arguments and ignored returns. Keep explicit C.int return conversions only at
+remaining fixture interfaces in this batch.
+
+Qualify the complete owner/caller selection, including transitive temporary and
+waypoint fixture adapters; file-local entrypoint selection alone missed 17 roots.
+Reuse only exact-source original observations and verified original binaries,
+recording the difference from the converted workspace. Original roots pass twice;
+converted 317/314/317 roots pass, followed by fresh safe/production/ABI/known-suite,
+save/load and asset checks. No new width-mirroring test, separate GUI preview or
+full converted sweep is required for this representation-only batch. See
+[NATIVE_INTEGER_TYPES.md](NATIVE_INTEGER_TYPES.md).

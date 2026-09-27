@@ -42,9 +42,9 @@ func PortTestDrawableState(op int, dr *client.Drawable, value int) uintptr {
 	case 0:
 		return uintptr(drawableStatePredicate(dr))
 	case 1:
-		return uintptr(nox_xxx_spriteSetActiveMB_45A990_drawable(C.int(uintptr(dr.C()))))
+		return uintptr(nox_xxx_spriteSetActiveMB_45A990_drawable(int32(uintptr(dr.C()))))
 	case 2:
-		return uintptr(nox_xxx_spriteSetFrameMB_45AB80(C.int(uintptr(dr.C())), C.int(value)))
+		return uintptr(nox_xxx_spriteSetFrameMB_45AB80(int32(uintptr(dr.C())), int32(value)))
 	case 3:
 		return uintptr(unsafe.Pointer(nox_drawable_next_45A070(p)))
 	case 4:

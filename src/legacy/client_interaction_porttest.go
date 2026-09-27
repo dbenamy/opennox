@@ -259,13 +259,13 @@ func PortTestClientInteractionCall(op string, args ...uintptr) uint64 {
 	case 36:
 		return uint64(sub_4799A0())
 	case 37:
-		return uint64(nox_xxx_guiDialog_479B00(C.int(a[0]), C.int(a[1]), (*C.int)(unsafe.Pointer(a[2])), C.int(a[3])))
+		return uint64(nox_xxx_guiDialog_479B00(int32(a[0]), int32(a[1]), (*int32)(unsafe.Pointer(a[2])), int32(a[3])))
 	case 38:
-		return uint64(sub_479BE0((*C.uint32_t)(unsafe.Pointer(a[0])), C.int(a[1]), C.uint(a[2]), C.int(a[3])))
+		return uint64(sub_479BE0((*uint32)(unsafe.Pointer(a[0])), int32(a[1]), uint32(a[2]), int32(a[3])))
 	case 39:
-		return uint64(sub_479C40((*C.uint32_t)(unsafe.Pointer(a[0])), C.int(a[1])))
+		return uint64(sub_479C40((*uint32)(unsafe.Pointer(a[0])), int32(a[1])))
 	case 40:
-		return uint64(sub_479CB0(C.int(a[0]), C.int(a[1])))
+		return uint64(sub_479CB0(int32(a[0]), int32(a[1])))
 	case 41:
 		return 1
 	case 42:

@@ -364,6 +364,7 @@ target build selection and linker evidence.
 | Retire 70 unused fixture/export bridges; selected client/server cgo 95/96→80/81, exports 80→10; headers 2,809→2,741 lines | 0 | 0 | 0 | 0 |
 | Prune 57 unreferenced generated dispatch signatures; embedded C bodies 77→20; selected cgo 80/81 and exports 10 unchanged | 0 | 0 | 0 | 0 |
 | Native final ten callbacks; selected client/server cgo 80/81→72/73, exports 10→0; headers 2,741→2,731 lines; embedded bodies remain 20 | 0 | 0 | 0 | 0 |
+| Native integer owner/caller types; selected client/server cgo 72/73→52/53; exports remain 0, embedded bodies 20, headers 2,731 lines | 0 | 0 | 0 | 0 |
 
 The 33 checksum test-reference lines were retired after differential validation;
 their original source remains recoverable at `66fa7bd4`.

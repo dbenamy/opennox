@@ -128,7 +128,7 @@ func attackNearest(t, u *server.Object) {
 	if distance < 0 {
 		distance = 0
 	}
-	old := objectFromInt(C.int(dword_5d4594_2488660))
+	old := objectFromInt(int32(dword_5d4594_2488660))
 	if (distance < float64(limit) || old != nil && old.ObjClass&2 == 0 && t.ObjClass&2 != 0) && (old == nil || old.ObjClass&2 == 0) {
 		dword_5d4594_2488652 = uint32(math.Float32bits(float32(distance)))
 		dword_5d4594_2488660 = uint32(uintptr(t.CObj()))
@@ -149,7 +149,7 @@ func attackTrace(u *server.Object, r *attackRecord) int {
 		dword_5d4594_2488652 = uint32(math.Float32bits(r.Radius))
 		motionRadial(&u.PosVec, r.Radius, func(candidate *server.Object) { attackNearest(candidate, u) })
 		if dword_5d4594_2488660 != 0 {
-			attackHit(objectFromInt(C.int(dword_5d4594_2488660)), r)
+			attackHit(objectFromInt(int32(dword_5d4594_2488660)), r)
 		}
 	}
 	bounds := [4]int32{
@@ -166,7 +166,7 @@ func attackTrace(u *server.Object, r *attackRecord) int {
 	if r.Weapon != nil && dword_5d4594_2488656 != 0 {
 		damage := float32(float64(nox_xxx_gamedataGetFloat_419D40(internCStr("ItemDamagePercentage"))) * float64(r.Damage))
 		target := C.int(dword_5d4594_2488660)
-		damageDurability(r.Weapon, r.Owner, objectFromInt(target), objectFromInt(target), damage, int32(r.Type), true)
+		damageDurability(r.Weapon, r.Owner, objectFromInt(int32(target)), objectFromInt(int32(target)), damage, int32(r.Type), true)
 	}
 	return int(dword_5d4594_2488656)
 }

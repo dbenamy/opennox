@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
-
 import (
 	"unsafe"
 
@@ -25,14 +20,14 @@ func drawableUnitCode(dr *client.Drawable) uint32 {
 	return code
 }
 
-func nox_xxx_netGetUnitCodeCli_578B00(a1 C.int) C.uint {
-	return C.uint(drawableUnitCode((*client.Drawable)(unsafe.Pointer(uintptr(uint32(a1))))))
+func nox_xxx_netGetUnitCodeCli_578B00(a1 int32) uint32 {
+	return uint32(drawableUnitCode((*client.Drawable)(unsafe.Pointer(uintptr(uint32(a1))))))
 }
 
-func nox_xxx_netClearHighBit_578B30(a1 C.short) C.int {
-	return C.int(uint16(a1) & 0x7fff)
+func nox_xxx_netClearHighBit_578B30(a1 int16) int32 {
+	return int32(uint16(a1) & 0x7fff)
 }
 
-func nox_xxx_netTestHighBit_578B70(a1 C.uint) C.uint {
+func nox_xxx_netTestHighBit_578B70(a1 uint32) uint32 {
 	return (a1 >> 15) & 1
 }

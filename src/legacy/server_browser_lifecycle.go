@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_2.h"
-#include "GAME2_2.h"
-#include "client__shell__noxworld.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -110,4 +104,4 @@ func browserShowList() int {
 
 func sub_4379C0() { browserListReset() }
 
-func nox_client_guiXxx_43A9D0() C.int { return C.int(browserClose()) }
+func nox_client_guiXxx_43A9D0() int32 { return int32(browserClose()) }

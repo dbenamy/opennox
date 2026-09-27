@@ -1,16 +1,12 @@
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
 import (
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/internal/protection"
 )
 
-func nox_xxx_playerAwardSpellProtectionCRC_56FCE0(id, index, enabled C.int) C.int {
+func nox_xxx_playerAwardSpellProtectionCRC_56FCE0(id, index, enabled int32) int32 {
 	if id < 657757279 {
 		return id
 	}
@@ -22,10 +18,10 @@ func nox_xxx_playerAwardSpellProtectionCRC_56FCE0(id, index, enabled C.int) C.in
 	old := r.Value
 	r.Value = ((old ^ key) | protection.Bit(int32(index), int32(enabled))) ^ key
 	dword_5d4594_2516328 ^= uint32(old ^ r.Value)
-	return C.int(r.Value)
+	return int32(r.Value)
 }
 
-func nox_xxx_playerApplyProtectionCRC_56FD50(id C.int, data unsafe.Pointer, count C.int) C.int {
+func nox_xxx_playerApplyProtectionCRC_56FD50(id int32, data unsafe.Pointer, count int32) int32 {
 	if id < 657757279 {
 		return 0
 	}

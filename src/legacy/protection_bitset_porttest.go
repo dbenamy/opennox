@@ -2,10 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME5_2.h"
-*/
-import "C"
 import (
 	"slices"
 	"unsafe"
@@ -48,9 +44,9 @@ func PortTestBitset(id int32, key, value, sum uint32, index, enabled int32, valu
 		defer release()
 	}
 	p := unsafe.Pointer(unsafe.SliceData(data))
-	out := PortTestBitsetResult{BeforeValid: int(nox_xxx_playerApplyProtectionCRC_56FD50(C.int(id), p, C.int(count)))}
-	out.Award = int32(nox_xxx_playerAwardSpellProtectionCRC_56FCE0(C.int(id), C.int(index), C.int(enabled)))
-	out.AfterValid = int(nox_xxx_playerApplyProtectionCRC_56FD50(C.int(id), p, C.int(count)))
+	out := PortTestBitsetResult{BeforeValid: int(nox_xxx_playerApplyProtectionCRC_56FD50(int32(id), p, int32(count)))}
+	out.Award = int32(nox_xxx_playerAwardSpellProtectionCRC_56FCE0(int32(id), int32(index), int32(enabled)))
+	out.AfterValid = int(nox_xxx_playerApplyProtectionCRC_56FD50(int32(id), p, int32(count)))
 	out.Value, out.Checksum = r[1], uint32(dword_5d4594_2516328)
 	wantID := uint32(id) ^ key
 	if mode == 2 {

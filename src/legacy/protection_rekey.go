@@ -1,15 +1,11 @@
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/internal/protection"
 )
 
-func nox_xxx_protectData_56F5C0() C.int {
+func nox_xxx_protectData_56F5C0() int32 {
 	frame := GetServer().S().Frame()
 	oldKey := uint32(dword_5d4594_2516348)
 	newKey := protectionRandom.Draw() ^ frame
@@ -27,5 +23,5 @@ func nox_xxx_protectData_56F5C0() C.int {
 	dword_5d4594_2516328 = uint32(protection.Rekey(head, oldKey, newKey))
 	*memmap.PtrUint32(0x5D4594, 2516364)++
 	dword_5d4594_2516348 = uint32(newKey)
-	return C.int(newKey)
+	return int32(newKey)
 }

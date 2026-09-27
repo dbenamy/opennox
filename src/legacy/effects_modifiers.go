@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_2.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/spell"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -178,7 +171,7 @@ func effectsStatus(m *server.ModifierEff, u, target *server.Object, stun bool) {
 		Nox_xxx_castConfuse_52C1E0(spell.ID(12), u, u, u, arg, int(int8(m.AttackPreHit52.Val)))
 	}
 	if target.ObjClass&4 != 0 {
-		nox_xxx_netInformTextMsg_4DA0F0(C.int(uint8(target.UpdateDataPlayer().Player.PlayerInd)), 13, (*C.int)(unsafe.Pointer(&code)))
+		gameplayTextInformation(int(uint8(target.UpdateDataPlayer().Player.PlayerInd)), 13, unsafe.Pointer(&code))
 	}
 }
 func effectsRecoil(m *server.ModifierEff, it, target *server.Object) {
@@ -240,8 +233,8 @@ func effectsPoison(m *server.ModifierEff, u, target *server.Object) {
 		return
 	}
 	if target.ObjClass&6 != 0 && resourcePoison(target, 1, m.AttackPreDmg64.Val) && target.ObjClass&4 != 0 {
-		v := C.int(2)
-		nox_xxx_netInformTextMsg_4DA0F0(C.int(uint8(target.UpdateDataPlayer().Player.PlayerInd)), 13, &v)
+		v := int32(2)
+		gameplayTextInformation(int(uint8(target.UpdateDataPlayer().Player.PlayerInd)), 13, unsafe.Pointer(&v))
 	}
 }
 func effectsSympathy(m *server.ModifierEff, u, target *server.Object, damage int32) {

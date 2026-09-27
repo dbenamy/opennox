@@ -288,7 +288,7 @@ func portTestMonsterStateCall(proxy *portTestRoamOwnerServer, u *server.Object, 
 		if sp.Broadcast || sp.NilUnit {
 			target = nil
 		}
-		nox_xxx_orderUnit_533900(asObjectC(proxy.state.source), asObjectC(target), C.int(sp.Order))
+		nox_xxx_orderUnit_533900(asObjectC(proxy.state.source), asObjectC(target), int32(sp.Order))
 	case 24:
 		return uint64(uintptr(monsterNPCAnim(u)))
 	case 25:
@@ -369,17 +369,17 @@ func portTestInvoke_nox_xxx_monsterIsMoveing_534320(p C.int) C.int {
 }
 
 func portTestInvoke_sub_534340(p C.int) C.int {
-	return C.int(bool2int(monsterCanBlockHead(objectFromInt(p))))
+	return C.int(bool2int(monsterCanBlockHead(objectFromInt(int32(p)))))
 }
 
 func portTestInvoke_sub_5343C0(p C.int) C.int {
-	return C.int(bool2int(monsterAggressionMid(objectFromInt(p))))
+	return C.int(bool2int(monsterAggressionMid(objectFromInt(int32(p)))))
 }
 
 func portTestInvoke_sub_534440(p C.int) C.int {
-	return C.int(bool2int(monsterAggressionRetreat(objectFromInt(p))))
+	return C.int(bool2int(monsterAggressionRetreat(objectFromInt(int32(p)))))
 }
 
 func portTestInvoke_sub_5347C0(p C.int) C.int {
-	return C.int(bool2int(monsterHasMissingHealth(objectFromInt(p))))
+	return C.int(bool2int(monsterHasMissingHealth(objectFromInt(int32(p)))))
 }

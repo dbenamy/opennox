@@ -1,0 +1,3007 @@
+{
+  "success": true,
+  "original_revision": "308da9e791fdaee0418eed5bdb2f11b4774ec3e4",
+  "original_source_sha256": "791086c2f878bab61a4d54b159bb7cfabd735298d3f14a5ac1deb8f5721da07c",
+  "baseline": "docs/porting/native-integer-types-baseline.json",
+  "baseline_sha256": "1acf7d0a610b3b56c56b0467c8c1fb07be793a73518c8ed4c3e0a8a9e2208353",
+  "prior_qualification": "docs/porting/final-callback-exports-qualification.json",
+  "prior_qualification_sha256": "cac0bb3418f0d7944109419b62581df23b33752e8366cddf66eea336adf9ffb2",
+  "profiles": {
+    "default": {
+      "expected": [
+        "TestAIMonsterStateContracts",
+        "TestAIMonsterStateOriginal",
+        "TestAttackAbilities",
+        "TestAttackChakramDepletion",
+        "TestAttackEffectDispatch",
+        "TestAttackHitFilters",
+        "TestAttackNPC",
+        "TestAttackNPCShots",
+        "TestAttackNearest",
+        "TestAttackPositive",
+        "TestAttackReloads",
+        "TestAttackShotEffects",
+        "TestAttackShotFailures",
+        "TestAttackShots",
+        "TestAttackTrace",
+        "TestAttackUnarmedTiming",
+        "TestAttackWarcry",
+        "TestAttackWeaponTiming",
+        "TestBindingEditorApply",
+        "TestBindingEditorAssignments",
+        "TestBindingEditorAuxiliaryWindow",
+        "TestBindingEditorCancel",
+        "TestBindingEditorCapture",
+        "TestBindingEditorConstruction",
+        "TestBindingEditorPromptText",
+        "TestBindingEditorRouting",
+        "TestBindingEditorWheelFilter",
+        "TestClientDrawableMotion",
+        "TestClientDrawableStateAccessors",
+        "TestClientDrawableStreamBoundaries",
+        "TestClientDrawableStreamCreation",
+        "TestClientDrawableStreams",
+        "TestClientInteractionActionMessages",
+        "TestClientInteractionCenteredMessageBoundaries",
+        "TestClientInteractionChatDrawingAndSubmit",
+        "TestClientInteractionChatEscapeKey",
+        "TestClientInteractionChatLifecycle",
+        "TestClientInteractionChatMessageBoundaries",
+        "TestClientInteractionClocksAndCursor",
+        "TestClientInteractionConsoleFormatBoundaries",
+        "TestClientInteractionConversation",
+        "TestClientInteractionConversationBlink",
+        "TestClientInteractionDollAssets",
+        "TestClientInteractionDollComposition",
+        "TestClientInteractionDollLayer",
+        "TestClientInteractionDrawablePredicates",
+        "TestClientInteractionEscapeBookAddition",
+        "TestClientInteractionEscapeMiddleControllers",
+        "TestClientInteractionEscapeOrder",
+        "TestClientInteractionGameOver",
+        "TestClientInteractionHUDVisibility",
+        "TestClientInteractionHelpDialog",
+        "TestClientInteractionHoverCircleAndGates",
+        "TestClientInteractionHoverEnumeration",
+        "TestClientInteractionIndicatorWindows",
+        "TestClientInteractionKeyAndVoteWindows",
+        "TestClientInteractionMessageDrawing",
+        "TestClientInteractionModalFrameGate",
+        "TestClientInteractionMouseModes",
+        "TestClientInteractionObserverAndToggle",
+        "TestClientInteractionPickupAndSecondary",
+        "TestClientInteractionTextState",
+        "TestClientInventoryDisplayItemTooltips",
+        "TestClientInventoryTooltipWindowRoute",
+        "TestClientObjectRenderBeamQueueAndSight",
+        "TestClientObjectRenderBeamRaster",
+        "TestClientObjectRenderClipSaveRestore",
+        "TestClientObjectRenderFadePrecision",
+        "TestClientObjectRenderGhostAndFade",
+        "TestClientObjectRenderGhostOwner",
+        "TestClientObjectRenderMaterialsAndCrop",
+        "TestClientObjectRenderOcclusion",
+        "TestClientObjectRenderOwner",
+        "TestClientObjectRenderPlayersAndInvisibility",
+        "TestClientObjectRenderShinyOwner",
+        "TestClientObjectRenderShinyPeriods",
+        "TestClientPresentationTransientRays",
+        "TestClientTooltipBookOrderContract",
+        "TestClientTooltipBooksMatrix",
+        "TestClientTooltipBorrowedNameContract",
+        "TestClientTooltipCursorBoundsContract",
+        "TestClientTooltipCursorMatrix",
+        "TestClientTooltipEquipmentMatrix",
+        "TestClientTooltipLocalizedOrderContract",
+        "TestClientTooltipLongNameContract",
+        "TestClientTooltipMissingDefinitionContract",
+        "TestClientTooltipNamesMatrix",
+        "TestClientTooltipNativeCapacityContract",
+        "TestClientTooltipNativeWrappersContract",
+        "TestClientTooltipRequestContract",
+        "TestClientUIRenderBorders",
+        "TestClientUIRenderClipAndBounds",
+        "TestClientUIRenderFill",
+        "TestClientUIRenderIntersection",
+        "TestClientUIRenderSeparateClipOwner",
+        "TestEffectsArithmetic",
+        "TestEffectsFireWand",
+        "TestEffectsFireballWall",
+        "TestEffectsFlags",
+        "TestEffectsGripAndInversion",
+        "TestEffectsInventoryLookup",
+        "TestEffectsNullGuards",
+        "TestEffectsProjectiles",
+        "TestEffectsProtection",
+        "TestEffectsReadinessRecharge",
+        "TestEffectsRechargePercent",
+        "TestEffectsRegeneration",
+        "TestEffectsReplenishment",
+        "TestEffectsResourceTransfers",
+        "TestEffectsSpeedRounding",
+        "TestEffectsStatusAndForce",
+        "TestEffectsTimingFireWand",
+        "TestEffectsTimingFireballWall",
+        "TestEffectsTimingPositiveRegeneration",
+        "TestEffectsTimingProjectiles",
+        "TestEffectsTimingRegeneration",
+        "TestEffectsTimingReplenishment",
+        "TestEffectsTimingWandAcceptance",
+        "TestEffectsTimingWandClasses",
+        "TestEffectsUseDispatch",
+        "TestEffectsWandAcceptance",
+        "TestEffectsWandClasses",
+        "TestGameMessageClientSentry",
+        "TestGameMessageClientSentryWideCoordinates",
+        "TestGameMessageClientSessionAcknowledge",
+        "TestGameplayTextChat",
+        "TestGameplayTextChatCodes",
+        "TestGameplayTextClassifier",
+        "TestGameplayTextFormats",
+        "TestGameplayTextFormatted",
+        "TestGameplayTextInformation",
+        "TestGameplayTextInformationAll",
+        "TestGameplayTextIterationAndGuards",
+        "TestGameplayTextLongChat",
+        "TestGameplayTextPrivate",
+        "TestGameplayTextSparsePlayers",
+        "TestGeneratorCopyContracts",
+        "TestGeneratorCopyInventory",
+        "TestGeneratorDeathContracts",
+        "TestGeneratorObjectsSmoke",
+        "TestGeneratorPickContracts",
+        "TestGeneratorPlacementContracts",
+        "TestGeneratorPlacementSmoke",
+        "TestGeneratorSpawnContracts",
+        "TestGeneratorSpawnDefinitionHealth",
+        "TestGeneratorTileFixture",
+        "TestGeneratorUpdateGates",
+        "TestGeneratorUpdateSpawn",
+        "TestGeneratorVacancyContracts",
+        "TestModifierFireHooksRemainLate",
+        "TestModifierItemUpdateOwner",
+        "TestModifierNativeCallbackForwarding",
+        "TestModifierParserContracts",
+        "TestModifierRawCallbackForwarding",
+        "TestModifierRegistryKeysAndLifetime",
+        "TestNetworkClientCodeABI",
+        "TestNetworkCodeBitsABI",
+        "TestNetworkExtentABI",
+        "TestObjectStateAttributes",
+        "TestObjectStateChecksumInputs",
+        "TestObjectStateCleanup",
+        "TestObjectStateCollide",
+        "TestObjectStateDirectionEdges",
+        "TestObjectStateDistanceEdges",
+        "TestObjectStateDoors",
+        "TestObjectStateFreeze",
+        "TestObjectStateGeometry",
+        "TestObjectStateIndividualBits",
+        "TestObjectStateLoot",
+        "TestObjectStateNil",
+        "TestObjectStateOwnership",
+        "TestObjectStatePlayers",
+        "TestObjectStatePositive",
+        "TestObjectStateRecent",
+        "TestObjectStateSync",
+        "TestObjectStateTeleport",
+        "TestProtectionABI",
+        "TestProtectionAddABI",
+        "TestProtectionBitsetABI",
+        "TestProtectionCreateABI",
+        "TestProtectionFloatABI",
+        "TestProtectionHandlesABI",
+        "TestProtectionInitABI",
+        "TestProtectionInsertABI",
+        "TestProtectionInsertCountBoundary",
+        "TestProtectionObjectABI",
+        "TestProtectionRandomABI",
+        "TestProtectionRecordsABI",
+        "TestProtectionRekeyABI",
+        "TestProtectionRemoveABI",
+        "TestProtectionSetABI",
+        "TestProtectionValidateABI",
+        "TestReliableReportsAcknowledge",
+        "TestReliableReportsClientWrapper",
+        "TestReliableReportsDelivery",
+        "TestReliableReportsDeliveryCapacity",
+        "TestReliableReportsDeliveryFlags",
+        "TestReliableReportsEnqueue",
+        "TestReliableReportsListEdits",
+        "TestReliableReportsPoolPressure",
+        "TestReliableReportsPressureRecipient",
+        "TestReliableReportsPressureSurvivors",
+        "TestReliableReportsRateAdaptation",
+        "TestReliableReportsRemovePlayer",
+        "TestReliableReportsResets",
+        "TestReliableReportsRetryTiming",
+        "TestReliableReportsSequenceWrap",
+        "TestServerBrowserAddressFormatting",
+        "TestServerBrowserByteText",
+        "TestServerBrowserClockWidths",
+        "TestServerBrowserCollection",
+        "TestServerBrowserColumnForwarding",
+        "TestServerBrowserConnectionDialogs",
+        "TestServerBrowserConstructionNotifications",
+        "TestServerBrowserDetails",
+        "TestServerBrowserHostDescription",
+        "TestServerBrowserInfoPosition",
+        "TestServerBrowserLANRows",
+        "TestServerBrowserLabelLifetime",
+        "TestServerBrowserMapHit",
+        "TestServerBrowserMapListCount",
+        "TestServerBrowserMapMarkers",
+        "TestServerBrowserModeNames",
+        "TestServerBrowserNameWidth",
+        "TestServerBrowserPasswordAction",
+        "TestServerBrowserPopupClamp",
+        "TestServerBrowserProximityPopup",
+        "TestServerBrowserResortSelection",
+        "TestServerBrowserSelectedEndpoint",
+        "TestServerBrowserSortButtons",
+        "TestServerBrowserStateWords",
+        "TestServerBrowserTimers",
+        "TestServerConfigAdmissionDurations",
+        "TestServerConfigAdmissionExpiry",
+        "TestServerConfigAdmissionExpiryMixed",
+        "TestServerConfigAdmissionFileEncoding",
+        "TestServerConfigAdmissionFileRead",
+        "TestServerConfigAdmissionFileWrite",
+        "TestServerConfigAdmissionLists",
+        "TestServerConfigConnectionRates",
+        "TestServerConfigDeadlineWidths",
+        "TestServerConfigModeLimitsAndTimer",
+        "TestServerConfigNameStorage",
+        "TestServerConfigPasswordStorage",
+        "TestServerConfigRateNotifications",
+        "TestServerConfigRespawnModes",
+        "TestServerConfigRuleActions",
+        "TestServerConfigRuleControlDrawing",
+        "TestServerConfigRuleEnumeration",
+        "TestServerConfigRuleEventReturns",
+        "TestServerConfigRuleMissingResource",
+        "TestServerConfigRulePixels",
+        "TestServerConfigScalarStorage",
+        "TestServerConfigSelectedModePredicate",
+        "TestServerConfigSettingsRefresh",
+        "TestServerConfigSlotStorage",
+        "TestServerConfigSubflags",
+        "TestServerConfigTimerNotifications",
+        "TestTeamRuntimeBalance",
+        "TestTeamRuntimeCapacity",
+        "TestTeamRuntimeClearAndReset",
+        "TestTeamRuntimeClearDetachedMember",
+        "TestTeamRuntimeClientJoinNotifications",
+        "TestTeamRuntimeClientObjectLookup",
+        "TestTeamRuntimeCreateMapTeams",
+        "TestTeamRuntimeCrownSetup",
+        "TestTeamRuntimeEmptyFlagMaps",
+        "TestTeamRuntimeGroupBalance",
+        "TestTeamRuntimeJoinNotifications",
+        "TestTeamRuntimeLeave",
+        "TestTeamRuntimeLessons",
+        "TestTeamRuntimeLessonsDispatch",
+        "TestTeamRuntimeLookup",
+        "TestTeamRuntimeMapFlags",
+        "TestTeamRuntimeMembership",
+        "TestTeamRuntimeMembershipPredicates",
+        "TestTeamRuntimeMessagePadding",
+        "TestTeamRuntimeNameStorage",
+        "TestTeamRuntimeNearestFlag",
+        "TestTeamRuntimeSelection",
+        "TestTemporaryAcquisition",
+        "TestTemporaryAreaCallbacks",
+        "TestTemporaryAreaOwners",
+        "TestTemporaryBreakStates",
+        "TestTemporaryCollisionAndImpact",
+        "TestTemporaryFrameWrap",
+        "TestTemporaryHoming",
+        "TestTemporaryLifetimeStates",
+        "TestTemporaryMissingAndOwners",
+        "TestTemporaryOwnerEffects",
+        "TestTemporaryPositiveCallbacks",
+        "TestTemporaryRandomStreams",
+        "TestTemporarySparkCreation",
+        "TestTemporarySpawners",
+        "TestTemporaryTickRates",
+        "TestTemporaryTrails",
+        "TestUpdateRegistryGeneratorUpdateGates",
+        "TestUpdateRegistryGeneratorUpdateSpawn",
+        "TestWaypointAllocationABI",
+        "TestWaypointAppendABI",
+        "TestWaypointLinksABI",
+        "TestWaypointMasksABI",
+        "TestWorldDoors",
+        "TestWorldElevatorMovement",
+        "TestWorldElevatorSound",
+        "TestWorldElevators",
+        "TestWorldFloatFilters",
+        "TestWorldForces",
+        "TestWorldOwnerIntegration",
+        "TestWorldPhantomAndAngleQueue",
+        "TestWorldPositiveEffects",
+        "TestWorldSwitches",
+        "TestWorldTeleportCallbacks",
+        "TestWorldTeleports",
+        "TestWorldTrapDoors",
+        "TestWorldTriggers",
+        "TestWorldTypeAndClockBoundaries"
+      ],
+      "additional": [
+        "TestTemporaryAcquisition",
+        "TestTemporaryAreaCallbacks",
+        "TestTemporaryAreaOwners",
+        "TestTemporaryBreakStates",
+        "TestTemporaryCollisionAndImpact",
+        "TestTemporaryFrameWrap",
+        "TestTemporaryHoming",
+        "TestTemporaryLifetimeStates",
+        "TestTemporaryMissingAndOwners",
+        "TestTemporaryOwnerEffects",
+        "TestTemporaryPositiveCallbacks",
+        "TestTemporaryRandomStreams",
+        "TestTemporarySparkCreation",
+        "TestTemporarySpawners",
+        "TestTemporaryTickRates",
+        "TestTemporaryTrails",
+        "TestWaypointAppendABI"
+      ],
+      "reused_first_observation": [
+        "TestTemporaryAcquisition",
+        "TestTemporaryAreaCallbacks",
+        "TestTemporaryAreaOwners",
+        "TestTemporaryBreakStates",
+        "TestTemporaryCollisionAndImpact",
+        "TestTemporaryFrameWrap",
+        "TestTemporaryHoming",
+        "TestTemporaryLifetimeStates",
+        "TestTemporaryMissingAndOwners",
+        "TestTemporaryOwnerEffects",
+        "TestTemporaryPositiveCallbacks",
+        "TestTemporaryRandomStreams",
+        "TestTemporarySparkCreation",
+        "TestTemporarySpawners",
+        "TestTemporaryTickRates",
+        "TestTemporaryTrails",
+        "TestWaypointAppendABI"
+      ],
+      "new_first_observation": [],
+      "binary": {
+        "binary": "/root/src/opennox/build/port-final-callback-exports/contracts-observer/profiles/default.test",
+        "sha256": "ced571ea19239f77d2c52f106801a5481e0aed50efca8324cddaf4f6afc7ab53",
+        "tags": "porttest"
+      }
+    },
+    "server": {
+      "expected": [
+        "TestAIMonsterStateContracts",
+        "TestAIMonsterStateOriginal",
+        "TestAttackAbilities",
+        "TestAttackChakramDepletion",
+        "TestAttackEffectDispatch",
+        "TestAttackHitFilters",
+        "TestAttackNPC",
+        "TestAttackNPCShots",
+        "TestAttackNearest",
+        "TestAttackPositive",
+        "TestAttackReloads",
+        "TestAttackShotEffects",
+        "TestAttackShotFailures",
+        "TestAttackShots",
+        "TestAttackTrace",
+        "TestAttackUnarmedTiming",
+        "TestAttackWarcry",
+        "TestAttackWeaponTiming",
+        "TestBindingEditorApply",
+        "TestBindingEditorAssignments",
+        "TestBindingEditorAuxiliaryWindow",
+        "TestBindingEditorCancel",
+        "TestBindingEditorCapture",
+        "TestBindingEditorConstruction",
+        "TestBindingEditorPromptText",
+        "TestBindingEditorRouting",
+        "TestBindingEditorWheelFilter",
+        "TestClientDrawableMotion",
+        "TestClientDrawableStateAccessors",
+        "TestClientDrawableStreamBoundaries",
+        "TestClientDrawableStreamCreation",
+        "TestClientDrawableStreams",
+        "TestClientInteractionActionMessages",
+        "TestClientInteractionCenteredMessageBoundaries",
+        "TestClientInteractionChatDrawingAndSubmit",
+        "TestClientInteractionChatEscapeKey",
+        "TestClientInteractionChatLifecycle",
+        "TestClientInteractionChatMessageBoundaries",
+        "TestClientInteractionClocksAndCursor",
+        "TestClientInteractionConsoleFormatBoundaries",
+        "TestClientInteractionConversation",
+        "TestClientInteractionConversationBlink",
+        "TestClientInteractionDollAssets",
+        "TestClientInteractionDollComposition",
+        "TestClientInteractionDollLayer",
+        "TestClientInteractionDrawablePredicates",
+        "TestClientInteractionEscapeBookAddition",
+        "TestClientInteractionEscapeMiddleControllers",
+        "TestClientInteractionEscapeOrder",
+        "TestClientInteractionGameOver",
+        "TestClientInteractionHUDVisibility",
+        "TestClientInteractionHelpDialog",
+        "TestClientInteractionIndicatorWindows",
+        "TestClientInteractionKeyAndVoteWindows",
+        "TestClientInteractionMessageDrawing",
+        "TestClientInteractionModalFrameGate",
+        "TestClientInteractionMouseModes",
+        "TestClientInteractionObserverAndToggle",
+        "TestClientInteractionPickupAndSecondary",
+        "TestClientInteractionTextState",
+        "TestClientInventoryDisplayItemTooltips",
+        "TestClientInventoryTooltipWindowRoute",
+        "TestClientObjectRenderBeamQueueAndSight",
+        "TestClientObjectRenderBeamRaster",
+        "TestClientObjectRenderClipSaveRestore",
+        "TestClientObjectRenderFadePrecision",
+        "TestClientObjectRenderGhostAndFade",
+        "TestClientObjectRenderGhostOwner",
+        "TestClientObjectRenderMaterialsAndCrop",
+        "TestClientObjectRenderOwner",
+        "TestClientObjectRenderPlayersAndInvisibility",
+        "TestClientObjectRenderShinyOwner",
+        "TestClientObjectRenderShinyPeriods",
+        "TestClientPresentationTransientRays",
+        "TestClientTooltipBookOrderContract",
+        "TestClientTooltipBooksMatrix",
+        "TestClientTooltipBorrowedNameContract",
+        "TestClientTooltipCursorBoundsContract",
+        "TestClientTooltipCursorMatrix",
+        "TestClientTooltipEquipmentMatrix",
+        "TestClientTooltipLocalizedOrderContract",
+        "TestClientTooltipLongNameContract",
+        "TestClientTooltipMissingDefinitionContract",
+        "TestClientTooltipNamesMatrix",
+        "TestClientTooltipNativeCapacityContract",
+        "TestClientTooltipNativeWrappersContract",
+        "TestClientTooltipRequestContract",
+        "TestClientUIRenderBorders",
+        "TestClientUIRenderClipAndBounds",
+        "TestClientUIRenderFill",
+        "TestClientUIRenderIntersection",
+        "TestClientUIRenderSeparateClipOwner",
+        "TestEffectsArithmetic",
+        "TestEffectsFireWand",
+        "TestEffectsFireballWall",
+        "TestEffectsFlags",
+        "TestEffectsGripAndInversion",
+        "TestEffectsInventoryLookup",
+        "TestEffectsNullGuards",
+        "TestEffectsProjectiles",
+        "TestEffectsProtection",
+        "TestEffectsReadinessRecharge",
+        "TestEffectsRechargePercent",
+        "TestEffectsRegeneration",
+        "TestEffectsReplenishment",
+        "TestEffectsResourceTransfers",
+        "TestEffectsSpeedRounding",
+        "TestEffectsStatusAndForce",
+        "TestEffectsTimingFireWand",
+        "TestEffectsTimingFireballWall",
+        "TestEffectsTimingPositiveRegeneration",
+        "TestEffectsTimingProjectiles",
+        "TestEffectsTimingRegeneration",
+        "TestEffectsTimingReplenishment",
+        "TestEffectsTimingWandAcceptance",
+        "TestEffectsTimingWandClasses",
+        "TestEffectsUseDispatch",
+        "TestEffectsWandAcceptance",
+        "TestEffectsWandClasses",
+        "TestGameMessageClientSentry",
+        "TestGameMessageClientSentryWideCoordinates",
+        "TestGameMessageClientSessionAcknowledge",
+        "TestGameplayTextChat",
+        "TestGameplayTextChatCodes",
+        "TestGameplayTextClassifier",
+        "TestGameplayTextFormats",
+        "TestGameplayTextFormatted",
+        "TestGameplayTextInformation",
+        "TestGameplayTextInformationAll",
+        "TestGameplayTextIterationAndGuards",
+        "TestGameplayTextLongChat",
+        "TestGameplayTextPrivate",
+        "TestGameplayTextSparsePlayers",
+        "TestGeneratorCopyContracts",
+        "TestGeneratorCopyInventory",
+        "TestGeneratorDeathContracts",
+        "TestGeneratorObjectsSmoke",
+        "TestGeneratorPickContracts",
+        "TestGeneratorPlacementContracts",
+        "TestGeneratorPlacementSmoke",
+        "TestGeneratorSpawnContracts",
+        "TestGeneratorSpawnDefinitionHealth",
+        "TestGeneratorTileFixture",
+        "TestGeneratorUpdateGates",
+        "TestGeneratorUpdateSpawn",
+        "TestGeneratorVacancyContracts",
+        "TestModifierFireHooksRemainLate",
+        "TestModifierItemUpdateOwner",
+        "TestModifierNativeCallbackForwarding",
+        "TestModifierParserContracts",
+        "TestModifierRawCallbackForwarding",
+        "TestModifierRegistryKeysAndLifetime",
+        "TestNetworkClientCodeABI",
+        "TestNetworkCodeBitsABI",
+        "TestNetworkExtentABI",
+        "TestObjectStateAttributes",
+        "TestObjectStateChecksumInputs",
+        "TestObjectStateCleanup",
+        "TestObjectStateCollide",
+        "TestObjectStateDirectionEdges",
+        "TestObjectStateDistanceEdges",
+        "TestObjectStateDoors",
+        "TestObjectStateFreeze",
+        "TestObjectStateGeometry",
+        "TestObjectStateIndividualBits",
+        "TestObjectStateLoot",
+        "TestObjectStateNil",
+        "TestObjectStateOwnership",
+        "TestObjectStatePlayers",
+        "TestObjectStatePositive",
+        "TestObjectStateRecent",
+        "TestObjectStateSync",
+        "TestObjectStateTeleport",
+        "TestProtectionABI",
+        "TestProtectionAddABI",
+        "TestProtectionBitsetABI",
+        "TestProtectionCreateABI",
+        "TestProtectionFloatABI",
+        "TestProtectionHandlesABI",
+        "TestProtectionInitABI",
+        "TestProtectionInsertABI",
+        "TestProtectionInsertCountBoundary",
+        "TestProtectionObjectABI",
+        "TestProtectionRandomABI",
+        "TestProtectionRecordsABI",
+        "TestProtectionRekeyABI",
+        "TestProtectionRemoveABI",
+        "TestProtectionSetABI",
+        "TestProtectionValidateABI",
+        "TestReliableReportsAcknowledge",
+        "TestReliableReportsClientWrapper",
+        "TestReliableReportsDelivery",
+        "TestReliableReportsDeliveryCapacity",
+        "TestReliableReportsDeliveryFlags",
+        "TestReliableReportsEnqueue",
+        "TestReliableReportsListEdits",
+        "TestReliableReportsPoolPressure",
+        "TestReliableReportsPressureRecipient",
+        "TestReliableReportsPressureSurvivors",
+        "TestReliableReportsRateAdaptation",
+        "TestReliableReportsRemovePlayer",
+        "TestReliableReportsResets",
+        "TestReliableReportsRetryTiming",
+        "TestReliableReportsSequenceWrap",
+        "TestServerBrowserAddressFormatting",
+        "TestServerBrowserByteText",
+        "TestServerBrowserClockWidths",
+        "TestServerBrowserCollection",
+        "TestServerBrowserColumnForwarding",
+        "TestServerBrowserConnectionDialogs",
+        "TestServerBrowserConstructionNotifications",
+        "TestServerBrowserDetails",
+        "TestServerBrowserHostDescription",
+        "TestServerBrowserInfoPosition",
+        "TestServerBrowserLANRows",
+        "TestServerBrowserLabelLifetime",
+        "TestServerBrowserMapHit",
+        "TestServerBrowserMapListCount",
+        "TestServerBrowserMapMarkers",
+        "TestServerBrowserModeNames",
+        "TestServerBrowserNameWidth",
+        "TestServerBrowserPasswordAction",
+        "TestServerBrowserPopupClamp",
+        "TestServerBrowserProximityPopup",
+        "TestServerBrowserResortSelection",
+        "TestServerBrowserSelectedEndpoint",
+        "TestServerBrowserSortButtons",
+        "TestServerBrowserStateWords",
+        "TestServerBrowserTimers",
+        "TestServerConfigAdmissionDurations",
+        "TestServerConfigAdmissionExpiry",
+        "TestServerConfigAdmissionExpiryMixed",
+        "TestServerConfigAdmissionFileEncoding",
+        "TestServerConfigAdmissionFileRead",
+        "TestServerConfigAdmissionFileWrite",
+        "TestServerConfigAdmissionLists",
+        "TestServerConfigConnectionRates",
+        "TestServerConfigDeadlineWidths",
+        "TestServerConfigModeLimitsAndTimer",
+        "TestServerConfigNameStorage",
+        "TestServerConfigPasswordStorage",
+        "TestServerConfigRateNotifications",
+        "TestServerConfigRespawnModes",
+        "TestServerConfigRuleActions",
+        "TestServerConfigRuleControlDrawing",
+        "TestServerConfigRuleEnumeration",
+        "TestServerConfigRuleEventReturns",
+        "TestServerConfigRuleMissingResource",
+        "TestServerConfigRulePixels",
+        "TestServerConfigScalarStorage",
+        "TestServerConfigSelectedModePredicate",
+        "TestServerConfigSettingsRefresh",
+        "TestServerConfigSlotStorage",
+        "TestServerConfigSubflags",
+        "TestServerConfigTimerNotifications",
+        "TestTeamRuntimeBalance",
+        "TestTeamRuntimeCapacity",
+        "TestTeamRuntimeClearAndReset",
+        "TestTeamRuntimeClearDetachedMember",
+        "TestTeamRuntimeClientJoinNotifications",
+        "TestTeamRuntimeClientObjectLookup",
+        "TestTeamRuntimeCreateMapTeams",
+        "TestTeamRuntimeCrownSetup",
+        "TestTeamRuntimeEmptyFlagMaps",
+        "TestTeamRuntimeGroupBalance",
+        "TestTeamRuntimeJoinNotifications",
+        "TestTeamRuntimeLeave",
+        "TestTeamRuntimeLessons",
+        "TestTeamRuntimeLessonsDispatch",
+        "TestTeamRuntimeLookup",
+        "TestTeamRuntimeMapFlags",
+        "TestTeamRuntimeMembership",
+        "TestTeamRuntimeMembershipPredicates",
+        "TestTeamRuntimeMessagePadding",
+        "TestTeamRuntimeNameStorage",
+        "TestTeamRuntimeNearestFlag",
+        "TestTeamRuntimeSelection",
+        "TestTemporaryAcquisition",
+        "TestTemporaryAreaCallbacks",
+        "TestTemporaryAreaOwners",
+        "TestTemporaryBreakStates",
+        "TestTemporaryCollisionAndImpact",
+        "TestTemporaryFrameWrap",
+        "TestTemporaryHoming",
+        "TestTemporaryLifetimeStates",
+        "TestTemporaryMissingAndOwners",
+        "TestTemporaryOwnerEffects",
+        "TestTemporaryPositiveCallbacks",
+        "TestTemporaryRandomStreams",
+        "TestTemporarySparkCreation",
+        "TestTemporarySpawners",
+        "TestTemporaryTickRates",
+        "TestTemporaryTrails",
+        "TestUpdateRegistryGeneratorUpdateGates",
+        "TestUpdateRegistryGeneratorUpdateSpawn",
+        "TestWaypointAllocationABI",
+        "TestWaypointAppendABI",
+        "TestWaypointLinksABI",
+        "TestWaypointMasksABI",
+        "TestWorldDoors",
+        "TestWorldElevatorMovement",
+        "TestWorldElevatorSound",
+        "TestWorldElevators",
+        "TestWorldFloatFilters",
+        "TestWorldForces",
+        "TestWorldOwnerIntegration",
+        "TestWorldPhantomAndAngleQueue",
+        "TestWorldPositiveEffects",
+        "TestWorldSwitches",
+        "TestWorldTeleportCallbacks",
+        "TestWorldTeleports",
+        "TestWorldTrapDoors",
+        "TestWorldTriggers",
+        "TestWorldTypeAndClockBoundaries"
+      ],
+      "additional": [
+        "TestTemporaryAcquisition",
+        "TestTemporaryAreaCallbacks",
+        "TestTemporaryAreaOwners",
+        "TestTemporaryBreakStates",
+        "TestTemporaryCollisionAndImpact",
+        "TestTemporaryFrameWrap",
+        "TestTemporaryHoming",
+        "TestTemporaryLifetimeStates",
+        "TestTemporaryMissingAndOwners",
+        "TestTemporaryOwnerEffects",
+        "TestTemporaryPositiveCallbacks",
+        "TestTemporaryRandomStreams",
+        "TestTemporarySparkCreation",
+        "TestTemporarySpawners",
+        "TestTemporaryTickRates",
+        "TestTemporaryTrails",
+        "TestWaypointAppendABI"
+      ],
+      "reused_first_observation": [
+        "TestTemporaryAcquisition",
+        "TestTemporaryAreaCallbacks",
+        "TestTemporaryAreaOwners",
+        "TestTemporaryBreakStates",
+        "TestTemporaryCollisionAndImpact",
+        "TestTemporaryFrameWrap",
+        "TestTemporaryHoming",
+        "TestTemporaryLifetimeStates",
+        "TestTemporaryMissingAndOwners",
+        "TestTemporaryOwnerEffects",
+        "TestTemporaryPositiveCallbacks",
+        "TestTemporaryRandomStreams",
+        "TestTemporarySparkCreation",
+        "TestTemporarySpawners",
+        "TestTemporaryTickRates",
+        "TestTemporaryTrails"
+      ],
+      "new_first_observation": [
+        "TestWaypointAppendABI"
+      ],
+      "binary": {
+        "binary": "/root/src/opennox/build/port-final-callback-exports/contracts-observer/profiles/server.test",
+        "sha256": "f3f2601684f0c665ba855dbba74e7af88d04172df0008d99c69d00981d1a330a",
+        "tags": "porttest,server"
+      }
+    },
+    "highres": {
+      "expected": [
+        "TestAIMonsterStateContracts",
+        "TestAIMonsterStateOriginal",
+        "TestAttackAbilities",
+        "TestAttackChakramDepletion",
+        "TestAttackEffectDispatch",
+        "TestAttackHitFilters",
+        "TestAttackNPC",
+        "TestAttackNPCShots",
+        "TestAttackNearest",
+        "TestAttackPositive",
+        "TestAttackReloads",
+        "TestAttackShotEffects",
+        "TestAttackShotFailures",
+        "TestAttackShots",
+        "TestAttackTrace",
+        "TestAttackUnarmedTiming",
+        "TestAttackWarcry",
+        "TestAttackWeaponTiming",
+        "TestBindingEditorApply",
+        "TestBindingEditorAssignments",
+        "TestBindingEditorAuxiliaryWindow",
+        "TestBindingEditorCancel",
+        "TestBindingEditorCapture",
+        "TestBindingEditorConstruction",
+        "TestBindingEditorPromptText",
+        "TestBindingEditorRouting",
+        "TestBindingEditorWheelFilter",
+        "TestClientDrawableMotion",
+        "TestClientDrawableStateAccessors",
+        "TestClientDrawableStreamBoundaries",
+        "TestClientDrawableStreamCreation",
+        "TestClientDrawableStreams",
+        "TestClientInteractionActionMessages",
+        "TestClientInteractionCenteredMessageBoundaries",
+        "TestClientInteractionChatDrawingAndSubmit",
+        "TestClientInteractionChatEscapeKey",
+        "TestClientInteractionChatLifecycle",
+        "TestClientInteractionChatMessageBoundaries",
+        "TestClientInteractionClocksAndCursor",
+        "TestClientInteractionConsoleFormatBoundaries",
+        "TestClientInteractionConversation",
+        "TestClientInteractionConversationBlink",
+        "TestClientInteractionDollAssets",
+        "TestClientInteractionDollComposition",
+        "TestClientInteractionDollLayer",
+        "TestClientInteractionDrawablePredicates",
+        "TestClientInteractionEscapeBookAddition",
+        "TestClientInteractionEscapeMiddleControllers",
+        "TestClientInteractionEscapeOrder",
+        "TestClientInteractionGameOver",
+        "TestClientInteractionHUDVisibility",
+        "TestClientInteractionHelpDialog",
+        "TestClientInteractionHoverCircleAndGates",
+        "TestClientInteractionHoverEnumeration",
+        "TestClientInteractionIndicatorWindows",
+        "TestClientInteractionKeyAndVoteWindows",
+        "TestClientInteractionMessageDrawing",
+        "TestClientInteractionModalFrameGate",
+        "TestClientInteractionMouseModes",
+        "TestClientInteractionObserverAndToggle",
+        "TestClientInteractionPickupAndSecondary",
+        "TestClientInteractionTextState",
+        "TestClientInventoryDisplayItemTooltips",
+        "TestClientInventoryTooltipWindowRoute",
+        "TestClientObjectRenderBeamQueueAndSight",
+        "TestClientObjectRenderBeamRaster",
+        "TestClientObjectRenderClipSaveRestore",
+        "TestClientObjectRenderFadePrecision",
+        "TestClientObjectRenderGhostAndFade",
+        "TestClientObjectRenderGhostOwner",
+        "TestClientObjectRenderMaterialsAndCrop",
+        "TestClientObjectRenderOcclusion",
+        "TestClientObjectRenderOwner",
+        "TestClientObjectRenderPlayersAndInvisibility",
+        "TestClientObjectRenderShinyOwner",
+        "TestClientObjectRenderShinyPeriods",
+        "TestClientPresentationTransientRays",
+        "TestClientTooltipBookOrderContract",
+        "TestClientTooltipBooksMatrix",
+        "TestClientTooltipBorrowedNameContract",
+        "TestClientTooltipCursorBoundsContract",
+        "TestClientTooltipCursorMatrix",
+        "TestClientTooltipEquipmentMatrix",
+        "TestClientTooltipLocalizedOrderContract",
+        "TestClientTooltipLongNameContract",
+        "TestClientTooltipMissingDefinitionContract",
+        "TestClientTooltipNamesMatrix",
+        "TestClientTooltipNativeCapacityContract",
+        "TestClientTooltipNativeWrappersContract",
+        "TestClientTooltipRequestContract",
+        "TestClientUIRenderBorders",
+        "TestClientUIRenderClipAndBounds",
+        "TestClientUIRenderFill",
+        "TestClientUIRenderIntersection",
+        "TestClientUIRenderSeparateClipOwner",
+        "TestEffectsArithmetic",
+        "TestEffectsFireWand",
+        "TestEffectsFireballWall",
+        "TestEffectsFlags",
+        "TestEffectsGripAndInversion",
+        "TestEffectsInventoryLookup",
+        "TestEffectsNullGuards",
+        "TestEffectsProjectiles",
+        "TestEffectsProtection",
+        "TestEffectsReadinessRecharge",
+        "TestEffectsRechargePercent",
+        "TestEffectsRegeneration",
+        "TestEffectsReplenishment",
+        "TestEffectsResourceTransfers",
+        "TestEffectsSpeedRounding",
+        "TestEffectsStatusAndForce",
+        "TestEffectsTimingFireWand",
+        "TestEffectsTimingFireballWall",
+        "TestEffectsTimingPositiveRegeneration",
+        "TestEffectsTimingProjectiles",
+        "TestEffectsTimingRegeneration",
+        "TestEffectsTimingReplenishment",
+        "TestEffectsTimingWandAcceptance",
+        "TestEffectsTimingWandClasses",
+        "TestEffectsUseDispatch",
+        "TestEffectsWandAcceptance",
+        "TestEffectsWandClasses",
+        "TestGameMessageClientSentry",
+        "TestGameMessageClientSentryWideCoordinates",
+        "TestGameMessageClientSessionAcknowledge",
+        "TestGameplayTextChat",
+        "TestGameplayTextChatCodes",
+        "TestGameplayTextClassifier",
+        "TestGameplayTextFormats",
+        "TestGameplayTextFormatted",
+        "TestGameplayTextInformation",
+        "TestGameplayTextInformationAll",
+        "TestGameplayTextIterationAndGuards",
+        "TestGameplayTextLongChat",
+        "TestGameplayTextPrivate",
+        "TestGameplayTextSparsePlayers",
+        "TestGeneratorCopyContracts",
+        "TestGeneratorCopyInventory",
+        "TestGeneratorDeathContracts",
+        "TestGeneratorObjectsSmoke",
+        "TestGeneratorPickContracts",
+        "TestGeneratorPlacementContracts",
+        "TestGeneratorPlacementSmoke",
+        "TestGeneratorSpawnContracts",
+        "TestGeneratorSpawnDefinitionHealth",
+        "TestGeneratorTileFixture",
+        "TestGeneratorUpdateGates",
+        "TestGeneratorUpdateSpawn",
+        "TestGeneratorVacancyContracts",
+        "TestModifierFireHooksRemainLate",
+        "TestModifierItemUpdateOwner",
+        "TestModifierNativeCallbackForwarding",
+        "TestModifierParserContracts",
+        "TestModifierRawCallbackForwarding",
+        "TestModifierRegistryKeysAndLifetime",
+        "TestNetworkClientCodeABI",
+        "TestNetworkCodeBitsABI",
+        "TestNetworkExtentABI",
+        "TestObjectStateAttributes",
+        "TestObjectStateChecksumInputs",
+        "TestObjectStateCleanup",
+        "TestObjectStateCollide",
+        "TestObjectStateDirectionEdges",
+        "TestObjectStateDistanceEdges",
+        "TestObjectStateDoors",
+        "TestObjectStateFreeze",
+        "TestObjectStateGeometry",
+        "TestObjectStateIndividualBits",
+        "TestObjectStateLoot",
+        "TestObjectStateNil",
+        "TestObjectStateOwnership",
+        "TestObjectStatePlayers",
+        "TestObjectStatePositive",
+        "TestObjectStateRecent",
+        "TestObjectStateSync",
+        "TestObjectStateTeleport",
+        "TestProtectionABI",
+        "TestProtectionAddABI",
+        "TestProtectionBitsetABI",
+        "TestProtectionCreateABI",
+        "TestProtectionFloatABI",
+        "TestProtectionHandlesABI",
+        "TestProtectionInitABI",
+        "TestProtectionInsertABI",
+        "TestProtectionInsertCountBoundary",
+        "TestProtectionObjectABI",
+        "TestProtectionRandomABI",
+        "TestProtectionRecordsABI",
+        "TestProtectionRekeyABI",
+        "TestProtectionRemoveABI",
+        "TestProtectionSetABI",
+        "TestProtectionValidateABI",
+        "TestReliableReportsAcknowledge",
+        "TestReliableReportsClientWrapper",
+        "TestReliableReportsDelivery",
+        "TestReliableReportsDeliveryCapacity",
+        "TestReliableReportsDeliveryFlags",
+        "TestReliableReportsEnqueue",
+        "TestReliableReportsListEdits",
+        "TestReliableReportsPoolPressure",
+        "TestReliableReportsPressureRecipient",
+        "TestReliableReportsPressureSurvivors",
+        "TestReliableReportsRateAdaptation",
+        "TestReliableReportsRemovePlayer",
+        "TestReliableReportsResets",
+        "TestReliableReportsRetryTiming",
+        "TestReliableReportsSequenceWrap",
+        "TestServerBrowserAddressFormatting",
+        "TestServerBrowserByteText",
+        "TestServerBrowserClockWidths",
+        "TestServerBrowserCollection",
+        "TestServerBrowserColumnForwarding",
+        "TestServerBrowserConnectionDialogs",
+        "TestServerBrowserConstructionNotifications",
+        "TestServerBrowserDetails",
+        "TestServerBrowserHostDescription",
+        "TestServerBrowserInfoPosition",
+        "TestServerBrowserLANRows",
+        "TestServerBrowserLabelLifetime",
+        "TestServerBrowserMapHit",
+        "TestServerBrowserMapListCount",
+        "TestServerBrowserMapMarkers",
+        "TestServerBrowserModeNames",
+        "TestServerBrowserNameWidth",
+        "TestServerBrowserPasswordAction",
+        "TestServerBrowserPopupClamp",
+        "TestServerBrowserProximityPopup",
+        "TestServerBrowserResortSelection",
+        "TestServerBrowserSelectedEndpoint",
+        "TestServerBrowserSortButtons",
+        "TestServerBrowserStateWords",
+        "TestServerBrowserTimers",
+        "TestServerConfigAdmissionDurations",
+        "TestServerConfigAdmissionExpiry",
+        "TestServerConfigAdmissionExpiryMixed",
+        "TestServerConfigAdmissionFileEncoding",
+        "TestServerConfigAdmissionFileRead",
+        "TestServerConfigAdmissionFileWrite",
+        "TestServerConfigAdmissionLists",
+        "TestServerConfigConnectionRates",
+        "TestServerConfigDeadlineWidths",
+        "TestServerConfigModeLimitsAndTimer",
+        "TestServerConfigNameStorage",
+        "TestServerConfigPasswordStorage",
+        "TestServerConfigRateNotifications",
+        "TestServerConfigRespawnModes",
+        "TestServerConfigRuleActions",
+        "TestServerConfigRuleControlDrawing",
+        "TestServerConfigRuleEnumeration",
+        "TestServerConfigRuleEventReturns",
+        "TestServerConfigRuleMissingResource",
+        "TestServerConfigRulePixels",
+        "TestServerConfigScalarStorage",
+        "TestServerConfigSelectedModePredicate",
+        "TestServerConfigSettingsRefresh",
+        "TestServerConfigSlotStorage",
+        "TestServerConfigSubflags",
+        "TestServerConfigTimerNotifications",
+        "TestTeamRuntimeBalance",
+        "TestTeamRuntimeCapacity",
+        "TestTeamRuntimeClearAndReset",
+        "TestTeamRuntimeClearDetachedMember",
+        "TestTeamRuntimeClientJoinNotifications",
+        "TestTeamRuntimeClientObjectLookup",
+        "TestTeamRuntimeCreateMapTeams",
+        "TestTeamRuntimeCrownSetup",
+        "TestTeamRuntimeEmptyFlagMaps",
+        "TestTeamRuntimeGroupBalance",
+        "TestTeamRuntimeJoinNotifications",
+        "TestTeamRuntimeLeave",
+        "TestTeamRuntimeLessons",
+        "TestTeamRuntimeLessonsDispatch",
+        "TestTeamRuntimeLookup",
+        "TestTeamRuntimeMapFlags",
+        "TestTeamRuntimeMembership",
+        "TestTeamRuntimeMembershipPredicates",
+        "TestTeamRuntimeMessagePadding",
+        "TestTeamRuntimeNameStorage",
+        "TestTeamRuntimeNearestFlag",
+        "TestTeamRuntimeSelection",
+        "TestTemporaryAcquisition",
+        "TestTemporaryAreaCallbacks",
+        "TestTemporaryAreaOwners",
+        "TestTemporaryBreakStates",
+        "TestTemporaryCollisionAndImpact",
+        "TestTemporaryFrameWrap",
+        "TestTemporaryHoming",
+        "TestTemporaryLifetimeStates",
+        "TestTemporaryMissingAndOwners",
+        "TestTemporaryOwnerEffects",
+        "TestTemporaryPositiveCallbacks",
+        "TestTemporaryRandomStreams",
+        "TestTemporarySparkCreation",
+        "TestTemporarySpawners",
+        "TestTemporaryTickRates",
+        "TestTemporaryTrails",
+        "TestUpdateRegistryGeneratorUpdateGates",
+        "TestUpdateRegistryGeneratorUpdateSpawn",
+        "TestWaypointAllocationABI",
+        "TestWaypointAppendABI",
+        "TestWaypointLinksABI",
+        "TestWaypointMasksABI",
+        "TestWorldDoors",
+        "TestWorldElevatorMovement",
+        "TestWorldElevatorSound",
+        "TestWorldElevators",
+        "TestWorldFloatFilters",
+        "TestWorldForces",
+        "TestWorldOwnerIntegration",
+        "TestWorldPhantomAndAngleQueue",
+        "TestWorldPositiveEffects",
+        "TestWorldSwitches",
+        "TestWorldTeleportCallbacks",
+        "TestWorldTeleports",
+        "TestWorldTrapDoors",
+        "TestWorldTriggers",
+        "TestWorldTypeAndClockBoundaries"
+      ],
+      "additional": [
+        "TestTemporaryAcquisition",
+        "TestTemporaryAreaCallbacks",
+        "TestTemporaryAreaOwners",
+        "TestTemporaryBreakStates",
+        "TestTemporaryCollisionAndImpact",
+        "TestTemporaryFrameWrap",
+        "TestTemporaryHoming",
+        "TestTemporaryLifetimeStates",
+        "TestTemporaryMissingAndOwners",
+        "TestTemporaryOwnerEffects",
+        "TestTemporaryPositiveCallbacks",
+        "TestTemporaryRandomStreams",
+        "TestTemporarySparkCreation",
+        "TestTemporarySpawners",
+        "TestTemporaryTickRates",
+        "TestTemporaryTrails",
+        "TestWaypointAppendABI"
+      ],
+      "reused_first_observation": [
+        "TestTemporaryAcquisition",
+        "TestTemporaryAreaCallbacks",
+        "TestTemporaryAreaOwners",
+        "TestTemporaryBreakStates",
+        "TestTemporaryCollisionAndImpact",
+        "TestTemporaryFrameWrap",
+        "TestTemporaryHoming",
+        "TestTemporaryLifetimeStates",
+        "TestTemporaryMissingAndOwners",
+        "TestTemporaryOwnerEffects",
+        "TestTemporaryPositiveCallbacks",
+        "TestTemporaryRandomStreams",
+        "TestTemporarySparkCreation",
+        "TestTemporarySpawners",
+        "TestTemporaryTickRates",
+        "TestTemporaryTrails"
+      ],
+      "new_first_observation": [
+        "TestWaypointAppendABI"
+      ],
+      "binary": {
+        "binary": "/root/src/opennox/build/port-final-callback-exports/contracts-observer/profiles/highres.test",
+        "sha256": "eaaab379bbf577983b8f8c958c7ca34e04100768faf29cdc3655d9192d103296",
+        "tags": "porttest,highres"
+      }
+    }
+  },
+  "runs": [
+    {
+      "name": "original-default-complete",
+      "success": true,
+      "expected": [
+        "TestTemporaryAcquisition",
+        "TestTemporaryAreaCallbacks",
+        "TestTemporaryAreaOwners",
+        "TestTemporaryBreakStates",
+        "TestTemporaryCollisionAndImpact",
+        "TestTemporaryFrameWrap",
+        "TestTemporaryHoming",
+        "TestTemporaryLifetimeStates",
+        "TestTemporaryMissingAndOwners",
+        "TestTemporaryOwnerEffects",
+        "TestTemporaryPositiveCallbacks",
+        "TestTemporaryRandomStreams",
+        "TestTemporarySparkCreation",
+        "TestTemporarySpawners",
+        "TestTemporaryTickRates",
+        "TestTemporaryTrails",
+        "TestWaypointAppendABI"
+      ],
+      "ran": [
+        "TestTemporaryAcquisition",
+        "TestTemporaryAreaCallbacks",
+        "TestTemporaryAreaOwners",
+        "TestTemporaryBreakStates",
+        "TestTemporaryCollisionAndImpact",
+        "TestTemporaryFrameWrap",
+        "TestTemporaryHoming",
+        "TestTemporaryLifetimeStates",
+        "TestTemporaryMissingAndOwners",
+        "TestTemporaryOwnerEffects",
+        "TestTemporaryPositiveCallbacks",
+        "TestTemporaryRandomStreams",
+        "TestTemporarySparkCreation",
+        "TestTemporarySpawners",
+        "TestTemporaryTickRates",
+        "TestTemporaryTrails",
+        "TestWaypointAppendABI"
+      ],
+      "passed": [
+        "TestTemporaryAcquisition",
+        "TestTemporaryAreaCallbacks",
+        "TestTemporaryAreaOwners",
+        "TestTemporaryBreakStates",
+        "TestTemporaryCollisionAndImpact",
+        "TestTemporaryFrameWrap",
+        "TestTemporaryHoming",
+        "TestTemporaryLifetimeStates",
+        "TestTemporaryMissingAndOwners",
+        "TestTemporaryOwnerEffects",
+        "TestTemporaryPositiveCallbacks",
+        "TestTemporaryRandomStreams",
+        "TestTemporarySparkCreation",
+        "TestTemporarySpawners",
+        "TestTemporaryTickRates",
+        "TestTemporaryTrails",
+        "TestWaypointAppendABI"
+      ],
+      "bad_events": [],
+      "exit": 0,
+      "timed_out": false,
+      "log_sha256": "aeeda1b69f9699956dfdc578730ee89c54bcd279e7a424dc116b396d0ea6d3af",
+      "wall_seconds": 8.202905120095238
+    },
+    {
+      "name": "original-server-missing",
+      "success": true,
+      "expected": [
+        "TestWaypointAppendABI"
+      ],
+      "ran": [
+        "TestWaypointAppendABI"
+      ],
+      "passed": [
+        "TestWaypointAppendABI"
+      ],
+      "bad_events": [],
+      "exit": 0,
+      "timed_out": false,
+      "log_sha256": "2ab675b06a6e53303a23ea2a14f999f853e4edbd2846ed2d97fe9cc37b8c0759",
+      "wall_seconds": 2.4972570419777185
+    },
+    {
+      "name": "original-server-complete",
+      "success": true,
+      "expected": [
+        "TestTemporaryAcquisition",
+        "TestTemporaryAreaCallbacks",
+        "TestTemporaryAreaOwners",
+        "TestTemporaryBreakStates",
+        "TestTemporaryCollisionAndImpact",
+        "TestTemporaryFrameWrap",
+        "TestTemporaryHoming",
+        "TestTemporaryLifetimeStates",
+        "TestTemporaryMissingAndOwners",
+        "TestTemporaryOwnerEffects",
+        "TestTemporaryPositiveCallbacks",
+        "TestTemporaryRandomStreams",
+        "TestTemporarySparkCreation",
+        "TestTemporarySpawners",
+        "TestTemporaryTickRates",
+        "TestTemporaryTrails",
+        "TestWaypointAppendABI"
+      ],
+      "ran": [
+        "TestTemporaryAcquisition",
+        "TestTemporaryAreaCallbacks",
+        "TestTemporaryAreaOwners",
+        "TestTemporaryBreakStates",
+        "TestTemporaryCollisionAndImpact",
+        "TestTemporaryFrameWrap",
+        "TestTemporaryHoming",
+        "TestTemporaryLifetimeStates",
+        "TestTemporaryMissingAndOwners",
+        "TestTemporaryOwnerEffects",
+        "TestTemporaryPositiveCallbacks",
+        "TestTemporaryRandomStreams",
+        "TestTemporarySparkCreation",
+        "TestTemporarySpawners",
+        "TestTemporaryTickRates",
+        "TestTemporaryTrails",
+        "TestWaypointAppendABI"
+      ],
+      "passed": [
+        "TestTemporaryAcquisition",
+        "TestTemporaryAreaCallbacks",
+        "TestTemporaryAreaOwners",
+        "TestTemporaryBreakStates",
+        "TestTemporaryCollisionAndImpact",
+        "TestTemporaryFrameWrap",
+        "TestTemporaryHoming",
+        "TestTemporaryLifetimeStates",
+        "TestTemporaryMissingAndOwners",
+        "TestTemporaryOwnerEffects",
+        "TestTemporaryPositiveCallbacks",
+        "TestTemporaryRandomStreams",
+        "TestTemporarySparkCreation",
+        "TestTemporarySpawners",
+        "TestTemporaryTickRates",
+        "TestTemporaryTrails",
+        "TestWaypointAppendABI"
+      ],
+      "bad_events": [],
+      "exit": 0,
+      "timed_out": false,
+      "log_sha256": "9ee72db49651d77144b4466860943b2837ba4d83942347c7181eb7cb03f68ea0",
+      "wall_seconds": 8.432199666975066
+    },
+    {
+      "name": "original-highres-missing",
+      "success": true,
+      "expected": [
+        "TestWaypointAppendABI"
+      ],
+      "ran": [
+        "TestWaypointAppendABI"
+      ],
+      "passed": [
+        "TestWaypointAppendABI"
+      ],
+      "bad_events": [],
+      "exit": 0,
+      "timed_out": false,
+      "log_sha256": "8887ead34923990e6a8e78c4f6aee3971e63e8ccde2db405d8f485d2d79edff1",
+      "wall_seconds": 2.728593269130215
+    },
+    {
+      "name": "original-highres-complete",
+      "success": true,
+      "expected": [
+        "TestTemporaryAcquisition",
+        "TestTemporaryAreaCallbacks",
+        "TestTemporaryAreaOwners",
+        "TestTemporaryBreakStates",
+        "TestTemporaryCollisionAndImpact",
+        "TestTemporaryFrameWrap",
+        "TestTemporaryHoming",
+        "TestTemporaryLifetimeStates",
+        "TestTemporaryMissingAndOwners",
+        "TestTemporaryOwnerEffects",
+        "TestTemporaryPositiveCallbacks",
+        "TestTemporaryRandomStreams",
+        "TestTemporarySparkCreation",
+        "TestTemporarySpawners",
+        "TestTemporaryTickRates",
+        "TestTemporaryTrails",
+        "TestWaypointAppendABI"
+      ],
+      "ran": [
+        "TestTemporaryAcquisition",
+        "TestTemporaryAreaCallbacks",
+        "TestTemporaryAreaOwners",
+        "TestTemporaryBreakStates",
+        "TestTemporaryCollisionAndImpact",
+        "TestTemporaryFrameWrap",
+        "TestTemporaryHoming",
+        "TestTemporaryLifetimeStates",
+        "TestTemporaryMissingAndOwners",
+        "TestTemporaryOwnerEffects",
+        "TestTemporaryPositiveCallbacks",
+        "TestTemporaryRandomStreams",
+        "TestTemporarySparkCreation",
+        "TestTemporarySpawners",
+        "TestTemporaryTickRates",
+        "TestTemporaryTrails",
+        "TestWaypointAppendABI"
+      ],
+      "passed": [
+        "TestTemporaryAcquisition",
+        "TestTemporaryAreaCallbacks",
+        "TestTemporaryAreaOwners",
+        "TestTemporaryBreakStates",
+        "TestTemporaryCollisionAndImpact",
+        "TestTemporaryFrameWrap",
+        "TestTemporaryHoming",
+        "TestTemporaryLifetimeStates",
+        "TestTemporaryMissingAndOwners",
+        "TestTemporaryOwnerEffects",
+        "TestTemporaryPositiveCallbacks",
+        "TestTemporaryRandomStreams",
+        "TestTemporarySparkCreation",
+        "TestTemporarySpawners",
+        "TestTemporaryTickRates",
+        "TestTemporaryTrails",
+        "TestWaypointAppendABI"
+      ],
+      "bad_events": [],
+      "exit": 0,
+      "timed_out": false,
+      "log_sha256": "1d85131a8345cea9752fa2084b765ae924cc45177877e63ff0706fdd3cc06340",
+      "wall_seconds": 8.525665435008705
+    }
+  ],
+  "selection": {
+    "prefixes": [
+      "ai_state",
+      "client_drawable_state",
+      "client_drawable_motion",
+      "client_interaction",
+      "client_object_render",
+      "client_ui_tooltip",
+      "effects_modifiers",
+      "generator_objects",
+      "network_code",
+      "network_extent",
+      "object_state",
+      "protection",
+      "reliable_reports",
+      "server_browser",
+      "team_runtime",
+      "waypoint_helpers",
+      "world_mechanisms",
+      "player_attack",
+      "server_config",
+      "bindings",
+      "gameplay_text",
+      "generator",
+      "update_registry_generator",
+      "effects_",
+      "modifier_",
+      "client_tooltip",
+      "client_inventory_tooltip",
+      "client_inventory_display_tooltip",
+      "temporary_",
+      "waypoint_"
+    ],
+    "fixture_entries": {
+      "src/legacy/ai_state_porttest.go": [],
+      "src/legacy/client_drawable_state_porttest.go": [
+        "PortTestDrawableStream",
+        "PortTestDrawableState",
+        "PortTestDrawableMotion"
+      ],
+      "src/legacy/client_interaction_porttest.go": [
+        "PortTestClientInteractionCall",
+        "PortTestClientInteractionConsole"
+      ],
+      "src/legacy/client_object_render_porttest.go": [
+        "PortTestNewObjectRenderEnvironment",
+        "PortTestObjectRenderGhost",
+        "PortTestObjectRenderShiny",
+        "PortTestObjectRenderClip",
+        "PortTestObjectRenderBeam"
+      ],
+      "src/legacy/network_code_porttest.go": [
+        "PortTestClientCodes",
+        "PortTestNetworkBits"
+      ],
+      "src/legacy/network_extent_porttest.go": [
+        "PortTestNetworkExtent"
+      ],
+      "src/legacy/object_state_porttest.go": [],
+      "src/legacy/protection_bitset_porttest.go": [
+        "PortTestProtectionBit",
+        "PortTestBitset"
+      ],
+      "src/legacy/protection_handles_porttest.go": [
+        "PortTestHandles"
+      ],
+      "src/legacy/protection_set_porttest.go": [
+        "PortTestProtectionSet"
+      ],
+      "src/legacy/reliable_reports_porttest.go": [
+        "PortTestReliableReports",
+        "PortTestReliableReportGlobals",
+        "PortTestReliableReportSnapshot"
+      ],
+      "src/legacy/remaining_exports_porttest.go": [],
+      "src/legacy/waypoint_helpers_porttest.go": [
+        "PortTestWaypointMasks",
+        "PortTestWaypointLinks",
+        "PortTestWaypointAllocations"
+      ],
+      "src/legacy/world_mechanisms_porttest.go": []
+    },
+    "files": {
+      "src/protection_init_porttest_test.go": {
+        "tests": [
+          "TestProtectionInitABI"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/team_runtime_basics_porttest_test.go": {
+        "tests": [
+          "TestTeamRuntimeNameStorage"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/team_runtime_group_balance_porttest_test.go": {
+        "tests": [
+          "TestTeamRuntimeGroupBalance"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/team_runtime_client_join_porttest_test.go": {
+        "tests": [
+          "TestTeamRuntimeClientJoinNotifications"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/server_config_core_porttest_test.go": {
+        "tests": [
+          "TestServerConfigScalarStorage",
+          "TestServerConfigSlotStorage",
+          "TestServerConfigRespawnModes",
+          "TestServerConfigDeadlineWidths"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/protection_porttest_test.go": {
+        "tests": [
+          "TestProtectionABI"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_interaction_icons_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionIndicatorWindows"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/reliable_reports_enqueue_porttest_test.go": {
+        "tests": [
+          "TestReliableReportsEnqueue"
+        ],
+        "fixture_entries": [
+          "PortTestReliableReports"
+        ],
+        "family_match": true
+      },
+      "src/team_runtime_notifications_porttest_test.go": {
+        "tests": [
+          "TestTeamRuntimeJoinNotifications"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/server_browser_clock_porttest_test.go": {
+        "tests": [
+          "TestServerBrowserClockWidths"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/bindings_routing_porttest_test.go": {
+        "tests": [
+          "TestBindingEditorRouting"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/server_config_drawing_porttest_test.go": {
+        "tests": [
+          "TestServerConfigRuleControlDrawing",
+          "TestServerConfigRulePixels",
+          "TestServerConfigRuleEventReturns"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/server_config_rule_porttest_test.go": {
+        "tests": [
+          "TestServerConfigRuleEnumeration"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/game_messages_client_session_ack_porttest_test.go": {
+        "tests": [
+          "TestGameMessageClientSessionAcknowledge"
+        ],
+        "fixture_entries": [
+          "PortTestReliableReports"
+        ],
+        "family_match": false
+      },
+      "src/client_object_render_occlusion_porttest_test.go": {
+        "tests": [
+          "TestClientObjectRenderOcclusion"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/protection_add_porttest_test.go": {
+        "tests": [
+          "TestProtectionAddABI"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_interaction_primitives_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionMouseModes",
+          "TestClientInteractionDrawablePredicates",
+          "TestClientInteractionObserverAndToggle"
+        ],
+        "fixture_entries": [
+          "PortTestClientInteractionCall"
+        ],
+        "family_match": true
+      },
+      "src/waypoint_helpers_porttest_test.go": {
+        "tests": [
+          "TestWaypointMasksABI",
+          "TestWaypointLinksABI",
+          "TestWaypointAllocationABI"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_drawable_stream_porttest_test.go": {
+        "tests": [
+          "TestClientDrawableStreams"
+        ],
+        "fixture_entries": [
+          "PortTestDrawableStream"
+        ],
+        "family_match": false
+      },
+      "src/client_interaction_doll_layer_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionDollLayer"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_interaction_chat_events_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionChatDrawingAndSubmit"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/reliable_reports_resets_porttest_test.go": {
+        "tests": [
+          "TestReliableReportsResets"
+        ],
+        "fixture_entries": [
+          "PortTestReliableReports"
+        ],
+        "family_match": true
+      },
+      "src/server_browser_labels_porttest_test.go": {
+        "tests": [
+          "TestServerBrowserLabelLifetime"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/team_runtime_create_map_porttest_test.go": {
+        "tests": [
+          "TestTeamRuntimeCreateMapTeams"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/protection_random_porttest_test.go": {
+        "tests": [
+          "TestProtectionRandomABI"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/team_runtime_leave_porttest_test.go": {
+        "tests": [
+          "TestTeamRuntimeLeave"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/server_browser_popup_porttest_test.go": {
+        "tests": [
+          "TestServerBrowserProximityPopup"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/network_extent_porttest_test.go": {
+        "tests": [
+          "TestNetworkExtentABI"
+        ],
+        "fixture_entries": [
+          "PortTestNetworkExtent"
+        ],
+        "family_match": true
+      },
+      "src/protection_records_porttest_test.go": {
+        "tests": [
+          "TestProtectionRecordsABI"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_interaction_actions_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionActionMessages"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/world_mechanisms_porttest_test.go": {
+        "tests": [
+          "TestWorldTriggers",
+          "TestWorldDoors",
+          "TestWorldSwitches",
+          "TestWorldElevators",
+          "TestWorldElevatorSound",
+          "TestWorldElevatorMovement",
+          "TestWorldTeleports",
+          "TestWorldTeleportCallbacks",
+          "TestWorldTrapDoors",
+          "TestWorldPhantomAndAngleQueue",
+          "TestWorldForces",
+          "TestWorldPositiveEffects",
+          "TestWorldTypeAndClockBoundaries",
+          "TestWorldOwnerIntegration",
+          "TestWorldFloatFilters"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_object_render_beam_porttest_test.go": {
+        "tests": [
+          "TestClientObjectRenderBeamQueueAndSight",
+          "TestClientObjectRenderBeamRaster"
+        ],
+        "fixture_entries": [
+          "PortTestObjectRenderBeam"
+        ],
+        "family_match": true
+      },
+      "src/server_browser_timers_porttest_test.go": {
+        "tests": [
+          "TestServerBrowserTimers",
+          "TestServerBrowserConstructionNotifications"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/reliable_reports_list_porttest_test.go": {
+        "tests": [
+          "TestReliableReportsAcknowledge",
+          "TestReliableReportsListEdits"
+        ],
+        "fixture_entries": [
+          "PortTestReliableReports"
+        ],
+        "family_match": true
+      },
+      "src/team_runtime_selection_porttest_test.go": {
+        "tests": [
+          "TestTeamRuntimeSelection",
+          "TestTeamRuntimeEmptyFlagMaps"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_interaction_timing_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionClocksAndCursor",
+          "TestClientInteractionModalFrameGate"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/server_config_lifecycle_porttest_test.go": {
+        "tests": [
+          "TestServerConfigRuleMissingResource"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/server_config_refresh_porttest_test.go": {
+        "tests": [
+          "TestServerConfigSettingsRefresh"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/player_attack_porttest_test.go": {
+        "tests": [
+          "TestAttackUnarmedTiming",
+          "TestAttackHitFilters",
+          "TestAttackNearest",
+          "TestAttackEffectDispatch",
+          "TestAttackShots",
+          "TestAttackWeaponTiming",
+          "TestAttackReloads",
+          "TestAttackTrace",
+          "TestAttackWarcry",
+          "TestAttackPositive",
+          "TestAttackNPC",
+          "TestAttackAbilities",
+          "TestAttackShotEffects",
+          "TestAttackShotFailures",
+          "TestAttackChakramDepletion",
+          "TestAttackNPCShots"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_object_render_material_porttest_test.go": {
+        "tests": [
+          "TestClientObjectRenderMaterialsAndCrop"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_interaction_pickup_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionPickupAndSecondary"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_object_render_precision_porttest_test.go": {
+        "tests": [
+          "TestClientObjectRenderFadePrecision"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/team_runtime_lessons_porttest_test.go": {
+        "tests": [
+          "TestTeamRuntimeLessons",
+          "TestTeamRuntimeLessonsDispatch"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/game_messages_client_sentry_porttest_test.go": {
+        "tests": [
+          "TestGameMessageClientSentry"
+        ],
+        "fixture_entries": [
+          "PortTestNewObjectRenderEnvironment",
+          "PortTestObjectRenderBeam"
+        ],
+        "family_match": false
+      },
+      "src/protection_handles_porttest_test.go": {
+        "tests": [
+          "TestProtectionHandlesABI"
+        ],
+        "fixture_entries": [
+          "PortTestHandles"
+        ],
+        "family_match": true
+      },
+      "src/team_runtime_balance_porttest_test.go": {
+        "tests": [
+          "TestTeamRuntimeBalance"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_interaction_escape_middle_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionEscapeMiddleControllers"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/bindings_construction_porttest_test.go": {
+        "tests": [
+          "TestBindingEditorConstruction"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_ui_render_porttest_test.go": {
+        "tests": [
+          "TestClientUIRenderIntersection",
+          "TestClientUIRenderFill",
+          "TestClientUIRenderClipAndBounds",
+          "TestClientUIRenderBorders"
+        ],
+        "fixture_entries": [
+          "PortTestObjectRenderClip"
+        ],
+        "family_match": false
+      },
+      "src/bindings_assignment_porttest_test.go": {
+        "tests": [
+          "TestBindingEditorAssignments"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/network_code_porttest_test.go": {
+        "tests": [
+          "TestNetworkCodeBitsABI",
+          "TestNetworkClientCodeABI"
+        ],
+        "fixture_entries": [
+          "PortTestClientCodes",
+          "PortTestNetworkBits"
+        ],
+        "family_match": true
+      },
+      "src/client_presentation_transient_porttest_test.go": {
+        "tests": [
+          "TestClientPresentationTransientRays"
+        ],
+        "fixture_entries": [
+          "PortTestObjectRenderBeam"
+        ],
+        "family_match": false
+      },
+      "src/client_object_render_porttest_test.go": {
+        "tests": [
+          "TestClientObjectRenderOwner",
+          "TestClientObjectRenderShinyOwner",
+          "TestClientObjectRenderGhostOwner"
+        ],
+        "fixture_entries": [
+          "PortTestNewObjectRenderEnvironment",
+          "PortTestObjectRenderGhost",
+          "PortTestObjectRenderShiny"
+        ],
+        "family_match": true
+      },
+      "src/client_interaction_help_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionHelpDialog"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/protection_rekey_porttest_test.go": {
+        "tests": [
+          "TestProtectionRekeyABI"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_interaction_hover_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionHoverCircleAndGates",
+          "TestClientInteractionHoverEnumeration"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/team_runtime_client_lookup_porttest_test.go": {
+        "tests": [
+          "TestTeamRuntimeClientObjectLookup"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_interaction_console_format_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionConsoleFormatBoundaries"
+        ],
+        "fixture_entries": [
+          "PortTestClientInteractionConsole"
+        ],
+        "family_match": true
+      },
+      "src/server_config_flags_porttest_test.go": {
+        "tests": [
+          "TestServerConfigSubflags"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_interaction_dialog_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionConversation"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/team_runtime_crown_porttest_test.go": {
+        "tests": [
+          "TestTeamRuntimeCrownSetup"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/server_config_rates_porttest_test.go": {
+        "tests": [
+          "TestServerConfigRateNotifications",
+          "TestServerConfigConnectionRates",
+          "TestServerConfigModeLimitsAndTimer",
+          "TestServerConfigSelectedModePredicate",
+          "TestServerConfigTimerNotifications"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/server_browser_advertisement_porttest_test.go": {
+        "tests": [
+          "TestServerBrowserHostDescription"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/protection_insert_porttest_test.go": {
+        "tests": [
+          "TestProtectionInsertABI",
+          "TestProtectionInsertCountBoundary"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_object_render_clip_porttest_test.go": {
+        "tests": [
+          "TestClientObjectRenderClipSaveRestore"
+        ],
+        "fixture_entries": [
+          "PortTestObjectRenderClip"
+        ],
+        "family_match": true
+      },
+      "src/client_interaction_messages_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionCenteredMessageBoundaries",
+          "TestClientInteractionChatMessageBoundaries"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/protection_object_porttest_test.go": {
+        "tests": [
+          "TestProtectionObjectABI"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/team_runtime_padding_porttest_test.go": {
+        "tests": [
+          "TestTeamRuntimeMessagePadding"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_object_render_ghost_porttest_test.go": {
+        "tests": [
+          "TestClientObjectRenderGhostAndFade"
+        ],
+        "fixture_entries": [
+          "PortTestObjectRenderGhost"
+        ],
+        "family_match": true
+      },
+      "src/client_interaction_gameover_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionGameOver"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/server_browser_collection_porttest_test.go": {
+        "tests": [
+          "TestServerBrowserCollection"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/reliable_reports_rate_porttest_test.go": {
+        "tests": [
+          "TestReliableReportsRateAdaptation",
+          "TestReliableReportsPoolPressure",
+          "TestReliableReportsRemovePlayer"
+        ],
+        "fixture_entries": [
+          "PortTestReliableReports"
+        ],
+        "family_match": true
+      },
+      "src/client_interaction_escape_book_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionEscapeBookAddition"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_object_render_shiny_porttest_test.go": {
+        "tests": [
+          "TestClientObjectRenderShinyPeriods"
+        ],
+        "fixture_entries": [
+          "PortTestObjectRenderShiny"
+        ],
+        "family_match": true
+      },
+      "src/client_interaction_doll_composition_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionDollComposition"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_object_render_players_porttest_test.go": {
+        "tests": [
+          "TestClientObjectRenderPlayersAndInvisibility"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/protection_bitset_porttest_test.go": {
+        "tests": [
+          "TestProtectionBitsetABI"
+        ],
+        "fixture_entries": [
+          "PortTestBitset",
+          "PortTestProtectionBit"
+        ],
+        "family_match": true
+      },
+      "src/server_config_strings_porttest_test.go": {
+        "tests": [
+          "TestServerConfigNameStorage",
+          "TestServerConfigPasswordStorage"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/server_browser_connect_action_porttest_test.go": {
+        "tests": [
+          "TestServerBrowserPasswordAction"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/object_state_porttest_test.go": {
+        "tests": [
+          "TestObjectStateSync",
+          "TestObjectStateGeometry",
+          "TestObjectStateAttributes",
+          "TestObjectStateOwnership",
+          "TestObjectStateRecent",
+          "TestObjectStateFreeze",
+          "TestObjectStatePlayers",
+          "TestObjectStateCleanup",
+          "TestObjectStateTeleport",
+          "TestObjectStateLoot",
+          "TestObjectStateDoors",
+          "TestObjectStateCollide",
+          "TestObjectStateIndividualBits",
+          "TestObjectStateDirectionEdges",
+          "TestObjectStateDistanceEdges",
+          "TestObjectStatePositive",
+          "TestObjectStateNil",
+          "TestObjectStateChecksumInputs"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/server_browser_rows_porttest_test.go": {
+        "tests": [
+          "TestServerBrowserLANRows",
+          "TestServerBrowserNameWidth"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/bindings_capture_porttest_test.go": {
+        "tests": [
+          "TestBindingEditorCapture"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/bindings_auxiliary_porttest_test.go": {
+        "tests": [
+          "TestBindingEditorAuxiliaryWindow",
+          "TestBindingEditorCancel"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/team_runtime_reset_capacity_porttest_test.go": {
+        "tests": [
+          "TestTeamRuntimeClearAndReset",
+          "TestTeamRuntimeCapacity",
+          "TestTeamRuntimeClearDetachedMember"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_interaction_escape_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionEscapeOrder",
+          "TestClientInteractionChatEscapeKey"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/server_config_lists_porttest_test.go": {
+        "tests": [
+          "TestServerConfigAdmissionLists",
+          "TestServerConfigAdmissionDurations",
+          "TestServerConfigAdmissionExpiry",
+          "TestServerConfigAdmissionExpiryMixed"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/reliable_reports_delivery_porttest_test.go": {
+        "tests": [
+          "TestReliableReportsDelivery",
+          "TestReliableReportsRetryTiming",
+          "TestReliableReportsSequenceWrap"
+        ],
+        "fixture_entries": [
+          "PortTestReliableReports"
+        ],
+        "family_match": true
+      },
+      "src/protection_float_porttest_test.go": {
+        "tests": [
+          "TestProtectionFloatABI"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/reliable_reports_edges_porttest_test.go": {
+        "tests": [
+          "TestReliableReportsDeliveryCapacity",
+          "TestReliableReportsClientWrapper",
+          "TestReliableReportsDeliveryFlags"
+        ],
+        "fixture_entries": [
+          "PortTestReliableReports"
+        ],
+        "family_match": true
+      },
+      "src/protection_create_porttest_test.go": {
+        "tests": [
+          "TestProtectionCreateABI"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/bindings_prompt_porttest_test.go": {
+        "tests": [
+          "TestBindingEditorPromptText"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/server_browser_geometry_porttest_test.go": {
+        "tests": [
+          "TestServerBrowserModeNames",
+          "TestServerBrowserMapHit",
+          "TestServerBrowserPopupClamp",
+          "TestServerBrowserMapListCount"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/bindings_apply_porttest_test.go": {
+        "tests": [
+          "TestBindingEditorApply"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_drawable_creation_porttest_test.go": {
+        "tests": [
+          "TestClientDrawableStreamCreation"
+        ],
+        "fixture_entries": [
+          "PortTestDrawableStream"
+        ],
+        "family_match": false
+      },
+      "src/client_interaction_message_drawing_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionMessageDrawing"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/reliable_reports_pressure_recipient_porttest_test.go": {
+        "tests": [
+          "TestReliableReportsPressureRecipient",
+          "TestReliableReportsPressureSurvivors"
+        ],
+        "fixture_entries": [
+          "PortTestReliableReports"
+        ],
+        "family_match": true
+      },
+      "src/bindings_filter_porttest_test.go": {
+        "tests": [
+          "TestBindingEditorWheelFilter"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/protection_validate_porttest_test.go": {
+        "tests": [
+          "TestProtectionValidateABI"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/server_browser_text_porttest_test.go": {
+        "tests": [
+          "TestServerBrowserByteText"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_drawable_motion_porttest_test.go": {
+        "tests": [
+          "TestClientDrawableMotion"
+        ],
+        "fixture_entries": [
+          "PortTestDrawableMotion"
+        ],
+        "family_match": true
+      },
+      "src/server_browser_resort_porttest_test.go": {
+        "tests": [
+          "TestServerBrowserResortSelection"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_drawable_state_porttest_test.go": {
+        "tests": [
+          "TestClientDrawableStateAccessors",
+          "TestClientDrawableStreamBoundaries"
+        ],
+        "fixture_entries": [
+          "PortTestDrawableState",
+          "PortTestDrawableStream"
+        ],
+        "family_match": true
+      },
+      "src/client_interaction_chat_lifecycle_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionChatLifecycle"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/team_runtime_map_flags_porttest_test.go": {
+        "tests": [
+          "TestTeamRuntimeMapFlags"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/team_runtime_lookup_porttest_test.go": {
+        "tests": [
+          "TestTeamRuntimeMembershipPredicates",
+          "TestTeamRuntimeLookup"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_interaction_blink_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionConversationBlink"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_interaction_hud_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionHUDVisibility"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/team_runtime_membership_porttest_test.go": {
+        "tests": [
+          "TestTeamRuntimeMembership"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_interaction_text_state_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionTextState"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/server_browser_dialog_porttest_test.go": {
+        "tests": [
+          "TestServerBrowserConnectionDialogs"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/server_browser_details_porttest_test.go": {
+        "tests": [
+          "TestServerBrowserDetails"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/server_browser_state_porttest_test.go": {
+        "tests": [
+          "TestServerBrowserStateWords",
+          "TestServerBrowserSelectedEndpoint",
+          "TestServerBrowserSortButtons",
+          "TestServerBrowserAddressFormatting"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/server_browser_map_porttest_test.go": {
+        "tests": [
+          "TestServerBrowserMapMarkers"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_interaction_doll_assets_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionDollAssets"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/team_runtime_nearest_porttest_test.go": {
+        "tests": [
+          "TestTeamRuntimeNearestFlag"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/game_messages_client_sentry_wide_porttest_test.go": {
+        "tests": [
+          "TestGameMessageClientSentryWideCoordinates"
+        ],
+        "fixture_entries": [
+          "PortTestNewObjectRenderEnvironment"
+        ],
+        "family_match": false
+      },
+      "src/client_ui_render_owner_porttest_test.go": {
+        "tests": [
+          "TestClientUIRenderSeparateClipOwner"
+        ],
+        "fixture_entries": [
+          "PortTestNewObjectRenderEnvironment",
+          "PortTestObjectRenderClip"
+        ],
+        "family_match": false
+      },
+      "src/ai_state_porttest_test.go": {
+        "tests": [
+          "TestAIMonsterStateOriginal",
+          "TestAIMonsterStateContracts"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/server_browser_columns_porttest_test.go": {
+        "tests": [
+          "TestServerBrowserColumnForwarding",
+          "TestServerBrowserInfoPosition"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_interaction_key_vote_porttest_test.go": {
+        "tests": [
+          "TestClientInteractionKeyAndVoteWindows"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/protection_set_porttest_test.go": {
+        "tests": [
+          "TestProtectionSetABI"
+        ],
+        "fixture_entries": [
+          "PortTestProtectionSet"
+        ],
+        "family_match": true
+      },
+      "src/server_config_files_porttest_test.go": {
+        "tests": [
+          "TestServerConfigAdmissionFileRead",
+          "TestServerConfigAdmissionFileWrite",
+          "TestServerConfigAdmissionFileEncoding"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/server_config_rule_actions_porttest_test.go": {
+        "tests": [
+          "TestServerConfigRuleActions"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/protection_remove_porttest_test.go": {
+        "tests": [
+          "TestProtectionRemoveABI"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/gameplay_text_porttest_test.go": {
+        "tests": [
+          "TestGameplayTextClassifier",
+          "TestGameplayTextFormatted",
+          "TestGameplayTextFormats",
+          "TestGameplayTextInformation",
+          "TestGameplayTextInformationAll",
+          "TestGameplayTextPrivate",
+          "TestGameplayTextChat",
+          "TestGameplayTextIterationAndGuards",
+          "TestGameplayTextSparsePlayers",
+          "TestGameplayTextChatCodes",
+          "TestGameplayTextLongChat"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_tooltip_owner_porttest_test.go": {
+        "tests": [],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/modifier_fire_hooks_porttest_test.go": {
+        "tests": [
+          "TestModifierFireHooksRemainLate"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/update_registry_generator_porttest_test.go": {
+        "tests": [
+          "TestUpdateRegistryGeneratorUpdateGates",
+          "TestUpdateRegistryGeneratorUpdateSpawn"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/modifier_update_owner_porttest_test.go": {
+        "tests": [
+          "TestModifierItemUpdateOwner"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/modifier_native_dispatch_porttest_test.go": {
+        "tests": [
+          "TestModifierNativeCallbackForwarding"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/effects_use_porttest_test.go": {
+        "tests": [
+          "TestEffectsFlags",
+          "TestEffectsArithmetic",
+          "TestEffectsGripAndInversion",
+          "TestEffectsReadinessRecharge",
+          "TestEffectsRechargePercent",
+          "TestEffectsProtection",
+          "TestEffectsRegeneration",
+          "TestEffectsReplenishment",
+          "TestEffectsResourceTransfers",
+          "TestEffectsWandAcceptance",
+          "TestEffectsUseDispatch",
+          "TestEffectsStatusAndForce",
+          "TestEffectsProjectiles",
+          "TestEffectsFireWand",
+          "TestEffectsInventoryLookup",
+          "TestEffectsSpeedRounding",
+          "TestEffectsWandClasses",
+          "TestEffectsNullGuards",
+          "TestEffectsFireballWall"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_tooltip_native_porttest_test.go": {
+        "tests": [
+          "TestClientTooltipNativeWrappersContract",
+          "TestClientTooltipNativeCapacityContract"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/modifier_registry_baseline_porttest_test.go": {
+        "tests": [
+          "TestModifierRegistryKeysAndLifetime",
+          "TestModifierParserContracts"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/effects_timing_porttest_test.go": {
+        "tests": [
+          "TestEffectsTimingRegeneration",
+          "TestEffectsTimingReplenishment",
+          "TestEffectsTimingWandAcceptance",
+          "TestEffectsTimingProjectiles",
+          "TestEffectsTimingFireWand",
+          "TestEffectsTimingWandClasses",
+          "TestEffectsTimingFireballWall",
+          "TestEffectsTimingPositiveRegeneration"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_inventory_display_tooltip_porttest_test.go": {
+        "tests": [
+          "TestClientInventoryDisplayItemTooltips"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_tooltip_matrix_porttest_test.go": {
+        "tests": [
+          "TestClientTooltipEquipmentMatrix",
+          "TestClientTooltipBooksMatrix",
+          "TestClientTooltipNamesMatrix",
+          "TestClientTooltipCursorMatrix"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/generator_porttest_test.go": {
+        "tests": [
+          "TestGeneratorTileFixture",
+          "TestGeneratorPlacementSmoke",
+          "TestGeneratorPlacementContracts",
+          "TestGeneratorVacancyContracts",
+          "TestGeneratorUpdateGates",
+          "TestGeneratorObjectsSmoke",
+          "TestGeneratorDeathContracts",
+          "TestGeneratorPickContracts",
+          "TestGeneratorSpawnContracts",
+          "TestGeneratorCopyContracts",
+          "TestGeneratorUpdateSpawn",
+          "TestGeneratorSpawnDefinitionHealth",
+          "TestGeneratorCopyInventory"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_inventory_tooltip_route_porttest_test.go": {
+        "tests": [
+          "TestClientInventoryTooltipWindowRoute"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/modifier_raw_dispatch_porttest_test.go": {
+        "tests": [
+          "TestModifierRawCallbackForwarding"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/client_tooltip_contracts_porttest_test.go": {
+        "tests": [
+          "TestClientTooltipRequestContract",
+          "TestClientTooltipLocalizedOrderContract",
+          "TestClientTooltipBorrowedNameContract",
+          "TestClientTooltipCursorBoundsContract",
+          "TestClientTooltipBookOrderContract",
+          "TestClientTooltipMissingDefinitionContract",
+          "TestClientTooltipLongNameContract"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/temporary_updates_porttest_test.go": {
+        "tests": [
+          "TestTemporaryLifetimeStates",
+          "TestTemporaryBreakStates",
+          "TestTemporarySparkCreation",
+          "TestTemporaryTrails",
+          "TestTemporaryHoming",
+          "TestTemporaryOwnerEffects",
+          "TestTemporarySpawners",
+          "TestTemporaryAreaCallbacks",
+          "TestTemporaryAreaOwners",
+          "TestTemporaryPositiveCallbacks",
+          "TestTemporaryFrameWrap",
+          "TestTemporaryMissingAndOwners",
+          "TestTemporaryRandomStreams",
+          "TestTemporaryAcquisition",
+          "TestTemporaryCollisionAndImpact",
+          "TestTemporaryTickRates"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      },
+      "src/waypoint_append_porttest_test.go": {
+        "tests": [
+          "TestWaypointAppendABI"
+        ],
+        "fixture_entries": [],
+        "family_match": true
+      }
+    },
+    "tests": [
+      "TestAIMonsterStateContracts",
+      "TestAIMonsterStateOriginal",
+      "TestAttackAbilities",
+      "TestAttackChakramDepletion",
+      "TestAttackEffectDispatch",
+      "TestAttackHitFilters",
+      "TestAttackNPC",
+      "TestAttackNPCShots",
+      "TestAttackNearest",
+      "TestAttackPositive",
+      "TestAttackReloads",
+      "TestAttackShotEffects",
+      "TestAttackShotFailures",
+      "TestAttackShots",
+      "TestAttackTrace",
+      "TestAttackUnarmedTiming",
+      "TestAttackWarcry",
+      "TestAttackWeaponTiming",
+      "TestBindingEditorApply",
+      "TestBindingEditorAssignments",
+      "TestBindingEditorAuxiliaryWindow",
+      "TestBindingEditorCancel",
+      "TestBindingEditorCapture",
+      "TestBindingEditorConstruction",
+      "TestBindingEditorPromptText",
+      "TestBindingEditorRouting",
+      "TestBindingEditorWheelFilter",
+      "TestClientDrawableMotion",
+      "TestClientDrawableStateAccessors",
+      "TestClientDrawableStreamBoundaries",
+      "TestClientDrawableStreamCreation",
+      "TestClientDrawableStreams",
+      "TestClientInteractionActionMessages",
+      "TestClientInteractionCenteredMessageBoundaries",
+      "TestClientInteractionChatDrawingAndSubmit",
+      "TestClientInteractionChatEscapeKey",
+      "TestClientInteractionChatLifecycle",
+      "TestClientInteractionChatMessageBoundaries",
+      "TestClientInteractionClocksAndCursor",
+      "TestClientInteractionConsoleFormatBoundaries",
+      "TestClientInteractionConversation",
+      "TestClientInteractionConversationBlink",
+      "TestClientInteractionDollAssets",
+      "TestClientInteractionDollComposition",
+      "TestClientInteractionDollLayer",
+      "TestClientInteractionDrawablePredicates",
+      "TestClientInteractionEscapeBookAddition",
+      "TestClientInteractionEscapeMiddleControllers",
+      "TestClientInteractionEscapeOrder",
+      "TestClientInteractionGameOver",
+      "TestClientInteractionHUDVisibility",
+      "TestClientInteractionHelpDialog",
+      "TestClientInteractionHoverCircleAndGates",
+      "TestClientInteractionHoverEnumeration",
+      "TestClientInteractionIndicatorWindows",
+      "TestClientInteractionKeyAndVoteWindows",
+      "TestClientInteractionMessageDrawing",
+      "TestClientInteractionModalFrameGate",
+      "TestClientInteractionMouseModes",
+      "TestClientInteractionObserverAndToggle",
+      "TestClientInteractionPickupAndSecondary",
+      "TestClientInteractionTextState",
+      "TestClientInventoryDisplayItemTooltips",
+      "TestClientInventoryTooltipWindowRoute",
+      "TestClientObjectRenderBeamQueueAndSight",
+      "TestClientObjectRenderBeamRaster",
+      "TestClientObjectRenderClipSaveRestore",
+      "TestClientObjectRenderFadePrecision",
+      "TestClientObjectRenderGhostAndFade",
+      "TestClientObjectRenderGhostOwner",
+      "TestClientObjectRenderMaterialsAndCrop",
+      "TestClientObjectRenderOcclusion",
+      "TestClientObjectRenderOwner",
+      "TestClientObjectRenderPlayersAndInvisibility",
+      "TestClientObjectRenderShinyOwner",
+      "TestClientObjectRenderShinyPeriods",
+      "TestClientPresentationTransientRays",
+      "TestClientTooltipBookOrderContract",
+      "TestClientTooltipBooksMatrix",
+      "TestClientTooltipBorrowedNameContract",
+      "TestClientTooltipCursorBoundsContract",
+      "TestClientTooltipCursorMatrix",
+      "TestClientTooltipEquipmentMatrix",
+      "TestClientTooltipLocalizedOrderContract",
+      "TestClientTooltipLongNameContract",
+      "TestClientTooltipMissingDefinitionContract",
+      "TestClientTooltipNamesMatrix",
+      "TestClientTooltipNativeCapacityContract",
+      "TestClientTooltipNativeWrappersContract",
+      "TestClientTooltipRequestContract",
+      "TestClientUIRenderBorders",
+      "TestClientUIRenderClipAndBounds",
+      "TestClientUIRenderFill",
+      "TestClientUIRenderIntersection",
+      "TestClientUIRenderSeparateClipOwner",
+      "TestEffectsArithmetic",
+      "TestEffectsFireWand",
+      "TestEffectsFireballWall",
+      "TestEffectsFlags",
+      "TestEffectsGripAndInversion",
+      "TestEffectsInventoryLookup",
+      "TestEffectsNullGuards",
+      "TestEffectsProjectiles",
+      "TestEffectsProtection",
+      "TestEffectsReadinessRecharge",
+      "TestEffectsRechargePercent",
+      "TestEffectsRegeneration",
+      "TestEffectsReplenishment",
+      "TestEffectsResourceTransfers",
+      "TestEffectsSpeedRounding",
+      "TestEffectsStatusAndForce",
+      "TestEffectsTimingFireWand",
+      "TestEffectsTimingFireballWall",
+      "TestEffectsTimingPositiveRegeneration",
+      "TestEffectsTimingProjectiles",
+      "TestEffectsTimingRegeneration",
+      "TestEffectsTimingReplenishment",
+      "TestEffectsTimingWandAcceptance",
+      "TestEffectsTimingWandClasses",
+      "TestEffectsUseDispatch",
+      "TestEffectsWandAcceptance",
+      "TestEffectsWandClasses",
+      "TestGameMessageClientSentry",
+      "TestGameMessageClientSentryWideCoordinates",
+      "TestGameMessageClientSessionAcknowledge",
+      "TestGameplayTextChat",
+      "TestGameplayTextChatCodes",
+      "TestGameplayTextClassifier",
+      "TestGameplayTextFormats",
+      "TestGameplayTextFormatted",
+      "TestGameplayTextInformation",
+      "TestGameplayTextInformationAll",
+      "TestGameplayTextIterationAndGuards",
+      "TestGameplayTextLongChat",
+      "TestGameplayTextPrivate",
+      "TestGameplayTextSparsePlayers",
+      "TestGeneratorCopyContracts",
+      "TestGeneratorCopyInventory",
+      "TestGeneratorDeathContracts",
+      "TestGeneratorObjectsSmoke",
+      "TestGeneratorPickContracts",
+      "TestGeneratorPlacementContracts",
+      "TestGeneratorPlacementSmoke",
+      "TestGeneratorSpawnContracts",
+      "TestGeneratorSpawnDefinitionHealth",
+      "TestGeneratorTileFixture",
+      "TestGeneratorUpdateGates",
+      "TestGeneratorUpdateSpawn",
+      "TestGeneratorVacancyContracts",
+      "TestModifierFireHooksRemainLate",
+      "TestModifierItemUpdateOwner",
+      "TestModifierNativeCallbackForwarding",
+      "TestModifierParserContracts",
+      "TestModifierRawCallbackForwarding",
+      "TestModifierRegistryKeysAndLifetime",
+      "TestNetworkClientCodeABI",
+      "TestNetworkCodeBitsABI",
+      "TestNetworkExtentABI",
+      "TestObjectStateAttributes",
+      "TestObjectStateChecksumInputs",
+      "TestObjectStateCleanup",
+      "TestObjectStateCollide",
+      "TestObjectStateDirectionEdges",
+      "TestObjectStateDistanceEdges",
+      "TestObjectStateDoors",
+      "TestObjectStateFreeze",
+      "TestObjectStateGeometry",
+      "TestObjectStateIndividualBits",
+      "TestObjectStateLoot",
+      "TestObjectStateNil",
+      "TestObjectStateOwnership",
+      "TestObjectStatePlayers",
+      "TestObjectStatePositive",
+      "TestObjectStateRecent",
+      "TestObjectStateSync",
+      "TestObjectStateTeleport",
+      "TestProtectionABI",
+      "TestProtectionAddABI",
+      "TestProtectionBitsetABI",
+      "TestProtectionCreateABI",
+      "TestProtectionFloatABI",
+      "TestProtectionHandlesABI",
+      "TestProtectionInitABI",
+      "TestProtectionInsertABI",
+      "TestProtectionInsertCountBoundary",
+      "TestProtectionObjectABI",
+      "TestProtectionRandomABI",
+      "TestProtectionRecordsABI",
+      "TestProtectionRekeyABI",
+      "TestProtectionRemoveABI",
+      "TestProtectionSetABI",
+      "TestProtectionValidateABI",
+      "TestReliableReportsAcknowledge",
+      "TestReliableReportsClientWrapper",
+      "TestReliableReportsDelivery",
+      "TestReliableReportsDeliveryCapacity",
+      "TestReliableReportsDeliveryFlags",
+      "TestReliableReportsEnqueue",
+      "TestReliableReportsListEdits",
+      "TestReliableReportsPoolPressure",
+      "TestReliableReportsPressureRecipient",
+      "TestReliableReportsPressureSurvivors",
+      "TestReliableReportsRateAdaptation",
+      "TestReliableReportsRemovePlayer",
+      "TestReliableReportsResets",
+      "TestReliableReportsRetryTiming",
+      "TestReliableReportsSequenceWrap",
+      "TestServerBrowserAddressFormatting",
+      "TestServerBrowserByteText",
+      "TestServerBrowserClockWidths",
+      "TestServerBrowserCollection",
+      "TestServerBrowserColumnForwarding",
+      "TestServerBrowserConnectionDialogs",
+      "TestServerBrowserConstructionNotifications",
+      "TestServerBrowserDetails",
+      "TestServerBrowserHostDescription",
+      "TestServerBrowserInfoPosition",
+      "TestServerBrowserLANRows",
+      "TestServerBrowserLabelLifetime",
+      "TestServerBrowserMapHit",
+      "TestServerBrowserMapListCount",
+      "TestServerBrowserMapMarkers",
+      "TestServerBrowserModeNames",
+      "TestServerBrowserNameWidth",
+      "TestServerBrowserPasswordAction",
+      "TestServerBrowserPopupClamp",
+      "TestServerBrowserProximityPopup",
+      "TestServerBrowserResortSelection",
+      "TestServerBrowserSelectedEndpoint",
+      "TestServerBrowserSortButtons",
+      "TestServerBrowserStateWords",
+      "TestServerBrowserTimers",
+      "TestServerConfigAdmissionDurations",
+      "TestServerConfigAdmissionExpiry",
+      "TestServerConfigAdmissionExpiryMixed",
+      "TestServerConfigAdmissionFileEncoding",
+      "TestServerConfigAdmissionFileRead",
+      "TestServerConfigAdmissionFileWrite",
+      "TestServerConfigAdmissionLists",
+      "TestServerConfigConnectionRates",
+      "TestServerConfigDeadlineWidths",
+      "TestServerConfigModeLimitsAndTimer",
+      "TestServerConfigNameStorage",
+      "TestServerConfigPasswordStorage",
+      "TestServerConfigRateNotifications",
+      "TestServerConfigRespawnModes",
+      "TestServerConfigRuleActions",
+      "TestServerConfigRuleControlDrawing",
+      "TestServerConfigRuleEnumeration",
+      "TestServerConfigRuleEventReturns",
+      "TestServerConfigRuleMissingResource",
+      "TestServerConfigRulePixels",
+      "TestServerConfigScalarStorage",
+      "TestServerConfigSelectedModePredicate",
+      "TestServerConfigSettingsRefresh",
+      "TestServerConfigSlotStorage",
+      "TestServerConfigSubflags",
+      "TestServerConfigTimerNotifications",
+      "TestTeamRuntimeBalance",
+      "TestTeamRuntimeCapacity",
+      "TestTeamRuntimeClearAndReset",
+      "TestTeamRuntimeClearDetachedMember",
+      "TestTeamRuntimeClientJoinNotifications",
+      "TestTeamRuntimeClientObjectLookup",
+      "TestTeamRuntimeCreateMapTeams",
+      "TestTeamRuntimeCrownSetup",
+      "TestTeamRuntimeEmptyFlagMaps",
+      "TestTeamRuntimeGroupBalance",
+      "TestTeamRuntimeJoinNotifications",
+      "TestTeamRuntimeLeave",
+      "TestTeamRuntimeLessons",
+      "TestTeamRuntimeLessonsDispatch",
+      "TestTeamRuntimeLookup",
+      "TestTeamRuntimeMapFlags",
+      "TestTeamRuntimeMembership",
+      "TestTeamRuntimeMembershipPredicates",
+      "TestTeamRuntimeMessagePadding",
+      "TestTeamRuntimeNameStorage",
+      "TestTeamRuntimeNearestFlag",
+      "TestTeamRuntimeSelection",
+      "TestTemporaryAcquisition",
+      "TestTemporaryAreaCallbacks",
+      "TestTemporaryAreaOwners",
+      "TestTemporaryBreakStates",
+      "TestTemporaryCollisionAndImpact",
+      "TestTemporaryFrameWrap",
+      "TestTemporaryHoming",
+      "TestTemporaryLifetimeStates",
+      "TestTemporaryMissingAndOwners",
+      "TestTemporaryOwnerEffects",
+      "TestTemporaryPositiveCallbacks",
+      "TestTemporaryRandomStreams",
+      "TestTemporarySparkCreation",
+      "TestTemporarySpawners",
+      "TestTemporaryTickRates",
+      "TestTemporaryTrails",
+      "TestUpdateRegistryGeneratorUpdateGates",
+      "TestUpdateRegistryGeneratorUpdateSpawn",
+      "TestWaypointAllocationABI",
+      "TestWaypointAppendABI",
+      "TestWaypointLinksABI",
+      "TestWaypointMasksABI",
+      "TestWorldDoors",
+      "TestWorldElevatorMovement",
+      "TestWorldElevatorSound",
+      "TestWorldElevators",
+      "TestWorldFloatFilters",
+      "TestWorldForces",
+      "TestWorldOwnerIntegration",
+      "TestWorldPhantomAndAngleQueue",
+      "TestWorldPositiveEffects",
+      "TestWorldSwitches",
+      "TestWorldTeleportCallbacks",
+      "TestWorldTeleports",
+      "TestWorldTrapDoors",
+      "TestWorldTriggers",
+      "TestWorldTypeAndClockBoundaries"
+    ],
+    "transitive_fixture_expansion": {
+      "via": [
+        "src/legacy/remaining_exports_porttest.go"
+      ],
+      "callers": [
+        "src/legacy/temporary_updates_porttest.go",
+        "src/legacy/waypoint_append_porttest.go"
+      ],
+      "added": [
+        "TestTemporaryAcquisition",
+        "TestTemporaryAreaCallbacks",
+        "TestTemporaryAreaOwners",
+        "TestTemporaryBreakStates",
+        "TestTemporaryCollisionAndImpact",
+        "TestTemporaryFrameWrap",
+        "TestTemporaryHoming",
+        "TestTemporaryLifetimeStates",
+        "TestTemporaryMissingAndOwners",
+        "TestTemporaryOwnerEffects",
+        "TestTemporaryPositiveCallbacks",
+        "TestTemporaryRandomStreams",
+        "TestTemporarySparkCreation",
+        "TestTemporarySpawners",
+        "TestTemporaryTickRates",
+        "TestTemporaryTrails",
+        "TestWaypointAppendABI"
+      ]
+    }
+  },
+  "explanation": "Original prebuilt code intentionally differs from converted Go workspace; original binary/source records match committed HEAD and fixture data is unchanged. No builds or capture regeneration. Sequential extra processes keep total active tests <=2 alongside the existing profile controller."
+}
