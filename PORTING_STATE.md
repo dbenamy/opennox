@@ -83,9 +83,14 @@ produced by `tools/porting/cgo_inventory.py`. Three project packages still direc
 use cgo, plus external client bindings. The earlier helper suggestion that go-gl
 was residue remains rejected: `libs/client/seat/opengl` actually imports it.
 
-Next: scope remaining libc/string helpers and their owners, then allocator and
+Current batch: [libc helper boundaries](docs/porting/LIBC_BOUNDARIES.md). Original
+813/811/813-root selections pass twice per profile, plus private contracts twice
+in default/server/highres/safe. Four production C imports are proposed for removal;
+the reviewed draft remains uninstalled until this baseline is committed.
+Next: install and qualify that draft, then continue string/allocator and
 callback-fallback removal. Read-only follow-on notes are in
-`build/port-native-layout-types/next-scope.md`; no following conversion is installed.
+`build/port-native-layout-types/next-scope.md`; current draft and baseline artifacts
+are in `build/port-libc-boundaries/`.
 Existing native numeric/string helpers may be reusable, but preserve allocation
 ownership, null/embedded-NUL behavior, parser edge cases, locale classification,
 legacy IPv4 spellings and floating-point rounding. The root default/highres Go
@@ -128,7 +133,7 @@ do not rerun them or infer deletion safety from age alone.
 | Artifact | Recovery or current location |
 | --- | --- |
 | Native-layout qualification | Current test/safe/production binaries and original baseline binaries remain in `build/port-native-layout-types/`. Final scenario deduplicated 1,654 verified asset copies (559,902,720 allocated bytes); originals, saves/results and `build/baseline/runs/native-layout-types-save/deduplicated-assets.json` retained. All completed installation, qualification and cleanup scripts are consumed. |
-| Scalar qualification | Qualified test/safe/production binaries remain in `build/port-scalar-boundaries/`. Removed 198 inactive Linux 386 Go cache archives after path/stat/hash and host-use checks (4,976,803,840 allocated bytes; cache misses rebuild). Final scenario deduplicated 1,654 verified asset copies (559,841,280 bytes); originals, saves/results and `build/baseline/runs/scalar-boundaries-save/deduplicated-assets.json` retained. Proposed old-binary archival plans were not executed. Cleanup/acceptance scripts consumed. |
+| Scalar qualification | Seven superseded test/safe/production binaries were removed after committed-source, replacement-hash and host-use checks (387,121,152 allocated bytes). Rebuild `1b80dbe1` with retained commands/source maps. Current replacements remain in `build/port-native-layout-types/`; cleanup records: `build/port-libc-boundaries/scalar-cleanup-{approved.json,deleted.jsonl}`. Removed 198 inactive Linux 386 Go cache archives after path/stat/hash and host-use checks (4,976,803,840 allocated bytes; cache misses rebuild). Final scenario deduplicated 1,654 verified asset copies (559,841,280 bytes); originals, saves/results and `build/baseline/runs/scalar-boundaries-save/deduplicated-assets.json` retained. Proposed old-binary archival plans were not executed. Cleanup/acceptance scripts consumed. |
 | Native-integer qualification | Current test/safe/production binaries remain in the batch directory. Removed seven superseded `519ce712` binaries after qualified replacement/source/hash/host-use checks (387,088,384 bytes; rebuild that revision), plus seven obsolete cache archives predating `308da9e7` (340,516,864 bytes). Final scenario deduplicated 1,654 verified asset copies (560,017,408 bytes); original assets and saves/results retained, with restore manifest in `build/baseline/runs/native-integer-types-save/`. Journals: `build/port-native-integer-types/`; cleanup scripts consumed. |
 | Final-callback qualification | Current converted test binaries remain in `contracts-observer/profiles/`; safe and three production binaries remain. Original callback and pre-repair converted test binaries, repaired-fixture original binaries, historical logs and captures are losslessly gzip-archived; restore with `gzip -dk`, restore recorded executable mode, verify SHA-256. Journals and cleanup details are in `build/port-final-callback-exports/` and the qualification report. Preview/final scenarios retain saves/results and per-scenario asset restore manifests. Originals are unchanged. All cleanup scripts are consumed. |
 | Final-callback baseline cleanup | Removed 11 obsolete Linux 386 root/legacy cache archives predating `519ce712` after hash/stat and host-use checks; 497,823,744 allocated bytes reclaimed. Also removed four superseded production/safe binaries (186,937,344 bytes; rebuild `62873a54`) after source, replacement/hash and host-use verification. Current binaries, source and assets remain. Journals: `build/port-final-callback-exports/cache-before-baseline/` and `old-production-cleanup-{approved.json,deleted.jsonl}` in the batch directory; cleanup scripts consumed. |

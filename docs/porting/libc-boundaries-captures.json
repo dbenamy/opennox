@@ -1,0 +1,59 @@
+{
+  "original_production_revision": "6e9681f2",
+  "target": "Linux386/SSE2",
+  "probe_compiler_flags": [
+    "-m32",
+    "-O2",
+    "-fno-builtin"
+  ],
+  "files": {
+    "number-probe.c": {
+      "sha256": "6bc3b48f32c2e6cb7af9c4d9098f135e0ef78276b92ecf39d5c69bd4cf4a089c",
+      "bytes": 9844
+    },
+    "address-stream-probe.c": {
+      "sha256": "69a221137b776b7b1fab467aca2432b711a30bd606a8b9f922885cdb823a1366",
+      "bytes": 403
+    },
+    "number-inputs.json": {
+      "sha256": "5476917a2c0ccbdbea0e8ca7173a5784294465546d3a06b9e0e0d3c4e2b7b0b5",
+      "bytes": 781
+    },
+    "address-matrix-inputs.json": {
+      "sha256": "c883f53cc90cc9189cdb8f9bce09226d5da9fc4c1729069374019f293f607aaa",
+      "bytes": 180010
+    },
+    "numbers-original.txt": {
+      "sha256": "7ed899ea3e7bd86f23ac1f21a83db6be3a6ad62e578e78bff29b29f222692a80",
+      "bytes": 1329
+    },
+    "numbers-original-repeat.txt": {
+      "sha256": "7ed899ea3e7bd86f23ac1f21a83db6be3a6ad62e578e78bff29b29f222692a80",
+      "bytes": 1329
+    },
+    "numbers-native-theme.txt": {
+      "sha256": "7ed899ea3e7bd86f23ac1f21a83db6be3a6ad62e578e78bff29b29f222692a80",
+      "bytes": 1329
+    },
+    "address-matrix-original.txt": {
+      "sha256": "0447c46c488570e8f2c19b2e6efe380b7f816732d967318185b53d59530b92d4",
+      "bytes": 77500
+    },
+    "address-matrix-original-repeat.txt": {
+      "sha256": "0447c46c488570e8f2c19b2e6efe380b7f816732d967318185b53d59530b92d4",
+      "bytes": 77500
+    },
+    "address-matrix-native.txt": {
+      "sha256": "0447c46c488570e8f2c19b2e6efe380b7f816732d967318185b53d59530b92d4",
+      "bytes": 77500
+    },
+    "classifier-ascii-proof.txt": {
+      "sha256": "adcf16cde70fea855a9d2ab13b2a6d77d80b1f8c77784774baca371ba9731b67",
+      "bytes": 65
+    }
+  },
+  "numeric_cases": 58,
+  "address_cases": 5615,
+  "classification_results": 131072,
+  "notes": "Separate original C processes produce identical captures. Uninstalled native probes reproduce them. Actual-owner Go contracts passed on original production source; converted qualification pending."
+}

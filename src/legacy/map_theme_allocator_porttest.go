@@ -126,3 +126,6 @@ func PortTestThemeObserverThreadScope() [4]int {
 	themeObserve(false, 0)
 	return [4]int{before, own, other, int(C.themeTestCurrentThreadState())}
 }
+
+// Exercise the same clock call used by the original theme loader.
+func portTestThemeClock() uint32 { return uint32(C.time(nil)) }
