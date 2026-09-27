@@ -2,8 +2,6 @@ package gui
 
 import (
 	"unsafe"
-
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 )
 
 var animationCallbacksGo = make(map[unsafe.Pointer]func() int)
@@ -19,10 +17,10 @@ func RegisterAnimationCallbackGo(key unsafe.Pointer, fn func() int) {
 	animationCallbacksGo[key] = fn
 }
 
-// CallAnimationCallback preserves the original raw-C fallback, including nil.
+// CallAnimationCallback invokes a registered native animation identity.
 func CallAnimationCallback(key unsafe.Pointer) int {
 	if fn := animationCallbacksGo[key]; fn != nil {
 		return fn()
 	}
-	return ccall.CallIntVoid(key)
+	panic("unregistered animation callback")
 }

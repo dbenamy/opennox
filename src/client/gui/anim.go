@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 )
 
 var (
@@ -209,7 +208,7 @@ func (a *Anim) doIn() {
 		a.SetState(AnimInDone)
 		SetAnimGlobalState(AnimInDone)
 		if a.FncDoneInPtr != nil {
-			ccall.CallVoidVoid(a.FncDoneInPtr)
+			CallAnimationCallback(a.FncDoneInPtr)
 		}
 		FocusMainBg()
 	}

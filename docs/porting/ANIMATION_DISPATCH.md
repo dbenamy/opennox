@@ -1,6 +1,6 @@
 # Native animation dispatch
 
-Status: original baseline accepted; native draft not installed.
+Status: native conversion qualified against original baseline `6a30a30d`.
 
 Route all four animation callback slots through the existing native registry,
 discarding the result for completion slots. Retire CallIntVoid/CallVoidVoid and
@@ -62,7 +62,7 @@ Check both retired dispatcher symbol substrings and both fixture export names ar
 absent where applicable; retained dispatcher bodies and all 25 mappings must match
 baseline source. Metadata discovery is not build evidence.
 
-Expected qualified counts: 5 client / 6 server production cgo files, 15 embedded
+Qualified counts: 5 client / 6 server production cgo files, 15 embedded
 C bodies, zero legacy exports and zero standalone C. Fixture C-import source files
 are 101 at the parent, 102 with the temporary baseline observer, and 100 after
 conversion. Headers remain 157 files / 2,731 lines.
@@ -71,5 +71,19 @@ Primary only; Luna remains quota-unavailable. Artifacts:
 `build/port-animation-dispatch/`. Installation/acceptance scripts are single-use.
 
 All 69 original roots passed without skips in all three profiles; the new
-completion contract passed twice in each of four profiles. Native conversion and
-qualification remain pending. Original static memory checks passed.
+completion contract passed twice in each of four profiles. The matching native selection passed without skips in all three profiles, and
+the completion contract passed twice in each of four profiles. All focused, safe,
+production/ABI, exact known-suite and fresh save/load gates passed. All 1,654
+original asset hashes are unchanged. Both retired dispatchers and fixture exports
+are absent from the applicable binaries. Original static memory checks passed.
+
+Evidence: [qualification](animation-dispatch-qualification.json),
+[inventory](animation-dispatch-inventory-after.json). The collector initially
+rejected a leading blank line on the first retained generated C body; comparing
+trimmed declarations confirmed every retained body is unchanged. No source or
+test change was needed.
+
+After qualification joined, verified and removed 1,654 duplicate scenario assets
+(560,062,464 allocated bytes), preserving originals and recovery metadata. Restore
+before replay with `python3 build/port-artifact-cleanup/restore-recent-scenario.py
+build/baseline/runs/animation-dispatch-save/deduplicated-assets.json`.

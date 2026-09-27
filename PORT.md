@@ -67,6 +67,9 @@ may precede full qualification when their evidence and remaining gates are expli
    can omit typed owners even when its call traversal is correct. The native
    layout audit found 82 additional roots this way, including a real C callback
    boundary that still required explicit C pointer casts.
+   Treat inverse call graphs as audit aids: merged init/local names and unresolved
+   methods can over-select unrelated owners. When narrowing, document actual
+   producers, changed branches, selected owner contracts and coverage limitations.
 2. Build a recoverable original-behavior baseline using real owners and reusable
    fixtures (C captures where the original path still uses C). Cover
    boundaries, return values, mutations, signedness/overflow, layout, serialization,

@@ -5,7 +5,6 @@ package ccall
 /*
 #include <stdint.h>
 
-static void go_call_void_void_func(void (*fnc)(void)) { fnc(); }
 static void go_call_void_uptr3_func(void (*fnc)(uintptr_t, uintptr_t, uintptr_t), uintptr_t a1, uintptr_t a2, uintptr_t a3) { fnc(a1, a2, a3); }
 static void go_call_void_uptr5_func(void (*fnc)(uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t), uintptr_t a1, uintptr_t a2, uintptr_t a3, uintptr_t a4, uintptr_t a5) { fnc(a1, a2, a3, a4, a5); }
 static void go_call_void_ptr_func(void (*fnc)(void*), void* a1) { fnc(a1); }
@@ -14,7 +13,6 @@ static void go_call_void_ptr3_func(void (*fnc)(void*, void*, void*), void* a1, v
 static void go_call_void_ptr5_func(void (*fnc)(void*, void*, void*, void*, void*), void* a1, void* a2, void* a3, void* a4, void* a5) { fnc(a1, a2, a3, a4, a5); }
 static void go_call_void_ptr6_func(void (*fnc)(void*, void*, void*, void*, void*, void*), void* a1, void* a2, void* a3, void* a4, void* a5, void* a6) { fnc(a1, a2, a3, a4, a5, a6); }
 static uintptr_t go_call_uptr_uptr4_func(uintptr_t (*fnc)(uintptr_t, uintptr_t, uintptr_t, uintptr_t), uintptr_t a1, uintptr_t a2, uintptr_t a3, uintptr_t a4) { return fnc(a1, a2, a3, a4); }
-static int go_call_int_void_func(int (*fnc)(void)) { return fnc(); }
 static int go_call_int_uptr_func(int (*fnc)(uintptr_t), uintptr_t a1) { return fnc(a1); }
 static int go_call_int_uptr3_func(int (*fnc)(uintptr_t, uintptr_t, uintptr_t), uintptr_t a1, uintptr_t a2, uintptr_t a3) { return fnc(a1, a2, a3); }
 static int go_call_int_uptr4_func(int (*fnc)(uintptr_t, uintptr_t, uintptr_t, uintptr_t), uintptr_t a1, uintptr_t a2, uintptr_t a3, uintptr_t a4) { return fnc(a1, a2, a3, a4); }
@@ -26,10 +24,6 @@ static int go_call_int_ptr3_func(int (*fnc)(void*, void*, void*), void* a1, void
 */
 import "C"
 import "unsafe"
-
-func CallVoidVoid(fnc unsafe.Pointer) {
-	C.go_call_void_void_func((*[0]byte)(fnc))
-}
 
 func CallVoidUPtr3(fnc unsafe.Pointer, a1 uintptr, a2 uintptr, a3 uintptr) {
 	C.go_call_void_uptr3_func((*[0]byte)(fnc), C.uintptr_t(a1), C.uintptr_t(a2), C.uintptr_t(a3))
@@ -61,10 +55,6 @@ func CallVoidPtr6(fnc unsafe.Pointer, a1 unsafe.Pointer, a2 unsafe.Pointer, a3 u
 
 func CallUPtrUPtr4(fnc unsafe.Pointer, a1 uintptr, a2 uintptr, a3 uintptr, a4 uintptr) uintptr {
 	return uintptr(C.go_call_uptr_uptr4_func((*[0]byte)(fnc), C.uintptr_t(a1), C.uintptr_t(a2), C.uintptr_t(a3), C.uintptr_t(a4)))
-}
-
-func CallIntVoid(fnc unsafe.Pointer) int {
-	return int(C.go_call_int_void_func((*[0]byte)(fnc)))
 }
 
 func CallIntUPtr(fnc unsafe.Pointer, a1 uintptr) int {

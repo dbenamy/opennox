@@ -118,7 +118,6 @@ var retainedCalls = map[string]bool{
 	"CallIntUPtr3":  true,
 	"CallIntUPtr4":  true,
 	"CallIntUPtr5":  true,
-	"CallIntVoid":   true,
 	"CallUPtrUPtr4": true,
 	"CallVoidPtr":   true,
 	"CallVoidPtr2":  true,
@@ -127,7 +126,6 @@ var retainedCalls = map[string]bool{
 	"CallVoidPtr6":  true,
 	"CallVoidUPtr3": true,
 	"CallVoidUPtr5": true,
-	"CallVoidVoid":  true,
 }
 
 func generate(h, g *bytes.Buffer, cname, goname string, ret *Type, args []Type) {

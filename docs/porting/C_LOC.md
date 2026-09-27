@@ -372,6 +372,7 @@ target build selection and linker evidence.
 | Native string boundaries; selected client/server cgo 7/8→6/7; allocator remains centralized cgo, exports 0, embedded bodies 20 | 0 | 0 | 0 | 0 |
 | Native spell scalar helpers / unused spell adapter retired | 0 | 0 | 0 | 0 |
 | Retire fixture-only callback adapters; native radial observation | 0 | 0 | 0 | 0 |
+| Native animation dispatch; embedded bodies 17→15, fixture C imports 101→100 | 0 | 0 | 0 | 0 |
 
 The 33 checksum test-reference lines were retired after differential validation;
 their original source remains recoverable at `66fa7bd4`.

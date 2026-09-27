@@ -2,18 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME3.h"
-
-int nox_porttest_options_done();
-
-
-
-
-
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
@@ -103,11 +91,17 @@ func PortTestOptionsAnimWord() *uint32 {
 }
 
 var portTestOptionsDoneCount int
+var portTestOptionsDoneKey byte
 
-//export nox_porttest_options_done
-func nox_porttest_options_done() C.int { portTestOptionsDoneCount++; return 1 }
+func init() {
+	gui.RegisterAnimationCallbackGo(unsafe.Pointer(&portTestOptionsDoneKey), func() int {
+		portTestOptionsDoneCount++
+		return 1
+	})
+}
+
 func PortTestOptionsDone() (unsafe.Pointer, func() int, func()) {
 	old := portTestOptionsDoneCount
 	portTestOptionsDoneCount = 0
-	return C.nox_porttest_options_done, func() int { return portTestOptionsDoneCount }, func() { portTestOptionsDoneCount = old }
+	return unsafe.Pointer(&portTestOptionsDoneKey), func() int { return portTestOptionsDoneCount }, func() { portTestOptionsDoneCount = old }
 }

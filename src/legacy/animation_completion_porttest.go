@@ -2,24 +2,26 @@
 
 package legacy
 
-/*
-void nox_porttest_animation_complete_in(void);
-*/
-import "C"
-
-import "unsafe"
+import (
+	"github.com/opennox/opennox/v1/client/gui"
+	"unsafe"
+)
 
 var portTestAnimationCompleteIn func()
 
-//export nox_porttest_animation_complete_in
-func nox_porttest_animation_complete_in() {
-	if portTestAnimationCompleteIn != nil {
-		portTestAnimationCompleteIn()
-	}
+var portTestAnimationCompleteInKey byte
+
+func init() {
+	gui.RegisterAnimationCallbackGo(unsafe.Pointer(&portTestAnimationCompleteInKey), func() int {
+		if portTestAnimationCompleteIn != nil {
+			portTestAnimationCompleteIn()
+		}
+		return 0
+	})
 }
 
 func PortTestAnimationCompleteIn(fn func()) (unsafe.Pointer, func()) {
 	old := portTestAnimationCompleteIn
 	portTestAnimationCompleteIn = fn
-	return C.nox_porttest_animation_complete_in, func() { portTestAnimationCompleteIn = old }
+	return unsafe.Pointer(&portTestAnimationCompleteInKey), func() { portTestAnimationCompleteIn = old }
 }

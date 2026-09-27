@@ -3019,3 +3019,14 @@ the 32-row observer limit, but report overflow with a Go panic instead of C.abor
 this is a fixture diagnostic, not changed gameplay failure behavior. Remove the
 two unused signatures from both generated ccall code and its allowlist.
 See [CALLBACK_FIXTURE_RETIREMENT.md](CALLBACK_FIXTURE_RETIREMENT.md).
+
+## Native animation dispatch
+
+Use the native registry for completion as well as signed-result slots. Reject
+unregistered animation keys with an explicit panic after auditing all production
+writers; arbitrary foreign-pointer support has no engine producer here. This is a
+reversible invalid-input diagnostic change, not identical C-crash behavior. Keep
+all 25 mappings and mutable hooks unchanged. Select tests by audited producers and
+changed dispatch branches when conservative graphs conflate init/local names;
+record scope and graph limitations explicitly. See
+[ANIMATION_DISPATCH.md](ANIMATION_DISPATCH.md).
