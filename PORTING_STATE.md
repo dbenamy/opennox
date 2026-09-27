@@ -83,8 +83,12 @@ accepted evidence: its suggestion that go-gl is residue is contradicted by the
 actual dependency graph (`libs/client/seat/opengl` imports it).
 
 Remaining fixture bridges are qualified; baseline commit is `61bca9ef`.
-No next conversion is installed. Next, complete the remaining callback-address
-and generated-dispatch audit. The ten exports span player-file sections, map
+Next chunk: remove 57 unreferenced generated dispatch signatures. Its two-file
+draft is reviewed but not installed; all 19 retained wrappers/C definitions are
+unchanged. Original callback-adapter contracts passed twice/profile; exact-source
+root qualification from `62873a54` is reused. Resume under
+`build/port-unused-dispatch-signatures/` and its tracked baseline/report.
+After this bounded cleanup, continue the remaining callback-address audit. The ten exports span player-file sections, map
 object data, screen particles, menu/tooltips and FlameCleanse. Trace all raw field,
 getter and alias consumers; existing native registries may cover several routes.
 A bounded Go-import/selector scout is at
