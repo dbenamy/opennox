@@ -1,18 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_3.h"
-#include "GAME5.h"
-#include "server__magic__plyrspel.h"
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -100,7 +87,7 @@ func init() {
 	server.RegisterObjectUpdateParse("SkullUpdate", resourceObjectParser("update", "skull"))
 }
 
-func nox_xxx_objectApplyForce_52DF80(vec *C.float, obj *nox_object_t, force C.float) {
+func nox_xxx_objectApplyForce_52DF80(vec *float32, obj *nox_object_t, force float32) {
 	GetServer().ApplyForce(asObjectS(obj), AsPointf(unsafe.Pointer(vec)), float64(force))
 }
 
@@ -109,7 +96,7 @@ func Get_nox_xxx___mkgmtime_538280() unsafe.Pointer {
 }
 
 func Nox_server_doPlayersAutoRespawn_40A5F0() int {
-	return int(C.int(serverConfigRespawnGet()))
+	return int(int32(serverConfigRespawnGet()))
 }
 func Sub_4E4100() uint32 {
 	return uint32(bool2int(questRuntimeRoom()))

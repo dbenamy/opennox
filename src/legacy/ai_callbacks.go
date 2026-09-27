@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4_2.h"
-#include "GAME4_3.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/object"
 	"github.com/opennox/libs/types"
@@ -109,7 +101,7 @@ func monsterPoisonMessage(u, t *server.Object, kind int) {
 	}
 	p, free := alloc.CString(name)
 	defer free()
-	nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(t), (*C.char)(unsafe.Pointer(p)), 0)
+	gameplayTextPrivate(t, p, 0)
 }
 
 // kind follows the shipped strike table. Wasp applies poison before force;
@@ -238,7 +230,7 @@ func monsterDeathExplosion(u *server.Object, big bool) {
 		radius, force, damage, size = 150, 150, 148, 255
 	}
 	spellEffectPushAround(u.PosVec, radius, 10, force, u, nil, 0)
-	nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)(unsafe.Pointer(&u.PosVec)), C.float(radius), 10, int(C.int(damage)), 7, asObjectC(u), nil)
+	mapDamageUnitsAround(u.PosVec, float32(radius), 10, int32(damage), 7, u, nil)
 	visibilityFXSpark(u.PosVec, byte(size))
 	GetServer().S().Audio.EventObj(42, u, 0, 0)
 	GetServer().DelayedDelete(u)

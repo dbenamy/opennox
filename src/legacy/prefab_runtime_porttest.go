@@ -6,8 +6,6 @@ package legacy
 #include <stdint.h>
 #include <stdlib.h>
 #include "GAME1.h"
-extern uint32_t* sub_5044B0(int, float, float);
-extern uint32_t* nox_xxx_unitAddToList_5048A0(int);
 */
 import "C"
 import (
@@ -27,7 +25,7 @@ func PortTestPrefabReadSection(bounds unsafe.Pointer, name string, initial uint3
 }
 
 func PortTestPrefabObjectNode(obj unsafe.Pointer) unsafe.Pointer {
-	return unsafe.Pointer(nox_xxx_unitAddToList_5048A0(C.int(uintptr(obj))))
+	return unsafe.Pointer(nox_xxx_unitAddToList_5048A0(int32(uintptr(obj))))
 }
 
 func PortTestPrefabLoadedWord() *uint32 { return prefabGlobal(prefabLoaded) }

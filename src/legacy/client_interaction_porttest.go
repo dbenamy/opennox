@@ -186,20 +186,20 @@ func PortTestClientInteractionCall(op string, args ...uintptr) uint64 {
 		nox_xxx_clientTrade_42E850((*nox_drawable)(unsafe.Pointer(a[0])))
 		return 0
 	case 3:
-		return uint64(sub_430AA0(C.int(a[0])))
+		return uint64(sub_430AA0(int32(a[0])))
 	case 4:
 		return uint64(nox_client_mousePriKey_430AF0())
 	case 5:
 		return uint64(nox_xxx_cursor_430B00())
 	case 6:
-		nox_client_setMousePos_430B10(C.int(a[0]), C.int(a[1]))
+		nox_client_setMousePos_430B10(int32(a[0]), int32(a[1]))
 		return 0
 	case 7:
 		return uint64(nox_xxx_initTime_435570())
 	case 8:
-		return uint64(bool2int(bool(nox_client_drawable_testBuff_4356C0((*nox_drawable)(unsafe.Pointer(a[0])), C.char(a[1])))))
+		return uint64(bool2int(bool(nox_client_drawable_testBuff_4356C0((*nox_drawable)(unsafe.Pointer(a[0])), int8(a[1])))))
 	case 9:
-		return uint64(uintptr(unsafe.Pointer(sub_435700((*C.ushort)(unsafe.Pointer(a[0])), C.int(a[1])))))
+		return uint64(uintptr(unsafe.Pointer(sub_435700((*uint16)(unsafe.Pointer(a[0])), int32(a[1])))))
 	case 10:
 		return uint64(nox_xxx_cliToggleObsWindow_4357A0())
 	case 11:

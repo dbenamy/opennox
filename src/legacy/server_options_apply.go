@@ -54,7 +54,7 @@ func serverOptionsApply() int8 {
 	mode := binary.LittleEndian.Uint16(current[52:])
 	if mode&0x1000 == 0 {
 		Sub_409FB0_settings(mode, binary.LittleEndian.Uint16(current[54:]))
-		sub_40A040_settings(C.short(mode), C.uchar(current[56]))
+		sub_40A040_settings(int16(mode), uint8(current[56]))
 	}
 	if noxflags.HasGame(128) {
 		noxflags.UnsetGame(49152)
@@ -68,7 +68,7 @@ func serverOptionsApply() int8 {
 	}
 	if different {
 		suffix := alloc.GoString(memmap.PtrUint8(0x587000, 131668))
-		nox_xxx_mapLoad_4D2450((*C.char)(internCStr(selected + suffix)))
+		nox_xxx_mapLoad_4D2450((*int8)(internCStr(selected + suffix)))
 
 		serverConfigSlotSelect(int32(1))
 	} else {

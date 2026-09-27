@@ -7,8 +7,8 @@ superseded status when updating it. The workflow and delegation rules live in
 ## Status: resumed; internal C-glue removal
 
 **Progress: 142,665/142,665 original standalone C lines ported or retired;
-internal glue: 411/463 client cgo files eliminated on net (52 remain;
-server: 410/463 eliminated, 53 remain).**
+internal glue: 428/463 client cgo files eliminated on net (35 remain;
+server: 427/463 eliminated, 36 remain).**
 Selected legacy C export bridges: **1,890/1,890 retired (0 remain)**.
 Embedded production C bodies: **59/79 retired (20 remain)**.
 
@@ -16,29 +16,29 @@ These are selected project files in Linux 386 production profiles, not equal
 units of effort. Three project packages directly use cgo. Production and
 test-reference standalone `.c` files both remain zero.
 
-Latest qualified chunk replaces private C integer types with explicit native Go
-widths and migrates callers. Twenty production and three fixture C imports are
-retired; algorithms, layout, ownership and root assertions remain unchanged.
-The focused selection includes transitive temporary/waypoint fixtures, with
-317/314/317 converted roots passing across default/server/high-resolution.
-See [NATIVE_INTEGER_TYPES.md](docs/porting/NATIVE_INTEGER_TYPES.md).
+Latest qualified chunk replaces private C character, float, boolean and remaining
+integer types with compiler-proven native representations and migrates callers.
+Seventeen production and one fixture C imports are retired. Layout, ownership,
+arithmetic, root assertions and frozen captures remain unchanged.
+Converted contracts pass 968/966/968 exact roots across default/server/highres.
+See [SCALAR_BOUNDARIES.md](docs/porting/SCALAR_BOUNDARIES.md).
 
 Continue chunk-by-chunk with one Luna helper when available, primary review,
 qualification, documentation, commit/push and recorded reversible decisions.
 Stop at the milestone, usage limits or a substantial question.
-Latest qualified artifacts: `build/port-native-integer-types/`.
+Latest qualified artifacts: `build/port-scalar-boundaries/`.
 
 ## What remains
 
-Counts describe the qualified native-integer conversion. Zero `.c` lines is not
-a count of all C dependencies or remaining engineering effort.
+Counts describe the qualified scalar conversion. Zero `.c` lines is not a count
+of all C dependencies or remaining engineering effort.
 
 | Area | Remaining work or dependency |
 | --- | --- |
-| Embedded C callback glue | 20 production function bodies in Go preambles: 19 generated dispatchers (one used only by fixtures) and one specialized spell adapter. All 57 unreferenced generated signatures are retired. |
-| Callback routes | Zero selected legacy C exports remain. Native identities and typed dispatch cover known owners; existing foreign fallbacks still need a complete reachability audit before removal. |
-| Declarations and C types | 157 tracked headers / 2,731 physical lines; client profiles select 52 cgo files and server selects 53 in three project packages (alloc, ccall, legacy). Transitional fixture C types also remain. |
-| Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Ownership/lifetime work remains behind the centralized allocator. |
+| Embedded C callback glue | 20 production bodies: 19 generated dispatchers (one used only by fixtures) and one specialized spell adapter. All 57 unreferenced generated signatures are retired. |
+| Callback routes | Zero selected legacy C exports remain. Native identities and typed dispatch cover known owners; foreign fallbacks still need a complete reachability audit before removal. |
+| Declarations and C types | 157 tracked headers / 2,731 physical lines; client profiles select 35 cgo files and server selects 36 in three project packages (alloc, ccall, legacy). Struct/handle aliases, constants, libc calls and transitional fixture C types remain. |
+| Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Ownership/lifetime work stays behind the centralized allocator. |
 | External libraries | SDL2, OpenGL, OpenAL and similar native dependencies/bindings stay for this phase; their future is a subsequent discussion. |
 | Portability and release validation | Qualified target is Linux 386/SSE2 with cgo. The complete engine is not qualified as cgo-free, 64-bit, native macOS or browser/WebAssembly. Physical display and audible playback remain manual checks. |
 
@@ -48,25 +48,24 @@ remaining embedded callbacks. Test-only C observers still qualify raw boundaries
 
 ## Latest qualification and evidence
 
-- Converted focused suites: 317 default/high-resolution and 314 server roots pass,
-  with exact names and no skips. Every selected original root has two passing
-  observations using exact-source reuse and verified original binaries.
-- The original full default corpus from `7e698a49` has 2,487 passing roots and one
-  established prerequisite skip. It is baseline evidence; this representation-only
-  batch did not rerun the full corpus after conversion.
-- All 37 integer/handle/pointer/message preflight roots and static checks pass.
-  Frozen captures and all root contract assertion files are unchanged.
-- Safe/static and all three production/ABI checks pass; selected C exports remain
-  zero and test helpers are excluded from production.
-- Fresh final headless character creation/save/load/resume passes. The full asset
-  suite matches the exact known failures and package results; all 1,654 original
-  asset hashes remain unchanged. No separate GUI preview was needed.
-- Accepted converted gates share source fingerprints. Four initial fixture type
-  mismatches were corrected before testing; the final caller audit added 17
-  transitive fixture roots, qualified on both original and converted binaries.
+- Converted focused suites: 968 default/high-resolution and 966 server roots pass,
+  with exact names and no skips. Each selected original root has two passing
+  observations using exact-source/binary/environment reuse and complete repeats.
+- Corrected 25-root scalar/pointer/clock/string/prefab preflight and static checks
+  pass. Three missing signed-character-to-byte pointer conversions were caught
+  by the first compile and fixed before any tests ran; no assertions changed.
+- Safe/static and all three production/ABI checks pass. Selected C exports remain
+  zero; test helpers are absent from production; external dependencies unchanged.
+- Fresh headless character creation/save/load/resume passes. The full asset suite
+  matches the exact known failure multiset and package results. All 1,654 original
+  asset hashes remain unchanged.
+- Accepted gates share reviewed source fingerprints. No full converted corpus or
+  separate GUI preview was needed for this representation-only scope. The latest
+  full default corpus remains historical evidence from the final-callback batch,
+  not a claim that all roots were rerun on the current source.
 
-Report: [NATIVE_INTEGER_TYPES.md](docs/porting/NATIVE_INTEGER_TYPES.md).
-Evidence: [qualification](docs/porting/native-integer-types-qualification.json).
+Report: [SCALAR_BOUNDARIES.md](docs/porting/SCALAR_BOUNDARIES.md).
+Evidence: [qualification](docs/porting/scalar-boundaries-qualification.json).
 Earlier fixture repair: [THEME_OBSERVER_SCOPE.md](docs/porting/THEME_OBSERVER_SCOPE.md).
 Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expected-suite.jsonl).
 
@@ -75,60 +74,42 @@ Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expec
 The [immediate goal](PORT.md#goal-and-target) is removal of the engine's internal
 C glue, retaining external native-library bindings and x86/32-bit assumptions.
 Whole-build `CGO_ENABLED=0` is deferred for subsequent discussion.
-Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md) for the dependency
-removal order and completion criteria. Client rendering/audio backend replacement
-is outside this phase.
+Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md) for dependency removal
+order and completion criteria. Metadata discovery is not successful compilation.
+Client rendering/audio backend replacement is outside this phase.
 
-The dependency inventory tool is `tools/porting/cgo_inventory.py`; the current
-qualified inventory is [native-integer-types-inventory-after.json](docs/porting/native-integer-types-inventory-after.json).
-The original phase baseline is under `build/port-cgo-leaves/inventory-before/`.
-The completed leaf cleanup leaves three project packages directly using cgo in
-all profiles, plus OpenGL/SDL2/OpenAL bindings in the clients. Metadata discovery
-is not compilation or qualification. The helper's external-review draft is not
-accepted evidence: its suggestion that go-gl is residue is contradicted by the
-actual dependency graph (`libs/client/seat/opengl` imports it).
+The current dependency inventory is
+[scalar-boundaries-inventory-after.json](docs/porting/scalar-boundaries-inventory-after.json),
+produced by `tools/porting/cgo_inventory.py`. Three project packages still directly
+use cgo, plus external client bindings. The earlier helper suggestion that go-gl
+was residue remains rejected: `libs/client/seat/opengl` actually imports it.
 
-Next: finish the remaining scalar types (character, float, bool and wider integer
-wrappers) and their caller boundaries, preserving qualified widths and actual C
-entry points until their owners are migrated. Then continue layout/libc/allocator
-and callback-fallback work toward the internal-glue milestone. The scalar draft
-is under `build/port-scalar-boundaries/`; original qualification passed on
-unchanged `a7dc3a36` source (968/966/968 roots twice, including verified reuse). See [SCALAR_BOUNDARIES.md](docs/porting/SCALAR_BOUNDARIES.md).
-No next-batch source changes are installed. Disk headroom is restored: 198 inactive Linux 386
-Go cache archives were removed after hash/stat and host-use checks, reclaiming
-4,976,803,840 allocated bytes (about 4.6 GiB). About 5 GiB remains available.
-Source, assets, module downloads and qualified binaries are unchanged; cache
-misses rebuild normally. Journals are in `build/port-scalar-boundaries/`
-(`cache-headroom-*`); its cleanup script is consumed. Proposed executable
-compression plans there were not executed.
+Next: migrate engine struct/handle aliases, vector/list boundaries and constants
+where their actual owners and layouts are established. Then continue libc,
+allocator and callback-fallback removal. Read-only next-scope notes are under
+`build/port-scalar-boundaries/next-audit.md`; no next conversion is installed.
+Object/drawable Go owners append handle fields beyond the C layout. Preserve
+independent legacy-prefix and extension-offset checks, and audit every size-based
+copy/allocation before replacing types. Keep actual C operations until their
+behavior and ownership contracts are qualified.
 
-The last integer batch migrated 20 production cgo files and 34 private C-typed
-functions through 37 files. Its two direct message calls and mouse-mode call use
-the same Go owners with equivalent arguments. The transitive fixture audit must
-follow shared adapters into their callers, not only exported fixture entrypoints.
-A complete preflight and all expanded qualification passed; see the report.
+The scalar selection audit rejected a graph that conflated common method/field
+names with package functions. Follow transitive fixture helpers and include owner
+families explicitly; do not infer completeness from file-local entrypoints.
+The earlier integer review found 17 missed transitive roots, and the final-callback
+review found a mapped-slot consumer missed by symbol-only searches. These checks
+remain part of the workflow. The allocator observer scope defect was independently
+reproduced and repaired; exact causation of an earlier GC stall remains unproven.
 
-The callback batch previously caught a fixed-slot metadata reader missed by
-symbol-only searches. A test observer scope defect was independently reproduced
-and repaired; exact causation of one earlier GC stall remains unproven. The
-repaired fixture has passed subsequent original/converted qualification.
 Luna remains unavailable due to usage limits; resume the one-helper policy when
-available, without substituting another model. Completed scripts are consumed.
+available without substituting another model. Bounded implementation manifests
+remain useful with primary reconstruction, caller/type review and qualification.
+Broad reachability design and final acceptance stay with the primary.
 
-The earlier 25-export object-state proposal under
-`build/port-after-go-only-exports/` was rejected because it omitted fixture C calls.
-The qualified 37-export batch supersedes it with a complete caller/identity audit.
-
-Magic-missile expiry now uses collision result-aware dispatch. Native identity
-keys never enter its raw C fallback; unknown C callbacks retain exact return bits.
-See [collision identity decisions](docs/porting/COLLISION_IDENTITIES.md).
-Other behavior/compatibility findings are recorded in [DECISIONS.md](docs/porting/DECISIONS.md).
-
-Luna's bounded edit manifests remain useful with primary reconstruction and AST
-review. Broad reachability audits needed correction for package scope and C
-preambles; keep algorithm design and acceptance with the primary. The scalar
-draft's C-prefix replacement error was corrected before installation. Preserve
-these explicit checks rather than treating a helper's reconstruction as acceptance.
+Magic-missile expiry uses collision result-aware dispatch; native identity keys
+never enter its raw C fallback. Unknown C callbacks retain their return bits until
+reachability is established. See [DECISIONS.md](docs/porting/DECISIONS.md) for review
+items and [COLLISION_IDENTITIES.md](docs/porting/COLLISION_IDENTITIES.md).
 
 ## Resume and artifact recovery
 
@@ -140,8 +121,8 @@ The current Go toolchain is `/usr/lib/go-1.26/bin`. Follow the
 [build environment instructions](PORT.md#build-and-test-environment), including
 sourcing `build/baseline/env.sh` in every Go shell.
 
-Latest local artifacts are under `build/port-native-integer-types/`:
-`preflight-fixed/`, `contracts/`, `extra-contracts/`, `safe/opennox-safe`, and
+Latest local artifacts are under `build/port-scalar-boundaries/`:
+`preflight-fixed/`, `contracts/profiles/`, `safe/opennox-safe`, and
 `production/production/bin/{opennox,opennox-hd,opennox-server}`.
 Source, tests, reports and qualification metadata are committed; ignored local
 binaries/logs/drafts are not backed up by pushing Git. Completed finalizers are
@@ -154,6 +135,7 @@ do not rerun them or infer deletion safety from age alone.
 
 | Artifact | Recovery or current location |
 | --- | --- |
+| Scalar qualification | Current test/safe/production binaries remain in `build/port-scalar-boundaries/`. Removed 198 inactive Linux 386 Go cache archives after path/stat/hash and host-use checks (4,976,803,840 allocated bytes; cache misses rebuild). Final scenario deduplicated 1,654 verified asset copies (559,841,280 bytes); originals, saves/results and `build/baseline/runs/scalar-boundaries-save/deduplicated-assets.json` retained. Proposed old-binary archival plans were not executed. Cleanup/acceptance scripts consumed. |
 | Native-integer qualification | Current test/safe/production binaries remain in the batch directory. Removed seven superseded `519ce712` binaries after qualified replacement/source/hash/host-use checks (387,088,384 bytes; rebuild that revision), plus seven obsolete cache archives predating `308da9e7` (340,516,864 bytes). Final scenario deduplicated 1,654 verified asset copies (560,017,408 bytes); original assets and saves/results retained, with restore manifest in `build/baseline/runs/native-integer-types-save/`. Journals: `build/port-native-integer-types/`; cleanup scripts consumed. |
 | Final-callback qualification | Current converted test binaries remain in `contracts-observer/profiles/`; safe and three production binaries remain. Original callback and pre-repair converted test binaries, repaired-fixture original binaries, historical logs and captures are losslessly gzip-archived; restore with `gzip -dk`, restore recorded executable mode, verify SHA-256. Journals and cleanup details are in `build/port-final-callback-exports/` and the qualification report. Preview/final scenarios retain saves/results and per-scenario asset restore manifests. Originals are unchanged. All cleanup scripts are consumed. |
 | Final-callback baseline cleanup | Removed 11 obsolete Linux 386 root/legacy cache archives predating `519ce712` after hash/stat and host-use checks; 497,823,744 allocated bytes reclaimed. Also removed four superseded production/safe binaries (186,937,344 bytes; rebuild `62873a54`) after source, replacement/hash and host-use verification. Current binaries, source and assets remain. Journals: `build/port-final-callback-exports/cache-before-baseline/` and `old-production-cleanup-{approved.json,deleted.jsonl}` in the batch directory; cleanup scripts consumed. |

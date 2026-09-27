@@ -1,14 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_2.h"
-#include "GAME4_3.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -47,8 +38,8 @@ func spellEffectBurn(id int32, a, b, c *server.Object, record unsafe.Pointer, le
 	return 1
 }
 func spellEffectFireball(id int32, a, b, c *server.Object, record unsafe.Pointer, level int32) int32 {
-	name := (*C.char)(*memmap.PtrPtr(0x587000, 258864+uintptr(level)*4))
-	u := GetServer().S().NewObjectByTypeID(GoString(name))
+	name := (*int8)(*memmap.PtrPtr(0x587000, 258864+uintptr(level)*4))
+	u := GetServer().S().NewObjectByTypeID(GoStringP(unsafe.Pointer(name)))
 	if u == nil {
 		return 1
 	}

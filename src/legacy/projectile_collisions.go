@@ -1,16 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_2.h"
-#include "GAME4_3.h"
-#include "server__script__script.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/object"
 	"github.com/opennox/libs/types"
@@ -207,7 +196,7 @@ func projectileSpark(u, t *server.Object, n *types.Pointf) {
 			*(*byte)(unsafe.Add(t.CObj(), 541))++
 			*(*uint16)(unsafe.Add(t.CObj(), 542)) = 1000
 			if t.ObjClass&4 != 0 {
-				nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(t), (*C.char)(internCStr("objcoll.c:WebbingSlow")), 0)
+				gameplayTextPrivate(t, (*byte)(unsafe.Pointer(internCStr("objcoll.c:WebbingSlow"))), 0)
 			}
 		}
 	default:
@@ -225,7 +214,7 @@ func projectileWeb(u, t *server.Object) {
 			spellLifeApplyBuff(t, 4, int16(uint16(GetServer().S().TickRate())*4), 3)
 		}
 		if t.ObjClass&4 != 0 {
-			nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(t), (*C.char)(internCStr("objcoll.c:WebbingSlow")), 0)
+			gameplayTextPrivate(t, (*byte)(unsafe.Pointer(internCStr("objcoll.c:WebbingSlow"))), 0)
 		}
 	}
 }

@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"image"
@@ -141,32 +136,32 @@ func nox_xxx_clientCollideOrUse_42E810(dr *nox_drawable) { interactionUse(asDraw
 
 func nox_xxx_clientTrade_42E850(dr *nox_drawable) { interactionTrade(asDrawable(dr)) }
 
-func sub_430AA0(v C.int) C.int { return C.int(interactionMouseMode(int32(v))) }
+func sub_430AA0(v int32) int32 { return int32(interactionMouseMode(int32(v))) }
 
-func nox_client_mousePriKey_430AF0() C.int { return C.int(interactionPrimaryKey) }
+func nox_client_mousePriKey_430AF0() int32 { return int32(interactionPrimaryKey) }
 
-func nox_xxx_cursor_430B00() C.int { return C.int(interactionCursorMode) }
+func nox_xxx_cursor_430B00() int32 { return int32(interactionCursorMode) }
 
-func nox_client_setMousePos_430B10(x, y C.int) {
+func nox_client_setMousePos_430B10(x, y int32) {
 	GetClient().ChangeMousePos(image.Pt(int(x), int(y)), true)
 }
 
-func nox_xxx_initTime_435570() C.longlong { return C.longlong(interactionInitTime()) }
+func nox_xxx_initTime_435570() int64 { return int64(interactionInitTime()) }
 
-func nox_client_drawable_testBuff_4356C0(dr *nox_drawable, bit C.char) C.bool {
-	return C.bool(interactionHasBuff(asDrawable(dr), uint8(bit)))
+func nox_client_drawable_testBuff_4356C0(dr *nox_drawable, bit int8) bool {
+	return bool(interactionHasBuff(asDrawable(dr), uint8(bit)))
 }
 
-func sub_435700(text *C.ushort, v C.int) *C.ushort {
-	return (*C.ushort)(unsafe.Pointer(interactionTextState((*uint16)(unsafe.Pointer(text)), uint32(v))))
+func sub_435700(text *uint16, v int32) *uint16 {
+	return (*uint16)(unsafe.Pointer(interactionTextState((*uint16)(unsafe.Pointer(text)), uint32(v))))
 }
 
-func nox_xxx_cliToggleObsWindow_4357A0() C.int { return C.int(interactionObserverToggle()) }
+func nox_xxx_cliToggleObsWindow_4357A0() int32 { return int32(interactionObserverToggle()) }
 
-func sub_435F60() C.int { return C.int(interactionToggleDrawing()) }
+func sub_435F60() int32 { return int32(interactionToggleDrawing()) }
 
 func sub_437100() { interactionHUDVisibility() }
 
-func nox_xxx_playerAnimCheck_4372B0() C.int { return C.int(interactionPlayerAnimation()) }
+func nox_xxx_playerAnimCheck_4372B0() int32 { return int32(interactionPlayerAnimation()) }
 
-func nox_xxx_clientIsObserver_4372E0() C.int { return C.int(interactionIsObserver()) }
+func nox_xxx_clientIsObserver_4372E0() int32 { return int32(interactionIsObserver()) }

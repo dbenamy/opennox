@@ -1,15 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_2.h"
-#include "GAME2_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4_1.h"
-#include "GAME4_2.h"
-#include "common__strman.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -129,7 +119,7 @@ func mapPopulationFinish(cfg uint32) {
 		file, freeFile := alloc.CString("C:\\NoxPost\\src\\Server\\MapGen\\Generate\\populate.c")
 		defer freeFile()
 		for line := 848; line <= 850; line++ {
-			text := nox_strman_loadString_40F1D0((*int8)(unsafe.Pointer(name)), nil, (*int8)(unsafe.Pointer(file)), int(C.int(line)))
+			text := nox_strman_loadString_40F1D0((*int8)(unsafe.Pointer(name)), nil, (*int8)(unsafe.Pointer(file)), int(int32(line)))
 			textFormatAll(0, (*uint16)(unsafe.Pointer(text)))
 		}
 	}
@@ -146,7 +136,7 @@ func mapPopulationFinish(cfg uint32) {
 					name = "CrystalBlue"
 				}
 				str, free := alloc.CString(name)
-				nox_xxx_tileGetDefByName_51D4D0((*C.char)(unsafe.Pointer(str)))
+				nox_xxx_tileGetDefByName_51D4D0((*int8)(unsafe.Pointer(str)))
 				free()
 				mapPaintRect(mapRoomPointer(cfg), &e.Min, int32(int64((float64(e.Max.X)-float64(e.Min.X)+0.5)*0.030743772)), int32(int64((float64(e.Max.Y)-float64(e.Min.Y)+0.5)*0.030743772)))
 			}

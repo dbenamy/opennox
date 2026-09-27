@@ -1,14 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4_1.h"
-#include "server__object__health.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/strman"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -174,7 +165,7 @@ func resourcePoison(u *server.Object, amount, max int32) bool {
 	return true
 }
 func resourcePriority(u *server.Object, key string) {
-	nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), (*C.char)(internCStr(key)), 0)
+	gameplayTextPrivate(u, (*byte)(unsafe.Pointer(internCStr(key))), 0)
 }
 func resourcePoisonReport(u *server.Object, active bool) {
 	if u.ObjClass&2 == 0 {

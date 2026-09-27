@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME4_1.h"
-*/
-import "C"
-
 import (
 	"unsafe"
 
@@ -71,6 +66,6 @@ func setTileFlag(value int32) bool {
 	return true
 }
 
-func nox_xxx_tileGetDefByName_51D4D0(name *C.char) C.int {
-	return C.int(bool2int(selectTileName((*byte)(unsafe.Pointer(name)))))
+func nox_xxx_tileGetDefByName_51D4D0(name *int8) int32 {
+	return int32(bool2int(selectTileName((*byte)(unsafe.Pointer(name)))))
 }

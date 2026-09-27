@@ -1,39 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_2.h"
-#include "GAME1_1.h"
-#include "GAME1_3.h"
-#include "GAME2.h"
-#include "GAME2_1.h"
-#include "GAME2_2.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME5.h"
-#include "GAME5_2.h"
-#include "client__gui__guiquit.h"
-#include "common__system__team.h"
-#include "server__system__server.h"
-#include "server__script__script.h"
-#include "server__script__activator.h"
-#include "common__magic__speltree.h"
-#include "common__net_list.h"
-#include "common__crypt.h"
-#include "common__log.h"
-
-
-
-void nox_xxx_netlist_4DEB50();
-void nox_xxx_updateUnits_51B100();
-void nox_xxx_gameTick_4D2580_server_D();
-void sub_4139C0();
-int sub_4DCF20();
-
-*/
-import "C"
 import (
 	"image"
 	"unsafe"
@@ -92,7 +58,7 @@ var (
 	GetServer func() Server
 )
 
-func sub_40A040_settings(a1 C.short, a2 C.uchar) {
+func sub_40A040_settings(a1 int16, a2 uint8) {
 	GetServer().Sub40A040settings(int(a1), int(a2))
 }
 
@@ -100,8 +66,8 @@ func sub_40A300() int {
 	return bool2int(GetServer().GetFlag3592())
 }
 
-func nox_xxx_mapLoad_4D2450(a1 *C.char) {
-	GetServer().SwitchMap(GoString(a1))
+func nox_xxx_mapLoad_4D2450(a1 *int8) {
+	GetServer().SwitchMap(GoStringP(unsafe.Pointer(a1)))
 }
 
 func gameFPS() uint32 {
@@ -115,7 +81,7 @@ func Sub_409A70(a1 int) int {
 	return int(sessionModeIndex(int16(a1)))
 }
 func Nox_xxx_netInformTextMsg2_4DA180(a1 int, a2 unsafe.Pointer) {
-	nox_xxx_netInformTextMsg2_4DA180(C.int(a1), (*C.uchar)(a2))
+	gameplayTextInformationAll(int(int32(a1)), a2)
 }
 func Nox_xxx_netReportUnitHeight_4D9020(a1 ntype.PlayerInd, a2 *server.Object) {
 	gameplayReportHeight(int(int32(a1)), a2)
@@ -199,7 +165,7 @@ func Sub_40A770() int {
 	return playerStateCompetitors()
 }
 func Sub_40A6B0() int {
-	return int(C.int(serverConfigRateDirtyGet()))
+	return int(int32(serverConfigRateDirtyGet()))
 }
 func Sub_40A6A0(a1 int) {
 	serverConfigRateDirtySet(int32(a1))

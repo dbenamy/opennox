@@ -92,7 +92,7 @@ func PortTestTileNames(specs []PortTestTileNameSpec) (out []PortTestTileNameResu
 	for _, spec := range specs {
 		input := append(append([]byte(nil), spec.Name...), 0)
 		inputBefore := append([]byte(nil), input...)
-		ret := nox_xxx_tileGetDefByName_51D4D0((*C.char)(unsafe.Pointer(unsafe.SliceData(input))))
+		ret := nox_xxx_tileGetDefByName_51D4D0((*int8)(unsafe.Pointer(unsafe.SliceData(input))))
 		st := portTestTileGet(selected, variation, flag)
 		out = append(out, PortTestTileNameResult{Return: int(ret), Selected: st.selected, Variation: st.variation, Flag: st.flag, Count: *count, TableUnchanged: bytes.Equal(tileBytes(table), before), InputUnchanged: bytes.Equal(input, inputBefore), GuardsOK: st.beforeSelected == 0xa5a5a5a5 && st.afterFlag == 0x5a5a5a5a})
 	}

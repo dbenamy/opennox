@@ -1,8 +1,7 @@
 package legacy
 
-/*
-#include "GAME1_1.h"
-*/
-import "C"
+import "unsafe"
 
-func nox_xxx_plrLoad_41A480(path *C.char) C.int { return C.int(playerFileClientLoad(GoString(path))) }
+func nox_xxx_plrLoad_41A480(path *int8) int32 {
+	return int32(playerFileClientLoad(GoStringP(unsafe.Pointer(path))))
+}

@@ -1,14 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME2.h"
-#include "GAME3.h"
-#include "GAME3_1.h"
-#include "GAME5_2.h"
-#include "client__gui__servopts__guiserv.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/client/noxrender"
@@ -87,7 +78,7 @@ func serverOptionsConstruct() int {
 	data.Field_7 = up.C()
 	data.Field_8 = down.C()
 	w.ChildByID(10160).DrawData().Field0 |= 4
-	initial := serverOptionsRecord(unsafe.Pointer((*C.char)(unsafe.Pointer(serverConfigSlotSelect(int32(0))))))
+	initial := serverOptionsRecord(unsafe.Pointer((*int8)(unsafe.Pointer(serverConfigSlotSelect(int32(0))))))
 	if noxflags.HasGame(1) {
 		Sub_4161E0()
 	}

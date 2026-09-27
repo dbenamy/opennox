@@ -1,18 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "common__random.h"
-#include "GAME1_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_2.h"
-#include "GAME4_3.h"
-#include "server__script__script.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -34,7 +21,7 @@ func damageBall(source, u *server.Object, amount int32) {
 			continue
 		}
 		it.ObjFlags &^= 0x40
-		nox_xxx_objectApplyForce_52DF80((*C.float)(unsafe.Pointer(&u.PosVec)), asObjectC(it), 30)
+		nox_xxx_objectApplyForce_52DF80((*float32)(unsafe.Pointer(&u.PosVec)), asObjectC(it), 30)
 		nox_xxx_unitClearOwner_4EC300(asObjectC(it))
 		objectiveRememberOwner(it, u)
 		ind := *(*byte)(unsafe.Add(source.CObj(), 52))
@@ -181,7 +168,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 		if source != nil && source.ObjClass&2 != 0 && source.UpdateData != nil {
 			set := resourceMonsterSound(source)
 			if set != nil {
-				sound := *(*C.int)(unsafe.Add(set, 32))
+				sound := *(*int32)(unsafe.Add(set, 32))
 				if sound != 0 && nox_xxx_getSevenDwords3_501940(int32(sound)) > 0 {
 					play = false
 				}

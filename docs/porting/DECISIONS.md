@@ -2891,3 +2891,25 @@ converted 317/314/317 roots pass, followed by fresh safe/production/ABI/known-su
 save/load and asset checks. No new width-mirroring test, separate GUI preview or
 full converted sweep is required for this representation-only batch. See
 [NATIVE_INTEGER_TYPES.md](NATIVE_INTEGER_TYPES.md).
+
+
+## Native scalar boundaries
+
+Use compiler-proven native representations for private C character/float/bool and
+integer types, preserving explicit narrowing, pointer identity and float rounding.
+Keep actual libc/string allocation behavior until those owners are migrated.
+Selected message/damage calls use the existing Go owner directly; explicit
+unsafe pointer conversions preserve signed-character string addresses. Three
+omitted conversions were caught by the first compile and fixed before tests ran.
+
+Qualify conservative transitive owner/caller coverage: original roots twice with
+exact-source reuse, converted 968/966/968 roots, representative preflight, and
+fresh safe/production/ABI/known-suite/save-load/asset checks. Keep assertions and
+captures unchanged. Reject method/field-name collisions in reference graphs;
+use owner-family inclusion to cover fixture method paths. See
+[SCALAR_BOUNDARIES.md](SCALAR_BOUNDARIES.md).
+
+Next, audit native struct aliases and constants together. Object and drawable Go
+owners append handle fields beyond their original C layouts: preserve independent
+legacy-prefix/extension checks and audit size-based copies/allocations before
+substitution. The current scalar batch does not change any layout or ownership.

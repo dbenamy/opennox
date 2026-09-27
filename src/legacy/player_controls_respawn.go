@@ -92,7 +92,7 @@ func controlDefaultItems(u *server.Object, refresh, keep int32) int8 {
 		controlRespawnNotify(u, 1)
 		desc := func(id C.int) uint32 { return uint32(uintptr(nox_xxx_modifGetDescById_413330(int32(id)))) }
 		byName := func(name string) uint32 {
-			return desc(C.int(nox_xxx_modifGetIdByName_413290((*C.char)(internCStr(name)))))
+			return desc(C.int(nox_xxx_modifGetIdByName_413290((*int8)(internCStr(name)))))
 		}
 		base := byName("UserColor1")
 		baseID := *equipmentWord(unsafe.Pointer(uintptr(base)), 4)

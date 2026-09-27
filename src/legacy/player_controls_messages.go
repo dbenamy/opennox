@@ -55,7 +55,7 @@ func controlGuideLevel(u, target *server.Object) int32 {
 		return 0
 	}
 	name := nox_xxx_getUnitName_4E39D0((*C.nox_object_t)(target.CObj()))
-	id := bookGuideID(GoString(name))
+	id := bookGuideID(GoStringP(unsafe.Pointer(name)))
 	if id == 0 {
 		return 0
 	}

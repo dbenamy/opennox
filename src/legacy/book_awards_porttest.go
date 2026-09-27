@@ -2,13 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME1_1.h"
-#include "GAME4_3.h"
-#include "server__ability__ability.h"
-#include "server__magic__plyrspel.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
@@ -60,11 +53,11 @@ func PortTestBookAwardCall(name string, args ...uint32) uint32 {
 	case "nox_xxx_abilityNameToN_424D80":
 		return uint32(bookAbilityID(alloc.GoString((*byte)(ptr))))
 	case "nox_xxx_guide_427010":
-		return uint32(nox_xxx_guide_427010((*C.char)(ptr)))
+		return uint32(nox_xxx_guide_427010((*int8)(ptr)))
 	case "nox_xxx_guideNameByN_427230":
 		return uint32(uintptr(unsafe.Pointer(bookGuideName(int32(a[0])))))
 	case "nox_xxx_guiCreatureGetName_427240":
-		return uint32(nox_xxx_guiCreatureGetName_427240(C.int(a[0])))
+		return uint32(nox_xxx_guiCreatureGetName_427240(int32(a[0])))
 	case "nox_xxx_creatureIsCharmableByTT_4272B0":
 		return uint32(bookGuideCharmable(a[0]))
 	case "nox_xxx_guideGetDescById_4272E0":

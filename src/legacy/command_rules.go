@@ -1,10 +1,6 @@
 package legacy
 
-/*
-#include "GAME3_2.h"
-#include "GAME5_2.h"
-*/
-import "C"
+import "unsafe"
 
 import (
 	"bytes"
@@ -22,8 +18,8 @@ import (
 func commandRuleHeader(s string) uint32 {
 	s = ruleCString(s)
 	for i := 0; i < 7; i++ {
-		p := (*C.char)(*memmap.PtrPtr(0x587000, uintptr(312208+8*i)))
-		if p != nil && GoString(p) == s {
+		p := (*int8)(*memmap.PtrPtr(0x587000, uintptr(312208+8*i)))
+		if p != nil && GoStringP(unsafe.Pointer(p)) == s {
 			return *memmap.PtrUint32(0x587000, uintptr(312212+8*i))
 		}
 	}

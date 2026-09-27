@@ -1,14 +1,5 @@
 package legacy
 
-/*
-#include "common/alloc/classes/alloc_class.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4_3.h"
-#include "GAME5.h"
-
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -53,21 +44,21 @@ func nox_xxx_newObjectWithTypeInd_4E3450(ind int) *nox_object_t {
 	return asObjectC(s.NewObjectByTypeInd(ind))
 }
 
-func nox_xxx_getUnitName_4E39D0(cobj *nox_object_t) *C.char {
-	return (*C.char)(internCStr(GetServer().S().Types.ByInd(int(asObjectS(cobj).TypeInd)).ID()))
+func nox_xxx_getUnitName_4E39D0(cobj *nox_object_t) *int8 {
+	return (*int8)(internCStr(GetServer().S().Types.ByInd(int(asObjectS(cobj).TypeInd)).ID()))
 }
 
 func sub_4E3B80(ind int) int { return bool2int(Sub_4E3B80(ind)) }
 
-func nox_xxx_getUnitNameByThingType_4E3A80(ind int) *C.char {
+func nox_xxx_getUnitNameByThingType_4E3A80(ind int) *int8 {
 	if ind == 0 {
 		return nil
 	}
-	return (*C.char)(internCStr(GetServer().S().Types.ByInd(ind).ID()))
+	return (*int8)(internCStr(GetServer().S().Types.ByInd(ind).ID()))
 }
 
-func nox_xxx_newObjectByTypeID_4E3810(cstr *C.char) *nox_object_t {
-	obj := GetServer().S().NewObjectByTypeID(GoString(cstr))
+func nox_xxx_newObjectByTypeID_4E3810(cstr *int8) *nox_object_t {
+	obj := GetServer().S().NewObjectByTypeID(GoStringP(unsafe.Pointer(cstr)))
 	if obj == nil {
 		return nil
 	}
