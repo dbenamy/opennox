@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include <math.h>
-*/
-import "C"
-
-// These observers call the same original libc entrypoints as the placement owners.
-func portTestPlacementSin(x float64) float64 { return float64(C.sin(C.double(x))) }
-func portTestPlacementCos(x float64) float64 { return float64(C.cos(C.double(x))) }
+// These observers call the same native helpers as the placement owners.
+func portTestPlacementSin(x float64) float64 { return placementSin(x) }
+func portTestPlacementCos(x float64) float64 { return placementCos(x) }

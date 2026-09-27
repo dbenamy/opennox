@@ -368,6 +368,7 @@ target build selection and linker evidence.
 | Native scalar owner/caller types; selected client/server cgo 52/53→35/36; exports remain 0, embedded bodies 20, headers 2,731 lines | 0 | 0 | 0 | 0 |
 | Native record/handle/list boundaries; selected client/server cgo 35/36→13/14; exports remain 0, embedded bodies 20, headers 2,731 lines | 0 | 0 | 0 | 0 |
 | Native libc helper boundaries; selected client/server cgo 13/14→9/10; exports remain 0, embedded bodies 20, headers 2,731 lines | 0 | 0 | 0 | 0 |
+| Native placement trigonometry; selected client/server cgo 9/10→7/8; exports remain 0, embedded bodies 20, headers 2,731 lines | 0 | 0 | 0 | 0 |
 
 The 33 checksum test-reference lines were retired after differential validation;
 their original source remains recoverable at `66fa7bd4`.

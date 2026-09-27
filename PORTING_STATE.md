@@ -7,8 +7,8 @@ superseded status when updating it. The workflow and delegation rules live in
 ## Status: resumed; internal C-glue removal
 
 **Progress: 142,665/142,665 original standalone C lines ported or retired;
-internal glue: 454/463 client cgo files eliminated on net (9 remain;
-server: 453/463 eliminated, 10 remain).**
+internal glue: 456/463 client cgo files eliminated on net (7 remain;
+server: 455/463 eliminated, 8 remain).**
 Selected legacy C export bridges: **1,890/1,890 retired (0 remain)**.
 Embedded production C bodies: **59/79 retired (20 remain)**.
 
@@ -16,27 +16,27 @@ These are selected project files in Linux 386 production profiles, not equal
 units of effort. Three project packages directly use cgo. Production and
 test-reference standalone `.c` files both remain zero.
 
-Latest qualified chunk replaces theme numeric/clock calls, entry classification,
-browser address parsing and shop string copying with native Go helpers. Four
-production and two fixture C imports are retired. All 813/811/813 selected roots
-pass in default/server/highres; private boundary contracts pass twice in those
-profiles and safe. See [LIBC_BOUNDARIES.md](docs/porting/LIBC_BOUNDARIES.md).
+Latest qualified chunk replaces generator/inventory placement sin/cos with native
+Go helpers that preserve the original libc rounding for every reachable RNG
+angle. Two production and one fixture C imports are retired. All 992/989/992
+selected roots pass in default/server/highres; private numerical contracts pass
+twice in those profiles and safe. See [PLACEMENT_TRIG.md](docs/porting/PLACEMENT_TRIG.md).
 
 Continue chunk-by-chunk with one Luna helper when available, primary review,
 qualification, documentation, commit/push and recorded reversible decisions.
 Stop at the milestone, usage limits or a substantial question.
-Latest qualified artifacts: `build/port-libc-boundaries/`.
+Latest qualified artifacts: `build/port-placement-trig/`.
 
 ## What remains
 
-Counts describe the qualified libc-helper conversion. Zero `.c` lines is not a
+Counts describe the qualified placement-math conversion. Zero `.c` lines is not a
 count of all C dependencies or remaining engineering effort.
 
 | Area | Remaining work or dependency |
 | --- | --- |
 | Embedded C callback glue | 20 production bodies: 19 generated dispatchers (one used only by fixtures) and one specialized spell adapter. All 57 unreferenced generated signatures are retired. |
 | Callback routes | Zero selected legacy C exports remain. Native identities and typed dispatch cover known owners; foreign fallbacks still need a complete reachability audit before removal. |
-| Declarations and C types | 157 tracked headers / 2,731 physical lines; client profiles select 9 cgo files and server selects 10 in three project packages (alloc, ccall, legacy). Remaining uses include string allocation/types, sin/cos, a reachable abort, callback adapters, compiler flags and transitional fixture types. |
+| Declarations and C types | 157 tracked headers / 2,731 physical lines; client profiles select 7 cgo files and server selects 8 in three project packages (alloc, ccall, legacy). Remaining uses include string allocation/types, a reachable abort, callback adapters, compiler flags and transitional fixture types. |
 | Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Ownership/lifetime work stays behind the centralized allocator. |
 | External libraries | SDL2, OpenGL, OpenAL and similar native dependencies/bindings stay for this phase; their future is a subsequent discussion. |
 | Portability and release validation | Qualified target is Linux 386/SSE2 with cgo. The complete engine is not qualified as cgo-free, 64-bit, native macOS or browser/WebAssembly. Physical display and audible playback remain manual checks. |
@@ -46,26 +46,26 @@ Test-only C observers still qualify raw boundaries.
 
 ## Latest qualification and evidence
 
-- Original baseline `e1926909`: 813 default/high-resolution and 811 server roots
+- Original baseline `9dcf1b9a`: 992 default/high-resolution and 989 server roots
   pass twice per profile, with exact names and no skips. Production source is
-  identical to preceding qualified `6e9681f2`.
-- Independent captures cover 58 exact numeric results, 5,615 address cases with
-  record guards, all 131,072 entry-classification results, and five clock epochs
-  with repeated activation/restoration. Private contracts pass twice in all three
-  profiles plus safe, before and after conversion.
-- Converted 813/811/813-root selections pass with exact original names and no
-  skips. An initial compile caught a missing shop-name pointer cast; corrected
-  preflight/static checks pass. Frozen assertions and captures are unchanged.
-- Safe build/static, all three production builds/ABI, exact known-suite failure
-  and package results, and early/final fresh headless save/load/resume pass.
-  All 1,654 original asset hashes remain unchanged; accepted source hashes match.
+  identical to preceding qualified `79b7e9e3`.
+- Independent libc captures cover all 4,096 RNG starts × 64 placement attempts
+  (524,288 exact sin/cos double results), plus 70 numerical boundaries. The
+  440-entry Go table matches independently decoded upstream bits. Direct Go math
+  changed two ordinary final-coordinate cases, so it was not used for this domain.
+- Converted 992/989/992-root selections pass with exact original names and no
+  skips. Both private contracts pass twice in default/server/highres/safe.
+  Existing assertions and captures remain unchanged.
+- Native preflight/static, safe build/static, all three production builds/ABI,
+  exact known-suite failure/package outcomes and a fresh headless save/load/resume
+  pass. All 1,654 original asset hashes remain unchanged; source hashes match.
 - The last full accumulated default port corpus was at `6e9681f2`: 2,489 passes
-  plus the established opt-in diagnostic skip. This bounded libc batch uses its
-  audited affected selection; the shared allocator/callback implementations did
+  plus the established opt-in diagnostic skip. This bounded placement batch uses
+  its audited affected selection; shared allocator/callback implementations did
   not change.
 
-Report: [LIBC_BOUNDARIES.md](docs/porting/LIBC_BOUNDARIES.md).
-Evidence: [qualification](docs/porting/libc-boundaries-qualification.json).
+Report: [PLACEMENT_TRIG.md](docs/porting/PLACEMENT_TRIG.md).
+Evidence: [qualification](docs/porting/placement-trig-qualification.json).
 Earlier fixture repair: [THEME_OBSERVER_SCOPE.md](docs/porting/THEME_OBSERVER_SCOPE.md).
 Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expected-suite.jsonl).
 
@@ -79,22 +79,23 @@ order and completion criteria. Metadata discovery is not successful compilation.
 Client rendering/audio backend replacement is outside this phase.
 
 The current dependency inventory is
-[libc-boundaries-inventory-after.json](docs/porting/libc-boundaries-inventory-after.json),
+[placement-trig-inventory-after.json](docs/porting/placement-trig-inventory-after.json),
 produced by `tools/porting/cgo_inventory.py`. Three project packages still directly
 use cgo, plus external client bindings. The earlier helper suggestion that go-gl
 was residue remains rejected: `libs/client/seat/opengl` actually imports it.
 
-Current batch: placement sin/cos original baseline accepted (992/989/992 roots
-passed twice, plus two private contracts twice in all four profiles). Production
-remains `79b7e9e3`; reviewed five-file native draft is uninstalled. Standard Go
-math changed two final coordinates in the ordinary probe, so the private Go
-adaptation preserves libc rounding across every reachable RNG angle. See
-[PLACEMENT_TRIG.md](docs/porting/PLACEMENT_TRIG.md) and
-[baseline](docs/porting/placement-trig-baseline.json).
-Next: install the reviewed draft and qualify it, then string allocation/types,
-allocator and callback-fallback removal. CString's normal/raw versus safe/tracked
-ownership and allocation-failure behavior need their own audit. Reachable abort,
-compiler flags and fixture C observers remain later dependency work.
+Next: string allocation/types, then allocator and callback-fallback removal.
+Preliminary read-only audit is in `build/port-string-boundaries/`; no conversion
+or baseline work has started there. Review CString's raw versus safe/tracked
+ownership, allocation-failure behavior and its sole production round-trip caller
+before choosing whether to retain the helper. Include remaining fixture char/wchar
+types in that scope. Reachable abort, compiler flags and other fixture C observers
+remain later dependency work.
+
+Placement helpers retain libc rounding only in the qualified domain; standard Go
+math is the fallback outside the adapted range. Every current caller's argument
+is below magnitude 128; requalify before expanding callers. Upstream notices and
+pinned provenance accompany the Go adaptation. See [DECISIONS.md](docs/porting/DECISIONS.md).
 
 Theme malformed negative-hex zero handling is deliberately local to the theme
 parser; existing resource parsing is unchanged. Browser legacy short/octal/hex
@@ -220,7 +221,7 @@ do not rerun them or infer deletion safety from age alone.
 | Completed creation/init scenario assets | Removed 1,654 SHA256-identical original-asset duplicates after host-use checks; 559,972,352 allocated bytes reclaimed. Originals, saves/results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/create-init-identities-save/deduplicated-assets.json`. Plan/result: `build/port-post-create-init-cleanup/`. |
 | Superseded collision/death qualified binaries | Removed 14 test/safe/production executables after exact committed-source, replacement/hash and host-use checks; 786,751,488 allocated bytes reclaimed. Rebuild qualified revisions `170b594a` and `e7ca9d31` using retained commands. Source, original baseline binaries, logs, manifests and current create/init and damage outputs remain. Plan/journal: `build/port-item-identities/cleanup-production-{approved.json,deleted.jsonl}`. |
 | Obsolete pre-audio project cache | Removed 21 hash/stat-verified root/legacy Linux 386 archives older than original audio baseline `9f6b2b46`, after host-use checks; 1,100,709,888 allocated bytes reclaimed. Newer audio caches, all source/assets/binaries remain. Rebuild normally. Plan/journal: `build/port-after-audio/cache-luna/cache-cleanup-{approved.json,deleted.jsonl}`. |
-| Current qualified production/safe binaries | Retained under `build/port-libc-boundaries/`; historical outputs follow the batch-specific recovery rows. |
+| Current qualified production/safe binaries | Retained under `build/port-placement-trig/`; historical outputs follow the batch-specific recovery rows. |
 | Superseded UI-fixture binaries | Removed seven verified test/safe/production executables after committed audio replacement and host-use checks; 390,643,712 allocated bytes reclaimed. Rebuild revision `3d47a346` using retained commands/source maps. Logs/manifests and current audio replacements remain. Plan/journal: `build/port-audio-stream-callbacks/binary-cleanup-{approved.json,deleted.jsonl}`. |
 | Completed audio-stream scenario assets | Removed 1,654 verified original-asset duplicates; 559,931,392 allocated bytes reclaimed. Originals, saves and results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/audio-stream-callbacks-save/deduplicated-assets.json`. Plan/result: `build/port-post-audio-stream-cleanup/`. |
 | Superseded modifier/server-fixture/duration/update binaries | Removed 28 verified test/safe/production executables after source/replacement hashes and host-use checks; 1,567,293,440 allocated bytes reclaimed. Rebuild qualified revisions `99b65896`, `a798ad1c`, `d5d80c42`, `a8d89bda` using retained commands and source maps. Current UI replacements, old logs/manifests and baseline evidence remain. Journals: `build/port-after-client-ui/binary-cleanup-deleted.jsonl` and `binary-cleanup-addendum-deleted.jsonl`. |
@@ -322,3 +323,15 @@ Evidence: `build/port-placement-trig/old-baselines-{approved.json,deleted.jsonl}
 Four inactive Linux386 Go cache archives were removed after all jobs joined and
 hash/stat/host checks: 130,002,944 bytes. Rebuild normally; evidence:
 `build/port-placement-trig/cache-headroom-{approved.json,deleted.jsonl,result.json}`.
+
+Fifteen older collision/death/create-init/damage/item original-baseline executables
+were removed after committed-source, replacement hashes and host-use checks:
+1,013,202,944 allocated bytes. Rebuild `3ad2c7d5`, `0f5e68ea`, `f951e4a2`,
+`555c7d1a` and `e546fed3` with retained commands/source maps. Logs/captures remain;
+evidence: `build/port-placement-trig/historical-baselines-{approved.json,deleted.jsonl}`.
+
+The completed placement scenario's 1,654 verified duplicate assets were removed,
+reclaiming 559,898,624 allocated bytes. Original assets, saves/results and restore
+manifest remain. Restore with
+`python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/placement-trig-save/deduplicated-assets.json`.
+Evidence: `build/port-placement-trig/final-cleanup/`.

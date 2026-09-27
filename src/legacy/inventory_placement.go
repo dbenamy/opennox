@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include <math.h>
-#include "GAME3_2.h"
-#include "GAME4_1.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -34,7 +28,7 @@ func inventoryRandomPlacement(radius float32, origin, pos *types.Pointf) {
 	for i := 0; i < 64; i++ {
 		next := float64(angle) + 1.8849558
 		angle = float32(next)
-		target := types.Pointf{X: float32(float64(C.cos(C.double(next)))*float64(radius) + float64(origin.X)), Y: float32(float64(C.sin(C.double(angle)))*float64(radius) + float64(origin.Y))}
+		target := types.Pointf{X: float32(placementCos(next)*float64(radius) + float64(origin.X)), Y: float32(placementSin(float64(angle))*float64(radius) + float64(origin.Y))}
 		if GetServer().S().MapTraceRayAt(*origin, target, nil, nil, 1) {
 			*pos = target
 			return

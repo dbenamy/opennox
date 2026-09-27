@@ -2961,3 +2961,23 @@ All three affected profile selections, private default/server/highres/safe
 contracts, safe/static, production/ABI/known-suite and early/final save-load pass.
 See [LIBC_BOUNDARIES.md](LIBC_BOUNDARIES.md). Luna remained quota-limited; the
 primary handled this bounded batch without substituting a model.
+
+## Placement trigonometry compatibility
+
+Use a private Go adaptation of the IBM/glibc small-argument math kernel for the
+remaining generator and inventory placement calls. Direct standard Go sin/cos
+changed two final float32 coordinates in 16,777,216 ordinary probe cases and more
+under cancellation. Keep the original double cos input, stored-float sin input,
+radius updates and RNG consumption; do not weaken goldens to accept the mismatch.
+
+All 4,096 RNG starts across 64 attempts match the original libc double bits,
+repeated in separate processes; 70 numerical boundary cases and all 440 table
+entries are independently frozen/checked. Preserve upstream attribution and
+LGPL-2.1-or-later notices. The snapshot is pinned; observed compatibility is with
+the installed qualified 386 libc, not a claim about every libm version or target.
+
+The reachable arguments are below magnitude 128. Standard Go math is only the
+fallback beyond the adapted reduction range; do not expand these private helpers'
+callers without requalifying the domain. External SDL/OpenGL/OpenAL and shared
+allocation/callback routes are unchanged. Detailed qualification status and
+provenance: [PLACEMENT_TRIG.md](PLACEMENT_TRIG.md).

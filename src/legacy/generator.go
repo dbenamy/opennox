@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include <math.h>
-#include "GAME1.h"
-#include "GAME3_3.h"
-#include "GAME4_1.h"
-#include "GAME5.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -39,7 +31,7 @@ func generatorRadial(radius float32, origin types.Pointf, out *types.Pointf, des
 		// C keeps the double sum for cos, but passes the stored float to sin.
 		next := float64(angle) + 1.8849558
 		angle = float32(next)
-		p := types.Pointf{X: float32(float64(C.cos(C.double(next)))*float64(radius) + float64(origin.X)), Y: float32(float64(C.sin(C.double(angle)))*float64(radius) + float64(origin.Y))}
+		p := types.Pointf{X: float32(placementCos(next)*float64(radius) + float64(origin.X)), Y: float32(placementSin(float64(angle))*float64(radius) + float64(origin.Y))}
 		if core.MapTraceRay(origin, p, flags) && generatorOccupied(p) == 0 && !worldTileWater(p) {
 			*out = p
 			return 1
