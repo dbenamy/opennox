@@ -91,9 +91,16 @@ actual dependency graph (`libs/client/seat/opengl` imports it).
 Next: finish the remaining scalar types (character, float, bool and wider integer
 wrappers) and their caller boundaries, preserving qualified widths and actual C
 entry points until their owners are migrated. Then continue layout/libc/allocator
-and callback-fallback work toward the internal-glue milestone. No next-batch
-source changes are installed. Make more disk headroom before the next builds;
-older inactive executables can be losslessly archived after host-use checks.
+and callback-fallback work toward the internal-glue milestone. The scalar draft
+is under `build/port-scalar-boundaries/`; original qualification passed on
+unchanged `a7dc3a36` source (968/966/968 roots twice, including verified reuse). See [SCALAR_BOUNDARIES.md](docs/porting/SCALAR_BOUNDARIES.md).
+No next-batch source changes are installed. Disk headroom is restored: 198 inactive Linux 386
+Go cache archives were removed after hash/stat and host-use checks, reclaiming
+4,976,803,840 allocated bytes (about 4.6 GiB). About 5 GiB remains available.
+Source, assets, module downloads and qualified binaries are unchanged; cache
+misses rebuild normally. Journals are in `build/port-scalar-boundaries/`
+(`cache-headroom-*`); its cleanup script is consumed. Proposed executable
+compression plans there were not executed.
 
 The last integer batch migrated 20 production cgo files and 34 private C-typed
 functions through 37 files. Its two direct message calls and mouse-mode call use
