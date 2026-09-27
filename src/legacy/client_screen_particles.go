@@ -1,17 +1,8 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "client__draw__partscrn.h"
-
-
-
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/noxrender"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"image"
 	"unsafe"
 )
@@ -65,7 +56,7 @@ func screenParticleCreate(kind, x, y, vx, vy, gravity int, size, timer, phase, m
 	// Tail reuse preserves unused bytes; only the low byte of Field_32 is assigned.
 	p.Field_24, p.Field_28 = uint32(x)<<16, uint32(y)<<16
 	p.Field_40 = [4]byte{size, timer, phase, timer}
-	p.Draw_fnc = C.nox_client_screenParticleDraw_489700
+	p.Draw_fnc = screenParticleCallbackKey()
 	p.Field_16, p.Field_20, p.Field_36 = uint32(vx)<<16, uint32(vy)<<16, uint32(gravity)<<16
 	p.Field_32 = p.Field_32&0xffffff00 | uint32(mode)
 	p.Field_4, p.Field_8, p.Field_12 = uint32(kind), glow, core
@@ -122,7 +113,7 @@ func screenParticlesDraw(vp *noxrender.Viewport) {
 		GetClient().Cli().GUI.ValYYY = 1
 		// The callback can delete, recycle, or create nodes, including the current one.
 		next := p.Field_44
-		ccall.CallIntPtr2(p.Draw_fnc, vp.C(), unsafe.Pointer(p))
+		callScreenParticleDraw(p.Draw_fnc, vp, p)
 		p = next
 	}
 }

@@ -1,21 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_2.h"
-#include "GAME1_3.h"
-#include "GAME2.h"
-#include "GAME2_1.h"
-#include "GAME3.h"
-#include "GAME3_2.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME5_2.h"
-#include "client__shell__noxworld.h"
-#include "client__shell__selchar.h"
-#include "client__shell__mainmenu.h"
-
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"unsafe"
@@ -34,8 +18,16 @@ var (
 	Sub_4A18E0                   func(a1 *gui.Window, a2, a3, a4 int) int
 )
 
-//export sub_4A18E0
-func sub_4A18E0(a1 unsafe.Pointer, a2, a3, a4 int) int { return Sub_4A18E0(AsWindowP(a1), a2, a3, a4) }
+// MainMenuEvent preserves the C adapter's event decoding and mutable-hook order.
+func MainMenuEvent(w *gui.Window, e gui.WindowEvent) gui.WindowEventResp {
+	code := e.EventCode()
+	a, b := e.EventArgsC()
+	ret := Sub_4A18E0(w, code, int(a), int(b))
+	if ret == 0 {
+		return nil
+	}
+	return gui.RawEventResp(ret)
+}
 func nox_client_drawGeneralCallback_4A2200() int {
 	if err := GetClient().DrawGeneral(false); err != nil {
 		guiLog.Println(err)

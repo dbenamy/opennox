@@ -151,7 +151,7 @@ func spellEffectCleansingFlame(id int32, a, b, c *server.Object, record unsafe.P
 			u.VelVec = types.Ptf(dir.X*4, dir.Y*4)
 			u.Field34 = s.Frame() + uint32(s.Rand.Logic.IntClamp(int(3*s.TickRate()), int(6*s.TickRate())))
 			*(*types.Pointf)(unsafe.Add(u.CObj(), 156)) = c.PosVec
-			u.Update = C.nox_xxx_updateFlameCleanse_53D510
+			u.Update = flameCleanseCallbackKey()
 			s.Objs.AddToUpdatable(u)
 			u.ObjClass |= 0x40000000
 			*temporaryFloat(u.CObj(), 112) = 0

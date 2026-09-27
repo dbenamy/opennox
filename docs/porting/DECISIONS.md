@@ -2850,3 +2850,25 @@ full-default plus focused profile regressions and production gates after convers
 Skip the separate GUI preview for this deletion-only batch; retain fresh final
 save/load, known-suite and asset checks. Primary completed it while Luna remained
 quota-limited. See [UNUSED_DISPATCH_SIGNATURES.md](UNUSED_DISPATCH_SIGNATURES.md).
+
+
+## Final callback exports and allocator fixture scope
+
+Use stable native identities for mutable player-file and particle callback fields,
+existing registries for tooltips/updates, and typed functions for the single-owner
+menu/map routes. Preserve both foreign player-file ABIs: pointer-nil for framing,
+uintptr-zero for the fixed-slot metadata reader. Offset tracing is required in
+addition to symbol searches; existing character enumeration contracts caught the
+initial missed reader. No frozen expectation changed.
+
+Scope test-only allocation observers to the pinned fixture thread. A foreign-thread
+probe independently reproduced the old global scope; original callback code with
+the repair passed twice/profile before fresh conversion qualification. Exact
+causation of the earlier GC stall remains unproven. Keep production allocator and
+external libraries unchanged. See [FINAL_CALLBACK_EXPORTS.md](FINAL_CALLBACK_EXPORTS.md)
+and [THEME_OBSERVER_SCOPE.md](THEME_OBSERVER_SCOPE.md).
+
+Flush test-driver root lifecycle events for timely monitoring; buffering briefly
+looked like a stalled test. No diagnostic signal was sent, and test execution,
+selection and acceptance are unchanged. Continue with native scalar/caller types;
+zero selected C exports does not complete the internal-glue milestone.

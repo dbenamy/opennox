@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include "defs.h"
-int sub_479D00();
 */
 import "C"
 
@@ -37,7 +36,7 @@ func interactionConversationOpen() int {
 	}
 	w.SetFunc93(interactionConversationInput)
 	w.SetDraw(interactionConversationDraw)
-	w.SetTooltipFunc(unsafe.Pointer(C.sub_479D00))
+	w.SetTooltipFunc(finalTooltipKey(tooltipConversation))
 	slider, up, down, list := w.ChildByID(3904), w.ChildByID(3903), w.ChildByID(3902), w.ChildByID(3901)
 	hilite := Nox_xxx_gLoadImg("UISliderLit")
 	selected := Nox_xxx_gLoadImg("UISliderLit")
@@ -122,9 +121,6 @@ func sub_479C40(w *C.uint32_t, d C.int) C.int {
 func sub_479CB0(w, d C.int) C.int {
 	return C.int(interactionConversationDraw((*gui.Window)(unsafe.Pointer(uintptr(uint32(w)))), (*gui.WindowData)(unsafe.Pointer(uintptr(uint32(d))))))
 }
-
-//export sub_479D00
-func sub_479D00() C.int { return 1 }
 
 func sub_479D10() C.int { return C.int(interactionConversationDestroy()) }
 

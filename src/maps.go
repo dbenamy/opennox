@@ -27,7 +27,6 @@ import (
 	"github.com/opennox/opennox/v1/legacy"
 	"github.com/opennox/opennox/v1/legacy/cnxz"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -264,7 +263,7 @@ func nox_xxx_mapWriteSectionsMB_426E20(a1 unsafe.Pointer) int {
 	return 1
 }
 
-func nox_xxx_mapReadSectionSpecial_426F40(a1 unsafe.Pointer, name string, fnc unsafe.Pointer) error {
+func nox_xxx_mapReadSectionSpecial_426F40(a1 unsafe.Pointer, name string, fnc func(unsafe.Pointer) int) error {
 	if fnc == nil {
 		return errors.New("empty map section function")
 	}
@@ -273,7 +272,7 @@ func nox_xxx_mapReadSectionSpecial_426F40(a1 unsafe.Pointer, name string, fnc un
 		mapLog.Printf("unsupported map section: %q", name)
 		return nil // TODO: why is returns true here?
 	}
-	if ccall.CallIntPtr(fnc, a1) == 0 {
+	if fnc(a1) == 0 {
 		return fmt.Errorf("cannot parse map section: %q", name)
 	}
 	return nil
@@ -304,7 +303,7 @@ func nox_xxx_mapCliReadAllA(path string) error {
 		sz, _ := cf.ReadAlignedU32()
 		var berr error
 		if sect == "ObjectData" {
-			berr = nox_xxx_mapReadSectionSpecial_426F40(nil, "ObjectData", legacy.Get_nox_client_mapSpecialRWObjectData_4AC610())
+			berr = nox_xxx_mapReadSectionSpecial_426F40(nil, "ObjectData", func(unsafe.Pointer) int { return legacy.MapDrawableSection() })
 		} else if noxflags.HasGame(noxflags.GameHost) {
 			cf.Seek(int64(sz), io.SeekCurrent) // skip section
 		} else {

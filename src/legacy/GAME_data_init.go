@@ -1,48 +1,6 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME1_2.h"
-#include "GAME1_3.h"
-#include "GAME2.h"
-#include "GAME2_1.h"
-#include "GAME3.h"
-#include "GAME3_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_2.h"
-#include "GAME4_3.h"
-#include "GAME5.h"
-#include "GAME5_2.h"
-#include "client__system__parsecmd.h"
-#include "common__object__modifier.h"
-#include "server__script__script.h"
-#include "client__draw__animdraw.h"
-#include "client__draw__canidraw.h"
-#include "client__draw__slavedraw.h"
-#include "client__draw__staticdraw.h"
-#include "client__drawable__update__dball.h"
-#include "client__drawable__update__drainup.h"
-#include "client__drawable__update__healup.h"
-#include "client__drawable__update__manabomb.h"
-#include "client__drawable__update__mmislup.h"
-#include "client__drawable__update__mtailup.h"
-#include "client__drawable__update__sparklup.h"
-#include "client__drawable__update__telwake.h"
-#include "client__drawable__update__vortexup.h"
-
-
-
-
-
-*/
-import "C"
 import (
-	"unsafe"
-
 	"github.com/opennox/opennox/v1/common/memmap/nox/blobdata"
 )
 
@@ -60,9 +18,9 @@ func InitBlobData() {
 		Ptr_nox_xxx_buff_4DFD80:                   modifierKey(modifierIDLightningProtectEngage),
 		Ptr_nox_xxx_checkPoisonProtectEnch_4DFDE0: modifierKey(modifierIDPoisonProtectEngage),
 		Ptr_sub_4E0140:                            modifierKey(modifierIDRegenerationEngage),
-		Ptr_sub_41C280:                            unsafe.Pointer(C.sub_41C280),
-		Ptr_nox_xxx_parseFileInfoData_41C3B0:      unsafe.Pointer(C.nox_xxx_parseFileInfoData_41C3B0),
-		Ptr_sub_41C780:                            unsafe.Pointer(C.sub_41C780),
+		Ptr_sub_41C280:                            playerSectionKey(playerSectionGUI),
+		Ptr_nox_xxx_parseFileInfoData_41C3B0:      playerSectionKey(playerSectionMetadata),
+		Ptr_sub_41C780:                            playerSectionKey(playerSectionMusic),
 		Ptr_sub_43EC30:                            audioBridgeCallbackKey(0),
 		Ptr_sub_43ECB0:                            audioBridgeCallbackKey(1),
 		Ptr_sub_43ED00:                            audioBridgeCallbackKey(2),

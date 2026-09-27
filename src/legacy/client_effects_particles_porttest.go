@@ -71,7 +71,7 @@ func PortTestEffectsScreenParticles(capacity int) (func() [][]uint32, func()) {
 		var out [][]uint32
 		for _, p := range nodes {
 			words := append([]uint32(nil), unsafe.Slice((*uint32)(unsafe.Pointer(p)), 13)...)
-			if unsafe.Pointer(uintptr(words[0])) != unsafe.Pointer(C.nox_client_screenParticleDraw_489700) {
+			if unsafe.Pointer(uintptr(words[0])) != screenParticleCallbackKey() {
 				panic("unexpected screen draw callback")
 			}
 			words[0] = 0xe2000001

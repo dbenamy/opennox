@@ -40,7 +40,7 @@ func PortTestScreenParticleCreate(a [10]int32) *Nox_screenParticle {
 	return (*Nox_screenParticle)(unsafe.Pointer(nox_client_newScreenParticle_431540(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3]), C.int(a[4]), C.int(a[5]), C.char(a[6]), C.char(a[7]), C.char(a[8]), C.char(a[9]))))
 }
 func PortTestScreenParticleDraw(p *Nox_screenParticle, vp *noxrender.Viewport) int {
-	return int(C.nox_client_screenParticleDraw_489700(vp.C(), (*C.nox_screenParticle)(unsafe.Pointer(p))))
+	return callScreenParticleDraw(screenParticleCallbackKey(), vp, p)
 }
 func PortTestScreenParticleDelete(p *Nox_screenParticle) {
 	screenParticleDelete(p)

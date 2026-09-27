@@ -8,7 +8,6 @@ import (
 	"github.com/opennox/opennox/v1/internal/binfile"
 	"github.com/opennox/opennox/v1/internal/cryptfile"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"io"
 	"unsafe"
@@ -102,7 +101,7 @@ func playerFileClientLoad(path string) int {
 				continue
 			}
 			found = true
-			if ccall.CallIntPtr(*memmap.PtrPtr(0x587000, off+8), nil) == 0 {
+			if callPlayerFileSection(*memmap.PtrPtr(0x587000, off+8)) == 0 {
 				cryptfile.Close()
 				return 0
 			}
@@ -130,7 +129,7 @@ func playerFileClientWrite(info unsafe.Pointer, all int) int {
 		}
 		r.raw(memmap.PtrOff(0x587000, off+4), 4)
 		r.cf.SectionStart()
-		ret := ccall.CallIntPtr(*memmap.PtrPtr(0x587000, off+8), nil)
+		ret := callPlayerFileSection(*memmap.PtrPtr(0x587000, off+8))
 		r.cf.SectionEnd()
 		if ret == 0 {
 			cryptfile.Close()

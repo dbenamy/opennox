@@ -5,7 +5,6 @@ package legacy
 /*
 #include "GAME4_3.h"
 #include "GAME5.h"
-void nox_xxx_updateFlameCleanse_53D510(int a1);
 static uint32_t tempCalls[8192]; static int tempCount; static int tempReturn;
 static void tempReset(int ret) { tempCount=0; tempReturn=ret; }
 static void tempDie(int u) { tempCalls[tempCount++]=1; tempCalls[tempCount++]=u; }
@@ -294,7 +293,7 @@ func portTestTempFunction(id int) unsafe.Pointer {
 	case 29:
 		return updateIdentityKey(updateIDChakramInMotion)
 	case 17:
-		return C.nox_xxx_updateFlameCleanse_53D510
+		return flameCleanseCallbackKey()
 	default:
 		return nil
 	}
@@ -380,7 +379,7 @@ func portTestTempCall(id int, u, target *server.Object, value, side int) uint32 
 		nox_xxx_waterBarrel_53CC30((*C.float)(unsafe.Pointer(target)), C.int(uintptr(unsafe.Add(unsafe.Pointer(u), 56))))
 		return 0
 	case 17:
-		C.nox_xxx_updateFlameCleanse_53D510(C.int(uintptr(unsafe.Pointer(u))))
+		temporaryFlameCleanse(u)
 		return 0
 	case 21:
 		sub_53D8C0(C.int(uintptr(unsafe.Pointer(target))), C.int(uintptr(unsafe.Pointer(u))))

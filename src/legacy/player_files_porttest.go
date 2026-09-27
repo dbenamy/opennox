@@ -68,11 +68,11 @@ func PortTestPlayerFileCall(name string, args ...uint32) uint32 {
 	case "sub_41C080":
 		return uint32(playerFileGame(u))
 	case "sub_41C280":
-		return uint32(C.sub_41C280(p0))
+		return uint32(playerFileGUI())
 	case "nox_xxx_parseFileInfoData_41C3B0":
-		return uint32(C.nox_xxx_parseFileInfoData_41C3B0(C.int(a[0])))
+		return uint32(playerFileMetadata())
 	case "sub_41C780":
-		return uint32(C.sub_41C780(C.int(a[0])))
+		return uint32(playerFileMusic())
 	case "nox_xxx_netSavePlayer_41CE00":
 		return uint32(nox_xxx_netSavePlayer_41CE00())
 	case "sub_41CEE0":
@@ -91,7 +91,7 @@ func PortTestPlayerFileClientSections() func() {
 	clear(table)
 	names := []string{"GUI Data", "File Info Data", "Music Data"}
 	ids := []uint32{7, 1, 12}
-	callbacks := []unsafe.Pointer{unsafe.Pointer(C.sub_41C280), unsafe.Pointer(C.nox_xxx_parseFileInfoData_41C3B0), unsafe.Pointer(C.sub_41C780)}
+	callbacks := []unsafe.Pointer{playerSectionKey(playerSectionGUI), playerSectionKey(playerSectionMetadata), playerSectionKey(playerSectionMusic)}
 	var frees []func()
 	for i, name := range names {
 		p, free := alloc.CString(name)

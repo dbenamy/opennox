@@ -2,10 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME1_1.h"
-*/
-import "C"
 import (
 	"bytes"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -136,7 +132,7 @@ func PortTestSessionEntryMetadataTable() func() {
 	old := bytes.Clone(raw)
 	*memmap.PtrUint32(0x587000, 55936) = 1
 	*memmap.PtrUint32(0x587000, 55948) = 1
-	*memmap.PtrPtr(0x587000, 55956) = unsafe.Pointer(C.nox_xxx_parseFileInfoData_41C3B0)
+	*memmap.PtrPtr(0x587000, 55956) = playerSectionKey(playerSectionMetadata)
 	return func() { copy(raw, old) }
 }
 func PortTestSessionEntryTileFreeHead() *uint32 { return mapPaintGlobal(paintFreeHead) }

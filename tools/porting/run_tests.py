@@ -204,6 +204,10 @@ def main():
                 failure_events.add(name)
             if name not in expected:
                 continue
+            # Make root-test progress visible even when subsequent tests are quiet.
+            # Buffered output can otherwise make a completed test look stalled.
+            if event.get("Action") in ("run", "pass", "skip", "fail"):
+                log.flush()
             if event.get("Action") == "run":
                 ran.add(name)
             elif event.get("Action") in ("pass", "skip", "fail"):

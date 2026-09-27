@@ -62,8 +62,8 @@ func serverOptionsConstruct() int {
 	}{{1046512, 10101}, {1046496, 10114}, {1046500, 10183}, {1046504, 10197}, {1046508, 10199}, {1046524, 10150}, {1046516, 10134}, {1046520, 10135}, {1046536, 10153}} {
 		*serverOptionsWord(v.off) = uint32(serverOptionsPtr(w.ChildByID(v.id)))
 	}
-	w.ChildByID(10331).SetTooltipFunc(C.nox_xxx_options_457AA0)
-	w.ChildByID(10333).SetTooltipFunc(C.nox_xxx_options_457B00)
+	w.ChildByID(10331).SetTooltipFunc(finalTooltipKey(tooltipTeamAssign))
+	w.ChildByID(10333).SetTooltipFunc(finalTooltipKey(tooltipTeamDamage))
 	for _, off := range []uintptr{1046524, 1046532, 1046536, 1046500, 1046504, 1046508} {
 		if child := serverOptionsWindow(off); child != nil {
 			child.DrawData().Window = w

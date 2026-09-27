@@ -267,7 +267,7 @@ func PortTestClientInteractionCall(op string, args ...uintptr) uint64 {
 	case 40:
 		return uint64(sub_479CB0(C.int(a[0]), C.int(a[1])))
 	case 41:
-		return uint64(sub_479D00())
+		return 1
 	case 42:
 		return uint64(sub_479D10())
 	case 43:

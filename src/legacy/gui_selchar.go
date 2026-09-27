@@ -107,9 +107,6 @@ func Nox_xxx_bookShowMB_45AD70(a1 int) {
 func Sub_41A000(a1 string, a2 *server.SaveGameInfo) int {
 	return int(sessionSaveMetadata(a1, a2))
 }
-func Get_sub_4A18E0() unsafe.Pointer {
-	return C.sub_4A18E0
-}
 func Get_sub_4A50A0() unsafe.Pointer {
 	return animationCallbackKey(animationKeySelCharStart)
 }
