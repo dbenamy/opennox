@@ -84,13 +84,23 @@ produced by `tools/porting/cgo_inventory.py`. Three project packages still direc
 use cgo, plus external client bindings. The earlier helper suggestion that go-gl
 was residue remains rejected: `libs/client/seat/opengl` actually imports it.
 
-Next: string allocation/types, then allocator and callback-fallback removal.
-Preliminary read-only audit is in `build/port-string-boundaries/`; no conversion
-or baseline work has started there. Review CString's raw versus safe/tracked
-ownership, allocation-failure behavior and its sole production round-trip caller
-before choosing whether to retain the helper. Include remaining fixture char/wchar
-types in that scope. Reachable abort, compiler flags and other fixture C observers
-remain later dependency work.
+Current batch: native string boundaries. Production is still `81cf750f`; two new
+private fixture/assertion files are staged and an 11-file draft remains uninstalled
+under `build/port-string-boundaries/`. Original default/safe preflight passes four
+contracts covering byte/wide text, guards, ownership and failure disposition.
+The original baseline is accepted: 2,483/2,472/2,483 actual roots passed once
+per default/server/highres profile, and new private contracts passed twice in
+default/server/highres/safe. This avoids a
+second identical broad baseline run while retaining repeated new original-path
+contracts. See [STRING_BOUNDARIES.md](docs/porting/STRING_BOUNDARIES.md).
+
+Next: commit the accepted original baseline, install the reviewed string draft and
+qualify it. CString retains raw allocation normally and tracked allocation in safe;
+normal process-fatal allocation failure and safe recoverable panic are preserved
+through the centralized allocator. A new RawMalloc entry still uses cgo malloc;
+allocator removal follows this batch. Keep the browser round trip unchanged.
+Then audit allocator and callback fallback removal, reachable abort, compiler flags
+and remaining fixture C observers.
 
 Placement helpers retain libc rounding only in the qualified domain; standard Go
 math is the fallback outside the adapted range. Every current caller's argument
@@ -335,3 +345,20 @@ reclaiming 559,898,624 allocated bytes. Original assets, saves/results and resto
 manifest remain. Restore with
 `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/placement-trig-save/deduplicated-assets.json`.
 Evidence: `build/port-placement-trig/final-cleanup/`.
+
+Seven superseded libc-helper qualified binaries were removed after source matched
+`79b7e9e3`, replacements matched `81cf750f` and hash/stat/host-use checks passed:
+387,010,560 allocated bytes. Rebuild the older revision with retained commands.
+Evidence: `build/port-string-boundaries/libc-cleanup-{approved.json,deleted.jsonl}`.
+Six transfer/duration original-baseline executables were likewise removed after
+source/replacement/host checks: 404,799,488 bytes. Rebuild `66d3a57f` and `12a8ed98`;
+logs and captures remain. Evidence:
+`build/port-string-boundaries/historical-baselines-{approved.json,deleted.jsonl}`.
+The proposed update baseline did not match its candidate revision, so it was
+preserved. Server-fixture candidates were also left untouched.
+
+Nine older modifier/audio/remaining-draw original-baseline executables were removed
+after exact committed-source, replacement hashes and host-use checks: 605,700,096
+allocated bytes. Rebuild `09f15464`, `9f6b2b46` and `9f91acda` with retained commands
+and source maps; logs/captures remain. Evidence:
+`build/port-string-boundaries/more-baselines-{approved.json,deleted.jsonl}`.

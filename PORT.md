@@ -368,6 +368,11 @@ Reconsider the tests as the behavior and failure modes become clearer.
 - **Baseline:** repeated C captures and independent contracts; qualify affected
   targets and relevant integration before replacement. Record exactly which source
   state and cases supplied the oracle.
+  Repeat newly authored original-path captures/contracts in separate processes.
+  An established broad regression selection may run once per affected profile
+  before conversion when its existing expectations are already frozen; repeat it
+  when nondeterminism, changed captures or a failure warrants that extra evidence.
+  Record this choice and still require the matching selection after conversion.
 - **Native batch:** focused captures/contracts plus accumulated tests for affected
   callers, owners and dependencies in default/server/highres. Audit the selection
   against real callers and shared state, and record its pattern and coverage.
