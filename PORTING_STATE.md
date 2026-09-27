@@ -58,11 +58,14 @@ The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
 removal. Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md).
 Metadata discovery is not compilation evidence.
 
-Next candidate: modifier dispatch and its four C observer fixtures. Read-only
-producer/field audits found additional equipment, damage and melee callbacks that
-must migrate together with the generic modifier observer. Preserve signed results,
-nil argument masks, output mutations, GC lifetimes and capture normalization.
-Local audit: `build/port-modifier-dispatch/notes.md`; no next conversion installed.
+In progress: modifier dispatch and four C observer fixtures. A seven-file native
+draft is uninstalled; original broad baselines passed (2,482/2,471/2,482 roots),
+as did focused repetitions and three safe contracts. Baseline accepted; native
+qualification pending.
+Equipment, damage and melee observers must move with the generic observer.
+Preserve signed results, nil masks, mutations, GC lifetimes and normalization.
+See [MODIFIER_DISPATCH.md](docs/porting/MODIFIER_DISPATCH.md) and
+`build/port-modifier-dispatch/`.
 Then continue allocator ownership, reachable abort, compiler flags and fixture
 work. Literal allocator calls occur in 40 C-using fixture files; avoid incompatible
 cross-domain frees when the centralized allocator changes.
@@ -90,7 +93,9 @@ Do not change source consumed by running builds/tests.
 Current root/safe/production binaries live under
 `build/port-ui-completion/{contracts/profiles,safe,production/production/bin}`.
 Original UI completion captures live under `build/port-ui-completion/original`;
-its baseline uses retained qualified animation binaries at `5233d084`.
+its baseline used animation binaries at `5233d084`, now removed after replacement
+checks. Rebuild that revision if needed. Current modifier baseline runs use
+retained UI completion binaries at `defbdb98`.
 Older executable cleanup records remain under the preceding callback batch;
 rebuild the recorded revisions when those historical binaries are needed.
 
@@ -121,3 +126,8 @@ bytes) with committed-source, replacement and host-use checks. Rebuild `b2c975dc
 if those historical binaries are needed; metadata/logs remain. Also removed 12
 inactive Linux386 cache archives untouched for six hours (496,467,968 bytes).
 Records: `build/port-animation-dispatch/{spell-cleanup-*,cache-headroom-*}`.
+
+During modifier preparation, removed seven superseded callback binaries
+(387,018,752 bytes; rebuild `dcab2e38`) and seven animation binaries
+(387,063,808 bytes; rebuild `5233d084`) after source/replacement/hash/host-use checks.
+Logs and records remain; manifests: `build/port-modifier-dispatch/*-cleanup-*`.
