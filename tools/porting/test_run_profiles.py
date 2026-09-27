@@ -25,7 +25,7 @@ class ProfileController(unittest.TestCase):
         self.pattern.write_text("^TestExample$")
         self.source = {"src/a.go": "source-hash"}
 
-    def invoke(self, *, jobs=1, runner=None, source_values=None):
+    def invoke(self, *, jobs=1, runner=None, source_values=None, default_pattern=None):
         out = self.root / "out"
         builds, runners = [], []
         source_values = source_values or [self.source]
@@ -59,6 +59,8 @@ class ProfileController(unittest.TestCase):
 
         argv = ["run_profiles.py", "--out", str(out), "--pattern-file", str(self.pattern),
                 "--jobs", str(jobs)]
+        if default_pattern is not None:
+            argv += ["--default-pattern-file", str(default_pattern)]
         with patch.object(run_profiles, "ROOT", self.root), \
              patch.object(run_profiles, "fingerprints", side_effect=fingerprint), \
              patch.object(run_profiles, "supplemental_fingerprints", return_value={"src/a.s": "input-hash"}), \
@@ -73,6 +75,22 @@ class ProfileController(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertEqual(builds, ["server", "highres", "default"])
         self.assertEqual(set(runners), set(run_profiles.PROFILES))
+
+    def test_full_default_does_not_broaden_other_profiles(self):
+        full = self.root / "full.txt"
+        full.write_text("^Test")
+        seen = {}
+
+        def runner(profile, command):
+            seen[profile] = Path(command[command.index("--pattern-file") + 1]).read_text()
+            Path(command[command.index("--result") + 1]).write_text(json.dumps({"success": True}))
+            return type("Result", (), {"returncode": 0})()
+
+        code, result, builds, runners = self.invoke(jobs=1, runner=runner, default_pattern=full)
+        self.assertEqual(code, 0)
+        self.assertEqual(runners, ["default", "server", "highres"])
+        self.assertEqual(seen, {"default": "^Test", "server": "^TestExample$", "highres": "^TestExample$"})
+        self.assertEqual(builds, ["server", "highres", "default"])
 
     def test_shared_diagnostic_output_env_is_rejected(self):
         out = self.root / "out"

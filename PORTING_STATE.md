@@ -86,14 +86,27 @@ is not compilation or qualification. The helper's external-review draft is not
 accepted evidence: its suggestion that go-gl is residue is contradicted by the
 actual dependency graph (`libs/client/seat/opengl` imports it).
 
-Book/UI callbacks are qualified. Next batch: audit the remaining export/fixture
-boundaries and remaining live callback addresses. Read-only scouts are under
-`build/port-book-callbacks/next-*-scout.json` and `next-export-references.json`.
-Most remaining symbol references appear to be fixture-only or private C-typed Go
-calls; distinguish them from actual addresses, same-named root functions and C
-preambles before removal. No subsequent conversion is installed or qualified.
+Book/UI callbacks are qualified and pushed at `b2597f97`. The next batch audits
+70 remaining export/fixture boundaries, retaining ten live C callback addresses.
+Original baseline passed:2,478 default roots plus one established prerequisite
+skip; all305 additional roots passed twice per profile.
+The reviewed conversion is still an **uninstalled draft**, not qualified source.
+Resume from `build/port-remaining-fixture-bridges/PLAN.md`, `REVIEW.md`,
+`original-controller.log` and `draft-info.json`; the original controller is joined and its acceptance is recorded. Draft bodies/signatures match all70 originals; 60
+fixture-only adapters move under porttest and ten Go-called bodies stay native.
+Whole-source audit also removed leftover pointer-returning declarations.
 Luna remains unavailable due to usage limits; resume the one-helper policy when
 available, without substituting another model.
+
+Current batch disk recovery: four superseded unused-adapter production/safe
+binaries reclaimed187,367,424 allocated bytes (rebuild `1238c985`; qualified book
+replacements retained). Thirty historical game-message capture groups were
+losslessly gzip-archived, reclaiming711,507,968 allocated bytes. See local
+`old-production-cleanup-approved.json` and `old-capture-groups-archive.jsonl` in
+`build/port-remaining-fixture-bridges/` for hashes, exact paths and restoration.
+For each capture group, decompress its recorded archive to the first path,
+verify the uncompressed SHA-256, then recreate other paths as hard links.
+Original game assets and current qualification binaries remain untouched.
 
 The earlier 25-export object-state proposal under
 `build/port-after-go-only-exports/` was rejected because it omitted fixture C calls.

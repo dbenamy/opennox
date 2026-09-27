@@ -25,6 +25,8 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--out", type=Path, required=True)
     ap.add_argument("--pattern-file", type=Path, required=True)
+    ap.add_argument("--default-pattern-file", type=Path,
+                    help="optional default-profile selection, e.g. full corpus alongside focused other profiles")
     ap.add_argument("--jobs", type=int, choices=(1, 2), default=1)
     ap.add_argument("--timeout-seconds", type=int, default=3600)
     args = ap.parse_args()
@@ -38,6 +40,7 @@ def main():
     out = args.out.resolve()
     out.mkdir(parents=True, exist_ok=False)
     pattern = args.pattern_file.resolve()
+    default_pattern = args.default_pattern_file.resolve() if args.default_pattern_file else pattern
     env = dict(os.environ, GOMAXPROCS=os.environ.get("GOMAXPROCS", "2"),
                GOMEMLIMIT=os.environ.get("GOMEMLIMIT", "768MiB"))
     build_env = dict(env, GOGC="100", GOMEMLIMIT="1536MiB")
@@ -53,7 +56,7 @@ def main():
     def execute(profile):
         binary = out / (profile + ".test")
         command = [sys.executable, str(ROOT / "tools/porting/run_tests.py"),
-                   "--pattern-file", str(pattern), "--tags", PROFILES[profile],
+                   "--pattern-file", str(default_pattern if profile == "default" else pattern), "--tags", PROFILES[profile],
                    "--test-binary", str(binary), "--binary-record", str(out / (profile + "-binary.json")),
                    "--log", str(out / (profile + ".jsonl")),
                    "--result", str(out / (profile + "-result.json")),
@@ -82,7 +85,10 @@ def main():
             (out / (profile + "-binary.json")).write_text(json.dumps(record, indent=2) + "\n")
         # The executor joins every submitted process, including after a failure.
         with ThreadPoolExecutor(max_workers=args.jobs) as pool:
-            futures = [(profile, pool.submit(execute, profile)) for profile in PROFILES]
+            # Start the potentially broader default sweep first so focused profiles
+            # can finish alongside it using the second worker.
+            order = ["default", "server", "highres"] if args.default_pattern_file else list(PROFILES)
+            futures = [(profile, pool.submit(execute, profile)) for profile in order]
             for profile, future in futures:
                 try:
                     row = future.result()
