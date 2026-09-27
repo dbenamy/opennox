@@ -61,14 +61,20 @@ The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
 removal. Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md).
 Metadata discovery is not compilation evidence.
 
-Next, audit the remaining callback fallbacks by owner and registration. Animation
-has an unused-looking completion slot but still needs a raw-write/constructor
-trace; do not infer all foreign fallbacks are unreachable. Read-only inventories
-and notes remain in `build/port-callback-retirement-audit/`. Literal allocator
-calls occur in 40 C-using fixture files: audit actual ownership before replacing
-the centralized allocator, so fixture frees cannot cross incompatible domains.
-Close the reachable abort, compiler flags and fixture dependencies too. No next
-conversion is installed.
+In progress: animation dispatch has a reviewed six-file native draft, not installed.
+Two original baseline fixture/test files are added. The new completion-order
+contract passes twice in four profiles after isolating an unrelated unsafe effects
+fixture dependency. The 69-root original owner sweep passed in all three profiles; all controllers
+are joined and the original baseline is accepted. See
+[ANIMATION_DISPATCH.md](docs/porting/ANIMATION_DISPATCH.md) and
+`build/port-animation-dispatch/`. Producer audit resolves 33 production writes to
+nil or 25 registered identities. Record rejection of unregistered keys as a
+reversible behavior correction; do not extend that conclusion to other callbacks.
+
+Then continue callback audits by owner/registration, allocator ownership,
+reachable abort, compiler flags and fixture dependencies. Literal allocator calls
+occur in 40 C-using fixture files; avoid incompatible cross-domain frees when the
+centralized allocator changes.
 
 CString retains raw malloc/free normally and tracked Malloc/FreePtr in safe.
 RawMalloc intentionally still uses cgo's process-fatal malloc wrapper. Keep normal
