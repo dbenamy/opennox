@@ -53,12 +53,12 @@ Last complete default corpus: `6e9681f2`, 2,489 passes plus diagnostic skip.
 ## Next work and review items
 
 Continue with the remaining object/AI, drawable draw/update and spatial/particle
-callback families. Audit shared fixture observers before rejecting raw keys.
-Monster combat/lifecycle fixtures contain foreign observers that must move with
-their actual dispatch paths. A reviewed, uninstalled damage/monster draft and
-baseline-reuse tooling are in `build/port-damage-monster-dispatch/`. Run fresh
-focused/safe original contracts and accept/commit that baseline before installing.
-Allocator/abort/flags and fixture dependencies remain.
+callback families. Active batch: damage/monster dispatch. Original baseline is
+accepted at qualified GUI source `0cf5064c`: broad runs reused after exact source,
+environment, binary, log and test-name checks; twelve focused roots per profile
+and four safe contracts ran freshly. Reviewed ten-file draft is not installed yet.
+Next: commit baseline, install, then qualify. See
+[DAMAGE_MONSTER_DISPATCH.md](docs/porting/DAMAGE_MONSTER_DISPATCH.md).
 
 The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
 removal. Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md).
