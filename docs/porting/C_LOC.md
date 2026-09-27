@@ -377,6 +377,7 @@ target build selection and linker evidence.
 | Native modifier dispatch and four observers; embedded bodies 14→12, fixture C imports 98→94 | 0 | 0 | 0 | 0 |
 | Native player-section/particle dispatch; embedded bodies 12→11, fixture C imports 94→91 | 0 | 0 | 0 | 0 |
 | Native duration/audio dispatch and observers; embedded bodies remain 11, fixture C imports 91→89 | 0 | 0 | 0 | 0 |
+| Native window dispatch and tooltip observer; embedded bodies 11→10, fixture C imports 89→88 | 0 | 0 | 0 | 0 |
 
 The 33 checksum test-reference lines were retired after differential validation;
 their original source remains recoverable at `66fa7bd4`.

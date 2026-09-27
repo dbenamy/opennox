@@ -3,7 +3,6 @@
 package legacy
 
 import (
-	"github.com/opennox/opennox/v1/client/gui"
 	"image"
 	"unsafe"
 )
@@ -93,8 +92,6 @@ func PortTestQuickbarInvoke(op string, a [7]uint32) uint32 {
 		return uint32(quickbarTrapEvent(bookWindow(a[0]), a[1], a[2]))
 	case "nox_xxx_quickbarDrawFn_460000":
 		return uint32(quickbarDrawSlide(nil, nil))
-	case "nox_xxx_quickBarInitWindow_4601F0":
-		return uint32(quickbarInitWindow(bar(a[0]), int(a[1]), int(a[2]), int(a[3]), int(a[4]), gui.WrapFuncC(unsafe.Pointer(uintptr(a[5]))), gui.WrapDrawFuncC(unsafe.Pointer(uintptr(a[6])))))
 	case "sub_4602F0":
 		return uint32(quickbarClearSlots())
 	case "sub_460380":

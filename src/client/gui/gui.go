@@ -385,7 +385,7 @@ func (g *GUI) destroyWindow(win *Window) {
 	ext := win.ext()
 	destroy := ext.Func94
 	if destroy == nil && win.field94 != nil && uintptr(win.field94) != deadWord {
-		destroy = WrapFuncC(win.field94)
+		panic("unregistered raw window destroy callback")
 	}
 	// Disable ordinary callbacks immediately, preserving deferred cleanup.
 	*ext = windowExt{GUI: ext.GUI, destroy: destroy}

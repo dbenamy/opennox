@@ -21,9 +21,12 @@ func browserPopup(parent *gui.Window, point *[2]uint32, head *legacyListNode) *g
 	if browserUI.popupCount == 0 {
 		return browserWindow(uint32(browserUI.popup))
 	}
-	// Preserve the original raw callback slot passed to the resource parser.
-	fn := gui.WrapFuncC(*(*unsafe.Pointer)(unsafe.Add(parent.C(), 376)))
-	w := Nox_new_window_from_file("proxlist.wnd", fn)
+	// The retired raw slot has no producer. Preserve its nil parser callback;
+	// inheriting the native parent handler would change existing popup behavior.
+	if *(*unsafe.Pointer)(unsafe.Add(parent.C(), 376)) != nil {
+		panic("unregistered raw popup callback")
+	}
+	w := Nox_new_window_from_file("proxlist.wnd", nil)
 	browserUI.popup = uint32(uintptr(w.C()))
 	var pos [2]uint32
 	browserPopupClamp(int32(point[0]+216), int32(point[1]+27), &pos)

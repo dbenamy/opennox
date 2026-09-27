@@ -3072,3 +3072,13 @@ keys without changing frozen assertions. Generic C bodies remain shared with oth
 families; record fixture imports and call-site reductions as well as body count.
 Defer monster callbacks until their combat/lifecycle observers move together.
 See [DURATION_AUDIO_DISPATCH.md](DURATION_AUDIO_DISPATCH.md).
+
+## Retired raw GUI window callbacks
+
+Retire unproduced event/draw slots and their C wrappers after producer/offset audits;
+unsupported nonnil keys panic. Preserve native extension priority, nil/dead guards,
+deferred cleanup and tooltip KeepAlive. Translate the remaining tooltip observer.
+Keep the orphan quickbar selector's nil snapshot-map entry to avoid renumbering
+canonical callback IDs. Preserve popup's existing nil parser callback from its
+unproduced raw parent slot; inheriting the native handler is a separate behavior
+review, not an incidental change in this batch. See [WINDOW_DISPATCH.md](WINDOW_DISPATCH.md).

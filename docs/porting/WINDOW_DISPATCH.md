@@ -6,7 +6,7 @@ Retire the unproduced raw window event/draw callback routes, translate the toolt
 observer, and remove the unused raw-pointer quickbar-constructor fixture adapter.
 Keep all native window handlers, layout fields, snapshot identities, assertions
 and frozen captures unchanged. Baseline source: qualified duration/audio revision
-`d3d759ba`. Seven-file conversion remains an ignored draft.
+`d3d759ba`; accepted baseline commit `4e6808ee`. Seven-file native conversion is qualified.
 
 Original baseline accepted without skips. The broad audited root selection passed:
 2,482 default /2,471 server /2,482 highres, plus six separately repeated focused
@@ -67,3 +67,32 @@ host compiler/fd/maps checks. These are rebuildable caches; module sources, curr
 binaries, logs and assets remain. Records: `cache-headroom-{approved,result}.json`
 and deletion journal in the batch directory. Physical free space afterward:
 3,030,851,584 bytes.
+
+## Qualification and counts
+
+Original and native broad selections passed **2,482/2,471/2,482** roots without
+skips in default/server/highres. Six focused contracts passed separately in each
+profile on both versions, plus the safe deferred-cleanup contract. Native focused
+preflight and a fresh default-client save/load passed before the broad sweep.
+Safe build/static, three production builds/ABI, exact known-suite outcomes and
+the second fresh save/load passed. All 1,654 original asset hashes are unchanged.
+Retired symbols are absent; retained embedded C bodies, native handlers, assertions
+and snapshot IDs remain unchanged. No native source correction was needed.
+
+Embedded production C bodies: **11→10** (69/79 retired). Fixture C imports:
+**89→88**. Production cgo remains **5 client/highres, 6 server**, across three
+project packages. Selected legacy exports remain zero, headers 157 files /2,731
+lines, standalone C **0 production /0 test**. Evidence:
+[baseline](window-dispatch-baseline.json),
+[qualification](window-dispatch-qualification.json),
+[inventory](window-dispatch-inventory-after.json).
+
+After all qualification jobs joined, verified and removed 3,308 duplicate assets
+from both completed GUI scenario runs, reclaiming 1,120,215,040 allocated bytes.
+Originals, saves/results and current binaries remain. Exact checks and paths:
+`build/port-window-dispatch/final-cleanup/cleanup-completed.json` and manifests.
+Restore before replay with `python3 build/port-artifact-cleanup/restore-recent-scenario.py`
+and the applicable manifest:
+
+- `build/baseline/runs/window-dispatch-preflight-save/deduplicated-assets.json`
+- `build/baseline/runs/window-dispatch-save/deduplicated-assets.json`
