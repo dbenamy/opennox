@@ -1,14 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2.h"
-#include "client__gui__guibook.h"
-
-int nox_xxx_bookClickSpell_45B1F0();
-int nox_xxx_book_45CF00(uint32_t*);
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/client/noxrender"
@@ -45,7 +36,7 @@ func bookInit() int {
 		if ref == nil {
 			return 0
 		}
-		ref.Field24ptr().OnEnd = C.nox_xxx_bookClickSpell_45B1F0
+		ref.Field24ptr().OnEnd = bookImageEndKey(0)
 	}
 	g := GetClient().Cli().GUI
 	drawOne := func(*gui.Window, *gui.WindowData) int { return 1 }
@@ -58,7 +49,7 @@ func bookInit() int {
 		if w == nil {
 			return 0
 		}
-		w.SetAllFuncs(bookEvent(func(w *gui.Window, e, _ uint32) int { return bookTab(w, e) }), drawOne, C.nox_xxx_book_45CF00)
+		w.SetAllFuncs(bookEvent(func(w *gui.Window, e, _ uint32) int { return bookTab(w, e) }), drawOne, bookTooltipKey(4))
 		w.SetID(uint(tab.id))
 	}
 	back := g.NewWindowRaw(root, 136, 24, 138, 20, 20, nil)

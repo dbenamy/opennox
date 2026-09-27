@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME3_1.h"
-#include "client__gui__guisumn.h"
-*/
-import "C"
 import (
 	"image"
 	"unsafe"
@@ -48,7 +42,7 @@ func PortTestSummonInvoke(op string, a [5]uint32) uint32 {
 	case "sub_4C2BF0":
 		return summonClearGrid()
 	case "sub_4C2C20":
-		return uint32(sub_4C2C20((*C.uint32_t)(unsafe.Pointer(uintptr(a[0]))), C.int(a[1]), C.uint(a[2])))
+		return uint32(summonSlotTooltipCallback(bookWindow(a[0]), a[2]))
 	case "sub_4C2C60":
 		return uint32(uintptr(summonSlotTooltip(bookWindow(a[0]), image.Pt(int(pos(a[1])[0]), int(pos(a[1])[1])))))
 	case "sub_4C2D60":
@@ -137,7 +131,7 @@ func PortTestSummonCallbacks() map[string]unsafe.Pointer {
 		"sub_4C2BD0":                            nil,
 		"sub_4C2BE0":                            nil,
 		"sub_4C2BF0":                            nil,
-		"sub_4C2C20":                            C.sub_4C2C20,
+		"sub_4C2C20":                            bookTooltipKey(2),
 		"sub_4C2C60":                            nil,
 		"sub_4C2D60":                            nil,
 		"sub_4C2D90":                            nil,
@@ -154,10 +148,10 @@ func PortTestSummonCallbacks() map[string]unsafe.Pointer {
 		"sub_4C31D0":                            nil,
 		"sub_4C3210":                            nil,
 		"nox_xxx_sprite_4C3220":                 nil,
-		"sub_4C3260":                            C.sub_4C3260,
+		"sub_4C3260":                            nil,
 		"nox_xxx_guiSummonCreatureLoad_4C1D80":  nil,
 		"nox_xxx_wndSummonCreateList_4C2560":    nil,
 		"sub_4C27F0":                            nil,
-		"sub_4C2CE0":                            C.sub_4C2CE0,
+		"sub_4C2CE0":                            bookTooltipKey(3),
 	}
 }

@@ -17,7 +17,7 @@ func asImage(p noxrender.ImageHandle) *noxrender.Image {
 }
 
 type ImageRefAnim struct {
-	OnEnd     unsafe.Pointer         // 0, 0, func(noxrender.ImageHandle)
+	OnEnd     unsafe.Pointer         // 0, 0, func(*ImageRef)
 	ImagesPtr *noxrender.ImageHandle // 1, 4
 	ImagesSz  uint8                  // 2, 8
 	Field_2_1 uint8                  // 2, 9

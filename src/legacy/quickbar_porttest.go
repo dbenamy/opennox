@@ -2,13 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2.h"
-#include "GAME2_1.h"
-#include "client__gui__guispell.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"image"
@@ -299,8 +292,8 @@ func PortTestQuickbarCallbacks() map[string]unsafe.Pointer {
 		"nox_xxx_spellPutInBox_45DEB0":                nil,
 		"nox_client_buildTrap_45E040":                 nil,
 		"nox_xxx_quickBarCreate_45E190":               nil,
-		"nox_xxx_quickbarButtonBook_45F3F0":           unsafe.Pointer(C.nox_xxx_quickbarButtonBook_45F3F0),
-		"sub_45F480":                                  unsafe.Pointer(C.sub_45F480),
+		"nox_xxx_quickbarButtonBook_45F3F0":           bookTooltipKey(0),
+		"sub_45F480":                                  bookTooltipKey(1),
 		"sub_45F9B0":                                  nil,
 		"nox_xxx_quickbarDraw_45FAC0":                 nil,
 		"nox_xxx_quickBarDrawFn_45FBD0":               nil,

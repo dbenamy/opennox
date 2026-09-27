@@ -2805,3 +2805,16 @@ Reuse exact-source original evidence; qualify 357 roots/profile and production
 gates without repeating the preceding full corpus for deletion-only wrappers.
 Primary completed this batch while Luna was unavailable. See
 [UNUSED_ABI_ADAPTERS.md](UNUSED_ABI_ADAPTERS.md).
+
+
+## Book/UI callback identities
+
+Reuse native GUI tooltip dispatch for five book/quickbar/summoning identities.
+Image completion uses a bounded two-key native switch and retains the exact foreign
+void-pointer fallback; do not reuse the unrelated no-argument GUI animation registry.
+Preserve last-frame entry/repetition and frame-cell lookup after callback invocation.
+The original fixture preflight was corrected to use extracted book globals instead
+of inert backing-blob words; production behavior and existing goldens are unchanged.
+Retire one unused identity and five fixture-only C-typed wrappers after caller audit.
+Qualify the closed callback family with affected routes/owners and production gates;
+shared GUI/raw dispatch code is unchanged. See [BOOK_CALLBACKS.md](BOOK_CALLBACKS.md).

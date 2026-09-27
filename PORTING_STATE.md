@@ -7,35 +7,36 @@ superseded status when updating it. The workflow and delegation rules live in
 ## Status: resumed; internal C-glue removal
 
 **Progress: 142,665/142,665 original standalone C lines ported or retired;
-internal glue: 361/463 client cgo files eliminated on net (102 remain;
-server: 360/463 eliminated, 103 remain).**
-Selected legacy C export bridges: **1,802/1,890 retired (88 remain)**.
+internal glue: 368/463 client cgo files eliminated on net (95 remain;
+server: 367/463 eliminated, 96 remain).**
+Selected legacy C export bridges: **1,810/1,890 retired (80 remain)**.
 
 These are selected project files in Linux 386 production profiles, not equal
 units of effort. Three project packages directly use cgo; 77 embedded C callback
 bodies remain. Production and test-reference standalone `.c` files both remain zero.
 
-Latest qualified chunk removes 56 unused C export wrappers, 33 private C-typed
-wrappers and 11 unnecessary cgo imports. Native owners, live callbacks, allocator
-hooks, layouts and fixtures are preserved; 668 retained function bodies/signatures
-are unchanged. See [UNUSED_ABI_ADAPTERS.md](docs/porting/UNUSED_ABI_ADAPTERS.md).
+Latest qualified chunk moves book/quickbar/summoning tooltips and image-completion
+callbacks to native identities. Eight exports and seven production cgo files are
+retired; five fixture-only C-typed wrappers are removed. Completion timing,
+callback arguments, mutation order, native owners and frozen captures are preserved.
+See [BOOK_CALLBACKS.md](docs/porting/BOOK_CALLBACKS.md).
 
 Continue chunk-by-chunk with one Luna helper, primary review, qualification,
 documentation, commit/push and recorded reversible decisions. Stop at the milestone,
 usage limits or a substantial question.
 
-Latest qualified artifacts: `build/port-unused-abi-adapters/`.
+Latest qualified artifacts: `build/port-book-callbacks/`.
 
 ## What remains
 
-Counts below describe the qualified unused-adapter conversion. Zero `.c` lines
+Counts below describe the qualified book-callback conversion. Zero `.c` lines
 is not a count of all C dependencies or remaining engineering effort.
 
 | Area | Remaining work or dependency |
 | --- | --- |
 | Embedded C callback glue | 77 production function bodies in Go preambles: 76 generic function-pointer dispatchers and one specialized adapter. |
 | Callback routes | Remaining Go owners still use C-compatible addresses. Continue migrating identities and every field/alias consumer before removing shared raw fallbacks. |
-| Declarations and C types | 157 tracked headers / 2,817 physical lines; client profiles select 102 cgo files and server selects 103 in three project packages (alloc, ccall, legacy). These are mostly interface/layout machinery, not unported algorithms. |
+| Declarations and C types | 157 tracked headers / 2,809 physical lines; client profiles select 95 cgo files and server selects 96 in three project packages (alloc, ccall, legacy). These are mostly interface/layout machinery, not unported algorithms. |
 | Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Ownership/lifetime work remains behind the centralized allocator. |
 | External libraries | SDL2, OpenGL, OpenAL and similar native dependencies/bindings stay for this phase; their future is a subsequent discussion. |
 | Portability and release validation | Qualified target is Linux 386/SSE2 with cgo. The complete engine is not qualified as cgo-free, 64-bit, native macOS or browser/WebAssembly. Physical display and audible playback remain manual checks. |
@@ -47,23 +48,24 @@ users are migrated; test-only C observers separately qualify that boundary.
 
 ## Latest qualification and evidence
 
-- All 357 selected roots pass in each profile with exact original names and no
-  failures/skips. The default original selection reused the exact-source animation
-  full corpus; server/highres reused 68 roots and ran 289 additional roots twice.
-- Safe/static and three production/ABI checks pass; all 56 retired exports absent.
+- 256 default/high-resolution roots and 254 server roots pass with exact original
+  names, unchanged captures and no failures/skips. The server excludes two existing
+  `!server` rendering tests. Original roots passed twice per profile.
+- Four independent completion contracts cover timing/repetition, reference argument,
+  frame mutation/lookup order, loop/nil paths, real book owners and target layout.
+- Safe/static and three production/ABI checks pass; all eight retired exports absent.
 - Fresh preview and final headless character creation with explicit save/load/
   resume pass on the same final production binary.
 - Full asset suite matches known results: 304 failure events; 17 passing, two
   failing and 32 skipped packages. All 1,654 original asset hashes are unchanged.
 - Accepted phases share source fingerprints and primary-reviewed changes.
-  Existing independent assertions and state/pixel captures remain unchanged.
 - Last full default corpus was animation `f8332e3d`: 2,474 passes and one established
-  prerequisite skip among 2,475 roots. That is an earlier-source result. This
-  deletion-only batch uses affected coverage and production gates, supported by
-  unreachable-wrapper audit and exact retained-function comparison.
+  prerequisite skip among 2,475 roots. That is earlier-source evidence. This bounded
+  callback-family migration keeps shared tooltip/raw dispatch infrastructure
+  unchanged and uses affected-owner coverage plus production gates.
 
-Report: [UNUSED_ABI_ADAPTERS.md](docs/porting/UNUSED_ABI_ADAPTERS.md).
-Evidence: [qualification](docs/porting/unused-abi-adapters-qualification.json).
+Report: [BOOK_CALLBACKS.md](docs/porting/BOOK_CALLBACKS.md).
+Evidence: [qualification](docs/porting/book-callbacks-qualification.json).
 Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expected-suite.jsonl).
 
 ## Goal, next work and open review items
@@ -76,7 +78,7 @@ removal order and completion criteria. Client rendering/audio backend replacemen
 is outside this phase.
 
 The dependency inventory tool is `tools/porting/cgo_inventory.py`; the current
-qualified inventory is [unused-abi-adapters-inventory-after.json](docs/porting/unused-abi-adapters-inventory-after.json).
+qualified inventory is [book-callbacks-inventory-after.json](docs/porting/book-callbacks-inventory-after.json).
 The original phase baseline is under `build/port-cgo-leaves/inventory-before/`.
 The completed leaf cleanup leaves three project packages directly using cgo in
 all profiles, plus OpenGL/SDL2/OpenAL bindings in the clients. Metadata discovery
@@ -84,17 +86,14 @@ is not compilation or qualification. The helper's external-review draft is not
 accepted evidence: its suggestion that go-gl is residue is contradicted by the
 actual dependency graph (`libs/client/seat/opengl` imports it).
 
-Unused ABI adapters are qualified and pushed as `1238c985`. Active next batch:
-book/quickbar/summoning callbacks (five tooltips, two image completions, one unused
-export and five fixture-only C-typed wrappers). Four new original-path completion
-contracts and static-memory checks pass. Original captures pass twice per profile
-(256 default/highres roots,254 server roots; two !server build exclusions and no
-runtime skips). Production is still unchanged. Draft, controller scripts and review: `build/port-book-callbacks/`;
-initial caller scout: `build/port-after-unused-abi-scout/`. Do not install the draft
-until all original controllers have joined, exact test-name sets are accepted,
-and the baseline is committed. Completed scripts are consumed. Luna remains
-unavailable due to usage limits; resume the one-helper policy when available,
-without substituting another model.
+Book/UI callbacks are qualified. Next batch: audit the remaining export/fixture
+boundaries and remaining live callback addresses. Read-only scouts are under
+`build/port-book-callbacks/next-*-scout.json` and `next-export-references.json`.
+Most remaining symbol references appear to be fixture-only or private C-typed Go
+calls; distinguish them from actual addresses, same-named root functions and C
+preambles before removal. No subsequent conversion is installed or qualified.
+Luna remains unavailable due to usage limits; resume the one-helper policy when
+available, without substituting another model.
 
 The earlier 25-export object-state proposal under
 `build/port-after-go-only-exports/` was rejected because it omitted fixture C calls.
@@ -121,7 +120,7 @@ The current Go toolchain is `/usr/lib/go-1.26/bin`. Follow the
 [build environment instructions](PORT.md#build-and-test-environment), including
 sourcing `build/baseline/env.sh` in every Go shell.
 
-Latest local artifacts are under `build/port-unused-abi-adapters/`:
+Latest local artifacts are under `build/port-book-callbacks/`:
 `contracts/`, `preview/`, `safe/opennox-safe`, and
 `production/production/bin/{opennox,opennox-hd,opennox-server}`.
 Source, tests, reports and qualification metadata are committed; ignored local
@@ -135,7 +134,7 @@ do not rerun them or infer deletion safety from age alone.
 
 | Artifact | Recovery or current location |
 | --- | --- |
-| Book callback preparation cleanup | Removed four superseded animation production/safe binaries (187,686,912 allocated bytes; rebuild `f8332e3d`) after matching qualified `1238c985` replacements and host-use checks. Removed nine obsolete project cache archives (419,586,048 bytes) after confirming only prebuilt tests were running. Plans/journals: `build/port-book-callbacks/old-production-cleanup-*` and `cache-before-conversion/`. Original assets, source, logs and current binaries remain. |
+| Book callback cleanup | Removed 13 superseded binaries (791,552,000 allocated bytes; rebuild `f8332e3d`, `1238c985`, `0121a5f3`, `b5831dc9`) and 15 obsolete cache archives (839,024,640 bytes), with source/hash/host-use checks. Losslessly archived 3 historical failed-setup update binaries (99,102,720 bytes reclaimed); restore `gzip -dk FILE.test.gz`, `chmod 755 FILE.test` and verify the hashes in `build/port-book-callbacks/old-update-failed-binaries-archive.json`. Preview/final each deduplicated 1,654 verified asset copies; originals, saves and logs retained. Journals under `build/port-book-callbacks/`; restore scenarios with `build/port-artifact-cleanup/restore-recent-scenario.py` and `build/baseline/runs/book-callbacks[-preview]-save/deduplicated-assets.json`. |
 | Unused-adapter cleanup | Removed nine obsolete project cache archives (420,343,808 allocated bytes) and four superseded GUI production/safe executables (187,723,776 bytes; rebuild `2bca8420`) and three superseded animation test binaries (200,912,896 bytes; rebuild `f8332e3d`) plus 6 superseded previews (285,929,472 bytes; exact rebuild revisions in `preview-binaries-cleanup-approved.json`) after source/hash and host-use checks. Preview/final each deduplicated 1,654 verified original-asset copies; source, originals, saves and logs retained. Journals under `build/port-unused-abi-adapters/`; restore scenarios with `build/port-artifact-cleanup/restore-recent-scenario.py` and `build/baseline/runs/unused-abi-adapters[-preview]-save/deduplicated-assets.json`. |
 | Animation cleanup | Removed 14 obsolete cache archives (755,200,000 allocated bytes) and four superseded rendering production/safe executables (187,789,312 bytes; rebuild `46f07aba`) plus five superseded GUI test/window-render previews (296,013,824 bytes; rebuild `2bca8420`, `3838462b`, `46f07aba`) and three original animation test binaries (200,945,664 bytes; rebuild `c6ffcb75`) after source/hash and host-use checks. Preview/final each deduplicated 1,654 verified original-asset copies; source, originals, saves and logs retained. Journals under `build/port-animation-identities/`; restore scenarios with `build/port-artifact-cleanup/restore-recent-scenario.py` and `build/baseline/runs/animation-identities[-preview]-save/deduplicated-assets.json`. |
 | GUI-adapter cleanup | Removed 9 obsolete project cache archives (420,384,768 allocated bytes), four superseded window production/safe binaries (187,895,808 bytes; rebuild `3838462b`), and three superseded rendering test binaries (200,912,896 bytes; rebuild `46f07aba`). Current replacements, source and logs retained. Journals under `build/port-gui-adapters/`. Preview/final each removed 1,654 verified asset copies; original assets, saves and results retained. Restore with `build/port-artifact-cleanup/restore-recent-scenario.py` and `build/baseline/runs/gui-adapters[-preview]-save/deduplicated-assets.json`. |

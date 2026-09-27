@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME3_2.h"
-#include "client__gui__guispell.h"
-*/
-import "C"
 import (
 	"image"
 	"strconv"
@@ -222,7 +216,7 @@ func quickbarCreate() int {
 	book.DrawData().BgImageHnd = quickbarImage("SpellbookButton")
 	book.DrawData().HlImageHnd = quickbarImage("SpellbookButtonLit")
 	button := quickbarNewNamed(1049528, book, 1064, 1, 2, 28, 28)
-	button.SetAllFuncs(bookEvent(quickbarBookEvent), quickbarDrawOne, C.nox_xxx_quickbarButtonBook_45F3F0)
+	button.SetAllFuncs(bookEvent(quickbarBookEvent), quickbarDrawOne, bookTooltipKey(0))
 	button.DrawData().SetTooltip(GetClient().Cli().Strings(), quickbarText("OpenSpellBookTT"))
 	if class != 0 {
 		control(left, 30, 0, 15, 19, -29, -26, "QuickBarSpellSetUpLit", "ToolTipPrevSpellSet", 0)
@@ -261,7 +255,7 @@ func quickbarCreate() int {
 			quickbarDirection(b, nugget)
 			if class != 0 {
 				direction := g.NewWindowRaw(w, 1032, 12, 0, 10, 10, nil)
-				direction.SetAllFuncs(bookEvent(quickbarDirectionEvent), quickbarDrawOne, C.sub_45F480)
+				direction.SetAllFuncs(bookEvent(quickbarDirectionEvent), quickbarDrawOne, bookTooltipKey(1))
 				*quickbarUserData(direction) = uint32(nugget | row<<16)
 			}
 			if row == 4 {

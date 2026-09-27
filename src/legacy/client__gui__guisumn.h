@@ -3,6 +3,5 @@
 
 #include "defs.h"
 
-int sub_4C2CE0();
 
 #endif // NOX_PORT_CLIENT_GUI_GUISUMN

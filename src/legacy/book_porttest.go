@@ -2,25 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2.h"
-#include "client__gui__guibook.h"
-
-void nox_client_toggleSpellbook_45AC70();
-int nox_xxx_bookHideMB_45ACA0(int a1);
-int nox_xxx_bookClickSpell_45B1F0();
-int nox_xxx_bookClickCreature_45B200();
-int sub_45CFC0();
-int* nox_xxx_bookSetForward_45D200(int* a1, int a2, int2* a3);
-void nox_xxx_abilityReward_45D290(int a1, char* a2, int a3);
-int sub_45D500(int a1);
-void nox_xxx_bookFillAll_45D570(int a1, int a2);
-int sub_45D9B0();
-int nox_xxx_book_45CF00(uint32_t* a1);
-void sub_45D870();
-*/
-import "C"
 import "unsafe"
 import "image"
 
@@ -43,9 +24,9 @@ func PortTestBookInvoke(op string, a [4]uint32) uint32 {
 	case "nox_xxx_bookWndProc_45B070":
 		return uint32(bookForward(int(a[1])))
 	case "nox_xxx_bookClickSpell_45B1F0":
-		return uint32(C.nox_xxx_bookClickSpell_45B1F0())
+		return uint32(bookPageComplete(false))
 	case "nox_xxx_bookClickCreature_45B200":
-		return uint32(C.nox_xxx_bookClickCreature_45B200())
+		return uint32(bookPageComplete(true))
 	case "nox_xxx_book_45B210":
 		return uint32(bookBackward(int(a[1])))
 	case "nox_xxx_bookChildWndProcMB_45B360":
@@ -65,10 +46,10 @@ func PortTestBookInvoke(op string, a [4]uint32) uint32 {
 	case "sub_45CFC0":
 		return uint32(sub_45CFC0())
 	case "nox_xxx_netSpellRewardCli_45CFE0":
-		nox_xxx_netSpellRewardCli_45CFE0(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3]))
+		bookSpellReward(int(int32(a[0])), int(int32(a[1])), int(int32(a[2])), int(int32(a[3])))
 		return 0
 	case "nox_xxx_netGuideRewardCli_45D140":
-		nox_xxx_netGuideRewardCli_45D140(C.int(a[0]), C.int(a[1]))
+		bookGuideReward(int(int32(a[0])), int(int32(a[1])))
 		return 0
 	case "nox_xxx_bookSetForward_45D200":
 		return uint32(uintptr(unsafe.Pointer(nox_xxx_bookSetForward_45D200(unsafe.Pointer(uintptr(a[0])), int32(a[1]), unsafe.Pointer(uintptr(a[2]))))))
@@ -76,11 +57,11 @@ func PortTestBookInvoke(op string, a [4]uint32) uint32 {
 		nox_xxx_abilityReward_45D290(int32(a[0]), (*int8)(unsafe.Pointer(uintptr(a[1]))), int32(a[2]))
 		return 0
 	case "sub_45D320":
-		return uint32(sub_45D320(C.int(a[0])))
+		return uint32(bookRemoveSpell(int(int32(a[0]))))
 	case "sub_45D400":
-		return uint32(sub_45D400(C.int(a[0])))
+		return uint32(bookRemoveGuide(int(int32(a[0]))))
 	case "nox_xxx_clientQuestDisableAbility_45D4A0":
-		return uint32(uintptr(unsafe.Pointer(nox_xxx_clientQuestDisableAbility_45D4A0(C.int(a[0])))))
+		return uint32(uintptr(unsafe.Pointer(bookRemoveAbility(int(int32(a[0]))))))
 	case "sub_45D500":
 		return uint32(sub_45D500(int32(a[0])))
 	case "sub_45D550":
@@ -101,7 +82,7 @@ func PortTestBookInvoke(op string, a [4]uint32) uint32 {
 	case "nox_xxx_bookDrawList_45BD40":
 		return uint32(bookDrawList(bookWindow(a[0])))
 	case "nox_xxx_book_45CF00":
-		return uint32(C.nox_xxx_book_45CF00((*C.uint)(unsafe.Pointer(uintptr(a[0])))))
+		return uint32(bookIconTooltip(bookWindow(a[0])))
 	case "nox_xxx_bookDrawFn_45C7D0":
 		return uint32(bookDrawAddition(bookWindow(a[0])))
 	case "sub_45D870":
@@ -119,8 +100,8 @@ func PortTestBookCallbacks() map[string]unsafe.Pointer {
 		"nox_xxx_guiSpellSortList_45ADF0":          nil,
 		"nox_xxx_book_45B010":                      nil,
 		"nox_xxx_bookWndProc_45B070":               nil,
-		"nox_xxx_bookClickSpell_45B1F0":            unsafe.Pointer(C.nox_xxx_bookClickSpell_45B1F0),
-		"nox_xxx_bookClickCreature_45B200":         unsafe.Pointer(C.nox_xxx_bookClickCreature_45B200),
+		"nox_xxx_bookClickSpell_45B1F0":            bookImageEndKey(0),
+		"nox_xxx_bookClickCreature_45B200":         bookImageEndKey(1),
 		"nox_xxx_book_45B210":                      nil,
 		"nox_xxx_bookChildWndProcMB_45B360":        nil,
 		"nox_xxx_bookListWndProc_45B5F0":           nil,
@@ -145,7 +126,7 @@ func PortTestBookCallbacks() map[string]unsafe.Pointer {
 		"sub_45D9B0":                               clientUICallbackKey(clientUICallbackID_sub_45D9B0),
 		"nox_xxx_bookShowMB_45AD70":                nil,
 		"nox_xxx_bookDrawList_45BD40":              nil,
-		"nox_xxx_book_45CF00":                      unsafe.Pointer(C.nox_xxx_book_45CF00),
+		"nox_xxx_book_45CF00":                      bookTooltipKey(4),
 		"nox_xxx_bookDrawFn_45C7D0":                nil,
 		"sub_45D870":                               clientUICallbackKey(clientUICallbackID_sub_45D870),
 	}

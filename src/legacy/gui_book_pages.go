@@ -1,15 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1_2.h"
-#include "GAME2.h"
-#include "GAME2_2.h"
-#include "GAME2_3.h"
-int nox_xxx_bookClickSpell_45B1F0();
-int nox_xxx_bookClickCreature_45B200();
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -38,9 +28,9 @@ func bookStartTurn(back, guide bool) {
 	}
 	anim := (*ImageRef)(unsafe.Pointer(uintptr(*bookWord(off)))).Field24ptr()
 	if guide {
-		anim.OnEnd = C.nox_xxx_bookClickCreature_45B200
+		anim.OnEnd = bookImageEndKey(1)
 	} else {
-		anim.OnEnd = C.nox_xxx_bookClickSpell_45B1F0
+		anim.OnEnd = bookImageEndKey(0)
 	}
 	*bookWord(1046868) = mode
 	anim.Field_3 = uint32(nox_xxx_bookGet_430B40_get_mouse_prev_seq())

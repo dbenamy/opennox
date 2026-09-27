@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME3_1.h"
-#include "client__gui__guisumn.h"
-*/
-import "C"
 import (
 	"encoding/binary"
 	"github.com/opennox/libs/strman"
@@ -33,7 +27,7 @@ func summonCreate() int {
 	root.SetAllFuncs(bookEvent(func(*gui.Window, uint32, uint32) int { return 0 }), func(*gui.Window, *gui.WindowData) int { return 1 }, nil)
 	box := g.NewWindowRaw(root, 136, 5, 38, 76, 76, nil)
 	*summonWord(1321036) = quickbarPointer(box.C())
-	box.SetAllFuncs(bookEvent(summonBoxEvent), func(w *gui.Window, _ *gui.WindowData) int { return summonDraw(w) }, C.sub_4C2C20)
+	box.SetAllFuncs(bookEvent(summonBoxEvent), func(w *gui.Window, _ *gui.WindowData) int { return summonDraw(w) }, bookTooltipKey(2))
 	box.DrawData().SetTooltip(GetServer().S().Strings(), summonText("ToolTipSummon"))
 	*summonWord(1320996) = uiMeterLoadImage("CreatureCageBottom")
 	top := g.NewWindowRaw(box, 160, 0, 0, 1, 1, nil)
@@ -50,7 +44,7 @@ func summonCreate() int {
 	big := g.NewWindowRaw(nil, 168, int(*summonWord(1320988))+27, int(*summonWord(1320992))+12, 34, 34, nil)
 	*summonWord(1321040) = quickbarPointer(big.C())
 	big.DrawData().Style |= 256
-	big.SetAllFuncs(bookEvent(summonBigEvent), nil, C.sub_4C2CE0)
+	big.SetAllFuncs(bookEvent(summonBigEvent), nil, bookTooltipKey(3))
 	big.DrawData().BgImageHnd = noxrender.ImageHandle(unsafe.Pointer(uintptr(*summonWord(1321028))))
 	big.DrawData().SelImageHnd = noxrender.ImageHandle(unsafe.Pointer(uintptr(*summonWord(1321024))))
 	big.DrawData().HlImageHnd = big.DrawData().SelImageHnd
