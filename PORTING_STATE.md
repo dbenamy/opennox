@@ -53,6 +53,12 @@ Last complete default corpus: `6e9681f2`, 2,489 passes plus diagnostic skip.
 
 ## Next work and review items
 
+Active batch: player-section/metadata and screen-particle dispatch. Original
+baseline accepted: 139 owner roots and six focused contracts in each profile,
+plus two safe contracts. Source remains at the qualified modifier conversion;
+reviewed eight-file draft is not installed yet. Next: install and qualify. See
+[SECTION_PARTICLE_DISPATCH.md](docs/porting/SECTION_PARTICLE_DISPATCH.md).
+
 The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
 removal. Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md).
 Metadata discovery is not compilation evidence.
@@ -124,3 +130,9 @@ During modifier preparation, removed seven superseded callback binaries
 (387,018,752 bytes; rebuild `dcab2e38`) and seven animation binaries
 (387,063,808 bytes; rebuild `5233d084`) after source/replacement/hash/host-use checks.
 Logs and records remain; manifests: `build/port-modifier-dispatch/*-cleanup-*`.
+
+Section/particle preparation also reclaimed 1,580,584,960 bytes from nine verified
+superseded binaries and twelve losslessly gzipped historical logs. Current modifier
+artifacts remain. Exact paths/hashes and restore commands are in
+`build/port-section-particle-dispatch/{old-binaries-result,log-archive}.json`;
+see the batch report for source revisions and recovery.
