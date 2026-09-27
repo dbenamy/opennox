@@ -98,7 +98,15 @@ The last callback batch caught a fixed-slot metadata reader missed by symbol-onl
 searches. It also independently reproduced and repaired a test observer's global
 thread scope. Both are documented in the report and PORT.md. The exact cause of
 one earlier GC stall remains unproven; fresh repaired-source qualification passed.
-No source work for the next batch is installed. Completed scripts are consumed.
+The native-integer batch is now baselining 300 focused roots (297 server;
+three explicit client-only exclusions). It proposes 20 integer-only imports and
+34 private C-typed functions, with 37 draft files including callers. Original
+runs reuse exact-source evidence/binaries from `7e698a49`; missing first-pass
+coverage and a complete repeat all passed under
+`build/port-native-integer-types/`. The production workspace remains unchanged;
+the original baseline is ready to commit before installation. See
+[NATIVE_INTEGER_TYPES.md](docs/porting/NATIVE_INTEGER_TYPES.md) for scope and gates.
+Completed prior scripts are consumed.
 Luna remains unavailable due to usage limits; resume the one-helper policy when
 available, without substituting another model.
 
