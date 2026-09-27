@@ -62,6 +62,11 @@ may precede full qualification when their evidence and remaining gates are expli
    conditions: a textual reference inside a constant-false branch is not a live
    entrypoint. Follow the reachable private-helper graph from actual roots. Remove proven unreachable code
    with documented evidence instead of translating it solely to keep tests alive.
+   For type-alias changes, seed the caller audit from type uses in declarations
+   and signatures too. A graph that filters identifiers to function references
+   can omit typed owners even when its call traversal is correct. The native
+   layout audit found 82 additional roots this way, including a real C callback
+   boundary that still required explicit C pointer casts.
 2. Build a recoverable original-behavior baseline using real owners and reusable
    fixtures (C captures where the original path still uses C). Cover
    boundaries, return values, mutations, signedness/overflow, layout, serialization,
@@ -381,6 +386,10 @@ Reconsider the tests as the behavior and failure modes become clearer.
   sequentially, verifies their source/binary/profile records, then runs at most
   two test processes. Use it only for the audited root porttest corpus; keep
   capture/diagnostic output variables unset and dependencies/source frozen.
+  Load the batch manifest's asset/runtime environment as well as env.sh;
+  env.sh supplies compiler settings, not fixture asset paths. The original-layout
+  launcher omitted those paths and was stopped before its partial results were
+  accepted. Verified binaries can be reused for correctly configured runs.
   Production builds and headless scenarios stay sequential. See the bounded
   [prebuilt-profile trial](docs/porting/PREBUILT_PROFILES.md); fall back to
   `--jobs 1` if concurrent resource or isolation problems appear.

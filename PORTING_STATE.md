@@ -84,10 +84,13 @@ produced by `tools/porting/cgo_inventory.py`. Three project packages still direc
 use cgo, plus external client bindings. The earlier helper suggestion that go-gl
 was residue remains rejected: `libs/client/seat/opengl` actually imports it.
 
-Next: migrate engine struct/handle aliases, vector/list boundaries and constants
-where their actual owners and layouts are established. Then continue libc,
-allocator and callback-fallback removal. Read-only next-scope notes are under
-`build/port-scalar-boundaries/next-audit.md`; no next conversion is installed.
+In progress: migrate engine struct/handle aliases, vector/list boundaries and
+constants using established owners. The two new layout/handle contracts pass on
+original production code. The complete 1,312/1,310/1,312-root original baseline
+passes twice per profile, including 82 roots added by the type-use audit.
+The conversion is an uninstalled draft under `build/port-native-layout-types/`;
+see [NATIVE_LAYOUT_TYPES.md](docs/porting/NATIVE_LAYOUT_TYPES.md) and that folder’s
+RUNNING.md before resuming. Then continue libc, allocator and callback removal.
 Object/drawable Go owners append handle fields beyond the C layout. Preserve
 independent legacy-prefix and extension-offset checks, and audit every size-based
 copy/allocation before replacing types. Keep actual C operations until their
