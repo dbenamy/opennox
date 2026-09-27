@@ -1,14 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2_3.h"
-#include "GAME2_2.h"
-#include "GAME3.h"
-#include "GAME3_1.h"
-
-*/
-import "C"
 import (
 	"fmt"
 	"image"
@@ -18,7 +9,6 @@ import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 )
 
 func (e bindingEditor) mainEvent(w *gui.Window, ev gui.WindowEvent) gui.WindowEventResp {
@@ -85,8 +75,8 @@ func (e bindingEditor) construct() int {
 			return 0
 		}
 		anim.StateID = 900
-		anim.Func12Ptr = C.sub_4CBB70
-		anim.FncDoneOutPtr = C.sub_4CBBB0
+		anim.Func12Ptr = animationCallbackKey(animationKeyBindingsBack)
+		anim.FncDoneOutPtr = animationCallbackKey(animationKeyBindingsDone)
 	}
 	for i := 0; i < 4; i++ {
 		bindingStore(base+4*i, w.ChildByID(uint(910+i)))
@@ -186,7 +176,7 @@ func bindingMenuDone() int {
 	a.Free()
 	bindingWindow(1522604).Destroy()
 	bindingWindow(1522612).Destroy()
-	ccall.CallIntVoid(fn)
+	gui.CallAnimationCallback(fn)
 	return 1
 }
 func bindingYesNo() uint32 {

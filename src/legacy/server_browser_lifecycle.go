@@ -10,7 +10,6 @@ import (
 	"github.com/opennox/opennox/v1/client/gui"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"unsafe"
 )
 
@@ -32,7 +31,7 @@ func browserAnimationFinish() int {
 		browserClose()
 	}
 	if next != nil {
-		ccall.CallIntVoid(next)
+		gui.CallAnimationCallback(next)
 	}
 	return 1
 }
@@ -80,7 +79,7 @@ func browserClose() int {
 }
 func browserChooseCharacter() int {
 	browserAnimationOut()
-	(*gui.Anim)(unsafe.Pointer(browserUI.animation)).FncDoneOutPtr = C.sub_43B490
+	(*gui.Anim)(unsafe.Pointer(browserUI.animation)).FncDoneOutPtr = animationCallbackKey(animationKeyBrowserHide)
 	browserWindow(uint32(uintptr(browserUI.detailPanel))).StackPop()
 	return uiWindowEnable(browserWindow(uint32(uintptr(browserUI.mapWindow))), 0)
 }
@@ -113,13 +112,4 @@ func sub_4375C0(enabled C.int) { browserMarkersEnable(int(enabled)) }
 
 func sub_4379C0() { browserListReset() }
 
-//export sub_438330
-func sub_438330() C.int { return C.int(browserAnimationFinish()) }
-
-//export sub_438370
-func sub_438370() C.int { return C.int(browserAnimationOut()) }
-
 func nox_client_guiXxx_43A9D0() C.int { return C.int(browserClose()) }
-
-//export sub_43B490
-func sub_43B490() C.int { return C.int(browserHideAfterChoice()) }

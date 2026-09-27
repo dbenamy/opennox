@@ -153,11 +153,6 @@ func nox_game_decStateInd_43BDC0() {
 	GetClient().GamePopState()
 }
 
-//export nox_game_switchStates_43C0A0
-func nox_game_switchStates_43C0A0() int {
-	return bool2int(GetClient().GameStateSwitch())
-}
-
 func sub_4537F0() {
 	GetServer().S().Sub4537F0()
 }
@@ -524,13 +519,13 @@ func Nox_xxx_calcDistance_4E6C00(a1 *server.Object, a2 *server.Object) float32 {
 	return float32(stateDistance(a1, a2))
 }
 func Get_nox_game_switchStates_43C0A0() unsafe.Pointer {
-	return C.nox_game_switchStates_43C0A0
+	return animationCallbackKey(animationKeySwitchStates)
 }
 func Get_nox_game_showOptions_4AA6B0() unsafe.Pointer {
-	return C.nox_game_showOptions_4AA6B0
+	return animationCallbackKey(animationKeyShowOptions)
 }
 func Get_nox_game_showMainMenu_4A1C00() unsafe.Pointer {
-	return C.nox_game_showMainMenu_4A1C00
+	return animationCallbackKey(animationKeyShowMainMenu)
 }
 func Sub_41CAC0(a1 string, data []byte) {
 	playerFileExtract(a1, unsafe.Pointer(&data[0]))

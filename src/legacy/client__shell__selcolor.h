@@ -3,6 +3,5 @@
 
 #include "defs.h"
 
-int nox_game_showSelColor_4A5D00();
 
 #endif // NOX_PORT_CLIENT_SHELL_SELCOLOR

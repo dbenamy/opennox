@@ -63,16 +63,7 @@ type Nox_screenParticle struct {
 	Field_48 *Nox_screenParticle // 12, 48, prev
 }
 
-//export sub_4A50A0
-func sub_4A50A0() int { return Sub_4A50A0() }
-
-//export sub_4A50D0
-func sub_4A50D0() int { return Sub_4A50D0() }
-
 func sub_413A00(a1 int) { Sub_413A00(a1) }
-
-//export nox_game_showSelChar_4A4DB0
-func nox_game_showSelChar_4A4DB0() int { return Nox_game_showSelChar_4A4DB0() }
 
 func Sub_41E470() {
 	onlineSessionRetry()
@@ -120,8 +111,8 @@ func Get_sub_4A18E0() unsafe.Pointer {
 	return C.sub_4A18E0
 }
 func Get_sub_4A50A0() unsafe.Pointer {
-	return C.sub_4A50A0
+	return animationCallbackKey(animationKeySelCharStart)
 }
 func Get_sub_4A50D0() unsafe.Pointer {
-	return C.sub_4A50D0
+	return animationCallbackKey(animationKeySelCharDone)
 }

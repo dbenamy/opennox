@@ -45,7 +45,7 @@ func browserShow() int {
 		browserUI.transition = 0
 		anim := (*gui.Anim)(unsafe.Pointer(browserUI.animation))
 		anim.SetState(gui.AnimIn)
-		anim.FncDoneOutPtr = C.sub_438330
+		anim.FncDoneOutPtr = animationCallbackKey(animationKeyBrowserDone)
 		Sub_43BE40(3)
 		Nox_xxx_clientPlaySoundSpecial_452D80(922, 100)
 		root.SetHidden(false)
@@ -76,8 +76,8 @@ func browserShow() int {
 		return 0
 	}
 	anim.StateID = 10000
-	anim.Func12Ptr = C.sub_438370
-	anim.FncDoneOutPtr = C.sub_438330
+	anim.Func12Ptr = animationCallbackKey(animationKeyBrowserOut)
+	anim.FncDoneOutPtr = animationCallbackKey(animationKeyBrowserDone)
 	mapWin, overview := root.ChildByID(10020), root.ChildByID(10021)
 	browserUI.mapWindow = mapWin.C()
 	browserUI.overview = uint32(uintptr(overview.C()))
@@ -159,6 +159,4 @@ func browserShow() int {
 	}
 	return 1
 }
-
-//export nox_game_showGameSel_4379F0
-func nox_game_showGameSel_4379F0() C.int { return C.int(browserShow()) }
+func nox_game_showGameSel_4379F0() int { return browserShow() }

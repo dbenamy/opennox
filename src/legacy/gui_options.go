@@ -28,9 +28,6 @@ var (
 	Sub_4A1A40               func(a1 int)
 )
 
-//export sub_4AAA10
-func sub_4AAA10() int { return Sub_4AAA10() }
-
 func Sub_4CBD30() {
 	bindingMenu.apply()
 }

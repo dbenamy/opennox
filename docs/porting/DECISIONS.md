@@ -2782,3 +2782,14 @@ Remove two separately audited includes-only cgo imports while preserving compile
 settings. The unused dialog adapter's raw callback bridge follows the established
 internal-export retirement policy; live native hooks and callbacks remain. See
 [GUI_ADAPTERS.md](GUI_ADAPTERS.md).
+
+
+## Native animation callback identities
+
+Use stable process-lifetime keys and typed Go dispatch for 25 engine animation
+callbacks. Preserve the 68-byte record, signed results, mutable hook lookup and
+saved callbacks invoked after frees. Keep unknown/nil raw fallback and the incoming
+void slot unchanged. Retire 23 orphan wrappers; keep actual bodies/direct Go callers.
+Because this changes shared GUI dispatch, require the full accumulated default
+corpus alongside affected profiles and production gates. Primary finished wrapper
+cleanup when Luna hit its usage limit. See [ANIMATION_IDENTITIES.md](ANIMATION_IDENTITIES.md).

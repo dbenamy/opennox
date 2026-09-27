@@ -358,6 +358,7 @@ target build selection and linker evidence.
 | Retire 19 window exports (13 unused wrappers); selected client/server cgo 130/131→128/129, exports 210→191 | 0 | 0 | 0 | 0 |
 | Retire 17 unused rendering/image exports and private C image aliases; selected client/server cgo 128/129→126/127, exports 191→174 | 0 | 0 | 0 | 0 |
 | Retire five unused GUI adapters and seven production cgo imports; selected client/server cgo 126/127→119/120, exports 174→169 | 0 | 0 | 0 | 0 |
+| Migrate 25 animation callback identities; selected client/server cgo 119/120→113/114, exports 169→144 | 0 | 0 | 0 | 0 |
 
 The 33 checksum test-reference lines were retired after differential validation;
 their original source remains recoverable at `66fa7bd4`.

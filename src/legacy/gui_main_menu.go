@@ -14,9 +14,6 @@ package legacy
 #include "client__shell__selchar.h"
 #include "client__shell__mainmenu.h"
 
-int winMainMenuAnimOutStartFnc();
-int winMainMenuAnimOutDoneFnc();
-int nox_client_drawGeneralCallback_4A2200();
 */
 import "C"
 import (
@@ -37,19 +34,8 @@ var (
 	Sub_4A18E0                   func(a1 *gui.Window, a2, a3, a4 int) int
 )
 
-//export winMainMenuAnimOutStartFnc
-func winMainMenuAnimOutStartFnc() int { return WinMainMenuAnimOutStartFnc() }
-
-//export winMainMenuAnimOutDoneFnc
-func winMainMenuAnimOutDoneFnc() int { return WinMainMenuAnimOutDoneFnc() }
-
-//export nox_game_showMainMenu_4A1C00
-func nox_game_showMainMenu_4A1C00() int { return Nox_game_showMainMenu_4A1C00() }
-
 //export sub_4A18E0
 func sub_4A18E0(a1 unsafe.Pointer, a2, a3, a4 int) int { return Sub_4A18E0(AsWindowP(a1), a2, a3, a4) }
-
-//export nox_client_drawGeneralCallback_4A2200
 func nox_client_drawGeneralCallback_4A2200() int {
 	if err := GetClient().DrawGeneral(false); err != nil {
 		guiLog.Println(err)
@@ -59,11 +45,11 @@ func nox_client_drawGeneralCallback_4A2200() int {
 }
 
 func Get_nox_client_drawGeneralCallback_4A2200() unsafe.Pointer {
-	return unsafe.Pointer(C.nox_client_drawGeneralCallback_4A2200)
+	return animationCallbackKey(animationKeyDrawGeneral)
 }
 
 func Get_nox_game_showGameSel_4379F0() unsafe.Pointer {
-	return unsafe.Pointer(C.nox_game_showGameSel_4379F0)
+	return animationCallbackKey(animationKeyBrowserShow)
 }
 
 func Sub_461440(v int) {
@@ -100,14 +86,14 @@ func Sub_4A7A70(a1 int) {
 }
 
 func Get_nox_game_showSelChar_4A4DB0() unsafe.Pointer {
-	return C.nox_game_showSelChar_4A4DB0
+	return animationCallbackKey(animationKeyShowSelChar)
 }
 func Get_nox_game_showSelClass_4A4840() unsafe.Pointer {
-	return C.nox_game_showSelClass_4A4840
+	return animationCallbackKey(animationKeyShowSelClass)
 }
 func Get_winMainMenuAnimOutStartFnc() unsafe.Pointer {
-	return C.winMainMenuAnimOutStartFnc
+	return animationCallbackKey(animationKeyMainMenuStart)
 }
 func Get_winMainMenuAnimOutDoneFnc() unsafe.Pointer {
-	return C.winMainMenuAnimOutDoneFnc
+	return animationCallbackKey(animationKeyMainMenuDone)
 }

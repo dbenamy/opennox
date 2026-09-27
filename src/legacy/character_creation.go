@@ -13,7 +13,6 @@ import (
 	flags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 )
 
 var characterUI = struct {
@@ -284,7 +283,7 @@ func characterClassDone() int {
 	fn := characterUI.classAnim.Func13Ptr
 	characterUI.classAnim.Free()
 	characterUI.classRoot.Destroy()
-	ccall.CallIntVoid(fn)
+	gui.CallAnimationCallback(fn)
 	return 1
 }
 func characterColorDone() int {
@@ -293,7 +292,7 @@ func characterColorDone() int {
 	characterUI.colorRoot.Destroy()
 	characterUI.palette.Destroy()
 	if fn != nil {
-		ccall.CallIntVoid(fn)
+		gui.CallAnimationCallback(fn)
 	} else {
 		Nox_client_resetScreenParticles_431510()
 		GetClient().Cli().GUI.Draw()

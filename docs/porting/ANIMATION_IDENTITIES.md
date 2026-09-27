@@ -54,7 +54,7 @@ the single established prerequisite-probe skip.
 One GPT-6 Luna helper audited the field/getter closure and reviewed the five new
 contracts. Primary review accepted the test ownership and cleanup, corrected
 ambiguous audit wording about direct Go callers, and owns API/baseline acceptance.
-Luna is preparing the bounded implementation in an isolated ignored draft;
+Luna prepared the bounded implementation in an isolated ignored draft;
 tracked source stays frozen during tests. Final acceptance requires primary
 mapping/caller review and actual qualification.
 
@@ -69,8 +69,32 @@ allocated bytes. Source/assets/current binaries and evidence were retained.
 Journal: `build/port-animation-identities/cache-before-baseline/`.
 
 Local artifacts: `build/port-animation-identities/`. Source inventories and draft
-reviews: `build/port-after-gui-scout/`. No conversion is installed at this baseline.
+reviews: `build/port-after-gui-scout/`. The original baseline is recoverable at `c6ffcb75`; converted results follow.
 
 Committed evidence: [original baseline](animation-identities-baseline.json),
 [batch manifest](animation-identities-batch.json), and
 [affected selection](animation-identities-tests.txt).
+
+## Qualified conversion
+
+All 68 affected roots pass in default/server/highres with exact original names.
+The full default corpus passes 2,474 roots with its one established prerequisite
+skip (2,475 total). Safe/static, three production builds/ABI checks, exact known
+suite comparison (304 failure events; 17 passing, two failing, 32 skipped packages),
+preview/final headless save/load/resume and all 1,654 original asset hashes qualify
+unchanged reviewed source. Frozen captures and baseline tests are unchanged.
+See [qualification](animation-identities-qualification.json).
+
+Exports fall 169→144; selected production cgo files fall 119/120→113/114.
+Headers remain 157 files / 2,902 physical lines. Embedded production C bodies remain 77;
+standalone production/test-reference C remain 0. Process-lifetime native keys route
+25 owners; generic foreign fallback stays until its other users are migrated.
+
+Luna's first draft preserved routing but unnecessarily retained 23 orphan wrappers,
+including C-typed wrappers. The requested refinement hit Luna's usage limit before
+being produced. Primary completed it locally: removed 23 orphan wrappers, retained
+the real drawGeneral body and a native-int browser wrapper with direct Go callers,
+and eliminated 6 unneeded cgo imports (two empty files deleted). Primary verified all
+25 mappings, exact export/prototype delta, every address assignment/getter and six
+saved-pointer calls. No replacement helper model was used. This was useful bounded
+delegation with a material primary scope correction; no measured cost claim.

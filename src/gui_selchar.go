@@ -27,7 +27,6 @@ import (
 	"github.com/opennox/opennox/v1/internal/cryptfile"
 	"github.com/opennox/opennox/v1/legacy"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -91,7 +90,7 @@ func sub_4A50D0() int {
 	winSelSave.Destroy()
 	winSelSave = nil
 	if v0 != nil {
-		ccall.CallIntVoid(unsafe.Pointer(v0))
+		gui.CallAnimationCallback(unsafe.Pointer(v0))
 		return 1
 	}
 	nox_client_resetScreenParticles_431510()

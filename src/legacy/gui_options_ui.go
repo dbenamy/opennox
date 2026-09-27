@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME3.h"
-#include "GAME3_1.h"
-
-*/
-import "C"
 import (
 	"image"
 	"unsafe"
@@ -14,7 +7,6 @@ import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/client/noxrender"
 	"github.com/opennox/opennox/v1/common/memmap"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 )
 
 func (e optionsEditor) event(w *gui.Window, ev gui.WindowEvent) gui.WindowEventResp {
@@ -54,8 +46,8 @@ func (e optionsEditor) event(w *gui.Window, ev gui.WindowEvent) gui.WindowEventR
 			if e {
 				Sub_4AA9C0()
 				anim := Get_nox_wnd_xxx_1309740()
-				anim.FncDoneOutPtr = C.sub_4AB0C0
-				anim.Func13Ptr = C.sub_4CB880
+				anim.FncDoneOutPtr = animationCallbackKey(animationKeyOptionsDone)
+				anim.Func13Ptr = animationCallbackKey(animationKeyBindingsShow)
 			} else {
 				optionsClose(0)
 				Sub_445C40()
@@ -111,8 +103,8 @@ func (e optionsEditor) construct() int {
 			return 0
 		}
 		anim.StateID = 300
-		anim.Func12Ptr = C.sub_4AA9C0
-		anim.FncDoneOutPtr = C.sub_4AAA10
+		anim.Func12Ptr = animationCallbackKey(animationKeyOptionsStart)
+		anim.FncDoneOutPtr = animationCallbackKey(animationKeyOptionsFinish)
 	}
 	for ch := 0; ch < 3; ch++ {
 		slider := w.ChildByID(uint(351 + ch))
@@ -233,7 +225,7 @@ func optionsMenuDone() int {
 	fn := a.Func13Ptr
 	a.Free()
 	optionsWindow(1309720).Destroy()
-	ccall.CallIntVoid(fn)
+	gui.CallAnimationCallback(fn)
 	return 1
 }
 func optionsOverlayDraw(w *gui.Window, d *gui.WindowData) int {
