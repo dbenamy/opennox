@@ -10,30 +10,31 @@ superseded status when updating it. The workflow and delegation rules live in
 internal glue: 383/463 client cgo files eliminated on net (80 remain;
 server: 382/463 eliminated, 81 remain).**
 Selected legacy C export bridges: **1,880/1,890 retired (10 remain)**.
+Embedded production C bodies: **59/79 retired (20 remain)**.
 
 These are selected project files in Linux 386 production profiles, not equal
-units of effort. Three project packages directly use cgo; 77 embedded C callback
-bodies remain. Production and test-reference standalone `.c` files both remain zero.
+units of effort. Three project packages directly use cgo. Production and
+test-reference standalone `.c` files both remain zero.
 
-Latest qualified chunk retires 70 unused engine C exports. Sixty unchanged Go
-fixture adapters move under porttest; ten Go-called bodies stay in production.
-Fifteen production cgo imports and five empty files disappear. Ten real C callback
-addresses remain. Native owners, argument widths, layouts and frozen captures
-are preserved. See [REMAINING_FIXTURE_BRIDGES.md](docs/porting/REMAINING_FIXTURE_BRIDGES.md).
+Latest qualified chunk removes 57 unused generated C dispatch signatures and
+updates the generator to emit only the 19 signatures with callers. Retained C
+definitions and Go wrappers are unchanged. This is unused source cleanup; ten
+real callback exports, cgo file counts and native behavior remain unchanged.
+See [UNUSED_DISPATCH_SIGNATURES.md](docs/porting/UNUSED_DISPATCH_SIGNATURES.md).
 
 Continue chunk-by-chunk with one Luna helper when available, primary review,
 qualification, documentation, commit/push and recorded reversible decisions.
 Stop at the milestone, usage limits or a substantial question.
-Latest qualified artifacts: `build/port-remaining-fixture-bridges/`.
+Latest qualified artifacts: `build/port-unused-dispatch-signatures/`.
 
 ## What remains
 
-Counts describe the qualified fixture-bridge conversion. Zero `.c` lines is not
+Counts describe the qualified unused-dispatch cleanup. Zero `.c` lines is not
 a count of all C dependencies or remaining engineering effort.
 
 | Area | Remaining work or dependency |
 | --- | --- |
-| Embedded C callback glue | 77 production function bodies in Go preambles: 76 generated function-pointer dispatchers and one specialized adapter. A read-only scout found 57 generated signatures without src Go references; this is not yet a completed removal audit. |
+| Embedded C callback glue | 20 production function bodies in Go preambles: 19 generated dispatchers (one used only by fixtures) and one specialized spell adapter. All 57 unreferenced generated signatures are retired. |
 | Callback routes | Ten selected C exports still supply real callback addresses. Migrate every field/alias consumer before removing shared raw fallbacks. |
 | Declarations and C types | 157 tracked headers / 2,741 physical lines; client profiles select 80 cgo files and server selects 81 in three project packages (alloc, ccall, legacy). Transitional fixture C types also remain. |
 | Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Ownership/lifetime work remains behind the centralized allocator. |
@@ -47,21 +48,23 @@ remaining embedded callbacks. Test-only C observers still qualify raw boundaries
 ## Latest qualification and evidence
 
 - Full default corpus: 2,478 passing roots and one established
-  `TestMapPopulationPrerequisiteProbe` skip among 2,479 roots, before and after conversion.
+  `TestMapPopulationPrerequisiteProbe` skip among 2,479 roots.
 - Converted focused suites: 559 server and 561 high-resolution roots pass with
-  exact expected names, unchanged captures and no failures/skips.
-- Original 305 additional roots passed twice/profile; exact-source prior book
-  coverage of 256 client/high-resolution and 254 server roots was reused.
-- AST review confirms all 70 adapter bodies/signatures and 374 remaining
-  production functions in touched files unchanged. Seven profile-runner checks pass.
-- Safe/static and all three production/ABI checks pass; 70 retired exports absent.
-- Fresh preview and final headless character creation with explicit save/load/
-  resume pass on the same final production binary.
-- Full asset suite exactly matches known failure and package results; all 1,654
-  original asset hashes remain unchanged. Accepted gates share source fingerprints.
+  exact expected names, unchanged captures and no failures/skips. Original root
+  evidence reuses the preceding qualification with identical source fingerprints.
+- Existing legacy callback-adapter contract passes twice/profile before conversion
+  and once/profile after, covering callback choice, argument pointers and signed
+  return boundaries. All 19 retained C definitions and Go wrappers are unchanged;
+  rerunning the generator reproduces the installed dispatcher exactly.
+- Safe/static and all three production/ABI checks pass; ten live exports remain.
+- Fresh headless character creation with explicit save/load/resume passes on the
+  final production binary. The full asset suite exactly matches known failure
+  and package results; all 1,654 original asset hashes remain unchanged.
+- Accepted gates share source fingerprints. No separate GUI preview was needed
+  for this deletion-only generated-code cleanup; final gameplay was qualified.
 
-Report: [REMAINING_FIXTURE_BRIDGES.md](docs/porting/REMAINING_FIXTURE_BRIDGES.md).
-Evidence: [qualification](docs/porting/remaining-fixture-bridges-qualification.json).
+Report: [UNUSED_DISPATCH_SIGNATURES.md](docs/porting/UNUSED_DISPATCH_SIGNATURES.md).
+Evidence: [qualification](docs/porting/unused-dispatch-signatures-qualification.json).
 Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expected-suite.jsonl).
 
 ## Goal, next work and open review items
@@ -74,7 +77,7 @@ removal order and completion criteria. Client rendering/audio backend replacemen
 is outside this phase.
 
 The dependency inventory tool is `tools/porting/cgo_inventory.py`; the current
-qualified inventory is [remaining-fixture-bridges-inventory-after.json](docs/porting/remaining-fixture-bridges-inventory-after.json).
+qualified inventory is [unused-dispatch-signatures-inventory-after.json](docs/porting/unused-dispatch-signatures-inventory-after.json).
 The original phase baseline is under `build/port-cgo-leaves/inventory-before/`.
 The completed leaf cleanup leaves three project packages directly using cgo in
 all profiles, plus OpenGL/SDL2/OpenAL bindings in the clients. Metadata discovery
@@ -82,19 +85,15 @@ is not compilation or qualification. The helper's external-review draft is not
 accepted evidence: its suggestion that go-gl is residue is contradicted by the
 actual dependency graph (`libs/client/seat/opengl` imports it).
 
-Remaining fixture bridges are qualified; baseline commit is `61bca9ef`.
-Next chunk: remove 57 unreferenced generated dispatch signatures. Its two-file
-draft is reviewed but not installed; all 19 retained wrappers/C definitions are
-unchanged. Original callback-adapter contracts passed twice/profile; exact-source
-root qualification from `62873a54` is reused. Resume under
-`build/port-unused-dispatch-signatures/` and its tracked baseline/report.
-After this bounded cleanup, continue the remaining callback-address audit. The ten exports span player-file sections, map
-object data, screen particles, menu/tooltips and FlameCleanse. Trace all raw field,
-getter and alias consumers; existing native registries may cover several routes.
-A bounded Go-import/selector scout is at
-`build/port-remaining-fixture-bridges/next-dispatch-scout.json` (57 of 76 generated
-signatures have no src Go references, one is fixture-only). Verify whole-repository
-uses and generator output before removal; this scout is not acceptance evidence.
+Unused generated dispatch signatures are qualified; baseline commit is `119b666a`.
+No next conversion is installed. Next, migrate the ten remaining callback exports:
+three player-file handlers, map object data, screen particles, menu/tooltips and
+FlameCleanse. Read-only consumer notes are in
+`build/port-unused-dispatch-signatures/next-callback-notes.md`. Trace every table,
+field, getter and fixture alias. Reuse existing native registries where suitable;
+avoid introducing raw identities when a single consumer can use a Go function.
+Preserve mutable-hook lookup, nil event responses, callback return bits, cached-next
+particle traversal, player-file section framing and map guard order.
 Luna remains unavailable due to usage limits; resume the one-helper policy when
 available, without substituting another model.
 
@@ -123,8 +122,8 @@ The current Go toolchain is `/usr/lib/go-1.26/bin`. Follow the
 [build environment instructions](PORT.md#build-and-test-environment), including
 sourcing `build/baseline/env.sh` in every Go shell.
 
-Latest local artifacts are under `build/port-remaining-fixture-bridges/`:
-`contracts/`, `preview/`, `safe/opennox-safe`, and
+Latest local artifacts are under `build/port-unused-dispatch-signatures/`:
+`adapters/`, `contracts/`, `safe/opennox-safe`, and
 `production/production/bin/{opennox,opennox-hd,opennox-server}`.
 Source, tests, reports and qualification metadata are committed; ignored local
 binaries/logs/drafts are not backed up by pushing Git. Completed finalizers are
@@ -137,6 +136,7 @@ do not rerun them or infer deletion safety from age alone.
 
 | Artifact | Recovery or current location |
 | --- | --- |
+| Unused-dispatch cleanup | Losslessly gzip-archived 36 further historical game-message capture groups (372,830,208 allocated bytes); restore first recorded path, verify SHA-256, then hard-link its recorded aliases. Removed four superseded book production/safe binaries (187,338,752 bytes; rebuild `b2597f97`) after source/hash/replacement/host-use verification. Removed 20 obsolete root/legacy cache archives predating `119b666a` (917,471,232 bytes), with no compiler active and no open-file use. Journals under `build/port-unused-dispatch-signatures/`; all scripts consumed. Final scenario deduplicated 1,654 verified asset copies (559,968,256 bytes); restore using the existing tool and `build/baseline/runs/unused-dispatch-signatures-save/deduplicated-assets.json`. Originals and current binaries remain. |
 | Remaining-fixture cleanup | Removed four superseded unused-adapter production/safe binaries (187,367,424 allocated bytes; rebuild `1238c985`) and three book test binaries (200,716,288 bytes; rebuild `b2597f97`) after source/hash/replacement/host-use checks. Losslessly archived 30 historical capture groups (711,507,968 bytes), six original test logs (260,030,464 bytes) and three converted logs (165,019,648 bytes). Journals under `build/port-remaining-fixture-bridges/`; restore logs with `gzip -dk` and verify recorded uncompressed hashes. For capture groups, restore the first recorded path then hard-link the remaining paths. Preview/final each deduplicated 1,654 verified asset copies; restore with `build/port-artifact-cleanup/restore-recent-scenario.py` and `build/baseline/runs/remaining-fixture-bridges[-preview]-save/deduplicated-assets.json`. Originals and current binaries remain. |
 | Book callback cleanup | Removed 13 superseded binaries (791,552,000 allocated bytes; rebuild `f8332e3d`, `1238c985`, `0121a5f3`, `b5831dc9`) and 15 obsolete cache archives (839,024,640 bytes), with source/hash/host-use checks. Losslessly archived 3 historical failed-setup update binaries (99,102,720 bytes reclaimed); restore `gzip -dk FILE.test.gz`, `chmod 755 FILE.test` and verify the hashes in `build/port-book-callbacks/old-update-failed-binaries-archive.json`. Preview/final each deduplicated 1,654 verified asset copies; originals, saves and logs retained. Journals under `build/port-book-callbacks/`; restore scenarios with `build/port-artifact-cleanup/restore-recent-scenario.py` and `build/baseline/runs/book-callbacks[-preview]-save/deduplicated-assets.json`. |
 | Unused-adapter cleanup | Removed nine obsolete project cache archives (420,343,808 allocated bytes) and four superseded GUI production/safe executables (187,723,776 bytes; rebuild `2bca8420`) and three superseded animation test binaries (200,912,896 bytes; rebuild `f8332e3d`) plus 6 superseded previews (285,929,472 bytes; exact rebuild revisions in `preview-binaries-cleanup-approved.json`) after source/hash and host-use checks. Preview/final each deduplicated 1,654 verified original-asset copies; source, originals, saves and logs retained. Journals under `build/port-unused-abi-adapters/`; restore scenarios with `build/port-artifact-cleanup/restore-recent-scenario.py` and `build/baseline/runs/unused-abi-adapters[-preview]-save/deduplicated-assets.json`. |

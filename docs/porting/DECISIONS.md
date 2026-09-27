@@ -2836,3 +2836,17 @@ before and after, with focused server/high-resolution checks. Allow a default-on
 profile selector to avoid a redundant focused-default pass. Existing owners,
 assertions and captures are unchanged. Luna remained quota-limited; primary
 completed the batch. See [REMAINING_FIXTURE_BRIDGES.md](REMAINING_FIXTURE_BRIDGES.md).
+
+
+## Unused generated dispatch signatures
+
+Restrict the existing generator to the 19 signatures with whole-repository Go
+callers; remove the other 57 wrapper/body pairs. Keep the one fixture-only
+signature until its raw observer callers migrate. Retained Go wrappers and C
+bodies are identical, and generation reproduces the installed output. This reduces
+unused C source, not live callback routes or cgo packages. Reuse exact-source root
+baseline evidence, repeat the existing adapter contract in all profiles, and run
+full-default plus focused profile regressions and production gates after conversion.
+Skip the separate GUI preview for this deletion-only batch; retain fresh final
+save/load, known-suite and asset checks. Primary completed it while Luna remained
+quota-limited. See [UNUSED_DISPATCH_SIGNATURES.md](UNUSED_DISPATCH_SIGNATURES.md).

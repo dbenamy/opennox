@@ -362,6 +362,7 @@ target build selection and linker evidence.
 | Retire 56 unused C exports and 33 private C-typed wrappers; selected client/server cgo 113/114→102/103, exports 144→88 | 0 | 0 | 0 | 0 |
 | Native book/UI callbacks and five private wrappers retired; selected client/server cgo 102/103→95/96, exports 88→80 | 0 | 0 | 0 | 0 |
 | Retire 70 unused fixture/export bridges; selected client/server cgo 95/96→80/81, exports 80→10; headers 2,809→2,741 lines | 0 | 0 | 0 | 0 |
+| Prune 57 unreferenced generated dispatch signatures; embedded C bodies 77→20; selected cgo 80/81 and exports 10 unchanged | 0 | 0 | 0 | 0 |
 
 The 33 checksum test-reference lines were retired after differential validation;
 their original source remains recoverable at `66fa7bd4`.

@@ -108,7 +108,34 @@ import "unsafe"
 	return os.WriteFile(out, buf.Bytes(), 0644)
 }
 
+// Keep only signatures used by engine callers or raw-boundary fixtures. Audit
+// callers before removing an entry; generation must not restore retired glue.
+var retainedCalls = map[string]bool{
+	"CallIntPtr":    true,
+	"CallIntPtr2":   true,
+	"CallIntPtr3":   true,
+	"CallIntUPtr":   true,
+	"CallIntUPtr3":  true,
+	"CallIntUPtr4":  true,
+	"CallIntUPtr5":  true,
+	"CallIntVoid":   true,
+	"CallUPtrUPtr4": true,
+	"CallVoidInt2":  true,
+	"CallVoidPtr":   true,
+	"CallVoidPtr2":  true,
+	"CallVoidPtr3":  true,
+	"CallVoidPtr5":  true,
+	"CallVoidPtr6":  true,
+	"CallVoidUPtr2": true,
+	"CallVoidUPtr3": true,
+	"CallVoidUPtr5": true,
+	"CallVoidVoid":  true,
+}
+
 func generate(h, g *bytes.Buffer, cname, goname string, ret *Type, args []Type) {
+	if !retainedCalls["Call"+goname] {
+		return
+	}
 	generateHeader(h, cname, ret, args)
 	generateGo(g, cname, goname, ret, args)
 }
