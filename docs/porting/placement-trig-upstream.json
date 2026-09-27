@@ -1,0 +1,27 @@
+{
+  "repository": "https://github.com/bminor/glibc",
+  "revision": "04e750e75b73957cf1c791535a3f4319534a52fc",
+  "commit_date": "2026-01-20T15:18:56Z",
+  "files": {
+    "sysdeps/ieee754/dbl-64/s_sin.c": {
+      "url": "https://raw.githubusercontent.com/bminor/glibc/04e750e75b73957cf1c791535a3f4319534a52fc/sysdeps/ieee754/dbl-64/s_sin.c",
+      "sha256": "874fe9ebf6accaeaf9f52df2de17c07925fb8ba133ce3e606e2b05f62ab1df91",
+      "bytes": 9483
+    },
+    "sysdeps/ieee754/dbl-64/usncs.h": {
+      "url": "https://raw.githubusercontent.com/bminor/glibc/04e750e75b73957cf1c791535a3f4319534a52fc/sysdeps/ieee754/dbl-64/usncs.h",
+      "sha256": "867fab124286036e22e760250ae929f8f1dcd9e6719cf4c40c8accf931abe749",
+      "bytes": 2640
+    },
+    "sysdeps/ieee754/dbl-64/sincostab.c": {
+      "url": "https://raw.githubusercontent.com/bminor/glibc/04e750e75b73957cf1c791535a3f4319534a52fc/sysdeps/ieee754/dbl-64/sincostab.c",
+      "sha256": "a3ed5716ecbe5dfee173bfe6bad10663c9d239d5b01659d1fa834b3c97c3f355",
+      "bytes": 42571
+    },
+    "COPYING.LIB": {
+      "url": "https://raw.githubusercontent.com/bminor/glibc/04e750e75b73957cf1c791535a3f4319534a52fc/COPYING.LIB",
+      "sha256": "9b2def8a1f95faf55a15ade459ba61d97183ebfb269b175e0e2eaed61bf9ebe3",
+      "bytes": 16
+    }
+  }
+}

@@ -1,0 +1,1039 @@
+{
+  "production_revision": "79b7e9e3",
+  "libc_version": "libc6:i386\t2.43-2ubuntu2.4",
+  "libm_sha256": "2896220a838681a8b7a32f9beec4ce34f78d35b96644ed2c186984a35176811b",
+  "files": {
+    "probe-results.json": {
+      "sha256": "a091bfdfa4b566533f60531e38cedbcb89da5ea6fa66be65cf419e580c516bdb",
+      "data": {
+        "counts": {
+          "cancellation_coordinates": 4194304,
+          "cancellation_differences": 163231,
+          "ordinary_coordinates": 16777216,
+          "ordinary_differences": 2,
+          "trig_differences": 132938,
+          "trig_values": 524288
+        },
+        "examples": [
+          {
+            "angle": "40474127",
+            "axis": "1",
+            "c": "ae842e9e",
+            "go": "ae842e9f",
+            "kind": "cancellation",
+            "next": "4008e824e4db3e80",
+            "origin": "bb6751f2",
+            "radius": "3e000000"
+          },
+          {
+            "angle": "40474127",
+            "axis": "1",
+            "c": "b0042e9e",
+            "go": "b0042e9f",
+            "kind": "cancellation",
+            "next": "4008e824e4db3e80",
+            "origin": "bce751f2",
+            "radius": "3f800000"
+          },
+          {
+            "angle": "40474127",
+            "axis": "1",
+            "c": "b14f0c77",
+            "go": "b14f0c78",
+            "kind": "cancellation",
+            "next": "4008e824e4db3e80",
+            "origin": "bfa2a59e",
+            "radius": "42340000"
+          },
+          {
+            "angle": "40474127",
+            "axis": "1",
+            "c": "341ba9e5",
+            "go": "341ba9e4",
+            "kind": "cancellation",
+            "next": "4008e824e4db3e80",
+            "origin": "c1e1e606",
+            "radius": "447a0000"
+          },
+          {
+            "angle": "40474127",
+            "axis": "1",
+            "c": "bc042e9e",
+            "go": "bc042e9f",
+            "kind": "cancellation",
+            "next": "4008e824e4db3e80",
+            "origin": "c8e751f2",
+            "radius": "4b800000"
+          },
+          {
+            "angle": "4166c4f5",
+            "axis": "0",
+            "c": "33f391b6",
+            "go": "33f391b7",
+            "kind": "cancellation",
+            "next": "402cd89ead36cfa0",
+            "origin": "414b116b",
+            "radius": "42340000"
+          },
+          {
+            "angle": "4166c4f5",
+            "axis": "0",
+            "c": "b2c2bd20",
+            "go": "b2c2bd00",
+            "kind": "cancellation",
+            "next": "402cd89ead36cfa0",
+            "origin": "438d04fc",
+            "radius": "447a0000"
+          },
+          {
+            "angle": "418276de",
+            "axis": "1",
+            "c": "b55ef02f",
+            "go": "b55ef02e",
+            "kind": "cancellation",
+            "next": "40304edbc69b67d0",
+            "origin": "41cb4b55",
+            "radius": "42340000"
+          },
+          {
+            "angle": "418276de",
+            "axis": "1",
+            "c": "b49a15bd",
+            "go": "b49a15bc",
+            "kind": "cancellation",
+            "next": "40304edbc69b67d0",
+            "origin": "41e1e1ed",
+            "radius": "42480000"
+          },
+          {
+            "angle": "418276de",
+            "axis": "1",
+            "c": "350c6fb2",
+            "go": "350c6fb3",
+            "kind": "cancellation",
+            "next": "40304edbc69b67d0",
+            "origin": "42296972",
+            "radius": "42960000"
+          },
+          {
+            "angle": "41918b42",
+            "axis": "0",
+            "c": "b5f6598d",
+            "go": "b5f6598e",
+            "kind": "cancellation",
+            "next": "40323168369b67d0",
+            "origin": "c21e6b5e",
+            "radius": "42480000"
+          },
+          {
+            "angle": "41918b42",
+            "axis": "0",
+            "c": "b6cfbfc3",
+            "go": "b6cfbfc4",
+            "kind": "cancellation",
+            "next": "40323168369b67d0",
+            "origin": "c4460635",
+            "radius": "447a0000"
+          }
+        ]
+      }
+    },
+    "probe-details.json": {
+      "sha256": "808214aaa7149845d3487561eae85dcedc365a54795c1b73db68422e80232fc7",
+      "data": {
+        "counts": {
+          "cancellation_coordinates": 4194304,
+          "cancellation_differences": 163231,
+          "cancellation_game_range_differences": 68870,
+          "ordinary_coordinates": 16777216,
+          "ordinary_differences": 2,
+          "ordinary_game_range_differences": 2,
+          "trig_differences": 132938,
+          "trig_values": 524288
+        },
+        "examples": [
+          {
+            "angle": "40474127",
+            "axis": "1",
+            "c": "ae842e9e",
+            "go": "ae842e9f",
+            "kind": "cancellation",
+            "next": "4008e824e4db3e80",
+            "origin": "bb6751f2",
+            "radius": "3e000000"
+          },
+          {
+            "angle": "40474127",
+            "axis": "1",
+            "c": "b0042e9e",
+            "go": "b0042e9f",
+            "kind": "cancellation",
+            "next": "4008e824e4db3e80",
+            "origin": "bce751f2",
+            "radius": "3f800000"
+          },
+          {
+            "angle": "40474127",
+            "axis": "1",
+            "c": "b14f0c77",
+            "go": "b14f0c78",
+            "kind": "cancellation",
+            "next": "4008e824e4db3e80",
+            "origin": "bfa2a59e",
+            "radius": "42340000"
+          },
+          {
+            "angle": "40474127",
+            "axis": "1",
+            "c": "341ba9e5",
+            "go": "341ba9e4",
+            "kind": "cancellation",
+            "next": "4008e824e4db3e80",
+            "origin": "c1e1e606",
+            "radius": "447a0000"
+          },
+          {
+            "angle": "40474127",
+            "axis": "1",
+            "c": "bc042e9e",
+            "go": "bc042e9f",
+            "kind": "cancellation",
+            "next": "4008e824e4db3e80",
+            "origin": "c8e751f2",
+            "radius": "4b800000"
+          },
+          {
+            "angle": "4166c4f5",
+            "axis": "0",
+            "c": "33f391b6",
+            "go": "33f391b7",
+            "kind": "cancellation",
+            "next": "402cd89ead36cfa0",
+            "origin": "414b116b",
+            "radius": "42340000"
+          },
+          {
+            "angle": "4096ca98",
+            "axis": "1",
+            "c": "32573fb2",
+            "go": "32573fb3",
+            "kind": "ordinary",
+            "next": "4012d9530a6d9f40",
+            "origin": "3f800000",
+            "radius": "3f800000"
+          },
+          {
+            "angle": "41bc7e8c",
+            "axis": "1",
+            "c": "324cdf7e",
+            "go": "324cdf7f",
+            "kind": "ordinary",
+            "next": "40378fd1769b67d0",
+            "origin": "3f800000",
+            "radius": "3f800000"
+          }
+        ]
+      }
+    },
+    "compatible-results.json": {
+      "sha256": "5fd321f02b9d041e9bdfe19228a815ab3565ac3efe9b31634f92c7a58e981c2e",
+      "data": {
+        "counts": {
+          "cancellation_coordinates": 4194304,
+          "ordinary_coordinates": 16777216,
+          "trig_values": 524288
+        },
+        "examples": []
+      }
+    },
+    "rng-results-first.json": {
+      "sha256": "58c2e666ac333b6b56a7d46f0b53fa4575026135359a5291caa75c8f07aa7682",
+      "data": {
+        "c_sha256": "0e09c10d0957707d8160e4ab4c5fbec4f008f77c428a66bba4a762418def66e9",
+        "counts": {
+          "cancellation_coordinates": 4194304,
+          "ordinary_coordinates": 16777216,
+          "trig_values": 524288
+        },
+        "examples": [],
+        "native_sha256": "0e09c10d0957707d8160e4ab4c5fbec4f008f77c428a66bba4a762418def66e9"
+      }
+    },
+    "rng-results-repeat.json": {
+      "sha256": "58c2e666ac333b6b56a7d46f0b53fa4575026135359a5291caa75c8f07aa7682",
+      "data": {
+        "c_sha256": "0e09c10d0957707d8160e4ab4c5fbec4f008f77c428a66bba4a762418def66e9",
+        "counts": {
+          "cancellation_coordinates": 4194304,
+          "ordinary_coordinates": 16777216,
+          "trig_values": 524288
+        },
+        "examples": [],
+        "native_sha256": "0e09c10d0957707d8160e4ab4c5fbec4f008f77c428a66bba4a762418def66e9"
+      }
+    },
+    "boundaries-first.json": {
+      "sha256": "ed090d039e9f6eb50f3c5c8a8f8775b3e43e76395013bb2f4094c51e89acb897",
+      "data": [
+        {
+          "cos": "3ff0000000000000",
+          "input": "8000000000000001",
+          "sin": "8000000000000001"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "0000000000000001",
+          "sin": "0000000000000001"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "0000000000000000",
+          "sin": "0000000000000000"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "8000000000000000",
+          "sin": "8000000000000000"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "0000000000000002",
+          "sin": "0000000000000002"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "8000000000000002",
+          "sin": "8000000000000002"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "3e3fffffffffffff",
+          "sin": "3e3fffffffffffff"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "be3fffffffffffff",
+          "sin": "be3fffffffffffff"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "3e40000000000000",
+          "sin": "3e40000000000000"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "be40000000000000",
+          "sin": "be40000000000000"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "3e40000000000001",
+          "sin": "3e40000000000001"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "be40000000000001",
+          "sin": "be40000000000001"
+        },
+        {
+          "cos": "3fefffffffffffff",
+          "input": "3e4fffffffffffff",
+          "sin": "3e4fffffffffffff"
+        },
+        {
+          "cos": "3fefffffffffffff",
+          "input": "be4fffffffffffff",
+          "sin": "be4fffffffffffff"
+        },
+        {
+          "cos": "3fefffffffffffff",
+          "input": "3e50000000000000",
+          "sin": "3e50000000000000"
+        },
+        {
+          "cos": "3fefffffffffffff",
+          "input": "be50000000000000",
+          "sin": "be50000000000000"
+        },
+        {
+          "cos": "3fefffffffffffff",
+          "input": "3e50000000000001",
+          "sin": "3e50000000000001"
+        },
+        {
+          "cos": "3fefffffffffffff",
+          "input": "be50000000000001",
+          "sin": "be50000000000001"
+        },
+        {
+          "cos": "3fefbf0ed1ec08ed",
+          "input": "3fc020c49ba5e353",
+          "sin": "3fc015da194e500d"
+        },
+        {
+          "cos": "3fefbf0ed1ec08ed",
+          "input": "bfc020c49ba5e353",
+          "sin": "bfc015da194e500d"
+        },
+        {
+          "cos": "3fefbf0ed1ec08ed",
+          "input": "3fc020c49ba5e354",
+          "sin": "3fc015da194e500e"
+        },
+        {
+          "cos": "3fefbf0ed1ec08ed",
+          "input": "bfc020c49ba5e354",
+          "sin": "bfc015da194e500e"
+        },
+        {
+          "cos": "3fefbf0ed1ec08ed",
+          "input": "3fc020c49ba5e355",
+          "sin": "3fc015da194e500f"
+        },
+        {
+          "cos": "3fefbf0ed1ec08ed",
+          "input": "bfc020c49ba5e355",
+          "sin": "bfc015da194e500f"
+        },
+        {
+          "cos": "3fe4fcd8091b8f24",
+          "input": "3feb5fffffffffff",
+          "sin": "3fe827f6d2325577"
+        },
+        {
+          "cos": "3fe4fcd8091b8f24",
+          "input": "bfeb5fffffffffff",
+          "sin": "bfe827f6d2325577"
+        },
+        {
+          "cos": "3fe4fcd8091b8f24",
+          "input": "3feb600000000000",
+          "sin": "3fe827f6d2325578"
+        },
+        {
+          "cos": "3fe4fcd8091b8f24",
+          "input": "bfeb600000000000",
+          "sin": "bfe827f6d2325578"
+        },
+        {
+          "cos": "3fe4fcd8091b8f23",
+          "input": "3feb600000000001",
+          "sin": "3fe827f6d2325578"
+        },
+        {
+          "cos": "3fe4fcd8091b8f23",
+          "input": "bfeb600000000001",
+          "sin": "bfe827f6d2325578"
+        },
+        {
+          "cos": "bfe827f513dbe3a0",
+          "input": "400368fcffffffff",
+          "sin": "3fe4fcda0ad3a77d"
+        },
+        {
+          "cos": "bfe827f513dbe3a0",
+          "input": "c00368fcffffffff",
+          "sin": "bfe4fcda0ad3a77d"
+        },
+        {
+          "cos": "bfe827f513dbe3a2",
+          "input": "400368fd00000000",
+          "sin": "3fe4fcda0ad3a77a"
+        },
+        {
+          "cos": "bfe827f513dbe3a2",
+          "input": "c00368fd00000000",
+          "sin": "bfe4fcda0ad3a77a"
+        },
+        {
+          "cos": "bfe827f513dbe3a5",
+          "input": "400368fd00000001",
+          "sin": "3fe4fcda0ad3a777"
+        },
+        {
+          "cos": "bfe827f513dbe3a5",
+          "input": "c00368fd00000001",
+          "sin": "bfe4fcda0ad3a777"
+        },
+        {
+          "cos": "3cb469898cc51702",
+          "input": "3ff921fb54442d17",
+          "sin": "3ff0000000000000"
+        },
+        {
+          "cos": "3cb469898cc51702",
+          "input": "bff921fb54442d17",
+          "sin": "bff0000000000000"
+        },
+        {
+          "cos": "3c91a62633145c07",
+          "input": "3ff921fb54442d18",
+          "sin": "3ff0000000000000"
+        },
+        {
+          "cos": "3c91a62633145c07",
+          "input": "bff921fb54442d18",
+          "sin": "bff0000000000000"
+        },
+        {
+          "cos": "bca72cece675d1fc",
+          "input": "3ff921fb54442d19",
+          "sin": "3ff0000000000000"
+        },
+        {
+          "cos": "bca72cece675d1fc",
+          "input": "bff921fb54442d19",
+          "sin": "bff0000000000000"
+        },
+        {
+          "cos": "bff0000000000000",
+          "input": "400921fb54442d17",
+          "sin": "3cc469898cc51702"
+        },
+        {
+          "cos": "bff0000000000000",
+          "input": "c00921fb54442d17",
+          "sin": "bcc469898cc51702"
+        },
+        {
+          "cos": "bff0000000000000",
+          "input": "400921fb54442d18",
+          "sin": "3ca1a62633145c07"
+        },
+        {
+          "cos": "bff0000000000000",
+          "input": "c00921fb54442d18",
+          "sin": "bca1a62633145c07"
+        },
+        {
+          "cos": "bff0000000000000",
+          "input": "400921fb54442d19",
+          "sin": "bcb72cece675d1fd"
+        },
+        {
+          "cos": "bff0000000000000",
+          "input": "c00921fb54442d19",
+          "sin": "3cb72cece675d1fd"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "401921fb54442d17",
+          "sin": "bcd469898cc51702"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "c01921fb54442d17",
+          "sin": "3cd469898cc51702"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "401921fb54442d18",
+          "sin": "bcb1a62633145c07"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "c01921fb54442d18",
+          "sin": "3cb1a62633145c07"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "401921fb54442d19",
+          "sin": "3cc72cece675d1fd"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "c01921fb54442d19",
+          "sin": "bcc72cece675d1fd"
+        },
+        {
+          "cos": "3feab1f5305de8f7",
+          "input": "403fffffffffffff",
+          "sin": "3fe1a5499142654b"
+        },
+        {
+          "cos": "3feab1f5305de8f7",
+          "input": "c03fffffffffffff",
+          "sin": "bfe1a5499142654b"
+        },
+        {
+          "cos": "3feab1f5305de8e5",
+          "input": "4040000000000000",
+          "sin": "3fe1a54991426566"
+        },
+        {
+          "cos": "3feab1f5305de8e5",
+          "input": "c040000000000000",
+          "sin": "bfe1a54991426566"
+        },
+        {
+          "cos": "3feab1f5305de8c2",
+          "input": "4040000000000001",
+          "sin": "3fe1a5499142659b"
+        },
+        {
+          "cos": "3feab1f5305de8c2",
+          "input": "c040000000000001",
+          "sin": "bfe1a5499142659b"
+        },
+        {
+          "cos": "3fd9143059595966",
+          "input": "404fffffffffffff",
+          "sin": "3fed70da7230c1bf"
+        },
+        {
+          "cos": "3fd9143059595966",
+          "input": "c04fffffffffffff",
+          "sin": "bfed70da7230c1bf"
+        },
+        {
+          "cos": "3fd91430595958f0",
+          "input": "4050000000000000",
+          "sin": "3fed70da7230c1d8"
+        },
+        {
+          "cos": "3fd91430595958f0",
+          "input": "c050000000000000",
+          "sin": "bfed70da7230c1d8"
+        },
+        {
+          "cos": "3fd9143059595804",
+          "input": "4050000000000001",
+          "sin": "3fed70da7230c20b"
+        },
+        {
+          "cos": "3fd9143059595804",
+          "input": "c050000000000001",
+          "sin": "bfed70da7230c20b"
+        },
+        {
+          "cos": "bfe62c33dbd5d3ce",
+          "input": "405fffffffffffff",
+          "sin": "3fe712bdad3934cc"
+        },
+        {
+          "cos": "bfe62c33dbd5d3ce",
+          "input": "c05fffffffffffff",
+          "sin": "bfe712bdad3934cc"
+        },
+        {
+          "cos": "bfe62c33dbd5d42a",
+          "input": "4060000000000000",
+          "sin": "3fe712bdad393474"
+        },
+        {
+          "cos": "bfe62c33dbd5d42a",
+          "input": "c060000000000000",
+          "sin": "bfe712bdad393474"
+        }
+      ]
+    },
+    "boundaries-repeat.json": {
+      "sha256": "ed090d039e9f6eb50f3c5c8a8f8775b3e43e76395013bb2f4094c51e89acb897",
+      "data": [
+        {
+          "cos": "3ff0000000000000",
+          "input": "8000000000000001",
+          "sin": "8000000000000001"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "0000000000000001",
+          "sin": "0000000000000001"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "0000000000000000",
+          "sin": "0000000000000000"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "8000000000000000",
+          "sin": "8000000000000000"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "0000000000000002",
+          "sin": "0000000000000002"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "8000000000000002",
+          "sin": "8000000000000002"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "3e3fffffffffffff",
+          "sin": "3e3fffffffffffff"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "be3fffffffffffff",
+          "sin": "be3fffffffffffff"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "3e40000000000000",
+          "sin": "3e40000000000000"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "be40000000000000",
+          "sin": "be40000000000000"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "3e40000000000001",
+          "sin": "3e40000000000001"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "be40000000000001",
+          "sin": "be40000000000001"
+        },
+        {
+          "cos": "3fefffffffffffff",
+          "input": "3e4fffffffffffff",
+          "sin": "3e4fffffffffffff"
+        },
+        {
+          "cos": "3fefffffffffffff",
+          "input": "be4fffffffffffff",
+          "sin": "be4fffffffffffff"
+        },
+        {
+          "cos": "3fefffffffffffff",
+          "input": "3e50000000000000",
+          "sin": "3e50000000000000"
+        },
+        {
+          "cos": "3fefffffffffffff",
+          "input": "be50000000000000",
+          "sin": "be50000000000000"
+        },
+        {
+          "cos": "3fefffffffffffff",
+          "input": "3e50000000000001",
+          "sin": "3e50000000000001"
+        },
+        {
+          "cos": "3fefffffffffffff",
+          "input": "be50000000000001",
+          "sin": "be50000000000001"
+        },
+        {
+          "cos": "3fefbf0ed1ec08ed",
+          "input": "3fc020c49ba5e353",
+          "sin": "3fc015da194e500d"
+        },
+        {
+          "cos": "3fefbf0ed1ec08ed",
+          "input": "bfc020c49ba5e353",
+          "sin": "bfc015da194e500d"
+        },
+        {
+          "cos": "3fefbf0ed1ec08ed",
+          "input": "3fc020c49ba5e354",
+          "sin": "3fc015da194e500e"
+        },
+        {
+          "cos": "3fefbf0ed1ec08ed",
+          "input": "bfc020c49ba5e354",
+          "sin": "bfc015da194e500e"
+        },
+        {
+          "cos": "3fefbf0ed1ec08ed",
+          "input": "3fc020c49ba5e355",
+          "sin": "3fc015da194e500f"
+        },
+        {
+          "cos": "3fefbf0ed1ec08ed",
+          "input": "bfc020c49ba5e355",
+          "sin": "bfc015da194e500f"
+        },
+        {
+          "cos": "3fe4fcd8091b8f24",
+          "input": "3feb5fffffffffff",
+          "sin": "3fe827f6d2325577"
+        },
+        {
+          "cos": "3fe4fcd8091b8f24",
+          "input": "bfeb5fffffffffff",
+          "sin": "bfe827f6d2325577"
+        },
+        {
+          "cos": "3fe4fcd8091b8f24",
+          "input": "3feb600000000000",
+          "sin": "3fe827f6d2325578"
+        },
+        {
+          "cos": "3fe4fcd8091b8f24",
+          "input": "bfeb600000000000",
+          "sin": "bfe827f6d2325578"
+        },
+        {
+          "cos": "3fe4fcd8091b8f23",
+          "input": "3feb600000000001",
+          "sin": "3fe827f6d2325578"
+        },
+        {
+          "cos": "3fe4fcd8091b8f23",
+          "input": "bfeb600000000001",
+          "sin": "bfe827f6d2325578"
+        },
+        {
+          "cos": "bfe827f513dbe3a0",
+          "input": "400368fcffffffff",
+          "sin": "3fe4fcda0ad3a77d"
+        },
+        {
+          "cos": "bfe827f513dbe3a0",
+          "input": "c00368fcffffffff",
+          "sin": "bfe4fcda0ad3a77d"
+        },
+        {
+          "cos": "bfe827f513dbe3a2",
+          "input": "400368fd00000000",
+          "sin": "3fe4fcda0ad3a77a"
+        },
+        {
+          "cos": "bfe827f513dbe3a2",
+          "input": "c00368fd00000000",
+          "sin": "bfe4fcda0ad3a77a"
+        },
+        {
+          "cos": "bfe827f513dbe3a5",
+          "input": "400368fd00000001",
+          "sin": "3fe4fcda0ad3a777"
+        },
+        {
+          "cos": "bfe827f513dbe3a5",
+          "input": "c00368fd00000001",
+          "sin": "bfe4fcda0ad3a777"
+        },
+        {
+          "cos": "3cb469898cc51702",
+          "input": "3ff921fb54442d17",
+          "sin": "3ff0000000000000"
+        },
+        {
+          "cos": "3cb469898cc51702",
+          "input": "bff921fb54442d17",
+          "sin": "bff0000000000000"
+        },
+        {
+          "cos": "3c91a62633145c07",
+          "input": "3ff921fb54442d18",
+          "sin": "3ff0000000000000"
+        },
+        {
+          "cos": "3c91a62633145c07",
+          "input": "bff921fb54442d18",
+          "sin": "bff0000000000000"
+        },
+        {
+          "cos": "bca72cece675d1fc",
+          "input": "3ff921fb54442d19",
+          "sin": "3ff0000000000000"
+        },
+        {
+          "cos": "bca72cece675d1fc",
+          "input": "bff921fb54442d19",
+          "sin": "bff0000000000000"
+        },
+        {
+          "cos": "bff0000000000000",
+          "input": "400921fb54442d17",
+          "sin": "3cc469898cc51702"
+        },
+        {
+          "cos": "bff0000000000000",
+          "input": "c00921fb54442d17",
+          "sin": "bcc469898cc51702"
+        },
+        {
+          "cos": "bff0000000000000",
+          "input": "400921fb54442d18",
+          "sin": "3ca1a62633145c07"
+        },
+        {
+          "cos": "bff0000000000000",
+          "input": "c00921fb54442d18",
+          "sin": "bca1a62633145c07"
+        },
+        {
+          "cos": "bff0000000000000",
+          "input": "400921fb54442d19",
+          "sin": "bcb72cece675d1fd"
+        },
+        {
+          "cos": "bff0000000000000",
+          "input": "c00921fb54442d19",
+          "sin": "3cb72cece675d1fd"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "401921fb54442d17",
+          "sin": "bcd469898cc51702"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "c01921fb54442d17",
+          "sin": "3cd469898cc51702"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "401921fb54442d18",
+          "sin": "bcb1a62633145c07"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "c01921fb54442d18",
+          "sin": "3cb1a62633145c07"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "401921fb54442d19",
+          "sin": "3cc72cece675d1fd"
+        },
+        {
+          "cos": "3ff0000000000000",
+          "input": "c01921fb54442d19",
+          "sin": "bcc72cece675d1fd"
+        },
+        {
+          "cos": "3feab1f5305de8f7",
+          "input": "403fffffffffffff",
+          "sin": "3fe1a5499142654b"
+        },
+        {
+          "cos": "3feab1f5305de8f7",
+          "input": "c03fffffffffffff",
+          "sin": "bfe1a5499142654b"
+        },
+        {
+          "cos": "3feab1f5305de8e5",
+          "input": "4040000000000000",
+          "sin": "3fe1a54991426566"
+        },
+        {
+          "cos": "3feab1f5305de8e5",
+          "input": "c040000000000000",
+          "sin": "bfe1a54991426566"
+        },
+        {
+          "cos": "3feab1f5305de8c2",
+          "input": "4040000000000001",
+          "sin": "3fe1a5499142659b"
+        },
+        {
+          "cos": "3feab1f5305de8c2",
+          "input": "c040000000000001",
+          "sin": "bfe1a5499142659b"
+        },
+        {
+          "cos": "3fd9143059595966",
+          "input": "404fffffffffffff",
+          "sin": "3fed70da7230c1bf"
+        },
+        {
+          "cos": "3fd9143059595966",
+          "input": "c04fffffffffffff",
+          "sin": "bfed70da7230c1bf"
+        },
+        {
+          "cos": "3fd91430595958f0",
+          "input": "4050000000000000",
+          "sin": "3fed70da7230c1d8"
+        },
+        {
+          "cos": "3fd91430595958f0",
+          "input": "c050000000000000",
+          "sin": "bfed70da7230c1d8"
+        },
+        {
+          "cos": "3fd9143059595804",
+          "input": "4050000000000001",
+          "sin": "3fed70da7230c20b"
+        },
+        {
+          "cos": "3fd9143059595804",
+          "input": "c050000000000001",
+          "sin": "bfed70da7230c20b"
+        },
+        {
+          "cos": "bfe62c33dbd5d3ce",
+          "input": "405fffffffffffff",
+          "sin": "3fe712bdad3934cc"
+        },
+        {
+          "cos": "bfe62c33dbd5d3ce",
+          "input": "c05fffffffffffff",
+          "sin": "bfe712bdad3934cc"
+        },
+        {
+          "cos": "bfe62c33dbd5d42a",
+          "input": "4060000000000000",
+          "sin": "3fe712bdad393474"
+        },
+        {
+          "cos": "bfe62c33dbd5d42a",
+          "input": "c060000000000000",
+          "sin": "bfe712bdad393474"
+        }
+      ]
+    },
+    "rng-provenance.json": {
+      "sha256": "ba7fd84236e8aff29ed53c9bb232106728e1b8cff7cbf3de2ddc347db852769d",
+      "data": {
+        "path": "build/cache/gomod/github.com/opennox/libs@v0.0.0-20241214142037-24bbb986fab8/prand/table.go",
+        "sha256": "15b07c6b7eae1bbae1a73d7c6f49fb5bca497715883926862b8605c1825fe2fd",
+        "entries": 4096,
+        "angle_steps": 64,
+        "range_bound": 128
+      }
+    },
+    "table-verification.json": {
+      "sha256": "81213db243d28f3575f8a44d5a7b115655c1fbc77d29baf4818ad1b3b6ee43d6",
+      "data": {
+        "entries": 440,
+        "endian_arrays_identical": true,
+        "table_bits_sha256": "17173ddfc81eee03cdfacdeaceeab32521591d9df73099f2fe5adfcf669f9c79"
+      }
+    },
+    "native-boundaries.txt": {
+      "sha256": "240a789f34de21ef65886613bf582b9762d0a8fae7135238cb9e205bb178aec7",
+      "result": "Native draft matches all 70 frozen boundary cases with CGO_ENABLED=0"
+    },
+    "native-table.txt": {
+      "sha256": "3d7b27226f40041797c10580ecd9f9e5564b8d547f68ee3a48e29ae2ed2c24b8",
+      "result": "All 440 compiled native table entries match upstream bits: 17173ddfc81eee03cdfacdeaceeab32521591d9df73099f2fe5adfcf669f9c79"
+    }
+  },
+  "upstream": {
+    "repository": "https://github.com/bminor/glibc",
+    "revision": "04e750e75b73957cf1c791535a3f4319534a52fc",
+    "commit_date": "2026-01-20T15:18:56Z",
+    "files": {
+      "sysdeps/ieee754/dbl-64/s_sin.c": {
+        "url": "https://raw.githubusercontent.com/bminor/glibc/04e750e75b73957cf1c791535a3f4319534a52fc/sysdeps/ieee754/dbl-64/s_sin.c",
+        "sha256": "874fe9ebf6accaeaf9f52df2de17c07925fb8ba133ce3e606e2b05f62ab1df91",
+        "bytes": 9483
+      },
+      "sysdeps/ieee754/dbl-64/usncs.h": {
+        "url": "https://raw.githubusercontent.com/bminor/glibc/04e750e75b73957cf1c791535a3f4319534a52fc/sysdeps/ieee754/dbl-64/usncs.h",
+        "sha256": "867fab124286036e22e760250ae929f8f1dcd9e6719cf4c40c8accf931abe749",
+        "bytes": 2640
+      },
+      "sysdeps/ieee754/dbl-64/sincostab.c": {
+        "url": "https://raw.githubusercontent.com/bminor/glibc/04e750e75b73957cf1c791535a3f4319534a52fc/sysdeps/ieee754/dbl-64/sincostab.c",
+        "sha256": "a3ed5716ecbe5dfee173bfe6bad10663c9d239d5b01659d1fa834b3c97c3f355",
+        "bytes": 42571
+      },
+      "COPYING.LIB": {
+        "url": "https://raw.githubusercontent.com/bminor/glibc/04e750e75b73957cf1c791535a3f4319534a52fc/COPYING.LIB",
+        "sha256": "9b2def8a1f95faf55a15ade459ba61d97183ebfb269b175e0e2eaed61bf9ebe3",
+        "bytes": 16
+      }
+    }
+  }
+}

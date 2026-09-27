@@ -84,10 +84,15 @@ produced by `tools/porting/cgo_inventory.py`. Three project packages still direc
 use cgo, plus external client bindings. The earlier helper suggestion that go-gl
 was residue remains rejected: `libs/client/seat/opengl` actually imports it.
 
-Next: review remaining sin/cos boundaries and string allocation/types, then
-allocator and callback-fallback removal. Keep the generator's double versus
-stored-float angle behavior and final coordinate rounding; establish libc/native
-captures before choosing the replacement. CString's normal/raw versus safe/tracked
+Current batch: placement sin/cos original baseline accepted (992/989/992 roots
+passed twice, plus two private contracts twice in all four profiles). Production
+remains `79b7e9e3`; reviewed five-file native draft is uninstalled. Standard Go
+math changed two final coordinates in the ordinary probe, so the private Go
+adaptation preserves libc rounding across every reachable RNG angle. See
+[PLACEMENT_TRIG.md](docs/porting/PLACEMENT_TRIG.md) and
+[baseline](docs/porting/placement-trig-baseline.json).
+Next: install the reviewed draft and qualify it, then string allocation/types,
+allocator and callback-fallback removal. CString's normal/raw versus safe/tracked
 ownership and allocation-failure behavior need their own audit. Reachable abort,
 compiler flags and fixture C observers remain later dependency work.
 
@@ -134,7 +139,7 @@ do not rerun them or infer deletion safety from age alone.
 | Artifact | Recovery or current location |
 | --- | --- |
 | Libc qualification | Current original/converted test and safe/production binaries remain in `build/port-libc-boundaries/`. Preview/final scenarios each had 1,654 verified duplicate assets removed (559,874,048 / 559,910,912 allocated bytes); originals, saves/results and each scenario's `deduplicated-assets.json` remain. Removed 22 inactive Linux386 cache archives (589,103,104 bytes) after host/compiler/hash checks; rebuild caches normally. Cleanup records are in the batch directory. Completed scripts are consumed. |
-| Native-layout qualification | Previous qualified test/safe/production binaries and original baseline binaries remain in `build/port-native-layout-types/`. Final scenario deduplicated 1,654 verified asset copies (559,902,720 allocated bytes); originals, saves/results and `build/baseline/runs/native-layout-types-save/deduplicated-assets.json` retained. All completed installation, qualification and cleanup scripts are consumed. |
+| Native-layout qualification | Seven superseded qualified test/safe/production binaries were removed after committed-source/replacement/hash/host-use checks (387,059,712 allocated bytes); rebuild `6e9681f2` with retained source maps and commands. Original baseline binaries remain. Current replacements are in `build/port-libc-boundaries/`; cleanup records: `build/port-placement-trig/layout-cleanup-{approved.json,deleted.jsonl}`. Final scenario deduplicated 1,654 verified asset copies (559,902,720 allocated bytes); originals, saves/results and `build/baseline/runs/native-layout-types-save/deduplicated-assets.json` retained. All completed installation, qualification and cleanup scripts are consumed. |
 | Scalar qualification | Seven superseded test/safe/production binaries were removed after committed-source, replacement-hash and host-use checks (387,121,152 allocated bytes). Rebuild `1b80dbe1` with retained commands/source maps. Current replacements remain in `build/port-native-layout-types/`; cleanup records: `build/port-libc-boundaries/scalar-cleanup-{approved.json,deleted.jsonl}`. Removed 198 inactive Linux 386 Go cache archives after path/stat/hash and host-use checks (4,976,803,840 allocated bytes; cache misses rebuild). Final scenario deduplicated 1,654 verified asset copies (559,841,280 bytes); originals, saves/results and `build/baseline/runs/scalar-boundaries-save/deduplicated-assets.json` retained. Proposed old-binary archival plans were not executed. Cleanup/acceptance scripts consumed. |
 | Native-integer qualification | Current test/safe/production binaries remain in the batch directory. Removed seven superseded `519ce712` binaries after qualified replacement/source/hash/host-use checks (387,088,384 bytes; rebuild that revision), plus seven obsolete cache archives predating `308da9e7` (340,516,864 bytes). Final scenario deduplicated 1,654 verified asset copies (560,017,408 bytes); original assets and saves/results retained, with restore manifest in `build/baseline/runs/native-integer-types-save/`. Journals: `build/port-native-integer-types/`; cleanup scripts consumed. |
 | Final-callback qualification | Current converted test binaries remain in `contracts-observer/profiles/`; safe and three production binaries remain. Original callback and pre-repair converted test binaries, repaired-fixture original binaries, historical logs and captures are losslessly gzip-archived; restore with `gzip -dk`, restore recorded executable mode, verify SHA-256. Journals and cleanup details are in `build/port-final-callback-exports/` and the qualification report. Preview/final scenarios retain saves/results and per-scenario asset restore manifests. Originals are unchanged. All cleanup scripts are consumed. |
@@ -215,7 +220,7 @@ do not rerun them or infer deletion safety from age alone.
 | Completed creation/init scenario assets | Removed 1,654 SHA256-identical original-asset duplicates after host-use checks; 559,972,352 allocated bytes reclaimed. Originals, saves/results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/create-init-identities-save/deduplicated-assets.json`. Plan/result: `build/port-post-create-init-cleanup/`. |
 | Superseded collision/death qualified binaries | Removed 14 test/safe/production executables after exact committed-source, replacement/hash and host-use checks; 786,751,488 allocated bytes reclaimed. Rebuild qualified revisions `170b594a` and `e7ca9d31` using retained commands. Source, original baseline binaries, logs, manifests and current create/init and damage outputs remain. Plan/journal: `build/port-item-identities/cleanup-production-{approved.json,deleted.jsonl}`. |
 | Obsolete pre-audio project cache | Removed 21 hash/stat-verified root/legacy Linux 386 archives older than original audio baseline `9f6b2b46`, after host-use checks; 1,100,709,888 allocated bytes reclaimed. Newer audio caches, all source/assets/binaries remain. Rebuild normally. Plan/journal: `build/port-after-audio/cache-luna/cache-cleanup-{approved.json,deleted.jsonl}`. |
-| Current qualified production/safe binaries | Retained under `build/port-native-layout-types/`; historical outputs follow the batch-specific recovery rows. |
+| Current qualified production/safe binaries | Retained under `build/port-libc-boundaries/`; historical outputs follow the batch-specific recovery rows. |
 | Superseded UI-fixture binaries | Removed seven verified test/safe/production executables after committed audio replacement and host-use checks; 390,643,712 allocated bytes reclaimed. Rebuild revision `3d47a346` using retained commands/source maps. Logs/manifests and current audio replacements remain. Plan/journal: `build/port-audio-stream-callbacks/binary-cleanup-{approved.json,deleted.jsonl}`. |
 | Completed audio-stream scenario assets | Removed 1,654 verified original-asset duplicates; 559,931,392 allocated bytes reclaimed. Originals, saves and results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/audio-stream-callbacks-save/deduplicated-assets.json`. Plan/result: `build/port-post-audio-stream-cleanup/`. |
 | Superseded modifier/server-fixture/duration/update binaries | Removed 28 verified test/safe/production executables after source/replacement hashes and host-use checks; 1,567,293,440 allocated bytes reclaimed. Rebuild qualified revisions `99b65896`, `a798ad1c`, `d5d80c42`, `a8d89bda` using retained commands and source maps. Current UI replacements, old logs/manifests and baseline evidence remain. Journals: `build/port-after-client-ui/binary-cleanup-deleted.jsonl` and `binary-cleanup-addendum-deleted.jsonl`. |
@@ -308,3 +313,12 @@ The drawable-update preview passed and its 1,654 verified duplicate assets were
 removed (559,894,528 allocated bytes). Originals, saves and results remain. Restore:
 `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/drawable-update-identities-preview-save/deduplicated-assets.json`.
 Evidence: `build/port-drawable-update-identities/preview-cleanup/`.
+
+Six superseded original-baseline executables from `ca1d9fdf` and `e1926909` were
+removed after exact committed-source, replacement hashes and host-use checks:
+400,789,504 allocated bytes. Rebuild those revisions with retained commands and
+source maps; baseline logs/captures and the current placement originals remain.
+Evidence: `build/port-placement-trig/old-baselines-{approved.json,deleted.jsonl}`.
+Four inactive Linux386 Go cache archives were removed after all jobs joined and
+hash/stat/host checks: 130,002,944 bytes. Rebuild normally; evidence:
+`build/port-placement-trig/cache-headroom-{approved.json,deleted.jsonl,result.json}`.
