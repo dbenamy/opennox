@@ -58,9 +58,10 @@ The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
 removal. Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md).
 Metadata discovery is not compilation evidence.
 
-Next candidate: quantity-dialog and image/book completion dispatch. Audit every
-producer and raw storage offset before replacing foreign fallbacks; migrate their
-controlled fixture observers while preserving existing assertions and ownership.
+In progress: quantity-dialog and image/book completion dispatch. Producer, storage
+and handler review is complete; the seven-file draft is not installed. Original
+133/132/133-root selections and six focused repeat contracts passed on exact-source
+qualified parent binaries. The baseline is accepted; native qualification is pending. See [UI_COMPLETION.md](docs/porting/UI_COMPLETION.md).
 Then continue allocator ownership, reachable abort, compiler flags and fixture
 work. Literal allocator calls occur in 40 C-using fixture files; avoid incompatible
 cross-domain frees when the centralized allocator changes.
@@ -113,3 +114,9 @@ cache archives untouched for six hours (1,413,988,352 allocated bytes),
 with path/stat/hash and host compiler/fd/maps checks. Caches rebuild normally;
 module sources and current artifacts remain. Records:
 `build/port-callback-retirement-audit/cache-headroom-*`.
+
+After the animation commit, removed seven superseded spell binaries (387,080,192
+bytes) with committed-source, replacement and host-use checks. Rebuild `b2c975dc`
+if those historical binaries are needed; metadata/logs remain. Also removed 12
+inactive Linux386 cache archives untouched for six hours (496,467,968 bytes).
+Records: `build/port-animation-dispatch/{spell-cleanup-*,cache-headroom-*}`.
