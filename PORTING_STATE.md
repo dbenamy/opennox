@@ -85,21 +85,31 @@ is not compilation or qualification. The helper's external-review draft is not
 accepted evidence: its suggestion that go-gl is residue is contradicted by the
 actual dependency graph (`libs/client/seat/opengl` imports it).
 
-Unused generated dispatch signatures are qualified; baseline commit is `119b666a`.
-No next conversion is installed. Eight new original-path callback contracts pass
-preflight. The current baseline work is under `build/port-final-callback-exports/`:
-The original baseline is accepted: 2,486 default roots pass plus one established
-skip; focused default 294, server 292 twice and high-resolution 294 twice pass.
-All original jobs are joined. See [the batch report](docs/porting/FINAL_CALLBACK_EXPORTS.md)
-and `RUNNING.md` for the current installation/qualification state. Next, migrate
-the ten remaining callback exports:
-three player-file handlers, map object data, screen particles, menu/tooltips and
-FlameCleanse. Read-only consumer notes are in
-`build/port-unused-dispatch-signatures/next-callback-notes.md`. Trace every table,
-field, getter and fixture alias. Reuse existing native registries where suitable;
-avoid introducing raw identities when a single consumer can use a Go function.
-Preserve mutable-hook lookup, nil event responses, callback return bits, cached-next
-particle traversal, player-file section framing and map guard order.
+The final callback conversion is installed over original baseline `eb4c6e21`
+(pushed), but is not yet qualified. The original baseline passed 2,486 default
+roots plus one established skip and the initial focused profiles. The first
+converted broad suites caught a missed fixed-slot save metadata reader; that
+route is corrected without changing expectations.
+
+A later server stall exposed a concrete test-harness defect: the allocator
+observer was process-global and could enter Go during runtime thread startup.
+An independent foreign-thread probe fails before the fix. The observer is now
+thread-local and pinned for the active fixture interval; all 29 immediate
+callback/session/scope contracts pass. Production allocator code is unchanged.
+The exact cause of the recorded stall remains unproven. A source-only copy of
+original callback code with just this fixture repair passed 387 focused roots
+(385 server), twice per profile. The test-only repair is a separate commit;
+[its evidence](docs/porting/THEME_OBSERVER_SCOPE.md) retains the failing probe.
+Next qualify the converted source afresh. Earlier converted runs predate the repair and cannot satisfy its
+final gates. Counts above still describe qualified `519ce712`.
+
+This batch replaces the last ten selected callback exports: three player-file
+handlers, map object data, screen particles, menu/tooltips and FlameCleanse.
+See [the batch report](docs/porting/FINAL_CALLBACK_EXPORTS.md) and
+`build/port-final-callback-exports/RUNNING.md` for exact active jobs and artifacts.
+Do not edit source while converted gates run. The initial passing preview and
+preflight are preliminary; final acceptance must use the corrected source.
+Next-batch primitive-type candidates are read-only notes, not an installed change.
 Luna remains unavailable due to usage limits; resume the one-helper policy when
 available, without substituting another model.
 

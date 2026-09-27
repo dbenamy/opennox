@@ -7,12 +7,13 @@ package legacy
 #include <stdint.h>
 #include <stdlib.h>
 #include <time.h>
+#include <pthread.h>
 void* __real_calloc(size_t, size_t);
 void __real_free(void*);
 time_t __real_time(time_t*);
 extern void themeTestAllocated(void*, size_t);
 extern void themeTestReleased(void*);
-static int theme_observe_active;
+static _Thread_local int theme_observe_active;
 static _Thread_local int grid_active, grid_fail, grid_count, grid_freed, grid_valid;
 static _Thread_local void* grid_ptr[130];
 static _Thread_local size_t grid_size[130];
@@ -41,7 +42,20 @@ int resourceFreeStop(void) {
  resource_free_events = NULL;
  return resource_free_count;
 }
-static uint32_t theme_observe_time;
+static _Thread_local uint32_t theme_observe_time;
+// Probe observer scope without entering Go from the foreign thread.
+static void* themeTestThreadProbe(void* out) {
+ *(int*)out = theme_observe_active;
+ return NULL;
+}
+int themeTestOtherThreadState(void) {
+ pthread_t thread;
+ int state = -1;
+ if (pthread_create(&thread, NULL, themeTestThreadProbe, &state)) return -2;
+ if (pthread_join(thread, NULL)) return -3;
+ return state;
+}
+int themeTestCurrentThreadState(void) { return theme_observe_active; }
 void themeTestObserve(int active, uint32_t epoch) {
  theme_observe_time = epoch;
  theme_observe_active = active;
@@ -79,7 +93,36 @@ time_t __wrap_time(time_t* out) {
 }
 */
 import "C"
+import "runtime"
+
+var themeObserverPinned bool
 
 func themeObserve(active bool, epoch uint32) {
+	// Linker wrappers also intercept Go runtime thread startup. Only the fixture
+	// thread may enter these Go observers; fresh runtime threads must stay inert.
+	if active && !themeObserverPinned {
+		runtime.LockOSThread()
+		themeObserverPinned = true
+	}
 	C.themeTestObserve(C.int(bool2int(active)), C.uint32_t(epoch))
+	// Fixtures reset observation more than once during teardown. Pin only the
+	// active interval, preserving any outer LockOSThread held by the fixture.
+	if !active && themeObserverPinned {
+		themeObserverPinned = false
+		runtime.UnlockOSThread()
+	}
+}
+
+// PortTestThemeObserverThreadScope exercises activation, repeated activation and
+// idempotent cleanup around an actual foreign thread.
+func PortTestThemeObserverThreadScope() [4]int {
+	before := int(C.themeTestCurrentThreadState())
+	themeObserve(true, 12345)
+	defer themeObserve(false, 0)
+	themeObserve(true, 12345)
+	own := int(C.themeTestCurrentThreadState())
+	other := int(C.themeTestOtherThreadState())
+	themeObserve(false, 0)
+	themeObserve(false, 0)
+	return [4]int{before, own, other, int(C.themeTestCurrentThreadState())}
 }

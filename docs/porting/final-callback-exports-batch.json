@@ -100,7 +100,7 @@
           "OPENNOX_UI_SCENARIO={root}/docs/porting/object-xfer-save-load.yaml",
           "python3",
           "{root}/tools/porting/run_scenario.py",
-          "final-callback-exports-preview-save",
+          "final-callback-exports-observer-preview-save",
           "compare",
           "{root}/build/baseline/runs/entry-classifiers-c-save"
         ]
@@ -113,7 +113,7 @@
           "python3",
           "{root}/tools/porting/run_tests.py",
           "--pattern-file",
-          "{root}/docs/porting/final-callback-exports-new-tests.txt",
+          "{root}/docs/porting/final-callback-exports-preflight-tests.txt",
           "--tags",
           "porttest",
           "--log",

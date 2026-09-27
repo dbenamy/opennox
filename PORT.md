@@ -162,6 +162,15 @@ may precede full qualification when their evidence and remaining gates are expli
    reused Pentagram as a Death callback;
    that cross-family route needed an explicit typed fixture adapter after the key
    became non-executable data. Preserve the original assertions and captures.
+   Trace callback-table storage offsets as well as symbol references, including
+   fixed-slot readers and alternate raw-call signatures. The final-export sweep
+   caught save metadata reading the player-file table directly; its consumer did
+   not name the exported callback. Preserve each foreign fallback ABI when sharing
+   native dispatch, and include existing save/character enumeration contracts.
+   Linker-wrapped allocation observers must exclude unrelated threads: the Go
+   runtime frees startup data before initializing a new thread's Go state.
+   Scope callbacks into Go to the pinned fixture thread, test foreign-thread
+   exclusion independently, and preserve balanced/idempotent fixture cleanup.
    Check dispatch ownership when reusing an existing Go implementation: equal
    output under the default configuration can hide different hooks or queues.
    The team score port caught this through accumulated objective-scoring captures.
