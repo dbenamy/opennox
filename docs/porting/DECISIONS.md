@@ -3030,3 +3030,13 @@ all 25 mappings and mutable hooks unchanged. Select tests by audited producers a
 changed dispatch branches when conservative graphs conflate init/local names;
 record scope and graph limitations explicitly. See
 [ANIMATION_DISPATCH.md](ANIMATION_DISPATCH.md).
+
+## Native quantity and image completion
+
+Use stable native registries for the six quantity and two book callbacks plus
+controlled fixture observers. Keep the five-word quantity frame and its allocator
+lifetime, nil guards, raw integer metadata and image lookup order. Unknown keys
+now panic after a producer/storage audit found no engine foreign-key dependency;
+this reversible decision applies only to these families. Profile selections must
+respect build tags: the inventory-world contract is explicitly excluded on server.
+See [UI_COMPLETION.md](UI_COMPLETION.md).

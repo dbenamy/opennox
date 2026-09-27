@@ -1,6 +1,6 @@
 # Native quantity and image completion callbacks
 
-Status: original baseline accepted; seven-file native draft remains uninstalled.
+Status: native conversion qualified against original baseline `e1f46ce8`.
 Parent qualified revision: `5233d084`.
 
 Replace quantity and image completion's foreign fallbacks with native identity
@@ -57,7 +57,7 @@ exact known-suite outcomes, fresh save/load and all 1,654 original asset hashes.
 Record exact names, not counts alone. Existing rendering fixture owners are not
 claimed safe-mode contract coverage; the safe production build remains a gate.
 
-Expected counts: production cgo files unchanged at 5 client / 6 server;
+Qualified counts: production cgo files unchanged at 5 client / 6 server;
 embedded C bodies 15→14; fixture C-import files 100→98; standalone C 0;
 legacy exports 0; headers 157 files / 2,731 lines.
 
@@ -73,4 +73,19 @@ profiles/repeats. No test or source correction is required.
 All 133/132/133 original roots passed without skips in default/server/highres;
 the six focused contracts passed again in each profile. Exact compiled-name sets,
 binary/source hashes and relevant environment settings were verified. Evidence:
-[baseline](ui-completion-baseline.json). Native qualification remains pending.
+[baseline](ui-completion-baseline.json). Native qualification passed, with the same exact root-name sets and no skips.
+
+All native focused/preflight, owner profiles, focused repeats, safe build/static,
+three production builds/ABI, exact known-suite outcomes and fresh save/load gates
+passed. All 1,654 original asset hashes are unchanged. The five-word C dispatcher
+is absent from all production binaries; all three fixture export symbols are
+absent from root test binaries. Retained C bodies and external bindings match the
+preceding inventory. No source corrections or assertion changes were needed after
+installation. Evidence: [qualification](ui-completion-qualification.json),
+[inventory](ui-completion-inventory-after.json).
+
+After all jobs joined, verified and removed 1,654 duplicate scenario assets
+(560,066,560 allocated bytes), preserving originals and recovery
+metadata. Restore before replay with `python3
+build/port-artifact-cleanup/restore-recent-scenario.py
+build/baseline/runs/ui-completion-save/deduplicated-assets.json`.

@@ -74,7 +74,7 @@ func uiAmountCallback(off uintptr) {
 		count = uint32(dword_5d4594_1319248)
 	}
 	if fn := *memmap.PtrPtr(0x5D4594, off); fn != nil {
-		// C owns the temporary point throughout a callback that can re-enter Go.
+		// Keep the temporary point in the shared allocator through callback completion.
 		p, free := alloc.New([2]int32{})
 		defer free()
 		pos := uiWindowPosition(uiAmountWindow())

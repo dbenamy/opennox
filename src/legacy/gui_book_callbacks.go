@@ -4,7 +4,6 @@ import (
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/client/gui"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 )
 
 var bookTooltipKeys [5]byte
@@ -26,15 +25,18 @@ func summonSlotTooltipCallback(w *gui.Window, arg uint32) int {
 	return 1
 }
 
-// CallImageAnimationEnd invokes the completion callback with its image reference.
-// Book callbacks ignore the argument. Other addresses retain the foreign ABI.
+var imageAnimationEndCallbacks = make(map[unsafe.Pointer]func(*ImageRef))
+
+func init() {
+	imageAnimationEndCallbacks[bookImageEndKey(0)] = func(_ *ImageRef) { bookPageComplete(false) }
+	imageAnimationEndCallbacks[bookImageEndKey(1)] = func(_ *ImageRef) { bookPageComplete(true) }
+}
+
+// CallImageAnimationEnd invokes a native completion with its image reference.
 func CallImageAnimationEnd(key unsafe.Pointer, ref *ImageRef) {
-	switch key {
-	case bookImageEndKey(0):
-		bookPageComplete(false)
-	case bookImageEndKey(1):
-		bookPageComplete(true)
-	default:
-		ccall.CallVoidPtr(key, ref.C())
+	if fn := imageAnimationEndCallbacks[key]; fn != nil {
+		fn(ref)
+		return
 	}
+	panic("unregistered image completion callback")
 }

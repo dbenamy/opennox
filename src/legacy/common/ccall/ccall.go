@@ -6,7 +6,6 @@ package ccall
 #include <stdint.h>
 
 static void go_call_void_uptr3_func(void (*fnc)(uintptr_t, uintptr_t, uintptr_t), uintptr_t a1, uintptr_t a2, uintptr_t a3) { fnc(a1, a2, a3); }
-static void go_call_void_uptr5_func(void (*fnc)(uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t), uintptr_t a1, uintptr_t a2, uintptr_t a3, uintptr_t a4, uintptr_t a5) { fnc(a1, a2, a3, a4, a5); }
 static void go_call_void_ptr_func(void (*fnc)(void*), void* a1) { fnc(a1); }
 static void go_call_void_ptr2_func(void (*fnc)(void*, void*), void* a1, void* a2) { fnc(a1, a2); }
 static void go_call_void_ptr3_func(void (*fnc)(void*, void*, void*), void* a1, void* a2, void* a3) { fnc(a1, a2, a3); }
@@ -27,10 +26,6 @@ import "unsafe"
 
 func CallVoidUPtr3(fnc unsafe.Pointer, a1 uintptr, a2 uintptr, a3 uintptr) {
 	C.go_call_void_uptr3_func((*[0]byte)(fnc), C.uintptr_t(a1), C.uintptr_t(a2), C.uintptr_t(a3))
-}
-
-func CallVoidUPtr5(fnc unsafe.Pointer, a1 uintptr, a2 uintptr, a3 uintptr, a4 uintptr, a5 uintptr) {
-	C.go_call_void_uptr5_func((*[0]byte)(fnc), C.uintptr_t(a1), C.uintptr_t(a2), C.uintptr_t(a3), C.uintptr_t(a4), C.uintptr_t(a5))
 }
 
 func CallVoidPtr(fnc unsafe.Pointer, a1 unsafe.Pointer) {

@@ -2,20 +2,18 @@
 
 package legacy
 
-/*
-extern void nox_porttest_image_end(void*);
-*/
-import "C"
 import "unsafe"
 
 var porttestImageEnd func(unsafe.Pointer)
+var porttestImageEndKey byte
 
-//export nox_porttest_image_end
-func nox_porttest_image_end(ref unsafe.Pointer) { porttestImageEnd(ref) }
+func init() {
+	imageAnimationEndCallbacks[unsafe.Pointer(&porttestImageEndKey)] = func(ref *ImageRef) { porttestImageEnd(ref.C()) }
+}
 
-// PortTestObserveImageEnd supplies a foreign ABI observer, not an animation implementation.
+// PortTestObserveImageEnd supplies an observer, not an animation implementation.
 func PortTestObserveImageEnd(fn func(unsafe.Pointer)) (unsafe.Pointer, func()) {
 	old := porttestImageEnd
 	porttestImageEnd = fn
-	return C.nox_porttest_image_end, func() { porttestImageEnd = old }
+	return unsafe.Pointer(&porttestImageEndKey), func() { porttestImageEnd = old }
 }
