@@ -1,26 +1,12 @@
 package legacy
 
-/*
-#include "common__system__team.h"
-#include "GAME1_1.h"
-#include "GAME2.h"
-#include "client__gui__servopts__guiserv.h"
-*/
-import "C"
 import (
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/server"
 )
 
-type nox_team_t = C.nox_team_t
-
-func asTeam(p *nox_team_t) *server.Team {
-	if p == nil {
-		return nil
-	}
-	return asTeamP(unsafe.Pointer(p))
-}
+type nox_team_t = server.Team
 
 func asTeamP(p unsafe.Pointer) *server.Team {
 	if p == nil {

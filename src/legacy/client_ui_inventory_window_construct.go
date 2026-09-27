@@ -1,15 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "client__gui__window.h"
-#include "GAME2_1.h"
-#include "client__gui__guiinv.h"
-
-
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/client/noxrender"
@@ -119,7 +109,7 @@ func uiInventoryCreateWindow() int {
 	if uiInventoryNewScrollControls(main) == 0 || uiInventoryNewModeControls(main) == 0 || uiInventoryNewIdentifyWindow(main) == 0 {
 		return 0
 	}
-	current := g.NewWindowRaw(nil, gui.StatusFlags(0x408|C.NOX_WIN_LAYER_BACK), -1, int(nox_win_height)-127, 111, 127, nil)
+	current := g.NewWindowRaw(nil, gui.StatusFlags(0x408|gui.StatusBelow), -1, int(nox_win_height)-127, 111, 127, nil)
 	legacyGlobals.nox_win_unk5 = current
 	if current == nil {
 		return 0

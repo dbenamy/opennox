@@ -1,51 +1,8 @@
 package legacy
 
-/*
-#include "nox_wchar.h"
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME1_2.h"
-#include "GAME1_3.h"
-#include "GAME2.h"
-#include "GAME2_1.h"
-#include "GAME2_2.h"
-#include "GAME2_3.h"
-#include "GAME3.h"
-#include "GAME3_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_3.h"
-#include "GAME5.h"
-#include "GAME5_2.h"
-#include "client__shell__noxworld.h"
-#include "client__system__parsecmd.h"
-#include "common__net_list.h"
-#include "client__gui__guicon.h"
-#include "client__gui__guisave.h"
-#include "client__gui__guirank.h"
-#include "client__gui__guisumn.h"
-#include "client__gui__guiquit.h"
-#include "client__gui__gui_ctf.h"
-#include "client__gui__guitrade.h"
-#include "client__gui__guiinput.h"
-#include "client__shell__mainmenu.h"
-#include "client__shell__selchar.h"
-#include "client__shell__selcolor.h"
-#include "client__drawable__drawable.h"
-#include "client__gui__guimeter.h"
-
-void sub_417160();
-void nox_console_sendSysOpPass_4409D0(wchar2_t* a1);
-int  nox_server_loadMapFile_4CF5F0(char* a1, int a2);
-
-*/
-import "C"
 import (
 	"context"
 	"github.com/opennox/opennox/v1/common/memmap"
-	"image"
 	"unsafe"
 
 	"github.com/opennox/libs/object"
@@ -109,29 +66,12 @@ func nox_xxx_gameIsSwitchToSolo_4DB240() int {
 	return bool2int(Nox_xxx_gameIsSwitchToSolo_4DB240())
 }
 
-func nox_xxx_mapTraceRay_535250(a1 *C.float4, a2 *C.float2, a3 *C.int2, a4 C.char) int {
-	p1 := (*types.Pointf)(unsafe.Pointer(&a1.field_0))
-	p2 := (*types.Pointf)(unsafe.Pointer(&a1.field_8))
-	outPos := (*types.Pointf)(unsafe.Pointer(a2))
-	outGrid := (*image.Point)(unsafe.Pointer(a3))
-	if GetServer().S().MapTraceRayAt(*p1, *p2, outPos, outGrid, server.MapTraceFlags(a4)) {
-		return 1
-	}
-	return 0
-}
-
 func sub_517590(x float32, y float32) int {
 	return bool2int(GetServer().S().Map.ValidIndexPos(types.Ptf(x, y)))
 }
 
 func nox_xxx_gameSetWallsDamage_4E25A0(v int) {
 	Nox_xxx_gameSetWallsDamage_4E25A0(v)
-}
-
-func nox_xxx_mapDamageUnitsAround_4E25B0(a1 *C.float, a2, a3 C.float, a4, a5 int, a6, a7 *nox_object_t) {
-	cpos := unsafe.Slice(a1, 2)
-	pos := types.Pointf{X: float32(cpos[0]), Y: float32(cpos[1])}
-	mapDamageUnitsAround(pos, float32(a2), float32(a3), int32(a4), int32(a5), asObjectS(a6), asObjectS(a7))
 }
 
 func mapDamageUnitsAround(pos types.Pointf, outer, inner float32, damage, kind int32, who, exclude *server.Object) {
@@ -180,13 +120,13 @@ func Sub_44E560() unsafe.Pointer {
 	return unsafe.Pointer(briefingCreateWindow())
 }
 func Nox_xxx_serverOptionsGetServername_40A4C0() string {
-	return GoString((*C.char)(unsafe.Pointer(serverConfigNameGet())))
+	return GoStringP(unsafe.Pointer((*int8)(unsafe.Pointer(serverConfigNameGet()))))
 }
 func Nox_xxx_mapGetMapName_409B40() string {
 	return GoStringP(unsafe.Pointer(sessionMapName()))
 }
 func Nox_xxx_servGetPlrLimit_409FA0() int {
-	return int(C.int(serverConfigLimitGet()))
+	return int(int32(serverConfigLimitGet()))
 }
 func Nox_client_xxx_switchChatMap_43B510() {
 	nox_client_xxx_switchChatMap_43B510()
@@ -246,7 +186,7 @@ func Nox_server_gameUnsetMapLoad_40A690() {
 	serverConfigUpdatedClear()
 }
 func Sub_416650() int {
-	return int(C.int(serverConfigRecordState()))
+	return int(int32(serverConfigRecordState()))
 }
 func Sub_46DCC0() {
 	scoreboardCollect()
@@ -415,10 +355,10 @@ func Nox_xxx_guiServerOptionsGetGametypeName_4573C0(a1 noxflags.GameFlag) string
 	return serverOptionsModeName(uint16(a1))
 }
 func Sub_40A180(a1 noxflags.GameFlag) int {
-	return int(C.uchar(serverConfigMinutes(int16(a1))))
+	return int(uint8(serverConfigMinutes(int16(a1))))
 }
 func Nox_xxx_servGamedataGet_40A020(a1 uint16) int {
-	return int(C.short(serverConfigScore(int16(a1))))
+	return int(int16(serverConfigScore(int16(a1))))
 }
 func Sub_41D1A0(a1 int) {
 	onlineSessionBriefing(uint32(a1))
@@ -477,10 +417,10 @@ func Nox_xxx_mapSwitchLevel_4D12E0_tileFree() {
 	sessionClearTiles()
 }
 func Sub_57A1E0(a1 *server.Settings2, a2 string, a3 unsafe.Pointer, a4 int, a5 noxflags.GameFlag) {
-	ruleLoad(a1, ruleCString(a2), (*C.nox_list_item_t)(a3), byte(a4), uint16(a5))
+	ruleLoad(a1, ruleCString(a2), (*legacyListNode)(a3), byte(a4), uint16(a5))
 }
 func Sub_57AAA0(a1 string, a2 *server.Settings2, a3 unsafe.Pointer) {
-	ruleWrite(ruleCString(a1), a2, (*C.nox_list_item_t)(a3))
+	ruleWrite(ruleCString(a1), a2, (*legacyListNode)(a3))
 }
 func Sub_4EF660(a1 *server.Object) {
 	orchestrationResetPlayer(a1)

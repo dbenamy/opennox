@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_3.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -36,8 +29,7 @@ func attackMuzzle(u *server.Object) types.Pointf {
 	return types.Pointf{X: float32(r*float64(d.X) + float64(u.PosVec.X)), Y: float32(r*float64(d.Y) + float64(u.PosVec.Y))}
 }
 func attackRay(a, b types.Pointf, flags byte) int {
-	r := [4]float32{a.X, a.Y, b.X, b.Y}
-	return int(nox_xxx_mapTraceRay_535250((*C.float4)(unsafe.Pointer(&r)), nil, nil, C.char(flags)))
+	return bool2int(GetServer().S().MapTraceRayAt(a, b, nil, nil, server.MapTraceFlags(int8(flags))))
 }
 func attackProjectileVelocity(u, p *server.Object) {
 	d := attackDirection(u)
@@ -107,7 +99,7 @@ func attackBow(u, it *server.Object) int {
 	kind := attackWeaponBits(it)
 	b := (*byte)(it.UseData.Ptr)
 	quest := noxflags.HasGame(4096)
-	msg := func(s string) { nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), (*C.char)(internCStr(s)), 0) }
+	msg := func(s string) { nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), (*int8)(internCStr(s)), 0) }
 	emptySound := func() {
 		if kind == 4 {
 			if !quest {

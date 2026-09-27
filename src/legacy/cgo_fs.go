@@ -1,13 +1,6 @@
 package legacy
 
-/*
-#include <stdbool.h>
-#include <stdio.h>
-*/
-import "C"
 import (
-	"io"
-
 	"sync"
 	"unsafe"
 
@@ -20,22 +13,9 @@ var files struct {
 	byHandle map[unsafe.Pointer]*binfile.File
 }
 
-type FILE = C.FILE
-
-func convWhence(mode int) int {
-	var whence int
-	switch C.int(mode) {
-	case C.SEEK_SET:
-		whence = io.SeekStart
-	case C.SEEK_CUR:
-		whence = io.SeekCurrent
-	case C.SEEK_END:
-		whence = io.SeekEnd
-	default:
-		panic("unsupported seek mode")
-	}
-	return whence
-}
+// FILE identifies a file in the protected handle region. It is never dereferenced
+// and does not contain libc FILE storage. Keep it non-zero-sized for pointer identity.
+type FILE struct{ _ byte }
 
 func nox_fs_fread(f *FILE, dst unsafe.Pointer, sz int) int {
 	fp := fileByHandle(f)

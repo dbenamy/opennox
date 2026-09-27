@@ -242,13 +242,13 @@ func portTestMonsterStateCall(proxy *portTestRoamOwnerServer, u *server.Object, 
 	case 3:
 		return uint64(portTestInvoke_nox_xxx_monsterHasShield_5342C0(p))
 	case 4:
-		return uint64(portTestInvoke_nox_xxx_monsterCanCast_534300((*C.nox_object_t)(u.CObj())))
+		return uint64(portTestInvoke_nox_xxx_monsterCanCast_534300((*nox_object_t)(u.CObj())))
 	case 5:
 		return uint64(portTestInvoke_nox_xxx_monsterIsMoveing_534320(p))
 	case 6:
 		return uint64(portTestInvoke_sub_534340(p))
 	case 7:
-		return uint64(portTestInvoke_nox_xxx_monsterCanAttackAtWill_534390((*C.nox_object_t)(u.CObj())))
+		return uint64(portTestInvoke_nox_xxx_monsterCanAttackAtWill_534390((*nox_object_t)(u.CObj())))
 	case 8:
 		return uint64(portTestInvoke_sub_5343C0(p))
 	case 9:
@@ -270,7 +270,7 @@ func portTestMonsterStateCall(proxy *portTestRoamOwnerServer, u *server.Object, 
 	case 17:
 		return uint64(bool2int(monsterPoisoned(u)))
 	case 18:
-		return uint64(portTestInvoke_nox_xxx_mobGetMoveAttemptTime_534810((*C.nox_object_t)(u.CObj())))
+		return uint64(portTestInvoke_nox_xxx_mobGetMoveAttemptTime_534810((*nox_object_t)(u.CObj())))
 	case 19:
 		return uint64(bool2int(monsterIsMimic(u)))
 	case 20:

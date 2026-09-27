@@ -2913,3 +2913,26 @@ Next, audit native struct aliases and constants together. Object and drawable Go
 owners append handle fields beyond their original C layouts: preserve independent
 legacy-prefix/extension checks and audit size-based copies/allocations before
 substitution. The current scalar batch does not change any layout or ownership.
+
+
+## Native record and handle boundaries
+
+Use existing Go record owners while preserving legacy prefixes and native
+extensions: Object is 772-byte C prefix / 780-byte Go owner, Drawable 512 / 516,
+and Player retains its packed C offsets despite different native alignment.
+No allocation/copy sizes change. FILE is a non-zero-sized opaque handle type,
+never libc storage; retain file identity, cursors and idempotent close behavior.
+Use existing native list nodes with raw uintptr sentinel tags. Retire five orphan
+helpers, three unused aliases and the constant-false window diagnostic; preserve
+reachable C operations and explicit casts at the real spell callback boundary.
+
+Keep the browser's C-derived 3840×2160 arguments in every profile, matching the
+existing untagged legacy C flag. Root default/highres Go video limits and protocol
+versions still differ and retain separate qualification. Do not fold those
+settings together during a type-only conversion.
+
+The caller selection explicitly includes type declarations/signatures after that
+audit found 82 additional roots. All 1,312/1,310/1,312 original selected roots pass
+twice per profile. Converted full default corpus, selected server/highres,
+production/ABI/known-suite and fresh save/load qualification pass. Existing root
+assertions and goldens are unchanged. See [NATIVE_LAYOUT_TYPES.md](NATIVE_LAYOUT_TYPES.md).

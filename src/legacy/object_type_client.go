@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "GAME2_3.h"
-
-
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -20,14 +14,12 @@ func init() {
 	client.ThingDrawDefault = drawableDrawKey(drawKey_nox_thing_debug_draw)
 }
 
-type nox_thing = C.nox_thing
-
-func nox_get_thing_name(i int) *C.char {
+func nox_get_thing_name(i int) *int8 {
 	t := GetClient().Cli().Things.TypeByInd(i)
 	if t == nil {
 		return nil
 	}
-	return (*C.char)(unsafe.Pointer(t.Name))
+	return (*int8)(unsafe.Pointer(t.Name))
 }
 
 func nox_get_thing_pretty_name(i int) *wchar2_t {

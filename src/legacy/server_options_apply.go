@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME3_2.h"
-#include "GAME5_2.h"
-#include "common__system__settings.h"
-*/
-import "C"
 import (
 	"encoding/binary"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -49,7 +42,7 @@ func serverOptionsApply() int8 {
 	}
 	different := !mapASCIIEqual(selected, GoStringP(unsafe.Pointer(sessionMapName())))
 	serverConfigSlotCopy(int32(1), int32(0))
-	current := serverOptionsRecord(unsafe.Pointer((*C.char)(unsafe.Pointer(serverConfigSlotSelect(int32(0))))))
+	current := serverOptionsRecord(unsafe.Pointer((*int8)(unsafe.Pointer(serverConfigSlotSelect(int32(0))))))
 	Nox_xxx_gameSetServername_40A440(alloc.GoString(&current[9]))
 	mode := binary.LittleEndian.Uint16(current[52:])
 	if mode&0x1000 == 0 {
@@ -74,10 +67,10 @@ func serverOptionsApply() int8 {
 	} else {
 		GetServer().S().Spells.EnableAll()
 		sub_4537F0()
-		head := (*C.nox_list_item_t)(serverOptionsListHead())
-		ruleWrite("user.rul", (*server.Settings2)(unsafe.Pointer((*C.char)(unsafe.Pointer(serverConfigSlot(int32(1)))))), head)
+		head := (*legacyListNode)(serverOptionsListHead())
+		ruleWrite("user.rul", (*server.Settings2)(unsafe.Pointer((*int8)(unsafe.Pointer(serverConfigSlot(int32(1)))))), head)
 		commandRulesMap(alloc.GoString(sessionMapFilename()))
-		ruleLoad((*server.Settings2)(unsafe.Pointer((*C.char)(unsafe.Pointer(serverConfigSlot(int32(0)))))), "user.rul", head, 3, uint16(noxflags.GetGame()))
+		ruleLoad((*server.Settings2)(unsafe.Pointer((*int8)(unsafe.Pointer(serverConfigSlot(int32(0)))))), "user.rul", head, 3, uint16(noxflags.GetGame()))
 	}
 	return int8(serverOptionsClose(0))
 }

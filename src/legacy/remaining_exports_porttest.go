@@ -111,7 +111,7 @@ func nox_xxx_sendArrowTrapFX_5238A0(pos *C.float, extra C.char) {
 	visibilityFXArrowTrap(*(*types.Pointf)(unsafe.Pointer(pos)), byte(extra))
 }
 
-func nox_xxx_serverHandleClientConsole_443E90(pl *C.nox_playerInfo, action C.char, text *C.wchar2_t) C.int {
+func nox_xxx_serverHandleClientConsole_443E90(pl *nox_playerInfo, action C.char, text *C.wchar2_t) C.int {
 	return C.int(consoleCommandRemote(asPlayerS(pl), byte(action), GoWString(text)))
 }
 

@@ -45,11 +45,11 @@ func nox_xxx_getEnchantSpell_424920(enc int) int {
 	return int(server.EnchantID(enc).Spell())
 }
 
-func nox_xxx_spellAwardAll1_4EFD80(p *C.nox_playerInfo) { Nox_xxx_spellAwardAll1_4EFD80(asPlayerS(p)) }
+func nox_xxx_spellAwardAll1_4EFD80(p *nox_playerInfo) { Nox_xxx_spellAwardAll1_4EFD80(asPlayerS(p)) }
 
-func nox_xxx_spellAwardAll2_4EFC80(p *C.nox_playerInfo) { Nox_xxx_spellAwardAll2_4EFC80(asPlayerS(p)) }
+func nox_xxx_spellAwardAll2_4EFC80(p *nox_playerInfo) { Nox_xxx_spellAwardAll2_4EFC80(asPlayerS(p)) }
 
-func nox_xxx_spellAwardAll3_4EFE10(p *C.nox_playerInfo) { Nox_xxx_spellAwardAll3_4EFE10(asPlayerS(p)) }
+func nox_xxx_spellAwardAll3_4EFE10(p *nox_playerInfo) { Nox_xxx_spellAwardAll3_4EFE10(asPlayerS(p)) }
 
 func nox_xxx_spellGetAud44_424800(ind, a2 int) int {
 	return int(GetServer().S().Spells.DefByInd(spell.ID(ind)).GetAudio(a2))
@@ -126,7 +126,7 @@ func Nox_xxx_gameCaptureMagic_4FDC10(a1 spell.ID, a2 *server.Object) int {
 	return int(spellLifeCaptureAllowed(int32(a1), a2))
 }
 func Nox_spells_call_intint6_go(a1 unsafe.Pointer, a2 spell.ID, a3 *server.Object, a4 *server.Object, a5 *server.Object, a6 *server.SpellAcceptArg, a7 int) int {
-	return int(C.nox_spells_call_intint6_go((*[0]byte)(a1), C.int(a2), asObjectC(a3), asObjectC(a4), asObjectC(a5), unsafe.Pointer(a6), C.int(a7)))
+	return int(C.nox_spells_call_intint6_go((*[0]byte)(a1), C.int(a2), (*C.nox_object_t)(unsafe.Pointer(asObjectC(a3))), (*C.nox_object_t)(unsafe.Pointer(asObjectC(a4))), (*C.nox_object_t)(unsafe.Pointer(asObjectC(a5))), unsafe.Pointer(a6), C.int(a7)))
 }
 func Nox_xxx_createSpellFly_4FDDA0(a1 *server.Object, a2 *server.Object, a3 spell.ID) {
 	spellLifeCreateFly(a1, a2, int32(a3))

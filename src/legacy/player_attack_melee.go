@@ -1,16 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_2.h"
-#include "GAME4_3.h"
-#include "GAME5.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -162,10 +151,10 @@ func attackTrace(u *server.Object, r *attackRecord) int {
 	if it == nil {
 		it = u
 	}
-	nox_xxx_mapDamageToWalls_534FC0((*C.int4)(unsafe.Pointer(&bounds)), unsafe.Pointer(&r.Pos), C.float(float32(extra+float64(r.Radius))), int(C.int(effectsTruncWord(float64(r.Damage)+0.5))), int(C.int(r.Type)), it.CObj())
+	nox_xxx_mapDamageToWalls_534FC0((*[4]int32)(unsafe.Pointer(&bounds)), unsafe.Pointer(&r.Pos), float32(float32(extra+float64(r.Radius))), int(int32(effectsTruncWord(float64(r.Damage)+0.5))), int(int32(r.Type)), it.CObj())
 	if r.Weapon != nil && dword_5d4594_2488656 != 0 {
 		damage := float32(float64(nox_xxx_gamedataGetFloat_419D40(internCStr("ItemDamagePercentage"))) * float64(r.Damage))
-		target := C.int(dword_5d4594_2488660)
+		target := int32(dword_5d4594_2488660)
 		damageDurability(r.Weapon, r.Owner, objectFromInt(int32(target)), objectFromInt(int32(target)), damage, int32(r.Type), true)
 	}
 	return int(dword_5d4594_2488656)

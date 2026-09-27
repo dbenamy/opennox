@@ -13,7 +13,7 @@ func summonIcon(id int) uint32 {
 	if name == nil {
 		return 0
 	}
-	return uint32(bookGuideCage(bookGuideID(GoString(name))))
+	return uint32(bookGuideCage(bookGuideID(GoStringP(unsafe.Pointer(name)))))
 }
 func summonDraw(w *gui.Window) int {
 	mouse := GetClient().GetMousePos()

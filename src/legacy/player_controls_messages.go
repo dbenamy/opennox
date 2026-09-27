@@ -1,15 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_1.h"
-#include "GAME1.h"
-#include "GAME1_2.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-*/
-import "C"
 import (
 	"encoding/binary"
 	"github.com/opennox/opennox/v1/server"
@@ -32,7 +22,7 @@ func controlLockedDoor(u *server.Object, key *int8, selector byte) {
 	if u == nil || u.ObjClass&4 == 0 || key == nil {
 		return
 	}
-	s := C.GoString((*C.char)(key))
+	s := GoStringP(unsafe.Pointer((*int8)(key)))
 	if len(s) == 0 || len(s) > 48 {
 		return
 	}
@@ -54,7 +44,7 @@ func controlGuideLevel(u, target *server.Object) int32 {
 	if u == nil || target == nil || u.ObjClass&4 == 0 || target.ObjClass&2 == 0 {
 		return 0
 	}
-	name := nox_xxx_getUnitName_4E39D0((*C.nox_object_t)(target.CObj()))
+	name := nox_xxx_getUnitName_4E39D0((*nox_object_t)(target.CObj()))
 	id := bookGuideID(GoStringP(unsafe.Pointer(name)))
 	if id == 0 {
 		return 0
@@ -105,13 +95,13 @@ func controlScheduledSpell(u, target *server.Object, back bool) int32 {
 		off = 188 + 4*int(*count)
 	}
 	id := *equipmentWord(d, off)
-	reason := C.int(spellLifeCantCast(u, int32(id), 0))
+	reason := int32(spellLifeCantCast(u, int32(id), 0))
 	args := [3]uint32{controlRaw(target), math.Float32bits(float32(int32(*equipmentWord(d, 220)))), math.Float32bits(float32(int32(*equipmentWord(d, 224))))}
 	if reason != 0 {
-		nox_xxx_netInformTextMsg_4DA0F0(C.int(*controlByte(controlPlayer(u), 2064)), 0, &reason)
-		nox_xxx_aud_501960(231, (*C.nox_object_t)(u.CObj()), 0, 0)
+		nox_xxx_netInformTextMsg_4DA0F0(int32(*controlByte(controlPlayer(u), 2064)), 0, &reason)
+		nox_xxx_aud_501960(231, (*nox_object_t)(u.CObj()), 0, 0)
 	} else {
-		nox_xxx_castSpellByUser_4FDD20(int(C.int(id)), (*C.nox_object_t)(u.CObj()), unsafe.Pointer(&args[0]))
+		nox_xxx_castSpellByUser_4FDD20(int(int32(id)), (*nox_object_t)(u.CObj()), unsafe.Pointer(&args[0]))
 	}
 	// Front removal shifts and clears; back removal only decrements the count.
 	if !back {

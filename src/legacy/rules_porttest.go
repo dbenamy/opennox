@@ -159,9 +159,9 @@ func PortTestRules(spec PortTestRulesSpec) (out PortTestRulesResult, err error) 
 	}
 	copy(buf[8:68], spec.Initial[:])
 	settings := (*server.Settings2)(unsafe.Pointer(&buf[8]))
-	var head *C.nox_list_item_t
+	var head *legacyListNode
 	if spec.WithRejected {
-		head = (*C.nox_list_item_t)(C.calloc(1, 12))
+		head = (*legacyListNode)(C.calloc(1, 12))
 		if head == nil {
 			panic("fixture allocation failed")
 		}
@@ -191,17 +191,17 @@ func PortTestRules(spec PortTestRulesSpec) (out PortTestRulesResult, err error) 
 		}
 		if head != nil {
 			prev := head
-			for p, n := head.field_0, 0; p != head; p, n = p.field_0, n+1 {
+			for p, n := head.next, 0; p != head; p, n = p.next, n+1 {
 				if p == nil || n > 4096 {
 					s.LinksValid = false
 					break
 				}
-				s.LinksValid = s.LinksValid && p.field_1 == prev && p.field_2 == nil
+				s.LinksValid = s.LinksValid && p.prev == prev && p.tag == 0
 				text := unsafe.Slice((*uint16)(unsafe.Add(unsafe.Pointer(p), 12)), 256)
 				s.Rejected = append(s.Rejected, alloc.GoString16S(text))
 				prev = p
 			}
-			s.LinksValid = s.LinksValid && head.field_1 == prev && head.field_2 == head
+			s.LinksValid = s.LinksValid && head.prev == prev && head.tag == uintptr(unsafe.Pointer(head))
 		}
 		files.RLock()
 		s.HandlesUnchanged = len(files.byHandle) == beforeHandles
@@ -275,7 +275,7 @@ func ruleTestPath(s string) string {
 }
 
 // Fixture-native copies preserve the original wrapper ABI conversions.
-func portTestInvoke_sub_57A1B0(a1 C.short) *C.char { return ruleHeader(uint16(a1)) }
+func portTestInvoke_sub_57A1B0(a1 C.short) *C.char { return (*C.char)(ruleHeader(uint16(a1))) }
 
 func portTestInvoke_sub_57A1E0(a1 *C.int, a2 *C.char, a3 *C.int, a4 C.char, a5 C.short) C.char {
 	st := (*server.Settings2)(unsafe.Pointer(a1))
@@ -283,9 +283,9 @@ func portTestInvoke_sub_57A1E0(a1 *C.int, a2 *C.char, a3 *C.int, a4 C.char, a5 C
 	if a2 != nil {
 		name = GoString(a2)
 	}
-	return C.char(ruleLoad(st, name, (*C.nox_list_item_t)(unsafe.Pointer(a3)), byte(a4), uint16(a5)))
+	return C.char(ruleLoad(st, name, (*legacyListNode)(unsafe.Pointer(a3)), byte(a4), uint16(a5)))
 }
 
 func portTestInvoke_sub_57AAA0(name *C.char, settings *C.char, list *C.int) C.char {
-	return C.char(ruleWrite(GoString(name), (*server.Settings2)(unsafe.Pointer(settings)), (*C.nox_list_item_t)(unsafe.Pointer(list))))
+	return C.char(ruleWrite(GoString(name), (*server.Settings2)(unsafe.Pointer(settings)), (*legacyListNode)(unsafe.Pointer(list))))
 }

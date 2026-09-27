@@ -1,21 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME1_2.h"
-#include "GAME2.h"
-#include "GAME2_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "common__net_list.h"
-#include "defs.h"
-void nox_xxx_WideScreenDo_515240(bool enable);
-
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -36,7 +20,7 @@ var (
 	Nox_xxx_playerObserveMonster_4DDE80 func(cplayer, cunit *server.Object)
 )
 
-type nox_playerInfo = C.nox_playerInfo
+type nox_playerInfo = server.Player
 
 func asPlayerS(p *nox_playerInfo) *server.Player {
 	return (*server.Player)(unsafe.Pointer(p))

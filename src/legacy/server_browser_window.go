@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1_2.h"
-#include "GAME2_2.h"
-#include "client__shell__noxworld.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -134,7 +127,8 @@ func browserShow() int {
 	browserUI.resultCount = 0
 	Nox_xxx_loadModifyers_4158C0()
 	Nox_xxx_loadLook_415D50()
-	Sub_430C30_set_video_max(C.NOX_MAX_WIDTH, C.NOX_MAX_HEIGHT)
+	// video_highres.go already enabled these limits in every build profile.
+	Sub_430C30_set_video_max(3840, 2160)
 	nox_client_setCursorType_477610(0)
 	if browserUI.pendingKicked != 0 {
 		browserNotice(false)

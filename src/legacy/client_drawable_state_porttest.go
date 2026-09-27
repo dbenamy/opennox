@@ -2,13 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME2.h"
-#include "GAME2_3.h"
-#include "GAME3_1.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/client/noxrender"
@@ -37,7 +30,7 @@ func PortTestDrawableStream(stream int, input []byte, pos [2]int32) (int32, [2]i
 	return ret, [2]int32{coords[0], coords[1]}
 }
 func PortTestDrawableState(op int, dr *client.Drawable, value int) uintptr {
-	p := (*C.nox_drawable)(dr.C())
+	p := (*nox_drawable)(dr.C())
 	switch op {
 	case 0:
 		return uintptr(drawableStatePredicate(dr))

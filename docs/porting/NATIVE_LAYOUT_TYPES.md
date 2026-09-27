@@ -1,6 +1,6 @@
 # Native record, handle and list boundaries
 
-Status: original baseline qualified; conversion draft is not installed.
+Status: qualified. Original baseline `ca1d9fdf`.
 Production baseline: `1b80dbe1` (qualified scalar boundaries).
 
 Replace private C record aliases with the existing Go owners: Object, Drawable,
@@ -35,9 +35,11 @@ order and rectangle normalization. The sole trace-wrapper caller uses its native
 owner directly, retaining signed-byte flag narrowing. Wall damage keeps a wrapper
 to preserve argument evaluation relative to the replaceable server lookup.
 String reads use the existing GoStringP bridge, preserving its current behavior.
-The inventory background flag uses gui.StatusBelow. The compiled maximum window
-size remains 3840×2160 in every profile because video_highres.go already defines
-NOX_HIGH_RES without a build tag.
+The inventory background flag uses gui.StatusBelow. The browser’s C-derived
+maximum-window arguments remain 3840×2160 in every
+profile because legacy/video_highres.go already defines NOX_HIGH_RES without a
+build tag. The root package’s separate default/highres Go limits and protocol
+versions still differ; this batch preserves that distinction.
 
 Five orphan private helpers and three unused aliases are removed after whole-source
 Go/header/preamble searches; the trace wrapper is removed with its sole caller
@@ -60,9 +62,13 @@ omitted asset environment settings and was stopped; none of its partial results
 are accepted. Its verified source-matching binaries are reused by the corrected
 launcher with the full manifest environment.
 
-Planned converted gates: focused preflight; complete default port corpus and
-selected server/highres roots; safe/static and three production/ABI builds;
-exact known-suite outcomes; fresh headless save/load/resume; original asset hashes.
+Converted qualification passes all 28 preflight roots and static checks. The full
+default corpus passes 2,489 roots, with only the established opt-in diagnostic
+skipped; all 1,310 server and 1,312 highres selected roots pass. Safe/static and
+three production/ABI builds, exact known-suite outcomes, fresh headless
+character creation/save/load/resume, and all 1,654 original asset hashes pass.
+Accepted gates share the reviewed source fingerprints. See
+[qualification](native-layout-types-qualification.json).
 Full default coverage is appropriate here because shared record aliases span
 many owners. Root assertions and frozen captures stay unchanged except for the
 two independently authored contracts above.
@@ -70,3 +76,27 @@ two independently authored contracts above.
 Primary owns this batch while Luna is quota-limited. No substitute model is used.
 Local drafts, audits, probe captures and test evidence:
 `build/port-native-layout-types/`. Draft and refinement generators are consumed.
+
+The first converted compile caught two incomplete rules-fixture field mappings:
+previous links and the sentinel tag still used C field names. The correction uses
+native prev pointers and raw uintptr tags, preserving zero-item tags and the
+head-address sentinel comparison. No tests started in that failed build; no root
+assertions or frozen expectations changed. Failed evidence remains under
+`preflight/`; the corrected run uses `preflight-fixed/`.
+
+
+| Metric | Before | After |
+| --- | ---: | ---: |
+| Selected project cgo files, client/server | 35 / 36 | 13 / 14 |
+| Selected legacy C exports | 0 | 0 |
+| Embedded production C bodies | 20 | 20 |
+| Headers / physical lines | 157 / 2,731 | 157 / 2,731 |
+| Standalone production / test-reference C lines | 0 / 0 | 0 / 0 |
+
+The final change covers 31 source files: 55 changed, 524 unchanged and six removed
+functions; 22 production and two fixture C imports retire. See the
+[dependency inventory](native-layout-types-inventory-after.json).
+After qualification, 1,654 verified scenario asset duplicates were removed after
+host-use/hash checks, reclaiming 559,902,720 allocated bytes. Original assets,
+saves/results and the scenario restoration manifest remain. Completed installation,
+acceptance and cleanup scripts are consumed; do not rerun them against later source.

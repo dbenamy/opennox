@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -19,7 +15,7 @@ func AsDrawableP(p unsafe.Pointer) *client.Drawable {
 	return (*client.Drawable)(p)
 }
 
-type nox_drawable = C.nox_drawable
+type nox_drawable = client.Drawable
 
 func CallDrawFunc(s *client.Drawable, vp *noxrender.Viewport) int {
 	return s.CallDraw(vp)

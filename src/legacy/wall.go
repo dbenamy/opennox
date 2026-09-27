@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME4_1.h"
-*/
-import "C"
 import (
 	"image"
 	"unsafe"
@@ -30,9 +25,9 @@ func nox_xxx_wallFlags(ind int) uint32 {
 	return GetServer().S().Walls.DefByInd(ind).Flags32
 }
 
-func nox_xxx_mapDamageToWalls_534FC0(a1 *C.int4, a2 unsafe.Pointer, a3 C.float, a4, a5 int, a6 unsafe.Pointer) C.bool {
-	rect := image.Rect(int(a1.field_0), int(a1.field_4), int(a1.field_8), int(a1.field_C))
-	return C.bool(GetServer().Nox_xxx_mapDamageToWalls_534FC0(rect, *(*types.Pointf)(a2), float32(a3), a4, object.DamageType(a5), AsObjectP(a6)))
+func nox_xxx_mapDamageToWalls_534FC0(a1 *[4]int32, a2 unsafe.Pointer, a3 float32, a4, a5 int, a6 unsafe.Pointer) bool {
+	rect := image.Rect(int(a1[0]), int(a1[1]), int(a1[2]), int(a1[3]))
+	return bool(GetServer().Nox_xxx_mapDamageToWalls_534FC0(rect, *(*types.Pointf)(a2), float32(a3), a4, object.DamageType(a5), AsObjectP(a6)))
 }
 
 func Sub_5071C0() bool {
@@ -43,9 +38,9 @@ func Nox_xxx_math_509ED0(pos types.Pointf) int {
 	cpos, free := alloc.New(types.Pointf{})
 	defer free()
 	*cpos = pos
-	return int(C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(cpos))))))
+	return int(int32(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(cpos))))))
 }
 
 func Nox_xxx_math_509EA0(a1 int) int {
-	return int(C.int(geometryDirection4Index(int32(a1))))
+	return int(int32(geometryDirection4Index(int32(a1))))
 }

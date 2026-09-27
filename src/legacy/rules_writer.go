@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_1.h"
-*/
-import "C"
-
 import (
 	"fmt"
 	"unsafe"
@@ -14,7 +9,7 @@ import (
 	"github.com/opennox/opennox/v1/server"
 )
 
-func ruleWrite(name string, st *server.Settings2, list *C.nox_list_item_t) byte {
+func ruleWrite(name string, st *server.Settings2, list *legacyListNode) byte {
 	if st.Field52&0x80 != 0 {
 		return byte(st.Field52)
 	}
@@ -37,7 +32,7 @@ func ruleWrite(name string, st *server.Settings2, list *C.nox_list_item_t) byte 
 		ruleLoad(&local, "user.rul", nil, 3, st.Field52)
 	}
 	if list != nil {
-		for p := list.field_0; p != list; p = p.field_0 {
+		for p := list.next; p != list; p = p.next {
 			var narrow []byte
 			for _, c := range unsafe.Slice((*uint16)(unsafe.Add(unsafe.Pointer(p), 12)), 256) {
 				if c == 0 {
@@ -50,7 +45,7 @@ func ruleWrite(name string, st *server.Settings2, list *C.nox_list_item_t) byte 
 			_, _ = f.WriteString(ruleCString(string(narrow)))
 		}
 	}
-	_, _ = f.WriteString(GoString(ruleHeader(st.Field52)) + "\n")
+	_, _ = f.WriteString(GoStringP(unsafe.Pointer(ruleHeader(st.Field52))) + "\n")
 	s := GetServer().S()
 	for i := 1; i <= 136; i++ {
 		id := spell.ID(i)

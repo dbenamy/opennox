@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-#include <stdlib.h>
-#include "defs.h"
-#include "GAME1_1.h"
-*/
-import "C"
-
 import (
 	"bytes"
 	"strings"
@@ -25,11 +17,11 @@ import (
 // attempt, including failed opens. The engine invokes this loader serially.
 var ruleLoaderContext uint32
 
-func ruleHeader(flags uint16) *C.char {
+func ruleHeader(flags uint16) *int8 {
 	mask := uint32(flags) & 0x17f0
 	for i := 0; i < 7; i++ {
 		if *memmap.PtrUint32(0x587000, uintptr(312212+8*i)) == mask {
-			return (*C.char)(*memmap.PtrPtr(0x587000, uintptr(312208+8*i)))
+			return (*int8)(*memmap.PtrPtr(0x587000, uintptr(312208+8*i)))
 		}
 	}
 	return nil
@@ -78,7 +70,7 @@ func ruleEqual(a []uint16, b string) bool {
 	return len(a) == len(b)
 }
 
-func ruleAppendRejected(list *C.nox_list_item_t, line []uint16) {
+func ruleAppendRejected(list *legacyListNode, line []uint16) {
 	if list == nil {
 		return
 	}
@@ -167,7 +159,7 @@ func ruleApply(tokens [][]uint16, st *server.Settings2, mode uint32) int {
 	first := ruleNarrow(tokens[0])
 	for i := 0; i < 7; i++ {
 		name := *memmap.PtrPtr(0x587000, uintptr(312208+8*i))
-		if first == GoString((*C.char)(name)) {
+		if first == GoStringP(unsafe.Pointer((*int8)(name))) {
 			ruleLoaderContext = *memmap.PtrUint32(0x587000, uintptr(312212+8*i))
 			return bool2int(mode == ruleLoaderContext)
 		}
@@ -241,14 +233,14 @@ func ruleApply(tokens [][]uint16, st *server.Settings2, mode uint32) int {
 	return bool2int(mode == ruleLoaderContext)
 }
 
-func ruleParseLine(line []uint16, st *server.Settings2, list *C.nox_list_item_t, mode uint32) {
+func ruleParseLine(line []uint16, st *server.Settings2, list *legacyListNode, mode uint32) {
 	tokens := ruleTokens(line)
 	if len(tokens) != 0 && ruleApply(tokens, st, mode) == 0 {
 		ruleAppendRejected(list, line)
 	}
 }
 
-func ruleReadFile(path string, st *server.Settings2, list *C.nox_list_item_t, mode uint32) int {
+func ruleReadFile(path string, st *server.Settings2, list *legacyListNode, mode uint32) int {
 	ruleLoaderContext = 6128
 	f, err := ifs.Open(path)
 	if err != nil {
@@ -286,7 +278,7 @@ func ruleMapName(st *server.Settings2) string {
 	return string(b)
 }
 
-func ruleLoad(st *server.Settings2, user string, list *C.nox_list_item_t, selection byte, flags uint16) byte {
+func ruleLoad(st *server.Settings2, user string, list *legacyListNode, selection byte, flags uint16) byte {
 	if list != nil {
 		runtimeRejectedClear(unsafe.Pointer(list))
 	}

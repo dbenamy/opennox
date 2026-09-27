@@ -1,17 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME2_3.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_2.h"
-#include "GAME4_3.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -61,7 +49,7 @@ func controlDefaultItems(u *server.Object, refresh, keep int32) int8 {
 		*controlHalf(d, 12+2*i) = hp
 	}
 	u.ObjFlags &= 0xffeb3fe7
-	nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 13)
+	nox_xxx_playerSetState_4FA020((*nox_object_t)(u.CObj()), 13)
 	spellLifeClearBuffs(u)
 	*controlByte(d, 188) = 0
 	for _, off := range []int{216, 192, 196, 200, 204, 208, 136, 132, 268} {
@@ -84,19 +72,19 @@ func controlDefaultItems(u *server.Object, refresh, keep int32) int8 {
 	} else {
 		for it := u.InvFirstItem; it != nil; {
 			next := it.InvNextItem
-			if equipmentArmorMask(it) != 0 || it.ObjFlags&0x100 == 0 || it.ObjClass&0x2000000 != 0 && nox_xxx_unitArmorInventoryEquipFlags_415C70((*C.nox_object_t)(it.CObj()))&0x808 != 0 {
+			if equipmentArmorMask(it) != 0 || it.ObjFlags&0x100 == 0 || it.ObjClass&0x2000000 != 0 && nox_xxx_unitArmorInventoryEquipFlags_415C70((*nox_object_t)(it.CObj()))&0x808 != 0 {
 				GetServer().DelayedDelete(it)
 			}
 			it = next
 		}
 		controlRespawnNotify(u, 1)
-		desc := func(id C.int) uint32 { return uint32(uintptr(nox_xxx_modifGetDescById_413330(int32(id)))) }
+		desc := func(id int32) uint32 { return uint32(uintptr(nox_xxx_modifGetDescById_413330(int32(id)))) }
 		byName := func(name string) uint32 {
-			return desc(C.int(nox_xxx_modifGetIdByName_413290((*int8)(internCStr(name)))))
+			return desc(int32(nox_xxx_modifGetIdByName_413290((*int8)(internCStr(name)))))
 		}
 		base := byName("UserColor1")
 		baseID := *equipmentWord(unsafe.Pointer(uintptr(base)), 4)
-		color := func(off int) uint32 { return desc(C.int(baseID + uint32(*controlByte(pl, 2185+off)))) }
+		color := func(off int) uint32 { return desc(int32(baseID + uint32(*controlByte(pl, 2185+off)))) }
 		// The fifth modifier word is intentionally initialized along with descriptors.
 		attrs := [5]uint32{}
 		makeItem := func(name string) *server.Object { return controlRespawnItem(u, name, unsafe.Pointer(&attrs[0]), 1, 0) }
@@ -118,14 +106,14 @@ func controlDefaultItems(u *server.Object, refresh, keep int32) int8 {
 			if class == 0 {
 				attrs[1] = byName("Material1")
 			}
-			name := C.GoString((*C.char)(*controlPtr(memmap.PtrOff(0x587000, 206376), 4*int(class))))
+			name := GoStringP(unsafe.Pointer((*int8)(*controlPtr(memmap.PtrOff(0x587000, 206376), 4*int(class)))))
 			result = int8(controlRaw(makeItem(name)))
 		} else if controlFlags(4096) && sessionMapState() >= 0 {
 			attrs = [5]uint32{}
 			if class == 1 {
 				attrs[2] = byName("Replenishment1")
 			}
-			name := C.GoString((*C.char)(*controlPtr(memmap.PtrOff(0x587000, 206388), 4*int(class))))
+			name := GoStringP(unsafe.Pointer((*int8)(*controlPtr(memmap.PtrOff(0x587000, 206388), 4*int(class)))))
 			result = int8(controlRaw(makeItem(name)))
 		} else {
 			result = int8(class)
@@ -149,10 +137,10 @@ func controlInitPlayer(u *server.Object) int8 {
 	resourceSubGold(u, resourceObjectGold(u))
 	controlLevelFromXP(u)
 	pl := controlPlayer(u)
-	nox_xxx_spellAwardAll1_4EFD80((*C.nox_playerInfo)(pl))
-	nox_xxx_spellAwardAll2_4EFC80((*C.nox_playerInfo)(pl))
+	nox_xxx_spellAwardAll1_4EFD80((*nox_playerInfo)(pl))
+	nox_xxx_spellAwardAll2_4EFC80((*nox_playerInfo)(pl))
 	controlReadStats(u, 0)
-	nox_xxx_spellAwardAll3_4EFE10((*C.nox_playerInfo)(pl))
+	nox_xxx_spellAwardAll3_4EFE10((*nox_playerInfo)(pl))
 	if controlFlags(4096) {
 		*equipmentWord(d, 320) = uint32(floatToInt32(float32(nox_xxx_gamedataGetFloat_419D40(internCStr("QuestGameStartingExtraLives")))))
 	}
@@ -161,12 +149,12 @@ func controlInitPlayer(u *server.Object) int8 {
 func controlResetPlayer(u *server.Object) int32 {
 	d := u.UpdateData
 	pl := controlPlayer(u)
-	nox_xxx_spellAwardAll1_4EFD80((*C.nox_playerInfo)(pl))
-	nox_xxx_spellAwardAll2_4EFC80((*C.nox_playerInfo)(pl))
+	nox_xxx_spellAwardAll1_4EFD80((*nox_playerInfo)(pl))
+	nox_xxx_spellAwardAll2_4EFC80((*nox_playerInfo)(pl))
 	*controlByte(pl, 3684) = 1
 	Nox_xxx_playerCancelAbils_4FC180(u)
 	controlReadStats(u, 0)
-	nox_xxx_spellAwardAll3_4EFE10((*C.nox_playerInfo)(pl))
+	nox_xxx_spellAwardAll3_4EFE10((*nox_playerInfo)(pl))
 	mana := *controlHalf(d, 8)
 	*controlHalf(d, 4) = mana
 	*controlHalf(d, 6) = mana
@@ -178,7 +166,7 @@ func controlResetPlayer(u *server.Object) int32 {
 	resourceRestoreHP(u)
 	*controlByte(u.CObj(), 541) = 0
 	u.ObjFlags &= 0xffeb3fe7
-	nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 13)
+	nox_xxx_playerSetState_4FA020((*nox_object_t)(u.CObj()), 13)
 	spellLifeClearBuffs(u)
 	spellLifeCancelPlayer(u)
 	resourceRemovePoison(u)
@@ -210,7 +198,7 @@ func controlLeaveObserver(pl unsafe.Pointer) {
 	spellLifeBuffOff(u, int32(0))
 	*controlPtr(u.CObj(), 744) = updateIdentityKey(updateIDPlayer)
 	u.ObjFlags &^= 0x40
-	nox_xxx_monsterMarkUpdate_4E8020((*C.nox_object_t)(controlObject(pl, 2056).CObj()))
+	nox_xxx_monsterMarkUpdate_4E8020((*nox_object_t)(controlObject(pl, 2056).CObj()))
 	if controlFlags(16) && bool(nox_xxx_CheckGameplayFlags_417DA0(4)) {
 		controlTeamFlag(pl)
 	}
@@ -247,7 +235,7 @@ func controlRespawn(u *server.Object) int16 {
 	if controlFlags(4096) {
 		controlDefaultItems(u, 1, 1)
 		*controlByte(d, 452+int(*controlByte(controlPlayer(u), 2064))) = 250
-		nox_xxx_netPriMsgToPlayer_4DA2C0((*C.nox_object_t)(u.CObj()), (*C.char)(internCStr("GeneralPrint:Respawn")), 0)
+		nox_xxx_netPriMsgToPlayer_4DA2C0((*nox_object_t)(u.CObj()), (*int8)(internCStr("GeneralPrint:Respawn")), 0)
 	} else {
 		controlDefaultItems(u, 1, 0)
 	}
@@ -255,7 +243,7 @@ func controlRespawn(u *server.Object) int16 {
 	if controlFlags(4096) {
 		sound = 1006
 	}
-	nox_xxx_aud_501960(int32(C.int(sound)), (*C.nox_object_t)(u.CObj()), 0, 0)
+	nox_xxx_aud_501960(int32(int32(sound)), (*nox_object_t)(u.CObj()), 0, 0)
 	controlMakeCorpse(u, settings)
 	pos := u.PosVec
 	if target := controlObject(d, 308); controlFlags(4096) && target != nil {
@@ -286,7 +274,7 @@ func controlRespawnBot(u *server.Object) int32 {
 		var pos types.Pointf
 		controlFindStart(&pos, u)
 		Nox_xxx_unitMove_4E7010(u, pos)
-		nox_xxx_aud_501960(148, (*C.nox_object_t)(u.CObj()), 0, 0)
+		nox_xxx_aud_501960(148, (*nox_object_t)(u.CObj()), 0, 0)
 		if controlFlags(8192) {
 			spellLifeApplyBuff(u, 23, int16(5*uint16(GetServer().S().TickRate())), 5)
 		}

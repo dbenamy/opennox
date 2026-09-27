@@ -1,16 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_2.h"
-#include "GAME4_3.h"
-*/
-import "C"
 import (
 	"image"
 	"unsafe"
@@ -39,7 +28,7 @@ var _ = [1]struct{}{}[20-unsafe.Sizeof(server.ElevatorUpdateData{})]
 
 var _ = [1]struct{}{}[36-unsafe.Sizeof(server.MoverUpdateData{})]
 
-type nox_object_t = C.nox_object_t
+type nox_object_t = server.Object
 
 func asObjectC(p *server.Object) *nox_object_t {
 	return (*nox_object_t)(p.CObj())
@@ -109,17 +98,17 @@ func nox_xxx_unitIsHostileMimic_4E7F90(obj1, obj2 *nox_object_t) int {
 }
 
 func AsPointf(p unsafe.Pointer) types.Pointf {
-	cp := (*C.float2)(p)
+	cp := (*types.Pointf)(p)
 	return types.Pointf{
-		X: float32(cp.field_0),
-		Y: float32(cp.field_4),
+		X: float32(cp.X),
+		Y: float32(cp.Y),
 	}
 }
 func AsPoint(p unsafe.Pointer) image.Point {
-	cp := (*C.nox_point)(p)
+	cp := (*[2]int32)(p)
 	return image.Point{
-		X: int(cp.x),
-		Y: int(cp.y),
+		X: int(cp[0]),
+		Y: int(cp[1]),
 	}
 }
 
@@ -139,8 +128,8 @@ func nox_xxx_unitIsEnemyTo_5330C0(a, b *nox_object_t) int {
 	return bool2int(GetServer().S().IsEnemyTo(asObjectS(a), asObjectS(b)))
 }
 
-func nox_xxx_checkSummonedCreaturesLimit_500D70(obj *nox_object_t, ind int) C.bool {
-	return C.bool(Nox_xxx_checkSummonedCreaturesLimit_500D70(asObjectS(obj), ind))
+func nox_xxx_checkSummonedCreaturesLimit_500D70(obj *nox_object_t, ind int) bool {
+	return bool(Nox_xxx_checkSummonedCreaturesLimit_500D70(asObjectS(obj), ind))
 }
 
 func nox_xxx_unitSetXStatus_4E4800(a1 *nox_object_t, a2 uint32) {

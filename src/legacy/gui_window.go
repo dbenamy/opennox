@@ -1,28 +1,15 @@
 package legacy
 
-/*
-#include <stdlib.h>
-#include "client__gui__window.h"
-
-*/
-import "C"
 import (
-	"log/slog"
-	"runtime/debug"
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/client/gui"
 )
 
-type nox_window = C.nox_window
+type nox_window = gui.Window
 
 func AsWindowP(win unsafe.Pointer) *gui.Window {
 	w := (*gui.Window)(win)
-	if false && cgoSafe && w.ID() == DeadWord {
-		slog.Error("memory corruption detected")
-		debug.PrintStack()
-		C.abort()
-	}
 	return w
 }
 
