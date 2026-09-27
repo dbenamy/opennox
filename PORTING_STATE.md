@@ -87,8 +87,12 @@ produced by `tools/porting/cgo_inventory.py`. Three project packages still direc
 use cgo, plus external client bindings. The earlier helper suggestion that go-gl
 was residue remains rejected: `libs/client/seat/opengl` actually imports it.
 
-Next: confirm whole-repository reachability of the specialized spell-call adapter,
-then retire it if unused and convert the four live C-typed spell scalar helpers.
+In progress: the specialized spell-call adapter has no tracked-code consumers.
+The spell scalar batch has an accepted exact-source reused baseline (2,482/2,471/2,482
+roots); its one-file draft is not yet installed. See
+[SPELL_SCALAR_BOUNDARIES.md](docs/porting/SPELL_SCALAR_BOUNDARIES.md).
+Next: install and qualify removal of that adapter and native return types for
+the four live spell scalar helpers.
 A read-only preaudit is in `build/port-remaining-boundaries/`; no conversion is
 installed there. Reuse the just-qualified original selection only under exact
 source/environment and discovered-name checks. Then audit allocator and generic
