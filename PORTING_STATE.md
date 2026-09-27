@@ -86,7 +86,13 @@ accepted evidence: its suggestion that go-gl is residue is contradicted by the
 actual dependency graph (`libs/client/seat/opengl` imports it).
 
 Unused generated dispatch signatures are qualified; baseline commit is `119b666a`.
-No next conversion is installed. Next, migrate the ten remaining callback exports:
+No next conversion is installed. Eight new original-path callback contracts pass
+preflight. The current baseline work is under `build/port-final-callback-exports/`:
+The original baseline is accepted: 2,486 default roots pass plus one established
+skip; focused default 294, server 292 twice and high-resolution 294 twice pass.
+All original jobs are joined. See [the batch report](docs/porting/FINAL_CALLBACK_EXPORTS.md)
+and `RUNNING.md` for the current installation/qualification state. Next, migrate
+the ten remaining callback exports:
 three player-file handlers, map object data, screen particles, menu/tooltips and
 FlameCleanse. Read-only consumer notes are in
 `build/port-unused-dispatch-signatures/next-callback-notes.md`. Trace every table,
@@ -136,6 +142,7 @@ do not rerun them or infer deletion safety from age alone.
 
 | Artifact | Recovery or current location |
 | --- | --- |
+| Final-callback baseline cleanup | Removed 11 obsolete Linux 386 root/legacy cache archives predating `519ce712` after hash/stat and host-use checks; 497,823,744 allocated bytes reclaimed. Also removed four superseded production/safe binaries (186,937,344 bytes; rebuild `62873a54`) after source, replacement/hash and host-use verification. Current binaries, source and assets remain. Journals: `build/port-final-callback-exports/cache-before-baseline/` and `old-production-cleanup-{approved.json,deleted.jsonl}` in the batch directory; cleanup scripts consumed. |
 | Unused-dispatch cleanup | Losslessly gzip-archived 36 further historical game-message capture groups (372,830,208 allocated bytes); restore first recorded path, verify SHA-256, then hard-link its recorded aliases. Removed four superseded book production/safe binaries (187,338,752 bytes; rebuild `b2597f97`) after source/hash/replacement/host-use verification. Removed 20 obsolete root/legacy cache archives predating `119b666a` (917,471,232 bytes), with no compiler active and no open-file use. Journals under `build/port-unused-dispatch-signatures/`; all scripts consumed. Final scenario deduplicated 1,654 verified asset copies (559,968,256 bytes); restore using the existing tool and `build/baseline/runs/unused-dispatch-signatures-save/deduplicated-assets.json`. Originals and current binaries remain. |
 | Remaining-fixture cleanup | Removed four superseded unused-adapter production/safe binaries (187,367,424 allocated bytes; rebuild `1238c985`) and three book test binaries (200,716,288 bytes; rebuild `b2597f97`) after source/hash/replacement/host-use checks. Losslessly archived 30 historical capture groups (711,507,968 bytes), six original test logs (260,030,464 bytes) and three converted logs (165,019,648 bytes). Journals under `build/port-remaining-fixture-bridges/`; restore logs with `gzip -dk` and verify recorded uncompressed hashes. For capture groups, restore the first recorded path then hard-link the remaining paths. Preview/final each deduplicated 1,654 verified asset copies; restore with `build/port-artifact-cleanup/restore-recent-scenario.py` and `build/baseline/runs/remaining-fixture-bridges[-preview]-save/deduplicated-assets.json`. Originals and current binaries remain. |
 | Book callback cleanup | Removed 13 superseded binaries (791,552,000 allocated bytes; rebuild `f8332e3d`, `1238c985`, `0121a5f3`, `b5831dc9`) and 15 obsolete cache archives (839,024,640 bytes), with source/hash/host-use checks. Losslessly archived 3 historical failed-setup update binaries (99,102,720 bytes reclaimed); restore `gzip -dk FILE.test.gz`, `chmod 755 FILE.test` and verify the hashes in `build/port-book-callbacks/old-update-failed-binaries-archive.json`. Preview/final each deduplicated 1,654 verified asset copies; originals, saves and logs retained. Journals under `build/port-book-callbacks/`; restore scenarios with `build/port-artifact-cleanup/restore-recent-scenario.py` and `build/baseline/runs/book-callbacks[-preview]-save/deduplicated-assets.json`. |
