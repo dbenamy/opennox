@@ -83,7 +83,7 @@ func PortTestServerBrowserErrorSet(v int32)       { nox_client_setConnError_43AF
 func PortTestServerBrowserStateGet(which int) uint32 {
 	switch which {
 	case 0:
-		return uint32(C.sub_43AF30())
+		return uint32(sub_43AF30())
 	case 1:
 		return uint32(sub_43AF40())
 	case 2:

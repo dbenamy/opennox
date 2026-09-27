@@ -37,7 +37,7 @@ func PortTestScreenEffectCallback(op int) unsafe.Pointer {
 	panic("unknown screen effect callback")
 }
 func PortTestScreenParticleCreate(a [10]int32) *Nox_screenParticle {
-	return (*Nox_screenParticle)(unsafe.Pointer(C.nox_client_newScreenParticle_431540(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3]), C.int(a[4]), C.int(a[5]), C.char(a[6]), C.char(a[7]), C.char(a[8]), C.char(a[9]))))
+	return (*Nox_screenParticle)(unsafe.Pointer(nox_client_newScreenParticle_431540(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3]), C.int(a[4]), C.int(a[5]), C.char(a[6]), C.char(a[7]), C.char(a[8]), C.char(a[9]))))
 }
 func PortTestScreenParticleDraw(p *Nox_screenParticle, vp *noxrender.Viewport) int {
 	return int(C.nox_client_screenParticleDraw_489700(vp.C(), (*C.nox_screenParticle)(unsafe.Pointer(p))))
@@ -50,7 +50,7 @@ func PortTestScreenPrimitive(op int, a [4]int32) uint32 {
 	case 0:
 		return screenSqrt(uint32(a[0]))
 	case 1:
-		return uint32(C.sub_48C6B0(C.int(a[0]), C.int(a[1])))
+		return uint32(sub_48C6B0(C.int(a[0]), C.int(a[1])))
 	case 2:
 		return screenDistanceBetween(a[0], a[1], a[2], a[3])
 	case 3:

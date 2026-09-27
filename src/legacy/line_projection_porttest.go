@@ -5,7 +5,6 @@ package legacy
 /*
 #include <stdint.h>
 #include "GAME5_2.h"
-void sub_57C790(float4* a1, float2* a2, float2* a3, float a4);
 */
 import "C"
 
@@ -65,9 +64,9 @@ func PortTestLineProjection(specs []PortTestLineProjectionSpec) []PortTestLinePr
 		result := 0
 		switch spec.Kind {
 		case "clamp":
-			C.sub_57C790(line, point, (*C.float2)(unsafe.Pointer(&data[spec.OutputOffset])), C.float(math.Float32frombits(spec.LengthBits)))
+			sub_57C790(line, point, (*C.float2)(unsafe.Pointer(&data[spec.OutputOffset])), C.float(math.Float32frombits(spec.LengthBits)))
 		case "line":
-			result = int(C.nox_xxx_mathPointOnTheLine_57C8A0(line, point, (*C.float2)(unsafe.Pointer(&data[spec.OutputOffset]))))
+			result = int(nox_xxx_mathPointOnTheLine_57C8A0(line, point, (*C.float2)(unsafe.Pointer(&data[spec.OutputOffset]))))
 		default:
 			panic("unknown projection kind")
 		}

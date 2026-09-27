@@ -2818,3 +2818,21 @@ of inert backing-blob words; production behavior and existing goldens are unchan
 Retire one unused identity and five fixture-only C-typed wrappers after caller audit.
 Qualify the closed callback family with affected routes/owners and production gates;
 shared GUI/raw dispatch code is unchanged. See [BOOK_CALLBACKS.md](BOOK_CALLBACKS.md).
+
+
+## Remaining fixture bridges
+
+Move 60 fixture-only Go adapters under porttest with identical bodies/signatures;
+remove unused exports from ten remaining Go-called bodies. Keep the ten actual
+production C callback addresses. Preserve transitional fixture C types in this
+batch rather than combining export removal with all scalar/layout conversions.
+Protection setters retain width narrowing; temporary effects retain sparse IDs,
+argument order and the live FlameCleanse callback. Skip nil identity registration
+when retiring unused fixture addresses, preserving canonical zero and goldens.
+The whole-source review caught pointer-returning/multiline declarations missed by
+the initial filter; literal C-header and AST preamble checks are required.
+Because the fixture owners span much of the engine, run the full default corpus
+before and after, with focused server/high-resolution checks. Allow a default-only
+profile selector to avoid a redundant focused-default pass. Existing owners,
+assertions and captures are unchanged. Luna remained quota-limited; primary
+completed the batch. See [REMAINING_FIXTURE_BRIDGES.md](REMAINING_FIXTURE_BRIDGES.md).

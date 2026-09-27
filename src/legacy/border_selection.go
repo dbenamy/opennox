@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME4_3.h"
-*/
-import "C"
-
 import (
 	"unsafe"
 
@@ -63,19 +58,4 @@ func selectBorderVariation(variation int32) bool {
 	}
 	dword_5d4594_3835360 = uint32(variation)
 	return true
-}
-
-//export sub_544020
-func sub_544020(name *C.char) C.int {
-	return C.int(bool2int(selectBorderName((*byte)(unsafe.Pointer(name)))))
-}
-
-//export nox_xxx_tileCheckByte3_544070
-func nox_xxx_tileCheckByte3_544070(index C.int) C.int {
-	return C.int(bool2int(selectBorderPrimary(int32(index))))
-}
-
-//export nox_xxx_tileCheckByte4_5440A0
-func nox_xxx_tileCheckByte4_5440A0(variation C.int) C.int {
-	return C.int(bool2int(selectBorderVariation(int32(variation))))
 }

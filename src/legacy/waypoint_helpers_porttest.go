@@ -86,8 +86,8 @@ func PortTestWaypointLinks(specs []PortTestWaypointLink) []PortTestWaypointLinkR
 			arg = C.int(uintptr(unsafe.Pointer(wp)))
 		}
 		before := append([]byte(nil), raw...)
-		a := index(uint32(C.nox_xxx_waypointNext_579870(arg)))
-		b := index(uint32(C.sub_5798A0(arg)))
+		a := index(uint32(nox_xxx_waypointNext_579870(arg)))
+		b := index(uint32(sub_5798A0(arg)))
 		out = append(out, PortTestWaypointLinkResult{First: a, Second: b, Unchanged: bytes.Equal(raw, before)})
 	}
 	return out
@@ -96,7 +96,7 @@ func PortTestWaypointLinks(specs []PortTestWaypointLink) []PortTestWaypointLinkR
 func PortTestWaypointAllocations(count int) [][]byte {
 	out := make([][]byte, 0, count)
 	for i := 0; i < count; i++ {
-		p := C.sub_579E70()
+		p := sub_579E70()
 		if p == nil {
 			out = append(out, nil)
 			continue

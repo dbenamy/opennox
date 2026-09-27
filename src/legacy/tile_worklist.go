@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME4_2.h"
-*/
-import "C"
-
 import (
 	"unsafe"
 
@@ -62,14 +57,4 @@ func popTileFill(x, y, flags *uint32) bool {
 	*y = stack[uint32(dword_5d4594_2487248)].Y
 	*flags = stack[uint32(dword_5d4594_2487248)].Flags
 	return true
-}
-
-//export sub_51DD50
-func sub_51DD50(x, y, flags, key C.int) {
-	pushTileFill(int32(x), int32(y), int32(flags), int32(key))
-}
-
-//export sub_51DE30
-func sub_51DE30(x, y, flags *C.uint32_t) C.int {
-	return C.int(bool2int(popTileFill((*uint32)(unsafe.Pointer(x)), (*uint32)(unsafe.Pointer(y)), (*uint32)(unsafe.Pointer(flags)))))
 }

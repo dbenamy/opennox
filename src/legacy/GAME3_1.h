@@ -3,6 +3,5 @@
 
 #include "defs.h"
 
-void sub_4C5050();
 
 #endif // NOX_PORT_GAME3_1

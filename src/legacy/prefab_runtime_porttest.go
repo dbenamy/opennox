@@ -6,8 +6,6 @@ package legacy
 #include <stdint.h>
 #include <stdlib.h>
 #include "GAME1.h"
-extern uint32_t* nox_xxx_tileAllocTileInCoordList_5040A0(int, int, float);
-extern uint32_t* sub_504290(char, char);
 extern uint32_t* sub_5044B0(int, float, float);
 extern uint32_t* nox_xxx_unitAddToList_5048A0(int);
 */

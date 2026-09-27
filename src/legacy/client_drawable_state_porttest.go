@@ -46,9 +46,9 @@ func PortTestDrawableState(op int, dr *client.Drawable, value int) uintptr {
 	case 2:
 		return uintptr(nox_xxx_spriteSetFrameMB_45AB80(C.int(uintptr(dr.C())), C.int(value)))
 	case 3:
-		return uintptr(unsafe.Pointer(C.nox_drawable_next_45A070(p)))
+		return uintptr(unsafe.Pointer(nox_drawable_next_45A070(p)))
 	case 4:
-		return uintptr(unsafe.Pointer(C.sub_45A010(p)))
+		return uintptr(unsafe.Pointer(sub_45A010(p)))
 	}
 	panic("unknown drawable state operation")
 }

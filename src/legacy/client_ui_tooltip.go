@@ -172,8 +172,3 @@ func uiItemTooltip(dr *client.Drawable) *uint16 {
 	}
 	return &dst[0]
 }
-
-//export nox_xxx_clientAskInfoMb_4BF050
-func nox_xxx_clientAskInfoMb_4BF050(dr *nox_drawable) *C.wchar2_t {
-	return (*C.wchar2_t)(unsafe.Pointer(uiItemTooltip((*client.Drawable)(unsafe.Pointer(dr)))))
-}

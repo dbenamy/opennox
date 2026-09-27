@@ -4,18 +4,6 @@ package legacy
 
 /*
 #include <stdint.h>
-#include "GAME5_2.h"
-// Convert the decompiled pointer-typed return to scalar bits inside C. This
-// adapter also compiles after the declarations are corrected to uint32_t.
-static uint32_t portTestProtectionSet(int mode, int id, uint32_t value) {
-	switch (mode) {
-	case 0: return (uintptr_t)sub_56F780(id, (int)value);
-	case 1: return (uintptr_t)nox_xxx_playerResetProtectionCRC_56F7D0(id, (int)value);
-	case 2: return (uintptr_t)sub_56F820(id, (unsigned char)value);
-	case 3: return (uintptr_t)nox_xxx_protectPlayerHPMana_56F870(id, (unsigned short)value);
-	default: return 0;
-	}
-}
 */
 import "C"
 
@@ -25,6 +13,17 @@ func PortTestProtectionSet(initial [][2]uint32, key, sum, sequence, swapCount, r
 			Nox_xxx_playerResetProtectionCRC_56F7D0(id, int(value))
 			return 0
 		}
-		return uint32(C.portTestProtectionSet(C.int(mode), C.int(id), C.uint32_t(value)))
+		switch int32(mode) {
+		case 0:
+			return uint32(sub_56F780(C.int(id), C.int(value)))
+		case 1:
+			return uint32(nox_xxx_playerResetProtectionCRC_56F7D0(C.int(id), C.int(value)))
+		case 2:
+			return uint32(sub_56F820(C.int(id), C.uchar(value)))
+		case 3:
+			return uint32(nox_xxx_protectPlayerHPMana_56F870(C.int(id), C.ushort(value)))
+		default:
+			return 0
+		}
 	})
 }

@@ -5,9 +5,6 @@ package legacy
 /*
 #include "defs.h"
 
-void sub_4C5050();
-void nox_xxx_wndDraw_49F7F0();
-int sub_49F860();
 */
 import "C"
 import (
@@ -81,10 +78,10 @@ func PortTestObjectRenderShiny(vp *noxrender.Viewport, dr *client.Drawable) uint
 }
 func PortTestObjectRenderClip(save bool) int32 {
 	if save {
-		C.nox_xxx_wndDraw_49F7F0()
+		nox_xxx_wndDraw_49F7F0()
 		return 0
 	}
-	return int32(C.sub_49F860())
+	return int32(sub_49F860())
 }
 
 func PortTestObjectRenderBeam(op int, vp *noxrender.Viewport, a [4]int32) uint32 {
@@ -101,7 +98,7 @@ func PortTestObjectRenderBeam(op int, vp *noxrender.Viewport, a [4]int32) uint32
 		*(*uint16)(unsafe.Pointer(&packet[7])) = uint16(a[3])
 		return uint32(sub_4C5020(C.int(uintptr(unsafe.Pointer(&packet[0])))))
 	case 2:
-		C.sub_4C5050()
+		sub_4C5050()
 		return 0
 	case 3:
 		return uint32(objectRenderBeamDraw(vp))

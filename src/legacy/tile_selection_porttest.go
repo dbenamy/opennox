@@ -92,7 +92,7 @@ func PortTestTileNames(specs []PortTestTileNameSpec) (out []PortTestTileNameResu
 	for _, spec := range specs {
 		input := append(append([]byte(nil), spec.Name...), 0)
 		inputBefore := append([]byte(nil), input...)
-		ret := C.nox_xxx_tileGetDefByName_51D4D0((*C.char)(unsafe.Pointer(unsafe.SliceData(input))))
+		ret := nox_xxx_tileGetDefByName_51D4D0((*C.char)(unsafe.Pointer(unsafe.SliceData(input))))
 		st := portTestTileGet(selected, variation, flag)
 		out = append(out, PortTestTileNameResult{Return: int(ret), Selected: st.selected, Variation: st.variation, Flag: st.flag, Count: *count, TableUnchanged: bytes.Equal(tileBytes(table), before), InputUnchanged: bytes.Equal(input, inputBefore), GuardsOK: st.beforeSelected == 0xa5a5a5a5 && st.afterFlag == 0x5a5a5a5a})
 	}
@@ -123,9 +123,9 @@ func PortTestTileScalars(values []int32, flagMode bool) (out []PortTestTileScala
 		*selected, *variation, *flag = 99, 0x11223344, 0xa5a5a5a5
 		var ret C.int
 		if flagMode {
-			ret = C.nox_xxx_tile_51D5C0(C.int(v))
+			ret = nox_xxx_tile_51D5C0(C.int(v))
 		} else {
-			ret = C.nox_xxx_tileCheckImage_51D540(C.int(v))
+			ret = nox_xxx_tileCheckImage_51D540(C.int(v))
 		}
 		out = append(out, portTestTileResult(ret, portTestTileGet(selected, variation, flag), bytes.Equal(tileBytes(table), before), *count))
 	}
@@ -157,7 +157,7 @@ func PortTestTileVariations(specs []PortTestTileVariationSpec) (out []PortTestTi
 		table[s.Selected].Field52, table[s.Selected].Field53 = s.Width, s.Height
 		*selected = s.Selected
 		expected[int(s.Selected)*60+52], expected[int(s.Selected)*60+53] = s.Width, s.Height
-		ret := C.nox_xxx_tileCheckImageVari_51D570(C.int(s.Value))
+		ret := nox_xxx_tileCheckImageVari_51D570(C.int(s.Value))
 		st := portTestTileGet(selected, variation, flag)
 		out = append(out, PortTestTileVariationResult{Return: int(ret), Selected: st.selected, Variation: st.variation, Flag: st.flag, Count: *count, TableUnchanged: bytes.Equal(tileBytes(table), expected), GuardsOK: st.beforeSelected == 0xa5a5a5a5 && st.afterFlag == 0x5a5a5a5a})
 	}

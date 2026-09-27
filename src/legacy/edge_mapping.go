@@ -1,13 +1,6 @@
 package legacy
 
-/*
-#include "GAME4_3.h"
-*/
-import "C"
-
 import (
-	"unsafe"
-
 	"github.com/opennox/opennox/v1/common/memmap"
 )
 
@@ -54,15 +47,4 @@ func mergeBorderEdge(record *[4]uint32, category int32) bool {
 		record[3] = edge
 	}
 	return true
-}
-
-//export nox_xxx_mapGenEdge_543EB0
-func nox_xxx_mapGenEdge_543EB0(index, edge C.int) C.int {
-	return C.int(generateBorderEdge(int32(index), int32(edge)))
-}
-
-//export sub_543E60
-func sub_543E60(record, category C.int) C.int {
-	p := (*[4]uint32)(unsafe.Pointer(uintptr(uint32(record))))
-	return C.int(bool2int(mergeBorderEdge(p, int32(category))))
 }

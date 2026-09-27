@@ -25,7 +25,7 @@ func PortTestVisibilityEffects(op int, a, b *server.Object, pos *types.Pointf, w
 	fp := (*C.float)(unsafe.Pointer(pos))
 	switch op {
 	case 0:
-		return uint32(C.nox_xxx_netSendPointFx_522FF0(C.char(args[0]), (*C.float2)(unsafe.Pointer(pos))))
+		return uint32(nox_xxx_netSendPointFx_522FF0(C.char(args[0]), (*C.float2)(unsafe.Pointer(pos))))
 	case 1:
 		return uint32(visibilityFXSend(*pos, data))
 	case 2:
@@ -47,7 +47,7 @@ func PortTestVisibilityEffects(op int, a, b *server.Object, pos *types.Pointf, w
 	case 10:
 		visibilityFXGeneratorSpawn(*words, uint16(args[0]))
 	case 11:
-		C.nox_xxx_sendArrowTrapFX_5238A0(fp, C.char(args[0]))
+		nox_xxx_sendArrowTrapFX_5238A0(fp, C.char(args[0]))
 	case 12:
 		return uint32(visibilitySpecialUpdate(a, b))
 	case 14:

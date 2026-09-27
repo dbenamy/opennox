@@ -165,9 +165,6 @@ func nox_xxx_cliToggleObsWindow_4357A0() C.int { return C.int(interactionObserve
 
 func sub_435F60() C.int { return C.int(interactionToggleDrawing()) }
 
-//export sub_436550
-func sub_436550() C.int { return C.int(interactionFrameGate()) }
-
 func sub_437100() { interactionHUDVisibility() }
 
 func nox_xxx_playerAnimCheck_4372B0() C.int { return C.int(interactionPlayerAnimation()) }

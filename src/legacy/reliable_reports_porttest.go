@@ -47,9 +47,9 @@ func PortTestReliableReports(op, to, index int, arg uint32, data []byte, related
 	case 3:
 		return uint32(reliableResetRates())
 	case 4:
-		return uint32(C.sub_4E4F30(a))
+		return uint32(sub_4E4F30(a))
 	case 5:
-		return uint32(C.nox_xxx_playerResetImportantCtr_4E4F40(a))
+		return uint32(nox_xxx_playerResetImportantCtr_4E4F40(a))
 	case 6:
 		return uint32(reliableTrim())
 	case 7:
@@ -61,7 +61,7 @@ func PortTestReliableReports(op, to, index int, arg uint32, data []byte, related
 	case 10:
 		return uint32(reliableRemoveSlowPlayer(to))
 	case 11:
-		return uint32(C.nox_xxx_netSendPacket1_4E5390(a, b, n, obj, C.int(priority)))
+		return uint32(nox_xxx_netSendPacket1_4E5390(a, b, n, obj, C.int(priority)))
 	case 12:
 		return uint32(nox_xxx_netClientSend2_4E53C0(a, p, n, obj, C.int(priority)))
 	case 13:
@@ -73,7 +73,7 @@ func PortTestReliableReports(op, to, index int, arg uint32, data []byte, related
 	case 16:
 		return uint32(nox_net_importantACK_4E55A0(a, C.int(arg)))
 	case 17:
-		return uint32(C.sub_4E55F0(C.uchar(to)))
+		return uint32(sub_4E55F0(C.uchar(to)))
 	case 18:
 		return uint32(reliableAdapt(byte(to)))
 	case 19:

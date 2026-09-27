@@ -1,13 +1,7 @@
 package legacy
 
-/*
-#include "GAME5_2.h"
-*/
-import "C"
-
 import (
 	"math"
-	"unsafe"
 
 	"github.com/opennox/libs/types"
 )
@@ -48,15 +42,4 @@ func collisionContains(pos *types.Pointf, shape *[11]float32, point *types.Point
 	v6 := float64(shape[9]) + x
 	v7 := float64(shape[10]) + y
 	return (v7+v6-px-py)*scale > 0 && (v5+v4-px-py)*scale < 0
-}
-
-//export nox_xxx_collideReflect_57B810
-func nox_xxx_collideReflect_57B810(normal *C.float, velocity C.int) C.int {
-	collisionReflect((*types.Pointf)(unsafe.Pointer(normal)), (*types.Pointf)(unsafe.Pointer(uintptr(uint32(velocity)))))
-	return velocity
-}
-
-//export nox_xxx_map_57B850
-func nox_xxx_map_57B850(pos *C.float2, shape *C.float, point *C.float2) C.int {
-	return C.int(bool2int(collisionContains((*types.Pointf)(unsafe.Pointer(pos)), (*[11]float32)(unsafe.Pointer(shape)), (*types.Pointf)(unsafe.Pointer(point)))))
 }

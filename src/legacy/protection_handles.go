@@ -5,7 +5,6 @@ package legacy
 */
 import "C"
 
-//export sub_56F250
 func sub_56F250() C.int {
 	var result C.int
 	for i := 0; i < 7; i++ {
@@ -16,7 +15,6 @@ func sub_56F250() C.int {
 	return result
 }
 
-//export nox_xxx_protectionCreateInt_56F400
 func nox_xxx_protectionCreateInt_56F400(value C.int) C.int {
 	if createProtectionRecord(uint32(dword_5d4594_2516356), uint32(value)) == 0 {
 		return 0

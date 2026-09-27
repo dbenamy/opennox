@@ -92,11 +92,6 @@ var (
 	GetServer func() Server
 )
 
-//export nox_getHostPlayerUnit
-func nox_getHostPlayerUnit() *nox_object_t {
-	return asObjectC(GetServer().S().Players.HostUnit())
-}
-
 func sub_40A040_settings(a1 C.short, a2 C.uchar) {
 	GetServer().Sub40A040settings(int(a1), int(a2))
 }

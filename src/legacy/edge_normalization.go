@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-*/
-import "C"
-
 import "github.com/opennox/opennox/v1/common/memmap"
 
 func normalizeBorderEdge(index, edge int32) int32 {
@@ -38,9 +33,4 @@ func normalizeBorderEdge(index, edge int32) int32 {
 		return edge + 2*(6-h-w)
 	}
 	return 6
-}
-
-//export sub_411490
-func sub_411490(index, edge C.int) C.int {
-	return C.int(normalizeBorderEdge(int32(index), int32(edge)))
 }

@@ -5,34 +5,14 @@ package legacy
 /*
 #include "GAME4_3.h"
 #include "GAME5.h"
-void sub_53BD10(int a1, int a2);
-void nox_xxx_waterBarrel_53CC30(float* a1, int a2);
 void nox_xxx_updateFlameCleanse_53D510(int a1);
-void sub_53D8C0(int a1, int a2);
-void nox_xxx_toxicCloudPoison_53D9D0(int a1, int a2);
-float* nox_xxx_createSpark_54FD80(float a1, float a2, int a3, int a4, float a5, float a6, float a7, int a8);
 static uint32_t tempCalls[8192]; static int tempCount; static int tempReturn;
 static void tempReset(int ret) { tempCount=0; tempReturn=ret; }
 static void tempDie(int u) { tempCalls[tempCount++]=1; tempCalls[tempCount++]=u; }
 static int tempCollide(int u,int a,int b) { tempCalls[tempCount++]=2;tempCalls[tempCount++]=u;tempCalls[tempCount++]=a;tempCalls[tempCount++]=b;return tempReturn; }
 static void* tempDiePtr(void){return tempDie;} static void* tempCollidePtr(void){return tempCollide;}
 static int tempN(void){return tempCount;} static uint32_t tempValue(int i){return tempCalls[i];}
-static void* tempFunction(int id) {switch(id){
-case 5:return (void*)sub_53BD10;
-case 10:return (void*)nox_xxx_waterBarrel_53CC30;
-case 17:return (void*)nox_xxx_updateFlameCleanse_53D510;
-case 21:return (void*)sub_53D8C0;
-case 23:return (void*)nox_xxx_toxicCloudPoison_53D9D0;
-case 30:return (void*)nox_xxx_createSpark_54FD80;
-default:return 0;}}
-static uint32_t tempCall(int id, nox_object_t* u, nox_object_t* target, int value,int side){switch(id){
-case 5: sub_53BD10((int)target,(int)u);return 0;
-case 10: nox_xxx_waterBarrel_53CC30((float*)target,(int)((float*)u+14));return 0;
-case 17: nox_xxx_updateFlameCleanse_53D510((int)u);return 0;
-case 21: sub_53D8C0((int)target,(int)u);return 0;
-case 23: nox_xxx_toxicCloudPoison_53D9D0((int)target,(int)u);return 0;
-case 30: return (uint32_t)nox_xxx_createSpark_54FD80(*((float*)u+14),*((float*)u+15),value,side,*((float*)u+20),*((float*)u+21),*((float*)u+27),((uint32_t*)u)[127]);
-default:return 0;}}
+
 */
 import "C"
 import (
@@ -183,7 +163,9 @@ func (p *portTestShopPools) temporaryItems() {
 		return
 	}
 	for i := 0; i < 31; i++ {
-		p.identify(portTestTempFunction(i), 68000+uint32(i))
+		if key := portTestTempFunction(i); key != nil {
+			p.identify(key, 68000+uint32(i))
+		}
 	}
 	p.identify(C.tempDiePtr(), 68100)
 	p.identify(C.tempCollidePtr(), 68101)
@@ -311,8 +293,10 @@ func portTestTempFunction(id int) unsafe.Pointer {
 		return updateIdentityKey(updateIDBreakAndRemove)
 	case 29:
 		return updateIdentityKey(updateIDChakramInMotion)
+	case 17:
+		return C.nox_xxx_updateFlameCleanse_53D510
 	default:
-		return C.tempFunction(C.int(id))
+		return nil
 	}
 }
 
@@ -389,8 +373,29 @@ func portTestTempCall(id int, u, target *server.Object, value, side int) uint32 
 	case 29:
 		temporaryChakram(u)
 		return 0
+	case 5:
+		sub_53BD10(C.int(uintptr(unsafe.Pointer(target))), C.int(uintptr(unsafe.Pointer(u))))
+		return 0
+	case 10:
+		nox_xxx_waterBarrel_53CC30((*C.float)(unsafe.Pointer(target)), C.int(uintptr(unsafe.Add(unsafe.Pointer(u), 56))))
+		return 0
+	case 17:
+		C.nox_xxx_updateFlameCleanse_53D510(C.int(uintptr(unsafe.Pointer(u))))
+		return 0
+	case 21:
+		sub_53D8C0(C.int(uintptr(unsafe.Pointer(target))), C.int(uintptr(unsafe.Pointer(u))))
+		return 0
+	case 23:
+		nox_xxx_toxicCloudPoison_53D9D0(C.int(uintptr(unsafe.Pointer(target))), C.int(uintptr(unsafe.Pointer(u))))
+		return 0
+	case 30:
+		base := unsafe.Pointer(u)
+		return uint32(uintptr(unsafe.Pointer(nox_xxx_createSpark_54FD80(
+			*(*C.float)(unsafe.Add(base, 56)), *(*C.float)(unsafe.Add(base, 60)), C.int(value), C.int(side),
+			*(*C.float)(unsafe.Add(base, 80)), *(*C.float)(unsafe.Add(base, 84)), *(*C.float)(unsafe.Add(base, 108)),
+			*(*C.int)(unsafe.Add(base, 508))))))
 	default:
-		return uint32(C.tempCall(C.int(id), asObjectC(u), asObjectC(target), C.int(value), C.int(side)))
+		return 0
 	}
 }
 

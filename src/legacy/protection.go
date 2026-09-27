@@ -1,10 +1,5 @@
 package legacy
 
-/*
-_Static_assert(sizeof(int) == 4, "protection ABI requires 32-bit int");
-_Static_assert(sizeof(unsigned int) == 4, "protection ABI requires 32-bit unsigned int");
-*/
-import "C"
 import (
 	"math"
 	"unsafe"
@@ -17,11 +12,6 @@ func Nox_xxx_protectionCreateStructForInt_56F280(a1 int, a2 int) int {
 }
 func Nox_xxx_protectionCreateStructForFloat_56F480(a1 int, a2 float32) int {
 	return int(createProtectionRecord(uint32(a1), math.Float32bits(a2)))
-}
-
-//export nox_xxx_protectionStringCRCLen_56FAE0
-func nox_xxx_protectionStringCRCLen_56FAE0(data *C.int, size C.uint) C.int {
-	return C.int(protectionStringChecksum(unsafe.Pointer(data), uint32(size)))
 }
 
 func protectionStringChecksum(data unsafe.Pointer, size uint32) int32 {

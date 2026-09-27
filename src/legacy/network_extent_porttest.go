@@ -5,7 +5,6 @@ package legacy
 /*
 #include <stdint.h>
 #include "GAME5_2.h"
-int nox_xxx_netGetUnitByExtent_4ED020(int a1);
 */
 import "C"
 
@@ -86,7 +85,7 @@ func PortTestNetworkExtent(specs []PortTestExtentSpec, codes []uint32, noServer 
 			ObjectsUnchanged: unchanged(),
 		}
 		if !noServer {
-			s.FoundIndex = findIndex(uint32(C.nox_xxx_netGetUnitByExtent_4ED020(C.int(code))))
+			s.FoundIndex = findIndex(uint32(nox_xxx_netGetUnitByExtent_4ED020(C.int(code))))
 			s.ObjectsUnchanged = s.ObjectsUnchanged && unchanged()
 		}
 		out = append(out, s)

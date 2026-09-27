@@ -10,7 +10,6 @@ import (
 	"github.com/opennox/opennox/v1/internal/protection"
 )
 
-//export nox_xxx_playerAwardSpellProtectionCRC_56FCE0
 func nox_xxx_playerAwardSpellProtectionCRC_56FCE0(id, index, enabled C.int) C.int {
 	if id < 657757279 {
 		return id
@@ -26,7 +25,6 @@ func nox_xxx_playerAwardSpellProtectionCRC_56FCE0(id, index, enabled C.int) C.in
 	return C.int(r.Value)
 }
 
-//export nox_xxx_playerApplyProtectionCRC_56FD50
 func nox_xxx_playerApplyProtectionCRC_56FD50(id C.int, data unsafe.Pointer, count C.int) C.int {
 	if id < 657757279 {
 		return 0

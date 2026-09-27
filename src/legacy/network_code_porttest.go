@@ -39,7 +39,7 @@ func PortTestClientCodes(specs []PortTestClientCode) []PortTestClientCodeResult 
 		if !spec.Nil {
 			arg = C.int(uintptr(unsafe.Pointer(dr)))
 		}
-		code := uint32(C.nox_xxx_netGetUnitCodeCli_578B00(arg))
+		code := uint32(nox_xxx_netGetUnitCodeCli_578B00(arg))
 		out = append(out, PortTestClientCodeResult{Code: code, Unchanged: bytes.Equal(raw, before)})
 	}
 	return out

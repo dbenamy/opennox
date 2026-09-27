@@ -105,7 +105,6 @@ func nox_server_parseCmdText_443C80(cstr *wchar2_t, _ int) int {
 	return bool2int(res)
 }
 
-//export nox_xxx_gameIsSwitchToSolo_4DB240
 func nox_xxx_gameIsSwitchToSolo_4DB240() int {
 	return bool2int(Nox_xxx_gameIsSwitchToSolo_4DB240())
 }

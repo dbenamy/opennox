@@ -7,6 +7,5 @@
 int* nox_xxx_wallDestroyedByWallid_410520(short a1);
 void* nox_xxx_wallGetFirstBreakableCli_410870();
 int nox_xxx_wallGetNextBreakableCli_410880(int* a1);
-int sub_411490(int a1, int a2);
 
 #endif // NOX_PORT_GAME1

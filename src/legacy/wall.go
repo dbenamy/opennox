@@ -26,7 +26,6 @@ var (
 
 var _ = [1]struct{}{}[12332-unsafe.Sizeof(server.WallDef{})]
 
-//export nox_xxx_wallFlags
 func nox_xxx_wallFlags(ind int) uint32 {
 	return GetServer().S().Walls.DefByInd(ind).Flags32
 }

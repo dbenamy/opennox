@@ -22,22 +22,6 @@ func setProtectionRecord(id int32, value uint32) uint32 {
 	return uint32(nox_xxx_protectData_56F5C0())
 }
 
-//export sub_56F780
-func sub_56F780(id, value C.int) C.uint32_t {
-	return C.uint32_t(setProtectionRecord(int32(id), uint32(value)))
-}
-
-//export nox_xxx_playerResetProtectionCRC_56F7D0
 func nox_xxx_playerResetProtectionCRC_56F7D0(id, value C.int) C.uint32_t {
-	return C.uint32_t(setProtectionRecord(int32(id), uint32(value)))
-}
-
-//export sub_56F820
-func sub_56F820(id C.int, value C.uchar) C.uint32_t {
-	return C.uint32_t(setProtectionRecord(int32(id), uint32(value)))
-}
-
-//export nox_xxx_protectPlayerHPMana_56F870
-func nox_xxx_protectPlayerHPMana_56F870(id C.int, value C.ushort) C.uint32_t {
 	return C.uint32_t(setProtectionRecord(int32(id), uint32(value)))
 }

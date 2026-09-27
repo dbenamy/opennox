@@ -74,9 +74,9 @@ func PortTestPlayerFileCall(name string, args ...uint32) uint32 {
 	case "sub_41C780":
 		return uint32(C.sub_41C780(C.int(a[0])))
 	case "nox_xxx_netSavePlayer_41CE00":
-		return uint32(C.nox_xxx_netSavePlayer_41CE00())
+		return uint32(nox_xxx_netSavePlayer_41CE00())
 	case "sub_41CEE0":
-		return uint32(C.sub_41CEE0(p0, C.int(a[1])))
+		return uint32(sub_41CEE0(p0, C.int(a[1])))
 	case "sub_41CAC0":
 		playerFileExtract(alloc.GoString((*byte)(p0)), unsafe.Pointer(uintptr(a[1])))
 		return 0

@@ -24,7 +24,7 @@ func PortTestConsoleContext() func() {
 func PortTestConsoleServer() bool { return consoleCommandServer }
 
 func PortTestConsoleRemote(player unsafe.Pointer, action int, text *uint16) int {
-	return int(C.nox_xxx_serverHandleClientConsole_443E90((*C.nox_playerInfo)(player), C.char(action), (*C.wchar2_t)(unsafe.Pointer(text))))
+	return int(nox_xxx_serverHandleClientConsole_443E90((*C.nox_playerInfo)(player), C.char(action), (*C.wchar2_t)(unsafe.Pointer(text))))
 }
 func PortTestConsoleSender() unsafe.Pointer {
 	return unsafe.Pointer(consoleCommandSender)

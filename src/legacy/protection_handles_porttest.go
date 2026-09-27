@@ -93,9 +93,9 @@ func PortTestHandles(initial [][2]uint32, key, sum, sequence uint32, seed int, o
 	for _, op := range ops {
 		var result C.int
 		if op.Reserved {
-			result = C.sub_56F250()
+			result = sub_56F250()
 		} else {
-			result = C.nox_xxx_protectionCreateInt_56F400(C.int(op.Value))
+			result = nox_xxx_protectionCreateInt_56F400(C.int(op.Value))
 		}
 		out = append(out, snapshot(result))
 	}

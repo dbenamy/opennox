@@ -25,7 +25,6 @@ func drawableUnitCode(dr *client.Drawable) uint32 {
 	return code
 }
 
-//export nox_xxx_netGetUnitCodeCli_578B00
 func nox_xxx_netGetUnitCodeCli_578B00(a1 C.int) C.uint {
 	return C.uint(drawableUnitCode((*client.Drawable)(unsafe.Pointer(uintptr(uint32(a1))))))
 }

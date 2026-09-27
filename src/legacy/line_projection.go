@@ -1,13 +1,7 @@
 package legacy
 
-/*
-#include "GAME5_2.h"
-*/
-import "C"
-
 import (
 	"math"
-	"unsafe"
 
 	"github.com/opennox/libs/types"
 )
@@ -117,14 +111,4 @@ func projectLine(line *[4]float32, point, out *types.Pointf) bool {
 	out.Y = y.store()
 	minX, maxX, minY, maxY := projectionBounds(line)
 	return minX <= x && x <= maxX && y >= minY && y <= maxY
-}
-
-//export sub_57C790
-func sub_57C790(line *C.float4, point, out *C.float2, length C.float) {
-	projectLineClamped((*[4]float32)(unsafe.Pointer(line)), (*types.Pointf)(unsafe.Pointer(point)), (*types.Pointf)(unsafe.Pointer(out)), float32(length))
-}
-
-//export nox_xxx_mathPointOnTheLine_57C8A0
-func nox_xxx_mathPointOnTheLine_57C8A0(line *C.float4, point, out *C.float2) C.int {
-	return C.int(bool2int(projectLine((*[4]float32)(unsafe.Pointer(line)), (*types.Pointf)(unsafe.Pointer(point)), (*types.Pointf)(unsafe.Pointer(out)))))
 }

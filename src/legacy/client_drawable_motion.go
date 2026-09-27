@@ -16,17 +16,6 @@ func drawableStatePredicate(dr *client.Drawable) int {
 	return bool2int(dr.ObjClass&0x400000 != 0 && dr.ObjSubClass&8 != 0)
 }
 
-//export sub_45A010
-func sub_45A010(dr *nox_drawable) *nox_drawable { return (*nox_drawable)(asDrawable(dr).Field_104.C()) }
-
-//export nox_drawable_next_45A070
-func nox_drawable_next_45A070(dr *nox_drawable) *nox_drawable {
-	if dr == nil {
-		return nil
-	}
-	return (*nox_drawable)(asDrawable(dr).NextPtr.C())
-}
-
 func nox_xxx_spriteSetActiveMB_45A990_drawable(p C.int) C.int {
 	(*client.Drawable)(unsafe.Pointer(uintptr(uint32(p)))).SetActive()
 	return p

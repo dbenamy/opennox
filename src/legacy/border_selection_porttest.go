@@ -115,11 +115,11 @@ func PortTestBorderSelection(initial PortTestBorderState, rows []PortTestBorderR
 			if s.NilName {
 				panic("544020 null input faults in C")
 			}
-			ret = C.sub_544020((*C.char)(unsafe.Pointer(unsafe.SliceData(input))))
+			ret = sub_544020((*C.char)(unsafe.Pointer(unsafe.SliceData(input))))
 		case 2:
-			ret = C.nox_xxx_tileCheckByte3_544070(C.int(s.Value))
+			ret = nox_xxx_tileCheckByte3_544070(C.int(s.Value))
 		case 3:
-			ret = C.nox_xxx_tileCheckByte4_5440A0(C.int(s.Value))
+			ret = nox_xxx_tileCheckByte4_5440A0(C.int(s.Value))
 		default:
 			panic("invalid border mode")
 		}

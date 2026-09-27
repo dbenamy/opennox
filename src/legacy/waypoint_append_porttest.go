@@ -130,9 +130,9 @@ func PortTestWaypointAppend(specs []PortTestWaypointAppendSpec) (snap PortTestWa
 		target := portTestWaypointAppendPtr(data, source, spec.Target)
 		var ret C.int
 		if spec.Mode == 0 {
-			ret = C.sub_51D300(C.int(uintptr(unsafe.Pointer(source))), C.int(uintptr(unsafe.Pointer(target))), C.char(int8(spec.Kind)))
+			ret = sub_51D300(C.int(uintptr(unsafe.Pointer(source))), C.int(uintptr(unsafe.Pointer(target))), C.char(int8(spec.Kind)))
 		} else if spec.Mode == 1 {
-			ret = C.sub_51D2C0(C.int(uintptr(unsafe.Pointer(source))), C.int(uintptr(unsafe.Pointer(target))))
+			ret = sub_51D2C0(C.int(uintptr(unsafe.Pointer(source))), C.int(uintptr(unsafe.Pointer(target))))
 		} else {
 			panic("invalid append mode")
 		}

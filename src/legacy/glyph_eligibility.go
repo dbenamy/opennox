@@ -1,12 +1,6 @@
 package legacy
 
-/*
- */
-import "C"
-
 import (
-	"unsafe"
-
 	"github.com/opennox/libs/player"
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -46,9 +40,4 @@ func glyphItemAllowed(dr *client.Drawable) int {
 	mask := byte(uint32(1) << (uint32(pl.PlayerClass()) & 31))
 	allowed := Sub_57B370(dr.Class(), dr.SubClass(), int(int32(dr.TypeIDVal)))
 	return bool2int(mask&allowed != 0)
-}
-
-//export nox_xxx_client_57B400
-func nox_xxx_client_57B400(ptr C.int) C.int {
-	return C.int(glyphSelectionAllowed((*client.Drawable)(unsafe.Pointer(uintptr(uint32(ptr))))))
 }

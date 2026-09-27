@@ -32,17 +32,17 @@ func PortTestWorldCollision(op int, a, b *server.Object, normal *types.Pointf) u
 	case 2:
 		rv = server.PortTestCollisionResult(collisionKey(collisionIdentityPickup), a, b, normal)
 	case 3:
-		if unsafe.Pointer(C.sub_4E8E50()) != memmap.PtrOff(0x5D4594, 1567844) {
+		if unsafe.Pointer(sub_4E8E50()) != memmap.PtrOff(0x5D4594, 1567844) {
 			panic("pending map buffer")
 		}
 	case 4:
-		rv = uint32(C.sub_4E8E60())
+		rv = uint32(sub_4E8E60())
 	case 5:
-		if bool(C.nox_server_questMaybeWarp_4E8F60()) {
+		if bool(nox_server_questMaybeWarp_4E8F60()) {
 			rv = 1
 		}
 	case 6:
-		rv = uint32(C.sub_4E9010())
+		rv = uint32(sub_4E9010())
 	case 7:
 		rv = server.PortTestCollisionResult(collisionKey(collisionIdentityExit), a, b, normal)
 	case 8:

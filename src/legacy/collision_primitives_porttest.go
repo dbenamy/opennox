@@ -54,7 +54,7 @@ func PortTestCollisionReflect(specs []PortTestReflectionSpec) []PortTestReflecti
 			panic("invalid reflection word offset")
 		}
 		all, data, guard, free := portTestCollisionWords(spec.Words)
-		ret := C.nox_xxx_collideReflect_57B810(
+		ret := nox_xxx_collideReflect_57B810(
 			(*C.float)(unsafe.Pointer(&data[spec.NormalOffset])),
 			C.int(uintptr(unsafe.Pointer(&data[spec.VelocityOffset]))),
 		)
@@ -96,7 +96,7 @@ func PortTestCollisionContainment(specs []PortTestContainmentSpec) []PortTestCon
 		}
 		all, data, guard, free := portTestCollisionWords(spec.Words)
 		before := append([]uint32(nil), data...)
-		ret := C.nox_xxx_map_57B850(
+		ret := nox_xxx_map_57B850(
 			(*C.float2)(unsafe.Pointer(&data[spec.PositionOffset])),
 			(*C.float)(unsafe.Pointer(&data[spec.ShapeOffset])),
 			(*C.float2)(unsafe.Pointer(&data[spec.PointOffset])),

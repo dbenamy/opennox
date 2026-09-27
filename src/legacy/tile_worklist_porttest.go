@@ -167,7 +167,7 @@ func PortTestTileWorklist(initialCount, initialOverflow uint32, initialQueue []u
 				wantGrid = nil
 				worldTileGrid = nil
 			}
-			C.sub_51DD50(C.int(s.X), C.int(s.Y), C.int(s.Flags), C.int(s.Key))
+			sub_51DD50(C.int(s.X), C.int(s.Y), C.int(s.Flags), C.int(s.Key))
 			pointerOK := unsafe.Pointer(worldTileGrid) == unsafe.Pointer(wantGrid)
 			if s.NilGrid {
 				worldTileGrid = (**worldTileCell)(unsafe.Pointer(grid))
@@ -177,7 +177,7 @@ func PortTestTileWorklist(initialCount, initialOverflow uint32, initialQueue []u
 			v2, ok2 := portTestWorklistOutValue(s.PopZ, words, count, overflow, queue)
 			snap.Results = append(snap.Results, PortTestTileWorklistResult{Return: int(ret), Count: *count, Overflow: *overflow, Outputs: [3]uint32{v0, v1, v2}, OutputReadable: [3]bool{ok0, ok1, ok2}, Queue: append([]uint32(nil), queue...), GridUnchanged: C.portTestWorklistGridEqual(grid, expected) != 0, GridPointerUnchanged: pointerOK, QueueGuardsUnchanged: string(left) == string(wantLeft) && string(right) == string(wantRight), OutputGuardsOK: words[0] == 0xa0a0a0a0 && words[4] == 0xb0b0b0b0})
 		} else if s.Op == 1 {
-			ret = C.sub_51DE30(portTestWorklistOut(s.PopX, words, count, overflow, queue), portTestWorklistOut(s.PopY, words, count, overflow, queue), portTestWorklistOut(s.PopZ, words, count, overflow, queue))
+			ret = sub_51DE30(portTestWorklistOut(s.PopX, words, count, overflow, queue), portTestWorklistOut(s.PopY, words, count, overflow, queue), portTestWorklistOut(s.PopZ, words, count, overflow, queue))
 			v0, ok0 := portTestWorklistOutValue(s.PopX, words, count, overflow, queue)
 			v1, ok1 := portTestWorklistOutValue(s.PopY, words, count, overflow, queue)
 			v2, ok2 := portTestWorklistOutValue(s.PopZ, words, count, overflow, queue)

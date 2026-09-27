@@ -35,7 +35,7 @@ func PortTestRekey(initial [][2]uint32, key, sum, sequence, swapCount, rekeyCoun
 			Nox_xxx_protectData_56F5C0()
 			return 0
 		}
-		return uint32(C.nox_xxx_protectData_56F5C0())
+		return uint32(nox_xxx_protectData_56F5C0())
 	})
 }
 

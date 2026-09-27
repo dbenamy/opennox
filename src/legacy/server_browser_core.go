@@ -129,9 +129,6 @@ func sub_438DD0(x, y uint32) int32 {
 	return 0
 }
 
-//export sub_43AF30
-func sub_43AF30() C.int { return C.int(browserUI.hosting) }
-
 func sub_43AF40() C.int { return C.int(browserUI.creating) }
 
 func sub_43AF80() C.int { return C.int(browserUI.connectionState) }

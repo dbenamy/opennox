@@ -7,65 +7,61 @@ superseded status when updating it. The workflow and delegation rules live in
 ## Status: resumed; internal C-glue removal
 
 **Progress: 142,665/142,665 original standalone C lines ported or retired;
-internal glue: 368/463 client cgo files eliminated on net (95 remain;
-server: 367/463 eliminated, 96 remain).**
-Selected legacy C export bridges: **1,810/1,890 retired (80 remain)**.
+internal glue: 383/463 client cgo files eliminated on net (80 remain;
+server: 382/463 eliminated, 81 remain).**
+Selected legacy C export bridges: **1,880/1,890 retired (10 remain)**.
 
 These are selected project files in Linux 386 production profiles, not equal
 units of effort. Three project packages directly use cgo; 77 embedded C callback
 bodies remain. Production and test-reference standalone `.c` files both remain zero.
 
-Latest qualified chunk moves book/quickbar/summoning tooltips and image-completion
-callbacks to native identities. Eight exports and seven production cgo files are
-retired; five fixture-only C-typed wrappers are removed. Completion timing,
-callback arguments, mutation order, native owners and frozen captures are preserved.
-See [BOOK_CALLBACKS.md](docs/porting/BOOK_CALLBACKS.md).
+Latest qualified chunk retires 70 unused engine C exports. Sixty unchanged Go
+fixture adapters move under porttest; ten Go-called bodies stay in production.
+Fifteen production cgo imports and five empty files disappear. Ten real C callback
+addresses remain. Native owners, argument widths, layouts and frozen captures
+are preserved. See [REMAINING_FIXTURE_BRIDGES.md](docs/porting/REMAINING_FIXTURE_BRIDGES.md).
 
-Continue chunk-by-chunk with one Luna helper, primary review, qualification,
-documentation, commit/push and recorded reversible decisions. Stop at the milestone,
-usage limits or a substantial question.
-
-Latest qualified artifacts: `build/port-book-callbacks/`.
+Continue chunk-by-chunk with one Luna helper when available, primary review,
+qualification, documentation, commit/push and recorded reversible decisions.
+Stop at the milestone, usage limits or a substantial question.
+Latest qualified artifacts: `build/port-remaining-fixture-bridges/`.
 
 ## What remains
 
-Counts below describe the qualified book-callback conversion. Zero `.c` lines
-is not a count of all C dependencies or remaining engineering effort.
+Counts describe the qualified fixture-bridge conversion. Zero `.c` lines is not
+a count of all C dependencies or remaining engineering effort.
 
 | Area | Remaining work or dependency |
 | --- | --- |
-| Embedded C callback glue | 77 production function bodies in Go preambles: 76 generic function-pointer dispatchers and one specialized adapter. |
-| Callback routes | Remaining Go owners still use C-compatible addresses. Continue migrating identities and every field/alias consumer before removing shared raw fallbacks. |
-| Declarations and C types | 157 tracked headers / 2,809 physical lines; client profiles select 95 cgo files and server selects 96 in three project packages (alloc, ccall, legacy). These are mostly interface/layout machinery, not unported algorithms. |
+| Embedded C callback glue | 77 production function bodies in Go preambles: 76 generated function-pointer dispatchers and one specialized adapter. A read-only scout found 57 generated signatures without src Go references; this is not yet a completed removal audit. |
+| Callback routes | Ten selected C exports still supply real callback addresses. Migrate every field/alias consumer before removing shared raw fallbacks. |
+| Declarations and C types | 157 tracked headers / 2,741 physical lines; client profiles select 80 cgo files and server selects 81 in three project packages (alloc, ccall, legacy). Transitional fixture C types also remain. |
 | Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Ownership/lifetime work remains behind the centralized allocator. |
 | External libraries | SDL2, OpenGL, OpenAL and similar native dependencies/bindings stay for this phase; their future is a subsequent discussion. |
 | Portability and release validation | Qualified target is Linux 386/SSE2 with cgo. The complete engine is not qualified as cgo-free, 64-bit, native macOS or browser/WebAssembly. Physical display and audible playback remain manual checks. |
 
 See [C_LOC.md](docs/porting/C_LOC.md) for the standalone-line metric and history,
 and [TYPED_CALLBACK_ADAPTERS.md](docs/porting/TYPED_CALLBACK_ADAPTERS.md) for the
-remaining embedded callbacks. Shared fallback machinery remains until its live
-users are migrated; test-only C observers separately qualify that boundary.
+remaining embedded callbacks. Test-only C observers still qualify raw boundaries.
 
 ## Latest qualification and evidence
 
-- 256 default/high-resolution roots and 254 server roots pass with exact original
-  names, unchanged captures and no failures/skips. The server excludes two existing
-  `!server` rendering tests. Original roots passed twice per profile.
-- Four independent completion contracts cover timing/repetition, reference argument,
-  frame mutation/lookup order, loop/nil paths, real book owners and target layout.
-- Safe/static and three production/ABI checks pass; all eight retired exports absent.
+- Full default corpus: 2,478 passing roots and one established
+  `TestMapPopulationPrerequisiteProbe` skip among 2,479 roots, before and after conversion.
+- Converted focused suites: 559 server and 561 high-resolution roots pass with
+  exact expected names, unchanged captures and no failures/skips.
+- Original 305 additional roots passed twice/profile; exact-source prior book
+  coverage of 256 client/high-resolution and 254 server roots was reused.
+- AST review confirms all 70 adapter bodies/signatures and 374 remaining
+  production functions in touched files unchanged. Seven profile-runner checks pass.
+- Safe/static and all three production/ABI checks pass; 70 retired exports absent.
 - Fresh preview and final headless character creation with explicit save/load/
   resume pass on the same final production binary.
-- Full asset suite matches known results: 304 failure events; 17 passing, two
-  failing and 32 skipped packages. All 1,654 original asset hashes are unchanged.
-- Accepted phases share source fingerprints and primary-reviewed changes.
-- Last full default corpus was animation `f8332e3d`: 2,474 passes and one established
-  prerequisite skip among 2,475 roots. That is earlier-source evidence. This bounded
-  callback-family migration keeps shared tooltip/raw dispatch infrastructure
-  unchanged and uses affected-owner coverage plus production gates.
+- Full asset suite exactly matches known failure and package results; all 1,654
+  original asset hashes remain unchanged. Accepted gates share source fingerprints.
 
-Report: [BOOK_CALLBACKS.md](docs/porting/BOOK_CALLBACKS.md).
-Evidence: [qualification](docs/porting/book-callbacks-qualification.json).
+Report: [REMAINING_FIXTURE_BRIDGES.md](docs/porting/REMAINING_FIXTURE_BRIDGES.md).
+Evidence: [qualification](docs/porting/remaining-fixture-bridges-qualification.json).
 Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expected-suite.jsonl).
 
 ## Goal, next work and open review items
@@ -78,7 +74,7 @@ removal order and completion criteria. Client rendering/audio backend replacemen
 is outside this phase.
 
 The dependency inventory tool is `tools/porting/cgo_inventory.py`; the current
-qualified inventory is [book-callbacks-inventory-after.json](docs/porting/book-callbacks-inventory-after.json).
+qualified inventory is [remaining-fixture-bridges-inventory-after.json](docs/porting/remaining-fixture-bridges-inventory-after.json).
 The original phase baseline is under `build/port-cgo-leaves/inventory-before/`.
 The completed leaf cleanup leaves three project packages directly using cgo in
 all profiles, plus OpenGL/SDL2/OpenAL bindings in the clients. Metadata discovery
@@ -86,27 +82,17 @@ is not compilation or qualification. The helper's external-review draft is not
 accepted evidence: its suggestion that go-gl is residue is contradicted by the
 actual dependency graph (`libs/client/seat/opengl` imports it).
 
-Book/UI callbacks are qualified and pushed at `b2597f97`. The next batch audits
-70 remaining export/fixture boundaries, retaining ten live C callback addresses.
-Original baseline passed:2,478 default roots plus one established prerequisite
-skip; all305 additional roots passed twice per profile.
-The reviewed conversion is still an **uninstalled draft**, not qualified source.
-Resume from `build/port-remaining-fixture-bridges/PLAN.md`, `REVIEW.md`,
-`original-controller.log` and `draft-info.json`; the original controller is joined and its acceptance is recorded. Draft bodies/signatures match all70 originals; 60
-fixture-only adapters move under porttest and ten Go-called bodies stay native.
-Whole-source audit also removed leftover pointer-returning declarations.
+Remaining fixture bridges are qualified; baseline commit is `61bca9ef`.
+No next conversion is installed. Next, complete the remaining callback-address
+and generated-dispatch audit. The ten exports span player-file sections, map
+object data, screen particles, menu/tooltips and FlameCleanse. Trace all raw field,
+getter and alias consumers; existing native registries may cover several routes.
+A bounded Go-import/selector scout is at
+`build/port-remaining-fixture-bridges/next-dispatch-scout.json` (57 of 76 generated
+signatures have no src Go references, one is fixture-only). Verify whole-repository
+uses and generator output before removal; this scout is not acceptance evidence.
 Luna remains unavailable due to usage limits; resume the one-helper policy when
 available, without substituting another model.
-
-Current batch disk recovery: four superseded unused-adapter production/safe
-binaries reclaimed187,367,424 allocated bytes (rebuild `1238c985`; qualified book
-replacements retained). Thirty historical game-message capture groups were
-losslessly gzip-archived, reclaiming711,507,968 allocated bytes. See local
-`old-production-cleanup-approved.json` and `old-capture-groups-archive.jsonl` in
-`build/port-remaining-fixture-bridges/` for hashes, exact paths and restoration.
-For each capture group, decompress its recorded archive to the first path,
-verify the uncompressed SHA-256, then recreate other paths as hard links.
-Original game assets and current qualification binaries remain untouched.
 
 The earlier 25-export object-state proposal under
 `build/port-after-go-only-exports/` was rejected because it omitted fixture C calls.
@@ -133,7 +119,7 @@ The current Go toolchain is `/usr/lib/go-1.26/bin`. Follow the
 [build environment instructions](PORT.md#build-and-test-environment), including
 sourcing `build/baseline/env.sh` in every Go shell.
 
-Latest local artifacts are under `build/port-book-callbacks/`:
+Latest local artifacts are under `build/port-remaining-fixture-bridges/`:
 `contracts/`, `preview/`, `safe/opennox-safe`, and
 `production/production/bin/{opennox,opennox-hd,opennox-server}`.
 Source, tests, reports and qualification metadata are committed; ignored local
@@ -147,6 +133,7 @@ do not rerun them or infer deletion safety from age alone.
 
 | Artifact | Recovery or current location |
 | --- | --- |
+| Remaining-fixture cleanup | Removed four superseded unused-adapter production/safe binaries (187,367,424 allocated bytes; rebuild `1238c985`) and three book test binaries (200,716,288 bytes; rebuild `b2597f97`) after source/hash/replacement/host-use checks. Losslessly archived 30 historical capture groups (711,507,968 bytes), six original test logs (260,030,464 bytes) and three converted logs (165,019,648 bytes). Journals under `build/port-remaining-fixture-bridges/`; restore logs with `gzip -dk` and verify recorded uncompressed hashes. For capture groups, restore the first recorded path then hard-link the remaining paths. Preview/final each deduplicated 1,654 verified asset copies; restore with `build/port-artifact-cleanup/restore-recent-scenario.py` and `build/baseline/runs/remaining-fixture-bridges[-preview]-save/deduplicated-assets.json`. Originals and current binaries remain. |
 | Book callback cleanup | Removed 13 superseded binaries (791,552,000 allocated bytes; rebuild `f8332e3d`, `1238c985`, `0121a5f3`, `b5831dc9`) and 15 obsolete cache archives (839,024,640 bytes), with source/hash/host-use checks. Losslessly archived 3 historical failed-setup update binaries (99,102,720 bytes reclaimed); restore `gzip -dk FILE.test.gz`, `chmod 755 FILE.test` and verify the hashes in `build/port-book-callbacks/old-update-failed-binaries-archive.json`. Preview/final each deduplicated 1,654 verified asset copies; originals, saves and logs retained. Journals under `build/port-book-callbacks/`; restore scenarios with `build/port-artifact-cleanup/restore-recent-scenario.py` and `build/baseline/runs/book-callbacks[-preview]-save/deduplicated-assets.json`. |
 | Unused-adapter cleanup | Removed nine obsolete project cache archives (420,343,808 allocated bytes) and four superseded GUI production/safe executables (187,723,776 bytes; rebuild `2bca8420`) and three superseded animation test binaries (200,912,896 bytes; rebuild `f8332e3d`) plus 6 superseded previews (285,929,472 bytes; exact rebuild revisions in `preview-binaries-cleanup-approved.json`) after source/hash and host-use checks. Preview/final each deduplicated 1,654 verified original-asset copies; source, originals, saves and logs retained. Journals under `build/port-unused-abi-adapters/`; restore scenarios with `build/port-artifact-cleanup/restore-recent-scenario.py` and `build/baseline/runs/unused-abi-adapters[-preview]-save/deduplicated-assets.json`. |
 | Animation cleanup | Removed 14 obsolete cache archives (755,200,000 allocated bytes) and four superseded rendering production/safe executables (187,789,312 bytes; rebuild `46f07aba`) plus five superseded GUI test/window-render previews (296,013,824 bytes; rebuild `2bca8420`, `3838462b`, `46f07aba`) and three original animation test binaries (200,945,664 bytes; rebuild `c6ffcb75`) after source/hash and host-use checks. Preview/final each deduplicated 1,654 verified original-asset copies; source, originals, saves and logs retained. Journals under `build/port-animation-identities/`; restore scenarios with `build/port-artifact-cleanup/restore-recent-scenario.py` and `build/baseline/runs/animation-identities[-preview]-save/deduplicated-assets.json`. |

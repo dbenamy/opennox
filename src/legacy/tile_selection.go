@@ -71,22 +71,6 @@ func setTileFlag(value int32) bool {
 	return true
 }
 
-//export nox_xxx_tileGetDefByName_51D4D0
 func nox_xxx_tileGetDefByName_51D4D0(name *C.char) C.int {
 	return C.int(bool2int(selectTileName((*byte)(unsafe.Pointer(name)))))
-}
-
-//export nox_xxx_tileCheckImage_51D540
-func nox_xxx_tileCheckImage_51D540(index C.int) C.int {
-	return C.int(bool2int(selectTileImage(int32(index))))
-}
-
-//export nox_xxx_tileCheckImageVari_51D570
-func nox_xxx_tileCheckImageVari_51D570(variation C.int) C.int {
-	return C.int(bool2int(selectTileVariation(int32(variation))))
-}
-
-//export nox_xxx_tile_51D5C0
-func nox_xxx_tile_51D5C0(value C.int) C.int {
-	return C.int(bool2int(setTileFlag(int32(value))))
 }

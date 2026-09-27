@@ -9,7 +9,6 @@ import (
 	"github.com/opennox/opennox/v1/internal/protection"
 )
 
-//export nox_xxx_protectData_56F5C0
 func nox_xxx_protectData_56F5C0() C.int {
 	frame := GetServer().S().Frame()
 	oldKey := uint32(dword_5d4594_2516348)
