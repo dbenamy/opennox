@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-
-
-
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -14,7 +7,7 @@ import (
 
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/client/audio/ail"
-	"github.com/opennox/opennox/v1/legacy/common/alloc"
+
 	"github.com/opennox/opennox/v1/legacy/dialog"
 	"github.com/opennox/opennox/v1/legacy/timer"
 )
@@ -51,9 +44,4 @@ func initDialog() {
 		Set_dword_5d4594_831080,
 		func() uint32 { return uint32(Get_dword_587000_93160()) },
 	)
-}
-
-//export nox_xxx_playDialogFile_44D900
-func nox_xxx_playDialogFile_44D900(a1p *byte, a2 int) int {
-	return Dialogs.PlayFile(alloc.GoString(a1p), a2)
 }

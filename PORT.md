@@ -268,7 +268,10 @@ Apply these review rules learned from earlier batches:
   Generate path/line references from search output and verify them. Treat the comment
   immediately before `import "C"` as executable C input, not an ordinary Go
   comment; scan its full contents even across blank lines. A follow-on export
-  audit missed test-preamble calls by treating them as comments. Keep broad
+  audit missed test-preamble calls by treating them as comments. For Go-facing ABI
+  cleanup, an AST identifier inventory separates actual calls and function values
+  from comments and fixture operation names. Pair it with C preamble/header and
+  macro-alias checks, and distinguish same-named functions in other packages. Keep broad
   reachability algorithm design with the primary; prefer explicit edit manifests
   for helper coding tasks until those audits demonstrate reliable coverage.
 - When moving wrapper bodies into test fixtures, carry over the package imports

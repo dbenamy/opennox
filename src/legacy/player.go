@@ -48,24 +48,8 @@ func AsPlayerP(p unsafe.Pointer) *server.Player {
 
 var _ = [1]struct{}{}[16-unsafe.Sizeof(server.ClassStats{})]
 
-//export nox_xxx_updateSpellRelated_424830
-func nox_xxx_updateSpellRelated_424830(p unsafe.Pointer, ph int) unsafe.Pointer {
-	return ((*server.PhonemeLeaf)(p)).Next(spell.Phoneme(ph)).C()
-}
-
 func nox_common_playerInfoGetByID_417040(id int) *nox_playerInfo {
 	return (*nox_playerInfo)(GetServer().S().Players.ByID(id).C())
-}
-
-//export nox_xxx_playerDisconnByPlrID_4DEB00
-func nox_xxx_playerDisconnByPlrID_4DEB00(id int) {
-	Nox_xxx_playerDisconnByPlrID_4DEB00(ntype.PlayerInd(id))
-}
-
-//export nox_xxx_playerCallDisconnect_4DEAB0
-func nox_xxx_playerCallDisconnect_4DEAB0(ind int, v C.char) *C.char {
-	Nox_xxx_playerCallDisconnect_4DEAB0(ntype.PlayerInd(ind), int8(v))
-	return nil
 }
 
 func nox_xxx_playerCameraUnlock_4E6040(cplayer *nox_object_t) {

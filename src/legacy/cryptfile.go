@@ -5,54 +5,9 @@ package legacy
 */
 import "C"
 import (
-	"io"
-	"os"
-	"unsafe"
-
-	"github.com/opennox/opennox/v1/internal/binfile"
 	"github.com/opennox/opennox/v1/internal/cryptfile"
 )
 
-//export nox_xxx_cryptOpen_426910
-func nox_xxx_cryptOpen_426910(a1 *C.char, cmode, key int) int32 {
-	if err := cryptfile.OpenGlobal(GoString(a1), cryptfile.Mode(cmode), key); err != nil {
-		if !os.IsNotExist(err) {
-			binfile.Log.Println(err)
-		}
-		return 0
-	}
-	return 1
-}
-
-//export nox_xxx_cryptClose_4269F0
-func nox_xxx_cryptClose_4269F0() {
-	cryptfile.Close()
-}
-
 func nox_xxx_mapgenGetSomeFile_426A60() *C.FILE {
 	return NewFileHandle(cryptfile.Global().File.File)
-}
-
-//export nox_xxx_cryptSeekCur_40E0A0
-func nox_xxx_cryptSeekCur_40E0A0(a1 int) int {
-	cryptfile.Global().Seek(int64(a1), io.SeekCurrent)
-	return 0
-}
-
-//export nox_xxx_fileReadWrite_426AC0_file3_fread_impl
-func nox_xxx_fileReadWrite_426AC0_file3_fread_impl(a1 *C.uchar, a2 C.size_t, cfname *C.char, line int) C.size_t {
-	fname := GoString(cfname)
-	buf := unsafe.Slice((*byte)(unsafe.Pointer(a1)), int(a2))
-	_, err := cryptfile.Global().ReadWrite(buf)
-	if err != nil {
-		return 0
-	}
-	_ = fname
-	return 1
-}
-
-//export nox_xxx_fileCryptReadCrcMB_426C20
-func nox_xxx_fileCryptReadCrcMB_426C20(a1 *C.uchar, a2 C.size_t) {
-	buf := unsafe.Slice((*byte)(unsafe.Pointer(a1)), int(a2))
-	cryptfile.Global().ReadMaybeAlign(buf)
 }

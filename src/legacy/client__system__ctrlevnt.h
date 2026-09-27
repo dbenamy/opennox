@@ -23,7 +23,4 @@ typedef struct nox_ctrlevent_key_t {
 } nox_ctrlevent_key_t;
 _Static_assert(sizeof(nox_ctrlevent_key_t) == 96, "wrong size of nox_ctrlevent_key_t structure!");
 
-
-void sub_42CD90();
-
 #endif // NOX_PORT_CLIENT_SYSTEM_CTRLEVNT

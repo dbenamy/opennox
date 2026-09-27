@@ -44,8 +44,7 @@ with live fixture/allocator users. Imports are pruned only in touched files;
 other production imports keep their packages initialized. All remaining C types,
 compiler flags, allocator observers, operation-name strings and captures stay.
 
-Local evidence and draft: `build/port-unused-abi-adapters/`. No conversion is
-installed at this original baseline. This report will be updated after qualification.
+Local evidence and draft: `build/port-unused-abi-adapters/`. Original source is recoverable at baseline `21486ffb`; qualification follows.
 
 Both additional original selections passed twice per profile with exact expected
 names and no failures/skips. Recorded [baseline](unused-abi-adapters-baseline.json),
@@ -57,3 +56,20 @@ superseded GUI production/safe binaries (187,723,776 bytes; rebuild `2bca8420`)
 were removed after source/hash and host-use checks. Latest animation binaries,
 all baseline evidence, source and original assets remain. Journals are under
 `build/port-unused-abi-adapters/`.
+
+
+## Qualified result
+
+All 357 roots pass in each profile with exact expected names and no failures/skips.
+Safe/static, three production builds and ABI checks, the exact known-suite result
+(304 failure events; 17 passing, two failing and 32 skipped packages), two headless
+save/load/resume scenarios and all 1,654 original asset hashes qualify unchanged
+reviewed source. Existing fixtures and captures are unchanged. See
+[qualification](unused-abi-adapters-qualification.json).
+
+Exports fall 144→88; selected production cgo files fall 113/114→102/103.
+Headers remain 157 files / 2,817 physical lines. Embedded C bodies remain 77;
+standalone production and test-reference C remain zero. The source diff is
+removal of unreachable wrappers and obsolete declarations/imports; all 668 retained
+function bodies/signatures in touched files are unchanged. Primary completed the
+batch locally because Luna was unavailable. No new behavior or layout was introduced.

@@ -1,26 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_2.h"
-#include "GAME1_3.h"
-#include "GAME2.h"
-#include "GAME2_1.h"
-#include "GAME2_2.h"
-#include "GAME3_1.h"
-#include "GAME3_2.h"
-#include "GAME4_1.h"
-#include "GAME5_2.h"
-#include "client__gui__guicon.h"
-#include "client__gui__guisave.h"
-#include "client__gui__guispell.h"
-#include "client__gui__servopts__guiserv.h"
-
-
-
-int nox_ctrlevent_add_ticks_42E630();
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"unsafe"
@@ -43,11 +22,6 @@ var (
 func sub_42E8E0(key, a2 int) *wchar2_t {
 	s := GetClient().GetCtrlEvent().Sub_42E8E0_go(keybind.Event(key), a2)
 	return internWStr(s)
-}
-
-//export sub_42CD90
-func sub_42CD90() {
-	GetClient().GetCtrlEvent().Reset()
 }
 
 func Nox_xxx_guiSpellTargetClickCheckSend_45DBB0() {

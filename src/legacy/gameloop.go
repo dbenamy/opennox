@@ -26,7 +26,6 @@ import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"unsafe"
 
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -40,17 +39,6 @@ var (
 	Nox_client_guiXxxDestroy_4A24A0          func() int
 	Nox_client_quit_4460C0                   func()
 )
-
-//export nox_game_SetCliDrawFunc
-func nox_game_SetCliDrawFunc(fnc unsafe.Pointer) {
-	if fnc == nil {
-		GetClient().SetDrawFunc(nil)
-	} else {
-		GetClient().SetDrawFunc(func() bool {
-			return ccall.CallIntVoid(fnc) != 0
-		})
-	}
-}
 
 func nox_game_exit_xxx2() {
 	Nox_game_exit_xxx2()

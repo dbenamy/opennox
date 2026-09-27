@@ -15,7 +15,6 @@ import (
 	"image"
 	"unsafe"
 
-	"github.com/opennox/libs/spell"
 	"github.com/opennox/libs/types"
 
 	"github.com/opennox/opennox/v1/common/ntype"
@@ -69,37 +68,12 @@ func nox_server_getFirstObject_4DA790() *nox_object_t {
 	return asObjectC(GetServer().S().Objs.First())
 }
 
-//export nox_server_getFirstObjectUninited_4DA870
-func nox_server_getFirstObjectUninited_4DA870() *nox_object_t {
-	return asObjectC(GetServer().S().Objs.Pending)
-}
-
 func nox_server_getNextObject_4DA7A0(cobj *nox_object_t) *nox_object_t {
-	return asObjectC(asObjectS(cobj).Next())
-}
-
-//export nox_server_getNextObjectUninited_4DA880
-func nox_server_getNextObjectUninited_4DA880(cobj *nox_object_t) *nox_object_t {
-	return asObjectC(asObjectS(cobj).Next())
-}
-
-//export nox_xxx_getNextUpdatable2Object_4DA850
-func nox_xxx_getNextUpdatable2Object_4DA850(cobj *nox_object_t) *nox_object_t {
 	return asObjectC(asObjectS(cobj).Next())
 }
 
 func nox_xxx_servFinalizeDelObject_4DADE0(cobj *nox_object_t) {
 	GetServer().ObjectDeleteLast(asObjectS(cobj))
-}
-
-//export nox_xxx_getFirstUpdatable2Object_4DA840
-func nox_xxx_getFirstUpdatable2Object_4DA840() *nox_object_t {
-	return asObjectC(GetServer().S().Objs.MissileList)
-}
-
-//export nox_xxx_unitsNewAddToList_4DAC00
-func nox_xxx_unitsNewAddToList_4DAC00() {
-	GetServer().ObjectsAddPending()
 }
 
 func nox_xxx_delayedDeleteObject_4E5CC0(obj *nox_object_t) {
@@ -134,16 +108,6 @@ func nox_xxx_unitIsHostileMimic_4E7F90(obj1, obj2 *nox_object_t) int {
 	return bool2int(GetServer().S().IsHostileMimicXxx(asObjectS(obj1), asObjectS(obj2)))
 }
 
-//export nox_new_npc
-func nox_new_npc(id int) unsafe.Pointer {
-	return GetServer().S().NPCs.New(id).C()
-}
-
-//export nox_init_npc
-func nox_init_npc(npc unsafe.Pointer, id int) {
-	GetServer().S().NPCs.Set((*server.NPC)(npc), id)
-}
-
 func AsPointf(p unsafe.Pointer) types.Pointf {
 	cp := (*C.float2)(p)
 	return types.Pointf{
@@ -175,23 +139,8 @@ func nox_xxx_unitIsEnemyTo_5330C0(a, b *nox_object_t) int {
 	return bool2int(GetServer().S().IsEnemyTo(asObjectS(a), asObjectS(b)))
 }
 
-//export nox_get_and_zero_server_objects_4DA3C0
-func nox_get_and_zero_server_objects_4DA3C0() *nox_object_t {
-	return asObjectC(GetServer().S().Objs.GetAndZeroObjects())
-}
-
-//export nox_set_server_objects_4DA3E0
-func nox_set_server_objects_4DA3E0(list *nox_object_t) {
-	GetServer().S().Objs.SetObjects(asObjectS(list))
-}
-
 func nox_xxx_checkSummonedCreaturesLimit_500D70(obj *nox_object_t, ind int) C.bool {
 	return C.bool(Nox_xxx_checkSummonedCreaturesLimit_500D70(asObjectS(obj), ind))
-}
-
-//export sub_57AEE0
-func sub_57AEE0(sp int, u *nox_object_t) int {
-	return bool2int(server.Sub_57AEE0(spell.ID(sp), asObjectS(u)))
 }
 
 func nox_xxx_unitSetXStatus_4E4800(a1 *nox_object_t, a2 uint32) {

@@ -22,11 +22,6 @@ func init() {
 
 type nox_thing = C.nox_thing
 
-func nox_xxx_getTTByNameSpriteMB_44CFC0(cstr *C.char) int {
-	id := GoString(cstr)
-	return GetClient().Cli().Things.IndByID(id)
-}
-
 func nox_get_thing_name(i int) *C.char {
 	t := GetClient().Cli().Things.TypeByInd(i)
 	if t == nil {

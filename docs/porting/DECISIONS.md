@@ -2793,3 +2793,15 @@ void slot unchanged. Retire 23 orphan wrappers; keep actual bodies/direct Go cal
 Because this changes shared GUI dispatch, require the full accumulated default
 corpus alongside affected profiles and production gates. Primary finished wrapper
 cleanup when Luna hit its usage limit. See [ANIMATION_IDENTITIES.md](ANIMATION_IDENTITIES.md).
+
+
+## Unused ABI adapters
+
+Delete 56 unreachable exports and 33 private C-typed wrappers after Go identifier,
+C preamble/header and macro-alias audits. Preserve allocator redirections, live
+fixture callbacks, native owners, shared types and compiler settings. Verify retained
+function bodies/signatures unchanged and retain transpiler input/name strings.
+Reuse exact-source original evidence; qualify 357 roots/profile and production
+gates without repeating the preceding full corpus for deletion-only wrappers.
+Primary completed this batch while Luna was unavailable. See
+[UNUSED_ABI_ADAPTERS.md](UNUSED_ABI_ADAPTERS.md).

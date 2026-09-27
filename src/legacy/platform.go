@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include <stdbool.h>
-*/
-import "C"
 import "github.com/opennox/libs/platform"
 
 var (
@@ -16,6 +12,3 @@ func nox_platform_rand() int {
 	// original 15-bit range even when the Go platform supplies a wider int.
 	return platform.RandInt() & 0x7fff
 }
-
-//export nox_platform_get_ticks
-func nox_platform_get_ticks() C.uint { return C.uint(PlatformTicks()) }

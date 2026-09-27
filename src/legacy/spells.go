@@ -10,7 +10,7 @@ package legacy
 #include "GAME4_3.h"
 #include "GAME5_2.h"
 #include "server__magic__spell__execdur.h"
-void nox_xxx_spellCastByPlayer_4FEEF0();
+
 
 
 
@@ -43,16 +43,6 @@ var (
 
 func nox_xxx_getEnchantSpell_424920(enc int) int {
 	return int(server.EnchantID(enc).Spell())
-}
-
-//export nox_xxx_spellNameToN_4243F0
-func nox_xxx_spellNameToN_4243F0(cid *C.char) int {
-	id := GoString(cid)
-	ind := spell.ParseID(id)
-	if ind <= 0 {
-		return 0
-	}
-	return int(ind)
 }
 
 func nox_xxx_spellAwardAll1_4EFD80(p *C.nox_playerInfo) { Nox_xxx_spellAwardAll1_4EFD80(asPlayerS(p)) }

@@ -139,26 +139,12 @@ func mapDamageUnitsAround(pos types.Pointf, outer, inner float32, damage, kind i
 	GetServer().Nox_xxx_mapDamageUnitsAround(pos, outer, inner, int(damage), object.DamageType(kind), who, objectAsInterface(exclude), GetDoDamageWalls())
 }
 
-//export nox_game_addStateCode_43BDD0
-func nox_game_addStateCode_43BDD0(code int) {
-	GetClient().GameAddStateCode(gui.StateID(code))
-}
-
-//export nox_game_getStateCode_43BE10
-func nox_game_getStateCode_43BE10() int {
-	return int(GetClient().GameGetStateCode())
-}
-
 func nox_game_decStateInd_43BDC0() {
 	GetClient().GamePopState()
 }
 
 func sub_4537F0() {
 	GetServer().S().Sub4537F0()
-}
-
-func sub_41CC00(cstr *C.char) {
-	Sub_41CC00(GoString(cstr))
 }
 
 func nox_xxx_mapCheck_537110(a1, a2 *nox_object_t) int {

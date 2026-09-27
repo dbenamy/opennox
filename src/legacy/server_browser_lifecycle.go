@@ -108,8 +108,6 @@ func browserShowList() int {
 	return 0
 }
 
-func sub_4375C0(enabled C.int) { browserMarkersEnable(int(enabled)) }
-
 func sub_4379C0() { browserListReset() }
 
 func nox_client_guiXxx_43A9D0() C.int { return C.int(browserClose()) }

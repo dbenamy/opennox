@@ -24,8 +24,3 @@ func nox_xxx_netInformTextMsg2_4DA180(kind C.int, data *C.uint8_t) C.int {
 func nox_xxx_netPriMsgToPlayer_4DA2C0(u *C.nox_object_t, text *C.char, flag C.char) {
 	gameplayTextPrivate((*server.Object)(unsafe.Pointer(u)), (*byte)(unsafe.Pointer(text)), byte(flag))
 }
-
-//export nox_xxx_netPrintLineToAll_4DA390
-func nox_xxx_netPrintLineToAll_4DA390(text *C.gameplay_text_const_char) C.int {
-	return C.int(gameplayTextPrivateAll((*byte)(unsafe.Pointer(text))))
-}

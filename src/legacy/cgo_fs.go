@@ -7,11 +7,9 @@ package legacy
 import "C"
 import (
 	"io"
-	"os"
+
 	"sync"
 	"unsafe"
-
-	"github.com/opennox/libs/ifs"
 
 	"github.com/opennox/opennox/v1/internal/binfile"
 	"github.com/opennox/opennox/v1/legacy/common/alloc/handles"
@@ -23,11 +21,6 @@ var files struct {
 }
 
 type FILE = C.FILE
-
-//export nox_fs_set_workdir
-func nox_fs_set_workdir(path *C.char) C.bool {
-	return ifs.Chdir(GoString(path)) == nil
-}
 
 func convWhence(mode int) int {
 	var whence int
@@ -42,16 +35,6 @@ func convWhence(mode int) int {
 		panic("unsupported seek mode")
 	}
 	return whence
-}
-
-//export nox_fs_fseek
-func nox_fs_fseek(f *FILE, off C.long, mode int) int {
-	fp := fileByHandle(f)
-	_, err := fp.Seek(int64(off), convWhence(mode))
-	if err != nil {
-		return -1
-	}
-	return 0
 }
 
 func nox_fs_fread(f *FILE, dst unsafe.Pointer, sz int) int {
@@ -100,49 +83,4 @@ func NewFileHandle(f *binfile.File) *FILE {
 	}
 	files.byHandle[f.Handle] = f
 	return (*FILE)(f.Handle)
-}
-
-//export nox_fs_open
-func nox_fs_open(path *C.char) *FILE {
-	f, err := ifs.Open(GoString(path))
-	if err != nil {
-		return nil
-	}
-	return NewFileHandle(binfile.NewFile(f))
-}
-
-//export nox_fs_open_text
-func nox_fs_open_text(path *C.char) *FILE {
-	f, err := ifs.Open(GoString(path))
-	if err != nil {
-		return nil
-	}
-	return NewFileHandle(binfile.NewTextFile(f))
-}
-
-//export nox_fs_create
-func nox_fs_create(path *C.char) *FILE {
-	f, err := ifs.Create(GoString(path))
-	if err != nil {
-		return nil
-	}
-	return NewFileHandle(binfile.NewFile(f))
-}
-
-//export nox_fs_create_text
-func nox_fs_create_text(path *C.char) *FILE {
-	f, err := ifs.Create(GoString(path))
-	if err != nil {
-		return nil
-	}
-	return NewFileHandle(binfile.NewTextFile(f))
-}
-
-//export nox_fs_open_rw
-func nox_fs_open_rw(path *C.char) *FILE {
-	f, err := ifs.OpenFile(GoString(path), os.O_RDWR)
-	if err != nil {
-		return nil
-	}
-	return NewFileHandle(binfile.NewFile(f))
 }

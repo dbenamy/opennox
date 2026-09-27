@@ -29,23 +29,8 @@ func asTeamP(p unsafe.Pointer) *server.Team {
 	return (*server.Team)(p)
 }
 
-//export nox_server_teamByXxx_418AE0
-func nox_server_teamByXxx_418AE0(a1 int) *nox_team_t {
-	return (*nox_team_t)(GetServer().S().Teams.ByXxx(a1).C())
-}
-
 func nox_xxx_getTeamByID_418AB0(a1 int) *nox_team_t {
 	return (*nox_team_t)(GetServer().S().Teams.ByID(server.TeamID(a1)).C())
-}
-
-//export nox_server_teamFirst_418B10
-func nox_server_teamFirst_418B10() *nox_team_t {
-	return (*nox_team_t)(GetServer().S().Teams.First().C())
-}
-
-//export nox_server_teamNext_418B60
-func nox_server_teamNext_418B60(t *nox_team_t) *nox_team_t {
-	return (*nox_team_t)(GetServer().S().Teams.Next(asTeam(t)).C())
 }
 
 func Sub_459CD0() {

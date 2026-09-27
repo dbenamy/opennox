@@ -7,30 +7,10 @@ package legacy
 */
 import "C"
 import (
-	"github.com/opennox/opennox/v1/server"
 	"math"
-	"unsafe"
 )
 
-//export nox_server_scriptExecuteFnForEachGroupObj_502670
-func nox_server_scriptExecuteFnForEachGroupObj_502670(group *C.uchar, expected C.int, callback unsafe.Pointer, data C.int) {
-	prefabGroupEach((*server.MapGroup)(unsafe.Pointer(group)), int32(expected), callback, uint32(data))
-}
-func sub_5029A0(a0 *C.char) C.int { return C.int(prefabFindName(mapRoomRaw(unsafe.Pointer(a0)))) }
-func sub_5029F0(a0 C.int) C.int   { return C.int(prefabMetadataAt(int32(uint32(a0)))) }
-func sub_502A20() C.int           { return C.int(*prefabGlobal(prefabCount)) }
-
-func sub_502D70(a0 C.int) C.int    { return C.int(populationLoadPrefab(int32(a0))) }
-func sub_502DF0() uint32           { return prefabClose() }
-func sub_502E70(a0 C.int) C.double { return C.double(prefabDimension(int32(uint32(a0)), 64)) }
-func sub_502EA0(a0 C.int) C.double { return C.double(prefabDimension(int32(uint32(a0)), 68)) }
-
-func sub_503B30(a0 *C.float2) C.int {
-	return C.int(prefabInstantiate(prefabPoint(mapRoomRaw(unsafe.Pointer(a0)))))
-}
-func sub_503EC0(a0 C.int, a1 *C.float) C.int {
-	return C.int(prefabRelativePosition(uint32(a0), prefabPoint(mapRoomRaw(unsafe.Pointer(a1)))))
-}
+func sub_502DF0() uint32 { return prefabClose() }
 
 //export nox_xxx_tileAllocTileInCoordList_5040A0
 func nox_xxx_tileAllocTileInCoordList_5040A0(a0 C.int, a1 C.int, a2 C.float) *C.uint32_t {
@@ -50,19 +30,4 @@ func nox_xxx_unitAddToList_5048A0(a0 C.int) *C.uint32_t {
 	return (*C.uint32_t)(mapRoomPointer(prefabObjectNew(uint32(a0))))
 }
 
-func sub_504980() C.int         { return C.int(prefabObjectHead()) }
-func sub_5049C0(a0 C.int) C.int { return C.int(prefabObjectNext(uint32(a0))) }
-
-func sub_504A10(a0 C.int) C.int { return C.int(prefabObjectRemove(uint32(a0))) }
-
-func sub_51D0E0()                { prefabResetWaypoint() }
-func sub_51D0F0(a0 C.char) C.int { return C.int(prefabSetWaypointKind(byte(uint32(a0)))) }
-func sub_51D120(a0 *C.float) *C.uint32_t {
-	return (*C.uint32_t)(mapRoomPointer(prefabCreateWaypoint(prefabPoint(mapRoomRaw(unsafe.Pointer(a0))))))
-}
-func sub_51D1A0(a0 *C.float2) *C.float {
-	return (*C.float)(mapRoomPointer(prefabFindWaypoint(prefabPoint(mapRoomRaw(unsafe.Pointer(a0))))))
-}
-func sub_51D3F0(a0 *C.float2, a1 *C.float2) uint32 {
-	return prefabConnectWaypoint(prefabPoint(mapRoomRaw(unsafe.Pointer(a0))), prefabPoint(mapRoomRaw(unsafe.Pointer(a1))))
-}
+func sub_51D0E0() { prefabResetWaypoint() }

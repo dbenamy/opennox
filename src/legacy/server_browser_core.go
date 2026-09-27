@@ -118,8 +118,6 @@ func sub_4A2830(x, y C.int, out *C.uint32_t) *C.uint32_t {
 	return out
 }
 
-func sub_437860(x, y C.int) C.int { return C.int(browserRegion(int32(x), int32(y))) }
-
 func sub_438DD0(x, y uint32) int32 {
 	if browserUI.region == -1 {
 		if x > 216 && x < 600 && y > 27 && y < 451 {

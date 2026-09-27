@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-
-int nox_xxx_playDialogFile_44D900(unsigned char* a1, int a2);
-int nox_xxx_inventoryServPlace_4F36F0(nox_object_t* a1p, nox_object_t* a2p, int a3, int a4);
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
@@ -24,14 +17,6 @@ func Nox_server_scriptMoveTo_5123C0(a1 *server.Object, a2 *server.Waypoint) {
 }
 func Nox_xxx_playerCanCarryItem_513B00(a1 *server.Object, a2 *server.Object) {
 	scriptInventoryCarry(a1, a2)
-}
-
-//export nox_xxx_inventoryServPlace_4F36F0
-func nox_xxx_inventoryServPlace_4F36F0(a1 *nox_object_t, a2 *nox_object_t, a3 int, a4 int) int {
-	if Nox_xxx_inventoryServPlace_4F36F0(asObjectS(a1), asObjectS(a2), a3, a4) {
-		return 1
-	}
-	return 0
 }
 
 func Sub_516D00(a1 *server.Object) {

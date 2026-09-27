@@ -1,21 +1,8 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1_1.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_2.h"
-#include "GAME4_3.h"
-#include "GAME5.h"
-#include "server__script__script.h"
-*/
-import "C"
 import (
 	"unsafe"
 
-	"github.com/opennox/opennox/v1/common/unit/ai"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -30,16 +17,6 @@ type Nox_player_polygon_check_data struct {
 
 func nox_xxx_monsterPopAction_50A160(a1 *nox_object_t) int {
 	return asObjectS(a1).MonsterPopAction()
-}
-
-//export nox_xxx_monsterPushAction_50A260_impl
-func nox_xxx_monsterPushAction_50A260_impl(u *nox_object_t, act int, file *C.char, line int) unsafe.Pointer {
-	return asObjectS(u).MonsterPushActionImpl(ai.ActionType(act), GoString(file), line).C()
-}
-
-//export nox_xxx_monsterClearActionStack_50A3A0
-func nox_xxx_monsterClearActionStack_50A3A0(a1 *nox_object_t) {
-	asObjectS(a1).ClearActionStack()
 }
 
 func sub_50B510() {

@@ -12,6 +12,5 @@ int sub_4E8E60();
 bool nox_server_questMaybeWarp_4E8F60();
 int sub_4E9010();
 int nox_xxx_netGetUnitByExtent_4ED020(int a1);
-int nox_xxx_inventoryServPlace_4F36F0(nox_object_t* a1p, nox_object_t* a2p, int a3, int a4);
 
 #endif // NOX_PORT_GAME3_3

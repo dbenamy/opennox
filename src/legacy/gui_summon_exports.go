@@ -6,16 +6,6 @@ package legacy
 import "C"
 import "unsafe"
 
-func sub_4C1CA0(command C.int) C.int { return C.int(summonSetCommand(uint32(command))) }
-
-func nox_xxx_cliSummonCreat_4C2E50(code, typ, quiet C.int) C.char {
-	return C.char(summonAdd(uint32(code), uint32(typ), quiet != 0))
-}
-
-func nox_xxx_cliSummonOnDieOrBanish_4C3140(code C.int, quiet unsafe.Pointer) {
-	summonRemove(uint32(code), quiet != nil)
-}
-
 //export sub_4C3260
 func sub_4C3260() C.int { return C.int(bool2int(summonFirst() != nil)) }
 
