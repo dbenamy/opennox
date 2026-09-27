@@ -2,44 +2,6 @@
 
 package legacy
 
-/*
-extern int nox_porttest_audio_stream_callback(int op, void* obj);
-static int nox_porttest_audio_cb0(void* p) {return nox_porttest_audio_stream_callback(0,p);}
-static int nox_porttest_audio_cb1(void* p) {return nox_porttest_audio_stream_callback(1,p);}
-static int nox_porttest_audio_cb2(void* p) {return nox_porttest_audio_stream_callback(2,p);}
-static int nox_porttest_audio_cb3(void* p) {return nox_porttest_audio_stream_callback(3,p);}
-static int nox_porttest_audio_cb4(void* p) {return nox_porttest_audio_stream_callback(4,p);}
-static int nox_porttest_audio_cb5(void* p) {return nox_porttest_audio_stream_callback(5,p);}
-static int nox_porttest_audio_cb6(void* p) {return nox_porttest_audio_stream_callback(6,p);}
-static int nox_porttest_audio_cb7(void* p) {return nox_porttest_audio_stream_callback(7,p);}
-static int nox_porttest_audio_cb8(void* p) {return nox_porttest_audio_stream_callback(8,p);}
-static int nox_porttest_audio_cb9(void* p) {return nox_porttest_audio_stream_callback(9,p);}
-static int nox_porttest_audio_cb10(void* p) {return nox_porttest_audio_stream_callback(10,p);}
-static int nox_porttest_audio_cb11(void* p) {return nox_porttest_audio_stream_callback(11,p);}
-static int nox_porttest_audio_cb12(void* p) {return nox_porttest_audio_stream_callback(12,p);}
-static int nox_porttest_audio_cb13(void* p) {return nox_porttest_audio_stream_callback(13,p);}
-
-static void* nox_porttest_audio_callback_addr(int op) {
- switch(op) {
- case 0: return nox_porttest_audio_cb0;
- case 1: return nox_porttest_audio_cb1;
- case 2: return nox_porttest_audio_cb2;
- case 3: return nox_porttest_audio_cb3;
- case 4: return nox_porttest_audio_cb4;
- case 5: return nox_porttest_audio_cb5;
- case 6: return nox_porttest_audio_cb6;
- case 7: return nox_porttest_audio_cb7;
- case 8: return nox_porttest_audio_cb8;
- case 9: return nox_porttest_audio_cb9;
- case 10: return nox_porttest_audio_cb10;
- case 11: return nox_porttest_audio_cb11;
- case 12: return nox_porttest_audio_cb12;
- case 13: return nox_porttest_audio_cb13;
- default: return 0;
- }
-}
-*/
-import "C"
 import "unsafe"
 
 var portTestAudioStreamNames = []string{
@@ -292,31 +254,36 @@ func PortTestAudioStreamCall(name string, args ...uint32) uint32 {
 
 var portTestAudioStreamCallback func(int, unsafe.Pointer) int
 
-//export nox_porttest_audio_stream_callback
-func nox_porttest_audio_stream_callback(op C.int, obj unsafe.Pointer) C.int {
-	if portTestAudioStreamCallback == nil {
-		panic("audio callback without an owner")
+var portTestAudioStreamKeys [14]byte
+
+func init() {
+	for op := range portTestAudioStreamKeys {
+		audioStreamCallbacks[unsafe.Pointer(&portTestAudioStreamKeys[op])] = func(obj unsafe.Pointer) int32 {
+			if portTestAudioStreamCallback == nil {
+				panic("audio callback without an owner")
+			}
+			return int32(portTestAudioStreamCallback(op, obj))
+		}
 	}
-	return C.int(portTestAudioStreamCallback(int(op), obj))
 }
 
 func PortTestAudioStreamGlobalOwner(p unsafe.Pointer, fn func(int, unsafe.Pointer) int) ([]unsafe.Pointer, func()) {
 	old, callback := audioStreamsRoot, portTestAudioStreamCallback
 	audioStreamsRoot, portTestAudioStreamCallback = (*audioStreamSystem)(p), fn
 	return []unsafe.Pointer{
-		C.nox_porttest_audio_callback_addr(0),
-		C.nox_porttest_audio_callback_addr(1),
-		C.nox_porttest_audio_callback_addr(2),
-		C.nox_porttest_audio_callback_addr(3),
-		C.nox_porttest_audio_callback_addr(4),
-		C.nox_porttest_audio_callback_addr(5),
-		C.nox_porttest_audio_callback_addr(6),
-		C.nox_porttest_audio_callback_addr(7),
-		C.nox_porttest_audio_callback_addr(8),
-		C.nox_porttest_audio_callback_addr(9),
-		C.nox_porttest_audio_callback_addr(10),
-		C.nox_porttest_audio_callback_addr(11),
-		C.nox_porttest_audio_callback_addr(12),
-		C.nox_porttest_audio_callback_addr(13),
+		unsafe.Pointer(&portTestAudioStreamKeys[0]),
+		unsafe.Pointer(&portTestAudioStreamKeys[1]),
+		unsafe.Pointer(&portTestAudioStreamKeys[2]),
+		unsafe.Pointer(&portTestAudioStreamKeys[3]),
+		unsafe.Pointer(&portTestAudioStreamKeys[4]),
+		unsafe.Pointer(&portTestAudioStreamKeys[5]),
+		unsafe.Pointer(&portTestAudioStreamKeys[6]),
+		unsafe.Pointer(&portTestAudioStreamKeys[7]),
+		unsafe.Pointer(&portTestAudioStreamKeys[8]),
+		unsafe.Pointer(&portTestAudioStreamKeys[9]),
+		unsafe.Pointer(&portTestAudioStreamKeys[10]),
+		unsafe.Pointer(&portTestAudioStreamKeys[11]),
+		unsafe.Pointer(&portTestAudioStreamKeys[12]),
+		unsafe.Pointer(&portTestAudioStreamKeys[13]),
 	}, func() { audioStreamsRoot, portTestAudioStreamCallback = old, callback }
 }

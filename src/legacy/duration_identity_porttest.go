@@ -2,39 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-static int32_t portDurationResultValue;
-static uintptr_t portDurationResultArgument;
-static int portDurationResultCalls;
-static uintptr_t portDurationVoidArgument;
-static int portDurationVoidCalls;
-
-static int portDurationResultObserver(void* arg) {
-    portDurationResultArgument = (uintptr_t)arg;
-    portDurationResultCalls++;
-    return (int)portDurationResultValue;
-}
-static void portDurationVoidObserver(void* arg) {
-    portDurationVoidArgument = (uintptr_t)arg;
-    portDurationVoidCalls++;
-}
-static void portDurationObserverReset(int32_t result) {
-    portDurationResultValue = result;
-    portDurationResultArgument = 0;
-    portDurationResultCalls = 0;
-    portDurationVoidArgument = 0;
-    portDurationVoidCalls = 0;
-}
-static void* portDurationResultObserverKey(void) { return (void*)portDurationResultObserver; }
-static void* portDurationVoidObserverKey(void) { return (void*)portDurationVoidObserver; }
-static uintptr_t portDurationResultObservedArgument(void) { return portDurationResultArgument; }
-static int portDurationResultObservedCalls(void) { return portDurationResultCalls; }
-static uintptr_t portDurationVoidObservedArgument(void) { return portDurationVoidArgument; }
-static int portDurationVoidObservedCalls(void) { return portDurationVoidCalls; }
-*/
-import "C"
-
 import (
 	"unsafe"
 
@@ -113,29 +80,38 @@ type PortTestDurationObserverState struct {
 	VoidCalls      int
 }
 
-// PortTestDurationObserverReset resets two independent raw C callback observers
-// and returns their callable C addresses for ccall forwarding contracts.
+var portTestDurationKeys [2]byte
+var portTestDurationState PortTestDurationObserverState
+var portTestDurationResult int32
+
+func init() {
+	server.RegisterDurSpellCallback(unsafe.Pointer(&portTestDurationKeys[0]), func(p *server.DurSpell) int32 {
+		portTestDurationState.ResultArgument = uintptr(unsafe.Pointer(p))
+		portTestDurationState.ResultCalls++
+		return portTestDurationResult
+	})
+	server.RegisterDurSpellCallback(unsafe.Pointer(&portTestDurationKeys[1]), func(p *server.DurSpell) int32 {
+		portTestDurationState.VoidArgument = uintptr(unsafe.Pointer(p))
+		portTestDurationState.VoidCalls++
+		return 0
+	})
+}
+
+// PortTestDurationObserverReset resets both independent callback captures.
 func PortTestDurationObserverReset(result int32) (unsafe.Pointer, unsafe.Pointer) {
-	C.portDurationObserverReset(C.int32_t(result))
-	return C.portDurationResultObserverKey(), C.portDurationVoidObserverKey()
+	portTestDurationResult = result
+	portTestDurationState = PortTestDurationObserverState{}
+	return unsafe.Pointer(&portTestDurationKeys[0]), unsafe.Pointer(&portTestDurationKeys[1])
 }
 
-func PortTestDurationObserverSnapshot() PortTestDurationObserverState {
-	return PortTestDurationObserverState{
-		ResultArgument: uintptr(C.portDurationResultObservedArgument()),
-		ResultCalls:    int(C.portDurationResultObservedCalls()),
-		VoidArgument:   uintptr(C.portDurationVoidObservedArgument()),
-		VoidCalls:      int(C.portDurationVoidObservedCalls()),
-	}
-}
+func PortTestDurationObserverSnapshot() PortTestDurationObserverState { return portTestDurationState }
 
-// PortTestDurationCallResult enters the duration API. Unregistered observer keys
-// use its original raw C-call fallback and preserve the C int word.
+// PortTestDurationCallResult enters the duration API and preserves the signed result.
 func PortTestDurationCallResult(key unsafe.Pointer, p *server.DurSpell) int32 {
 	return server.CallDurSpellResult(key, p)
 }
 
-// PortTestDurationCallDiscard uses native dispatch or the original raw void fallback.
+// PortTestDurationCallDiscard exercises the result-discarding duration route.
 func PortTestDurationCallDiscard(key unsafe.Pointer, p *server.DurSpell) {
 	server.CallDurSpellDiscard(key, p)
 }

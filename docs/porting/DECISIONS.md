@@ -3062,3 +3062,13 @@ late observer hook reads, table restoration, particle traversal and 32-bit scala
 conversions. Retire three fixture-only C-typed wrappers after whole-source caller
 search. No frozen expectations changed. See
 [SECTION_PARTICLE_DISPATCH.md](SECTION_PARTICLE_DISPATCH.md).
+
+## Native duration and internal audio dispatch
+
+Reject unregistered duration/audio callback keys after producer audits; retain
+native duration registration, all existing engine handlers, late hook reads and
+KeepAlive. Translate the independent duration observers and fourteen audio fixture
+keys without changing frozen assertions. Generic C bodies remain shared with other
+families; record fixture imports and call-site reductions as well as body count.
+Defer monster callbacks until their combat/lifecycle observers move together.
+See [DURATION_AUDIO_DISPATCH.md](DURATION_AUDIO_DISPATCH.md).

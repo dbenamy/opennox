@@ -2,12 +2,11 @@ package legacy
 
 import (
 	"unsafe"
-
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 )
 
-// Non-executable identities for the internal stream callbacks. Foreign callback
-// addresses retain the call convention chosen by each original caller.
+// Non-executable identities for the internal stream callbacks.
+var audioStreamCallbacks = make(map[unsafe.Pointer]func(unsafe.Pointer) int32)
+
 var audioStreamCallbackKeys [4]byte
 var audioBridgeCallbackKeys [16]byte
 
@@ -63,13 +62,16 @@ func audioStreamKnownCallback(fn, arg unsafe.Pointer) (int32, bool) {
 	case audioBridgeCallbackKey(15):
 		return audioEventVoiceStopped((*audioStreamVoice)(arg)), true
 	default:
+		if callback := audioStreamCallbacks[fn]; callback != nil {
+			return callback(arg), true
+		}
 		return 0, false
 	}
 }
 
 func AudioStreamCallbackVoid(fn, arg unsafe.Pointer) {
 	if _, ok := audioStreamKnownCallback(fn, arg); !ok {
-		ccall.CallVoidPtr(fn, arg)
+		panic("unregistered audio stream callback")
 	}
 }
 
@@ -77,5 +79,5 @@ func AudioStreamCallbackInt(fn, arg unsafe.Pointer) int32 {
 	if result, ok := audioStreamKnownCallback(fn, arg); ok {
 		return result
 	}
-	return int32(ccall.CallIntPtr(fn, arg))
+	panic("unregistered audio stream callback")
 }
