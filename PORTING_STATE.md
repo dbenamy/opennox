@@ -56,11 +56,12 @@ Last complete default corpus: `6e9681f2`, 2,489 passes plus diagnostic skip.
 ## Next work and review items
 
 Continue with remaining object lifecycle/use/collision and drawable draw/update,
-spatial/particle callbacks. A provisional 24-file draft plus three deletions lives
-under `build/port-final-callback-dispatch/`; it targets the eight remaining generic
-dispatch bodies together. It still needs semantic/producer review, an accepted
-original baseline (including legacy-package contracts), installation and full
-qualification. Allocator/abort/flags and fixture dependencies remain afterward.
+spatial/particle callbacks. The reviewed 24-file draft plus three deletions under
+`build/port-final-callback-dispatch/` targets the eight remaining generic dispatch
+bodies together. Original baseline is accepted: exact-source broad reuse plus 28 fresh focused
+roots per profile, three safe roots and private legacy adapter contracts in four
+profiles passed. Source is `945c190b`; commit this baseline before installation. See [FINAL_CALLBACK_DISPATCH.md](docs/porting/FINAL_CALLBACK_DISPATCH.md).
+Allocator/abort/flags and fixture dependencies remain afterward.
 
 The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
 removal. Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md).
