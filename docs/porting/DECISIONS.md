@@ -3179,3 +3179,12 @@ environment restoration, including preservation of current TOP/tags. Keep its
 artificial-state comparison probe contained within a single call. Use a documented
 two-byte FLDENV encoding for the Go 1.26 assembler operand mismatch; no toolchain
 patch or broader architecture support. See [FIXTURE_FPU.md](FIXTURE_FPU.md).
+
+## Safe-only bridge retirement
+
+Route the six safe memory fixture calls directly to the existing Go owners and
+retire eleven unused forwarding exports/redirects. Preserve sanitizer flags and
+runtime memory checks until remaining C observers retire. The low-level allocator
+is a separate package; its libc calls do not inherit legacy's preprocessor flags.
+Keep historical safe-bridges evidence/selectors unchanged. See
+[SAFE_BRIDGE_RETIREMENT.md](SAFE_BRIDGE_RETIREMENT.md).

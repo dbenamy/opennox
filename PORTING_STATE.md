@@ -58,12 +58,16 @@ Last complete default corpus: `6e9681f2`, 2,489 passes plus diagnostic skip.
 
 ## Next work and review items
 
-Next: retire the remaining fixture allocation observers and aligned buffers,
-11 safe-only allocator/memory export bridges, reachable abort/compiler flags,
-and centralized internal C allocator implementation. Preserve normal/safe domains,
-layout and failure behavior. Safe Calloc records a nil marker on allocation failure;
-preserve or explicitly qualify any correction. External native libraries remain
-preserved dependencies. No next conversion is installed.
+Next: install and qualify the two-file safe-bridge retirement draft under
+`build/port-safe-bridges/`. Original qualification passed nine safe roots, eight
+owners plus three repeats per normal profile, and allocator/string/clock library
+contracts in normal and safe. Retire 11 safe-only exports and one fixture C import;
+keep sanitizer flags and runtime checks. See
+[SAFE_BRIDGE_RETIREMENT.md](docs/porting/SAFE_BRIDGE_RETIREMENT.md).
+Then retire remaining allocation observers/aligned buffers, reachable abort/compiler
+flags and the centralized allocator implementation. Preserve normal/safe domains,
+layout and failure behavior, including the existing safe Calloc nil marker.
+External native libraries remain preserved dependencies. No next conversion is installed.
 
 The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
 removal. Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md).
