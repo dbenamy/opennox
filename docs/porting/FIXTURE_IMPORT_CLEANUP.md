@@ -31,12 +31,40 @@ compile/link coverage; explicit-width scalar substitutions are exercised across
 all targets. Existing boundary contracts provide independent checks; no mirrored
 implementation tests or regenerated captures are introduced.
 
-## Status
+## Qualified result
 
-Original qualification accepted: verified broad supersets and fresh eight focused
-roots per profile, plus two safe contracts, all passed. The draft is not installed. Expected fixture
-C-import count: 69 to 51; production counts remain 4 client/highres and 5 server.
-Standalone C, production embedded bodies and legacy exports remain zero.
+All gates passed without source corrections. Native roots passed without skips:
+2,482 default, 8 server, 8 highres; eight focused repeats per profile and two safe
+contracts also passed. Static checks, safe build, three production builds/ABI,
+exact known-suite outcomes and fresh save/load passed. Original assets and all
+root test assertions/captures are unchanged.
 
-Luna remains unavailable under its existing quota; primary reviewed and prepared
+Fixture C imports fell from 69 to 51. Production imports remain 4 client/highres
+and 5 server across two project cgo packages; legacy exports, embedded production
+C bodies and standalone production/test C remain zero. Headers remain 157 files /
+2,731 physical lines. This does not qualify other architectures or remove external
+native backends.
+
+Evidence: [baseline](fixture-import-cleanup-baseline.json),
+[qualification](fixture-import-cleanup-qualification.json),
+[inventory](fixture-import-cleanup-inventory-after.json).
+
+Luna remained unavailable under its existing quota; primary reviewed and completed
 this batch locally. Artifacts: `build/port-fixture-import-cleanup/`.
+
+## Artifact recovery and disk cleanup
+
+Removed seven superseded damage/monster test/safe/production binaries after
+verifying source revision `945c190b`, their qualified callback replacements and
+host open-file/mapping checks: 386,945,024 allocated bytes reclaimed. Rebuild that
+revision to recover them; logs and source records remain. Current baseline and
+conversion binaries are retained.
+
+The completed scenario's 1,654 unchanged asset copies were verified against the
+originals and removed, reclaiming 560,476,160 allocated bytes. Restore with:
+
+```sh
+python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/fixture-import-cleanup-save/deduplicated-assets.json
+```
+
+Original assets, scenario outputs and restoration manifests remain.

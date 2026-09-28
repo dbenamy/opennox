@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include "GAME4_3.h"
-*/
-import "C"
-
 import (
 	"bytes"
 	"encoding/binary"
@@ -228,7 +222,7 @@ func portTestMonsterStatePrepare(proxy *portTestRoamOwnerServer, u *server.Objec
 }
 
 func portTestMonsterStateCall(proxy *portTestRoamOwnerServer, u *server.Object, sp *PortTestMonsterStateSpec) uint64 {
-	p := C.int(uintptr(u.CObj()))
+	p := int32(uintptr(u.CObj()))
 	if sp.Op == 28 || sp.Op == 29 {
 		return unitGameplayTimerContract(proxy, u, sp)
 	}
@@ -303,7 +297,7 @@ func portTestMonsterStateCall(proxy *portTestRoamOwnerServer, u *server.Object, 
 		if sp.NilUnit {
 			p = 0
 		}
-		portTestInvoke_nox_xxx_mobCalcDir_533CC0(p, (*C.float)(unsafe.Pointer(point)))
+		portTestInvoke_nox_xxx_mobCalcDir_533CC0(p, (*float32)(unsafe.Pointer(point)))
 	default:
 		panic("invalid monster-state operation")
 	}
@@ -340,46 +334,46 @@ func portTestMonsterStateTrace(proxy *portTestRoamOwnerServer, u *server.Object,
 }
 
 // Fixture-native copies preserve the original wrapper ABI conversions.
-func portTestInvoke_nox_xxx_mobActionToAnimation_533790(p C.int) C.int {
-	return C.int(monsterActionToAnimation(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p))))))
+func portTestInvoke_nox_xxx_mobActionToAnimation_533790(p int32) int32 {
+	return int32(monsterActionToAnimation(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p))))))
 }
 
-func portTestInvoke_nox_xxx_mobCalcDir_533CC0(p C.int, v *C.float) {
+func portTestInvoke_nox_xxx_mobCalcDir_533CC0(p int32, v *float32) {
 	monsterCalcDir(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p)))), (*float32)(unsafe.Pointer(v)))
 }
 
-func portTestInvoke_nox_xxx_mobGetMoveAttemptTime_534810(p *nox_object_t) C.int {
-	return C.int(bool2int(monsterMoveAttempt(asObjectS(p))))
+func portTestInvoke_nox_xxx_mobGetMoveAttemptTime_534810(p *nox_object_t) int32 {
+	return int32(bool2int(monsterMoveAttempt(asObjectS(p))))
 }
 
-func portTestInvoke_nox_xxx_monsterCanAttackAtWill_534390(p *nox_object_t) C.int {
-	return C.int(bool2int(monsterAttackAtWill(asObjectS(p))))
+func portTestInvoke_nox_xxx_monsterCanAttackAtWill_534390(p *nox_object_t) int32 {
+	return int32(bool2int(monsterAttackAtWill(asObjectS(p))))
 }
 
-func portTestInvoke_nox_xxx_monsterCanCast_534300(p *nox_object_t) C.int {
-	return C.int(bool2int(monsterCanCast(asObjectS(p))))
+func portTestInvoke_nox_xxx_monsterCanCast_534300(p *nox_object_t) int32 {
+	return int32(bool2int(monsterCanCast(asObjectS(p))))
 }
 
-func portTestInvoke_nox_xxx_monsterHasShield_5342C0(p C.int) C.int {
-	return C.int(bool2int(monsterHasShield(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p)))))))
+func portTestInvoke_nox_xxx_monsterHasShield_5342C0(p int32) int32 {
+	return int32(bool2int(monsterHasShield(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p)))))))
 }
 
-func portTestInvoke_nox_xxx_monsterIsMoveing_534320(p C.int) C.int {
-	return C.int(bool2int(monsterMoving(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p)))))))
+func portTestInvoke_nox_xxx_monsterIsMoveing_534320(p int32) int32 {
+	return int32(bool2int(monsterMoving(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p)))))))
 }
 
-func portTestInvoke_sub_534340(p C.int) C.int {
-	return C.int(bool2int(monsterCanBlockHead(objectFromInt(int32(p)))))
+func portTestInvoke_sub_534340(p int32) int32 {
+	return int32(bool2int(monsterCanBlockHead(objectFromInt(int32(p)))))
 }
 
-func portTestInvoke_sub_5343C0(p C.int) C.int {
-	return C.int(bool2int(monsterAggressionMid(objectFromInt(int32(p)))))
+func portTestInvoke_sub_5343C0(p int32) int32 {
+	return int32(bool2int(monsterAggressionMid(objectFromInt(int32(p)))))
 }
 
-func portTestInvoke_sub_534440(p C.int) C.int {
-	return C.int(bool2int(monsterAggressionRetreat(objectFromInt(int32(p)))))
+func portTestInvoke_sub_534440(p int32) int32 {
+	return int32(bool2int(monsterAggressionRetreat(objectFromInt(int32(p)))))
 }
 
-func portTestInvoke_sub_5347C0(p C.int) C.int {
-	return C.int(bool2int(monsterHasMissingHealth(objectFromInt(int32(p)))))
+func portTestInvoke_sub_5347C0(p int32) int32 {
+	return int32(bool2int(monsterHasMissingHealth(objectFromInt(int32(p)))))
 }

@@ -10,29 +10,29 @@ This is the current resume checkpoint. Workflow and delegation rules live in
   server: 458/463 eliminated (5 remain). Two project packages directly use cgo.
 - **Legacy C export bridges:** 1,890/1,890 retired (0 remain).
 - **Embedded production C bodies:** 79/79 retired (0 remain).
-- **Fixture and declaration dependencies:** 69 porttest-tagged files still import C;
+- **Fixture and declaration dependencies:** 51 porttest-tagged files still import C;
   157 tracked headers / 2,731 physical lines remain.
 
 Production cgo counts cover selected Linux 386 builds; these metrics are not equal
 units of effort. Fixture imports cover all build tags. Standalone production/test C
 remain zero.
 
-Latest qualified chunk retires the final eight generic C callback dispatch bodies
-and migrates their shared fixture observers. Native callback behavior, assertions
-and captures are preserved. See
-[FINAL_CALLBACK_DISPATCH.md](docs/porting/FINAL_CALLBACK_DISPATCH.md).
+Latest qualified chunk removes eighteen fixture C imports: fifteen unused include
+preambles and three scalar bridges now using explicit-width Go types. Production
+behavior and fixture assertions/captures are unchanged. See
+[FIXTURE_IMPORT_CLEANUP.md](docs/porting/FIXTURE_IMPORT_CLEANUP.md).
 
 Continue chunk-by-chunk with primary review, qualification, documentation and
 commit/push. Use one Luna helper when its quota is available; no substitute model.
 Stop at the milestone, usage limits or a substantial question. Latest qualified
-artifacts: `build/port-final-callback-dispatch/`.
+artifacts: `build/port-fixture-import-cleanup/`.
 
 ## What remains
 
 | Area | Remaining work or dependency |
 | --- | --- |
 | Embedded C callback glue | Complete: zero production bodies remain in selected builds; pure-Go callback registries remain. |
-| Types and declarations | 157 tracked headers / 2,731 physical lines. 69 porttest-tagged source files still import C across all build tags (not one selected profile). Fixture C observers/types still need retirement or explicit qualification scope. |
+| Types and declarations | 157 tracked headers / 2,731 physical lines. 51 porttest-tagged source files still import C across all build tags (not one selected profile). Fixture C observers/types still need retirement or explicit qualification scope. |
 | Production C imports | alloc/raw.go, legacy/object_xfer_world.go (reachable abort), legacy/cgo_common.go and legacy/video_highres.go (flags). Server adds legacy/cgo_server.go. |
 | Memory and layout | C-heap allocator, raw pointers, fixed offsets and 32-bit address assumptions remain. Preserve ownership/lifetime/failure semantics behind the centralized allocator. |
 | External libraries | SDL2, OpenGL, OpenAL and similar bindings remain for this phase; later replacement requires a separate discussion. |
@@ -40,31 +40,30 @@ artifacts: `build/port-final-callback-dispatch/`.
 
 ## Latest qualification
 
-Broad native selections passed 2,482/2,471/2,482 roots without skips. Exact-source
-qualified damage/monster broad runs supplied the original baseline; 28 focused
-roots per profile, three safe contracts and private legacy adapters in four
-profiles ran freshly before/after conversion. Native focused/static and fresh
-default save/load passed before the broad sweep. Safe build/static, three
-production builds/ABI, exact known-suite outcomes and final fresh save/load passed.
-Assertions, native handlers and original assets are unchanged.
+Native selection passed 2,482 default roots and eight scalar-owner roots each in
+server/highres, with no skips; all three binaries compiled every root. Eight
+focused repeats per profile and two safe contracts passed. Original baseline reused
+verified exact-source broad callback results plus fresh focused/safe checks. Safe
+build/static, three production builds/ABI, exact known-suite outcomes and fresh
+save/load passed. Assertions, production code and original assets are unchanged.
 
-Evidence: [qualification](docs/porting/final-callback-dispatch-qualification.json),
-[inventory](docs/porting/final-callback-dispatch-inventory-after.json).
+Evidence: [qualification](docs/porting/fixture-import-cleanup-qualification.json),
+[inventory](docs/porting/fixture-import-cleanup-inventory-after.json).
 Known-suite expectation: [record](docs/porting/internal-callback-expected-suite.jsonl).
 Standalone metric/history: [C_LOC.md](docs/porting/C_LOC.md).
-Latest broad regression: this remaining-callback batch, 2,482/2,471/2,482 audited roots, no skips.
+Latest broad regression: default in this batch (2,482); all three profiles in the
+preceding callback batch (2,482/2,471/2,482), no skips.
 Last complete default corpus: `6e9681f2`, 2,489 passes plus diagnostic skip.
 
 ## Next work and review items
 
-Next: review and qualify the 18-file fixture import cleanup drafted under
-`build/port-fixture-import-cleanup/` (15 unused header imports and three scalar
-bridges). Its original baseline is accepted (verified prior broad results, eight fresh focused
-roots per profile and two safe contracts); it is not installed. See
-[FIXTURE_IMPORT_CLEANUP.md](docs/porting/FIXTURE_IMPORT_CLEANUP.md). Then
-audit remaining fixture types, allocator ownership, reachable abort and compiler
-flags. Production still uses the centralized C heap; fixture allocation and
-safe-mode accounting need explicit ownership matching before migration.
+Next: migrate remaining fixture types and their shared caller interfaces, then
+allocator ownership, reachable abort and compiler flags. Read-only audit under
+`build/port-fixture-types-audit/` finds 52 shared fixture helpers with uses in 43
+other files. A 20-file draft in `build/port-fixture-native-types/` migrates shared
+fixture types and callers; 203 root owners are identified. Its baseline is not
+accepted and no next conversion is installed. Production still uses the centralized
+C heap; fixture allocation and safe-mode accounting need ownership matching.
 
 The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
 removal. Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md).
@@ -92,14 +91,16 @@ first on PATH. Linux 386 execution needs host execution in this VM.
 Do not change source consumed by running builds/tests.
 
 Current root/safe/production binaries live under
-`build/port-final-callback-dispatch/{contracts/profiles,safe,production/production/bin}`.
-Original focused/safe/private-legacy captures live under
-`build/port-final-callback-dispatch/{original,original-safe,original-legacy}`.
-Original broad logs/binaries are reused from the preceding damage/monster batch.
-Exact paths/hashes are in the committed baseline. Both final-callback scenario
-asset copies were verified and deduplicated (1,120,485,376 bytes reclaimed); the
-batch report has restoration commands. Original assets and run outputs remain.
-Superseded GUI binaries were removed; rebuild `0cf5064c` if needed. Cache archives
+`build/port-fixture-import-cleanup/{contracts/profiles,safe,production/production/bin}`.
+Original focused/safe captures live under
+`build/port-fixture-import-cleanup/{original,original-safe}`. Original broad results
+reuse the preceding callback batch; exact paths/hashes are in the committed
+baseline. Callback scenario copies were verified and deduplicated; see its report
+for restoration commands. Original assets and run outputs remain.
+This batch reclaimed 386,945,024 bytes of superseded damage/monster binaries
+(rebuild `945c190b`) and 560,476,160 bytes of verified scenario asset copies;
+[the batch report](docs/porting/FIXTURE_IMPORT_CLEANUP.md#artifact-recovery-and-disk-cleanup)
+has restoration details. Superseded GUI binaries were removed; rebuild `0cf5064c` if needed. Cache archives
 rebuild automatically. Details are in [FINAL_CALLBACK_DISPATCH.md](docs/porting/FINAL_CALLBACK_DISPATCH.md).
 
 Check physical free space before large runs. Source, reports and qualification

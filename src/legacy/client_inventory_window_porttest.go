@@ -2,13 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2_1.h"
-#include "client__gui__guiinv.h"
-*/
-import "C"
-
 import (
 	"image"
 	"unsafe"

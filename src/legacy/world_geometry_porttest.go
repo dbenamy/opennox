@@ -2,15 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME1_1.h"
-#include "GAME1_2.h"
-#include "GAME3_2.h"
-#include "GAME4_1.h"
-#include "GAME5.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -47,53 +38,53 @@ func PortTestWorldGeometry(spec PortTestWorldGeometrySpec) PortTestWorldGeometry
 			ptr[i] = unsafe.Pointer(&data[off])
 		}
 	}
-	f := func(i int) C.float { return C.float(math.Float32frombits(spec.Floats[i])) }
-	var rv C.int
+	f := func(i int) float32 { return float32(math.Float32frombits(spec.Floats[i])) }
+	var rv int32
 	switch spec.Op {
 	case "segments":
-		rv = C.int(geometrySegments((*[4]int32)(unsafe.Pointer(ptr[0])), (*[4]int32)(unsafe.Pointer(ptr[1]))))
+		rv = int32(geometrySegments((*[4]int32)(unsafe.Pointer(ptr[0])), (*[4]int32)(unsafe.Pointer(ptr[1]))))
 	case "edge-project":
-		rv = C.int(geometryProjectEdge((*[2]int32)(ptr[0]), (*[4]int32)(unsafe.Pointer(ptr[1])), float32(f(0))))
+		rv = int32(geometryProjectEdge((*[2]int32)(ptr[0]), (*[4]int32)(unsafe.Pointer(ptr[1])), float32(f(0))))
 	case "wall-point":
-		rv = C.int(geometryWallPoint((*[2]int32)(unsafe.Pointer(ptr[0])), (*[8]int32)(unsafe.Pointer(ptr[1]))))
+		rv = int32(geometryWallPoint((*[2]int32)(unsafe.Pointer(ptr[0])), (*[8]int32)(unsafe.Pointer(ptr[1]))))
 	case "wall-bounds":
-		rv = C.int(geometryWallBounds((*[8]uint32)(unsafe.Pointer(ptr[0])), (*[4]int32)(unsafe.Pointer(ptr[1]))))
+		rv = int32(geometryWallBounds((*[8]uint32)(unsafe.Pointer(ptr[0])), (*[4]int32)(unsafe.Pointer(ptr[1]))))
 	case "rect-int":
-		rv = C.int(geometryRectInt((*[2]int32)(unsafe.Pointer(ptr[0])), (*[4]int32)(unsafe.Pointer(ptr[1]))))
+		rv = int32(geometryRectInt((*[2]int32)(unsafe.Pointer(ptr[0])), (*[4]int32)(unsafe.Pointer(ptr[1]))))
 	case "rect-float":
-		rv = C.int(geometryRectFloat((*types.Pointf)(unsafe.Pointer(ptr[0])), (*[4]float32)(unsafe.Pointer(ptr[1]))))
+		rv = int32(geometryRectFloat((*types.Pointf)(unsafe.Pointer(ptr[0])), (*[4]float32)(unsafe.Pointer(ptr[1]))))
 	case "box-calc":
 		geometryShapeBox((*server.Shape)(unsafe.Pointer(ptr[0])))
 	case "map-coordinates":
-		rv = C.int(geometryMapCoordinates((*types.Pointf)(unsafe.Pointer(ptr[0])), (*types.Pointf)(unsafe.Pointer(ptr[1]))))
+		rv = int32(geometryMapCoordinates((*types.Pointf)(unsafe.Pointer(ptr[0])), (*types.Pointf)(unsafe.Pointer(ptr[1]))))
 	case "direction-angle":
-		rv = C.int(geometryDirectionAngle((*[2]uint32)(unsafe.Pointer(ptr[0]))))
+		rv = int32(geometryDirectionAngle((*[2]uint32)(unsafe.Pointer(ptr[0]))))
 	case "indexed-direction":
-		rv = C.int(geometryIndexedDirection(int32(spec.Ints[0]), (*[2]int32)(unsafe.Pointer(ptr[0]))))
+		rv = int32(geometryIndexedDirection(int32(spec.Ints[0]), (*[2]int32)(unsafe.Pointer(ptr[0]))))
 	case "direction4-angle":
-		rv = C.int(geometryDirection4Angle(int32(spec.Ints[0])))
+		rv = int32(geometryDirection4Angle(int32(spec.Ints[0])))
 	case "direction4-index":
-		rv = C.int(geometryDirection4Index(int32(spec.Ints[0])))
+		rv = int32(geometryDirection4Index(int32(spec.Ints[0])))
 	case "vector-angle":
-		rv = C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(ptr[0]))))
+		rv = int32(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(ptr[0]))))
 	case "normalize":
 		geometryNormalize((*types.Pointf)(unsafe.Pointer(ptr[0])))
 	case "project-positive":
-		rv = C.int(geometryProjectPositive((*types.Pointf)(ptr[0]), float32(f(0)), float32(f(1)), int32(spec.Ints[0]), int32(spec.Ints[1]), (*types.Pointf)(ptr[1]), (*types.Pointf)(ptr[2])))
+		rv = int32(geometryProjectPositive((*types.Pointf)(ptr[0]), float32(f(0)), float32(f(1)), int32(spec.Ints[0]), int32(spec.Ints[1]), (*types.Pointf)(ptr[1]), (*types.Pointf)(ptr[2])))
 	case "project-negative":
-		rv = C.int(geometryProjectNegative((*types.Pointf)(unsafe.Pointer(ptr[0])), float32(f(0)), float32(f(1)), int32(spec.Ints[0]), int32(spec.Ints[1]), (*types.Pointf)(unsafe.Pointer(ptr[1])), (*types.Pointf)(unsafe.Pointer(ptr[2]))))
+		rv = int32(geometryProjectNegative((*types.Pointf)(unsafe.Pointer(ptr[0])), float32(f(0)), float32(f(1)), int32(spec.Ints[0]), int32(spec.Ints[1]), (*types.Pointf)(unsafe.Pointer(ptr[1])), (*types.Pointf)(unsafe.Pointer(ptr[2]))))
 	case "quadrant":
-		rv = C.int(C.int(geometryQuadrant((*types.Pointf)(unsafe.Pointer(ptr[0])), (*types.Pointf)(unsafe.Pointer(ptr[1])))))
+		rv = int32(int32(geometryQuadrant((*types.Pointf)(unsafe.Pointer(ptr[0])), (*types.Pointf)(unsafe.Pointer(ptr[1])))))
 	case "rectangle-crossings":
-		rv = C.int(geometryRectCrossings((*[4]float32)(unsafe.Pointer(ptr[0])), (*[4]float32)(unsafe.Pointer(ptr[1])), (*types.Pointf)(unsafe.Pointer(ptr[2])), int32(spec.Ints[0]), int32(spec.Ints[1])))
+		rv = int32(geometryRectCrossings((*[4]float32)(unsafe.Pointer(ptr[0])), (*[4]float32)(unsafe.Pointer(ptr[1])), (*types.Pointf)(unsafe.Pointer(ptr[2])), int32(spec.Ints[0]), int32(spec.Ints[1])))
 	case "horizontal-crossing":
-		rv = C.int(geometryCrossHorizontal((*[4]float32)(unsafe.Pointer(ptr[0])), float32(f(0)), float32(f(1)), float32(f(2)), (*types.Pointf)(unsafe.Pointer(ptr[1])), int32(spec.Ints[0])))
+		rv = int32(geometryCrossHorizontal((*[4]float32)(unsafe.Pointer(ptr[0])), float32(f(0)), float32(f(1)), float32(f(2)), (*types.Pointf)(unsafe.Pointer(ptr[1])), int32(spec.Ints[0])))
 	case "vertical-crossing":
-		rv = C.int(geometryCrossVertical((*[4]float32)(unsafe.Pointer(ptr[0])), float32(f(0)), float32(f(1)), float32(f(2)), (*types.Pointf)(unsafe.Pointer(ptr[1])), int32(spec.Ints[0])))
+		rv = int32(geometryCrossVertical((*[4]float32)(unsafe.Pointer(ptr[0])), float32(f(0)), float32(f(1)), float32(f(2)), (*types.Pointf)(unsafe.Pointer(ptr[1])), int32(spec.Ints[0])))
 	case "clipped-center":
-		rv = C.int(geometryClipCenter((*[4]float32)(unsafe.Pointer(ptr[0])), (*[4]float32)(unsafe.Pointer(ptr[1])), (*[4]float32)(unsafe.Pointer(ptr[2])), (*types.Pointf)(unsafe.Pointer(ptr[3]))))
+		rv = int32(geometryClipCenter((*[4]float32)(unsafe.Pointer(ptr[0])), (*[4]float32)(unsafe.Pointer(ptr[1])), (*[4]float32)(unsafe.Pointer(ptr[2])), (*types.Pointf)(unsafe.Pointer(ptr[3]))))
 	case "rect-float-alt":
-		rv = C.int(geometryRectFloat((*types.Pointf)(unsafe.Pointer(ptr[0])), (*[4]float32)(unsafe.Pointer(ptr[1]))))
+		rv = int32(geometryRectFloat((*types.Pointf)(unsafe.Pointer(ptr[0])), (*[4]float32)(unsafe.Pointer(ptr[1]))))
 	default:
 		panic(spec.Op)
 	}

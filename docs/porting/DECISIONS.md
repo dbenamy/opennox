@@ -3103,3 +3103,11 @@ audited remaining families now panic. Retain allocator-domain C.free in controls
 fixtures for separate ownership work. Remove the unused call generator and only
 its no-test package row from known-suite expectations. See
 [FINAL_CALLBACK_DISPATCH.md](FINAL_CALLBACK_DISPATCH.md).
+
+## Fixture-only import and scalar cleanup
+
+For unused include-only preambles and equivalent explicit-width fixture casts,
+compile all roots in every target, run scalar owners across profiles, and use the
+broad default regression. Do not describe reused original server/highres supersets
+as native runtime coverage. Preserve allocations, casts, captured expectations and
+all production code. See [FIXTURE_IMPORT_CLEANUP.md](FIXTURE_IMPORT_CLEANUP.md).

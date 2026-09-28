@@ -2,14 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include <stdlib.h>
-#include <string.h>
-#include "GAME3_3.h"
-
-*/
-import "C"
 import (
 	"encoding/binary"
 	"fmt"

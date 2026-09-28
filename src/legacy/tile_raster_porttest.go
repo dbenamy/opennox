@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME2_2.h"
-
-
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/noxrender"
 	"github.com/opennox/opennox/v1/server"

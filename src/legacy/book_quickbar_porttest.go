@@ -2,13 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2.h"
-#include "client__gui__guispell.h"
-
-*/
-import "C"
 import "unsafe"
 
 // PortTestBookQuickbar binds the actual quickbar record used by the unchanged

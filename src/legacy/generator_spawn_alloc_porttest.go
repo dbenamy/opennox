@@ -2,15 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include "GAME4_1.h"
-#include "common/alloc/classes/alloc_class.h"
-
-
-*/
-import "C"
-
 import "unsafe"
 
 // portTestGeneratorSpawnNode is a normalized SpawnClass record. Object is the

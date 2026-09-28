@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME5_2.h"
-*/
-import "C"
-
 import (
 	"bytes"
 	"unsafe"
@@ -35,9 +30,9 @@ func PortTestClientCodes(specs []PortTestClientCode) []PortTestClientCodeResult 
 		dr.ObjClass = object.Class(spec.Class)
 		raw := unsafe.Slice((*byte)(unsafe.Pointer(dr)), int(unsafe.Sizeof(*dr)))
 		before := append([]byte(nil), raw...)
-		var arg C.int
+		var arg int32
 		if !spec.Nil {
-			arg = C.int(uintptr(unsafe.Pointer(dr)))
+			arg = int32(uintptr(unsafe.Pointer(dr)))
 		}
 		code := uint32(nox_xxx_netGetUnitCodeCli_578B00(int32(arg)))
 		out = append(out, PortTestClientCodeResult{Code: code, Unchanged: bytes.Equal(raw, before)})

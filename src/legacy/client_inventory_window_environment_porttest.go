@@ -2,17 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2_1.h"
-#include "client__gui__guiinv.h"
-
-
-
-
-*/
-import "C"
-
 import "unsafe"
 
 func PortTestInventoryWindowWords() (map[string]*uint32, func()) {

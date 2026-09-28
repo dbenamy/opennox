@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2_3.h"
-*/
-import "C"
-
 import (
 	"bytes"
 	"encoding/binary"

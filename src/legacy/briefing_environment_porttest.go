@@ -2,16 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-
-
-
-
-
-
-*/
-import "C"
 import "unsafe"
 
 func PortTestBriefingWords() (map[string]*uint32, func()) {

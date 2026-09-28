@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME3.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/client/noxrender"

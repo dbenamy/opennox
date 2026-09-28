@@ -2,13 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-
-
-*/
-import "C"
-
 import "unsafe"
 
 // PortTestUIInventoryWords borrows actual inventory state and restores it on cleanup.

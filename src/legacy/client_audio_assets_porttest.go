@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include "GAME2.h"
-#include "GAME2_2.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/internal/binfile"

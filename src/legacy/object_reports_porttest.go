@@ -2,13 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/server"

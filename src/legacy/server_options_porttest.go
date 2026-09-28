@@ -2,14 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME2.h"
-#include "GAME1.h"
-#include "client__gui__servopts__guiserv.h"
-
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/common/memmap"
