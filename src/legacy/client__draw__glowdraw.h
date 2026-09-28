@@ -1,7 +1,0 @@
-#ifndef NOX_PORT_CLIENT_DRAW_GLOWDRAW
-#define NOX_PORT_CLIENT_DRAW_GLOWDRAW
-
-#include "defs.h"
-
-
-#endif // NOX_PORT_CLIENT_DRAW_GLOWDRAW

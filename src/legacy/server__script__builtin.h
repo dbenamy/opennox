@@ -1,8 +1,0 @@
-#ifndef NOX_SERVER_SCRIPT_BUILTIN_H
-#define NOX_SERVER_SCRIPT_BUILTIN_H
-
-#include "defs.h"
-
-
-
-#endif // NOX_SERVER_SCRIPT_BUILTIN_H

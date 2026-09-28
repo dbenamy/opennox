@@ -2,105 +2,6 @@
 
 package legacy
 
-/*
-#cgo LDFLAGS: -Wl,--wrap=calloc -Wl,--wrap=free
-#include <stdint.h>
-#include <stdlib.h>
-#include <pthread.h>
-void* __real_calloc(size_t, size_t);
-void __real_free(void*);
-void* __wrap_calloc(size_t, size_t);
-void __wrap_free(void*);
-extern void themeTestAllocated(void*, size_t);
-extern void themeTestReleased(void*);
-static _Thread_local int theme_observe_active;
-static _Thread_local int grid_active, grid_fail, grid_count, grid_freed, grid_valid;
-static _Thread_local void* grid_ptr[130];
-static _Thread_local size_t grid_size[130];
-static _Thread_local int grid_live[130];
-void worldGridAllocObserve(int fail) {
- grid_active = 1; grid_fail = fail; grid_count = 0; grid_freed = 0; grid_valid = 1;
-}
-void worldGridAllocStop(void) { grid_active = 0; grid_fail = 0; }
-int worldGridAllocStat(int index) {
- if (index == -1) return grid_count;
- if (index == -2) return grid_freed;
- if (index == -3) return grid_valid;
- return grid_size[index];
-}
-int worldGridAllocContains(void* p) {
- for (int i = 0; i < grid_count; i++) if (grid_ptr[i] == p && grid_live[i]) return 1;
- return 0;
-}
-// Resource teardown records raw addresses without calling Go inside free.
-static _Thread_local uintptr_t* resource_free_events;
-static _Thread_local int resource_free_capacity, resource_free_count;
-void resourceFreeObserve(uintptr_t* events, int capacity) {
- resource_free_events = events; resource_free_capacity = capacity; resource_free_count = 0;
-}
-int resourceFreeStop(void) {
- resource_free_events = NULL;
- return resource_free_count;
-}
-// Probe observer scope without entering Go from the foreign thread.
-static void* themeTestThreadProbe(void* out) {
- *(int*)out = theme_observe_active;
- return NULL;
-}
-int themeTestOtherThreadState(void) {
- pthread_t thread;
- int state = -1;
- if (pthread_create(&thread, NULL, themeTestThreadProbe, &state)) return -2;
- if (pthread_join(thread, NULL)) return -3;
- return state;
-}
-// Exercise allocator wrapping on another thread while the caller has failure
-// injection active. A flag read alone would not prove allocation isolation.
-static void* allocationObserverThreadProbe(void* out) {
- void* p = __wrap_calloc(128, 4);
- if (p) *(volatile unsigned char*)p = 0x5a;
- *(int*)out = p != NULL;
- __wrap_free(p);
- return NULL;
-}
-int allocationObserverOtherThread(void) {
- pthread_t thread;
- int result = -1;
- if (pthread_create(&thread, NULL, allocationObserverThreadProbe, &result)) return -2;
- if (pthread_join(thread, NULL)) return -3;
- return result;
-}
-int themeTestCurrentThreadState(void) { return theme_observe_active; }
-void themeTestObserve(int active) {
- theme_observe_active = active;
-}
-void* __wrap_calloc(size_t n, size_t size) {
- if (grid_active && grid_fail > 0 && n == 128 && (size == 4 || size == 44) && --grid_fail == 0) return NULL;
- void* p = __real_calloc(n, size);
- if (grid_active && p) {
-  if (grid_count >= 130) grid_valid = 0;
-  else { grid_ptr[grid_count] = p; grid_size[grid_count] = n * size; grid_live[grid_count++] = 1; }
- }
- if (theme_observe_active && p) themeTestAllocated(p, n * size);
- return p;
-}
-void __wrap_free(void* p) {
- if (resource_free_events && p) {
-  if (resource_free_count < resource_free_capacity) resource_free_events[resource_free_count] = (uintptr_t)p;
-  resource_free_count++;
- }
- if (grid_active && p) {
-  int found = 0;
-  for (int i = 0; i < grid_count; i++) if (grid_ptr[i] == p && grid_live[i]) {
-   grid_live[i] = 0; grid_freed++; found = 1; break;
-  }
-  if (!found) grid_valid = 0;
- }
- if (theme_observe_active && p) themeTestReleased(p);
- __real_free(p);
-}
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"runtime"
@@ -110,8 +11,8 @@ var themeObserverPinned bool
 var themeObserverOldClock func() uint32
 
 func themeObserve(active bool, epoch uint32) {
-	// Linker wrappers also intercept Go runtime thread startup. Only the fixture
-	// thread may enter these Go observers; fresh runtime threads must stay inert.
+	// Allocation observation belongs to the pinned fixture thread; other
+	// threads must not inherit callbacks or failure injection.
 	if active && !themeObserverPinned {
 		runtime.LockOSThread()
 		themeObserverPinned = true
@@ -120,7 +21,7 @@ func themeObserve(active bool, epoch uint32) {
 	if active {
 		mapThemeClock = func() uint32 { return epoch }
 	}
-	C.themeTestObserve(C.int(bool2int(active)))
+	allocationTestThemeObserve(active)
 	// Fixtures reset observation more than once during teardown. Pin only the
 	// active interval, preserving any outer LockOSThread held by the fixture.
 	if !active && themeObserverPinned {
@@ -134,15 +35,15 @@ func themeObserve(active bool, epoch uint32) {
 // PortTestThemeObserverThreadScope exercises activation, repeated activation and
 // idempotent cleanup around an actual foreign thread.
 func PortTestThemeObserverThreadScope() [4]int {
-	before := int(C.themeTestCurrentThreadState())
+	before := int(allocationTestThemeState())
 	themeObserve(true, 12345)
 	defer themeObserve(false, 0)
 	themeObserve(true, 12345)
-	own := int(C.themeTestCurrentThreadState())
-	other := int(C.themeTestOtherThreadState())
+	own := int(allocationTestThemeState())
+	other := int(allocationTestOtherThreadThemeState())
 	themeObserve(false, 0)
 	themeObserve(false, 0)
-	return [4]int{before, own, other, int(C.themeTestCurrentThreadState())}
+	return [4]int{before, own, other, int(allocationTestThemeState())}
 }
 
 // Exercise the same clock source used by the theme loader.
@@ -157,10 +58,10 @@ func PortTestAllocationObserverIsolation() [8]int {
 		panic("preexisting nil allocation marker")
 	}
 	before := alloc.PortTestAllocationCount()
-	C.worldGridAllocObserve(1)
-	defer C.worldGridAllocStop()
-	other := int(C.allocationObserverOtherThread())
-	otherCount := int(C.worldGridAllocStat(-1))
+	allocationTestGridStart(1)
+	defer allocationTestGridStop()
+	other := int(allocationTestOtherThreadAllocation())
+	otherCount := int(allocationTestGridStat(-1))
 	first := legacyCalloc(128, 4)
 	firstNil := first == nil
 	if first != nil {
@@ -177,5 +78,5 @@ func PortTestAllocationObserverIsolation() [8]int {
 	if alloc.PortTestAllocationLive(nil) {
 		alloc.FreePtr(nil)
 	}
-	return [8]int{other, otherCount, bool2int(firstNil), bool2int(secondOK), int(C.worldGridAllocStat(-1)), int(C.worldGridAllocStat(-2)), int(C.worldGridAllocStat(-3)), alloc.PortTestAllocationCount() - before}
+	return [8]int{other, otherCount, bool2int(firstNil), bool2int(secondOK), int(allocationTestGridStat(-1)), int(allocationTestGridStat(-2)), int(allocationTestGridStat(-3)), alloc.PortTestAllocationCount() - before}
 }

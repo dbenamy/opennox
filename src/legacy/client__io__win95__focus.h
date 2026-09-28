@@ -1,7 +1,0 @@
-#ifndef NOX_PORT_CLIENT_IO_WIN95_FOCUS
-#define NOX_PORT_CLIENT_IO_WIN95_FOCUS
-
-#include "defs.h"
-
-
-#endif // NOX_PORT_CLIENT_IO_WIN95_FOCUS

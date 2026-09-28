@@ -1,8 +1,0 @@
-#ifndef NOX_PORT_CLIENT_SHELL_MAINMENU
-#define NOX_PORT_CLIENT_SHELL_MAINMENU
-
-#include "defs.h"
-
-
-
-#endif // NOX_PORT_CLIENT_SHELL_MAINMENU

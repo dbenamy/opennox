@@ -16,7 +16,7 @@ C imports, including Windows-only socket bindings. Retire all 157 project header
 static function bodies or abort override. Lexer tests use literal include text;
 historical capture tooling already recovers its retired source from Git.
 
-The proposed result is two fixture C-import files, zero fixture C exports and
+The qualified result is two fixture C-import files, zero fixture C exports and
 zero project C headers. Normal production imports stay 4 client/highres and 5
 server; the safe flags file remains. Standalone C and production C exports/bodies
 stay zero. External SDL2/OpenGL/OpenAL dependencies are preserved.
@@ -75,7 +75,47 @@ original asset hashes. Verify C observers/export symbols are absent and sanitize
 initialization remains present. Preserve frozen root assertions/captures.
 
 Evidence: [baseline](fixture-allocation-observers-baseline.json).
-Working evidence and the uninstalled native draft:
-`build/port-fixture-allocation-observers/`. The original contract is installed;
-no native observer/header deletion is installed yet. Completed scripts are single-use.
+Working evidence and installed native implementation:
+`build/port-fixture-allocation-observers/`. The original baseline and native
+implementation are qualified. Completed scripts are single-use.
 Primary handles this batch; Luna quota remains unavailable.
+
+## Native result
+
+All 80 active/boundary owners and eight focused repeats passed in every normal
+profile, plus eleven safe roots and five allocator/five string-clock contracts in
+both normal and safe. The complete compiled root corpus passed 2491/2480/2491
+roots (default/server/highres), with only the expected opt-in population diagnostic
+skipped in each. Exact discovered/run/pass/skip sets were checked. Frozen root
+assertions and captures are unchanged.
+
+Static checks, safe build, three production builds/ABI, exact known-suite outcomes,
+fresh save/load and all original asset hashes passed. Retired C observer/export
+symbols are absent; production binaries contain no native test-observer API and
+the safe binary retains AddressSanitizer initialization.
+
+Four fixture C imports are retired (6→2), along with both remaining fixture C
+exports and all 157 project headers / 2,731 lines. Normal production cgo remains
+4 client/highres and 5 server, plus safe sanitizer flags where selected. Standalone
+C and production C bodies/exports remain zero. The two remaining fixture imports
+supply aligned allocation and abort, reserved for allocator work.
+
+Evidence: [qualification](fixture-allocation-observers-qualification.json),
+[inventory](fixture-allocation-observers-inventory-after.json).
+
+## Artifact cleanup
+
+Removed 14 superseded numeric/safe-bridge native binaries after hash and host
+process/fd/maps checks, reclaiming 773,533,696 bytes. Logs and fingerprint records
+remain. Rebuild numeric `dbc4e0be` or safe-bridge `8580330d` for those binaries.
+The safe-bridge original normal checks reused the removed numeric native binaries;
+their recovery revision is also `dbc4e0be`. Original numeric C binaries and all
+current observer original/native binaries remain. See [cleanup record](fixture-allocation-observers-binary-cleanup.json).
+
+Verified deduplication removed 1,654 unchanged scenario asset copies (560,115,712
+allocated bytes), preserving originals and restoration manifests. Restore with:
+`python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/fixture-allocation-observers-save/deduplicated-assets.json`.
+After all jobs joined, hash/type/host-use checks allowed removal of 36 reproducible
+Linux 386 cache archives untouched for two hours (2,109,116,416 allocated bytes).
+Physical free space afterward was 4.40 GB. See [scenario cleanup](fixture-allocation-observers-scenario-cleanup.json)
+and [cache cleanup](fixture-allocation-observers-cache-cleanup.json).

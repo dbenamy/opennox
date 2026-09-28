@@ -1,7 +1,0 @@
-#ifndef NOX_PORT_SERVER_SYSTEM_TRADE
-#define NOX_PORT_SERVER_SYSTEM_TRADE
-
-#include "defs.h"
-
-
-#endif // NOX_PORT_SERVER_SYSTEM_TRADE

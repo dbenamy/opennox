@@ -1,6 +1,0 @@
-#ifndef NOX_PORT_CLIENT_GUI_GUIMETER
-#define NOX_PORT_CLIENT_GUI_GUIMETER
-
-#include "defs.h"
-
-#endif // NOX_PORT_CLIENT_GUI_GUIMETER

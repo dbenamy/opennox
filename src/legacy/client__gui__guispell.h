@@ -1,8 +1,0 @@
-#ifndef NOX_PORT_CLIENT_GUI_GUISPELL
-#define NOX_PORT_CLIENT_GUI_GUISPELL
-
-#include "defs.h"
-
-
-
-#endif // NOX_PORT_CLIENT_GUI_GUISPELL

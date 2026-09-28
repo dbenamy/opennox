@@ -1,7 +1,0 @@
-#ifndef NOX_PORT_CLIENT_DRAW_BASEDRAW
-#define NOX_PORT_CLIENT_DRAW_BASEDRAW
-
-#include "defs.h"
-
-
-#endif // NOX_PORT_CLIENT_DRAW_BASEDRAW

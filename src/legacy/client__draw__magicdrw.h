@@ -1,7 +1,0 @@
-#ifndef NOX_PORT_CLIENT_DRAW_MAGICDRW
-#define NOX_PORT_CLIENT_DRAW_MAGICDRW
-
-#include "defs.h"
-
-
-#endif // NOX_PORT_CLIENT_DRAW_MAGICDRW

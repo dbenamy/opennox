@@ -1,7 +1,0 @@
-#ifndef NOX_PORT_CLIENT_GUI_GUIINV
-#define NOX_PORT_CLIENT_GUI_GUIINV
-
-#include "defs.h"
-
-
-#endif // NOX_PORT_CLIENT_GUI_GUIINV

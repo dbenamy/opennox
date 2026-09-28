@@ -1,7 +1,0 @@
-#ifndef NOX_PORT_CLIENT_SHELL_SELCHAR
-#define NOX_PORT_CLIENT_SHELL_SELCHAR
-
-#include "defs.h"
-
-
-#endif // NOX_PORT_CLIENT_SHELL_SELCHAR

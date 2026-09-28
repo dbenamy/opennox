@@ -2,8 +2,6 @@ package legacy
 
 /*
 #include <stdlib.h>
-#include "defs.h"
-#include "GAME4.h"
 */
 import "C"
 import (

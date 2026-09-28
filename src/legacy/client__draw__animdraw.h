@@ -1,7 +1,0 @@
-#ifndef NOX_PORT_CLIENT_DRAW_ANIMDRAW
-#define NOX_PORT_CLIENT_DRAW_ANIMDRAW
-
-#include "defs.h"
-
-
-#endif // NOX_PORT_CLIENT_DRAW_ANIMDRAW

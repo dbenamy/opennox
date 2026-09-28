@@ -1,7 +1,0 @@
-#ifndef NOX_PORT_SERVER_OBJECT_DIE_DIE
-#define NOX_PORT_SERVER_OBJECT_DIE_DIE
-
-#include "defs.h"
-
-
-#endif // NOX_PORT_SERVER_OBJECT_DIE_DIE

@@ -1,7 +1,0 @@
-#ifndef NOX_PORT_CLIENT_DRAW_PARTRAIN
-#define NOX_PORT_CLIENT_DRAW_PARTRAIN
-
-#include "defs.h"
-
-
-#endif // NOX_PORT_CLIENT_DRAW_PARTRAIN

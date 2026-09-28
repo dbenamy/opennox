@@ -2,14 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include <stdlib.h>
-void resourceFreeObserve(uintptr_t*, int);
-int resourceFreeStop(void);
-*/
-import "C"
-
 import (
 	"runtime"
 	"unsafe"
@@ -19,7 +11,7 @@ import (
 func PortTestResourceAllocate(size uintptr) unsafe.Pointer { return legacyCalloc(1, uintptr(size)) }
 func PortTestResourceRelease(ptr unsafe.Pointer)           { legacyFree(ptr) }
 
-// Observe only the current thread, with no Go callbacks inside the free wrapper.
+// Observe engine frees on the current thread, recording raw addresses before release.
 // Normalize recorded addresses after stopping observation; the addresses are never
 // dereferenced after release. Existing theme/grid observers keep their own state.
 func PortTestObserveResourceFrees(pointers []unsafe.Pointer, free func()) []uint32 {
@@ -38,15 +30,15 @@ func PortTestObserveResourceFrees(pointers []unsafe.Pointer, free func()) []uint
 	defer legacyFree(events)
 	runtime.LockOSThread()
 	defer runtime.UnlockOSThread()
-	C.resourceFreeObserve((*C.uintptr_t)(events), C.int(capacity))
+	allocationTestResourceStart(events, capacity)
 	stopped := false
 	defer func() {
 		if !stopped {
-			C.resourceFreeStop()
+			allocationTestResourceStop()
 		}
 	}()
 	free()
-	count := int(C.resourceFreeStop())
+	count := int(allocationTestResourceStop())
 	stopped = true
 	if count > capacity {
 		panic("resource free observer overflow")

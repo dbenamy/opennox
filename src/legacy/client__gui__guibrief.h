@@ -1,7 +1,0 @@
-#ifndef NOX_PORT_CLIENT_GUI_GUIBRIEF
-#define NOX_PORT_CLIENT_GUI_GUIBRIEF
-
-#include "defs.h"
-
-
-#endif // NOX_PORT_CLIENT_GUI_GUIBRIEF

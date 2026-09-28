@@ -1,7 +1,0 @@
-#ifndef NOX_PORT_CLIENT_GUI_GUIQUIT
-#define NOX_PORT_CLIENT_GUI_GUIQUIT
-
-#include "defs.h"
-
-
-#endif // NOX_PORT_CLIENT_GUI_GUIQUIT

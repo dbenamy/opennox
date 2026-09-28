@@ -1,7 +1,0 @@
-#ifndef NOX_PORT_SERVER_DBASE_OBJDB
-#define NOX_PORT_SERVER_DBASE_OBJDB
-
-#include "defs.h"
-
-
-#endif // NOX_PORT_SERVER_DBASE_OBJDB

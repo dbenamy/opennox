@@ -2,16 +2,6 @@
 
 package legacy
 
-/*
-#include <stdlib.h>
-#include "GAME1.h"
-void worldGridAllocObserve(int fail);
-void worldGridAllocStop(void);
-int worldGridAllocStat(int index);
-int worldGridAllocContains(void* p);
-*/
-import "C"
-
 import (
 	"runtime"
 	"unsafe"
@@ -29,8 +19,8 @@ func PortTestWorldGridAllocate(failAt int) (r PortTestWorldGridAllocation) {
 	oldGrid := worldTileGrid
 	r.FailAt = failAt
 	r.Zero = true
-	C.worldGridAllocObserve(C.int(failAt))
-	defer func() { C.worldGridAllocStop(); worldTileGrid = oldGrid }()
+	allocationTestGridStart(int(failAt))
+	defer func() { allocationTestGridStop(); worldTileGrid = oldGrid }()
 	r.Return = int(worldGridAllocate())
 	outer := unsafe.Pointer(worldTileGrid)
 	if outer != nil {
@@ -43,24 +33,24 @@ func PortTestWorldGridAllocate(failAt int) (r PortTestWorldGridAllocation) {
 				}
 			}
 		}
-		before := int(C.worldGridAllocStat(-1))
+		before := int(allocationTestGridStat(-1))
 		worldGridFreeRows()
-		r.RowsFreed = int(C.worldGridAllocStat(-2))
-		r.OuterRetained = C.worldGridAllocContains(outer) != 0
+		r.RowsFreed = int(allocationTestGridStat(-2))
+		r.OuterRetained = allocationTestGridContains(outer) != 0
 		r.OuterRetained = r.OuterRetained && unsafe.Pointer(worldTileGrid) == outer
 		r.Remaining = before - r.RowsFreed
 		legacyFree(outer)
 	}
-	count := int(C.worldGridAllocStat(-1))
-	r.FinalRemaining = count - int(C.worldGridAllocStat(-2))
-	r.ValidFrees = C.worldGridAllocStat(-3) != 0
+	count := int(allocationTestGridStat(-1))
+	r.FinalRemaining = count - int(allocationTestGridStat(-2))
+	r.ValidFrees = allocationTestGridStat(-3) != 0
 	for i := 0; i < count; i++ {
-		r.Sizes = append(r.Sizes, int(C.worldGridAllocStat(C.int(i))))
+		r.Sizes = append(r.Sizes, int(allocationTestGridStat(int(i))))
 	}
 	return r
 }
 
 // Shared by fixture-grid allocation contracts while the C observer remains.
-func portTestGridAllocationObserve(failAt int) { C.worldGridAllocObserve(C.int(failAt)) }
-func portTestGridAllocationStop()              { C.worldGridAllocStop() }
-func portTestGridAllocationStat(index int) int { return int(C.worldGridAllocStat(C.int(index))) }
+func portTestGridAllocationObserve(failAt int) { allocationTestGridStart(int(failAt)) }
+func portTestGridAllocationStop()              { allocationTestGridStop() }
+func portTestGridAllocationStat(index int) int { return int(allocationTestGridStat(int(index))) }

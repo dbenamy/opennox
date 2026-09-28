@@ -1,8 +1,0 @@
-#ifndef NOX_SERVER_SCRIPT_SCRIPT_H
-#define NOX_SERVER_SCRIPT_SCRIPT_H
-
-#include "defs.h"
-
-
-
-#endif // NOX_SERVER_SCRIPT_SCRIPT_H

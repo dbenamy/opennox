@@ -1,7 +1,0 @@
-#ifndef NOX_PORT_SERVER_SYSTEM_SERVER
-#define NOX_PORT_SERVER_SYSTEM_SERVER
-
-#include "defs.h"
-
-
-#endif // NOX_PORT_SERVER_SYSTEM_SERVER

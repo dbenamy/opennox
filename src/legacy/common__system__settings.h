@@ -1,7 +1,0 @@
-#ifndef NOX_PORT_COMMON_SETTINGS
-#define NOX_PORT_COMMON_SETTINGS
-
-#include "defs.h"
-
-
-#endif // NOX_PORT_COMMON_SETTINGS

@@ -1,7 +1,0 @@
-#ifndef NOX_PORT_CLIENT_GUI_GUI_CTF
-#define NOX_PORT_CLIENT_GUI_GUI_CTF
-
-#include "defs.h"
-
-
-#endif // NOX_PORT_CLIENT_GUI_GUI_CTF

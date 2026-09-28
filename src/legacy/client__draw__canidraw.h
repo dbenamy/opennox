@@ -1,7 +1,0 @@
-#ifndef NOX_PORT_CLIENT_DRAW_CANIDRAW_H
-#define NOX_PORT_CLIENT_DRAW_CANIDRAW_H
-
-#include "defs.h"
-
-
-#endif // NOX_PORT_CLIENT_DRAW_CANIDRAW_H

@@ -1,0 +1,149 @@
+{
+  "success": true,
+  "files": [
+    {
+      "path": "build/port-fixture-fpu/contracts/profiles/highres.test",
+      "revision": "dbc4e0be",
+      "sha256": "b247322326c59e1698c72341d89209a966657ad53929be435de36fa89fea22ee",
+      "size": 67281956,
+      "device": 2049,
+      "inode": 658037,
+      "mtime_ns": 1790575683603051107,
+      "allocated_bytes": 67289088
+    },
+    {
+      "path": "build/port-fixture-fpu/contracts/profiles/default.test",
+      "revision": "dbc4e0be",
+      "sha256": "5973d5472e557dd185c95e682dad4194412260a475a6fd8752b73de5c6d3bf45",
+      "size": 67097872,
+      "device": 2049,
+      "inode": 658040,
+      "mtime_ns": 1790575689380038644,
+      "allocated_bytes": 67104768
+    },
+    {
+      "path": "build/port-fixture-fpu/contracts/profiles/server.test",
+      "revision": "dbc4e0be",
+      "sha256": "0942f9546a0ac462c69339faa9c458801bddd8f5a4bb60f91fd70e0249093451",
+      "size": 65729880,
+      "device": 2049,
+      "inode": 658034,
+      "mtime_ns": 1790575644295135907,
+      "allocated_bytes": 65736704
+    },
+    {
+      "path": "build/port-fixture-fpu/safe/opennox-safe",
+      "revision": "dbc4e0be",
+      "sha256": "4930d5a173ae856f4c841daa446f946a4eef60b0a2b6a771cbb911989d4e9d41",
+      "size": 47338240,
+      "device": 2049,
+      "inode": 658076,
+      "mtime_ns": 1790576012151342307,
+      "allocated_bytes": 47345664
+    },
+    {
+      "path": "build/port-fixture-fpu/production/production/bin/opennox-hd",
+      "revision": "dbc4e0be",
+      "sha256": "b04fec6cfed5a97a430ac1914f2a407009d539f9ca948ead8c480e03b6fb5996",
+      "size": 47454340,
+      "device": 2049,
+      "inode": 658090,
+      "mtime_ns": 1790576022119320803,
+      "allocated_bytes": 47460352
+    },
+    {
+      "path": "build/port-fixture-fpu/production/production/bin/opennox",
+      "revision": "dbc4e0be",
+      "sha256": "034668a69be510d3f3aab5e0b944df2e8d686374b3435d406f97ae6a8ece72c1",
+      "size": 47310380,
+      "device": 2049,
+      "inode": 658087,
+      "mtime_ns": 1790576017837330041,
+      "allocated_bytes": 47316992
+    },
+    {
+      "path": "build/port-fixture-fpu/production/production/bin/opennox-server",
+      "revision": "dbc4e0be",
+      "sha256": "8e5c7a694ec9bc93d445dca14e511400cec76ffbe8a7590a6249d32088bd15dd",
+      "size": 44518068,
+      "device": 2049,
+      "inode": 658092,
+      "mtime_ns": 1790576026038312348,
+      "allocated_bytes": 44523520
+    },
+    {
+      "path": "build/port-safe-bridges/contracts/profiles/highres.test",
+      "revision": "8580330d",
+      "sha256": "b247322326c59e1698c72341d89209a966657ad53929be435de36fa89fea22ee",
+      "size": 67281956,
+      "device": 2049,
+      "inode": 658819,
+      "mtime_ns": 1790576883181961327,
+      "allocated_bytes": 67289088
+    },
+    {
+      "path": "build/port-safe-bridges/contracts/profiles/default.test",
+      "revision": "8580330d",
+      "sha256": "5973d5472e557dd185c95e682dad4194412260a475a6fd8752b73de5c6d3bf45",
+      "size": 67097872,
+      "device": 2049,
+      "inode": 658853,
+      "mtime_ns": 1790576888881945025,
+      "allocated_bytes": 67104768
+    },
+    {
+      "path": "build/port-safe-bridges/contracts/profiles/server.test",
+      "revision": "8580330d",
+      "sha256": "0942f9546a0ac462c69339faa9c458801bddd8f5a4bb60f91fd70e0249093451",
+      "size": 65729880,
+      "device": 2049,
+      "inode": 658716,
+      "mtime_ns": 1790576877075978789,
+      "allocated_bytes": 65736704
+    },
+    {
+      "path": "build/port-safe-bridges/safe/opennox-safe",
+      "revision": "8580330d",
+      "sha256": "71fc7e10fc92c5cb760453a9c56ff46ace8d2421bd2e31e1a049dec4a654d398",
+      "size": 47321060,
+      "device": 2049,
+      "inode": 659654,
+      "mtime_ns": 1790576913100875762,
+      "allocated_bytes": 47325184
+    },
+    {
+      "path": "build/port-safe-bridges/production/production/bin/opennox-hd",
+      "revision": "8580330d",
+      "sha256": "ed0fb8b5f20a0a27c2beb35db678f0c561d44f6126a40415d532334570d838cb",
+      "size": 47454340,
+      "device": 2049,
+      "inode": 659870,
+      "mtime_ns": 1790576923347846457,
+      "allocated_bytes": 47460352
+    },
+    {
+      "path": "build/port-safe-bridges/production/production/bin/opennox",
+      "revision": "8580330d",
+      "sha256": "2bf65e801642a048d07d2d209317e3f41e344cede8da3325e81a3531d42f75f5",
+      "size": 47310380,
+      "device": 2049,
+      "inode": 659839,
+      "mtime_ns": 1790576919039858777,
+      "allocated_bytes": 47316992
+    },
+    {
+      "path": "build/port-safe-bridges/production/production/bin/opennox-server",
+      "revision": "8580330d",
+      "sha256": "9d2f2c7a31ac19f36f25e309736a66a0083e56b7d24128db96c4ff7b7f72d913",
+      "size": 44518068,
+      "device": 2049,
+      "inode": 659889,
+      "mtime_ns": 1790576927182835489,
+      "allocated_bytes": 44523520
+    }
+  ],
+  "allocated_bytes": 773533696,
+  "host_process_fd_maps_checks": true,
+  "physical_free_after": 2855927808,
+  "recovery": "Rebuild dbc4e0be numeric or 8580330d safe-bridge native binaries. Numeric original C binaries and all observer original/native binaries remain. Safe-bridge original normal binaries reused the removed numeric native binaries; recover those from dbc4e0be. Logs and fingerprint records retained."
+}

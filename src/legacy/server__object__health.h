@@ -1,7 +1,0 @@
-#ifndef NOX_PORT_SERVER_OBJECT_HEALTH
-#define NOX_PORT_SERVER_OBJECT_HEALTH
-
-#include "defs.h"
-
-
-#endif // NOX_PORT_SERVER_OBJECT_HEALTH

@@ -1,7 +1,0 @@
-#ifndef NOX_PORT_CLIENT_DRAW_MGENDRAW
-#define NOX_PORT_CLIENT_DRAW_MGENDRAW
-
-#include "defs.h"
-
-
-#endif // NOX_PORT_CLIENT_DRAW_MGENDRAW

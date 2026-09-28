@@ -1,0 +1,10 @@
+{
+  "success": true,
+  "files": 36,
+  "allocated_bytes": 2109116416,
+  "free_bytes_after": 4399980544,
+  "available_bytes_after": 1101680640,
+  "scope": "Reproducible Linux 386 Go build-cache archives >=10MB untouched for two hours; execute only after jobs join and host-use checks pass.",
+  "host_checks": true,
+  "current_binaries_and_module_sources_preserved": true
+}

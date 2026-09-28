@@ -1,7 +1,0 @@
-#ifndef NOX_PORT_CLIENT_GUI_CHATHELP
-#define NOX_PORT_CLIENT_GUI_CHATHELP
-
-#include "defs.h"
-
-
-#endif // NOX_PORT_CLIENT_GUI_CHATHELP

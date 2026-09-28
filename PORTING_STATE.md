@@ -11,29 +11,31 @@ This is the current resume checkpoint. Workflow and delegation rules live in
 - **Legacy C export bridges:** 1,890/1,890 retired in normal profiles;
   11/11 safe-only allocator/memory bridges retired.
 - **Embedded production C bodies:** 79/79 retired (0 remain).
-- **Fixture and declaration dependencies:** 6 porttest-tagged files still import C;
-  2 fixture-only export callbacks and 157 headers / 2,731 physical lines remain.
+- **Fixture C dependencies:** 2 porttest-tagged files still import C;
+  no fixture-only export callbacks remain.
+- **Project C headers:** 0 remain; the last 157 headers / 2,731 lines are retired.
 
 Production cgo counts cover selected Linux 386 builds; these metrics are not equal
 units of effort. Fixture imports cover all build tags. Standalone production/test C
 remain zero.
 
-Latest qualified chunk retires eleven safe-only C forwarding exports and unused
-libc redirects. Six fixture calls now invoke their existing Go owners directly;
-sanitizer flags, runtime checks and allocation tracking remain intact. Fixture C
-imports are 7→6. See [SAFE_BRIDGE_RETIREMENT.md](docs/porting/SAFE_BRIDGE_RETIREMENT.md).
+Latest qualified chunk replaces C allocation observers in four fixture files with
+thread-scoped native test dispatch and retires the last 157 unused project headers.
+A new original/native contract checks actual other-thread allocation isolation. Production dispatch
+stays direct; aligned buffers and the allocator remain for the next phase work.
+See [FIXTURE_ALLOCATION_OBSERVERS.md](docs/porting/FIXTURE_ALLOCATION_OBSERVERS.md).
 
 Continue chunk-by-chunk with primary review, qualification, documentation and
 commit/push. Use one Luna helper when its quota is available; no substitute model.
 Stop at the milestone, usage limits or a substantial question. Latest qualified
-artifacts: `build/port-safe-bridges/`.
+artifacts: `build/port-fixture-allocation-observers/`.
 
 ## What remains
 
 | Area | Remaining work or dependency |
 | --- | --- |
 | Embedded C callback glue | Complete: zero production bodies remain in selected builds; pure-Go callback registries remain. |
-| Types and declarations | 157 tracked headers / 2,731 physical lines. 6 porttest-tagged source files still import C across all build tags (not one selected profile). Fixture C observers/types still need retirement or explicit qualification scope. |
+| Types and declarations | No project C headers remain. Two porttest files still import C for aligned allocation/abort; no fixture C exports remain. |
 | Production C imports | alloc/raw.go, legacy/object_xfer_world.go (reachable abort), legacy/cgo_common.go and legacy/video_highres.go (flags). Server adds legacy/cgo_server.go; safe adds cgo_safe.go (sanitizer flags). |
 | Memory and layout | C-heap allocator, raw pointers, fixed offsets and 32-bit address assumptions remain. Preserve ownership/lifetime/failure semantics behind the centralized allocator. |
 | External libraries | SDL2, OpenGL, OpenAL and similar bindings remain for this phase; later replacement requires a separate discussion. |
@@ -41,33 +43,26 @@ artifacts: `build/port-safe-bridges/`.
 
 ## Latest qualification
 
-Original and native checks passed nine safe roots; eight owners plus three repeats
-per normal profile; and five allocator plus five string/clock contracts in both
-normal and safe. Static checks, safe build, production builds/ABI, exact known-suite
-outcomes and fresh save/load passed. The safe binary has no retired exports and
-retains AddressSanitizer. Frozen assertions/captures and asset hashes are unchanged.
+Original/native selections passed 80 owners and eight repeats per normal profile,
+eleven safe roots and direct allocator/string/clock contracts. The complete native
+root corpus passed 2491/2480/2491 roots (default/server/highres), with one expected
+opt-in diagnostic skip per profile. Static checks, safe build, production builds/ABI,
+exact known-suite outcomes and fresh save/load passed. Frozen assertions/captures
+and original asset hashes remain unchanged.
 
-Evidence: [qualification](docs/porting/safe-bridge-retirement-qualification.json),
-[inventory](docs/porting/safe-bridge-retirement-inventory-after.json).
+Evidence: [qualification](docs/porting/fixture-allocation-observers-qualification.json),
+[inventory](docs/porting/fixture-allocation-observers-inventory-after.json).
 Known-suite expectation: [record](docs/porting/internal-callback-expected-suite.jsonl).
 Standalone metric/history: [C_LOC.md](docs/porting/C_LOC.md).
-Latest broad regression: default in fixture-import-cleanup (2,482); all three
-profiles in final-callback-dispatch (2,482/2,471/2,482), no skips.
-Last complete default corpus: `6e9681f2`, 2,489 passes plus diagnostic skip.
+This is the latest complete regression across all three profiles; the skipped
+population diagnostic's four cases have explicit regression coverage.
 
 ## Next work and review items
 
-Next: install and qualify the native allocation-observer/header retirement draft
-under `build/port-fixture-allocation-observers/`. Its new original-C thread-allocation
-contract passed twice in all profiles including safe; 80 owners and eight repeats
-per normal profile, eleven safe roots and direct library contracts passed.
-The draft removes four fixture C imports, two fixture exports and all 157 unused
-project headers. Full native root sweeps will qualify the shared test allocation
-path. See [FIXTURE_ALLOCATION_OBSERVERS.md](docs/porting/FIXTURE_ALLOCATION_OBSERVERS.md).
-Only the original contract is installed; native conversion remains uninstalled.
-Then retire aligned fixture buffers, reachable abort/compiler flags and centralized
-allocator implementation. Preserve normal/safe domains, layout and failure behavior,
-including safe Calloc's nil marker. External native libraries remain preserved.
+Next: retire the two aligned-buffer fixture imports, reachable abort/compiler flags
+and centralized libc allocator implementation. Preserve normal/safe allocation
+domains, alignment, layout and failure behavior, including safe Calloc's nil marker.
+External native libraries remain preserved dependencies. No next conversion is installed.
 
 The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
 removal. Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md).
@@ -95,18 +90,19 @@ first on PATH. Linux 386 execution needs host execution in this VM.
 Do not change source consumed by running builds/tests.
 
 Current root/safe/production binaries live under
-`build/port-safe-bridges/{contracts/profiles,safe,production/production/bin}`.
-Original normal owner runs reuse exact-source numeric binaries under
-`build/port-fixture-fpu/contracts/profiles`; original safe/library logs are under
-`build/port-safe-bridges/{original-safe,original-library}`. The numeric chunk's
-accepted original evidence is in its `original-corrected` and
-`original-safe-corrected` folders; earlier failed safe attempts are diagnostic only.
-Exact source/binary hashes are in the corresponding baselines. Numeric processor
-probe evidence is local; original C and committed captures recover behavior if lost.
-Earlier batch reports record cleanup/recovery. Original assets remain intact;
-rebuild 6048add7 or d2df2eb6 for retired type/allocation binaries. This chunk
-reclaimed 560 MB of verified scenario copies and 1.50 GB of reproducible build
-cache; its report records restoration and host-use checks.
+`build/port-fixture-allocation-observers/{contracts/profiles,safe,production/production/bin}`.
+The complete corpus reuses those exact-source root binaries; logs live in `full`.
+Original observer binaries and safe/library evidence live under `original/profiles`,
+`original-safe` and `original-library`; the new contract's repeated original checks
+are in `baseline-preflight`. Exact source and binary hashes are in the baseline.
+Retired headers and C observers recover from baseline `333d4590`. Original assets
+remain intact; earlier reports record artifact recovery and verified cleanup.
+Rebuild 6048add7 or d2df2eb6 for retired type/allocation binaries. Numeric/safe-bridge
+native binaries were superseded and removed (774 MB); rebuild dbc4e0be or 8580330d.
+Original numeric C binaries and current observer references remain; batch reports
+retain source/binary fingerprints. Verified scenario deduplication reclaimed another
+560 MB and reproducible cache cleanup 2.11 GB; restoration is recorded in the batch
+report. Physical free space after cleanup was 4.40 GB.
 Superseded GUI binaries were removed; rebuild `0cf5064c` if needed. Cache archives
 rebuild automatically. Details are in [FINAL_CALLBACK_DISPATCH.md](docs/porting/FINAL_CALLBACK_DISPATCH.md).
 
