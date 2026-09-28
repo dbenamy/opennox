@@ -3153,3 +3153,11 @@ and remove only the test-created entry between cases. Allocator semantics remain
 unchanged. Main-grid setup is conditional, but typed fixture producers carry it
 into spell/callback/damage owners; retain the broad owner set. See
 [FIXTURE_TILE_GRID.md](FIXTURE_TILE_GRID.md).
+
+## Assembly source identity
+
+Extend the qualification fingerprint set to .s/.S before introducing native
+processor-state fixtures. Supplemental fingerprints cover only tracked files, so
+new untracked assembly must be in the primary set. A real manifest mutation test
+checks rejection for both suffixes; all five batch-runner tests passed. Existing
+qualified engine source identity is unchanged by this tooling correction.

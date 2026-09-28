@@ -441,6 +441,9 @@ are what make that coverage useful.
 Keep source-rewriting tests on temporary copies, and verify broader checks leave
 the checkout unchanged. **Do not edit Go/C source while tests or builds are reading
 it.** Drafts and documentation can be prepared separately while checks run.
+Source identity checks include Go assembly (`.s`/`.S`), including newly created
+files that are not tracked yet. Keep processor-state helpers covered by the same
+unchanged-source and prebuilt-binary checks as Go and C inputs.
 
 ## Build and test environment
 

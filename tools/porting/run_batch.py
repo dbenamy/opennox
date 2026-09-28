@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[2]
 def fingerprints():
     return {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
             for p in sorted((ROOT / 'src').rglob('*'))
-            if p.is_file() and p.suffix in ('.go', '.c', '.h', '.mod', '.sum')}
+            if p.is_file() and p.suffix in ('.go', '.c', '.h', '.s', '.S', '.mod', '.sum')}
 
 
 def main():
