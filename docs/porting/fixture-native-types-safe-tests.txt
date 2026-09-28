@@ -1,0 +1,1 @@
+^(?:TestCollisionReflection|TestCollisionContainment|TestLineProjection|TestSpellClassEligibilityABI|TestWaypointLinksABI|TestProtectionSetABI)$

@@ -61,8 +61,9 @@ Next: migrate remaining fixture types and their shared caller interfaces, then
 allocator ownership, reachable abort and compiler flags. Read-only audit under
 `build/port-fixture-types-audit/` finds 52 shared fixture helpers with uses in 43
 other files. A 20-file draft in `build/port-fixture-native-types/` migrates shared
-fixture types and callers; 203 root owners are identified. Its baseline is not
-accepted and no next conversion is installed. Production still uses the centralized
+fixture types and callers. Its original baseline is accepted: 203/201/203 owners,
+22 focused repeats per profile and six safe contracts passed. No next conversion
+is installed. See [FIXTURE_NATIVE_TYPES.md](docs/porting/FIXTURE_NATIVE_TYPES.md). Production still uses the centralized
 C heap; fixture allocation and safe-mode accounting need ownership matching.
 
 The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
