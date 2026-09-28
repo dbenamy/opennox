@@ -18,6 +18,7 @@ import (
 	"github.com/opennox/libs/platform"
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
+	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"math"
 	"runtime"
 	"sort"
@@ -76,7 +77,17 @@ type mapRoomTestRegion struct {
 	kind           string
 	alive, guarded bool
 	captureOnly    bool // Diagnostic storage is never an engine pointer target.
+	rawAllocated   bool // Aligned fixture inputs bypass the safe allocation tracker.
 }
+
+func freeMapRoomTestRegion(r *mapRoomTestRegion) {
+	if r.rawAllocated {
+		alloc.RawFree(r.ptr)
+	} else {
+		legacyFree(r.ptr)
+	}
+}
+
 type mapRoomTestFixture struct {
 	regions      []*mapRoomTestRegion
 	slots        map[int]*mapRoomTestRegion
@@ -348,7 +359,7 @@ func portTestMapRoomCase(sp PortTestMapRoomSpec, cw C.ushort) (out PortTestMapRo
 		f.guards()
 		for _, r := range f.regions {
 			if r.alive {
-				legacyFree(r.ptr)
+				freeMapRoomTestRegion(r)
 				r.alive = false
 			}
 		}
@@ -371,6 +382,7 @@ func portTestMapRoomCase(sp PortTestMapRoomSpec, cw C.ushort) (out PortTestMapRo
 			*(*byte)(unsafe.Add(p, spec.Size+j)) = 0x5a
 		}
 		f.slots[i+1] = f.register(p, spec.Size, "input", true)
+		f.slots[i+1].rawAllocated = true
 	}
 	for i, spec := range sp.Records {
 		f.write(i+1, spec.Words, spec.Refs)

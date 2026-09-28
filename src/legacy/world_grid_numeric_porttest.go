@@ -42,7 +42,8 @@ func PortTestWorldNumeric(inputs []uint32) (out []PortTestWorldNumericResult) {
 	defer restoreEnv()
 	words := unsafe.Slice(memmap.PtrUint32(0x5D4594, 527668), 4)
 	old := append([]uint32(nil), words...)
-	tail := memmap.PtrUint32(0x5D4594, 527684)
+	// The redirect target is fixture-owned raw blob storage, not a live global.
+	tail := (*uint32)(unsafe.Pointer(&memmap.BlobByAddr(0x5D4594).Data[527684]))
 	oldTail := *tail
 	slot := memmap.PtrPtr(0x587000, 55744)
 	oldSlot := *slot

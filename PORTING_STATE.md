@@ -8,7 +8,8 @@ This is the current resume checkpoint. Workflow and delegation rules live in
 - **Standalone engine C:** 142,665/142,665 original lines ported or retired.
 - **Production C imports:** 459/463 client cgo files eliminated on net (4 remain);
   server: 458/463 eliminated (5 remain). Two project packages directly use cgo.
-- **Legacy C export bridges:** 1,890/1,890 retired (0 remain).
+- **Legacy C export bridges:** 1,890/1,890 retired in normal profiles;
+  11 safe-only allocator/memory bridges remain.
 - **Embedded production C bodies:** 79/79 retired (0 remain).
 - **Fixture and declaration dependencies:** 10 porttest-tagged files still import C;
   157 tracked headers / 2,731 physical lines remain.
@@ -57,10 +58,15 @@ Last complete default corpus: `6e9681f2`, 2,489 passes plus diagnostic skip.
 
 ## Next work and review items
 
-Next: qualify the numeric-state helper draft under `build/port-fixture-fpu/`.
-Its isolated C/native processor-state probe passed 1,536 cases in each of three
-fresh processes; project integration and owner qualification are still required.
-Then retire C allocation observers and reachable
+Next: install and qualify the numeric-state helper draft under
+`build/port-fixture-fpu/`. Its corrected original baseline passed 214 owners and
+14 focused repeats in each profile, plus eight safe roots. The isolated C/native
+processor-state probe passed 1,536 cases in each of three fresh processes.
+Baseline corrections preserve raw aligned ownership and explicit raw-blob redirect
+storage; frozen numeric expectations are unchanged. See
+[FIXTURE_FPU.md](docs/porting/FIXTURE_FPU.md).
+Then retire C allocation observers, the 11 safe-only allocator/memory export
+bridges, and reachable
 abort/compiler flags and the centralized internal C allocator implementation.
 Preserve normal/safe allocation domains, layout and failure behavior. Safe Calloc
 currently records a nil marker on allocation failure; preserve or explicitly

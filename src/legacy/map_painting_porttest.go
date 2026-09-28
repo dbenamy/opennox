@@ -154,6 +154,7 @@ func (f *paintTestFixture) allocate(size int, kind string) *mapRoomTestRegion {
 		*(*byte)(unsafe.Add(p, size+i)) = 0x5a
 	}
 	r := f.register(p, size, kind, true)
+	r.rawAllocated = true
 	f.owned[r] = true
 	return r
 }
@@ -491,7 +492,7 @@ func paintTestCase(sp PortTestPaintSpec, owners *server.PortTestPaintOwners, glo
 		}
 		for r := range f.owned {
 			if r.alive {
-				legacyFree(r.ptr)
+				freeMapRoomTestRegion(r)
 				r.alive = false
 			}
 		}

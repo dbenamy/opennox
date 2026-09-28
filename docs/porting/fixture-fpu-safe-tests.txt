@@ -1,0 +1,1 @@
+^(?:TestFloatIntControlWord|TestGameplayReportsAggregateFloatCache|TestMapPaintingCoordinates|TestMapRoomsRounding|TestProtectionFloatABI|TestServerRuntimeDoubleConversion|TestWorldGridNumericScratch|TestWorldGridTrigTables)$

@@ -3161,3 +3161,21 @@ processor-state fixtures. Supplemental fingerprints cover only tracked files, so
 new untracked assembly must be in the primary set. A real manifest mutation test
 checks rejection for both suffixes; all five batch-runner tests passed. Existing
 qualified engine source identity is unchanged by this tooling correction.
+
+## Numeric fixture ownership and processor state
+
+Before the numeric baseline, correct raw aligned input cleanup in room/painting
+fixtures: those allocations bypass the safe tracker, so release them with RawFree;
+engine-created records keep tracked cleanup. Both affected safe roots failed with
+`incorrect free` on unchanged source and passed after this correction. Preserve
+alignment, input bytes and frozen expectations. Likewise, identify the world numeric
+redirect target explicitly as raw backing-blob storage: its old address remains in
+the extraction registry, but no engine user remains. Preserve exact address/bytes
+and restore it without disabling runtime checks. Run original safe checks before
+the broad baseline to catch ownership/fixture access issues earlier.
+
+The planned native processor-state leaf matches the qualified i386 libc's partial
+environment restoration, including preservation of current TOP/tags. Keep its
+artificial-state comparison probe contained within a single call. Use a documented
+two-byte FLDENV encoding for the Go 1.26 assembler operand mismatch; no toolchain
+patch or broader architecture support. See [FIXTURE_FPU.md](FIXTURE_FPU.md).

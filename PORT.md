@@ -133,7 +133,10 @@ may precede full qualification when their evidence and remaining gates are expli
    defines for every qualified tag, not just headers. The fixture allocation
    batch caught safe-mode calloc/free redirection through `-D` flags; raw helpers
    bypassed tracking. Match allocation and release domains per profile, and run
-   safe ownership contracts before the broad conversion sweep.
+   safe ownership contracts before the broad conversion sweep. Run newly selected
+   original safe contracts before the broad baseline too: raw aligned inputs and
+   a fixture-owned blob redirect exposed pre-existing safe failures late in the
+   numeric baseline.
    Imports with `#cgo` directives also carry build settings
    without direct calls; preserve them. When removing engine headers from a
    retained C observer, add its own required standard headers (for example,
