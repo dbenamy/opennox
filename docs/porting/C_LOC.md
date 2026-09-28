@@ -384,6 +384,7 @@ target build selection and linker evidence.
 | Shared native fixture types/callers; fixture C imports 51→34, production cgo 4/5 unchanged | 0 | 0 | 0 | 0 |
 | Fixture raw allocation consolidation; fixture C imports 34→20, production cgo 4/5 unchanged | 0 | 0 | 0 | 0 |
 | Fixture constants/local scalar types; fixture C imports 20→14, production cgo 4/5 unchanged | 0 | 0 | 0 | 0 |
+| Fixture string/byte copies; fixture C imports 14→11, production cgo 4/5 unchanged | 0 | 0 | 0 | 0 |
 
 The 33 checksum test-reference lines were retired after differential validation;
 their original source remains recoverable at `66fa7bd4`.

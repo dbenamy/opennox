@@ -3136,3 +3136,10 @@ Use verified explicit-width types and native owner layout checks. Preserve proto
 0x000F039A in every qualified profile: the legacy high-resolution compiler define
 is unconditional, despite the profile names. Keep FPU control-word observation for
 separate qualification. See [FIXTURE_CONSTANTS.md](FIXTURE_CONSTANTS.md).
+
+## Fixture string/byte copies
+
+Reuse legacy CString and legacyMalloc/legacyFree to preserve normal/safe allocation
+ownership and failure disposition. Byte copies preserve exact lengths and add no
+terminator. Keep cgo's conditional zero-size allocation retry; do not normalize all
+zero-size requests to one byte. See [FIXTURE_STRING_COPIES.md](FIXTURE_STRING_COPIES.md).

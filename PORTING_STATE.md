@@ -10,30 +10,29 @@ This is the current resume checkpoint. Workflow and delegation rules live in
   server: 458/463 eliminated (5 remain). Two project packages directly use cgo.
 - **Legacy C export bridges:** 1,890/1,890 retired (0 remain).
 - **Embedded production C bodies:** 79/79 retired (0 remain).
-- **Fixture and declaration dependencies:** 14 porttest-tagged files still import C;
+- **Fixture and declaration dependencies:** 11 porttest-tagged files still import C;
   157 tracked headers / 2,731 physical lines remain.
 
 Production cgo counts cover selected Linux 386 builds; these metrics are not equal
 units of effort. Fixture imports cover all build tags. Standalone production/test C
 remain zero.
 
-Latest qualified chunk replaces fixture-local C scalar types and constant/layout
-imports in seven files; six fixture C imports are retired. Protocol values, console
-color, inventory layout, casts, allocations, captures and root test assertions are
-preserved.
-See [FIXTURE_CONSTANTS.md](docs/porting/FIXTURE_CONSTANTS.md).
+Latest qualified chunk routes fixture string/byte copies through existing native
+helpers in three files, retiring three fixture C imports. Byte contents, allocation
+ownership and failure behavior are preserved in normal and safe builds. See
+[FIXTURE_STRING_COPIES.md](docs/porting/FIXTURE_STRING_COPIES.md).
 
 Continue chunk-by-chunk with primary review, qualification, documentation and
 commit/push. Use one Luna helper when its quota is available; no substitute model.
 Stop at the milestone, usage limits or a substantial question. Latest qualified
-artifacts: `build/port-fixture-constants/`.
+artifacts: `build/port-fixture-string-copies/`.
 
 ## What remains
 
 | Area | Remaining work or dependency |
 | --- | --- |
 | Embedded C callback glue | Complete: zero production bodies remain in selected builds; pure-Go callback registries remain. |
-| Types and declarations | 157 tracked headers / 2,731 physical lines. 14 porttest-tagged source files still import C across all build tags (not one selected profile). Fixture C observers/types still need retirement or explicit qualification scope. |
+| Types and declarations | 157 tracked headers / 2,731 physical lines. 11 porttest-tagged source files still import C across all build tags (not one selected profile). Fixture C observers/types still need retirement or explicit qualification scope. |
 | Production C imports | alloc/raw.go, legacy/object_xfer_world.go (reachable abort), legacy/cgo_common.go and legacy/video_highres.go (flags). Server adds legacy/cgo_server.go. |
 | Memory and layout | C-heap allocator, raw pointers, fixed offsets and 32-bit address assumptions remain. Preserve ownership/lifetime/failure semantics behind the centralized allocator. |
 | External libraries | SDL2, OpenGL, OpenAL and similar bindings remain for this phase; later replacement requires a separate discussion. |
@@ -41,15 +40,14 @@ artifacts: `build/port-fixture-constants/`.
 
 ## Latest qualification
 
-Original and native owner selections passed 369/366/369 roots without skips.
-Every target compiled all root tests. Fourteen focused repeats per profile, six
-safe contracts, static checks, safe build, production builds/ABI, exact known-suite
-outcomes and fresh save/load passed. Safe contracts ran before the native sweep.
-Root test assertions, captures, production code and original asset hashes are
-unchanged.
+Original and converted selections passed all six affected roots twice per profile,
+plus six safe contracts. Two private string/allocation contracts passed in each of
+default/server/highres/safe. Every target compiled all root tests. Static checks,
+safe build, production builds/ABI, exact known-suite outcomes and fresh save/load
+passed. Root assertions, captures and original asset hashes remain unchanged.
 
-Evidence: [qualification](docs/porting/fixture-constants-qualification.json),
-[inventory](docs/porting/fixture-constants-inventory-after.json).
+Evidence: [qualification](docs/porting/fixture-string-copies-qualification.json),
+[inventory](docs/porting/fixture-string-copies-inventory-after.json).
 Known-suite expectation: [record](docs/porting/internal-callback-expected-suite.jsonl).
 Standalone metric/history: [C_LOC.md](docs/porting/C_LOC.md).
 Latest broad regression: default in fixture-import-cleanup (2,482); all three
@@ -58,14 +56,12 @@ Last complete default corpus: `6e9681f2`, 2,489 passes plus diagnostic skip.
 
 ## Next work and review items
 
-Next: install and qualify the three-file fixture string/byte-copy draft. Its
-original baseline passed six owners twice per profile, six safe roots and two
-private string/allocation contracts in each of default/server/highres/safe.
-Then qualify the prepared tile-grid helper draft, retire numeric-state helpers and
-C observers, reachable abort/compiler flags and the centralized allocator.
-Preserve normal/safe allocation domains, zero-length and failure behavior.
-External native libraries remain preserved dependencies. No next conversion is
-installed yet.
+Next: qualify the uninstalled tile-grid fixture helper draft; its caller audit
+includes worklist, AI and movement owners. Then retire numeric-state helpers and
+C allocation observers, reachable abort/compiler flags and the centralized internal
+C allocator implementation. Preserve normal/safe allocation domains, layout and
+failure behavior. External native libraries remain preserved dependencies.
+No next conversion is installed.
 
 The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
 removal. Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md).
@@ -93,16 +89,15 @@ first on PATH. Linux 386 execution needs host execution in this VM.
 Do not change source consumed by running builds/tests.
 
 Current root/safe/production binaries live under
-`build/port-fixture-constants/{contracts/profiles,safe,production/production/bin}`.
-Original owners/focused/safe captures live under
-`build/port-fixture-constants/{original,original-safe}`; their prebuilt binaries come
-from `port-fixture-raw-allocation/corrected/contracts/profiles`. Use the corrected
-allocation evidence, not its rejected raw-helper attempt. Exact paths and hashes
-are in the accepted baseline. Earlier batch reports record disk cleanup and
-scenario restoration commands; original assets remain intact. Current cleanup
-reclaimed about 947 MB from verified scenario copies and seven superseded
-fixture-import-cleanup binaries; rebuild 6b51667b for those older executables.
-See [recovery details](docs/porting/FIXTURE_CONSTANTS.md#artifact-cleanup-and-recovery).
+`build/port-fixture-string-copies/{contracts/profiles,safe,production/production/bin}`.
+Original owners/focused/safe/private captures live under
+`build/port-fixture-string-copies/{original,original-safe,original-legacy}`; root
+binaries come from the preceding fixture-constants batch. Exact paths/hashes are
+recorded in the baseline. Earlier batch reports record disk cleanup and scenario
+restoration commands; original assets remain intact. Current cleanup reclaimed
+about 1.47 GB from scenario copies and seventeen superseded binaries. Rebuild
+6048add7 or d2df2eb6 for those older executables; see
+[recovery details](docs/porting/FIXTURE_STRING_COPIES.md#artifact-cleanup-and-recovery).
 Superseded GUI binaries were removed; rebuild `0cf5064c` if needed. Cache archives
 rebuild automatically. Details are in [FINAL_CALLBACK_DISPATCH.md](docs/porting/FINAL_CALLBACK_DISPATCH.md).
 

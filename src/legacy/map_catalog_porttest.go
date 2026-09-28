@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include <stdlib.h>
-#include "GAME3_2.h"
-
-*/
-import "C"
 import (
 	"bytes"
 	"github.com/opennox/libs/prand"
@@ -139,7 +133,8 @@ func PortTestMapCycleStrip(data []byte) []byte {
 		mapCycleStrip(nil)
 		return nil
 	}
-	p := C.CBytes(data)
+	p := legacyMalloc(uintptr(len(data)))
+	copy(unsafe.Slice((*byte)(p), len(data)), data)
 	defer legacyFree(p)
 	mapCycleStrip((*byte)(p))
 	return bytes.Clone(unsafe.Slice((*byte)(p), len(data)))

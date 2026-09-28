@@ -2,13 +2,6 @@
 
 package legacy
 
-/*
-#include <stdlib.h>
-#include "GAME3_2.h"
-#include "GAME5_2.h"
-*/
-import "C"
-
 import (
 	"bytes"
 	"context"
@@ -163,7 +156,7 @@ func PortTestCommandRules(spec PortTestCommandRulesSpec) (out PortTestCommandRul
 		}
 		out.Result = commandRulesPath(path)
 	case "map":
-		p := C.CString(spec.Map)
+		p := CString(spec.Map)
 		defer legacyFree(unsafe.Pointer(p))
 		out.Result = int(portTestInvoke_sub_57A950(p))
 	case "wrapper":
@@ -184,6 +177,6 @@ func PortTestCommandRules(spec PortTestCommandRulesSpec) (out PortTestCommandRul
 }
 
 // Fixture-native copies preserve the original wrapper ABI conversions.
-func portTestInvoke_sub_57A950(name *C.char) C.int {
-	return C.int(commandRulesMap(GoStringP(unsafe.Pointer(name))))
+func portTestInvoke_sub_57A950(name *int8) int32 {
+	return int32(commandRulesMap(GoStringP(unsafe.Pointer(name))))
 }

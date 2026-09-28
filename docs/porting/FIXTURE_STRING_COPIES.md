@@ -38,12 +38,37 @@ safe contracts, followed by private contracts, focused preflight, all affected
 owners and repeats, static checks, safe/production builds, ABI/known-suite checks
 and fresh save/load. Every target binary compiles the complete root test package.
 
-## Status
+## Qualified result
 
-Original baseline accepted: six owner roots twice per profile, six safe roots,
-and two private contracts in each of default/server/highres/safe passed. Draft
-not installed. Expected fixture imports
-14→11; production remains 4 client/highres and 5 server. Standalone C, production
-embedded bodies and legacy export bridges remain zero. Headers remain 157/2,731.
-Primary handles this batch while Luna quota is unavailable.
+Original and converted paths passed all six affected roots twice per profile and
+six safe contracts, without skips. Two private string/allocation contracts passed
+in each of default, server, highres and safe. Converted safe contracts ran first.
+All target binaries compiled every root; static checks, safe build, production
+builds/ABI, exact known-suite outcomes and fresh save/load passed. Root assertions,
+frozen captures and original asset hashes are unchanged.
+
+Fixture C imports fell 14→11. Production remains 4 client/highres and 5 server;
+standalone C, embedded production bodies and legacy exports remain zero. Headers
+remain 157 files / 2,731 physical lines. External native backends are unchanged.
+
+Evidence: [baseline](fixture-string-copies-baseline.json),
+[qualification](fixture-string-copies-qualification.json),
+[inventory](fixture-string-copies-inventory-after.json).
+Primary handled review and qualification while Luna quota was unavailable.
 Artifacts: `build/port-fixture-string-copies/`.
+
+## Artifact cleanup and recovery
+
+After qualification and all jobs completed, verified scenario-copy deduplication
+reclaimed 560,046,080 bytes. Restore with:
+
+```sh
+python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/fixture-string-copies-save/deduplicated-assets.json
+```
+
+Seventeen superseded binaries reclaimed another 912,945,152 bytes: ten from shared
+fixture types (6048add7, including three byte-identical outputs from its interrupted
+scenario attempt) and seven from corrected fixture allocation (d2df2eb6). Sources
+matched Git; newer qualified replacements, hashes and host process/open-file/maps
+checks passed. Rebuild those revisions if needed. Source, current binaries, useful
+logs and original assets remain intact. See [cleanup record](fixture-string-copies-cleanup.json).

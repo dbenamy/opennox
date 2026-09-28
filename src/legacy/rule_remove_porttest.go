@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include <stdlib.h>
-#include "GAME5_2.h"
-*/
-import "C"
-
 import (
 	"fmt"
 	"os"
@@ -19,7 +13,7 @@ import (
 )
 
 // PortTestRuleRemoveSpec describes a standalone tree below Dir. Paths use '/'
-// solely for fixture construction; Map and File are passed unmodified to C.
+// solely for fixture construction; Map and File retain their original byte contents.
 type PortTestRuleRemoveSpec struct {
 	Dir       string
 	Map, File string
@@ -38,7 +32,7 @@ type PortTestRuleRemoveResult struct {
 	Before, After []PortTestRuleRemoveEntry
 }
 
-// PortTestRuleRemove calls the still-native C helper. It captures the complete
+// PortTestRuleRemove calls the native removal helper. It captures the complete
 // test tree, including empty directories, before and after the call.
 func PortTestRuleRemove(spec PortTestRuleRemoveSpec) (out PortTestRuleRemoveResult, err error) {
 	if spec.Dir == "" {
@@ -100,8 +94,8 @@ func PortTestRuleRemove(spec PortTestRuleRemoveSpec) (out PortTestRuleRemoveResu
 			err = restoreErr
 		}
 	}()
-	mapName := C.CString(spec.Map)
-	fileName := C.CString(spec.File)
+	mapName := CString(spec.Map)
+	fileName := CString(spec.File)
 	defer legacyFree(unsafe.Pointer(mapName))
 	defer legacyFree(unsafe.Pointer(fileName))
 	out.Result = int(portTestInvoke_sub_57A9F0(mapName, fileName))
@@ -110,6 +104,6 @@ func PortTestRuleRemove(spec PortTestRuleRemoveSpec) (out PortTestRuleRemoveResu
 }
 
 // Fixture-native copies preserve the original wrapper ABI conversions.
-func portTestInvoke_sub_57A9F0(mapName, fileName *C.char) C.int {
-	return C.int(bool2int(ifs.Remove("maps\\"+GoStringP(unsafe.Pointer(mapName))+"\\"+GoStringP(unsafe.Pointer(fileName))) == nil))
+func portTestInvoke_sub_57A9F0(mapName, fileName *int8) int32 {
+	return int32(bool2int(ifs.Remove("maps\\"+GoStringP(unsafe.Pointer(mapName))+"\\"+GoStringP(unsafe.Pointer(fileName))) == nil))
 }

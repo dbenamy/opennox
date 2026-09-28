@@ -82,3 +82,8 @@ python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/ru
 
 Keep the initial raw-routing attempt separate from accepted binaries under
 `build/port-fixture-raw-allocation/corrected/` when reusing evidence.
+
+The qualified root/safe/production binaries for this batch were later removed
+after source and newer replacements were verified. Rebuild d2df2eb6; see
+[string-copy cleanup](FIXTURE_STRING_COPIES.md#artifact-cleanup-and-recovery).
+Recorded results and reports remain available.

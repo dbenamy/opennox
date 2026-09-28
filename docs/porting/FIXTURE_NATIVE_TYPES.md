@@ -104,3 +104,8 @@ After every build/test joined, 87 unchanged Linux386 Go cache archives older tha
 six hours were removed, reclaiming 3,806,949,376 bytes. Accepted retry deduplication
 reclaimed 559,841,280 bytes from 1,654 verified copies. Current binaries, module
 sources and original assets were preserved; physical free space is roughly 5 GB.
+
+The qualified root/safe/production binaries for this batch were later removed
+after source and newer replacements were verified. Rebuild 6048add7; see
+[string-copy cleanup](FIXTURE_STRING_COPIES.md#artifact-cleanup-and-recovery).
+Recorded results and reports remain available.

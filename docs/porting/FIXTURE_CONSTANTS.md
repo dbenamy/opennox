@@ -66,3 +66,7 @@ under port-fixture-raw-allocation/corrected. Host process, open-file and mapping
 checks passed. Rebuild 6b51667b if those older binaries are needed. Original assets,
 current binaries and recorded test results remain intact. See
 [cleanup record](fixture-constants-cleanup.json).
+
+The original baseline's prebuilt allocation binaries were subsequently retired;
+rebuild d2df2eb6 if they are needed. Original results and binary/source hashes remain.
+See [string-copy cleanup](FIXTURE_STRING_COPIES.md#artifact-cleanup-and-recovery).
