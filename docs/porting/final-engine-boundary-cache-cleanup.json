@@ -1,0 +1,868 @@
+{
+  "files": [
+    {
+      "path": "build/cache/go-build/05/057b8996ce0eb9838c9710f20a8c53fa7c846fbdf485adf94c65e9349d4f2cf7-d",
+      "device": 2049,
+      "inode": 580819,
+      "size": 85596442,
+      "mtime_ns": 1790577800250938918,
+      "allocated_bytes": 85602304,
+      "sha256": "057b8996ce0eb9838c9710f20a8c53fa7c846fbdf485adf94c65e9349d4f2cf7"
+    },
+    {
+      "path": "build/cache/go-build/96/96bb6db170bca36eb401f04d0f1752d63532582f56bbf80abd959a91366b87a0-d",
+      "device": 2049,
+      "inode": 580862,
+      "size": 85814762,
+      "mtime_ns": 1790577905056106676,
+      "allocated_bytes": 85819392,
+      "sha256": "96bb6db170bca36eb401f04d0f1752d63532582f56bbf80abd959a91366b87a0"
+    },
+    {
+      "path": "build/cache/go-build/44/445be5af1343f214709571422b25162162a394fa94c28be7e1e74f516b7f2a11-d",
+      "device": 2049,
+      "inode": 580349,
+      "size": 85593020,
+      "mtime_ns": 1790575580541051431,
+      "allocated_bytes": 85598208,
+      "sha256": "445be5af1343f214709571422b25162162a394fa94c28be7e1e74f516b7f2a11"
+    },
+    {
+      "path": "build/cache/go-build/38/3804d3a104ae579b727343e3df11f65340e0ed244379ec6d9dccb56bbde3a02d-d",
+      "device": 2049,
+      "inode": 580661,
+      "size": 38941770,
+      "mtime_ns": 1790576858730184892,
+      "allocated_bytes": 38948864,
+      "sha256": "3804d3a104ae579b727343e3df11f65340e0ed244379ec6d9dccb56bbde3a02d"
+    },
+    {
+      "path": "build/cache/go-build/5e/5e643e60c57d6ee4f842006d474797ee2dfa96e07616347861ac585d5d09bde8-d",
+      "device": 2049,
+      "inode": 578042,
+      "size": 10965272,
+      "mtime_ns": 1790576957835481223,
+      "allocated_bytes": 10973184,
+      "sha256": "5e643e60c57d6ee4f842006d474797ee2dfa96e07616347861ac585d5d09bde8"
+    },
+    {
+      "path": "build/cache/go-build/74/7489ab941fe33917ecb8bed28454ce3a6b54affc2522e44edc21cf393dca863e-d",
+      "device": 2049,
+      "inode": 580896,
+      "size": 38908650,
+      "mtime_ns": 1790578219455149598,
+      "allocated_bytes": 38916096,
+      "sha256": "7489ab941fe33917ecb8bed28454ce3a6b54affc2522e44edc21cf393dca863e"
+    },
+    {
+      "path": "build/cache/go-build/b8/b871d9fab2f142a76ad421f71dfcdc532171b4473002330235d82e22128d2aa4-d",
+      "device": 2049,
+      "inode": 580789,
+      "size": 85713520,
+      "mtime_ns": 1790577739163628327,
+      "allocated_bytes": 85721088,
+      "sha256": "b871d9fab2f142a76ad421f71dfcdc532171b4473002330235d82e22128d2aa4"
+    },
+    {
+      "path": "build/cache/go-build/59/594f2fbf549fd461b1c92be439715caeb09883625d8e7047c0a7e5ca7116bb61-d",
+      "device": 2049,
+      "inode": 580318,
+      "size": 85710098,
+      "mtime_ns": 1790575521757736725,
+      "allocated_bytes": 85716992,
+      "sha256": "594f2fbf549fd461b1c92be439715caeb09883625d8e7047c0a7e5ca7116bb61"
+    },
+    {
+      "path": "build/cache/go-build/49/4989bfbfba7aebaca56df97dda1f7aa1e8f9761ffcb048d07f6737dd048a7550-d",
+      "device": 2049,
+      "inode": 580244,
+      "size": 83956666,
+      "mtime_ns": 1790574974967643162,
+      "allocated_bytes": 83963904,
+      "sha256": "4989bfbfba7aebaca56df97dda1f7aa1e8f9761ffcb048d07f6737dd048a7550"
+    },
+    {
+      "path": "build/cache/go-build/53/53c3fee973ff4704d14b12336ec258cc6c0af69a6c87cab7fb4765d9580090f0-d",
+      "device": 2049,
+      "inode": 580596,
+      "size": 39040672,
+      "mtime_ns": 1790576561322798896,
+      "allocated_bytes": 39047168,
+      "sha256": "53c3fee973ff4704d14b12336ec258cc6c0af69a6c87cab7fb4765d9580090f0"
+    },
+    {
+      "path": "build/cache/go-build/82/820abddb847a4796d89e1fe44878d653405244ea4a85c9ed1391c113b50f80bb-d",
+      "device": 2049,
+      "inode": 577688,
+      "size": 21453612,
+      "mtime_ns": 1790576915387070556,
+      "allocated_bytes": 21454848,
+      "sha256": "820abddb847a4796d89e1fe44878d653405244ea4a85c9ed1391c113b50f80bb"
+    },
+    {
+      "path": "build/cache/go-build/bc/bc56284420db75badb9038b9af17cbbf46cb7e6a98ba755f3ed5dc5772017078-d",
+      "device": 2049,
+      "inode": 579242,
+      "size": 38600656,
+      "mtime_ns": 1790577706418740894,
+      "allocated_bytes": 38604800,
+      "sha256": "bc56284420db75badb9038b9af17cbbf46cb7e6a98ba755f3ed5dc5772017078"
+    },
+    {
+      "path": "build/cache/go-build/be/be46d9a3aab877255d64ebfee22f760deef592d817803e3bba1693d3ef43ac50-d",
+      "device": 2049,
+      "inode": 580812,
+      "size": 38557712,
+      "mtime_ns": 1790577767492871351,
+      "allocated_bytes": 38563840,
+      "sha256": "be46d9a3aab877255d64ebfee22f760deef592d817803e3bba1693d3ef43ac50"
+    },
+    {
+      "path": "build/cache/go-build/09/090c783d6a71b31d668276472b881772e6e2647b65cac48563cdbd807c52fc3a-d",
+      "device": 2049,
+      "inode": 580277,
+      "size": 85592878,
+      "mtime_ns": 1790575066312528797,
+      "allocated_bytes": 85598208,
+      "sha256": "090c783d6a71b31d668276472b881772e6e2647b65cac48563cdbd807c52fc3a"
+    },
+    {
+      "path": "build/cache/go-build/54/54e6941999c2e9c47cc8ffa531c37ba6230e366d163a4951f6f10599e39c0290-d",
+      "device": 2049,
+      "inode": 580690,
+      "size": 21453482,
+      "mtime_ns": 1790576909538646318,
+      "allocated_bytes": 21458944,
+      "sha256": "54e6941999c2e9c47cc8ffa531c37ba6230e366d163a4951f6f10599e39c0290"
+    },
+    {
+      "path": "build/cache/go-build/5b/5bd0c573edd81d223c8e0fdd560140ede4abe44118cc37c32c75173755d458f6-d",
+      "device": 2049,
+      "inode": 580925,
+      "size": 38951402,
+      "mtime_ns": 1790578239534631206,
+      "allocated_bytes": 38957056,
+      "sha256": "5bd0c573edd81d223c8e0fdd560140ede4abe44118cc37c32c75173755d458f6"
+    },
+    {
+      "path": "build/cache/go-build/f6/f6ff0a70c059c27192c74ee15684e512483c0bbf7c94228f962903f05c89dd46-d",
+      "device": 2049,
+      "inode": 580210,
+      "size": 38738740,
+      "mtime_ns": 1790574883969346539,
+      "allocated_bytes": 38744064,
+      "sha256": "f6ff0a70c059c27192c74ee15684e512483c0bbf7c94228f962903f05c89dd46"
+    },
+    {
+      "path": "build/cache/go-build/95/95c71b13671b0fcc0b7cd35999c684605f8389c5023470fbe7d5a81d280e90ae-d",
+      "device": 2049,
+      "inode": 577943,
+      "size": 21036286,
+      "mtime_ns": 1790576924020414483,
+      "allocated_bytes": 21041152,
+      "sha256": "95c71b13671b0fcc0b7cd35999c684605f8389c5023470fbe7d5a81d280e90ae"
+    },
+    {
+      "path": "build/cache/go-build/5c/5c28dc119eb414b3397cf030d6e761c8154084fd4038c95b0ad9ddd7f17e2a6e-d",
+      "device": 2049,
+      "inode": 580391,
+      "size": 85811340,
+      "mtime_ns": 1790575678921874545,
+      "allocated_bytes": 85819392,
+      "sha256": "5c28dc119eb414b3397cf030d6e761c8154084fd4038c95b0ad9ddd7f17e2a6e"
+    },
+    {
+      "path": "build/cache/go-build/11/115caeff1afe9441013235054fc2254c80990aa9d734deae6c1276e5d03232db-d",
+      "device": 2049,
+      "inode": 577939,
+      "size": 25772322,
+      "mtime_ns": 1790576924013799091,
+      "allocated_bytes": 25780224,
+      "sha256": "115caeff1afe9441013235054fc2254c80990aa9d734deae6c1276e5d03232db"
+    },
+    {
+      "path": "build/cache/go-build/11/11b7a7bea11e036a5afa17c52364950926a5ccf106b9f90822b0fbddf048b01d-d",
+      "device": 2049,
+      "inode": 580343,
+      "size": 38547804,
+      "mtime_ns": 1790575547581433488,
+      "allocated_bytes": 38555648,
+      "sha256": "11b7a7bea11e036a5afa17c52364950926a5ccf106b9f90822b0fbddf048b01d"
+    },
+    {
+      "path": "build/cache/go-build/52/526d965cd4ad59ac20f752ca9e5e5abd2f7897a461f3824b3114d82b3f6d256a-d",
+      "device": 2049,
+      "inode": 580843,
+      "size": 38475098,
+      "mtime_ns": 1790577827531845922,
+      "allocated_bytes": 38481920,
+      "sha256": "526d965cd4ad59ac20f752ca9e5e5abd2f7897a461f3824b3114d82b3f6d256a"
+    },
+    {
+      "path": "build/cache/go-build/84/842488a8a69f713209d3963aa2f3ee5ff2e0af8d5047b6e5225e6f4cdd0c081c-d",
+      "device": 2049,
+      "inode": 580312,
+      "size": 38689922,
+      "mtime_ns": 1790575488907708718,
+      "allocated_bytes": 38694912,
+      "sha256": "842488a8a69f713209d3963aa2f3ee5ff2e0af8d5047b6e5225e6f4cdd0c081c"
+    },
+    {
+      "path": "build/cache/go-build/2d/2d3175fe92a3dc194617a8df0ab104c6dbda6cb977303d793b5f6fc0a37d5d11-d",
+      "device": 2049,
+      "inode": 580532,
+      "size": 38898750,
+      "mtime_ns": 1790576539551319494,
+      "allocated_bytes": 38903808,
+      "sha256": "2d3175fe92a3dc194617a8df0ab104c6dbda6cb977303d793b5f6fc0a37d5d11"
+    },
+    {
+      "path": "build/cache/go-build/d6/d68ccb0003934121b41c04b09a68c15ef08400ebc24b60420c5ac54f571e24db-d",
+      "device": 2049,
+      "inode": 577924,
+      "size": 21625996,
+      "mtime_ns": 1790576919611776144,
+      "allocated_bytes": 21630976,
+      "sha256": "d68ccb0003934121b41c04b09a68c15ef08400ebc24b60420c5ac54f571e24db"
+    },
+    {
+      "path": "build/cache/go-build/99/995600feab662f3a2ad24531acba4f38c420bfafd228547172db8ce39dea7edb-d",
+      "device": 2049,
+      "inode": 580265,
+      "size": 38589134,
+      "mtime_ns": 1790574994521117017,
+      "allocated_bytes": 38596608,
+      "sha256": "995600feab662f3a2ad24531acba4f38c420bfafd228547172db8ce39dea7edb"
+    },
+    {
+      "path": "build/cache/go-build/c0/c044e5c77cb95a19c33dd94ea45b8382c18b1a596966238eeb403fafd7297b60-d",
+      "device": 2049,
+      "inode": 577684,
+      "size": 25839850,
+      "mtime_ns": 1790576915379999972,
+      "allocated_bytes": 25845760,
+      "sha256": "c044e5c77cb95a19c33dd94ea45b8382c18b1a596966238eeb403fafd7297b60"
+    },
+    {
+      "path": "build/cache/go-build/7d/7d8e7487662ecc8882a820231d200bc500e60889850fc4c477a6c18f0e81751e-d",
+      "device": 2049,
+      "inode": 580631,
+      "size": 38591018,
+      "mtime_ns": 1790576796827669051,
+      "allocated_bytes": 38596608,
+      "sha256": "7d8e7487662ecc8882a820231d200bc500e60889850fc4c477a6c18f0e81751e"
+    },
+    {
+      "path": "build/cache/go-build/dd/ddbaa935e17b25a85b77e03cdef5b96f9ea0aded2d3707c364fea965a98622b4-d",
+      "device": 2049,
+      "inode": 580850,
+      "size": 83960230,
+      "mtime_ns": 1790577859276837988,
+      "allocated_bytes": 83968000,
+      "sha256": "ddbaa935e17b25a85b77e03cdef5b96f9ea0aded2d3707c364fea965a98622b4"
+    },
+    {
+      "path": "build/cache/go-build/f9/f98f50a5032cbfd1293cf396414acfbdc773b73083714f5f269bb4697f14c105-d",
+      "device": 2049,
+      "inode": 580271,
+      "size": 85811198,
+      "mtime_ns": 1790575027759270582,
+      "allocated_bytes": 85815296,
+      "sha256": "f98f50a5032cbfd1293cf396414acfbdc773b73083714f5f269bb4697f14c105"
+    },
+    {
+      "path": "build/cache/go-build/ae/aeb63b1af2b568c5e054b22b13e4f390d83603f4ba3da5a813554930e9b5c179-d",
+      "device": 2049,
+      "inode": 580637,
+      "size": 85710098,
+      "mtime_ns": 1790576829746827505,
+      "allocated_bytes": 85716992,
+      "sha256": "aeb63b1af2b568c5e054b22b13e4f390d83603f4ba3da5a813554930e9b5c179"
+    },
+    {
+      "path": "build/cache/go-build/4f/4f6074930e21f3df0b0b89d3c9f0dd64efb0935705eddf84cc721a5eacfe03bb-d",
+      "device": 2049,
+      "inode": 580374,
+      "size": 38465190,
+      "mtime_ns": 1790575608508048127,
+      "allocated_bytes": 38469632,
+      "sha256": "4f6074930e21f3df0b0b89d3c9f0dd64efb0935705eddf84cc721a5eacfe03bb"
+    },
+    {
+      "path": "build/cache/go-build/ad/ad339fc4bd04078704dc95a70fa5217bbe359ec695cbc065f548368ddec64b4c-d",
+      "device": 2049,
+      "inode": 577273,
+      "size": 11904464,
+      "mtime_ns": 1790577692851116479,
+      "allocated_bytes": 11907072,
+      "sha256": "ad339fc4bd04078704dc95a70fa5217bbe359ec695cbc065f548368ddec64b4c"
+    },
+    {
+      "path": "build/cache/go-build/27/27ed3714d9a106b39c72f8539054c67890745e86ccf980431aeb01e660d1a7c3-d",
+      "device": 2049,
+      "inode": 580380,
+      "size": 83956808,
+      "mtime_ns": 1790575640021478166,
+      "allocated_bytes": 83963904,
+      "sha256": "27ed3714d9a106b39c72f8539054c67890745e86ccf980431aeb01e660d1a7c3"
+    },
+    {
+      "path": "build/cache/go-build/ff/ff2230b2e2f24279cf33892d17f276fdb3c4ba9d4038f6016db61601b89581b3-d",
+      "device": 2049,
+      "inode": 580238,
+      "size": 38506526,
+      "mtime_ns": 1790574942957873689,
+      "allocated_bytes": 38514688,
+      "sha256": "ff2230b2e2f24279cf33892d17f276fdb3c4ba9d4038f6016db61601b89581b3"
+    },
+    {
+      "path": "build/cache/go-build/ba/baf6362ac54544c376c082d9df41b8273939fd3da8872f3dd0add0d9693baf9c-d",
+      "device": 2049,
+      "inode": 580686,
+      "size": 25847386,
+      "mtime_ns": 1790576903924193111,
+      "allocated_bytes": 25853952,
+      "sha256": "baf6362ac54544c376c082d9df41b8273939fd3da8872f3dd0add0d9693baf9c"
+    },
+    {
+      "path": "build/cache/go-build/81/81446cb16b4f8054f7546136e61c5cec66689cd717219525cf18ce82b02ebfbb-d",
+      "device": 2049,
+      "inode": 580216,
+      "size": 85709956,
+      "mtime_ns": 1790574917224961190,
+      "allocated_bytes": 85716992,
+      "sha256": "81446cb16b4f8054f7546136e61c5cec66689cd717219525cf18ce82b02ebfbb"
+    },
+    {
+      "path": "build/cache/go-build/f2/f29aafefc989620fcfaba29e1c961b53c3533b6364c37fc6cb6afe97630b7c57-d",
+      "device": 2049,
+      "inode": 577671,
+      "size": 10529332,
+      "mtime_ns": 1790576894614009846,
+      "allocated_bytes": 10530816,
+      "sha256": "f29aafefc989620fcfaba29e1c961b53c3533b6364c37fc6cb6afe97630b7c57"
+    }
+  ],
+  "cutoff_epoch": 1790578490.7905283,
+  "total_allocated_bytes": 1886093312,
+  "scope": "Rebuildable Linux 386 Go cache archives >=10MB untouched for two hours; no source, assets, logs or retained binaries.",
+  "verified_at_epoch": 1790585698.797593,
+  "free_bytes_before": 1907421184,
+  "available_bytes_before": 0,
+  "result": {
+    "success": true,
+    "files": 38,
+    "allocated_bytes": 1886093312,
+    "free_bytes_after": 3793477632,
+    "available_bytes_after": 495177728,
+    "scope": "Rebuildable Linux 386 Go cache archives >=10MB untouched for two hours; no source, assets, logs or retained binaries.",
+    "host_checks": true,
+    "current_binaries_and_module_sources_preserved": true
+  },
+  "fixture_followup": {
+    "files": [
+      {
+        "path": "build/cache/go-build/01/0191dc2b499dec92a687c8036af2fa7ad2a1e76c9f2c6648520d7dbfb0636252-d",
+        "device": 2049,
+        "inode": 581636,
+        "size": 85733650,
+        "mtime_ns": 1790582181556073972,
+        "allocated_bytes": 85741568,
+        "sha256": "0191dc2b499dec92a687c8036af2fa7ad2a1e76c9f2c6648520d7dbfb0636252"
+      },
+      {
+        "path": "build/cache/go-build/93/9306f129e407f9b8bd3b3a2c83ac6feb1e69c1c91e0a20a70e82a4cf106afbb7-d",
+        "device": 2049,
+        "inode": 581029,
+        "size": 38583852,
+        "mtime_ns": 1790579242515866914,
+        "allocated_bytes": 38588416,
+        "sha256": "9306f129e407f9b8bd3b3a2c83ac6feb1e69c1c91e0a20a70e82a4cf106afbb7"
+      },
+      {
+        "path": "build/cache/go-build/92/92cd2864edd84cff766e0d311e448c4abaa7f9d50a12a05b3fca8f3ba819ef7b-d",
+        "device": 2049,
+        "inode": 583568,
+        "size": 85618336,
+        "mtime_ns": 1790585542998080473,
+        "allocated_bytes": 85622784,
+        "sha256": "92cd2864edd84cff766e0d311e448c4abaa7f9d50a12a05b3fca8f3ba819ef7b"
+      },
+      {
+        "path": "build/cache/go-build/c3/c33f6c9a3fe85d3e45e9ce97fbe4d6cff29394d4cd137cb63b3d4a987e3b4fc2-d",
+        "device": 2049,
+        "inode": 581358,
+        "size": 21628126,
+        "mtime_ns": 1790581626039061299,
+        "allocated_bytes": 21635072,
+        "sha256": "c33f6c9a3fe85d3e45e9ce97fbe4d6cff29394d4cd137cb63b3d4a987e3b4fc2"
+      },
+      {
+        "path": "build/cache/go-build/79/792ac717c3451ad3cbb298317ecee0ec1893c853596de13b66683a8e30cc7874-d",
+        "device": 2049,
+        "inode": 581878,
+        "size": 11904462,
+        "mtime_ns": 1790583593907133745,
+        "allocated_bytes": 11907072,
+        "sha256": "792ac717c3451ad3cbb298317ecee0ec1893c853596de13b66683a8e30cc7874"
+      },
+      {
+        "path": "build/cache/go-build/74/74c4d303bf6ae5d426321b1bf77622651847c423e402548d3d5a5310ec3e3781-d",
+        "device": 2049,
+        "inode": 581071,
+        "size": 38886880,
+        "mtime_ns": 1790579301250877671,
+        "allocated_bytes": 38887424,
+        "sha256": "74c4d303bf6ae5d426321b1bf77622651847c423e402548d3d5a5310ec3e3781"
+      },
+      {
+        "path": "build/cache/go-build/74/74bfe6b3489f7e6f9196b0da647d15a60fa2da9777a07d46ca8b454b584aa30b-d",
+        "device": 2049,
+        "inode": 581970,
+        "size": 83982098,
+        "mtime_ns": 1790583797373422083,
+        "allocated_bytes": 83988480,
+        "sha256": "74bfe6b3489f7e6f9196b0da647d15a60fa2da9777a07d46ca8b454b584aa30b"
+      },
+      {
+        "path": "build/cache/go-build/59/59bc928ea8b39c48719027cc8e478d33576a5e55c40680c2212e86ca3bd40f88-d",
+        "device": 2049,
+        "inode": 581531,
+        "size": 10965274,
+        "mtime_ns": 1790581683614750885,
+        "allocated_bytes": 10973184,
+        "sha256": "59bc928ea8b39c48719027cc8e478d33576a5e55c40680c2212e86ca3bd40f88"
+      },
+      {
+        "path": "build/cache/go-build/a0/a041f6e1e500afaf59cf1b8bfe1cd9d5d9463caf42cfc4c8c8118c98771cca9f-d",
+        "device": 2049,
+        "inode": 581681,
+        "size": 38537856,
+        "mtime_ns": 1790582476124787789,
+        "allocated_bytes": 38543360,
+        "sha256": "a041f6e1e500afaf59cf1b8bfe1cd9d5d9463caf42cfc4c8c8118c98771cca9f"
+      },
+      {
+        "path": "build/cache/go-build/21/21c56a7688233ecbec70eda89100b9bcb490c1d3980fca92aeca6270cf9406da-d",
+        "device": 2049,
+        "inode": 581746,
+        "size": 38888792,
+        "mtime_ns": 1790582738017818243,
+        "allocated_bytes": 38895616,
+        "sha256": "21c56a7688233ecbec70eda89100b9bcb490c1d3980fca92aeca6270cf9406da"
+      },
+      {
+        "path": "build/cache/go-build/21/2129c614822b46d3eb98d8300d2bd28df3fad0e90578f94b39e0d19e5b30e9fd-d",
+        "device": 2049,
+        "inode": 581136,
+        "size": 38535942,
+        "mtime_ns": 1790579339891475362,
+        "allocated_bytes": 38543360,
+        "sha256": "2129c614822b46d3eb98d8300d2bd28df3fad0e90578f94b39e0d19e5b30e9fd"
+      },
+      {
+        "path": "build/cache/go-build/18/18696e9833de975fc4d501f04e7fa97022043a52e14441118919aad88d20d082-d",
+        "device": 2049,
+        "inode": 581715,
+        "size": 83982106,
+        "mtime_ns": 1790582567604222328,
+        "allocated_bytes": 83988480,
+        "sha256": "18696e9833de975fc4d501f04e7fa97022043a52e14441118919aad88d20d082"
+      },
+      {
+        "path": "build/cache/go-build/20/200348abfabcf2415c0f55b984d86859178c425c6fd1c7a5507ac2bc1a437a54-d",
+        "device": 2049,
+        "inode": 583677,
+        "size": 85618336,
+        "mtime_ns": 1790586202449318767,
+        "allocated_bytes": 85622784,
+        "sha256": "200348abfabcf2415c0f55b984d86859178c425c6fd1c7a5507ac2bc1a437a54"
+      },
+      {
+        "path": "build/cache/go-build/46/4628bafd90cd93ea77fd55e887dcc0e4ce43ba0f4d62a1fbc111086cddaad365-d",
+        "device": 2049,
+        "inode": 583551,
+        "size": 85737828,
+        "mtime_ns": 1790585482033262459,
+        "allocated_bytes": 85745664,
+        "sha256": "4628bafd90cd93ea77fd55e887dcc0e4ce43ba0f4d62a1fbc111086cddaad365"
+      },
+      {
+        "path": "build/cache/go-build/c2/c25665febb228202f025d86498a9f4d8b6919823689f3c62d7c54d131f5ed571-d",
+        "device": 2049,
+        "inode": 581891,
+        "size": 38869600,
+        "mtime_ns": 1790583607840038688,
+        "allocated_bytes": 38875136,
+        "sha256": "c25665febb228202f025d86498a9f4d8b6919823689f3c62d7c54d131f5ed571"
+      },
+      {
+        "path": "build/cache/go-build/08/085274c3db6e5e16f31601e52ecdfdb18694e4b732fe6f212c5b81e9411f7af4-d",
+        "device": 2049,
+        "inode": 581330,
+        "size": 21453484,
+        "mtime_ns": 1790581595367612884,
+        "allocated_bytes": 21458944,
+        "sha256": "085274c3db6e5e16f31601e52ecdfdb18694e4b732fe6f212c5b81e9411f7af4"
+      },
+      {
+        "path": "build/cache/go-build/8c/8cffcb69532ba6242e00c38410a3dc7443ba4b1c33a318017c7a91742e456268-d",
+        "device": 2049,
+        "inode": 581187,
+        "size": 85812334,
+        "mtime_ns": 1790579466863155761,
+        "allocated_bytes": 85819392,
+        "sha256": "8cffcb69532ba6242e00c38410a3dc7443ba4b1c33a318017c7a91742e456268"
+      },
+      {
+        "path": "build/cache/go-build/8c/8c10be575d81643af41b4ea672da83e6f3c272c39183b4d1eb19e36c40607218-d",
+        "device": 2049,
+        "inode": 581170,
+        "size": 38453308,
+        "mtime_ns": 1790579396399074915,
+        "allocated_bytes": 38461440,
+        "sha256": "8c10be575d81643af41b4ea672da83e6f3c272c39183b4d1eb19e36c40607218"
+      },
+      {
+        "path": "build/cache/go-build/a4/a420df7d562430d9aa8f44fcc8799ff85da034036b3d98d99616cb8d82ae826d-d",
+        "device": 2049,
+        "inode": 581909,
+        "size": 38901996,
+        "mtime_ns": 1790583626437370679,
+        "allocated_bytes": 38907904,
+        "sha256": "a420df7d562430d9aa8f44fcc8799ff85da034036b3d98d99616cb8d82ae826d"
+      },
+      {
+        "path": "build/cache/go-build/bb/bb9c06e2269a9171f62bb48249ecab3621f45acab20c73f51f226e78d24adbd1-d",
+        "device": 2049,
+        "inode": 581708,
+        "size": 38455224,
+        "mtime_ns": 1790582536197416627,
+        "allocated_bytes": 38461440,
+        "sha256": "bb9c06e2269a9171f62bb48249ecab3621f45acab20c73f51f226e78d24adbd1"
+      },
+      {
+        "path": "build/cache/go-build/be/be1a48cd27ca3b03daa746f4be783faa9fbf99c8b1df4e71a44f9541a6a75519-d",
+        "device": 2049,
+        "inode": 581382,
+        "size": 21038414,
+        "mtime_ns": 1790581644801004922,
+        "allocated_bytes": 21045248,
+        "sha256": "be1a48cd27ca3b03daa746f4be783faa9fbf99c8b1df4e71a44f9541a6a75519"
+      },
+      {
+        "path": "build/cache/go-build/c4/c4f0757b79817b223d8d76bdaa3bcff0487b2e8dbaa480101dfe9e355639b6bc-d",
+        "device": 2049,
+        "inode": 581035,
+        "size": 85713508,
+        "mtime_ns": 1790579274655194082,
+        "allocated_bytes": 85721088,
+        "sha256": "c4f0757b79817b223d8d76bdaa3bcff0487b2e8dbaa480101dfe9e355639b6bc"
+      },
+      {
+        "path": "build/cache/go-build/09/0922e026502c1f4f37e9bc0cde1a6a3942cc0b8f5f4b7f50b2f6a246147e8336-d",
+        "device": 2049,
+        "inode": 581933,
+        "size": 85737826,
+        "mtime_ns": 1790583677773117980,
+        "allocated_bytes": 85745664,
+        "sha256": "0922e026502c1f4f37e9bc0cde1a6a3942cc0b8f5f4b7f50b2f6a246147e8336"
+      },
+      {
+        "path": "build/cache/go-build/c6/c6d5b0425e8dc4eae251a42bf4363f78f0adedd7b6db73e18a0b0f4efd865d74-d",
+        "device": 2049,
+        "inode": 581688,
+        "size": 85618340,
+        "mtime_ns": 1790582508688164480,
+        "allocated_bytes": 85622784,
+        "sha256": "c6d5b0425e8dc4eae251a42bf4363f78f0adedd7b6db73e18a0b0f4efd865d74"
+      },
+      {
+        "path": "build/cache/go-build/7e/7ec81e4e96e633fbe80ab651929e2ebd30da3d6cf9086866020deba5c5d8988f-d",
+        "device": 2049,
+        "inode": 581111,
+        "size": 38934604,
+        "mtime_ns": 1790579321330616561,
+        "allocated_bytes": 38940672,
+        "sha256": "7ec81e4e96e633fbe80ab651929e2ebd30da3d6cf9086866020deba5c5d8988f"
+      },
+      {
+        "path": "build/cache/go-build/6c/6cc7b44ded097ca6b55f623631c7a0d7efcec430abcd8a44c62f5edcb7471db3-d",
+        "device": 2049,
+        "inode": 581608,
+        "size": 11904464,
+        "mtime_ns": 1790582134134591300,
+        "allocated_bytes": 11907072,
+        "sha256": "6cc7b44ded097ca6b55f623631c7a0d7efcec430abcd8a44c62f5edcb7471db3"
+      },
+      {
+        "path": "build/cache/go-build/e6/e692beeac01a14ca453403e1c82721daa6c17bb621bdade6cb807b0422e22e58-d",
+        "device": 2049,
+        "inode": 581772,
+        "size": 38936518,
+        "mtime_ns": 1790582757677133954,
+        "allocated_bytes": 38940672,
+        "sha256": "e692beeac01a14ca453403e1c82721daa6c17bb621bdade6cb807b0422e22e58"
+      },
+      {
+        "path": "build/cache/go-build/a9/a92010ce43b767b35d33614aed208a97c2ba7496ea7a3834192551f47ff7c839-d",
+        "device": 2049,
+        "inode": 581727,
+        "size": 85836660,
+        "mtime_ns": 1790582613968461288,
+        "allocated_bytes": 85843968,
+        "sha256": "a92010ce43b767b35d33614aed208a97c2ba7496ea7a3834192551f47ff7c839"
+      },
+      {
+        "path": "build/cache/go-build/95/954d0822c05f3843f93b153e0116b31d78bca27939ed6eb0871383b13f891963-d",
+        "device": 2049,
+        "inode": 581927,
+        "size": 38551102,
+        "mtime_ns": 1790583644524688582,
+        "allocated_bytes": 38555648,
+        "sha256": "954d0822c05f3843f93b153e0116b31d78bca27939ed6eb0871383b13f891963"
+      },
+      {
+        "path": "build/cache/go-build/5c/5cd1839ad739bde87af5795646d2ad1e4ef69b1d9e4a5579468fdb24e69c30c1-d",
+        "device": 2049,
+        "inode": 581142,
+        "size": 85594014,
+        "mtime_ns": 1790579371939212364,
+        "allocated_bytes": 85598208,
+        "sha256": "5cd1839ad739bde87af5795646d2ad1e4ef69b1d9e4a5579468fdb24e69c30c1"
+      },
+      {
+        "path": "build/cache/go-build/e1/e1f692e1e3a375ae8dba84a3332f7df86f1377c9e7243e54e6eeec5c2e15754d-d",
+        "device": 2049,
+        "inode": 581629,
+        "size": 38585764,
+        "mtime_ns": 1790582148520658286,
+        "allocated_bytes": 38592512,
+        "sha256": "e1f692e1e3a375ae8dba84a3332f7df86f1377c9e7243e54e6eeec5c2e15754d"
+      },
+      {
+        "path": "build/cache/go-build/76/7639e01a49f81c8e75d98d8bc2786abc8ee1f6a9683934352a0c1a253c0cd488-d",
+        "device": 2049,
+        "inode": 581378,
+        "size": 25788982,
+        "mtime_ns": 1790581639405824741,
+        "allocated_bytes": 25796608,
+        "sha256": "7639e01a49f81c8e75d98d8bc2786abc8ee1f6a9683934352a0c1a253c0cd488"
+      },
+      {
+        "path": "build/cache/go-build/52/526a07487af11e0e22456da85458d51c3f7f84e782e51a5bd19cccf57ea5e7c7-d",
+        "device": 2049,
+        "inode": 583659,
+        "size": 11904464,
+        "mtime_ns": 1790586155439669930,
+        "allocated_bytes": 11907072,
+        "sha256": "526a07487af11e0e22456da85458d51c3f7f84e782e51a5bd19cccf57ea5e7c7"
+      },
+      {
+        "path": "build/cache/go-build/69/69c4dd3cae49c8841144d21e86a68ec70645163f2d811958b604e87683391346-d",
+        "device": 2049,
+        "inode": 583671,
+        "size": 38519882,
+        "mtime_ns": 1790586169119035547,
+        "allocated_bytes": 38526976,
+        "sha256": "69c4dd3cae49c8841144d21e86a68ec70645163f2d811958b604e87683391346"
+      },
+      {
+        "path": "build/cache/go-build/42/425a38efbd42e5b2d22bf5e5a3c843ce7dac806fdb05884238478e144278e729-d",
+        "device": 2049,
+        "inode": 583607,
+        "size": 83982102,
+        "mtime_ns": 1790585603018027425,
+        "allocated_bytes": 83988480,
+        "sha256": "425a38efbd42e5b2d22bf5e5a3c843ce7dac806fdb05884238478e144278e729"
+      },
+      {
+        "path": "build/cache/go-build/d8/d8a9ccb305a5a85d67cce27ec4d93e647c7b929e3726cd05a3b571c6f08f6300-d",
+        "device": 2049,
+        "inode": 581945,
+        "size": 38518800,
+        "mtime_ns": 1790583705096865273,
+        "allocated_bytes": 38526976,
+        "sha256": "d8a9ccb305a5a85d67cce27ec4d93e647c7b929e3726cd05a3b571c6f08f6300"
+      },
+      {
+        "path": "build/cache/go-build/bd/bddd40ac8bdfbfb1b44c8cdc18fa23fa444a5cb4a28eef206ea61d6112f7f370-d",
+        "device": 2049,
+        "inode": 581349,
+        "size": 21455742,
+        "mtime_ns": 1790581616167362367,
+        "allocated_bytes": 21463040,
+        "sha256": "bddd40ac8bdfbfb1b44c8cdc18fa23fa444a5cb4a28eef206ea61d6112f7f370"
+      },
+      {
+        "path": "build/cache/go-build/e2/e23b66ece3a9e628b33eb0af4a3530508540fab1de858f13bf497e791f4dea89-d",
+        "device": 2049,
+        "inode": 583545,
+        "size": 38552182,
+        "mtime_ns": 1790585448605959755,
+        "allocated_bytes": 38559744,
+        "sha256": "e23b66ece3a9e628b33eb0af4a3530508540fab1de858f13bf497e791f4dea89"
+      },
+      {
+        "path": "build/cache/go-build/e7/e7fdf6688d2f3276312785cbf4920c937a2eb0feec1c09bbb0bb8856465abff3-d",
+        "device": 2049,
+        "inode": 581647,
+        "size": 85734500,
+        "mtime_ns": 1790582314629387750,
+        "allocated_bytes": 85741568,
+        "sha256": "e7fdf6688d2f3276312785cbf4920c937a2eb0feec1c09bbb0bb8856465abff3"
+      },
+      {
+        "path": "build/cache/go-build/3f/3f08585d01bca57feca27aaa748a5ffb78d84729aed3791bafba1fdc2e6b3d5c-d",
+        "device": 2049,
+        "inode": 581326,
+        "size": 25847368,
+        "mtime_ns": 1790581589962050626,
+        "allocated_bytes": 25853952,
+        "sha256": "3f08585d01bca57feca27aaa748a5ffb78d84729aed3791bafba1fdc2e6b3d5c"
+      },
+      {
+        "path": "build/cache/go-build/73/73f6e6d5b9e7916c8a7064d91a2b8c7cd8c88e610b72628b227041507d7771a5-d",
+        "device": 2049,
+        "inode": 583511,
+        "size": 38870680,
+        "mtime_ns": 1790585411003979940,
+        "allocated_bytes": 38875136,
+        "sha256": "73f6e6d5b9e7916c8a7064d91a2b8c7cd8c88e610b72628b227041507d7771a5"
+      },
+      {
+        "path": "build/cache/go-build/73/73eb24af8f9493395de910c44b2523ac53e6e12c25a87861b614142c8cfcf443-d",
+        "device": 2049,
+        "inode": 581005,
+        "size": 11904464,
+        "mtime_ns": 1790579228214038918,
+        "allocated_bytes": 11907072,
+        "sha256": "73eb24af8f9493395de910c44b2523ac53e6e12c25a87861b614142c8cfcf443"
+      },
+      {
+        "path": "build/cache/go-build/d2/d235ec18dec20c57e8b866a47d6aeb319eda94f7c20d1d0cd3fd324f5e4bb4fc-d",
+        "device": 2049,
+        "inode": 583528,
+        "size": 38903078,
+        "mtime_ns": 1790585429954360706,
+        "allocated_bytes": 38907904,
+        "sha256": "d235ec18dec20c57e8b866a47d6aeb319eda94f7c20d1d0cd3fd324f5e4bb4fc"
+      },
+      {
+        "path": "build/cache/go-build/d4/d419f337488646aab67f9144b44613e3ad2298b78a695baac34c28fbd7bffbdc-d",
+        "device": 2049,
+        "inode": 581964,
+        "size": 38434526,
+        "mtime_ns": 1790583765720620613,
+        "allocated_bytes": 38440960,
+        "sha256": "d419f337488646aab67f9144b44613e3ad2298b78a695baac34c28fbd7bffbdc"
+      },
+      {
+        "path": "build/cache/go-build/5f/5f2682f14315a5bfb59d58c9bba2c880f444060fc514bec3c25c9679a7a8ffee-d",
+        "device": 2049,
+        "inode": 581176,
+        "size": 83957780,
+        "mtime_ns": 1790579428761822267,
+        "allocated_bytes": 83963904,
+        "sha256": "5f2682f14315a5bfb59d58c9bba2c880f444060fc514bec3c25c9679a7a8ffee"
+      },
+      {
+        "path": "build/cache/go-build/9e/9e361c589ea2c088d8004ebb74652690f1870e51e88722fb92aa90630752fcc4-d",
+        "device": 2049,
+        "inode": 581952,
+        "size": 85618332,
+        "mtime_ns": 1790583737760020211,
+        "allocated_bytes": 85622784,
+        "sha256": "9e361c589ea2c088d8004ebb74652690f1870e51e88722fb92aa90630752fcc4"
+      },
+      {
+        "path": "build/cache/go-build/0b/0b46f69123241d71d35b1cb30eedfe77ca91e690f6362fd3b6cf7caea4c4376f-d",
+        "device": 2049,
+        "inode": 583618,
+        "size": 85836656,
+        "mtime_ns": 1790585648770881463,
+        "allocated_bytes": 85843968,
+        "sha256": "0b46f69123241d71d35b1cb30eedfe77ca91e690f6362fd3b6cf7caea4c4376f"
+      },
+      {
+        "path": "build/cache/go-build/e8/e87548096b8de8d54524aabbf8f4d0c079044838e438fc1f74569d5da583cad6-d",
+        "device": 2049,
+        "inode": 581345,
+        "size": 25856508,
+        "mtime_ns": 1790581610770626882,
+        "allocated_bytes": 25862144,
+        "sha256": "e87548096b8de8d54524aabbf8f4d0c079044838e438fc1f74569d5da583cad6"
+      },
+      {
+        "path": "build/cache/go-build/c5/c5f42b2a6debd659b3d0dd97923d7ff62d325697243f8ddc7d0838e896de12bb-d",
+        "device": 2049,
+        "inode": 581662,
+        "size": 85737834,
+        "mtime_ns": 1790582448128855790,
+        "allocated_bytes": 85745664,
+        "sha256": "c5f42b2a6debd659b3d0dd97923d7ff62d325697243f8ddc7d0838e896de12bb"
+      },
+      {
+        "path": "build/cache/go-build/58/5844f3dd811f80fde3670529f39cadff6f9e4f0fd00edce0f6328fbf5699f9ce-d",
+        "device": 2049,
+        "inode": 581981,
+        "size": 85836652,
+        "mtime_ns": 1790583843100031472,
+        "allocated_bytes": 85843968,
+        "sha256": "5844f3dd811f80fde3670529f39cadff6f9e4f0fd00edce0f6328fbf5699f9ce"
+      },
+      {
+        "path": "build/cache/go-build/57/57f927c72be94a39b36208dd414fabb516eea7c839774b31fba7f9110ae4f17f-d",
+        "device": 2049,
+        "inode": 583499,
+        "size": 11904464,
+        "mtime_ns": 1790585396952025518,
+        "allocated_bytes": 11911168,
+        "sha256": "57f927c72be94a39b36208dd414fabb516eea7c839774b31fba7f9110ae4f17f"
+      },
+      {
+        "path": "build/cache/go-build/0e/0ed17f0e501783a0754b9d1544336e93ba5d32a7d656a6bc2c3bffa575eff94f-d",
+        "device": 2049,
+        "inode": 583562,
+        "size": 38519882,
+        "mtime_ns": 1790585509430453370,
+        "allocated_bytes": 38526976,
+        "sha256": "0ed17f0e501783a0754b9d1544336e93ba5d32a7d656a6bc2c3bffa575eff94f"
+      },
+      {
+        "path": "build/cache/go-build/81/81f7e2a7ac7885e63421a2f6a0e941ed7016609f75b7621c5cb93136ef36137d-d",
+        "device": 2049,
+        "inode": 583579,
+        "size": 38435608,
+        "mtime_ns": 1790585570638302332,
+        "allocated_bytes": 38440960,
+        "sha256": "81f7e2a7ac7885e63421a2f6a0e941ed7016609f75b7621c5cb93136ef36137d"
+      },
+      {
+        "path": "build/cache/go-build/2a/2a7f71c9d6a5cfbc462aa2aef7df5fcc9f6a1a200c90c1987d84eecb74270511-d",
+        "device": 2049,
+        "inode": 581311,
+        "size": 10529334,
+        "mtime_ns": 1790581579634435910,
+        "allocated_bytes": 10530816,
+        "sha256": "2a7f71c9d6a5cfbc462aa2aef7df5fcc9f6a1a200c90c1987d84eecb74270511"
+      }
+    ],
+    "cutoff_epoch": 1790586235.1386855,
+    "total_allocated_bytes": 2677968896,
+    "scope": "Rebuildable Linux 386 Go cache archives >=10MB untouched for one hour, after all build/test jobs joined; no source, assets, logs or retained binaries.",
+    "verified_at_epoch": 1790589844.9617398,
+    "free_bytes_before": 892207104,
+    "available_bytes_before": 0,
+    "result": {
+      "success": true,
+      "files": 54,
+      "allocated_bytes": 2677968896,
+      "free_bytes_after": 3570135040,
+      "available_bytes_after": 271835136,
+      "scope": "Rebuildable Linux 386 Go cache archives >=10MB untouched for one hour, after all build/test jobs joined; no source, assets, logs or retained binaries.",
+      "host_checks": true,
+      "current_binaries_and_module_sources_preserved": true
+    }
+  }
+}

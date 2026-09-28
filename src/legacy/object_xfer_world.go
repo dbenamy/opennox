@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include <stdlib.h>
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -106,7 +102,7 @@ func objectXferLight(u *server.Object) int {
 				d = objs.ByNetCodeDynamic(int(u.NetCode))
 			}
 			if d == nil {
-				C.abort()
+				legacyAbort()
 				return 0
 			}
 		}

@@ -50,7 +50,7 @@ func PortTestWorldGridAllocate(failAt int) (r PortTestWorldGridAllocation) {
 	return r
 }
 
-// Shared by fixture-grid allocation contracts while the C observer remains.
+// Shared by fixture-grid allocation contracts using the pinned native observer.
 func portTestGridAllocationObserve(failAt int) { allocationTestGridStart(int(failAt)) }
 func portTestGridAllocationStop()              { allocationTestGridStop() }
 func portTestGridAllocationStat(index int) int { return int(allocationTestGridStat(int(index))) }

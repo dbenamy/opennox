@@ -1,0 +1,72 @@
+--- a/src/legacy/map_painting_porttest.go
++++ b/src/legacy/map_painting_porttest.go
+@@ -317,6 +317,18 @@
+ 		}
+ 	}
+ }
++func (f *paintTestFixture) snapshotSlots() map[int]uint32 {
++	out := map[int]uint32{}
++	for i, r := range f.slots {
++		if r != nil {
++			out[i] = r.id
++		} else {
++			out[i] = 0
++		}
++	}
++	return out
++}
++
+ func (f *paintTestFixture) snapshot(ret uint32) (out PortTestPaintStep) {
+ 	for i, v := range *(*[128]uint32)(f.table) {
+ 		out.Rows[i] = f.norm(v)
+@@ -344,14 +356,7 @@
+ 		}
+ 		out.Records = append(out.Records, v)
+ 	}
+-	out.Slots = map[int]uint32{}
+-	for i, r := range f.slots {
+-		if r != nil {
+-			out.Slots[i] = f.norm(mapRoomRaw(r.ptr))
+-		} else {
+-			out.Slots[i] = 0
+-		}
+-	}
++	out.Slots = f.snapshotSlots()
+ 	for x := 0; x < 128; x++ {
+ 		for y := 0; y < 128; y++ {
+ 			c := f.cell(x, y)
+--- /dev/null
++++ b/src/legacy/map_painting_slot_porttest_test.go
+@@ -0,0 +1,32 @@
++//go:build porttest
++
++package legacy
++
++import (
++	"testing"
++	"unsafe"
++)
++
++// Force address reuse independently of libc or native allocator size classes.
++// A saved slot identifies its bound record, including an interior alias, even
++// when a later record occupies the same address.
++func TestPaintSlotIdentityOnAddressReuse(t *testing.T) {
++	var storage [64]byte
++	p := unsafe.Pointer(&storage[0])
++	f := &paintTestFixture{mapRoomTestFixture: &mapRoomTestFixture{slots: map[int]*mapRoomTestRegion{}}}
++	old := f.register(p, 32, "input", false)
++	alias := &mapRoomTestRegion{ptr: unsafe.Add(p, 4), size: 28, id: old.id + 4, kind: "alias", alive: true}
++	f.slots[1], f.slots[2], f.slots[3] = old, alias, nil
++	old.alive = false
++	replacement := f.register(p, 32, "replacement", false)
++	f.slots[4] = replacement
++	if got := f.norm(mapRoomRaw(p)); got != replacement.id {
++		t.Fatalf("forced reuse setup: address identifies %d, want %d", got, replacement.id)
++	}
++	got := f.snapshotSlots()
++	for slot, want := range map[int]uint32{1: old.id, 2: alias.id, 3: 0, 4: replacement.id} {
++		if got[slot] != want {
++			t.Errorf("slot %d: identity %d, want bound identity %d", slot, got[slot], want)
++		}
++	}
++}

@@ -428,7 +428,11 @@ Reconsider the tests as the behavior and failure modes become clearer.
 - **Broader checks:** full asset suite at subsystem milestones and shared changes,
   comparing the exact known failure set and package outcomes. Add save/load,
   multiplayer/protocol or meaningful performance checks when the batch warrants
-  them. Check tool support before choosing race, sanitizer or checkptr runs on 386.
+  them. For allocator changes, measure real owner working sets and concurrent
+  churn before repeating the broad suite. Tiny isolated probes can miss mapping
+  churn and buffer reuse costs. Alternate original/native owner runs when timings
+  differ, profile the difference, and document residual tradeoffs explicitly.
+  Check tool support before choosing race, sanitizer or checkptr runs on 386.
 
 A completely green legacy suite is not a prerequisite for porting. Known failures
 are recorded in the expectation file linked from PORTING_STATE.md and remain visible.

@@ -2,14 +2,11 @@
 
 package legacy
 
-/*
-#include <stdlib.h>
-*/
-import "C"
 import (
 	"bytes"
 	"crypto/sha256"
 	"fmt"
+	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/legacy/common/fpenv"
 	"runtime"
 	"sort"
@@ -134,7 +131,7 @@ func paintGlobals() map[string]*uint32 {
 }
 func (f *paintTestFixture) allocate(size int, kind string) *mapRoomTestRegion {
 	n := (size + 16 + 255) &^ 255
-	p := C.aligned_alloc(256, C.size_t(n))
+	p := alloc.RawAlignedAlloc(256, uintptr(n))
 	if p == nil {
 		panic("painting input allocation")
 	}
@@ -317,6 +314,20 @@ func (f *paintTestFixture) discover(ret uint32, op int) {
 		}
 	}
 }
+
+// Snapshot the bound record identity, even after its address has been reused.
+func (f *paintTestFixture) snapshotSlots() map[int]uint32 {
+	out := map[int]uint32{}
+	for i, r := range f.slots {
+		if r != nil {
+			out[i] = r.id
+		} else {
+			out[i] = 0
+		}
+	}
+	return out
+}
+
 func (f *paintTestFixture) snapshot(ret uint32) (out PortTestPaintStep) {
 	for i, v := range *(*[128]uint32)(f.table) {
 		out.Rows[i] = f.norm(v)
@@ -344,14 +355,7 @@ func (f *paintTestFixture) snapshot(ret uint32) (out PortTestPaintStep) {
 		}
 		out.Records = append(out.Records, v)
 	}
-	out.Slots = map[int]uint32{}
-	for i, r := range f.slots {
-		if r != nil {
-			out.Slots[i] = f.norm(mapRoomRaw(r.ptr))
-		} else {
-			out.Slots[i] = 0
-		}
-	}
+	out.Slots = f.snapshotSlots()
 	for x := 0; x < 128; x++ {
 		for y := 0; y < 128; y++ {
 			c := f.cell(x, y)
@@ -730,7 +734,7 @@ func paintInvokeNative(op int, v [6]uint32) uint32 {
 	case 47:
 		return mapPaintWorldBorder((*types.Pointf)(mapRoomPointer(v[0])))
 	default:
-		C.abort()
+		legacyAbort()
 		return 0
 	}
 }

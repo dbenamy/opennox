@@ -3202,3 +3202,28 @@ headers left without consumers. Standard-library includes and external backends
 remain. Qualify the complete native root corpus and production builds at this
 shared-infrastructure boundary. See
 [FIXTURE_ALLOCATION_OBSERVERS.md](FIXTURE_ALLOCATION_OBSERVERS.md).
+
+## Final engine allocation and termination boundary
+
+Replace libc payload storage with explicitly owned OS mappings and bounded
+size-class reuse. Keep metadata in Go and payloads outside its heap, with the
+original raw/tracked allocation domains and failure dispositions. The selected
+Linux 386/SSE2 implementation uses an exact-byte clear leaf and advisory Go pool
+reuse hints for large buffers; correctness and lifetime do not depend on hints
+surviving GC. Retain at most 18 MiB of idle payload mappings. This limit excludes
+live allocation fragmentation and Go metadata.
+
+Reject earlier allocator attempts that slowed real owners. Accept the final
+performance tradeoff: corrected-fixture owner medians are within about 1.3% of the original, and five of
+six allocation benchmark medians improve, but synthetic two-worker raw churn
+is about 30% slower than the frozen libc baseline. Record it for review and
+revisit if concurrent gameplay measurements show a practical allocator bottleneck.
+Do not claim a universal speedup.
+
+Use Linux SIGABRT plus an unconditional exit fallback for fatal engine paths.
+Retire engine compiler/linker glue, including its safe ASAN flags, while preserving
+safe Go allocation and mapped-memory checks. These are not equivalent whole-process
+ASAN coverage. External native dependencies remain unchanged. Windows allocation
+has only a 386 compile check; its existing WinSock binding and other platform
+qualification remain outside this Linux milestone. Full evidence and final
+qualification status: [FINAL_ENGINE_BOUNDARY.md](FINAL_ENGINE_BOUNDARY.md).

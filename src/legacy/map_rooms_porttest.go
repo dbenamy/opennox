@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include <stdlib.h>
-*/
-import "C"
-
 import (
 	"fmt"
 	"github.com/opennox/libs/platform"
@@ -368,7 +363,7 @@ func portTestMapRoomCase(sp PortTestMapRoomSpec, cw uint16) (out PortTestMapRoom
 			panic("map room fixture record size")
 		}
 		n := (spec.Size + 16 + 255) &^ 255
-		p := C.aligned_alloc(256, C.size_t(n))
+		p := alloc.RawAlignedAlloc(256, uintptr(n))
 		if p == nil {
 			panic("map room input allocation")
 		}
@@ -561,7 +556,7 @@ func mapRoomPortInvoke(op int, args [4]uint32) uint64 {
 	case 59:
 		return math.Float64bits(mapRoomRandomFloat(math.Float32frombits(args[0]), math.Float32frombits(args[1])))
 	default:
-		C.abort()
+		legacyAbort()
 		return 0
 	}
 }

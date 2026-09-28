@@ -63,11 +63,23 @@ Next: retire the two aligned-buffer fixture imports, reachable abort/compiler fl
 and centralized libc allocator implementation. Preserve normal/safe allocation
 domains, alignment, layout and failure behavior, including safe Calloc's nil marker.
 External native libraries remain preserved dependencies. Original-path contracts are
-installed for the next batch under `build/port-final-engine-boundary/`; production
-still uses libc. Five allocation roots passed twice in normal/safe, and the fatal
+frozen under `build/port-final-engine-boundary/`; the committed original
+baseline uses libc. Five allocation roots passed twice in normal/safe, and the fatal
 contract passed twice in all four profiles after a fixture setup correction.
-The broader original owner/library/performance baseline passed and is ready for
-conversion; its temporary alignment probe adds one test-only C import. See
+The original baseline is pushed as `71ff3095`. The native allocator/abort/flag
+replacement passed the first functional gates, but its real-owner and parallel
+performance regressed. The second revision also passed functional gates but still regressed performance.
+A larger bounded reuse cache fixed most owner overhead. The current candidate
+also uses a measured 386 byte-clear leaf, with independent guard-byte checks;
+performance is accepted with an explicit parallel-churn tradeoff. The full sweep then found four hallway/prefab capture mismatches in both
+profiles and was stopped. All 2,512 hallway cases differ only in saved-slot identity after address reuse.
+The correction now passes the original backend with unchanged captures in all
+three profiles, and its forced-reuse test passes normal/safe. It is installed for
+fresh native qualification. All 166 owners and 16 repeats now pass per normal
+profile, along with initial safe/library/leaf checks. Corrected-fixture performance
+is at parity within about 1.3%; the complete corpus and production gates remain.
+status counts above
+still describe qualified `49c8ef62`. See
 [FINAL_ENGINE_BOUNDARY.md](docs/porting/FINAL_ENGINE_BOUNDARY.md).
 
 The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
@@ -80,7 +92,8 @@ priority, shared callback routes and capture IDs. Bounds panics outside valid
 observer capacity are recorded in the corresponding reports.
 
 CString retains raw malloc/free normally and tracked Malloc/FreePtr in safe.
-RawMalloc intentionally still uses cgo's process-fatal malloc wrapper. Keep normal
+The qualified baseline RawMalloc uses cgo's process-fatal malloc wrapper; the
+pending native replacement preserves its fatal disposition. Keep normal
 fatal failure distinct from safe recoverable panic; both have qualified contracts.
 Placement math preserves libc rounding only in its qualified argument domain;
 requalify before expanding callers. Layout aliases preserve allocation sizes;
