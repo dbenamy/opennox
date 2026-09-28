@@ -3082,3 +3082,13 @@ Keep the orphan quickbar selector's nil snapshot-map entry to avoid renumbering
 canonical callback IDs. Preserve popup's existing nil parser callback from its
 unproduced raw parent slot; inheriting the native handler is a separate behavior
 review, not an incidental change in this batch. See [WINDOW_DISPATCH.md](WINDOW_DISPATCH.md).
+
+## Native damage and monster observers
+
+Retire the two raw dispatchers after producer audits. Preserve full signed results,
+argument evaluation before callback selection, bool/value registry independence,
+and native lifetime barriers. Register the shared strike observer for collision
+and the die observer for update; do not add fixture names to parser tables. Build
+the monster map before init and preserve all 26 production entries. Unsupported
+keys panic only in the audited families. See
+[DAMAGE_MONSTER_DISPATCH.md](DAMAGE_MONSTER_DISPATCH.md).

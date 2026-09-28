@@ -2,20 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include "GAME4_3.h"
-static int pt_combat_strikes, pt_combat_actor, pt_combat_result;
-static int pt_combat_strike(int obj) {
- pt_combat_strikes++; pt_combat_actor=obj; return pt_combat_result;
-}
-static void* pt_combat_strike_ptr(void) { return (void*)pt_combat_strike; }
-static void pt_combat_reset(int result) { pt_combat_strikes=0; pt_combat_actor=0; pt_combat_result=result; }
-static int pt_combat_count(void) { return pt_combat_strikes; }
-static int pt_combat_last(void) { return pt_combat_actor; }
-*/
-import "C"
-
 import (
 	"bytes"
 	"encoding/binary"
@@ -29,6 +15,26 @@ import (
 	"math"
 	"unsafe"
 )
+
+var portTestCombatKey byte
+var portTestCombatStrikes, portTestCombatActor, portTestCombatResult int32
+
+func portTestCombatCallbackKey() unsafe.Pointer { return unsafe.Pointer(&portTestCombatKey) }
+func portTestCombatStrike(u *server.Object) int32 {
+	portTestCombatStrikes++
+	portTestCombatActor = int32(uintptr(unsafe.Pointer(u)))
+	return portTestCombatResult
+}
+func portTestCombatReset(result int32) {
+	portTestCombatStrikes = 0
+	portTestCombatActor = 0
+	portTestCombatResult = result
+}
+func init() {
+	monsterCallbackHandlers[portTestCombatCallbackKey()] = portTestCombatStrike
+	// Shield fixtures use this same observer in the collision slot.
+	server.PortTestRegisterCollideCallback(portTestCombatCallbackKey(), func(u *server.Object, _, _ uintptr) uint32 { return uint32(portTestCombatStrike(u)) })
+}
 
 type PortTestCombatResult struct {
 	Extra                               []uint32
@@ -241,9 +247,9 @@ func portTestCombatPrepare(proxy *portTestRoamOwnerServer, u, target *server.Obj
 		copy(def.MissileName148[:], "porttest-combat-projectile")
 	}
 	if sp.Strike >= 0 {
-		def.MeleeStrikeFunc236 = C.pt_combat_strike_ptr()
+		def.MeleeStrikeFunc236 = portTestCombatCallbackKey()
 	}
-	C.pt_combat_reset(C.int(sp.Strike))
+	portTestCombatReset(int32(sp.Strike))
 	target.PosVec = types.Pointf{X: math.Float32frombits(sp.Target[0]), Y: math.Float32frombits(sp.Target[1])}
 	target.NewPos = target.PosVec
 	target.PrevPos = target.PosVec
@@ -253,8 +259,8 @@ func portTestCombatPrepare(proxy *portTestRoamOwnerServer, u, target *server.Obj
 	target.NetCode = sp.ScanCode
 	target.Shape.Kind = server.ShapeKindCenter
 	if sp.Shield {
-		*(*unsafe.Pointer)(unsafe.Add(u.CObj(), 696)) = C.pt_combat_strike_ptr()
-		*(*unsafe.Pointer)(unsafe.Add(target.CObj(), 696)) = C.pt_combat_strike_ptr()
+		*(*unsafe.Pointer)(unsafe.Add(u.CObj(), 696)) = portTestCombatCallbackKey()
+		*(*unsafe.Pointer)(unsafe.Add(target.CObj(), 696)) = portTestCombatCallbackKey()
 		u.ObjFlags |= 0x80
 	}
 	if sp.Killable {
@@ -328,14 +334,14 @@ func portTestCombatCall(u *server.Object, sp *PortTestCombatSpec) {
 func portTestCombatTrace(proxy *portTestRoamOwnerServer, normalize func(uint32) uint32) *PortTestCombatResult {
 	// The shared fixture always allocates this layout, including non-monster creation cases.
 	ud := (*server.MonsterUpdateData)(proxy.combat.actor.UpdateData)
-	r := &PortTestCombatResult{Intact: true, Strikes: int(C.pt_combat_count()), Selected: normalize(uint32(dword_5d4594_2487948)), Nearest: *memmap.PtrUint32(0x5D4594, 2487952), Cooldown: ud.Field128, Status: uint32(ud.StatusFlags), Stamina: ud.Field282_0}
+	r := &PortTestCombatResult{Intact: true, Strikes: int(portTestCombatStrikes), Selected: normalize(uint32(dword_5d4594_2487948)), Nearest: *memmap.PtrUint32(0x5D4594, 2487952), Cooldown: ud.Field128, Status: uint32(ud.StatusFlags), Stamina: ud.Field282_0}
 	r.Actions = append([]server.AIStackItem(nil), ud.AIStack[:ud.AIStackInd+1]...)
 	for i := range r.Actions {
 		for j, v := range r.Actions[i].Args {
 			r.Actions[i].Args[j] = uintptr(normalize(uint32(v)))
 		}
 	}
-	proxy.trace = append(proxy.trace, 13, uint32(C.pt_combat_count()), uint32(bool2int(uint32(C.pt_combat_last()) == uint32(uintptr(unsafe.Pointer(proxy.combat.actor))))))
+	proxy.trace = append(proxy.trace, 13, uint32(portTestCombatStrikes), uint32(bool2int(uint32(portTestCombatActor) == uint32(uintptr(unsafe.Pointer(proxy.combat.actor))))))
 	for _, off := range []uintptr{2487684, 2487944, 2487952, 2487956, 2487988} {
 		proxy.trace = append(proxy.trace, uint32(off), normalize(*memmap.PtrUint32(0x5D4594, off)))
 	}

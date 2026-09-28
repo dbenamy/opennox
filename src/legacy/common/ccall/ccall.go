@@ -11,8 +11,6 @@ static void go_call_void_ptr2_func(void (*fnc)(void*, void*), void* a1, void* a2
 static void go_call_void_ptr3_func(void (*fnc)(void*, void*, void*), void* a1, void* a2, void* a3) { fnc(a1, a2, a3); }
 static int go_call_int_uptr3_func(int (*fnc)(uintptr_t, uintptr_t, uintptr_t), uintptr_t a1, uintptr_t a2, uintptr_t a3) { return fnc(a1, a2, a3); }
 static int go_call_int_uptr4_func(int (*fnc)(uintptr_t, uintptr_t, uintptr_t, uintptr_t), uintptr_t a1, uintptr_t a2, uintptr_t a3, uintptr_t a4) { return fnc(a1, a2, a3, a4); }
-static int go_call_int_uptr5_func(int (*fnc)(uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t), uintptr_t a1, uintptr_t a2, uintptr_t a3, uintptr_t a4, uintptr_t a5) { return fnc(a1, a2, a3, a4, a5); }
-static int go_call_int_ptr_func(int (*fnc)(void*), void* a1) { return fnc(a1); }
 static int go_call_int_ptr2_func(int (*fnc)(void*, void*), void* a1, void* a2) { return fnc(a1, a2); }
 static int go_call_int_ptr3_func(int (*fnc)(void*, void*, void*), void* a1, void* a2, void* a3) { return fnc(a1, a2, a3); }
 
@@ -42,14 +40,6 @@ func CallIntUPtr3(fnc unsafe.Pointer, a1 uintptr, a2 uintptr, a3 uintptr) int {
 
 func CallIntUPtr4(fnc unsafe.Pointer, a1 uintptr, a2 uintptr, a3 uintptr, a4 uintptr) int {
 	return int(C.go_call_int_uptr4_func((*[0]byte)(fnc), C.uintptr_t(a1), C.uintptr_t(a2), C.uintptr_t(a3), C.uintptr_t(a4)))
-}
-
-func CallIntUPtr5(fnc unsafe.Pointer, a1 uintptr, a2 uintptr, a3 uintptr, a4 uintptr, a5 uintptr) int {
-	return int(C.go_call_int_uptr5_func((*[0]byte)(fnc), C.uintptr_t(a1), C.uintptr_t(a2), C.uintptr_t(a3), C.uintptr_t(a4), C.uintptr_t(a5)))
-}
-
-func CallIntPtr(fnc unsafe.Pointer, a1 unsafe.Pointer) int {
-	return int(C.go_call_int_ptr_func((*[0]byte)(fnc), a1))
 }
 
 func CallIntPtr2(fnc unsafe.Pointer, a1 unsafe.Pointer, a2 unsafe.Pointer) int {

@@ -4,7 +4,6 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -45,10 +44,10 @@ func monsterCallbackKey(id int) unsafe.Pointer {
 	return unsafe.Pointer(&monsterCallbackIdentityBytes[id])
 }
 
-var monsterCallbackHandlers map[unsafe.Pointer]func(*server.Object) int32
+var monsterCallbackHandlers = make(map[unsafe.Pointer]func(*server.Object) int32)
 
 func init() {
-	monsterCallbackHandlers = map[unsafe.Pointer]func(*server.Object) int32{
+	for key, fn := range map[unsafe.Pointer]func(*server.Object) int32{
 		monsterCallbackKey(monsterCallbackID_0):  func(u *server.Object) int32 { return int32(bool2int(monsterStrike(u, 0))) },  // nox_xxx_strikeOgre_549220
 		monsterCallbackKey(monsterCallbackID_1):  func(u *server.Object) int32 { return int32(bool2int(monsterStrike(u, 1))) },  // nox_xxx_strikeScorpion_5495B0
 		monsterCallbackKey(monsterCallbackID_2):  func(u *server.Object) int32 { return int32(bool2int(monsterStrike(u, 2))) },  // nox_xxx_strikeVileZombie_549700
@@ -75,6 +74,8 @@ func init() {
 		monsterCallbackKey(monsterCallbackID_23): func(u *server.Object) int32 { monsterDeathLoot(u, 22); return 1 },            // sub_54A7D0
 		monsterCallbackKey(monsterCallbackID_24): func(u *server.Object) int32 { monsterDeathLoot(u, 23); return 1 },            // sub_54A850
 		monsterCallbackKey(monsterCallbackID_25): func(u *server.Object) int32 { monsterDeathLoot(u, 24); return 1 },            // sub_54A950
+	} {
+		monsterCallbackHandlers[key] = fn
 	}
 }
 
@@ -84,9 +85,7 @@ func monsterCallbackResult(key unsafe.Pointer, u *server.Object) int32 {
 		runtime.KeepAlive(u)
 		return result
 	}
-	result := int32(ccall.CallIntPtr(key, u.CObj()))
-	runtime.KeepAlive(u)
-	return result
+	panic("unregistered monster callback")
 }
 
 func monsterCallbackDiscard(key unsafe.Pointer, u *server.Object) {
@@ -95,6 +94,5 @@ func monsterCallbackDiscard(key unsafe.Pointer, u *server.Object) {
 		runtime.KeepAlive(u)
 		return
 	}
-	ccall.CallVoidPtr(key, u.CObj())
-	runtime.KeepAlive(u)
+	panic("unregistered monster callback")
 }

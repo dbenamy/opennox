@@ -53,7 +53,7 @@ builds/ABI, exact known-suite outcomes and fresh save/load.
 
 ## Review and delegation
 
-Ten-file draft, including one new porttest-only registration helper. Function
+Ten-file conversion, including one new porttest-only registration helper. Function
 review: 17 added, 14 changed, four removed, 60 unchanged. All 26 monster handlers
 and unchanged dispatcher bodies compare exactly; generated output matches the
 edited generator. Primary implementation/review; Luna quota remains unavailable.
@@ -69,5 +69,37 @@ The replacements are qualified GUI binaries at `0cf5064c`.
 
 Original baseline accepted at qualified GUI source `0cf5064c`: all exact-source
 reuse checks passed, plus twelve fresh focused contracts in each profile and four
-safe contracts. Conversion remains an uninstalled draft until this baseline is
-committed. See [baseline](damage-monster-dispatch-baseline.json).
+safe contracts. Conversion is qualified; accepted baseline commit `0e4c2fb2`. See [baseline](damage-monster-dispatch-baseline.json).
+
+During native qualification, removed seven superseded duration/audio binaries
+(387,031,040 allocated bytes) after committed-source, replacement, hash and host-use
+checks. Active tests use separate new binaries. Rebuild `d3d759ba` for the old
+outputs; original GUI baseline logs/metadata remain. Records:
+`duration-cleanup-approved.json` and journal in this batch directory.
+
+## Qualification and progress
+
+Native broad selections passed **2,482/2,471/2,482** roots without skips. Twelve
+focused contracts passed freshly in each profile before and after conversion;
+four safe forwarding contracts passed on both versions. Native preflight,
+safe build/static checks, three production builds/ABI, exact known-suite outcomes
+and fresh save/load passed. All 1,654 original asset hashes remain unchanged.
+Retired dispatchers/observers are absent; native handlers, other embedded bodies,
+assertions and captures are unchanged. No conversion correction was required.
+
+Embedded production C bodies: **10→8** (71/79 retired). Fixture C imports:
+**88→83**. Production cgo remains **5 client/highres, 6 server**, across three
+project packages. Selected legacy exports remain zero, headers 157 files /2,731
+lines, standalone C **0 production /0 test**. Evidence:
+[baseline](damage-monster-dispatch-baseline.json),
+[qualification](damage-monster-dispatch-qualification.json),
+[inventory](damage-monster-dispatch-inventory-after.json).
+
+After qualification finished, 1,654 identical scenario asset copies were verified
+against the original assets and checked for host process use, then removed,
+recovering 560,435,200 allocated bytes. Original assets, outputs, binaries and
+qualification records remain. Restore the scenario inputs with:
+
+```sh
+python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/damage-monster-dispatch-save/deduplicated-assets.json
+```

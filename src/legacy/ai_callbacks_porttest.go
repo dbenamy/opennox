@@ -2,27 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME5.h"
-static uint32_t pt_callback_damage[1024];
-static int pt_callback_damage_n;
-static int pt_callback_mutate;
-static int pt_callback_result=1;
-static void pt_callback_setResult(int v){pt_callback_result=v;}
-static uint32_t pt_callback_force_bits;
-static int pt_callback_hit(uint32_t* t, uint32_t* a, uint32_t* w, int damage, int kind) {
- int i=pt_callback_damage_n;
- if(i+5<=1024) {pt_callback_damage[i]=(uint32_t)t;pt_callback_damage[i+1]=(uint32_t)a;pt_callback_damage[i+2]=(uint32_t)w;pt_callback_damage[i+3]=damage;pt_callback_damage[i+4]=kind;pt_callback_damage_n+=5;}
- if(pt_callback_mutate) {*(uint32_t*)(*(uint32_t*)(a[187]+484)+120)=pt_callback_force_bits;}
- return pt_callback_result;
-}
-static void* pt_callback_hit_ptr(void) {return (void*)pt_callback_hit;}
-static void pt_callback_reset(int mutate,uint32_t force) {pt_callback_result=1;pt_callback_damage_n=0;pt_callback_mutate=mutate;pt_callback_force_bits=force;}
-static int pt_callback_count(void) {return pt_callback_damage_n;}
-static uint32_t pt_callback_word(int i) {return pt_callback_damage[i];}
-*/
-import "C"
-
 import (
 	"bytes"
 	"encoding/binary"
@@ -34,6 +13,39 @@ import (
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
 )
+
+var portTestAIDamageKey byte
+var portTestAIDamageWords [1024]uint32
+var portTestAIDamageCount int
+var portTestAIDamageMutate bool
+var portTestAIDamageResult int32 = 1
+var portTestAIDamageForce uint32
+
+func portTestAIDamageCallbackKey() unsafe.Pointer { return unsafe.Pointer(&portTestAIDamageKey) }
+func portTestAIDamageReset(mutate bool, force uint32) {
+	portTestAIDamageResult = 1
+	portTestAIDamageCount = 0
+	portTestAIDamageMutate = mutate
+	portTestAIDamageForce = force
+}
+func init() {
+	server.PortTestRegisterDamageCallback(portTestAIDamageCallbackKey(), func(t, a, w *server.Object, damage, kind int32) int32 {
+		i := portTestAIDamageCount
+		if i+5 <= len(portTestAIDamageWords) {
+			portTestAIDamageWords[i] = uint32(uintptr(unsafe.Pointer(t)))
+			portTestAIDamageWords[i+1] = uint32(uintptr(unsafe.Pointer(a)))
+			portTestAIDamageWords[i+2] = uint32(uintptr(unsafe.Pointer(w)))
+			portTestAIDamageWords[i+3], portTestAIDamageWords[i+4] = uint32(damage), uint32(kind)
+			portTestAIDamageCount += 5
+		}
+		if portTestAIDamageMutate {
+			update := *(*unsafe.Pointer)(unsafe.Add(unsafe.Pointer(a), 187*4))
+			definition := *(*unsafe.Pointer)(unsafe.Add(update, 484))
+			*(*uint32)(unsafe.Add(definition, 120)) = portTestAIDamageForce
+		}
+		return portTestAIDamageResult
+	})
+}
 
 var PortTestCallbackServer func(*server.Server) (Server, func())
 
@@ -142,9 +154,9 @@ func portTestAICallbackPrepare(proxy *portTestRoamOwnerServer, u *server.Object,
 	st.spec = sp
 	st.configure(sp.Enabled)
 	st.lifetime(sp.CloudLifetime)
-	C.pt_callback_reset(C.int(bool2int(sp.MutateOnDamage)), C.uint32_t(sp.ForceAfterDamage))
+	portTestAIDamageReset(sp.MutateOnDamage, sp.ForceAfterDamage)
 	if sp.DamageResult != nil {
-		C.pt_callback_setResult(C.int(*sp.DamageResult))
+		portTestAIDamageResult = *sp.DamageResult
 	}
 	for i, p := range []*server.ModifierEff{st.modifiers.WeaponPower1, st.modifiers.Material1, st.modifiers.Material2} {
 		proxy.life.ids[uint32(uintptr(unsafe.Pointer(p)))] = uint32(970 + i)
@@ -169,13 +181,13 @@ func portTestAICallbackPrepare(proxy *portTestRoamOwnerServer, u *server.Object,
 	u.Shape.Circle.R = math.Float32frombits(sp.ActorRadius)
 	u.Mass = 1
 	for _, t := range []*server.Object{proxy.combat.target, proxy.combat.weapon} {
-		t.Damage = C.pt_callback_hit_ptr()
+		t.Damage = portTestAIDamageCallbackKey()
 		t.Buffs = sp.TargetBuffs
 		t.Poison540 = byte(sp.TargetPoison)
 		t.Mass = 1
 		t.Shape.Circle.R = math.Float32frombits(sp.TargetRadius)
 	}
-	proxy.life.ids[uint32(uintptr(C.pt_callback_hit_ptr()))] = 960
+	proxy.life.ids[uint32(uintptr(portTestAIDamageCallbackKey()))] = 960
 	if sp.Shop != nil {
 		portTestShopPrepare(proxy, sp.Shop)
 	}
@@ -288,8 +300,8 @@ func portTestAICallbackTrace(proxy *portTestRoamOwnerServer, rv uint32, normaliz
 		r.Globals = append(r.Globals, normalize(*memmap.PtrUint32(0x5D4594, off)))
 	}
 	r.Globals = append(r.Globals, uint32(dword_5d4594_2491580), uint32(dword_5d4594_2491588))
-	for i := 0; i < int(C.pt_callback_count()); i++ {
-		r.Damage = append(r.Damage, normalize(uint32(C.pt_callback_word(C.int(i)))))
+	for i := 0; i < portTestAIDamageCount; i++ {
+		r.Damage = append(r.Damage, normalize(portTestAIDamageWords[i]))
 	}
 	for _, h := range proxy.spells.health {
 		b := unsafe.Slice((*byte)(unsafe.Pointer(&h)), int(unsafe.Sizeof(h)))

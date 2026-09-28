@@ -2,24 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include "GAME4_3.h"
-#include "GAME3_3.h"
-static uint32_t pt_life_calls[24];
-static int pt_life_count;
-static int pt_life_die(uint32_t* u) {pt_life_calls[pt_life_count++]=1;pt_life_calls[pt_life_count++]=u[20];return 1;}
-static void pt_life_dead(uint32_t* u) {pt_life_calls[pt_life_count++]=2;for(int i=20;i<26;i++)pt_life_calls[pt_life_count++]=u[i];}
-static int pt_life_use(uint32_t* u,uint32_t* t) {pt_life_calls[pt_life_count++]=3;pt_life_calls[pt_life_count++]=(uint32_t)u;pt_life_calls[pt_life_count++]=(uint32_t)t;return 1;}
-static void* pt_life_die_ptr(void) {return (void*)pt_life_die;}
-static void* pt_life_dead_ptr(void) {return (void*)pt_life_dead;}
-static void* pt_life_use_ptr(void) {return (void*)pt_life_use;}
-static void pt_life_reset(void) {pt_life_count=0;}
-static int pt_life_n(void) {return pt_life_count;}
-static uint32_t pt_life_value(int i) {return pt_life_calls[i];}
-*/
-import "C"
-
 import (
 	"bytes"
 	"encoding/binary"
@@ -37,6 +19,35 @@ import (
 	"github.com/opennox/opennox/v1/legacy/common/alloc/handles"
 	"github.com/opennox/opennox/v1/server"
 )
+
+var portTestLifecycleKeys [3]byte
+var portTestLifecycleCalls [24]uint32
+var portTestLifecycleCount int
+
+func portTestLifecycleKey(i int) unsafe.Pointer { return unsafe.Pointer(&portTestLifecycleKeys[i]) }
+func portTestLifecycleRecord(words ...uint32) {
+	for _, w := range words {
+		portTestLifecycleCalls[portTestLifecycleCount] = w
+		portTestLifecycleCount++
+	}
+}
+func portTestLifecycleDie(u *server.Object) int32 {
+	portTestLifecycleRecord(1, *(*uint32)(unsafe.Add(unsafe.Pointer(u), 80)))
+	return 1
+}
+func init() {
+	monsterCallbackHandlers[portTestLifecycleKey(0)] = portTestLifecycleDie
+	monsterCallbackHandlers[portTestLifecycleKey(1)] = func(u *server.Object) int32 {
+		portTestLifecycleRecord(2)
+		portTestLifecycleRecord(unsafe.Slice((*uint32)(unsafe.Add(unsafe.Pointer(u), 80)), 6)...)
+		return 0
+	}
+	server.RegisterObjectUpdateCallbackGo(portTestLifecycleKey(0), func(u *server.Object) { portTestLifecycleDie(u) })
+	server.PortTestRegisterUseCallback(portTestLifecycleKey(2), func(u, t *server.Object) int32 {
+		portTestLifecycleRecord(3, uint32(uintptr(unsafe.Pointer(u))), uint32(uintptr(unsafe.Pointer(t))))
+		return 1
+	})
+}
 
 type PortTestLifecycleSpec struct {
 	HeadAction                                                          uint32
@@ -190,10 +201,10 @@ func portTestLifecyclePrepare(proxy *portTestRoamOwnerServer, u, t *server.Objec
 		d.StatusFlags92 |= 1
 	}
 	if sp.Callback {
-		d.DieFunc228 = C.pt_life_die_ptr()
-		d.DeadFunc232 = C.pt_life_dead_ptr()
+		d.DieFunc228 = portTestLifecycleKey(0)
+		d.DeadFunc232 = portTestLifecycleKey(1)
 	}
-	C.pt_life_reset()
+	portTestLifecycleCount = 0
 	for i, v := range sp.Motion {
 		*(*uint32)(unsafe.Add(u.CObj(), 80+4*i)) = v
 	}
@@ -221,8 +232,8 @@ func portTestLifecyclePrepare(proxy *portTestRoamOwnerServer, u, t *server.Objec
 		head.Args[0] = uintptr(t.CObj())
 	}
 	if sp.Use {
-		t.Use.Ptr = C.pt_life_use_ptr()
-		proxy.combat.weapon.Use.Ptr = C.pt_life_use_ptr()
+		t.Use.Ptr = portTestLifecycleKey(2)
+		proxy.combat.weapon.Use.Ptr = portTestLifecycleKey(2)
 		proxy.combat.weapon.ObjSubClass = 0x10
 	}
 	if sp.Second {
@@ -240,7 +251,7 @@ func portTestLifecyclePrepare(proxy *portTestRoamOwnerServer, u, t *server.Objec
 	if sp.Updatable {
 		u.IsUpdatable = 1
 		proxy.core.Objs.UpdatableList = u
-		u.Update = C.pt_life_die_ptr()
+		u.Update = portTestLifecycleKey(0)
 	}
 	noxflags.ResetGame()
 	noxflags.SetGame(noxflags.GameFlag(sp.GameFlags))
@@ -260,7 +271,6 @@ func portTestLifecycleCall(u *server.Object, sp *PortTestLifecycleSpec) int {
 		}
 		return 0
 	}
-	p := C.int(uintptr(u.CObj()))
 	switch sp.Op {
 	case 5:
 		return int(lifecycleRaiseZombie(u))
@@ -271,16 +281,16 @@ func portTestLifecycleCall(u *server.Object, sp *PortTestLifecycleSpec) int {
 	case 8:
 		lifecycleBurnDelete(u)
 	case 9:
-		return int(portTestInvoke_nox_xxx_mobSearchEdible_544A00(asObjectC(u), C.float(math.Float32frombits(sp.Range))))
+		return portTestLifecycleFoodSearch(u, math.Float32frombits(sp.Range), false)
 	case 10:
-		return int(portTestInvoke_sub_544AE0(p, C.float(math.Float32frombits(sp.Range))))
+		return portTestLifecycleFoodSearch(u, math.Float32frombits(sp.Range), true)
 	}
 	return 0
 }
 func portTestLifecycleTrace(proxy *portTestRoamOwnerServer, h *server.HealthData, normalize func(uint32) uint32) *PortTestLifecycleResult {
 	r := &PortTestLifecycleResult{Updatable: normalize(uint32(uintptr(unsafe.Pointer(proxy.core.Objs.UpdatableList)))), Decay: normalize(uint32(motionDecayHead))}
-	for i := 0; i < int(C.pt_life_n()); i++ {
-		r.Calls = append(r.Calls, normalize(uint32(C.pt_life_value(C.int(i)))))
+	for i := 0; i < portTestLifecycleCount; i++ {
+		r.Calls = append(r.Calls, normalize(portTestLifecycleCalls[i]))
 	}
 	for _, p := range proxy.life.created {
 		var words []uint32
@@ -351,17 +361,7 @@ func portTestLifecycleTrace(proxy *portTestRoamOwnerServer, h *server.HealthData
 	return r
 }
 
-// Fixture-native copies preserve the original wrapper ABI conversions.
-func portTestInvoke_nox_xxx_mobSearchEdible_544A00(a1 *nox_object_t, r C.float) C.int {
-	if u := lifecycleFoodSearch(asObjectS(a1), float32(r), false); u != nil {
-		return C.int(uintptr(u.CObj()))
-	}
-	return 0
-}
-
-func portTestInvoke_sub_544AE0(a1 C.int, r C.float) C.int {
-	if u := lifecycleFoodSearch(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(a1)))), float32(r), true); u != nil {
-		return C.int(uintptr(u.CObj()))
-	}
-	return 0
+// Preserve the original signed 32-bit pointer result conversion.
+func portTestLifecycleFoodSearch(actor *server.Object, radius float32, second bool) int {
+	return int(int32(uintptr(unsafe.Pointer(lifecycleFoodSearch(actor, radius, second)))))
 }

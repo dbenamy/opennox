@@ -520,6 +520,9 @@ It excludes headers, C in Go preambles, dependencies and generated build outputs
 It measures source size, not active-code coverage or remaining effort.
 
 See [PORTING_STATE.md](PORTING_STATE.md) for current counts and remaining work.
+Keep its status progress summary as bullets grouped by area of work, with qualified
+completed/total or remaining counts for each area. Keep scope and measurement
+limitations in a separate paragraph; do not combine different areas into one total.
 Use [C_INVENTORY.md](docs/porting/C_INVENTORY.md) for historical build/linker evidence and [DECISIONS.md](docs/porting/DECISIONS.md)
 for corrections and tradeoffs to review. Keep the current checkpoint concise;
 put detailed qualification and limitations in the corresponding batch report.

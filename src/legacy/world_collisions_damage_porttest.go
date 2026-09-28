@@ -2,25 +2,29 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-static uint32_t worldDamageWords[6];
-static int worldDamageObserve(void* target, void* owner, void* source, int amount, int kind) {
- worldDamageWords[0]++;
- worldDamageWords[1]=(uintptr_t)target; worldDamageWords[2]=(uintptr_t)owner;
- worldDamageWords[3]=(uintptr_t)source; worldDamageWords[4]=amount; worldDamageWords[5]=kind;
- return 1;
-}
-static void* worldDamageCallback(void) { return worldDamageObserve; }
-static uint32_t* worldDamageSnapshot(void) { return worldDamageWords; }
-*/
-import "C"
-import "unsafe"
+import (
+	"unsafe"
 
-// Observe the selected collision's raw damage dispatch; no damage algorithm.
+	"github.com/opennox/opennox/v1/server"
+)
+
+var portTestWorldDamageKey byte
+var portTestWorldDamageWords [6]uint32
+
+func init() {
+	server.PortTestRegisterDamageCallback(unsafe.Pointer(&portTestWorldDamageKey), func(target, owner, source *server.Object, amount, kind int32) int32 {
+		portTestWorldDamageWords[0]++
+		portTestWorldDamageWords[1] = uint32(uintptr(unsafe.Pointer(target)))
+		portTestWorldDamageWords[2] = uint32(uintptr(unsafe.Pointer(owner)))
+		portTestWorldDamageWords[3] = uint32(uintptr(unsafe.Pointer(source)))
+		portTestWorldDamageWords[4], portTestWorldDamageWords[5] = uint32(amount), uint32(kind)
+		return 1
+	})
+}
+
+// Observe damage arguments independently of the damage implementation.
 func PortTestWorldDamageObserver() (unsafe.Pointer, *[6]uint32, func()) {
-	p := (*[6]uint32)(unsafe.Pointer(C.worldDamageSnapshot()))
-	old := *p
-	*p = [6]uint32{}
-	return C.worldDamageCallback(), p, func() { *p = old }
+	old := portTestWorldDamageWords
+	portTestWorldDamageWords = [6]uint32{}
+	return unsafe.Pointer(&portTestWorldDamageKey), &portTestWorldDamageWords, func() { portTestWorldDamageWords = old }
 }

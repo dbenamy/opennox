@@ -5,30 +5,33 @@ This is the current resume checkpoint. Workflow and delegation rules live in
 
 ## Status: resumed; internal C-glue removal
 
-**Progress: 142,665/142,665 original standalone C lines ported or retired;
-internal glue: 458/463 client cgo files eliminated on net (5 remain;
-server: 457/463 eliminated, 6 remain).**
-Selected legacy C export bridges: **1,890/1,890 retired (0 remain)**.
-Embedded production C bodies: **69/79 retired (10 remain)**.
+- **Standalone engine C:** 142,665/142,665 original lines ported or retired.
+- **Production C imports:** 458/463 client cgo files eliminated on net (5 remain);
+  server: 457/463 eliminated (6 remain). Three project packages directly use cgo.
+- **Legacy C export bridges:** 1,890/1,890 retired (0 remain).
+- **Embedded production C bodies:** 71/79 retired (8 remain).
+- **Fixture and declaration dependencies:** 83 porttest-tagged files still import C;
+  157 tracked headers / 2,731 physical lines remain.
 
-These are selected Linux 386 production files, not equal units of effort.
-Three project packages directly use cgo. Standalone production/test C remain zero.
-Latest qualified chunk retires unproduced raw GUI event/draw dispatch and converts
-the tooltip observer. One embedded C dispatcher and one fixture C import are
-retired. All 2,482/2,471/2,482 audited roots passed in default/server/highres. See
-[WINDOW_DISPATCH.md](docs/porting/WINDOW_DISPATCH.md).
+Production cgo counts cover selected Linux 386 builds; these metrics are not equal
+units of effort. Fixture imports cover all build tags. Standalone production/test C
+remain zero.
+Latest qualified chunk retires foreign object-damage and monster dispatch and
+converts five shared observer fixtures, including collision/update/use routes.
+Two embedded dispatchers and five fixture C imports are retired. See
+[DAMAGE_MONSTER_DISPATCH.md](docs/porting/DAMAGE_MONSTER_DISPATCH.md).
 
 Continue chunk-by-chunk with primary review, qualification, documentation and
 commit/push. Use one Luna helper when its quota is available; no substitute model.
 Stop at the milestone, usage limits or a substantial question. Latest qualified
-artifacts: `build/port-window-dispatch/`.
+artifacts: `build/port-damage-monster-dispatch/`.
 
 ## What remains
 
 | Area | Remaining work or dependency |
 | --- | --- |
-| Embedded C callback glue | 10 generic dispatch bodies. Trace all owners/registrations before removing raw fallbacks. |
-| Types and declarations | 157 tracked headers / 2,731 physical lines. 88 porttest-tagged source files still import C across all build tags (not one selected profile). Fixture C observers/types still need retirement or explicit qualification scope. |
+| Embedded C callback glue | 8 generic dispatch bodies. Trace all owners/registrations before removing raw fallbacks. |
+| Types and declarations | 157 tracked headers / 2,731 physical lines. 83 porttest-tagged source files still import C across all build tags (not one selected profile). Fixture C observers/types still need retirement or explicit qualification scope. |
 | Production C imports | alloc/raw.go, ccall/ccall.go, legacy/object_xfer_world.go (reachable abort), legacy/cgo_common.go and legacy/video_highres.go (flags). Server adds legacy/cgo_server.go. |
 | Memory and layout | C-heap allocator, raw pointers, fixed offsets and 32-bit address assumptions remain. Preserve ownership/lifetime/failure semantics behind the centralized allocator. |
 | External libraries | SDL2, OpenGL, OpenAL and similar bindings remain for this phase; later replacement requires a separate discussion. |
@@ -36,29 +39,28 @@ artifacts: `build/port-window-dispatch/`.
 
 ## Latest qualification
 
-Original/native broad selections passed 2,482/2,471/2,482 roots without skips.
-Six focused contracts passed separately in each profile on both versions, plus
-safe deferred cleanup. Native focused preflight and fresh default save/load passed
-before the broad sweep. Safe build/static, three production builds/ABI, exact
-known-suite outcomes and final fresh save/load passed. Assertions, snapshot IDs,
-retained C bodies and original assets are unchanged.
+Broad native selections passed 2,482/2,471/2,482 roots without skips. Exact-source
+qualified GUI broad runs were reused for the original baseline; twelve focused
+contracts per profile and four safe contracts ran freshly before/after conversion.
+Native preflight, safe build/static, three production builds/ABI, exact known-suite
+outcomes and fresh save/load passed. Assertions, native handlers, retained C
+bodies and original assets are unchanged.
 
-Evidence: [qualification](docs/porting/window-dispatch-qualification.json),
-[inventory](docs/porting/window-dispatch-inventory-after.json).
+Evidence: [qualification](docs/porting/damage-monster-dispatch-qualification.json),
+[inventory](docs/porting/damage-monster-dispatch-inventory-after.json).
 Known-suite expectation: [record](docs/porting/mp3-go-expected-suite.jsonl).
 Standalone metric/history: [C_LOC.md](docs/porting/C_LOC.md).
-Latest broad regression: this window batch, 2,482/2,471/2,482 audited roots, no skips.
+Latest broad regression: this damage/monster batch, 2,482/2,471/2,482 audited roots, no skips.
 Last complete default corpus: `6e9681f2`, 2,489 passes plus diagnostic skip.
 
 ## Next work and review items
 
-Continue with the remaining object/AI, drawable draw/update and spatial/particle
-callback families. Active batch: damage/monster dispatch. Original baseline is
-accepted at qualified GUI source `0cf5064c`: broad runs reused after exact source,
-environment, binary, log and test-name checks; twelve focused roots per profile
-and four safe contracts ran freshly. Reviewed ten-file draft is not installed yet.
-Next: commit baseline, install, then qualify. See
-[DAMAGE_MONSTER_DISPATCH.md](docs/porting/DAMAGE_MONSTER_DISPATCH.md).
+Continue with remaining object lifecycle/use/collision and drawable draw/update,
+spatial/particle callbacks. A provisional 24-file draft plus three deletions lives
+under `build/port-final-callback-dispatch/`; it targets the eight remaining generic
+dispatch bodies together. It still needs semantic/producer review, an accepted
+original baseline (including legacy-package contracts), installation and full
+qualification. Allocator/abort/flags and fixture dependencies remain afterward.
 
 The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
 removal. Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md).
@@ -71,7 +73,7 @@ allocator ownership, reachable abort, compiler flags and fixture dependencies.
 Literal allocator calls occur in 40 C-using fixture files; avoid cross-domain frees.
 
 Animation, quantity, image completion, modifier, player-section, screen-particle,
-duration-spell, internal audio and GUI tooltip dispatch reject unregistered
+duration-spell, internal audio, GUI tooltip, damage and monster dispatch reject unregistered
 keys with an explicit panic after producer audits. These reversible corrections
 apply only to those families. Native fixture arrays also make invalid overflow
 explicit; valid-domain captures remain unchanged.
@@ -93,11 +95,12 @@ first on PATH. Linux 386 execution needs host execution in this VM.
 Do not change source consumed by running builds/tests.
 
 Current root/safe/production binaries live under
-`build/port-window-dispatch/{contracts/profiles,safe,production/production/bin}`.
-Original GUI captures live under `build/port-window-dispatch/original`, with safe
-contracts in `original-safe`. Baseline runs use retained duration/audio binaries
-at `d3d759ba`. Both completed GUI scenario asset copies were verified and removed
-(1,120,215,040 bytes); see the batch report for restoration commands.
+`build/port-damage-monster-dispatch/{contracts/profiles,safe,production/production/bin}`.
+Original damage/monster focused captures and safe runs live under
+`build/port-damage-monster-dispatch/{original,original-safe}`. Original broad logs
+and binaries are reused from the preceding GUI batch; exact paths/hashes are in
+the committed baseline. Final damage/monster scenario asset copies were verified
+and removed (560,435,200 bytes); restoration is documented in the batch report.
 Older cleanup records retain source revisions, hashes and rebuild information.
 
 Check physical free space before large runs. Source, reports and qualification
@@ -109,5 +112,4 @@ batch reports and their ignored manifests. Rebuild superseded binaries from the
 recorded source revision; cache archives rebuild automatically. Do not infer
 safe deletion merely from age. Preserve original assets and the archive.
 
-This batch's recovery details, including prior modifier-binary cleanup and cache
-headroom, are in [WINDOW_DISPATCH.md](docs/porting/WINDOW_DISPATCH.md).
+Prior GUI cleanup/recovery is in [WINDOW_DISPATCH.md](docs/porting/WINDOW_DISPATCH.md).

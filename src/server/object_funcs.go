@@ -299,13 +299,13 @@ type DamageValueFunc func(obj, source, weapon *Object, amount, kind int32) int32
 
 var objDamage = ccall.NewFuncs(func(cfnc unsafe.Pointer) DamageFunc {
 	return func(obj, source, weapon *Object, amount, kind int32) bool {
-		return ccall.CallIntUPtr5(cfnc, uintptr(obj.CObj()), uintptr(toObjectC(source)), uintptr(toObjectC(weapon)), uintptr(uint(amount)), uintptr(uint(kind))) != 0
+		panic("unregistered object damage callback")
 	}
 })
 
 var objDamageValue = ccall.NewFuncs(func(cfnc unsafe.Pointer) DamageValueFunc {
 	return func(obj, source, weapon *Object, amount, kind int32) int32 {
-		return int32(ccall.CallIntUPtr5(cfnc, uintptr(obj.CObj()), uintptr(unsafe.Pointer(source)), uintptr(unsafe.Pointer(weapon)), uintptr(uint32(amount)), uintptr(uint32(kind))))
+		panic("unregistered object damage callback")
 	}
 })
 
