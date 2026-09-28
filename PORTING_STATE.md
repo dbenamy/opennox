@@ -59,7 +59,9 @@ Last complete default corpus: `6e9681f2`, 2,489 passes plus diagnostic skip.
 
 Next: review and qualify the 18-file fixture import cleanup drafted under
 `build/port-fixture-import-cleanup/` (15 unused header imports and three scalar
-bridges). Its original baseline is not accepted and it is not installed. Then
+bridges). Its original baseline is accepted (verified prior broad results, eight fresh focused
+roots per profile and two safe contracts); it is not installed. See
+[FIXTURE_IMPORT_CLEANUP.md](docs/porting/FIXTURE_IMPORT_CLEANUP.md). Then
 audit remaining fixture types, allocator ownership, reachable abort and compiler
 flags. Production still uses the centralized C heap; fixture allocation and
 safe-mode accounting need explicit ownership matching before migration.
