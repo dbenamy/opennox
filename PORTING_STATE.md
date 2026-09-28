@@ -62,7 +62,13 @@ population diagnostic's four cases have explicit regression coverage.
 Next: retire the two aligned-buffer fixture imports, reachable abort/compiler flags
 and centralized libc allocator implementation. Preserve normal/safe allocation
 domains, alignment, layout and failure behavior, including safe Calloc's nil marker.
-External native libraries remain preserved dependencies. No next conversion is installed.
+External native libraries remain preserved dependencies. Original-path contracts are
+installed for the next batch under `build/port-final-engine-boundary/`; production
+still uses libc. Five allocation roots passed twice in normal/safe, and the fatal
+contract passed twice in all four profiles after a fixture setup correction.
+The broader original owner/library/performance baseline passed and is ready for
+conversion; its temporary alignment probe adds one test-only C import. See
+[FINAL_ENGINE_BOUNDARY.md](docs/porting/FINAL_ENGINE_BOUNDARY.md).
 
 The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
 removal. Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md).
