@@ -1,0 +1,20 @@
+{
+  "profiles": {
+    "default": {
+      "original_seconds": 341.80630482616834,
+      "native_seconds": 328.80131447012536,
+      "owners": 564
+    },
+    "server": {
+      "original_seconds": 329.76689002197236,
+      "native_seconds": 324.67428675782867,
+      "owners": 564
+    },
+    "highres": {
+      "original_seconds": 330.9947479029652,
+      "native_seconds": 326.5385130739305,
+      "owners": 564
+    }
+  },
+  "note": "Single qualification runs, not a controlled benchmark. Isolated floating-point probes overlapped part of native qualification; small differences do not establish a speedup."
+}

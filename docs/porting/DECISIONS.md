@@ -3143,3 +3143,13 @@ Reuse legacy CString and legacyMalloc/legacyFree to preserve normal/safe allocat
 ownership and failure disposition. Byte copies preserve exact lengths and add no
 terminator. Keep cgo's conditional zero-size allocation retry; do not normalize all
 zero-size requests to one byte. See [FIXTURE_STRING_COPIES.md](FIXTURE_STRING_COPIES.md).
+
+## Owned tile-grid fixture helpers
+
+Keep the original separate row allocations, reverse partial cleanup and full-byte
+comparisons. The new contract checks every allocation failure position against C
+before conversion. Safe Calloc records nil on failure; observe that existing marker
+and remove only the test-created entry between cases. Allocator semantics remain
+unchanged. Main-grid setup is conditional, but typed fixture producers carry it
+into spell/callback/damage owners; retain the broad owner set. See
+[FIXTURE_TILE_GRID.md](FIXTURE_TILE_GRID.md).

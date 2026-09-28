@@ -53,11 +53,39 @@ sources and original assets remain intact. See
 [cleanup result](fixture-tile-grid-cache-cleanup.json). The shorter cache age is a
 reversible disk-headroom choice, with active-use checks still required.
 
-## Status
+## Qualified result
 
-Original baseline accepted: 564 owners and nine focused repeats per profile,
-plus six safe contracts, passed without skips. Conversion not installed. Expected fixture C imports
-11→10. Production remains 4 client/highres and 5 server; embedded production
-bodies, legacy exports and standalone C remain zero. Headers remain 157/2,731.
-Primary handles review and qualification while Luna quota is unavailable.
+Original and native owner selections passed 564 roots per profile without skips.
+Nine focused repeats per profile, six safe contracts, static checks, safe build,
+production builds/ABI, exact known-suite outcomes and fresh save/load passed.
+The independent allocation contract checks all 129 failure positions and two
+success cases, including safe tracking. Native safe contracts ran before the broad
+sweep. All target binaries compiled every root; prior captures/assertions and
+original asset hashes are unchanged.
+
+Four fixture C helper bodies and one fixture C import are retired (11→10 files).
+Production cgo remains 4 client/highres and 5 server; embedded production bodies,
+legacy exports and standalone C remain zero. Headers remain 157/2,731 physical lines.
+
+Evidence: [baseline](fixture-tile-grid-baseline.json),
+[qualification](fixture-tile-grid-qualification.json),
+[inventory](fixture-tile-grid-inventory-after.json).
+Primary handled review and qualification; Luna quota remained unavailable.
 Artifacts: `build/port-fixture-tile-grid/`.
+
+## Runtime observation and scenario recovery
+
+Owner execution times were 341.8→328.8 seconds (default), 329.8→324.7 (server),
+and 331.0→326.5 (highres). These are single qualification runs, with some isolated
+probe work overlapping the native runs; they do not establish a controlled
+performance improvement. See [observations](fixture-tile-grid-runtime-observations.json).
+
+Completed scenario-copy deduplication reclaimed 559,837,184 bytes after host-use
+and original/copy hash checks. Restore with:
+
+```sh
+python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/fixture-tile-grid-save/deduplicated-assets.json
+```
+
+Original assets and current binaries remain intact. See
+[scenario cleanup](fixture-tile-grid-scenario-cleanup.json).

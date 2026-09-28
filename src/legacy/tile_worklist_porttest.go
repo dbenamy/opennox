@@ -2,37 +2,8 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include <stdlib.h>
-#include <string.h>
-#include "GAME4_2.h"
-
-static obj_5D4594_2650668_t** portTestWorklistGridNew(void) {
-	obj_5D4594_2650668_t** p = calloc(128, sizeof(*p));
-	if (!p) return NULL;
-	for (int i = 0; i < 128; i++) {
-		p[i] = calloc(128, sizeof(*p[i]));
-		if (!p[i]) { while (i) free(p[--i]); free(p); return NULL; }
-	}
-	return p;
-}
-static void portTestWorklistGridFree(obj_5D4594_2650668_t** p) {
-	if (!p) return;
-	for (int i = 0; i < 128; i++) free(p[i]);
-	free(p);
-}
-static void portTestWorklistCellSet(obj_5D4594_2650668_t** p, int x, int y, uint32_t one, uint32_t two) {
-	p[x][y].field_1 = one; p[x][y].field_6 = two;
-}
-static int portTestWorklistGridEqual(obj_5D4594_2650668_t** a, obj_5D4594_2650668_t** b) {
-	for (int i = 0; i < 128; i++) if (memcmp(a[i], b[i], 128*sizeof(*a[i]))) return 0;
-	return 1;
-}
-*/
-import "C"
-
 import (
+	"bytes"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"runtime"
 	"unsafe"
@@ -109,8 +80,8 @@ func portTestWorklistOutValue(ref uint16, words []uint32, count, overflow *uint3
 	return uint32(*portTestWorklistOut(ref, words, count, overflow, queue)), true
 }
 
-// PortTestTileWorklist invokes the live C ABI producer/consumer against an
-// isolated C-owned 128x128 grid. It retains every physical queue word after
+// PortTestTileWorklist invokes the native producer/consumer against an
+// isolated allocator-owned 128x128 grid. It retains every physical queue word after
 // each call, including inactive records, so a port cannot merely model a slice.
 func PortTestTileWorklist(initialCount, initialOverflow uint32, initialQueue []uint32, specs []PortTestTileWorklistSpec) (snap PortTestTileWorklistSnapshot) {
 	if len(initialQueue) != portTestWorklistWords {
@@ -123,10 +94,10 @@ func PortTestTileWorklist(initialCount, initialOverflow uint32, initialQueue []u
 	right := unsafe.Slice(memmap.PtrUint8(0x973F18, 22204), 8)
 	oldGrid := worldTileGrid
 	snap.Before = portTestWorklistState(count, overflow, queue, left, right)
-	grid, expected := C.portTestWorklistGridNew(), C.portTestWorklistGridNew()
+	grid, expected := portTestWorklistGridNew(), portTestWorklistGridNew()
 	if grid == nil || expected == nil {
-		C.portTestWorklistGridFree(grid)
-		C.portTestWorklistGridFree(expected)
+		portTestWorklistGridFree(grid)
+		portTestWorklistGridFree(expected)
 		panic("calloc grid failed")
 	}
 	defer func() {
@@ -135,8 +106,8 @@ func PortTestTileWorklist(initialCount, initialOverflow uint32, initialQueue []u
 		copy(left, snap.Before.Left)
 		copy(right, snap.Before.Right)
 		worldTileGrid = oldGrid
-		C.portTestWorklistGridFree(grid)
-		C.portTestWorklistGridFree(expected)
+		portTestWorklistGridFree(grid)
+		portTestWorklistGridFree(expected)
 		snap.AfterRestore = portTestWorklistState(count, overflow, queue, left, right)
 		snap.GridPointerRestored = worldTileGrid == oldGrid
 	}()
@@ -161,8 +132,8 @@ func PortTestTileWorklist(initialCount, initialOverflow uint32, initialQueue []u
 		var ret int32
 		if s.Op == 0 {
 			if s.X > 0 && s.X < 127 && s.Y > 0 && s.Y < 127 {
-				C.portTestWorklistCellSet(grid, C.int(s.X), C.int(s.Y), C.uint32_t(s.Field1), C.uint32_t(s.Field2))
-				C.portTestWorklistCellSet(expected, C.int(s.X), C.int(s.Y), C.uint32_t(s.Field1), C.uint32_t(s.Field2))
+				portTestWorklistCellSet(grid, int32(s.X), int32(s.Y), uint32(s.Field1), uint32(s.Field2))
+				portTestWorklistCellSet(expected, int32(s.X), int32(s.Y), uint32(s.Field1), uint32(s.Field2))
 			}
 			wantGrid := grid
 			if s.NilGrid {
@@ -177,13 +148,13 @@ func PortTestTileWorklist(initialCount, initialOverflow uint32, initialQueue []u
 			v0, ok0 := portTestWorklistOutValue(s.PopX, words, count, overflow, queue)
 			v1, ok1 := portTestWorklistOutValue(s.PopY, words, count, overflow, queue)
 			v2, ok2 := portTestWorklistOutValue(s.PopZ, words, count, overflow, queue)
-			snap.Results = append(snap.Results, PortTestTileWorklistResult{Return: int(ret), Count: *count, Overflow: *overflow, Outputs: [3]uint32{v0, v1, v2}, OutputReadable: [3]bool{ok0, ok1, ok2}, Queue: append([]uint32(nil), queue...), GridUnchanged: C.portTestWorklistGridEqual(grid, expected) != 0, GridPointerUnchanged: pointerOK, QueueGuardsUnchanged: string(left) == string(wantLeft) && string(right) == string(wantRight), OutputGuardsOK: words[0] == 0xa0a0a0a0 && words[4] == 0xb0b0b0b0})
+			snap.Results = append(snap.Results, PortTestTileWorklistResult{Return: int(ret), Count: *count, Overflow: *overflow, Outputs: [3]uint32{v0, v1, v2}, OutputReadable: [3]bool{ok0, ok1, ok2}, Queue: append([]uint32(nil), queue...), GridUnchanged: portTestWorklistGridEqual(grid, expected) != 0, GridPointerUnchanged: pointerOK, QueueGuardsUnchanged: string(left) == string(wantLeft) && string(right) == string(wantRight), OutputGuardsOK: words[0] == 0xa0a0a0a0 && words[4] == 0xb0b0b0b0})
 		} else if s.Op == 1 {
 			ret = sub_51DE30(portTestWorklistOut(s.PopX, words, count, overflow, queue), portTestWorklistOut(s.PopY, words, count, overflow, queue), portTestWorklistOut(s.PopZ, words, count, overflow, queue))
 			v0, ok0 := portTestWorklistOutValue(s.PopX, words, count, overflow, queue)
 			v1, ok1 := portTestWorklistOutValue(s.PopY, words, count, overflow, queue)
 			v2, ok2 := portTestWorklistOutValue(s.PopZ, words, count, overflow, queue)
-			snap.Results = append(snap.Results, PortTestTileWorklistResult{Return: int(ret), Count: *count, Overflow: *overflow, Outputs: [3]uint32{v0, v1, v2}, OutputReadable: [3]bool{ok0, ok1, ok2}, Queue: append([]uint32(nil), queue...), GridUnchanged: C.portTestWorklistGridEqual(grid, expected) != 0, GridPointerUnchanged: unsafe.Pointer(worldTileGrid) == unsafe.Pointer(grid), QueueGuardsUnchanged: string(left) == string(wantLeft) && string(right) == string(wantRight), OutputGuardsOK: words[0] == 0xa0a0a0a0 && words[4] == 0xb0b0b0b0})
+			snap.Results = append(snap.Results, PortTestTileWorklistResult{Return: int(ret), Count: *count, Overflow: *overflow, Outputs: [3]uint32{v0, v1, v2}, OutputReadable: [3]bool{ok0, ok1, ok2}, Queue: append([]uint32(nil), queue...), GridUnchanged: portTestWorklistGridEqual(grid, expected) != 0, GridPointerUnchanged: unsafe.Pointer(worldTileGrid) == unsafe.Pointer(grid), QueueGuardsUnchanged: string(left) == string(wantLeft) && string(right) == string(wantRight), OutputGuardsOK: words[0] == 0xa0a0a0a0 && words[4] == 0xb0b0b0b0})
 		} else {
 			legacyFree(mem)
 			panic("invalid worklist operation")
@@ -196,7 +167,7 @@ func PortTestTileWorklist(initialCount, initialOverflow uint32, initialQueue []u
 // portTestMainGrid provides real C/Go tile lookups for dodge decisions.
 func portTestMainGrid() (configure func(uint32), intact func() bool, free func()) {
 	old := worldTileGrid
-	grid, expected := C.portTestWorklistGridNew(), C.portTestWorklistGridNew()
+	grid, expected := portTestWorklistGridNew(), portTestWorklistGridNew()
 	if grid == nil || expected == nil {
 		panic("main fixture grid allocation")
 	}
@@ -209,18 +180,18 @@ func portTestMainGrid() (configure func(uint32), intact func() bool, free func()
 		last = tile
 		for x := 0; x < 128; x++ {
 			for y := 0; y < 128; y++ {
-				C.portTestWorklistCellSet(grid, C.int(x), C.int(y), C.uint32_t(tile), C.uint32_t(tile))
-				C.portTestWorklistCellSet(expected, C.int(x), C.int(y), C.uint32_t(tile), C.uint32_t(tile))
+				portTestWorklistCellSet(grid, int32(x), int32(y), uint32(tile), uint32(tile))
+				portTestWorklistCellSet(expected, int32(x), int32(y), uint32(tile), uint32(tile))
 			}
 		}
 	}
 	intact = func() bool {
-		return unsafe.Pointer(worldTileGrid) == unsafe.Pointer(grid) && C.portTestWorklistGridEqual(grid, expected) != 0
+		return unsafe.Pointer(worldTileGrid) == unsafe.Pointer(grid) && portTestWorklistGridEqual(grid, expected) != 0
 	}
 	free = func() {
 		worldTileGrid = old
-		C.portTestWorklistGridFree(grid)
-		C.portTestWorklistGridFree(expected)
+		portTestWorklistGridFree(grid)
+		portTestWorklistGridFree(expected)
 	}
 	return
 }
@@ -229,31 +200,74 @@ func portTestMainGrid() (configure func(uint32), intact func() bool, free func()
 // receive the requested floor kind; the production world-to-tile lookup stays live.
 func PortTestWorldMotionTileGrid() (func(int32), func() bool, func()) {
 	old := worldTileGrid
-	grid, want := C.portTestWorklistGridNew(), C.portTestWorklistGridNew()
+	grid, want := portTestWorklistGridNew(), portTestWorklistGridNew()
 	if grid == nil || want == nil {
-		C.portTestWorklistGridFree(grid)
-		C.portTestWorklistGridFree(want)
+		portTestWorklistGridFree(grid)
+		portTestWorklistGridFree(want)
 		panic("world motion tile allocation")
 	}
 	worldTileGrid = (**worldTileCell)(unsafe.Pointer(grid))
 	configure := func(kind int32) {
-		for _, table := range []**C.obj_5D4594_2650668_t{grid, want} {
+		for _, table := range []**worldTileCell{grid, want} {
 			for _, p := range unsafe.Slice(table, 128) {
 				for i := range unsafe.Slice(p, 128) {
 					row := unsafe.Slice(p, 128)
-					row[i].field_1 = C.int(kind)
-					row[i].field_6 = C.int(kind)
+					row[i][1] = uint32(kind)
+					row[i][6] = uint32(kind)
 				}
 			}
 		}
 	}
 	return configure, func() bool {
-			return unsafe.Pointer(worldTileGrid) == unsafe.Pointer(grid) && C.portTestWorklistGridEqual(grid, want) != 0
+			return unsafe.Pointer(worldTileGrid) == unsafe.Pointer(grid) && portTestWorklistGridEqual(grid, want) != 0
 		}, func() {
 			worldTileGrid = old
-			C.portTestWorklistGridFree(grid)
-			C.portTestWorklistGridFree(want)
+			portTestWorklistGridFree(grid)
+			portTestWorklistGridFree(want)
 		}
+}
+
+// These fixture helpers retain the original row-by-row allocation and byte checks.
+func portTestWorklistGridNew() **worldTileCell {
+	p := (**worldTileCell)(legacyCalloc(128, unsafe.Sizeof((*worldTileCell)(nil))))
+	if p == nil {
+		return nil
+	}
+	rows := unsafe.Slice(p, 128)
+	for i := range rows {
+		rows[i] = (*worldTileCell)(legacyCalloc(128, unsafe.Sizeof(worldTileCell{})))
+		if rows[i] == nil {
+			for j := i; j > 0; {
+				j--
+				legacyFree(unsafe.Pointer(rows[j]))
+			}
+			legacyFree(unsafe.Pointer(p))
+			return nil
+		}
+	}
+	return p
+}
+func portTestWorklistGridFree(p **worldTileCell) {
+	if p == nil {
+		return
+	}
+	for _, row := range unsafe.Slice(p, 128) {
+		legacyFree(unsafe.Pointer(row))
+	}
+	legacyFree(unsafe.Pointer(p))
+}
+func portTestWorklistCellSet(p **worldTileCell, x, y int32, one, two uint32) {
+	row := unsafe.Slice(unsafe.Slice(p, 128)[x], 128)
+	row[y][1], row[y][6] = one, two
+}
+func portTestWorklistGridEqual(a, b **worldTileCell) int32 {
+	ar, br := unsafe.Slice(a, 128), unsafe.Slice(b, 128)
+	for i := range ar {
+		if !bytes.Equal(unsafe.Slice((*byte)(unsafe.Pointer(ar[i])), 128*44), unsafe.Slice((*byte)(unsafe.Pointer(br[i])), 128*44)) {
+			return 0
+		}
+	}
+	return 1
 }
 
 // PortTestWorklistAllocation observes fixture-grid allocation and partial cleanup.
@@ -272,7 +286,7 @@ func PortTestWorklistAllocation(failAt int) (out PortTestWorklistAllocationResul
 	out.TrackedBefore = alloc.PortTestAllocationCount()
 	portTestGridAllocationObserve(failAt)
 	defer portTestGridAllocationStop()
-	p := C.portTestWorklistGridNew()
+	p := portTestWorklistGridNew()
 	out.Success = p != nil
 	out.Zero = true
 	if p != nil {
@@ -285,7 +299,7 @@ func PortTestWorklistAllocation(failAt int) (out PortTestWorklistAllocationResul
 		}
 	}
 	out.TrackedDuring = alloc.PortTestAllocationCount()
-	C.portTestWorklistGridFree(p)
+	portTestWorklistGridFree(p)
 	out.NilTracked = alloc.PortTestAllocationLive(nil)
 	// Safe calloc records nil on failure. Preserve that observation, then remove
 	// only this fixture's marker so subsequent cases begin with clean ownership.
