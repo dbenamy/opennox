@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME3_3.h"
-*/
-import "C"
-
 import (
 	"bytes"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -31,9 +25,9 @@ func PortTestReliableReports(op, to, index int, arg uint32, data []byte, related
 			panic("missing queue node")
 		}
 	}
-	obj := C.int(uintptr(unsafe.Pointer(related)))
-	a, b, n := C.int(to), C.int(uintptr(p)), C.int(len(data))
-	order := C.char(0)
+	obj := int32(uintptr(unsafe.Pointer(related)))
+	a, b, n := int32(to), int32(uintptr(p)), int32(len(data))
+	order := int8(0)
 	if ordered {
 		order = 1
 	}
@@ -61,7 +55,7 @@ func PortTestReliableReports(op, to, index int, arg uint32, data []byte, related
 	case 10:
 		return uint32(reliableRemoveSlowPlayer(to))
 	case 11:
-		return uint32(nox_xxx_netSendPacket1_4E5390(a, b, n, obj, C.int(priority)))
+		return uint32(nox_xxx_netSendPacket1_4E5390(a, b, n, obj, int32(priority)))
 	case 12:
 		return uint32(nox_xxx_netClientSend2_4E53C0(int32(a), p, int32(n), int32(obj), int32(priority)))
 	case 13:
@@ -73,7 +67,7 @@ func PortTestReliableReports(op, to, index int, arg uint32, data []byte, related
 	case 16:
 		return uint32(nox_net_importantACK_4E55A0(int32(a), int32(arg)))
 	case 17:
-		return uint32(sub_4E55F0(C.uchar(to)))
+		return uint32(sub_4E55F0(uint8(to)))
 	case 18:
 		return uint32(reliableAdapt(byte(to)))
 	case 19:

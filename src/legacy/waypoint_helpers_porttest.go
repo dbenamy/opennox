@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include <stdlib.h>
-#include "GAME5_2.h"
-*/
-import "C"
-
 import (
 	"bytes"
 	"unsafe"
@@ -34,7 +28,7 @@ func PortTestWaypointMasks(specs []PortTestWaypointMask) []PortTestWaypointMaskR
 	for _, spec := range specs {
 		wp.Flags, wp.Flags2 = spec.Flags, spec.Flags2
 		before := append([]byte(nil), raw...)
-		arg := C.int(uintptr(unsafe.Pointer(wp)))
+		arg := int32(uintptr(unsafe.Pointer(wp)))
 		if spec.Nil {
 			arg = 0
 		}
@@ -78,12 +72,12 @@ func PortTestWaypointLinks(specs []PortTestWaypointLink) []PortTestWaypointLinkR
 		if spec.Next >= 0 {
 			next = &data[spec.Next]
 		}
-		var arg C.int
+		var arg int32
 		if spec.Source >= 0 {
 			wp := &data[spec.Source]
 			wp.WpNext = next
 			wp.WpPrev = &data[(spec.Source+1)%len(data)]
-			arg = C.int(uintptr(unsafe.Pointer(wp)))
+			arg = int32(uintptr(unsafe.Pointer(wp)))
 		}
 		before := append([]byte(nil), raw...)
 		a := index(uint32(nox_xxx_waypointNext_579870(arg)))

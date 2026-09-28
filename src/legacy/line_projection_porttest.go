@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include "GAME5_2.h"
-*/
-import "C"
-
 import (
 	"math"
 	"unsafe"
@@ -59,14 +53,14 @@ func PortTestLineProjection(specs []PortTestLineProjectionSpec) []PortTestLinePr
 		}
 		all, data, guards, free := portTestProjectionWords(spec.Words)
 		before := append([]uint32(nil), data...)
-		line := (*C.float4)(unsafe.Pointer(&data[spec.LineOffset]))
-		point := (*C.float2)(unsafe.Pointer(&data[spec.PointOffset]))
+		line := (*[4]float32)(unsafe.Pointer(&data[spec.LineOffset]))
+		point := (*[2]float32)(unsafe.Pointer(&data[spec.PointOffset]))
 		result := 0
 		switch spec.Kind {
 		case "clamp":
-			sub_57C790(line, point, (*C.float2)(unsafe.Pointer(&data[spec.OutputOffset])), C.float(math.Float32frombits(spec.LengthBits)))
+			sub_57C790(line, point, (*[2]float32)(unsafe.Pointer(&data[spec.OutputOffset])), float32(math.Float32frombits(spec.LengthBits)))
 		case "line":
-			result = int(nox_xxx_mathPointOnTheLine_57C8A0(line, point, (*C.float2)(unsafe.Pointer(&data[spec.OutputOffset]))))
+			result = int(nox_xxx_mathPointOnTheLine_57C8A0(line, point, (*[2]float32)(unsafe.Pointer(&data[spec.OutputOffset]))))
 		default:
 			panic("unknown projection kind")
 		}

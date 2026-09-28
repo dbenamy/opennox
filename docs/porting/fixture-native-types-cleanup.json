@@ -1,0 +1,99 @@
+{
+  "obsolete_binaries": [
+    {
+      "plan": "build/port-fixture-native-types/update-registry-cleanup-approved.json",
+      "source_revision": "5e7255362827b7f9e302df80a746f8ed2d5fbea3",
+      "replacement_revision": "6b51667b",
+      "files": 4,
+      "allocated_bytes": 195026944
+    },
+    {
+      "plan": "build/port-fixture-native-types/callback-cleanup-approved.json",
+      "source_revision": "5cc464f4",
+      "replacement_revision": "6b51667b",
+      "files": 7,
+      "allocated_bytes": 386838528
+    },
+    {
+      "plan": "build/port-fixture-native-types/death-registry-cleanup-approved.json",
+      "source_revision": "89c91e08478ccafacaa6b14484d25f0015b136d0",
+      "replacement_revision": "6b51667b",
+      "files": 4,
+      "allocated_bytes": 194838528
+    },
+    {
+      "plan": "build/port-fixture-native-types/damage-values-cleanup-approved.json",
+      "source_revision": "0a94c36fa139e7c7bfde1ec04a27bf333f267dc3",
+      "replacement_revision": "6b51667b",
+      "files": 4,
+      "allocated_bytes": 194891776
+    },
+    {
+      "plan": "build/port-fixture-native-types/balance-direct-cleanup-approved.json",
+      "source_revision": "1bb4b78a",
+      "replacement_revision": "6b51667b",
+      "files": 4,
+      "allocated_bytes": 195432448
+    },
+    {
+      "plan": "build/port-fixture-native-types/lifecycle-registry-cleanup-approved.json",
+      "source_revision": "72b9c14f38167e2f6665690d78fe5ef62f1e9da3",
+      "replacement_revision": "6b51667b",
+      "files": 4,
+      "allocated_bytes": 195088384
+    },
+    {
+      "plan": "build/port-fixture-native-types/book-direct-cleanup-approved.json",
+      "source_revision": "64376c9f",
+      "replacement_revision": "6b51667b",
+      "files": 4,
+      "allocated_bytes": 195444736
+    }
+  ],
+  "stale_cache": {
+    "success": true,
+    "files": 87,
+    "allocated_bytes": 3806949376,
+    "free_bytes_after": 4408008704,
+    "available_bytes_after": 1109708800,
+    "scope": "Rebuildable Linux386 Go cache archives >=10MB, untouched for six hours; preserve module sources, current binaries, logs and assets.",
+    "host_checks": true,
+    "current_binaries_and_module_sources_preserved": true
+  },
+  "failed_scenario_copies": {
+    "files": 1507,
+    "logical_bytes": 411175326,
+    "allocated_bytes": 414855168,
+    "host_process_and_fd_checks": true,
+    "hardlinks_created": false,
+    "originals_preserved": true,
+    "restore_manifests": [
+      "build/baseline/runs/fixture-native-types-save/deduplicated-assets.json"
+    ]
+  },
+  "accepted_scenario_copies": {
+    "files": 1654,
+    "logical_bytes": 556358986,
+    "allocated_bytes": 559841280,
+    "host_process_and_fd_checks": true,
+    "hardlinks_created": false,
+    "originals_preserved": true,
+    "restore_manifests": [
+      "build/baseline/runs/fixture-native-types-save-retry/deduplicated-assets.json"
+    ]
+  },
+  "emergency_copy": {
+    "file": {
+      "path": "/root/src/opennox/build/baseline/runs/fixture-native-types-save/data/video.bag",
+      "source": "/root/src/opennox/build/assets/extracted/drive_c/Nox/video.bag",
+      "sha256": "b63afb7ffbdb80b5fbf1b5e009221928f3fd8149d17954eec2d9bede00c2943e",
+      "size": 121906939,
+      "device": 2049,
+      "inode": 659923,
+      "mtime_ns": 962312706000000000,
+      "allocated_bytes": 122011648
+    },
+    "host_use_checked": true,
+    "reason": "Filesystem full after interrupted scenario staging; record printed before unlink and persisted immediately after. Restore by copying original source."
+  }
+}

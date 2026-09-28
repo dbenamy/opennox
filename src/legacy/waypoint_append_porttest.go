@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME4_1.h"
-*/
-import "C"
-
 import (
 	"bytes"
 	"encoding/binary"
@@ -128,11 +123,11 @@ func PortTestWaypointAppend(specs []PortTestWaypointAppendSpec) (snap PortTestWa
 
 		*mode = spec.BlobKind
 		target := portTestWaypointAppendPtr(data, source, spec.Target)
-		var ret C.int
+		var ret int32
 		if spec.Mode == 0 {
-			ret = sub_51D300(C.int(uintptr(unsafe.Pointer(source))), C.int(uintptr(unsafe.Pointer(target))), C.char(int8(spec.Kind)))
+			ret = sub_51D300(int32(uintptr(unsafe.Pointer(source))), int32(uintptr(unsafe.Pointer(target))), int8(int8(spec.Kind)))
 		} else if spec.Mode == 1 {
-			ret = sub_51D2C0(C.int(uintptr(unsafe.Pointer(source))), C.int(uintptr(unsafe.Pointer(target))))
+			ret = sub_51D2C0(int32(uintptr(unsafe.Pointer(source))), int32(uintptr(unsafe.Pointer(target))))
 		} else {
 			panic("invalid append mode")
 		}

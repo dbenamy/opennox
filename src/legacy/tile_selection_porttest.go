@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include "GAME4_1.h"
-*/
-import "C"
-
 import (
 	"bytes"
 	"encoding/binary"
@@ -58,7 +52,7 @@ func portTestTilePtrs() ([]server.TileDef, *uint32, *uint32, *uint32, *uint32) {
 func portTestTileGet(selected, variation, flag *uint32) portTestTileState {
 	return portTestTileState{selected: *selected, variation: *variation, flag: *flag, beforeSelected: *memmap.PtrUint32(0x973F18, 35908), afterFlag: *memmap.PtrUint32(0x973F18, 35920)}
 }
-func portTestTileResult(ret C.int, st portTestTileState, same bool, count uint32) PortTestTileScalarResult {
+func portTestTileResult(ret int32, st portTestTileState, same bool, count uint32) PortTestTileScalarResult {
 	return PortTestTileScalarResult{Return: int(ret), Selected: st.selected, Variation: st.variation, Flag: st.flag, Count: count, TableUnchanged: same, GuardsOK: st.beforeSelected == 0xa5a5a5a5 && st.afterFlag == 0x5a5a5a5a}
 }
 
@@ -121,11 +115,11 @@ func PortTestTileScalars(values []int32, flagMode bool) (out []PortTestTileScala
 	*memmap.PtrUint32(0x973F18, 35908), *memmap.PtrUint32(0x973F18, 35920) = 0xa5a5a5a5, 0x5a5a5a5a
 	for _, v := range values {
 		*selected, *variation, *flag = 99, 0x11223344, 0xa5a5a5a5
-		var ret C.int
+		var ret int32
 		if flagMode {
-			ret = nox_xxx_tile_51D5C0(C.int(v))
+			ret = nox_xxx_tile_51D5C0(int32(v))
 		} else {
-			ret = nox_xxx_tileCheckImage_51D540(C.int(v))
+			ret = nox_xxx_tileCheckImage_51D540(int32(v))
 		}
 		out = append(out, portTestTileResult(ret, portTestTileGet(selected, variation, flag), bytes.Equal(tileBytes(table), before), *count))
 	}
@@ -157,7 +151,7 @@ func PortTestTileVariations(specs []PortTestTileVariationSpec) (out []PortTestTi
 		table[s.Selected].Field52, table[s.Selected].Field53 = s.Width, s.Height
 		*selected = s.Selected
 		expected[int(s.Selected)*60+52], expected[int(s.Selected)*60+53] = s.Width, s.Height
-		ret := nox_xxx_tileCheckImageVari_51D570(C.int(s.Value))
+		ret := nox_xxx_tileCheckImageVari_51D570(int32(s.Value))
 		st := portTestTileGet(selected, variation, flag)
 		out = append(out, PortTestTileVariationResult{Return: int(ret), Selected: st.selected, Variation: st.variation, Flag: st.flag, Count: *count, TableUnchanged: bytes.Equal(tileBytes(table), expected), GuardsOK: st.beforeSelected == 0xa5a5a5a5 && st.afterFlag == 0x5a5a5a5a})
 	}

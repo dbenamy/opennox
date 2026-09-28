@@ -2,14 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME3_3.h"
-#include "GAME3_2.h"
-
-*/
-import "C"
-
 import (
 	"bytes"
 	"fmt"
@@ -22,7 +14,7 @@ import (
 // Primitive entry dispatch through native collision owners and retained C helpers.
 // Object-valued returns are represented by fixture identities 1 and 2.
 func PortTestWorldCollision(op int, a, b *server.Object, normal *types.Pointf) uint32 {
-	ai, bi := C.int(uintptr(unsafe.Pointer(a))), C.int(uintptr(unsafe.Pointer(b)))
+	ai, bi := int32(uintptr(unsafe.Pointer(a))), int32(uintptr(unsafe.Pointer(b)))
 	var rv uint32
 	switch op {
 	case 0:

@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include "GAME5_2.h"
-*/
-import "C"
-
 import (
 	"unsafe"
 
@@ -55,8 +49,8 @@ func PortTestCollisionReflect(specs []PortTestReflectionSpec) []PortTestReflecti
 		}
 		all, data, guard, free := portTestCollisionWords(spec.Words)
 		ret := nox_xxx_collideReflect_57B810(
-			(*C.float)(unsafe.Pointer(&data[spec.NormalOffset])),
-			C.int(uintptr(unsafe.Pointer(&data[spec.VelocityOffset]))),
+			(*float32)(unsafe.Pointer(&data[spec.NormalOffset])),
+			int32(uintptr(unsafe.Pointer(&data[spec.VelocityOffset]))),
 		)
 		pre := all[:portTestCollisionGuardWords]
 		post := all[len(all)-portTestCollisionGuardWords:]
@@ -97,9 +91,9 @@ func PortTestCollisionContainment(specs []PortTestContainmentSpec) []PortTestCon
 		all, data, guard, free := portTestCollisionWords(spec.Words)
 		before := append([]uint32(nil), data...)
 		ret := nox_xxx_map_57B850(
-			(*C.float2)(unsafe.Pointer(&data[spec.PositionOffset])),
-			(*C.float)(unsafe.Pointer(&data[spec.ShapeOffset])),
-			(*C.float2)(unsafe.Pointer(&data[spec.PointOffset])),
+			(*[2]float32)(unsafe.Pointer(&data[spec.PositionOffset])),
+			(*float32)(unsafe.Pointer(&data[spec.ShapeOffset])),
+			(*[2]float32)(unsafe.Pointer(&data[spec.PointOffset])),
 		)
 		pre := all[:portTestCollisionGuardWords]
 		post := all[len(all)-portTestCollisionGuardWords:]

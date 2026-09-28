@@ -84,23 +84,23 @@ func portTestWorklistQueue() []uint32 {
 func portTestWorklistState(count, overflow *uint32, queue []uint32, left, right []byte) PortTestTileWorklistState {
 	return PortTestTileWorklistState{Count: *count, Overflow: *overflow, Queue: append([]uint32(nil), queue...), Left: append([]byte(nil), left...), Right: append([]byte(nil), right...)}
 }
-func portTestWorklistOut(ref uint16, words []C.uint32_t, count, overflow *uint32, queue []uint32) *C.uint32_t {
+func portTestWorklistOut(ref uint16, words []uint32, count, overflow *uint32, queue []uint32) *uint32 {
 	switch {
 	case ref < 3:
 		return &words[1+ref] // words[0]/[4] are guards
 	case ref == 3:
-		return (*C.uint32_t)(unsafe.Pointer(count))
+		return (*uint32)(unsafe.Pointer(count))
 	case ref == 4:
-		return (*C.uint32_t)(unsafe.Pointer(overflow))
+		return (*uint32)(unsafe.Pointer(overflow))
 	case ref == portTestWorklistNilRef:
 		return nil
 	case int(ref)-5 < len(queue):
-		return (*C.uint32_t)(unsafe.Pointer(&queue[int(ref)-5]))
+		return (*uint32)(unsafe.Pointer(&queue[int(ref)-5]))
 	default:
 		panic("invalid worklist output reference")
 	}
 }
-func portTestWorklistOutValue(ref uint16, words []C.uint32_t, count, overflow *uint32, queue []uint32) (uint32, bool) {
+func portTestWorklistOutValue(ref uint16, words []uint32, count, overflow *uint32, queue []uint32) (uint32, bool) {
 	if ref == portTestWorklistNilRef {
 		return 0, false
 	}
@@ -150,13 +150,13 @@ func PortTestTileWorklist(initialCount, initialOverflow uint32, initialQueue []u
 	wantLeft, wantRight := append([]byte(nil), left...), append([]byte(nil), right...)
 
 	for _, s := range specs {
-		mem := C.calloc(5, C.size_t(unsafe.Sizeof(C.uint32_t(0))))
+		mem := C.calloc(5, C.size_t(unsafe.Sizeof(uint32(0))))
 		if mem == nil {
 			panic("calloc outputs failed")
 		}
-		words := unsafe.Slice((*C.uint32_t)(mem), 5)
+		words := unsafe.Slice((*uint32)(mem), 5)
 		words[0], words[1], words[2], words[3], words[4] = 0xa0a0a0a0, 0x01020304, 0x11223344, 0x55667788, 0xb0b0b0b0
-		var ret C.int
+		var ret int32
 		if s.Op == 0 {
 			if s.X > 0 && s.X < 127 && s.Y > 0 && s.Y < 127 {
 				C.portTestWorklistCellSet(grid, C.int(s.X), C.int(s.Y), C.uint32_t(s.Field1), C.uint32_t(s.Field2))
@@ -167,7 +167,7 @@ func PortTestTileWorklist(initialCount, initialOverflow uint32, initialQueue []u
 				wantGrid = nil
 				worldTileGrid = nil
 			}
-			sub_51DD50(C.int(s.X), C.int(s.Y), C.int(s.Flags), C.int(s.Key))
+			sub_51DD50(int32(s.X), int32(s.Y), int32(s.Flags), int32(s.Key))
 			pointerOK := unsafe.Pointer(worldTileGrid) == unsafe.Pointer(wantGrid)
 			if s.NilGrid {
 				worldTileGrid = (**worldTileCell)(unsafe.Pointer(grid))

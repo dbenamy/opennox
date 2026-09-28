@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include "GAME4_3.h"
-*/
-import "C"
-
 import (
 	"bytes"
 	"encoding/binary"
@@ -101,25 +95,25 @@ func PortTestBorderSelection(initial PortTestBorderState, rows []PortTestBorderR
 	configured := append([]byte(nil), table...)
 	wantLeft, wantRight := append([]byte(nil), left...), append([]byte(nil), right...)
 	for _, s := range specs {
-		var ret C.int
+		var ret int32
 		input := append(append([]byte(nil), s.Name...), 0)
 		inputBefore := append([]byte(nil), input...)
 		switch s.Mode {
 		case 0:
 			if s.NilName {
-				ret = C.int(findBorderName(nil))
+				ret = int32(findBorderName(nil))
 			} else {
-				ret = C.int(findBorderName(unsafe.SliceData(input)))
+				ret = int32(findBorderName(unsafe.SliceData(input)))
 			}
 		case 1:
 			if s.NilName {
 				panic("544020 null input faults in C")
 			}
-			ret = sub_544020((*C.char)(unsafe.Pointer(unsafe.SliceData(input))))
+			ret = sub_544020((*int8)(unsafe.Pointer(unsafe.SliceData(input))))
 		case 2:
-			ret = nox_xxx_tileCheckByte3_544070(C.int(s.Value))
+			ret = nox_xxx_tileCheckByte3_544070(int32(s.Value))
 		case 3:
-			ret = nox_xxx_tileCheckByte4_5440A0(C.int(s.Value))
+			ret = nox_xxx_tileCheckByte4_5440A0(int32(s.Value))
 		default:
 			panic("invalid border mode")
 		}

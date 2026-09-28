@@ -19,8 +19,8 @@ import (
 func PortTestPrefabReadSection(bounds unsafe.Pointer, name string, initial uint32) (int, uint32) {
 	s, free := alloc.CString(name)
 	defer free()
-	err := C.uint(initial)
-	ok := portTestInvoke_nox_xxx_mapReadSection_426EA0(bounds, (*C.char)(unsafe.Pointer(s)), &err)
+	err := uint32(initial)
+	ok := portTestInvoke_nox_xxx_mapReadSection_426EA0(bounds, (*int8)(unsafe.Pointer(s)), &err)
 	return int(ok), uint32(err)
 }
 
@@ -55,9 +55,9 @@ func PortTestPrefabSecretList() (*uint32, func()) {
 }
 
 // Fixture-native copies preserve the original wrapper ABI conversions.
-func portTestInvoke_nox_xxx_mapReadSection_426EA0(a1 unsafe.Pointer, cname *C.char, cerr *C.uint) int {
+func portTestInvoke_nox_xxx_mapReadSection_426EA0(a1 unsafe.Pointer, cname *int8, cerr *uint32) int {
 	ok, err := Nox_xxx_mapReadSection(cryptfile.Global(), a1, GoStringP(unsafe.Pointer(cname)))
-	*cerr = C.uint(bool2int(err != nil))
+	*cerr = uint32(bool2int(err != nil))
 	if err != nil {
 		mapLog.Println(err)
 	}

@@ -2,13 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME1_2.h"
-#include "GAME2_3.h"
-#include "GAME3_1.h"
-
-*/
-import "C"
 import "unsafe"
 
 func PortTestUIRenderIntersect(rects *[12]int32, dst int) bool {
@@ -19,7 +12,7 @@ func PortTestUIRenderOp(op int, a [6]int32) int32 {
 	case 0:
 		return int32(uiRenderFlag(uint32(a[0])))
 	case 1:
-		return int32(nox_client_copyRect_49F6F0(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3])))
+		return int32(nox_client_copyRect_49F6F0(int32(a[0]), int32(a[1]), int32(a[2]), int32(a[3])))
 	case 2:
 		return int32(uiRenderNarrowClip(int(a[0]), int(a[1])))
 	case 3:

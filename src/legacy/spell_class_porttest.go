@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME5_2.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/server"
 )
@@ -35,7 +30,7 @@ func PortTestSpellClass(defs []server.PortTestSpellClassDef, calls []PortTestSpe
 		out = append(out, PortTestSpellClassResult{
 			PlayerClass: call.PlayerClass,
 			Spell:       call.Spell,
-			Result:      int(nox_xxx_playerCheckSpellClass_57AEA0(C.int(int32(call.PlayerClass)), C.int(int32(call.Spell)))),
+			Result:      int(nox_xxx_playerCheckSpellClass_57AEA0(int32(int32(call.PlayerClass)), int32(int32(call.Spell)))),
 		})
 	}
 	return out

@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME4_2.h"
-*/
-import "C"
-
 import (
 	"bytes"
 	"encoding/binary"
@@ -22,10 +16,10 @@ import (
 // Operation 13 belonged to the proven orphaned throttle helper and is retired.
 func PortTestVisibilityEffects(op int, a, b *server.Object, pos *types.Pointf, words *[4]int32, args [5]int32, data []byte, command string) uint32 {
 
-	fp := (*C.float)(unsafe.Pointer(pos))
+	fp := (*float32)(unsafe.Pointer(pos))
 	switch op {
 	case 0:
-		return uint32(nox_xxx_netSendPointFx_522FF0(C.char(args[0]), (*C.float2)(unsafe.Pointer(pos))))
+		return uint32(nox_xxx_netSendPointFx_522FF0(int8(args[0]), (*[2]float32)(unsafe.Pointer(pos))))
 	case 1:
 		return uint32(visibilityFXSend(*pos, data))
 	case 2:
@@ -47,7 +41,7 @@ func PortTestVisibilityEffects(op int, a, b *server.Object, pos *types.Pointf, w
 	case 10:
 		visibilityFXGeneratorSpawn(*words, uint16(args[0]))
 	case 11:
-		nox_xxx_sendArrowTrapFX_5238A0(fp, C.char(args[0]))
+		nox_xxx_sendArrowTrapFX_5238A0(fp, int8(args[0]))
 	case 12:
 		return uint32(visibilitySpecialUpdate(a, b))
 	case 14:

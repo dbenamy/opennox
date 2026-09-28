@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "client__system__parsecmd.h"
-*/
-import "C"
 import (
 	"unsafe"
 )
@@ -24,7 +19,7 @@ func PortTestConsoleContext() func() {
 func PortTestConsoleServer() bool { return consoleCommandServer }
 
 func PortTestConsoleRemote(player unsafe.Pointer, action int, text *uint16) int {
-	return int(nox_xxx_serverHandleClientConsole_443E90((*nox_playerInfo)(player), C.char(action), (*C.wchar2_t)(unsafe.Pointer(text))))
+	return int(nox_xxx_serverHandleClientConsole_443E90((*nox_playerInfo)(player), int8(action), (*uint16)(unsafe.Pointer(text))))
 }
 func PortTestConsoleSender() unsafe.Pointer {
 	return unsafe.Pointer(consoleCommandSender)

@@ -4463,7 +4463,7 @@
     ],
     "scenarios": [
       {
-        "name": "fixture-native-types-save",
+        "name": "fixture-native-types-save-retry",
         "reference": "build/baseline/runs/entry-classifiers-c-save",
         "scenario": "docs/porting/object-xfer-save-load.yaml",
         "env": {

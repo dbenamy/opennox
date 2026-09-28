@@ -120,11 +120,11 @@ func PortTestEdgeMapping(seed int, direct []PortTestEdgeDirectSpec, mapped []Por
 		off := int(s.Index) * portTestEdgeRowSize
 		table[off+52], table[off+53] = s.Width, s.Height
 		wantTable[off+52], wantTable[off+53] = s.Width, s.Height
-		var result C.int
+		var result int32
 		if s.Normalize {
-			result = sub_411490(C.int(s.Index), C.int(s.Edge))
+			result = sub_411490(int32(s.Index), int32(s.Edge))
 		} else {
-			result = nox_xxx_mapGenEdge_543EB0(C.int(s.Index), C.int(s.Edge))
+			result = nox_xxx_mapGenEdge_543EB0(int32(s.Index), int32(s.Edge))
 		}
 		out.Direct = append(out.Direct, PortTestEdgeResult{Result: int32(result), LogicIndex: core.Rand.Logic.Index(), OtherIndex: core.Rand.Other.Index()})
 		check()
@@ -145,14 +145,14 @@ func PortTestEdgeMapping(seed int, direct []PortTestEdgeDirectSpec, mapped []Por
 			mp[i], wantMap[i] = 255, 255
 		}
 		mp[slot], wantMap[slot] = s.Mapping, s.Mapping
-		mem := C.calloc(6, C.size_t(unsafe.Sizeof(C.uint32_t(0))))
+		mem := C.calloc(6, C.size_t(unsafe.Sizeof(uint32(0))))
 		if mem == nil {
 			panic("calloc edge record")
 		}
-		words := unsafe.Slice((*C.uint32_t)(mem), 6)
-		words[0], words[1], words[2], words[3], words[4], words[5] = 0xa0a0a0a0, 0x11111111, 0x22222222, C.uint32_t(s.Index), C.uint32_t(s.Current), 0xb0b0b0b0
-		ret := sub_543E60(C.int(uintptr(unsafe.Pointer(&words[1]))), C.int(s.Category))
-		out.Mapped = append(out.Mapped, PortTestEdgeMapResult{Return: int(ret), Current: uint32(words[4]), LogicIndex: core.Rand.Logic.Index(), OtherIndex: core.Rand.Other.Index(), RecordGuardsOK: words[0] == 0xa0a0a0a0 && words[1] == 0x11111111 && words[2] == 0x22222222 && words[3] == C.uint32_t(s.Index) && words[5] == 0xb0b0b0b0})
+		words := unsafe.Slice((*uint32)(mem), 6)
+		words[0], words[1], words[2], words[3], words[4], words[5] = 0xa0a0a0a0, 0x11111111, 0x22222222, uint32(s.Index), uint32(s.Current), 0xb0b0b0b0
+		ret := sub_543E60(int32(uintptr(unsafe.Pointer(&words[1]))), int32(s.Category))
+		out.Mapped = append(out.Mapped, PortTestEdgeMapResult{Return: int(ret), Current: uint32(words[4]), LogicIndex: core.Rand.Logic.Index(), OtherIndex: core.Rand.Other.Index(), RecordGuardsOK: words[0] == 0xa0a0a0a0 && words[1] == 0x11111111 && words[2] == 0x22222222 && words[3] == uint32(s.Index) && words[5] == 0xb0b0b0b0})
 		C.free(mem)
 		check()
 	}

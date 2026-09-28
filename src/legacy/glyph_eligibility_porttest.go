@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include "GAME5_2.h"
-*/
-import "C"
-
 import (
 	"bytes"
 	"unsafe"
@@ -146,7 +140,7 @@ func PortTestGlyphEligibility(clientCacheInit, itemCacheInit uint32, calls []Por
 			if drawable == nil && call.Player {
 				panic("client call with player requires drawable")
 			}
-			s.Return = int(nox_xxx_client_57B400(C.int(uintptr(drawable))))
+			s.Return = int(nox_xxx_client_57B400(int32(uintptr(drawable))))
 		case "item":
 			if call.Wrapper {
 				s.Return = Sub_57B450((*client.Drawable)(drawable))
