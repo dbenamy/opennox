@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/client/noxrender"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 )
 
 var drawableDrawCallbacksGo = make(map[unsafe.Pointer]func(*noxrender.Viewport, *Drawable) int32)
@@ -23,13 +22,13 @@ func RegisterDrawableDrawCallbackGo(key unsafe.Pointer, fn func(*noxrender.Viewp
 }
 
 // CallDrawableDrawResult preserves the complete signed C-int result. Callers
-// require a configured callback; foreign addresses keep the original C ABI.
+// require a registered callback.
 func CallDrawableDrawResult(key unsafe.Pointer, vp *noxrender.Viewport, dr *Drawable) int32 {
 	var result int32
 	if fn := drawableDrawCallbacksGo[key]; fn != nil {
 		result = fn(vp, dr)
 	} else {
-		result = int32(ccall.CallIntPtr2(key, vp.C(), dr.C()))
+		panic("unregistered drawable draw callback")
 	}
 	runtime.KeepAlive(vp)
 	runtime.KeepAlive(dr)
@@ -41,7 +40,7 @@ func CallDrawableDrawDiscard(key unsafe.Pointer, vp *noxrender.Viewport, dr *Dra
 	if fn := drawableDrawCallbacksGo[key]; fn != nil {
 		fn(vp, dr)
 	} else {
-		ccall.CallVoidPtr2(key, vp.C(), dr.C())
+		panic("unregistered drawable draw callback")
 	}
 	runtime.KeepAlive(vp)
 	runtime.KeepAlive(dr)

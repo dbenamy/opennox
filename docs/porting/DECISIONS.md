@@ -3092,3 +3092,14 @@ and the die observer for update; do not add fixture names to parser tables. Buil
 the monster map before init and preserve all 26 production entries. Unsupported
 keys panic only in the audited families. See
 [DAMAGE_MONSTER_DISPATCH.md](DAMAGE_MONSTER_DISPATCH.md).
+
+## Retire the remaining generic callback dispatchers
+
+Keep native handlers and parser identities; migrate shared observers across every
+callback family that consumes them. Preserve one-argument initializer priority,
+argument-aware fixture initialization, live versus copied drop positions, exact
+signed results, aligned identity low bytes and opaque words. Unknown keys in the
+audited remaining families now panic. Retain allocator-domain C.free in controls
+fixtures for separate ownership work. Remove the unused call generator and only
+its no-test package row from known-suite expectations. See
+[FINAL_CALLBACK_DISPATCH.md](FINAL_CALLBACK_DISPATCH.md).

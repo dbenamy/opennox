@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#cgo CFLAGS: -DNOX_PORT_TEST_CLIENT_SOUND
-*/
-import "C"
-
 var portTestClientSoundObserver func(id, volume int)
 
 // PortTestClientSoundObserver observes requests without replacing the actual
@@ -15,13 +10,6 @@ func PortTestClientSoundObserver(fn func(id, volume int)) func() {
 	old := portTestClientSoundObserver
 	portTestClientSoundObserver = fn
 	return func() { portTestClientSoundObserver = old }
-}
-
-//export nox_porttest_client_sound
-func nox_porttest_client_sound(id, volume C.int) {
-	if fn := portTestClientSoundObserver; fn != nil {
-		fn(int(id), int(volume))
-	}
 }
 
 func init() {

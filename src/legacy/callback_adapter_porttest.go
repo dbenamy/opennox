@@ -2,59 +2,41 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include <stdint.h>
+import (
+	"github.com/opennox/opennox/v1/client"
+	"github.com/opennox/opennox/v1/client/noxrender"
+	"unsafe"
+)
 
-static uintptr_t adapter_draw_viewport;
-static uintptr_t adapter_draw_drawable;
-static int adapter_draw_return;
-static int adapter_draw_id;
-static int adapter_draw_calls;
+var portTestAdapterKeys [2]byte
+var portTestAdapterWords [4]uint32
+var portTestAdapterResult int32
 
-static int adapter_draw_a(nox_draw_viewport_t *vp, nox_drawable *dr) {
-    adapter_draw_viewport = (uintptr_t)vp;
-    adapter_draw_drawable = (uintptr_t)dr;
-    adapter_draw_id = 1;
-    adapter_draw_calls++;
-    return adapter_draw_return;
+func init() {
+	for i := range portTestAdapterKeys {
+		client.RegisterDrawableDrawCallbackGo(unsafe.Pointer(&portTestAdapterKeys[i]), func(vp *noxrender.Viewport, dr *client.Drawable) int32 {
+			portTestAdapterWords[0] = uint32(uintptr(unsafe.Pointer(vp)))
+			portTestAdapterWords[1] = uint32(uintptr(unsafe.Pointer(dr)))
+			portTestAdapterWords[2] = uint32(i + 1)
+			portTestAdapterWords[3]++
+			return portTestAdapterResult
+		})
+	}
 }
-static int adapter_draw_b(nox_draw_viewport_t *vp, nox_drawable *dr) {
-    adapter_draw_viewport = (uintptr_t)vp;
-    adapter_draw_drawable = (uintptr_t)dr;
-    adapter_draw_id = 2;
-    adapter_draw_calls++;
-    return adapter_draw_return;
-}
-static void *adapter_draw_callback(int which) {
-    return which == 1 ? (void *)adapter_draw_a : (void *)adapter_draw_b;
-}
-static void adapter_draw_reset(int result) {
-    adapter_draw_viewport = 0;
-    adapter_draw_drawable = 0;
-    adapter_draw_return = result;
-    adapter_draw_id = 0;
-    adapter_draw_calls = 0;
-}
-static uintptr_t adapter_draw_value(int field) {
-    switch (field) {
-    case 0: return adapter_draw_viewport;
-    case 1: return adapter_draw_drawable;
-    case 2: return (uintptr_t)adapter_draw_id;
-    case 3: return (uintptr_t)adapter_draw_calls;
-    default: return 0;
-    }
-}
-
-*/
-import "C"
-
-import "unsafe"
-
 func PortTestAdapterDrawCallback(which int) unsafe.Pointer {
-	return C.adapter_draw_callback(C.int(which))
+	if int32(which) == 1 {
+		return unsafe.Pointer(&portTestAdapterKeys[0])
+	}
+	return unsafe.Pointer(&portTestAdapterKeys[1])
 }
-func PortTestAdapterDrawReset(result int) { C.adapter_draw_reset(C.int(result)) }
+func PortTestAdapterDrawReset(result int) {
+	portTestAdapterWords = [4]uint32{}
+	portTestAdapterResult = int32(result)
+}
 func PortTestAdapterDrawValue(field int) uintptr {
-	return uintptr(C.adapter_draw_value(C.int(field)))
+	switch int32(field) {
+	case 0, 1, 2, 3:
+		return uintptr(portTestAdapterWords[int32(field)])
+	}
+	return 0
 }

@@ -379,6 +379,7 @@ target build selection and linker evidence.
 | Native duration/audio dispatch and observers; embedded bodies remain 11, fixture C imports 91→89 | 0 | 0 | 0 | 0 |
 | Native window dispatch and tooltip observer; embedded bodies 11→10, fixture C imports 89→88 | 0 | 0 | 0 | 0 |
 | Native damage/monster dispatch and five observers; embedded bodies 10→8, fixture C imports 88→83 | 0 | 0 | 0 | 0 |
+| Remaining native callback dispatch; embedded bodies 8→0, production cgo 5/6→4/5, fixture imports 83→69 | 0 | 0 | 0 | 0 |
 
 The 33 checksum test-reference lines were retired after differential validation;
 their original source remains recoverable at `66fa7bd4`.

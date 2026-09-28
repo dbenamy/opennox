@@ -62,7 +62,7 @@ Function comparison reports 35 additions, 63 changes, 20 removals and 355 unchan
 these are review aids, not coverage claims. Review caught three missed world-log
 reads and a missing types import in the ignored draft before any compilation.
 Luna remains unavailable due to quota; no substitute model was used.
-Artifacts: `build/port-final-callback-dispatch/`. The conversion is not installed.
+Artifacts: `build/port-final-callback-dispatch/`. The conversion is qualified against accepted baseline commit `0807f897`.
 
 ## Local recovery
 
@@ -74,3 +74,52 @@ journal. These cache entries rebuild automatically.
 
 Original baseline accepted: all reuse checks and fresh contracts passed at
 `945c190b`. See [baseline](final-callback-dispatch-baseline.json).
+
+Removed seven superseded GUI binaries after committed-source, replacement hashes
+and host-use verification, recovering 386,985,984 bytes. Rebuild `0cf5064c` if
+needed; records remain in `gui-cleanup-approved.json` and its journal. Current
+damage/monster binaries and all original logs remain.
+
+During native tests, removed seven superseded native-integer binaries after the
+same committed-source, replacement and host-use checks (387,166,208 bytes).
+Rebuild `a7dc3a36` for those historical outputs; logs/metadata remain. Records:
+`integer-cleanup-approved.json` and journal. Active tests use separate new binaries.
+
+Before the final scenario, verified and removed four remaining superseded
+unused-export build binaries (193,003,520 bytes). Rebuild `f6f5ee4c` if needed.
+The old test binaries were already absent; the initial seven-path validation
+stopped before deletion, then a four-path plan passed all source/hash/host-use
+checks. Records: `unused-exports-cleanup-approved.json` and journal.
+
+## Qualification and progress
+
+Native broad selections passed **2,482/2,471/2,482** roots without skips. All 28
+focused roots per profile, three safe contracts and private legacy adapters in
+four profiles passed before/after conversion. Native focused/static checks and
+fresh default save/load passed before the broad sweep. Safe build/static, three
+production builds/ABI, exact known-suite comparison and final fresh save/load
+passed. All 1,654 original asset hashes are unchanged. Assertions and captures
+remain unchanged; retired C dispatchers/observers are absent from qualified builds.
+
+Embedded production C bodies: **8→0 (79/79 retired)**. Production cgo files:
+**5→4 client/highres; 6→5 server**, across **two** project packages. Fixture C
+imports: **83→69**. Headers remain **157 files /2,731 lines**; selected legacy C
+exports and standalone production/test C remain **zero**. These are dependency
+counts, not an estimate of remaining effort. The internal-glue milestone is not
+complete: allocator ownership, reachable abort, flags and fixture/type dependencies
+remain. Evidence: [qualification](final-callback-dispatch-qualification.json),
+[inventory](final-callback-dispatch-inventory-after.json).
+
+The evidence collector initially used an overly broad `go_call_` substring check,
+which also matched Go runtime cgo traceback/symbolizer helpers. It now checks the
+eight exact engine dispatcher names and their wrappers; those are absent. Native
+source and successful qualification runs needed no correction or repetition.
+
+After all qualification jobs finished, verified and removed 3,308 identical
+scenario asset copies (1,120,485,376 allocated bytes). Host-use checks passed and
+original assets, outputs, binaries and metadata remain. Restore inputs with:
+
+```sh
+python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/final-callback-dispatch-preflight-save/deduplicated-assets.json
+python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/final-callback-dispatch-save/deduplicated-assets.json
+```

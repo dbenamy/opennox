@@ -2,30 +2,6 @@
 
 package legacy
 
-/*
-#include <string.h>
-#include "GAME3_3.h"
-#include "GAME4_3.h"
-static uint32_t invTrace[4097], invUseDelete, invDropResult;
-static int32_t invUseResult;
-static uint32_t* invTracePtr(void) {return invTrace;}
-static void invReset(int useDelete,int dropResult,int32_t useResult) {memset(invTrace,0,sizeof(invTrace));invUseDelete=useDelete;invDropResult=dropResult;invUseResult=useResult;}
-static int invUse(nox_object_t* u,nox_object_t* it) {
- uint32_t i=1+6*invTrace[0]++;
- if(i+5<4097) {invTrace[i]=1;invTrace[i+1]=(uint32_t)u;invTrace[i+2]=(uint32_t)it;}
- if(invUseDelete) it->obj_flags|=0x20;
- return invUseResult;
-}
-static int invDrop(nox_object_t* u,nox_object_t* it,float2* pos) {
- uint32_t i=1+6*invTrace[0]++;
- if(i+5<4097) {invTrace[i]=2;invTrace[i+1]=(uint32_t)u;invTrace[i+2]=(uint32_t)it;memcpy(&invTrace[i+3],pos,8);}
- return invDropResult;
-}
-static void* invUsePtr(void){return invUse;}
-static void* invDropPtr(void){return invDrop;}
-
-*/
-import "C"
 import (
 	"bytes"
 	"github.com/opennox/libs/types"
@@ -37,6 +13,49 @@ import (
 	"math"
 	"unsafe"
 )
+
+var portTestInventoryKeys [2]byte
+var portTestInventoryTrace [4097]uint32
+var portTestInventoryUseDelete bool
+var portTestInventoryDropResult, portTestInventoryUseResult int32
+
+func portTestInventoryKey(i int) unsafe.Pointer { return unsafe.Pointer(&portTestInventoryKeys[i]) }
+func portTestInventoryReset(useDelete, dropResult bool, useResult int32) {
+	portTestInventoryTrace = [4097]uint32{}
+	portTestInventoryUseDelete = useDelete
+	portTestInventoryDropResult = int32(bool2int(dropResult))
+	portTestInventoryUseResult = useResult
+}
+func portTestInventoryUse(u, it *server.Object) int32 {
+	i := 1 + 6*portTestInventoryTrace[0]
+	portTestInventoryTrace[0]++
+	if i+5 < 4097 {
+		portTestInventoryTrace[i] = 1
+		portTestInventoryTrace[i+1] = uint32(uintptr(unsafe.Pointer(u)))
+		portTestInventoryTrace[i+2] = uint32(uintptr(unsafe.Pointer(it)))
+	}
+	if portTestInventoryUseDelete {
+		it.ObjFlags |= 0x20
+	}
+	return portTestInventoryUseResult
+}
+func portTestInventoryDrop(u, it *server.Object, pos *types.Pointf) int {
+	i := 1 + 6*portTestInventoryTrace[0]
+	portTestInventoryTrace[0]++
+	if i+5 < 4097 {
+		portTestInventoryTrace[i] = 2
+		portTestInventoryTrace[i+1] = uint32(uintptr(unsafe.Pointer(u)))
+		portTestInventoryTrace[i+2] = uint32(uintptr(unsafe.Pointer(it)))
+		words := (*[2]uint32)(unsafe.Pointer(pos))
+		portTestInventoryTrace[i+3], portTestInventoryTrace[i+4] = words[0], words[1]
+	}
+	return int(portTestInventoryDropResult)
+}
+func init() {
+	server.PortTestRegisterUseCallback(portTestInventoryKey(0), portTestInventoryUse)
+	inventoryNativeDrops[portTestInventoryKey(1)] = portTestInventoryDrop
+	server.PortTestRegisterDropCallback(portTestInventoryKey(1), func(u, it *server.Object, pos types.Pointf) bool { return portTestInventoryDrop(u, it, &pos) != 0 })
+}
 
 type PortTestInventorySpec struct {
 	UseResult   *int32 `json:",omitempty"` // nil preserves the original observer result of one.
@@ -154,10 +173,10 @@ func (p *portTestShopPools) inventoryPrepare() func() {
 	if sp.UseResult != nil {
 		useResult = *sp.UseResult
 	}
-	C.invReset(C.int(bool2int(sp.UseDelete)), C.int(bool2int(sp.DropResult)), C.int32_t(useResult))
+	portTestInventoryReset(sp.UseDelete, sp.DropResult, useResult)
 	p.identify(itemIdentityKey(itemIDDefaultDrop), 55000)
-	p.identify(C.invUsePtr(), 55001)
-	p.identify(C.invDropPtr(), 55002)
+	p.identify(portTestInventoryKey(0), 55001)
+	p.identify(portTestInventoryKey(1), 55002)
 	oldState := Nox_xxx_playerSetState_4FA020
 	Nox_xxx_playerSetState_4FA020 = func(u *server.Object, state server.PlayerState) bool {
 		p.inventory.calls = append(p.inventory.calls, 4, p.normalize(uint32(uintptr(u.CObj()))), uint32(state))
@@ -350,8 +369,8 @@ func (p *portTestShopPools) inventoryItems() {
 		if i < len(sp.Materials) {
 			u.Material = sp.Materials[i]
 		}
-		u.Use.Ptr = C.invUsePtr()
-		u.Drop.Ptr = C.invDropPtr()
+		u.Use.Ptr = portTestInventoryKey(0)
+		u.Drop.Ptr = portTestInventoryKey(1)
 		if sp.DefaultDrop {
 			u.Drop.Ptr = itemIdentityKey(itemIDDefaultDrop)
 		}
@@ -462,7 +481,7 @@ func (p *portTestShopPools) inventorySnapshot() []uint32 {
 		}
 	}
 	out := []uint32{p.normalize(uint32(r.result)), uint32(r.result >> 32), math.Float32bits(r.pos.X), math.Float32bits(r.pos.Y)}
-	b := unsafe.Slice((*uint32)(unsafe.Pointer(C.invTracePtr())), 4097)
+	b := portTestInventoryTrace[:]
 	if b[0] > 680 {
 		panic("inventory callback trace overflow")
 	}
@@ -508,7 +527,7 @@ func (p *portTestShopPools) inventorySnapshot() []uint32 {
 // Raw boundary records for independent selection contracts; these are copied
 // before a later call can change the shared fixture trace.
 func portTestInventoryDropCalls() []uint32 {
-	b := unsafe.Slice((*uint32)(unsafe.Pointer(C.invTracePtr())), 4097)
+	b := portTestInventoryTrace[:]
 	if b[0] > 680 {
 		panic("inventory callback trace overflow")
 	}

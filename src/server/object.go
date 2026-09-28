@@ -21,7 +21,6 @@ import (
 	"github.com/opennox/opennox/v1/common/sound"
 	"github.com/opennox/opennox/v1/common/unit/ai"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 )
 
 const (
@@ -1440,18 +1439,20 @@ func (obj *Object) CallInit() {
 	if fnc := objectInitGoFuncs[obj.Init]; fnc != nil {
 		fnc(obj)
 	} else {
-		ccall.CallVoidPtr(obj.Init, obj.CObj())
+		panic("unregistered object initializer")
 	}
 	runtime.KeepAlive(obj)
 }
 
-// CallInitWithArg requires a configured initializer. Raw callbacks receive both
-// arguments; registered Go initializers use only the object.
+// CallInitWithArg preserves object-only initializer priority; argument-aware
+// callbacks receive both arguments.
 func (obj *Object) CallInitWithArg(arg unsafe.Pointer) {
 	if fnc := objectInitGoFuncs[obj.Init]; fnc != nil {
 		fnc(obj)
+	} else if fnc := objectInitArgGoFuncs[obj.Init]; fnc != nil {
+		fnc(obj, arg)
 	} else {
-		ccall.CallVoidPtr2(obj.Init, obj.CObj(), arg)
+		panic("unregistered object initializer")
 	}
 	runtime.KeepAlive(obj)
 	runtime.KeepAlive(arg)
@@ -1472,32 +1473,30 @@ func (obj *Object) CallCollide(a2, a3 int) {
 	if fnc := objectCollideGoFuncs[obj.Collide].call; fnc != nil {
 		fnc(obj, uintptr(a2), uintptr(a3))
 	} else {
-		ccall.CallVoidUPtr3(obj.Collide, uintptr(obj.CObj()), uintptr(a2), uintptr(a3))
+		panic("unregistered object collision callback")
 	}
 	runtime.KeepAlive(obj)
 }
 
-// CallCollideResult requires a configured callback, as the original integer
-// callback path did. Native identities must never enter the raw C dispatcher.
-// Raw callbacks retain their exact integer result and argument-bit transport.
+// CallCollideResult requires a registered callback and preserves its result bits.
 func (obj *Object) CallCollideResult(a2, a3 uintptr) uint32 {
 	var result uint32
 	if fnc := objectCollideGoFuncs[obj.Collide].result; fnc != nil {
 		result = fnc(obj, a2, a3)
 	} else {
-		result = uint32(ccall.CallIntUPtr3(obj.Collide, uintptr(obj.CObj()), a2, a3))
+		panic("unregistered object collision callback")
 	}
 	runtime.KeepAlive(obj)
 	return result
 }
 
-// CallCollideWith requires a configured callback. Pointer arguments remain live
-// through dispatch; the raw fallback retains its three-pointer calling convention.
+// CallCollideWith requires a registered callback. Pointer arguments remain live
+// through dispatch.
 func (obj *Object) CallCollideWith(target *Object, normal *types.Pointf) {
 	if fnc := objectCollideGoFuncs[obj.Collide].call; fnc != nil {
 		fnc(obj, uintptr(unsafe.Pointer(target)), uintptr(unsafe.Pointer(normal)))
 	} else {
-		ccall.CallVoidPtr3(obj.Collide, obj.CObj(), unsafe.Pointer(target), unsafe.Pointer(normal))
+		panic("unregistered object collision callback")
 	}
 	runtime.KeepAlive(obj)
 	runtime.KeepAlive(target)
@@ -1564,7 +1563,7 @@ func (obj *Object) CallXfer(a2 unsafe.Pointer) error {
 	if fnc := objectXferGoFuncs[obj.Xfer]; fnc != nil {
 		result = fnc(obj, a2)
 	} else {
-		result = ccall.CallIntPtr2(obj.Xfer, obj.CObj(), a2)
+		panic("unregistered object transfer callback")
 	}
 	runtime.KeepAlive(obj)
 	runtime.KeepAlive(a2)
@@ -1580,7 +1579,7 @@ func (obj *Object) CallDamageSound(other *Object) {
 	if fnc := objectDamageSoundGoFuncs[obj.DamageSound]; fnc != nil {
 		fnc(obj, other)
 	} else {
-		ccall.CallVoidPtr2(obj.DamageSound, obj.CObj(), other.CObj())
+		panic("unregistered object damage sound callback")
 	}
 	runtime.KeepAlive(obj)
 	runtime.KeepAlive(other)

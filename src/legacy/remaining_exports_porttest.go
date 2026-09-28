@@ -53,10 +53,6 @@ func nox_xxx_collideReflect_57B810(normal *C.float, velocity C.int) C.int {
 	return velocity
 }
 
-func nox_xxx_createSpark_54FD80(a1 C.float, a2 C.float, a3 C.int, a4 C.int, a5 C.float, a6 C.float, a7 C.float, a8 C.int) *C.float {
-	return (*C.float)(temporarySpark(types.Ptf(float32(a1), float32(a2)), types.Ptf(float32(a5), float32(a6)), int32(a3), int32(a4), float32(a7), objectFromInt(int32(a8))).CObj())
-}
-
 func nox_xxx_mapGenEdge_543EB0(index, edge C.int) C.int {
 	return C.int(generateBorderEdge(int32(index), int32(edge)))
 }
@@ -135,14 +131,6 @@ func nox_xxx_tile_51D5C0(value C.int) C.int {
 	return C.int(bool2int(setTileFlag(int32(value))))
 }
 
-func nox_xxx_toxicCloudPoison_53D9D0(a1 C.int, a2 C.int) {
-	temporaryCloudCandidate(objectFromInt(int32(a1)), objectFromInt(int32(a2)), true)
-}
-
-func nox_xxx_waterBarrel_53CC30(a1 *C.float, a2 C.int) {
-	temporaryWaterCandidate((*server.Object)(unsafe.Pointer(a1)), *(*types.Pointf)(unsafe.Pointer(uintptr(uint32(a2)))))
-}
-
 func nox_xxx_waypointNext_579870(a1 C.int) C.int {
 	if a1 == 0 {
 		return 0
@@ -194,14 +182,6 @@ func sub_51DD50(x, y, flags, key C.int) {
 
 func sub_51DE30(x, y, flags *C.uint32_t) C.int {
 	return C.int(bool2int(popTileFill((*uint32)(unsafe.Pointer(x)), (*uint32)(unsafe.Pointer(y)), (*uint32)(unsafe.Pointer(flags)))))
-}
-
-func sub_53BD10(a1 C.int, a2 C.int) {
-	temporaryAntiCandidate(objectFromInt(int32(a1)), objectFromInt(int32(a2)))
-}
-
-func sub_53D8C0(a1 C.int, a2 C.int) {
-	temporaryCloudCandidate(objectFromInt(int32(a1)), objectFromInt(int32(a2)), false)
 }
 
 func sub_543E60(record, category C.int) C.int {

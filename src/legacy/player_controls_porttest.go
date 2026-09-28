@@ -3,15 +3,7 @@
 package legacy
 
 /*
-#include <string.h>
 #include <stdlib.h>
-#include <stdint.h>
-static uint32_t controlsInitLog[256];static int controlsInitN;
-static void controlsInit(void* u,int x){if(controlsInitN+2>=256)abort();controlsInitLog[controlsInitN++]=(uint32_t)u;controlsInitLog[controlsInitN++]=x;}
-static void controlsInitReset(){controlsInitN=0;}
-static int controlsInitCount(){return controlsInitN;}
-static uint32_t controlsInitValue(int i){return controlsInitLog[i];}
-static void* controlsInitPtr(){return controlsInit;}
 */
 import "C"
 
@@ -27,6 +19,23 @@ import (
 	"math"
 	"unsafe"
 )
+
+var portTestControlsInitKey byte
+var portTestControlsInitLog [256]uint32
+var portTestControlsInitN int
+
+func portTestControlsInitPointer() unsafe.Pointer { return unsafe.Pointer(&portTestControlsInitKey) }
+func init() {
+	server.PortTestRegisterInitArgCallback(portTestControlsInitPointer(), func(u *server.Object, arg unsafe.Pointer) {
+		if portTestControlsInitN+2 >= 256 {
+			panic("initializer observer capacity exceeded")
+		}
+		portTestControlsInitLog[portTestControlsInitN] = uint32(uintptr(unsafe.Pointer(u)))
+		portTestControlsInitN++
+		portTestControlsInitLog[portTestControlsInitN] = uint32(uintptr(arg))
+		portTestControlsInitN++
+	})
+}
 
 type PortTestPlayerControlsSpec struct {
 	BotUpdateRoute           uint8 `json:",omitempty"` // 0: original path; 1: direct; 2: stored callback, both discard result.
@@ -102,10 +111,10 @@ func (p *portTestShopPools) controlsPrepare() func() {
 	dword_5d4594_1565616 = 0
 	dword_5d4594_1568868 = 0
 	table := unsafe.Slice((*byte)(memmap.PtrOff(0x587000, 215824)), 108)
-	C.controlsInitReset()
+	portTestControlsInitN = 0
 	restoreTypes, restoreMods := func() {}, func() {}
 	if sp.Equipment {
-		restoreTypes = p.proxy.core.PortTestControlsTypes(C.controlsInitPtr(), sp.Disallowed)
+		restoreTypes = p.proxy.core.PortTestControlsTypes(portTestControlsInitPointer(), sp.Disallowed)
 		var mods []*server.ModifierEff
 		var names []*byte
 		for _, name := range []string{"UserColor1", "ArmorQuality1", "Material1", "Replenishment1"} {
@@ -220,7 +229,7 @@ func (p *portTestShopPools) controlsItems() {
 	}
 	p.reservedFunctionIDs += 23
 	st := p.temporary.world.objectives.attack.controls
-	p.identify(C.controlsInitPtr(), 91600)
+	p.identify(portTestControlsInitPointer(), 91600)
 	p.identify(updateIdentityKey(updateIDPlayer), 91601)
 	for i := 0; i < 56; i++ {
 		if fn := portTestControlsFunction(i); fn != nil {
@@ -436,9 +445,9 @@ func (p *portTestShopPools) controlsSnapshot(out []uint32) []uint32 {
 	out = append(out, p.normalize(uint32(st.result)), uint32(st.result>>32), uint32(dword_5d4594_1565616), uint32(dword_5d4594_1568868))
 	out = append(out, uint32(len(st.transitions)))
 	out = append(out, st.transitions...)
-	out = append(out, uint32(C.controlsInitCount()))
-	for i := 0; i < int(C.controlsInitCount()); i++ {
-		out = append(out, p.normalize(uint32(C.controlsInitValue(C.int(i)))))
+	out = append(out, uint32(portTestControlsInitN))
+	for i := 0; i < int(portTestControlsInitN); i++ {
+		out = append(out, p.normalize(uint32(portTestControlsInitLog[i])))
 	}
 	out = append(out, uint32(len(st.freshBots)))
 	for _, ptr := range st.freshBots {
@@ -680,11 +689,11 @@ func controlsInvoke(op int, u, t *server.Object, x, y int32, record, name unsafe
 // PortTestSessionEntryInitCallback reuses the existing initializer boundary log.
 // The fixture checks that session admission invokes the unit initializer once.
 func PortTestSessionEntryInitCallback() (unsafe.Pointer, func() [][2]uintptr) {
-	C.controlsInitReset()
-	return C.controlsInitPtr(), func() [][2]uintptr {
+	portTestControlsInitN = 0
+	return portTestControlsInitPointer(), func() [][2]uintptr {
 		var out [][2]uintptr
-		for i := 0; i < int(C.controlsInitCount()); i += 2 {
-			out = append(out, [2]uintptr{uintptr(C.controlsInitValue(C.int(i))), uintptr(C.controlsInitValue(C.int(i + 1)))})
+		for i := 0; i < int(portTestControlsInitN); i += 2 {
+			out = append(out, [2]uintptr{uintptr(portTestControlsInitLog[i]), uintptr(portTestControlsInitLog[i+1])})
 		}
 		return out
 	}

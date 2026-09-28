@@ -2,20 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-// A retained char return can contain the low byte of the collision callback
-// address. Align this recorder so that byte is stable across builds and ASLR.
-static uint32_t worldCalls[256]; static int worldCount;
-static int __attribute__((aligned(256))) worldCollide(int u,int a,int b) {
- worldCalls[worldCount++]=u;worldCalls[worldCount++]=a;worldCalls[worldCount++]=b;return 0;
-}
-static void* worldCollidePtr(void){return worldCollide;}
-static void worldReset(void){worldCount=0;}
-static int worldN(void){return worldCount;}
-static uint32_t worldValue(int i){return worldCalls[i];}
-*/
-import "C"
 import (
 	"github.com/opennox/libs/object"
 	"github.com/opennox/libs/types"
@@ -24,6 +10,29 @@ import (
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
+
+// Preserve the original callback-address low byte of zero.
+var portTestWorldCollideStorage [256]byte
+
+func portTestWorldCollideKey() unsafe.Pointer {
+	p := unsafe.Pointer(&portTestWorldCollideStorage[0])
+	return unsafe.Add(p, (-uintptr(p))&255)
+}
+
+var portTestWorldCalls [256]uint32
+var portTestWorldCount int
+
+func init() {
+	server.PortTestRegisterCollideCallback(portTestWorldCollideKey(), func(u *server.Object, a, b uintptr) uint32 {
+		portTestWorldCalls[portTestWorldCount] = uint32(uintptr(unsafe.Pointer(u)))
+		portTestWorldCount++
+		portTestWorldCalls[portTestWorldCount] = uint32(a)
+		portTestWorldCount++
+		portTestWorldCalls[portTestWorldCount] = uint32(b)
+		portTestWorldCount++
+		return 0
+	})
+}
 
 const (
 	PortTestWorld53AC50 = 700
@@ -102,13 +111,13 @@ func (p *portTestShopPools) worldItems() {
 		return
 	}
 	w := p.temporary.world
-	C.worldReset()
-	p.identify(C.worldCollidePtr(), 71300)
+	portTestWorldCount = 0
+	p.identify(portTestWorldCollideKey(), 71300)
 	for i := 0; i < 21; i++ {
 		p.identify(portTestWorldFunction(i), 71000+uint32(i))
 	}
 	for i, it := range p.items {
-		it.u.Collide = C.worldCollidePtr()
+		it.u.Collide = portTestWorldCollideKey()
 		b, free := alloc.Make([]byte{}, 80)
 		for j := 0; j < 8; j++ {
 			b[j] = 0xa5
@@ -225,21 +234,21 @@ func portTestWorldCall(id int, u, target *server.Object, value int) uint32 {
 	default:
 		switch id {
 		case 7:
-			portTestInvoke_nox_xxx_fnElevatorShaft_53B410(C.int(uintptr(target.CObj())), C.int(uintptr(u.CObj())))
+			portTestInvoke_nox_xxx_fnElevatorShaft_53B410(int32(uintptr(target.CObj())), int32(uintptr(u.CObj())))
 		case 8:
-			portTestInvoke_nox_xxx_elevatorAud_53B490(C.int(uintptr(u.CObj())), C.int(value))
+			portTestInvoke_nox_xxx_elevatorAud_53B490(int32(uintptr(u.CObj())), int32(value))
 		case 10:
-			portTestInvoke_nox_xxx_elevatorFn_53B750(C.int(uintptr(target.CObj())), C.int(uintptr(u.CObj())))
+			portTestInvoke_nox_xxx_elevatorFn_53B750(int32(uintptr(target.CObj())), int32(uintptr(u.CObj())))
 		case 13:
-			portTestInvoke_nox_xxx_fnPentagramTeleport_53C060((*C.float)(unsafe.Pointer(target.CObj())), C.int(uintptr(unsafe.Add(u.CObj(), 56))))
+			portTestInvoke_nox_xxx_fnPentagramTeleport_53C060((*float32)(unsafe.Pointer(target.CObj())), int32(uintptr(unsafe.Add(u.CObj(), 56))))
 		case 15:
-			portTestInvoke_sub_53C140((*C.float)(unsafe.Pointer(target.CObj())), C.int(uintptr(unsafe.Add(u.CObj(), 56))))
+			portTestInvoke_sub_53C140((*float32)(unsafe.Pointer(target.CObj())), int32(uintptr(unsafe.Add(u.CObj(), 56))))
 		case 17:
-			portTestInvoke_sub_53C240((*C.float)(unsafe.Pointer(target.CObj())), C.int(uintptr(u.CObj())))
+			portTestInvoke_sub_53C240((*float32)(unsafe.Pointer(target.CObj())), int32(uintptr(u.CObj())))
 		case 19:
-			portTestInvoke_sub_548830(C.int(*(*uint32)(unsafe.Add(u.CObj(), 748))))
+			portTestInvoke_sub_548830(int32(*(*uint32)(unsafe.Add(u.CObj(), 748))))
 		case 20:
-			portTestInvoke_sub_548860(C.int(uintptr(u.CObj())), C.short(value))
+			portTestInvoke_sub_548860(int32(uintptr(u.CObj())), int16(value))
 		}
 		return 0
 	}
@@ -255,12 +264,12 @@ func (p *portTestShopPools) worldAction(a PortTestShopAction) uint32 {
 }
 func portTestWorldCollisionCheck(actor, target *server.Object, called bool) {
 	if !called {
-		if C.worldN() != 0 {
+		if portTestWorldCount != 0 {
 			panic("unexpected world collision callback")
 		}
 		return
 	}
-	if C.worldN() != 3 || uint32(C.worldValue(0)) != uint32(uintptr(target.CObj())) || uint32(C.worldValue(1)) != uint32(uintptr(actor.CObj())) || C.worldValue(2) != 0 {
+	if portTestWorldCount != 3 || uint32(portTestWorldCalls[0]) != uint32(uintptr(target.CObj())) || uint32(portTestWorldCalls[1]) != uint32(uintptr(actor.CObj())) || portTestWorldCalls[2] != 0 {
 		panic("world collision callback count or arguments")
 	}
 }
@@ -273,9 +282,9 @@ func (p *portTestShopPools) worldSnapshot(out []uint32) []uint32 {
 	for _, v := range []uint32{*memmap.PtrUint32(0x5d4594, 527672), uint32(collisionAngleHead), uint32(collisionActiveHead), uint32(collisionActiveTail), *memmap.PtrUint32(0x5d4594, 2488680), *memmap.PtrUint32(0x5d4594, 2488676)} {
 		out = append(out, p.normalize(v))
 	}
-	out = append(out, uint32(C.worldN()))
-	for i := 0; i < int(C.worldN()); i++ {
-		out = append(out, p.normalize(uint32(C.worldValue(C.int(i)))))
+	out = append(out, uint32(portTestWorldCount))
+	for i := 0; i < int(portTestWorldCount); i++ {
+		out = append(out, p.normalize(uint32(portTestWorldCalls[i])))
 	}
 	for _, b := range w.blocks {
 		for j := 0; j < 8; j++ {
@@ -291,30 +300,30 @@ func (p *portTestShopPools) worldSnapshot(out []uint32) []uint32 {
 }
 
 // Fixture-native copies preserve the original wrapper ABI conversions.
-func portTestInvoke_nox_xxx_elevatorAud_53B490(a1 C.int, a2 C.int) {
+func portTestInvoke_nox_xxx_elevatorAud_53B490(a1 int32, a2 int32) {
 	worldElevatorSound(objectFromInt(int32(a1)), a2 != 0)
 }
 
-func portTestInvoke_nox_xxx_elevatorFn_53B750(a1 C.int, a2 C.int) {
+func portTestInvoke_nox_xxx_elevatorFn_53B750(a1 int32, a2 int32) {
 	worldElevatorCandidate(objectFromInt(int32(a1)), objectFromInt(int32(a2)))
 }
 
-func portTestInvoke_nox_xxx_fnElevatorShaft_53B410(a1 C.int, a2 C.int) {
+func portTestInvoke_nox_xxx_fnElevatorShaft_53B410(a1 int32, a2 int32) {
 	worldShaftCandidate(objectFromInt(int32(a1)), objectFromInt(int32(a2)))
 }
 
-func portTestInvoke_nox_xxx_fnPentagramTeleport_53C060(a1 *C.float, a2 C.int) {
+func portTestInvoke_nox_xxx_fnPentagramTeleport_53C060(a1 *float32, a2 int32) {
 	worldTeleportCandidate((*server.Object)(unsafe.Pointer(a1)), (*types.Pointf)(unsafe.Pointer(uintptr(uint32(a2)))), true)
 }
 
-func portTestInvoke_sub_53C140(a1 *C.float, a2 C.int) {
+func portTestInvoke_sub_53C140(a1 *float32, a2 int32) {
 	worldTeleportCandidate((*server.Object)(unsafe.Pointer(a1)), (*types.Pointf)(unsafe.Pointer(uintptr(uint32(a2)))), false)
 }
 
-func portTestInvoke_sub_53C240(a1 *C.float, arg4 C.int) {
+func portTestInvoke_sub_53C240(a1 *float32, arg4 int32) {
 	worldBlowCandidate((*server.Object)(unsafe.Pointer(a1)), objectFromInt(int32(arg4)))
 }
 
-func portTestInvoke_sub_548830(a1 C.int) { worldAngleQueue(unsafe.Pointer(uintptr(uint32(a1)))) }
+func portTestInvoke_sub_548830(a1 int32) { worldAngleQueue(unsafe.Pointer(uintptr(uint32(a1)))) }
 
-func portTestInvoke_sub_548860(a1 C.int, a2 C.short) { worldAngle(objectFromInt(int32(a1)), int16(a2)) }
+func portTestInvoke_sub_548860(a1 int32, a2 int16) { worldAngle(objectFromInt(int32(a1)), int16(a2)) }

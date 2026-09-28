@@ -2,18 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME3_3.h"
-#include "GAME4.h"
-static uint32_t resourceDieCount, resourceDieUnit;
-static void resourceDie(void* unit) {resourceDieCount++;resourceDieUnit=(uint32_t)unit;}
-static void* resourceDiePtr(void) {return resourceDie;}
-static void resourceDieReset(void) {resourceDieCount=0;resourceDieUnit=0;}
-static uint32_t resourceDieCalls(void) {return resourceDieCount;}
-static uint32_t resourceDieWho(void) {return resourceDieUnit;}
-*/
-import "C"
-
 import (
 	"bytes"
 	"encoding/binary"
@@ -25,6 +13,16 @@ import (
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
 )
+
+var portTestResourceDieKey byte
+var portTestResourceDieCount, portTestResourceDieUnit uint32
+
+func init() {
+	server.PortTestRegisterDeathCallback(unsafe.Pointer(&portTestResourceDieKey), func(u *server.Object) {
+		portTestResourceDieCount++
+		portTestResourceDieUnit = uint32(uintptr(unsafe.Pointer(u)))
+	})
+}
 
 type PortTestResourceSpec struct {
 	ExtraProtection                                      bool
@@ -100,7 +98,7 @@ func (p *portTestShopPools) resourcePrepare() func() {
 	if sp.God {
 		noxflags.SetEngine(noxflags.EngineGodMode)
 	}
-	C.resourceDieReset()
+	portTestResourceDieCount, portTestResourceDieUnit = 0, 0
 	var frees []func()
 	region := func(size int, id uint32) unsafe.Pointer {
 		b, free := alloc.Make([]byte{}, size+16)
@@ -162,7 +160,7 @@ func (p *portTestShopPools) resourcePrepare() func() {
 	*(*unsafe.Pointer)(unsafe.Add(u.CObj(), 508)) = nil
 	*(*unsafe.Pointer)(unsafe.Add(u.CObj(), 724)) = nil
 	if sp.DieCallback {
-		ptr := C.resourceDiePtr()
+		ptr := unsafe.Pointer(&portTestResourceDieKey)
 		*(*unsafe.Pointer)(unsafe.Add(u.CObj(), 724)) = ptr
 		p.identify(ptr, 54003)
 	}
@@ -221,7 +219,7 @@ func (p *portTestShopPools) resourceAction(a PortTestShopAction) uint32 {
 	if u != nil {
 		ptr = u.CObj()
 	}
-	value := C.int(a.Value)
+	value := int32(a.Value)
 	switch a.Op {
 	case PortTestResourceSetHP:
 		return uint32(resourceSetHP(u, uint16(a.Value)))
@@ -301,7 +299,7 @@ func (p *portTestShopPools) resourceSnapshot() (data [][]uint32, messages [][]by
 		}
 		return out
 	}
-	data = append(data, append([]uint32{uint32(C.resourceDieCalls()), p.normalize(uint32(C.resourceDieWho()))}, r.harpoonCalls...))
+	data = append(data, append([]uint32{uint32(portTestResourceDieCount), p.normalize(uint32(portTestResourceDieUnit))}, r.harpoonCalls...))
 	if r.unit != nil {
 		data = append(data, words(r.unit.CObj(), int(unsafe.Sizeof(server.Object{}))-8))
 	}

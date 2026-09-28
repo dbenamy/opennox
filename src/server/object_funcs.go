@@ -7,7 +7,6 @@ import (
 	"github.com/opennox/libs/types"
 
 	"github.com/opennox/opennox/v1/common/sound"
-	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/legacy/common/ccall"
 )
 
@@ -98,7 +97,7 @@ type objectDefFunc struct {
 type ObjectCreateFunc func(obj *Object)
 
 var objectCreateFuncs = ccall.NewFuncs(func(cfnc unsafe.Pointer) ObjectCreateFunc {
-	return func(obj *Object) { ccall.CallVoidPtr(cfnc, obj.CObj()) }
+	return func(obj *Object) { panic("unregistered object create callback") }
 })
 
 func RegisterObjectCreateGo(name string, cfnc unsafe.Pointer, fnc ObjectCreateFunc) {
@@ -116,6 +115,9 @@ func RegisterObjectCreate(name string, fnc unsafe.Pointer) {
 type ObjectInitFunc func(obj *Object)
 
 var objectInitGoFuncs = make(map[unsafe.Pointer]ObjectInitFunc)
+
+// Argument-aware callbacks preserve the second initializer argument.
+var objectInitArgGoFuncs = make(map[unsafe.Pointer]func(*Object, unsafe.Pointer))
 
 func RegisterObjectInitGo(name string, cfnc unsafe.Pointer, fnc ObjectInitFunc, sz uintptr) {
 	RegisterObjectInit(name, cfnc, sz)
@@ -139,7 +141,7 @@ func RegisterObjectUpdate(name string, fnc unsafe.Pointer, sz uintptr) {
 type UpdateFunc func(obj *Object)
 
 var objUpdate = ccall.NewFuncs(func(cfnc unsafe.Pointer) UpdateFunc {
-	return func(obj *Object) { ccall.CallVoidPtr(cfnc, obj.CObj()) }
+	return func(obj *Object) { panic("unregistered object update callback") }
 })
 
 func RegisterObjectUpdateGo(name string, cfnc unsafe.Pointer, fnc UpdateFunc, sz uintptr) {
@@ -222,27 +224,25 @@ type UseResultFunc func(obj, obj2 *Object) int32
 
 var objectUseNativeFuncs = make(map[unsafe.Pointer]UseResultFunc)
 
-// CallResult requires a configured callback. Unknown addresses retain their
-// original raw integer call; native identities never enter the C dispatcher.
+// CallResult requires a registered callback and preserves its signed result.
 func (p UseFuncPtr) CallResult(obj, obj2 *Object) int32 {
 	var result int32
 	if fn := objectUseNativeFuncs[p.Ptr]; fn != nil {
 		result = fn(obj, obj2)
 	} else {
-		result = int32(ccall.CallIntPtr2(p.Ptr, obj.CObj(), obj2.CObj()))
+		panic("unregistered object use callback")
 	}
 	runtime.KeepAlive(obj)
 	runtime.KeepAlive(obj2)
 	return result
 }
 
-// CallDiscard requires a configured callback and preserves the raw void calling
-// convention for unknown addresses used by the food-pickup path.
+// CallDiscard requires a registered callback and ignores its result.
 func (p UseFuncPtr) CallDiscard(obj, obj2 *Object) {
 	if fn := objectUseNativeFuncs[p.Ptr]; fn != nil {
 		fn(obj, obj2)
 	} else {
-		ccall.CallVoidPtr2(p.Ptr, obj.CObj(), obj2.CObj())
+		panic("unregistered object use callback")
 	}
 	runtime.KeepAlive(obj)
 	runtime.KeepAlive(obj2)
@@ -260,7 +260,7 @@ func RegisterObjectUseNative(name string, key unsafe.Pointer, fn UseResultFunc, 
 
 var objUse = ccall.NewFuncs(func(cfnc unsafe.Pointer) UseFunc {
 	return func(obj, obj2 *Object) bool {
-		return ccall.CallIntPtr2(cfnc, obj.CObj(), obj2.CObj()) != 0
+		panic("unregistered object use callback")
 	}
 })
 
@@ -349,7 +349,7 @@ type DeathFunc func(obj *Object)
 
 var objDeath = ccall.NewFuncs(func(cfnc unsafe.Pointer) DeathFunc {
 	return func(obj *Object) {
-		ccall.CallVoidPtr(cfnc, obj.CObj())
+		panic("unregistered object death callback")
 	}
 })
 
@@ -380,11 +380,7 @@ type DropFunc func(obj, obj2 *Object, pos types.Pointf) bool
 
 var objDrop = ccall.NewFuncs(func(cfnc unsafe.Pointer) DropFunc {
 	return func(obj, obj2 *Object, pos types.Pointf) bool {
-		cpos, free := alloc.New(types.Pointf{})
-		defer free()
-		*cpos = pos
-
-		return ccall.CallIntPtr3(cfnc, obj.CObj(), obj2.CObj(), unsafe.Pointer(cpos)) != 0
+		panic("unregistered object drop callback")
 	}
 })
 
@@ -418,7 +414,7 @@ type PickupFunc func(who, it *Object, a3, a4 int) bool
 
 var objPickup = ccall.NewFuncs(func(cfnc unsafe.Pointer) PickupFunc {
 	return func(who, it *Object, a3, a4 int) bool {
-		return ccall.CallIntUPtr4(cfnc, uintptr(who.CObj()), uintptr(it.CObj()), uintptr(a3), uintptr(a4)) != 0
+		panic("unregistered object pickup callback")
 	}
 })
 

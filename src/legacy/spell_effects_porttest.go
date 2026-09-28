@@ -2,22 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include <stdlib.h>
-extern void portTestSpellForceCollect(void);
-static int spellEffectsForceGC;
-static void spellEffectsForceSetGC(int v){spellEffectsForceGC=v;}
-static uint32_t spellEffectsForceLog[384]; static int spellEffectsForceN;
-static void spellEffectsForceRecord(int u,uint32_t distance,int* arg) {if(spellEffectsForceGC)portTestSpellForceCollect();if(spellEffectsForceN+3>384)abort();spellEffectsForceLog[spellEffectsForceN++]=u;spellEffectsForceLog[spellEffectsForceN++]=distance;spellEffectsForceLog[spellEffectsForceN++]=(uint32_t)arg;}
-static void* spellEffectsForcePtr(void){return spellEffectsForceRecord;}
-static void spellEffectsForceReset(void){spellEffectsForceN=0;}
-static int spellEffectsForceCount(void){return spellEffectsForceN;}
-static uint32_t spellEffectsForceValue(int i){return spellEffectsForceLog[i];}
-#include <string.h>
-
-*/
-import "C"
 import (
 	"bytes"
 	"github.com/opennox/libs/types"
@@ -26,6 +10,30 @@ import (
 	"math"
 	"unsafe"
 )
+
+var portTestSpellForceKey byte
+var portTestSpellForceGC bool
+var portTestSpellForceLog [384]uint32
+var portTestSpellForceN int
+
+func portTestSpellForcePointer() unsafe.Pointer { return unsafe.Pointer(&portTestSpellForceKey) }
+func portTestSpellForceSetGC(v int)             { portTestSpellForceGC = v != 0 }
+func init() {
+	spellEffectForceCallbacks[portTestSpellForcePointer()] = func(u *server.Object, distance uint32, arg uintptr) {
+		if portTestSpellForceGC {
+			portTestSpellForceCollect()
+		}
+		if portTestSpellForceN+3 > 384 {
+			panic("spatial force observer capacity exceeded")
+		}
+		portTestSpellForceLog[portTestSpellForceN] = uint32(uintptr(unsafe.Pointer(u)))
+		portTestSpellForceN++
+		portTestSpellForceLog[portTestSpellForceN] = distance
+		portTestSpellForceN++
+		portTestSpellForceLog[portTestSpellForceN] = uint32(arg)
+		portTestSpellForceN++
+	}
+}
 
 type PortTestSpellEffectGuide struct {
 	Index int
@@ -94,7 +102,7 @@ func (p *portTestShopPools) spellEffectsPrepare() func() {
 		st := p.spellLifeState().effects
 		st.glyphCalls = append(st.glyphCalls, p.normalize(uint32(uintptr(u.CObj()))))
 	}
-	C.spellEffectsForceReset()
+	portTestSpellForceN = 0
 	oldSummon := Nox_xxx_unitDoSummonAt_5016C0
 	oldPending := p.proxy.core.Objs.Pending
 	Nox_xxx_unitDoSummonAt_5016C0 = func(id int, pos types.Pointf, owner *server.Object, dir server.Dir16) *server.Object {
@@ -188,9 +196,9 @@ func (p *portTestShopPools) spellEffectsItems() {
 			p.identify(ptr, 96050+uint32(i))
 		}
 	}
-	p.identify(C.spellEffectsForcePtr(), 95042)
+	p.identify(portTestSpellForcePointer(), 95042)
 	if sp.RecordForce {
-		*controlPtr(p.spellLifeState().record, 20) = C.spellEffectsForcePtr()
+		*controlPtr(p.spellLifeState().record, 20) = portTestSpellForcePointer()
 	}
 	p.sustainedItems()
 	p.spellLifeFill(p.spellLifeState().effects.output, 32, sp.Output)
@@ -210,11 +218,11 @@ func (p *portTestShopPools) spellEffectsAction(action PortTestShopAction) uint32
 	if sp.NullOutput {
 		output = nil
 	}
-	C.spellEffectsForceSetGC(C.int(bool2int(sp.ForceGC)))
-	defer C.spellEffectsForceSetGC(0)
+	portTestSpellForceSetGC(bool2int(sp.ForceGC))
+	defer portTestSpellForceSetGC(0)
 	q := sp.Ints[0]
 	if sp.RecordForce {
-		q = int32(uintptr(C.spellEffectsForcePtr()))
+		q = int32(uintptr(portTestSpellForcePointer()))
 	}
 	out := spellEffectsInvoke(int32(action.Op-1600), ctrl.X, u, p.temporaryRef(sp.Args[0]), p.temporaryRef(sp.Args[1]), p.temporaryRef(sp.Args[2]), record, output, ctrl.SpellLifecycle.Z, math.Float32frombits(sp.Floats[0]), math.Float32frombits(sp.Floats[1]), math.Float32frombits(sp.Floats[2]), q, sp.Ints[1])
 	p.temporary.world.objectives.attack.controls.result = uint64(out)
@@ -227,9 +235,9 @@ func (p *portTestShopPools) spellEffectsSnapshot(out []uint32) []uint32 {
 	calls := p.spellLifeState().effects.glyphCalls
 	out = append(out, uint32(len(calls)))
 	out = append(out, calls...)
-	out = append(out, uint32(C.spellEffectsForceCount()))
-	for i := 0; i < int(C.spellEffectsForceCount()); i++ {
-		out = append(out, p.normalize(uint32(C.spellEffectsForceValue(C.int(i)))))
+	out = append(out, uint32(portTestSpellForceN))
+	for i := 0; i < int(portTestSpellForceN); i++ {
+		out = append(out, p.normalize(uint32(portTestSpellForceLog[i])))
 	}
 	out = append(out, p.normalize(uint32(dword_5d4594_2487708)), p.normalize(uint32(dword_5d4594_2487712)), p.normalize(uint32(dword_5d4594_2487804)), uint32(bool2int(spellCharmAll)))
 	for _, off := range spellEffectsCacheOffsets {

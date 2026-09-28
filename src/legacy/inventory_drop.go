@@ -5,7 +5,6 @@ import (
 	"github.com/opennox/libs/types"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
@@ -112,7 +111,7 @@ func inventoryDrop(u, it *server.Object, pos *types.Pointf) int {
 		if fn := inventoryNativeDrops[it.Drop.Ptr]; fn != nil {
 			return fn(u, it, pos)
 		}
-		return ccall.CallIntPtr3(it.Drop.Ptr, u.CObj(), it.CObj(), unsafe.Pointer(pos))
+		panic("unregistered inventory drop callback")
 	}
 	return inventoryDefaultDrop(u, it, pos)
 }

@@ -2,26 +2,25 @@
 
 package legacy
 
-/*
-#include "server__object__die__die.h"
-#include "GAME4_3.h"
-#include "GAME5.h"
-static void* ptDeathForwardObject;
-static int ptDeathForwardCount;
-static void ptDeathForward(void* obj) { ptDeathForwardObject=obj; ptDeathForwardCount++; }
-static void* ptDeathForwardPtr(void) { return (void*)ptDeathForward; }
-static void ptDeathForwardReset(void) { ptDeathForwardObject=0; ptDeathForwardCount=0; }
-static void* ptDeathForwardGetObject(void) { return ptDeathForwardObject; }
-static int ptDeathForwardGetCount(void) { return ptDeathForwardCount; }
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/object"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
+
+var portTestDeathForwardKey byte
+var portTestDeathForwardObject unsafe.Pointer
+var portTestDeathForwardCount int32
+
+func init() {
+	key := unsafe.Pointer(&portTestDeathForwardKey)
+	fn := func(u *server.Object) { portTestDeathForwardObject = unsafe.Pointer(u); portTestDeathForwardCount++ }
+	server.PortTestRegisterCreateCallback(key, fn)
+	server.PortTestRegisterInitCallback(key, fn)
+	server.RegisterObjectUpdateCallbackGo(key, fn)
+	server.PortTestRegisterDeathCallback(key, fn)
+}
 
 type portTestDeathRegistration struct {
 	name    string
@@ -88,9 +87,10 @@ func PortTestDeathRegisteredProjectile(u *server.Object, name string) {
 }
 
 func PortTestDeathForwardReset() unsafe.Pointer {
-	C.ptDeathForwardReset()
-	return C.ptDeathForwardPtr()
+	portTestDeathForwardObject = nil
+	portTestDeathForwardCount = 0
+	return unsafe.Pointer(&portTestDeathForwardKey)
 }
 func PortTestDeathForwardSnapshot() (unsafe.Pointer, int) {
-	return C.ptDeathForwardGetObject(), int(C.ptDeathForwardGetCount())
+	return portTestDeathForwardObject, int(portTestDeathForwardCount)
 }

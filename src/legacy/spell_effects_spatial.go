@@ -3,7 +3,6 @@ package legacy
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"math"
 	"unsafe"
@@ -23,6 +22,8 @@ type spellEffectForceContext struct {
 	callback             unsafe.Pointer
 	arg                  uintptr
 }
+
+var spellEffectForceCallbacks = make(map[unsafe.Pointer]func(*server.Object, uint32, uintptr))
 
 func spellEffectForce(u *server.Object, ctx spellEffectForceContext) {
 	if spellEffectMovable(u) == 0 || !spellEffectTrace(ctx.pos, u.PosVec, 0) {
@@ -44,7 +45,11 @@ func spellEffectForce(u *server.Object, ctx spellEffectForceContext) {
 	if ctx.callback != nil {
 		// Distance is a raw float word, and arg is opaque integer-sized data.
 		// Neither may enter a Go pointer slot visible to the garbage collector.
-		ccall.CallVoidUPtr3(ctx.callback, uintptr(u.CObj()), uintptr(math.Float32bits(d)), ctx.arg)
+		fn := spellEffectForceCallbacks[ctx.callback]
+		if fn == nil {
+			panic("unregistered spatial force callback")
+		}
+		fn(u, math.Float32bits(d), ctx.arg)
 	}
 	u.ForceVec.X = float32(float64(acceleration)*float64(dx)/float64(d) + float64(u.ForceVec.X))
 	u.ForceVec.Y = float32(float64(acceleration)*float64(dy)/float64(d) + float64(u.ForceVec.Y))

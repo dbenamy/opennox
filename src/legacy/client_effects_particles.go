@@ -2,7 +2,6 @@ package legacy
 
 import (
 	"github.com/opennox/opennox/v1/client"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"image"
 	"math"
 	"unsafe"
@@ -145,11 +144,17 @@ func effectSparkBurst(pos image.Point, typ int, amount byte) int {
 	return 0
 }
 
+var effectParticleCallbacks = make(map[unsafe.Pointer]func(unsafe.Pointer))
+
 func effectParticleUpdate(dr *client.Drawable) int {
 	particle := *(*unsafe.Pointer)(unsafe.Add(dr.C(), 432))
 	dr.PosVec = image.Pt(int(*(*uint32)(unsafe.Add(particle, 80))>>16), int(*(*uint32)(unsafe.Add(particle, 84))>>16))
 	if callback := *(*unsafe.Pointer)(unsafe.Add(particle, 124)); callback != nil {
-		ccall.CallVoidPtr(callback, particle)
+		fn := effectParticleCallbacks[callback]
+		if fn == nil {
+			panic("unregistered particle update callback")
+		}
+		fn(particle)
 	}
 	return 1
 }

@@ -2,23 +2,33 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-static int xferSoundObserveReturn;
-static unsigned int xferSoundObserveWords[3];
-static int xferSoundObserve(void* a,void* b) {
- xferSoundObserveWords[0]++;xferSoundObserveWords[1]=(uintptr_t)a;xferSoundObserveWords[2]=(uintptr_t)b;
- return xferSoundObserveReturn;
-}
-static void* xferSoundObservePtr(void) {return xferSoundObserve;}
-static unsigned int* xferSoundObserveData(void) {return xferSoundObserveWords;}
-static int* xferSoundObserveResult(void) {return &xferSoundObserveReturn;}
-*/
-import "C"
 import (
+	"github.com/opennox/opennox/v1/client"
+	"github.com/opennox/opennox/v1/client/noxrender"
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
+
+var portTestXferSoundKey byte
+var portTestXferSoundWords [3]uint32
+var portTestXferSoundResult int32
+
+func portTestXferSoundRecord(a, b unsafe.Pointer) int32 {
+	portTestXferSoundWords[0]++
+	portTestXferSoundWords[1], portTestXferSoundWords[2] = uint32(uintptr(a)), uint32(uintptr(b))
+	return portTestXferSoundResult
+}
+func init() {
+	key := unsafe.Pointer(&portTestXferSoundKey)
+	server.PortTestRegisterXferCallback(key, func(u *server.Object, arg unsafe.Pointer) int {
+		return int(portTestXferSoundRecord(unsafe.Pointer(u), arg))
+	})
+	server.PortTestRegisterDamageSoundCallback(key, func(u, v *server.Object) { portTestXferSoundRecord(unsafe.Pointer(u), unsafe.Pointer(v)) })
+	server.PortTestRegisterUseCallback(key, func(u, v *server.Object) int32 { return portTestXferSoundRecord(unsafe.Pointer(u), unsafe.Pointer(v)) })
+	client.RegisterDrawableUpdateCallbackGo(key, func(vp *noxrender.Viewport, dr *client.Drawable) int32 {
+		return portTestXferSoundRecord(unsafe.Pointer(vp), unsafe.Pointer(dr))
+	})
+}
 
 func PortTestXferRegistryNames() []string {
 	var out []string
@@ -95,12 +105,12 @@ func PortTestDamageSoundRegistryPointer(name string) unsafe.Pointer {
 	return p
 }
 func PortTestXferSoundRawObserver() (unsafe.Pointer, *[3]uint32, *int32, func()) {
-	words := (*[3]uint32)(unsafe.Pointer(C.xferSoundObserveData()))
-	result := (*int32)(unsafe.Pointer(C.xferSoundObserveResult()))
+	words := &portTestXferSoundWords
+	result := &portTestXferSoundResult
 	oldWords, oldResult := *words, *result
 	*words = [3]uint32{}
 	*result = 0
-	return C.xferSoundObservePtr(), words, result, func() { *words = oldWords; *result = oldResult }
+	return unsafe.Pointer(&portTestXferSoundKey), words, result, func() { *words = oldWords; *result = oldResult }
 }
 
 // Exercise the unchanged owner that chooses and invokes the damage sound slot.

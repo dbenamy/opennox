@@ -2,32 +2,38 @@
 
 package legacy
 
-/*
-#include "GAME4_1.h"
-#include "GAME4_3.h"
-#include "GAME5.h"
-static uint32_t coreContacts[1024];
-static unsigned coreContactCount;
-// This is an observation callback, not a collision implementation. Alignment
-// makes the legacy activation helper's callback-address low byte deterministic.
-static void __attribute__((aligned(256))) coreContact(void* a,void* b,float2* p) {
- if(coreContactCount>=256) return;
- uint32_t* r=coreContacts+4*coreContactCount++;
- r[0]=(uintptr_t)a;r[1]=(uintptr_t)b;
- memcpy(r+2,p,8);
-}
-static void* coreContactPtr(void){return coreContact;}
-static uint32_t* coreContactData(void){return coreContacts;}
-static unsigned* coreContactN(void){return &coreContactCount;}
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/server"
 	"runtime"
 	"unsafe"
 )
+
+// The original observer was aligned to 256 bytes for callback low-byte contracts.
+var portTestCoreContactKeyStorage [256]byte
+
+func portTestCoreContactKey() unsafe.Pointer {
+	p := unsafe.Pointer(&portTestCoreContactKeyStorage[0])
+	return unsafe.Add(p, (-uintptr(p))&255)
+}
+
+var portTestCoreContacts [1024]uint32
+var portTestCoreContactCount uint32
+
+func init() {
+	server.PortTestRegisterCollideCallback(portTestCoreContactKey(), func(u *server.Object, a, b uintptr) uint32 {
+		if portTestCoreContactCount >= 256 {
+			return 0
+		}
+		i := 4 * portTestCoreContactCount
+		portTestCoreContactCount++
+		portTestCoreContacts[i] = uint32(uintptr(unsafe.Pointer(u)))
+		portTestCoreContacts[i+1] = uint32(a)
+		p := (*[2]uint32)(unsafe.Pointer(b))
+		portTestCoreContacts[i+2], portTestCoreContacts[i+3] = p[0], p[1]
+		return 0
+	})
+}
 
 func PortTestCollisionCore(op string, a, b *server.Object, p *types.Pointf, mode int32) int32 {
 
@@ -86,15 +92,15 @@ func PortTestCollisionCoreWallOpen(grid *[2]int32, u *server.Object) {
 	collisionWallOpen(grid, u)
 }
 func PortTestCollisionCoreAddHit(a, b *server.Object, sentinel uint32, normal *types.Pointf) {
-	target := C.uint(sentinel)
+	target := uint32(sentinel)
 	if b != nil {
-		target = C.uint(uintptr(b.CObj()))
+		target = uint32(uintptr(b.CObj()))
 	}
 	collisionAddHit(a, uint32(target), normal)
 }
 func PortTestCollisionCoreObserver() (unsafe.Pointer, func(), func(map[unsafe.Pointer]uint32) [][4]uint32, func()) {
-	data := unsafe.Slice((*uint32)(unsafe.Pointer(C.coreContactData())), 1024)
-	count := (*uint32)(unsafe.Pointer(C.coreContactN()))
+	data := portTestCoreContacts[:]
+	count := &portTestCoreContactCount
 	old := append([]uint32(nil), data...)
 	oldN := *count
 	reset := func() { clear(data); *count = 0 }
@@ -115,7 +121,7 @@ func PortTestCollisionCoreObserver() (unsafe.Pointer, func(), func(map[unsafe.Po
 		}
 		return out
 	}
-	return C.coreContactPtr(), reset, snapshot, func() { copy(data, old); *count = oldN }
+	return portTestCoreContactKey(), reset, snapshot, func() { copy(data, old); *count = oldN }
 }
 func PortTestCollisionCorePentagram() unsafe.Pointer { return collisionKey(collisionIdentityPentagram) }
 func PortTestCollisionCoreGlobals() (map[string]*uint32, func()) {

@@ -2,24 +2,34 @@
 
 package legacy
 
-/*
-#include "GAME4_3.h"
-#include "GAME5.h"
-static uint32_t tempCalls[8192]; static int tempCount; static int tempReturn;
-static void tempReset(int ret) { tempCount=0; tempReturn=ret; }
-static void tempDie(int u) { tempCalls[tempCount++]=1; tempCalls[tempCount++]=u; }
-static int tempCollide(int u,int a,int b) { tempCalls[tempCount++]=2;tempCalls[tempCount++]=u;tempCalls[tempCount++]=a;tempCalls[tempCount++]=b;return tempReturn; }
-static void* tempDiePtr(void){return tempDie;} static void* tempCollidePtr(void){return tempCollide;}
-static int tempN(void){return tempCount;} static uint32_t tempValue(int i){return tempCalls[i];}
-
-*/
-import "C"
 import (
 	"github.com/opennox/libs/object"
+	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
+
+var portTestTemporaryKeys [2]byte
+var portTestTemporaryCalls [8192]uint32
+var portTestTemporaryCount int
+var portTestTemporaryResult int32
+
+func portTestTemporaryKey(i int) unsafe.Pointer { return unsafe.Pointer(&portTestTemporaryKeys[i]) }
+func portTestTemporaryRecord(v ...uint32) {
+	for _, w := range v {
+		portTestTemporaryCalls[portTestTemporaryCount] = w
+		portTestTemporaryCount++
+	}
+}
+func portTestTemporaryReset(ret int32) { portTestTemporaryCount = 0; portTestTemporaryResult = ret }
+func init() {
+	server.PortTestRegisterDeathCallback(portTestTemporaryKey(0), func(u *server.Object) { portTestTemporaryRecord(1, uint32(uintptr(unsafe.Pointer(u)))) })
+	server.PortTestRegisterCollideCallback(portTestTemporaryKey(1), func(u *server.Object, a, b uintptr) uint32 {
+		portTestTemporaryRecord(2, uint32(uintptr(unsafe.Pointer(u))), uint32(a), uint32(b))
+		return uint32(portTestTemporaryResult)
+	})
+}
 
 const (
 	PortTestTemporary53ADC0 = 600
@@ -125,7 +135,7 @@ func (p *portTestShopPools) temporaryPrepare() func() {
 	oldUpdatable := p.proxy.core.Objs.UpdatableList
 	oldDeleted := p.proxy.core.Objs.DeletedList
 	p.proxy.core.Objs.DeletedList = nil
-	C.tempReset(C.int(sp.CollideReturn))
+	portTestTemporaryReset(int32(sp.CollideReturn))
 	return func() {
 		restoreWorld()
 		for _, it := range p.items {
@@ -166,8 +176,8 @@ func (p *portTestShopPools) temporaryItems() {
 			p.identify(key, 68000+uint32(i))
 		}
 	}
-	p.identify(C.tempDiePtr(), 68100)
-	p.identify(C.tempCollidePtr(), 68101)
+	p.identify(portTestTemporaryKey(0), 68100)
+	p.identify(portTestTemporaryKey(1), 68101)
 	// Preserve spatial-node identity across address-space randomization.
 	objects := []*server.Object{p.resources.unit, p.proxy.combat.target, p.proxy.combat.actor}
 	for _, it := range p.items {
@@ -218,9 +228,9 @@ func (p *portTestShopPools) temporaryItems() {
 		}
 		apply(u.UpdateData, words, refs, 64)
 		u.Damage = p.proxy.combat.target.Damage
-		u.Collide = C.tempCollidePtr()
+		u.Collide = portTestTemporaryKey(1)
 		if sp.DieCallback {
-			u.Death = C.tempDiePtr()
+			u.Death = portTestTemporaryKey(0)
 		}
 	}
 	p.worldItems()
@@ -373,26 +383,26 @@ func portTestTempCall(id int, u, target *server.Object, value, side int) uint32 
 		temporaryChakram(u)
 		return 0
 	case 5:
-		sub_53BD10(C.int(uintptr(unsafe.Pointer(target))), C.int(uintptr(unsafe.Pointer(u))))
+		temporaryAntiCandidate(target, u)
 		return 0
 	case 10:
-		nox_xxx_waterBarrel_53CC30((*C.float)(unsafe.Pointer(target)), C.int(uintptr(unsafe.Add(unsafe.Pointer(u), 56))))
+		temporaryWaterCandidate(target, *(*types.Pointf)(unsafe.Add(unsafe.Pointer(u), 56)))
 		return 0
 	case 17:
 		temporaryFlameCleanse(u)
 		return 0
 	case 21:
-		sub_53D8C0(C.int(uintptr(unsafe.Pointer(target))), C.int(uintptr(unsafe.Pointer(u))))
+		temporaryCloudCandidate(target, u, false)
 		return 0
 	case 23:
-		nox_xxx_toxicCloudPoison_53D9D0(C.int(uintptr(unsafe.Pointer(target))), C.int(uintptr(unsafe.Pointer(u))))
+		temporaryCloudCandidate(target, u, true)
 		return 0
 	case 30:
 		base := unsafe.Pointer(u)
-		return uint32(uintptr(unsafe.Pointer(nox_xxx_createSpark_54FD80(
-			*(*C.float)(unsafe.Add(base, 56)), *(*C.float)(unsafe.Add(base, 60)), C.int(value), C.int(side),
-			*(*C.float)(unsafe.Add(base, 80)), *(*C.float)(unsafe.Add(base, 84)), *(*C.float)(unsafe.Add(base, 108)),
-			*(*C.int)(unsafe.Add(base, 508))))))
+		return uint32(uintptr(unsafe.Pointer(temporarySpark(
+			types.Ptf(*(*float32)(unsafe.Add(base, 56)), *(*float32)(unsafe.Add(base, 60))),
+			types.Ptf(*(*float32)(unsafe.Add(base, 80)), *(*float32)(unsafe.Add(base, 84))),
+			int32(value), int32(side), *(*float32)(unsafe.Add(base, 108)), objectFromInt(*(*int32)(unsafe.Add(base, 508)))))))
 	default:
 		return 0
 	}
@@ -410,9 +420,9 @@ func (p *portTestShopPools) temporarySnapshot() []uint32 {
 	if p.temporary == nil {
 		return nil
 	}
-	out := []uint32{p.normalize(p.temporary.result), p.normalize(uint32(uintptr(unsafe.Pointer(p.proxy.core.Objs.UpdatableList)))), uint32(C.tempN())}
-	for i := 0; i < int(C.tempN()); i++ {
-		out = append(out, p.normalize(uint32(C.tempValue(C.int(i)))))
+	out := []uint32{p.normalize(p.temporary.result), p.normalize(uint32(uintptr(unsafe.Pointer(p.proxy.core.Objs.UpdatableList)))), uint32(portTestTemporaryCount)}
+	for i := 0; i < int(portTestTemporaryCount); i++ {
+		out = append(out, p.normalize(uint32(portTestTemporaryCalls[i])))
 	}
 	for _, off := range temporaryCacheOffsets {
 		out = append(out, p.normalize(*memmap.PtrUint32(0x5d4594, off)))

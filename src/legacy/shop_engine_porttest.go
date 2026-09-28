@@ -2,23 +2,6 @@
 
 package legacy
 
-/*
-#include <string.h>
-#include "GAME4_1.h"
-#include "server__system__trade.h"
-static uint32_t portTestTradePickupTrace[2049];
-static uint32_t* portTestTradePickupData(void) {return portTestTradePickupTrace;}
-static int portTestTradePickup(int unit, int item, int a3, int a4) {
- unsigned int i=1+4*portTestTradePickupTrace[0]++;
- if(i+3<2049) {portTestTradePickupTrace[i]=unit;portTestTradePickupTrace[i+1]=item;
- portTestTradePickupTrace[i+2]=a3;portTestTradePickupTrace[i+3]=a4;}
- return 1;
-}
-static void* portTestTradePickupPtr(void) {return portTestTradePickup;}
-
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"unsafe"
@@ -27,6 +10,22 @@ import (
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
 )
+
+var portTestTradePickupKey byte
+var portTestTradePickupTrace [2049]uint32
+
+func init() {
+	server.PortTestRegisterPickupCallback(unsafe.Pointer(&portTestTradePickupKey), func(u, it *server.Object, a, b int) bool {
+		i := 1 + 4*portTestTradePickupTrace[0]
+		portTestTradePickupTrace[0]++
+		if i+3 < 2049 {
+			portTestTradePickupTrace[i] = uint32(uintptr(unsafe.Pointer(u)))
+			portTestTradePickupTrace[i+1] = uint32(uintptr(unsafe.Pointer(it)))
+			portTestTradePickupTrace[i+2], portTestTradePickupTrace[i+3] = uint32(a), uint32(b)
+		}
+		return true
+	})
+}
 
 type PortTestShopEngineSpec struct {
 	Cache      [12]uint32
@@ -100,7 +99,7 @@ func (p *portTestShopPools) enginePrepare() func() {
 		drop[1] = sp.NoSellType
 	}
 	dword_5d4594_2488728 = 1
-	clear(unsafe.Slice((*uint32)(unsafe.Pointer(C.portTestTradePickupData())), 2049))
+	clear(portTestTradePickupTrace[:])
 	portTestTradeSetCache(sp.Cache)
 	for i, u := range p.proxy.life.players[:2] {
 		alloc.StrCopy16(u.UpdateDataPlayer().Player.NameFinal[:], sp.Names[i])
@@ -282,7 +281,7 @@ func (p *portTestShopPools) engineItem(u *server.Object, sp PortTestShopItem) {
 		return
 	}
 	if sp.Pickup {
-		u.Pickup.Ptr = C.portTestTradePickupPtr()
+		u.Pickup.Ptr = unsafe.Pointer(&portTestTradePickupKey)
 		p.identify(u.Pickup.Ptr, 53000)
 	}
 	for i, enabled := range sp.Mods {
@@ -292,7 +291,7 @@ func (p *portTestShopPools) engineItem(u *server.Object, sp PortTestShopItem) {
 	}
 }
 func (p *portTestShopPools) enginePickupTrace() []uint32 {
-	raw := unsafe.Slice((*uint32)(unsafe.Pointer(C.portTestTradePickupData())), 2049)
+	raw := portTestTradePickupTrace[:]
 	if raw[0] > 512 {
 		panic("trade pickup trace capacity")
 	}

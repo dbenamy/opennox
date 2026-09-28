@@ -2,28 +2,24 @@
 
 package legacy
 
-/*
-#include "GAME3_3.h"
-#include "GAME4_3.h"
-#include "GAME5.h"
-
-static unsigned int collisionRegistryRaw[4];
-static void collisionRegistryObserve(void* u, void* target, void* normal) {
- collisionRegistryRaw[0]++;
- collisionRegistryRaw[1]=(uintptr_t)u;
- collisionRegistryRaw[2]=(uintptr_t)target;
- collisionRegistryRaw[3]=(uintptr_t)normal;
-}
-static void* collisionRegistryObservePtr(void) { return collisionRegistryObserve; }
-static unsigned int* collisionRegistryObserveData(void) { return collisionRegistryRaw; }
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/server"
 	"runtime"
 	"unsafe"
 )
+
+var portTestCollisionObserverKey byte
+var portTestCollisionObserverWords [4]uint32
+
+func init() {
+	server.PortTestRegisterCollideCallback(unsafe.Pointer(&portTestCollisionObserverKey), func(u *server.Object, a, b uintptr) uint32 {
+		portTestCollisionObserverWords[0]++
+		portTestCollisionObserverWords[1] = uint32(uintptr(unsafe.Pointer(u)))
+		portTestCollisionObserverWords[2], portTestCollisionObserverWords[3] = uint32(a), uint32(b)
+		return 0
+	})
+}
 
 type portTestCollisionEntry struct {
 	Name    string
@@ -127,8 +123,8 @@ func PortTestCollisionRegistryTakeCounts() map[string]int {
 }
 
 func PortTestCollisionRawObserver() (unsafe.Pointer, *[4]uint32, func()) {
-	p := (*[4]uint32)(unsafe.Pointer(C.collisionRegistryObserveData()))
+	p := &portTestCollisionObserverWords
 	old := *p
 	*p = [4]uint32{}
-	return C.collisionRegistryObservePtr(), p, func() { *p = old }
+	return unsafe.Pointer(&portTestCollisionObserverKey), p, func() { *p = old }
 }

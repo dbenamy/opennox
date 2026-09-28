@@ -2,12 +2,10 @@
 
 package legacy
 
-import "C"
 import "runtime"
 
 var portTestSpellForceCollections int
 
-//export portTestSpellForceCollect
 func portTestSpellForceCollect() {
 	runtime.GC()
 	portTestSpellForceCollections++
