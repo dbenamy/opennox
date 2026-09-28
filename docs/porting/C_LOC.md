@@ -389,6 +389,7 @@ target build selection and linker evidence.
 | Native numeric fixture state; eight fixture C helpers retired, fixture imports 10→7 | 0 | 0 | 0 | 0 |
 | Retire eleven safe-only export bridges; fixture C imports 7→6, production imports unchanged | 0 | 0 | 0 | 0 |
 | Native allocation observers; fixture imports 6→2, fixture exports 2→0, headers 157 / 2,731 lines→0 | 0 | 0 | 0 | 0 |
+| Final native allocation/fatal boundary; selected client/server C imports 4/5→0, fixture imports 2→0; Linux engine C-glue milestone qualified | 0 | 0 | 0 | 0 |
 
 The 33 checksum test-reference lines were retired after differential validation;
 their original source remains recoverable at `66fa7bd4`.

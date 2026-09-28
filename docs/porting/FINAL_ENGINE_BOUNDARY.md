@@ -1,221 +1,177 @@
 # Final engine allocation and process boundary
 
-Status: original baseline `71ff3095` is pushed; native conversion is installed
-and its performance is accepted. Full qualification found a fixture slot-identity
-mismatch after address reuse; the correction passed the original backend and
-is installed for fresh native qualification. The preceding qualified conversion remains `49c8ef62`.
+The Linux 386/SSE2 internal engine C-glue milestone is qualified. The original
+baseline is `71ff3095`; external SDL2/OpenGL/OpenAL bindings remain unchanged.
+See [qualification](final-engine-boundary-qualification.json) and
+[inventory](final-engine-boundary-inventory-after.json) for exact evidence.
 
-## Scope and acceptance
+## Result and implementation
 
-Retire remaining engine libc allocation and abort calls, aligned fixture imports
-and obsolete compiler directives on the qualified Linux 386/SSE2 target. Preserve
-raw versus safe tracking, explicit lifetime, alignment, raw-address storage,
-zero-size/overflow handling and failure disposition. External SDL2/OpenGL/OpenAL
-bindings remain. Keep pointer storage outside Go's managed heap.
+Selected default/highres production C imports fall from four to zero, and server
+imports from five to zero. Direct project cgo packages fall from two to zero;
+fixture C imports fall from two to zero. The baseline temporarily added one C
+alignment probe, also retired. Standalone C, project headers, embedded production
+C bodies and legacy C exports remain zero. The Windows-only WinSock binding is
+outside the qualified Linux target and remains unchanged.
 
-Five new allocator roots cover successful and zero-product allocation, overflow,
-failed realloc retaining old contents, growing/shrinking prefixes, cross-thread
-handoff, raw-address lifetime through GC, mixed-size reuse and explicit alignment.
-They passed twice in normal and safe configurations against the original backend.
-The new fatal root checks invalid room/painting fixture operations and missing
-static/dynamic light drawables in separate processes: exit 2, no return, no deferred
-cleanup or recoverable panic. It passed twice in safe/default/server/highres.
+The raw allocator keeps payloads in explicitly owned OS mappings, outside Go's
+heap. Go metadata records sizes, live ownership and free slots. Size-class locks
+permit cross-thread handoff without a global allocator lock; realloc never holds
+two class locks while moving data. Failed growth preserves the original block.
+Substantial shrinking moves to smaller storage when possible. Zero-size/product,
+overflow, alignment, lifetime and raw-versus-safe failure contracts are preserved.
 
-The first light test reused an effects fixture and encountered that fixture's
-unrelated historical mapped access before the intended branch. The corrected test
-supplies the real empty drawable owner directly. Safe runtime checks remain enabled;
-production and existing captures are unchanged. Initial/diagnostic preflights are
-not the accepted baseline; use the corrected folders in the working evidence.
+Pools retain up to 1 MiB per class, or two spans in the largest class: an 18 MiB
+upper bound on idle payload mappings. This excludes live fragmentation and Go
+metadata. Excess idle spans and released direct allocations are unmapped.
+Advisory `sync.Pool` tokens favor worker-local reuse of large buffers; they are not
+ownership. GC may discard tokens and scheduling may change them without affecting
+live allocations. Rotating eviction prevents obsolete tokens monopolizing the cache.
 
-The original owner selection combines established allocation families, all active
-observer roots, aligned numeric fixtures and light transfer contracts: 162 roots
-per normal profile, twelve focused repeats and twelve safe roots. Direct allocator
-and string/clock contracts run separately. Reuse the preceding production baseline
-only because all new source files are test-only; rerun every production gate after
-conversion. Native acceptance requires the full compiled root corpus on all three
-profiles, exact known-suite comparison, safe/static checks, build/ABI verification,
-fresh save/load and original asset integrity.
+New anonymous storage supplies calloc's first-use zero guarantee; every allocation
+consumes that guarantee. Reused calloc blocks are cleared explicitly. A small 386
+`REP STOSB` leaf improves measured throughput on this VM; it requires no optional
+CPU instructions or private runtime APIs. Other architectures use Go clear.
+Guard-byte contracts check exact ranges, unaligned starts and zero length.
 
-Record production-dispatch allocator benchmarks at one/two CPUs and three repetitions
-of real theme/population/grid owners, including resident memory. Run performance
-measurements without another scheduled port build/test job. Compilation or a
-microbenchmark alone does not establish acceptable behavior or performance.
+Fatal engine paths send Linux SIGABRT on the pinned current thread, then
+unconditionally exit if signal handling returns. RawMalloc separately preserves
+its original process-fatal failure disposition and diagnostic; safe wrapper panic
+and nil-marker behavior remain distinct. Non-Linux fatal fallback exits but is
+not runtime-qualified. Windows VirtualAlloc/VirtualFree support is compile-checked
+on 386 only; broader portability is not claimed.
 
-## Preliminary allocator evaluation
+Engine compiler/linker preambles, including safe AddressSanitizer flags, are retired.
+Safe Go allocation tracking and mapped-memory runtime checks remain enabled.
+They do **not** provide equivalent whole-process ASAN coverage. External native
+libraries retain their own binding/build directives.
 
-An isolated original-backend probe and an uninstalled mmap prototype both pass the
-new primitive contracts. The prototype uses size-class pools and explicit metadata.
-Mapping each block above 32 KiB was rejected: exploratory allocation churn was
-roughly 6–7 microseconds/op against libc's 0.3–0.5. Bounded reuse through 1 MiB
-reduced the prototype to roughly 0.46–0.62 microseconds/op. These runs overlapped
-another regression sweep and are exploratory, not acceptance measurements.
-Substantial shrinking releases excess storage when possible; a failed shrinking
-move may retain the original block. The prototype still needs complete integration
-review, platform scope and qualified performance/memory checks.
+## Original baseline and final qualification
 
-Working evidence: `build/port-final-engine-boundary/`; earlier isolated experiments
-and full original scratch source are under
-`build/port-fixture-allocation-observers/next-drafts/`. Completed scripts are
-single-use. Primary handles this batch because Luna quota remains unavailable.
+Five new allocator roots were frozen against libc: boundaries/failure, thread
+handoff, raw-address lifetime through GC, mixed lifetimes and aligned allocation.
+They passed twice in normal and safe processes. The fatal root checks invalid
+room/painting operations and missing static/dynamic light drawables: exit 2,
+no return, no deferred cleanup and no recoverable panic. It passed twice in each
+of safe/default/server/highres, on both original and final implementations.
 
-## Accepted original baseline
+The first original light fixture hit an unrelated historical mapped access before
+its intended fatal branch. The corrected fixture supplies the real empty drawable owner
+without disabling safe checks. Initial diagnostic runs are not the accepted
+baseline. Production source at `71ff3095` is identical to qualified `49c8ef62`;
+only original tests were added, so the original production gates were reused.
+Every production gate was rerun after conversion.
 
-All 162 owners and twelve focused repeats passed freshly in each normal profile;
-twelve safe roots and ten allocator/five string-clock contracts passed. The corrected
-new-contract preflights use the exact same source. Production remains unchanged
-from `49c8ef62`; the five new files are test-only, including a temporary C alignment
-probe. Fixture imports are temporarily three in this baseline; the checkpoint's
-qualified conversion counts continue to describe `49c8ef62`.
+Final-source checks passed:
 
-See [baseline](final-engine-boundary-baseline.json) for exact source, binary hashes,
-started/passed names and performance samples. Median RSS in the three owner runs
-was 177,104 KiB. Owner timings and allocator medians are recorded individually;
-compare matching CPU settings instead of combining them into a single number.
+- 166 selected owners and sixteen focused repeats per normal profile; twelve safe roots.
+- Thirteen allocator/storage/clear roots and six legacy fixture/string/clock roots in both normal
+  and safe configurations; thirteen allocator roots also passed with cgo disabled.
+- All compiled root tests: 2492/2481/2492 passed in default/server/highres, with only
+  the expected opt-in population diagnostic skipped in each profile.
+- Static memory checks, 386 assembly declaration/disassembly review, safe build,
+  three production builds, ABI/export checks and exact known-suite outcomes.
+- Fresh save/load with reference comparison and all 1,654 original asset hashes.
+- Windows 386 allocator compile-only check. Physical display/audible playback
+  remain manual release checks.
 
-## Native allocator revision in progress
+Frozen original assertions and captures are unchanged. Native-only tests cover
+cache release bounds, substantial shrinking, exact-byte clearing and live payload
+survival when GC discards reuse hints. An explicit library selector initially
+omitted the new clear root; its twelve selected tests passed, then the corrected
+thirteen-root selection passed. This was a launcher omission, not a source failure.
 
-The first integrated allocator passed primitive, ownership, fatal, safe and all
-162 selected owner contracts per profile. Acceptance stopped before the full
-corpus: real-owner median times regressed 17–30%, and the two-CPU parallel
-allocation benchmark was about four times slower. Alternating original/native
-runs confirmed the owner regression. CPU profiles showed redundant clearing of
-fresh anonymous mappings and extra mapping work; one global lock also serialized
-concurrent allocations. These results remain under `rejected-v1/` in the working
-evidence, with a relocation manifest preserving the original recorded paths.
+## Address-reuse fixture correction
 
-Revision two uses per-size-class locks, registries updated only when mappings
-change, and the operating system's zero-filled pages for first-use calloc slots.
-Every allocation consumes that first-use guarantee; reused calloc storage is
-explicitly cleared. Retaining at most two idle spans per class bounds cached
-payload storage below 6 MiB and avoids two-worker mapping churn. Large direct
-allocations are unmapped on release. Original contract tests and goldens are
-unchanged; the native-only cache-budget contract reflects the revised policy.
-The isolated revised implementation passed all seven primitive/storage roots ten
-times. Integrated qualification and performance acceptance remain pending.
+The first full native sweep exposed four hallway/prefab capture mismatches. All
+2,512 hallway cases differed only in saved slot IDs: painting re-normalized a
+released record's address, which the new allocator could reuse for another record.
+The corrected fixture preserves the bound record identity, as the base room fixture already does.
+A forced-reuse regression fails on the original fixture for both a released record
+and an interior alias, then passes after correction in normal and safe modes.
+Corrected original-backend hallway/prefab captures remain byte-identical in all
+three profiles, including two default repetitions. Frozen expectations are unchanged.
 
-## Implementation and scope decisions
+See [original-backend proof](final-engine-slot-identity.json) and the
+[reproducible patch](final-engine-slot-baseline.patch), applicable to `71ff3095`.
+Focused coverage expanded to 166 owners and sixteen repeats. Recovery commit
+`33e52f7c` saved the implementation and its explicit pending full gates before
+qualification restarted. Failure captures were losslessly compressed with SHA-256
+verification, reclaiming 478 MB; the proof record maps their historical paths.
 
-Use explicit OS mappings and size-class pools behind the existing raw allocator
-API. Keep allocation metadata in Go-owned registries and payloads outside the Go
-heap, preserving integer-address lifetime, alignment and explicit free semantics.
-The allocator remains thread-safe for independently owned blocks and cross-thread
-handoff; concurrent operations on the same block still require caller ownership.
-Failure paths preserve the existing distinction between fatal RawMalloc and safe
-wrapper panics. Realloc does not release the original block on failed growth.
+## Performance and accepted tradeoff
 
-Linux fatal paths send SIGABRT to the pinned current thread and unconditionally
-exit if signal delivery returns. The non-Linux fallback exits but has no runtime
-qualification. Windows allocation uses VirtualAlloc/VirtualFree and has a 386
-compile-only check. The existing Windows-only WinSock C binding remains outside
-the selected Linux milestone. No broader portability or whole-build cgo-free
-claim is intended.
+Measurements ran without competing port jobs. Alternating binaries are verified
+against their own recorded original/native source and binary hashes. Median real
+owner timings were:
 
-Retire legacy compiler/linker glue, including safe AddressSanitizer flags. Safe
-Go allocation tracking and mapped-memory runtime checks remain enabled and tested;
-these checks do not provide equivalent whole-process ASAN coverage. External
-native dependencies and their own build directives remain unchanged.
+| Owner | Original | Native |
+| --- | ---: | ---: |
+| Population ordering | 1.21 s | 1.22 s |
+| Equipment sets | 0.99 s | 0.99 s |
+| Theme algorithms | 1.59 s | 1.61 s |
 
-Before the revision-two owner sweep, verified host process/open-file checks and
-archive hashes allowed removal of 38 old, rebuildable Linux 386 Go cache archives
-(1,886,093,312 allocated bytes). Source, assets, logs and retained binaries were
-preserved; physical free space increased to about 3.79 GB. Recovery is automatic
-cache rebuilding. The working `cache-headroom-*` records retain the exact list.
+Grid ownership is below useful timing resolution. The corresponding native
+RSS median was 172,500 KiB versus 171,724 KiB originally.
 
-Revision two also passed all 162 owners and twelve focused repeats per normal
-profile, but did not pass performance review. Real-owner medians were still
-18–35% slower, and parallel allocation had unstable slow samples. Its profile
-located most additional clearing cost in the painting fixture's explicit buffer
-initialization, rather than calloc. Each fixture needs about 1 MiB of row buffers
-in one class; retaining only two 64 KiB spans repeatedly discarded that working
-set, causing mapping and page-fault costs on subsequent initialization.
+| Allocation benchmark | Original median | Native median |
+| --- | ---: | ---: |
+| Serial, one CPU | 618.5 ns/op | 293.6 ns/op |
+| Serial, two CPUs available | 343.0 ns/op | 318.1 ns/op |
+| Batch 256, one CPU | 791.6 ns/op | 418.6 ns/op |
+| Batch 256, two CPUs available | 604.7 ns/op | 422.1 ns/op |
+| Parallel, one CPU | 613.4 ns/op | 302.1 ns/op |
+| Parallel, two CPUs | 257.6 ns/op | 336.1 ns/op |
 
-Revision three retains up to 1 MiB of idle payload per size class, or two spans
-for the largest class, with an 18 MiB total upper bound. It also separates class
-locks to avoid false sharing. The native storage contract now exceeds each cache
-limit before releasing blocks. Frozen original contracts/captures remain unchanged.
-Run a normal-profile real-owner performance preflight before repeating broad
-qualification; isolated allocation benchmarks did not predict these fixture costs.
-Revision-two results and source remain under `rejected-v2/`.
+**Two-worker raw churn remains about 30% slower.** Native samples ranged from
+207.8 to 350.2 ns/op; a fresh isolated original probe measured 220.5–264.3 ns/op.
+Treat the residual overhead as real. Accept this tradeoff because actual affected
+owner medians are within about 1.3% of the original, memory use is comparable and five other benchmark
+medians improve. Revisit if a real concurrent game workload shows allocator cost.
+These samples do not establish universal hardware/gameplay speed.
 
-The bounded-cache revision brought owner medians within 1–9% of the original,
-with similar RSS, but two-worker allocation churn remained slower. Its CPU profile
-was dominated by clearing reused buffers, with little lock-wait time. Uninstalled
-thread-ID and Go pool-hint prototypes did not justify their overhead/complexity
-and are not part of the selected implementation.
+Owner timing was repeated with the corrected fixture on both backends. Allocator-only
+benchmark samples were reused after verifying that the complete allocation package,
+including its benchmarks, was byte-identical; only legacy porttest fixture source
+changed. Their provenance is explicit in the qualification record.
 
-A small 386 exact-byte `REP STOSB` leaf improved measured clearing throughput
-compared with Go 1.26's 386 vector loop on this VM. It needs no optional CPU
-instructions or runtime internals; other architectures keep Go clear. The clear-only candidate combined revision three's bounded allocator with this
-leaf. Native guard-byte contracts cover zero length, unaligned starts and
-vector/page-size boundaries. Original raw allocation contracts remain unchanged.
-Integrated performance review and milestone qualification are still pending.
+## Rejected attempts and process lessons
 
-A fresh isolated original-backend run kept two-worker churn near 220–264 ns/op,
-so the native variability cannot simply be dismissed as general VM noise. The
-clear-only integrated candidate matched real-owner timings and improved serial
-churn, but still had slow two-worker samples. The current combined candidate uses
-Go `sync.Pool` tokens as advisory large-buffer reuse hints, together with the
-byte-clear leaf. It neither obtains OS thread IDs nor uses private runtime APIs.
-The hint is not ownership: GC may discard it and threads may migrate. Live spans
-remain rooted by the allocator registry, and an added storage-contract case checks
-that GC and subsequent reuse leave live payload bytes unchanged. Cache eviction
-rotates through bounded idle slots so stale hints cannot monopolize them.
+The first integrated backend passed functional checks but slowed actual owners
+17–30% and parallel churn about fourfold. Profiling exposed clearing/mapping costs
+and the global lock. Per-class locks and first-use zero handling alone did not
+recover owner performance: the painting fixture repeatedly needs about 1 MiB of
+row buffers in one class, while the initial cache retained only 128 KiB there.
+Expanding the bounded cache recovered owner timings.
 
-## Performance decision on the final source
+Parallel profiling then showed clearing reused buffers dominated CPU time, with
+little lock wait. OS thread-ID hints added too much overhead. Go reuse hints or
+the byte-clear leaf alone were insufficiently consistent; the selected combination
+improved both serial throughput and concurrent reuse. Earlier source/results are
+segregated, not accepted as final evidence. No frozen expectations were changed to
+hide differences. Measure real working sets before repeating broad qualification;
+isolated allocation probes did not predict all integrated costs.
 
-Accept the combined bounded allocator, advisory reuse hints and byte-clear leaf.
-Alternating verified original/native owner binaries gave median times of
-1.25→1.17 s for population ordering, 1.10→1.03 s for equipment sets, and
-1.62→1.57 s for theme algorithms. Grid ownership is below useful timing
-resolution. The separate three-run native RSS median was 173,612 KiB versus
-177,104 KiB originally. No competing port jobs ran during measurements.
+Primary handled implementation and review because Luna quota was unavailable;
+no replacement model was used.
 
-Five of six allocation microbenchmark medians improved. **Two-worker raw churn
-remains slower:** 336.1 versus 257.6 ns/op (+30%), with native samples spanning
-207.8–350.2 ns/op. The fresh isolated libc probe also stays faster. This is an
-explicit residual tradeoff, not attributed away to VM noise. Accept it because
-the real affected owners are at parity or better, memory use is comparable, and
-serial/batched allocation improves. Revisit if a real concurrent engine workload
-shows allocator cost; these samples do not establish universal hardware/gameplay
-speed. Final regression, build and scenario qualification remains required.
+## Local evidence and recovery
 
-The accepted timing run precedes broad functional qualification but has exactly
-the same source and supplemental fingerprints. Reuse it without redundant timing
-reruns while the source remains frozen. Full records are incorporated into the
-final qualification report.
+Working evidence: `build/port-final-engine-boundary/`. Final normal binaries are
+in `contracts/profiles`, complete corpus logs in `full`, safe/production artifacts
+in `safe` and `production/production/bin`. Accepted owner timing uses `paired-owner-performance` and the current normal
+binaries; allocator-only samples are retained in `pre-slot-fix/early-performance-results`.
+The combined record is in `early-performance-results`. Original reference
+binaries remain in `original/profiles`; their source recovers from `71ff3095`.
+The corrected-fixture original binary and source are in `fixture-slot-original`;
+these were used for the final owner timing comparisons.
+Rejected integrated attempts live in `rejected-v1`, `rejected-v2`, `rejected-v3`
+and `rejected-v7`, with relocation manifests preserving historical recorded paths.
+`pre-slot-fix` retains the earlier native gates and the stopped full sweep.
+Other isolated probes remain under `revision*`; none substitutes for final gates.
+Completed scripts are single-use.
 
-## Full-corpus fixture diagnosis in progress
-
-The final-source full sweep found identical mismatches in hallway routes,
-obstructions, candidate fallback and prefab connections in default/server. Stop
-the failed sweep rather than continue the queued high-resolution run. The original
-obstructions capture matches the current frozen hash; comparing all 72 cases
-shows only `Slots[2]` changed, with live records and other captured state identical.
-Painting snapshots re-normalize a saved slot's raw address even after its record
-was released. The new allocator can reuse it for a new record, changing this
-diagnostic identity. The base room fixture already snapshots the bound record ID.
-An independent forced-address-reuse regression is being checked against verified
-`71ff3095` source before correcting painting's slot snapshot. Frozen expectations
-remain unchanged. Large failure captures were losslessly compressed with verified
-SHA-256; `failure-capture-archive.json` maps their historical paths (478 MB reclaimed).
-
-The forced-reuse regression fails on the original fixture for both a released
-record and an interior alias, then passes with bound-record identity in normal
-and safe modes. The corrected original also preserves all frozen hallway/prefab
-hashes: default repeated twice, server/highres once. Comparing all 2,512 retained
-hallway cases finds only saved-slot identity differences. See
-[fixture evidence](final-engine-slot-identity.json) and the
-[original-source patch](final-engine-slot-baseline.patch), applicable to `71ff3095`.
-The native correction is installed, and focused owner/repeat coverage expands
-from 162/12 to 166/16. No allocator or production source changed for this fix.
-
-After installing the fix, all 166 owners and 16 focused repeats passed per normal
-profile; thirteen allocator and six legacy roots passed in normal/safe, with the
-initial fatal/safe/leaf gates repeated on the corrected source. Alternating owner
-measurements now use the corrected fixture on both backends: population 1.21→1.22 s,
-equipment 0.99→0.99 s, algorithms 1.59→1.61 s. Treat these as parity within about
-1.3%, superseding the earlier owner timing comparison. The allocator-only benchmark
-package and production source are byte-identical, so their measured samples are
-reused explicitly. The remaining +30% synthetic parallel-churn tradeoff stands.
-The full corpus and production gates are still pending; this is a recovery
-checkpoint, not milestone acceptance.
+Verified host process/open-file checks and archive hashes allowed two removals
+of old rebuildable Linux 386 Go cache archives: 92 files, totaling 4,564,062,208
+allocated bytes. Source, assets, logs and retained binaries were preserved. Recovery is automatic cache
+rebuilding. See [cleanup record](final-engine-boundary-cache-cleanup.json).
