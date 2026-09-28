@@ -60,7 +60,8 @@ Last complete default corpus: `6e9681f2`, 2,489 passes plus diagnostic skip.
 
 Next: qualify the seven-file constants/local-scalar draft under
 `build/port-fixture-constants/` (six more imports expected to retire). Its compiler
-probes and caller review are ready; original baseline is not accepted. Then retire
+probes and caller review are ready; the original baseline passed 369/366/369
+owners, 14 focused repeats per profile and six safe contracts. Then retire
 fixture strings, numeric-state helpers and C observers, reachable abort/compiler
 flags, and the centralized internal C allocator implementation. Fixture calloc/free
 calls now share the build-aware allocator adapters;
