@@ -70,14 +70,17 @@ are performed by the inventory.
    table must have a clear path to deleting the old route.
 4. **Close the internal dependency graph.** Remove remaining build directives and
    engine libc calls, adapt test-only raw-C observers and retire generated bridge
-   assumptions in qualification tooling. Complete a real server build with cgo off
-   and qualify it. Then qualify both clients with external-library cgo retained.
+   assumptions in qualification tooling. Qualify real server and both client builds
+   with external-library cgo retained where needed. A whole-build cgo-off result
+   is useful additional evidence if external dependencies permit it, but is not
+   required for this internal-glue milestone.
    Use fresh reference comparisons, known-suite outcomes and meaningful performance
    checks; do not accept symbol deletion or compilation alone as completion.
 
 These boundaries can overlap when one owner spans allocation, types and callbacks.
-The prepared 26-monster-callback draft is deferred until it fits this removal
-order; completing its parallel dispatch alone would not retire the shared bridge.
+The callback registries and final dispatch retirement are now qualified; consult
+[the current checkpoint](../../PORTING_STATE.md) for remaining work instead of
+using this original removal order as a live batch queue.
 
 ## Completion and progress measures
 

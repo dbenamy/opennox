@@ -58,11 +58,14 @@ Last complete default corpus: `6e9681f2`, 2,489 passes plus diagnostic skip.
 
 ## Next work and review items
 
-Next: retire fixture string/byte-copy helpers, numeric-state helpers and C
-observers; then reachable abort/compiler flags and the centralized internal C
-allocator implementation. Preserve normal/safe allocation domains, zero-length
-and failure behavior. External native libraries remain preserved dependencies.
-No next conversion is installed.
+Next: install and qualify the three-file fixture string/byte-copy draft. Its
+original baseline passed six owners twice per profile, six safe roots and two
+private string/allocation contracts in each of default/server/highres/safe.
+Then qualify the prepared tile-grid helper draft, retire numeric-state helpers and
+C observers, reachable abort/compiler flags and the centralized allocator.
+Preserve normal/safe allocation domains, zero-length and failure behavior.
+External native libraries remain preserved dependencies. No next conversion is
+installed yet.
 
 The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
 removal. Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md).
