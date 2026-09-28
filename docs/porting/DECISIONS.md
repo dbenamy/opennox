@@ -3188,3 +3188,17 @@ runtime memory checks until remaining C observers retire. The low-level allocato
 is a separate package; its libc calls do not inherit legacy's preprocessor flags.
 Keep historical safe-bridges evidence/selectors unchanged. See
 [SAFE_BRIDGE_RETIREMENT.md](SAFE_BRIDGE_RETIREMENT.md).
+
+## Fixture allocation observation and unused headers
+
+Replace whole-linker allocation wrapping with a test-only, OS-thread-scoped registry
+at engine RawCalloc/RawFree boundaries. Preserve tracker timing, failure countdowns,
+event order and idempotent cleanup; keep production dispatch direct. Add an original
+contract that actually allocates on another thread, not merely reads an activation
+flag. Incidental external/runtime allocator events are not engine ownership output.
+
+Remove the abort adapter's two unused project-header includes, then retire the 157
+headers left without consumers. Standard-library includes and external backends
+remain. Qualify the complete native root corpus and production builds at this
+shared-infrastructure boundary. See
+[FIXTURE_ALLOCATION_OBSERVERS.md](FIXTURE_ALLOCATION_OBSERVERS.md).

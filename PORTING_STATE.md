@@ -57,11 +57,17 @@ Last complete default corpus: `6e9681f2`, 2,489 passes plus diagnostic skip.
 
 ## Next work and review items
 
-Next: retire remaining C allocation observers and aligned fixture buffers, then
-reachable abort/compiler flags and the centralized allocator implementation.
-Preserve normal/safe domains, layout and failure behavior, including safe Calloc's
-existing nil marker. External native libraries remain preserved dependencies.
-No next conversion is installed.
+Next: install and qualify the native allocation-observer/header retirement draft
+under `build/port-fixture-allocation-observers/`. Its new original-C thread-allocation
+contract passed twice in all profiles including safe; 80 owners and eight repeats
+per normal profile, eleven safe roots and direct library contracts passed.
+The draft removes four fixture C imports, two fixture exports and all 157 unused
+project headers. Full native root sweeps will qualify the shared test allocation
+path. See [FIXTURE_ALLOCATION_OBSERVERS.md](docs/porting/FIXTURE_ALLOCATION_OBSERVERS.md).
+Only the original contract is installed; native conversion remains uninstalled.
+Then retire aligned fixture buffers, reachable abort/compiler flags and centralized
+allocator implementation. Preserve normal/safe domains, layout and failure behavior,
+including safe Calloc's nil marker. External native libraries remain preserved.
 
 The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
 removal. Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md).

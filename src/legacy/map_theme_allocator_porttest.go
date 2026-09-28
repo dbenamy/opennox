@@ -9,6 +9,8 @@ package legacy
 #include <pthread.h>
 void* __real_calloc(size_t, size_t);
 void __real_free(void*);
+void* __wrap_calloc(size_t, size_t);
+void __wrap_free(void*);
 extern void themeTestAllocated(void*, size_t);
 extern void themeTestReleased(void*);
 static _Thread_local int theme_observe_active;
@@ -52,6 +54,22 @@ int themeTestOtherThreadState(void) {
  if (pthread_join(thread, NULL)) return -3;
  return state;
 }
+// Exercise allocator wrapping on another thread while the caller has failure
+// injection active. A flag read alone would not prove allocation isolation.
+static void* allocationObserverThreadProbe(void* out) {
+ void* p = __wrap_calloc(128, 4);
+ if (p) *(volatile unsigned char*)p = 0x5a;
+ *(int*)out = p != NULL;
+ __wrap_free(p);
+ return NULL;
+}
+int allocationObserverOtherThread(void) {
+ pthread_t thread;
+ int result = -1;
+ if (pthread_create(&thread, NULL, allocationObserverThreadProbe, &result)) return -2;
+ if (pthread_join(thread, NULL)) return -3;
+ return result;
+}
 int themeTestCurrentThreadState(void) { return theme_observe_active; }
 void themeTestObserve(int active) {
  theme_observe_active = active;
@@ -83,7 +101,10 @@ void __wrap_free(void* p) {
 }
 */
 import "C"
-import "runtime"
+import (
+	"github.com/opennox/opennox/v1/legacy/common/alloc"
+	"runtime"
+)
 
 var themeObserverPinned bool
 var themeObserverOldClock func() uint32
@@ -126,3 +147,35 @@ func PortTestThemeObserverThreadScope() [4]int {
 
 // Exercise the same clock source used by the theme loader.
 func portTestThemeClock() uint32 { return mapThemeClock() }
+
+// PortTestAllocationObserverIsolation observes actual allocations on two threads.
+// It preserves safe calloc's nil marker and removes only its own marker afterward.
+func PortTestAllocationObserverIsolation() [8]int {
+	runtime.LockOSThread()
+	defer runtime.UnlockOSThread()
+	if alloc.PortTestAllocationLive(nil) {
+		panic("preexisting nil allocation marker")
+	}
+	before := alloc.PortTestAllocationCount()
+	C.worldGridAllocObserve(1)
+	defer C.worldGridAllocStop()
+	other := int(C.allocationObserverOtherThread())
+	otherCount := int(C.worldGridAllocStat(-1))
+	first := legacyCalloc(128, 4)
+	firstNil := first == nil
+	if first != nil {
+		legacyFree(first)
+	}
+	if alloc.PortTestAllocationLive(nil) {
+		alloc.FreePtr(nil)
+	}
+	second := legacyCalloc(128, 4)
+	secondOK := second != nil
+	if second != nil {
+		legacyFree(second)
+	}
+	if alloc.PortTestAllocationLive(nil) {
+		alloc.FreePtr(nil)
+	}
+	return [8]int{other, otherCount, bool2int(firstNil), bool2int(secondOK), int(C.worldGridAllocStat(-1)), int(C.worldGridAllocStat(-2)), int(C.worldGridAllocStat(-3)), alloc.PortTestAllocationCount() - before}
+}
