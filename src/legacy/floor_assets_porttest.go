@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include <stdlib.h>
-#include <stdint.h>
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
@@ -17,14 +12,14 @@ import (
 func PortTestFloorAssetsRelease(defs []server.TileDef, edges []byte) {
 	for i := range defs {
 		if p := defs[i].Data32; p != nil {
-			C.free(p)
+			legacyFree(p)
 			defs[i].Data32 = nil
 		}
 	}
 	for i := 0; i < 64; i++ {
 		p := (*unsafe.Pointer)(unsafe.Pointer(&edges[60*i+32]))
 		if *p != nil {
-			C.free(*p)
+			legacyFree(*p)
 			*p = nil
 		}
 	}
@@ -47,7 +42,7 @@ func PortTestFloorAssetsOwner() ([]server.TileDef, []byte, *uint32, *uint32, fun
 		*edgeCount = ec
 	}
 }
-func PortTestFloorAssetsAlloc(n int) unsafe.Pointer { return C.calloc(C.size_t(n), 1) }
+func PortTestFloorAssetsAlloc(n int) unsafe.Pointer { return legacyCalloc(uintptr(n), 1) }
 func PortTestFloorAssetsFacade(index int) int {
 	if floorAssetFacade(&tileDefinitionsAll()[index]) {
 		return 1

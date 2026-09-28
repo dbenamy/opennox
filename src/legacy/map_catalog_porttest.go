@@ -76,7 +76,7 @@ func (f *PortTestMapCatalog) Close() {
 	}
 }
 func (f *PortTestMapCatalog) Add(v PortTestMapCatalogEntry) {
-	p := (*Nox_map_list_item)(C.calloc(1, C.size_t(unsafe.Sizeof(Nox_map_list_item{}))))
+	p := (*Nox_map_list_item)(legacyCalloc(1, uintptr(unsafe.Sizeof(Nox_map_list_item{}))))
 	if p == nil {
 		panic("map fixture allocation")
 	}
@@ -140,7 +140,7 @@ func PortTestMapCycleStrip(data []byte) []byte {
 		return nil
 	}
 	p := C.CBytes(data)
-	defer C.free(p)
+	defer legacyFree(p)
 	mapCycleStrip((*byte)(p))
 	return bytes.Clone(unsafe.Slice((*byte)(p), len(data)))
 }

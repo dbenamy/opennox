@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include <stdlib.h>
-*/
-import "C"
 import (
 	"math"
 	"unsafe"
@@ -27,7 +22,7 @@ func PortTestCreate(id, bits, key, sum uint32, mode int) PortTestCreateResult {
 	count := memmap.PtrUint16(0x587000, 311204)
 	oldCount := *count
 	defer func() {
-		C.free(unsafe.Pointer(uintptr(dword_5d4594_2516344)))
+		legacyFree(unsafe.Pointer(uintptr(dword_5d4594_2516344)))
 		dword_5d4594_2516344, dword_5d4594_2516352, dword_5d4594_2516348, dword_5d4594_2516328 = head, tail, oldKey, oldSum
 		*count = oldCount
 	}()

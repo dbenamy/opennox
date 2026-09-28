@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include <stdlib.h>
-#include <stdint.h>
-*/
-import "C"
 import "unsafe"
 
 // These fixtures own the production Go records and report operations.
@@ -78,20 +73,20 @@ func PortTestStatisticsReport(quest bool, mode int, raw []byte, count int, event
 	if quest {
 		panic("retired quest statistics fixture")
 	}
-	report := C.calloc(1, 640)
-	defer C.free(report)
+	report := legacyCalloc(1, 640)
+	defer legacyFree(report)
 	copy(unsafe.Slice((*byte)(report), 640), raw)
 	var owned []unsafe.Pointer
 	defer func() {
 		for _, p := range owned {
-			C.free(p)
+			legacyFree(p)
 		}
 	}()
 	keep := func(size int) unsafe.Pointer {
 		if size == 0 {
 			size = 1
 		}
-		p := C.calloc(1, C.size_t(size))
+		p := legacyCalloc(1, uintptr(size))
 		owned = append(owned, p)
 		return p
 	}

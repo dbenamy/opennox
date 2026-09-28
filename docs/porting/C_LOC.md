@@ -382,6 +382,7 @@ target build selection and linker evidence.
 | Remaining native callback dispatch; embedded bodies 8→0, production cgo 5/6→4/5, fixture imports 83→69 | 0 | 0 | 0 | 0 |
 | Fixture import cleanup; fixture C imports 69→51, production cgo 4/5 unchanged | 0 | 0 | 0 | 0 |
 | Shared native fixture types/callers; fixture C imports 51→34, production cgo 4/5 unchanged | 0 | 0 | 0 | 0 |
+| Fixture raw allocation consolidation; fixture C imports 34→20, production cgo 4/5 unchanged | 0 | 0 | 0 | 0 |
 
 The 33 checksum test-reference lines were retired after differential validation;
 their original source remains recoverable at `66fa7bd4`.

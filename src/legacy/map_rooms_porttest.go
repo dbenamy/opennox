@@ -348,7 +348,7 @@ func portTestMapRoomCase(sp PortTestMapRoomSpec, cw C.ushort) (out PortTestMapRo
 		f.guards()
 		for _, r := range f.regions {
 			if r.alive {
-				C.free(r.ptr)
+				legacyFree(r.ptr)
 				r.alive = false
 			}
 		}

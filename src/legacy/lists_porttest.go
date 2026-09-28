@@ -2,10 +2,6 @@
 
 package legacy
 
-/*
-#include <stdlib.h>
-*/
-import "C"
 import (
 	"bytes"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -27,7 +23,7 @@ type PortTestLists struct {
 }
 
 func PortTestListsOpen(n int) *PortTestLists {
-	p := C.calloc(C.size_t(n), 16)
+	p := legacyCalloc(uintptr(n), 16)
 	if p == nil {
 		panic("list fixture allocation")
 	}
@@ -37,7 +33,7 @@ func PortTestListsOpen(n int) *PortTestLists {
 	}
 	return f
 }
-func (f *PortTestLists) Close() { C.free(f.base) }
+func (f *PortTestLists) Close() { legacyFree(f.base) }
 func (f *PortTestLists) ptr(i int) unsafe.Pointer {
 	if i < 0 {
 		return nil

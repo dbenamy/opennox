@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include <stdlib.h>
-*/
-import "C"
 import (
 	"math"
 	"unsafe"
@@ -52,7 +47,7 @@ func PortTestInsert(initial, values [][2]uint32, key, sum uint32, seed int) []Po
 	*count = uint16(len(initial))
 	var first, last *protection.Record
 	for _, v := range initial {
-		r := (*protection.Record)(C.calloc(1, C.size_t(unsafe.Sizeof(protection.Record{}))))
+		r := (*protection.Record)(legacyCalloc(1, uintptr(unsafe.Sizeof(protection.Record{}))))
 		if r == nil {
 			panic("fixture allocation failed")
 		}

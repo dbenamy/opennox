@@ -129,6 +129,11 @@ may precede full qualification when their evidence and remaining gates are expli
    no `C.` calls remain. Preserve each retained `//export` as an adjacent function
    doc comment; deleting preceding declarations must not join it to an import or
    closing brace. The remaining-draw overlay review caught this before compilation.
+   When routing libc calls through Go helpers, inspect package-wide compiler
+   defines for every qualified tag, not just headers. The fixture allocation
+   batch caught safe-mode calloc/free redirection through `-D` flags; raw helpers
+   bypassed tracking. Match allocation and release domains per profile, and run
+   safe ownership contracts before the broad conversion sweep.
    Imports with `#cgo` directives also carry build settings
    without direct calls; preserve them. When removing engine headers from a
    retained C observer, add its own required standard headers (for example,

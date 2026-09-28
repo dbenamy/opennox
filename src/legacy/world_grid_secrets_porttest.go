@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include <stdlib.h>
-#include "GAME1.h"
-*/
-import "C"
-
 import "unsafe"
 
 type PortTestSecretOperation struct{ Op, ID int }
@@ -27,8 +21,8 @@ func PortTestSecretWalls(ids []uint16, ops []PortTestSecretOperation) (out []Por
 	live := make([]bool, len(ids))
 	linked := make([]bool, len(ids))
 	for i, id := range ids {
-		nodes[i] = C.calloc(1, 32)
-		walls[i] = C.calloc(1, 64)
+		nodes[i] = legacyCalloc(1, 32)
+		walls[i] = legacyCalloc(1, 64)
 		live[i] = true
 		if nodes[i] == nil || walls[i] == nil {
 			panic("secret fixture allocation")
@@ -45,9 +39,9 @@ func PortTestSecretWalls(ids []uint16, ops []PortTestSecretOperation) (out []Por
 	defer func() {
 		for i, p := range nodes {
 			if live[i] {
-				C.free(p)
+				legacyFree(p)
 			}
-			C.free(walls[i])
+			legacyFree(walls[i])
 		}
 		worldSecretHead = old
 	}()

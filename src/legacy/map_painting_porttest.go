@@ -491,7 +491,7 @@ func paintTestCase(sp PortTestPaintSpec, owners *server.PortTestPaintOwners, glo
 		}
 		for r := range f.owned {
 			if r.alive {
-				C.free(r.ptr)
+				legacyFree(r.ptr)
 				r.alive = false
 			}
 		}

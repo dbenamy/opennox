@@ -161,18 +161,18 @@ func PortTestRules(spec PortTestRulesSpec) (out PortTestRulesResult, err error) 
 	settings := (*server.Settings2)(unsafe.Pointer(&buf[8]))
 	var head *legacyListNode
 	if spec.WithRejected {
-		head = (*legacyListNode)(C.calloc(1, 12))
+		head = (*legacyListNode)(legacyCalloc(1, 12))
 		if head == nil {
 			panic("fixture allocation failed")
 		}
 		listClear((*legacyListNode)(unsafe.Pointer(head)))
-		defer func() { runtimeRejectedClear(unsafe.Pointer(head)); C.free(unsafe.Pointer(head)) }()
+		defer func() { runtimeRejectedClear(unsafe.Pointer(head)); legacyFree(unsafe.Pointer(head)) }()
 		for _, line := range spec.SeedRejected {
 			text := utf16.Encode([]rune(line))
 			if len(text) > 255 {
 				return out, fmt.Errorf("oversized fixture rejected line")
 			}
-			p := C.calloc(1, 524)
+			p := legacyCalloc(1, 524)
 			if p == nil {
 				panic("fixture allocation failed")
 			}

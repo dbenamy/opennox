@@ -80,7 +80,7 @@ func PortTestSubtileLookup(specs []PortTestSubtileLookupSpec) (out PortTestSubti
 			table[off+52], table[off+53] = row.Width, row.Height
 		}
 		beforeTable := append([]byte(nil), table...)
-		point := C.calloc(4, C.size_t(unsafe.Sizeof(C.int(0))))
+		point := legacyCalloc(4, uintptr(unsafe.Sizeof(C.int(0))))
 		if point == nil {
 			panic("calloc point")
 		}
@@ -90,7 +90,7 @@ func PortTestSubtileLookup(specs []PortTestSubtileLookupSpec) (out PortTestSubti
 		var nodes unsafe.Pointer
 		var nw []C.int
 		if !s.NilList {
-			nodes = C.calloc(C.size_t(len(s.Nodes)+2), 5*C.size_t(unsafe.Sizeof(C.int(0))))
+			nodes = legacyCalloc(uintptr(len(s.Nodes)+2), 5*uintptr(unsafe.Sizeof(C.int(0))))
 			if nodes == nil {
 				panic("calloc nodes")
 			}
@@ -130,9 +130,9 @@ func PortTestSubtileLookup(specs []PortTestSubtileLookupSpec) (out PortTestSubti
 			panic("invalid subtile mode")
 		}
 		out.Results = append(out.Results, PortTestSubtileLookupResult{Return: int32(ret), TableUnchanged: bytes.Equal(table, beforeTable), PointUnchanged: bytes.Equal(unsafe.Slice((*byte)(point), 4*int(unsafe.Sizeof(C.int(0)))), unsafe.Slice((*byte)(unsafe.Pointer(unsafe.SliceData(beforePoint))), len(beforePoint)*int(unsafe.Sizeof(C.int(0))))), NodesUnchanged: bytes.Equal(unsafe.Slice((*byte)(nodes), len(nw)*int(unsafe.Sizeof(C.int(0)))), unsafe.Slice((*byte)(unsafe.Pointer(unsafe.SliceData(beforeNodes))), len(beforeNodes)*int(unsafe.Sizeof(C.int(0))))), GuardsUnchanged: bytes.Equal(left, wantLeft) && bytes.Equal(right, wantRight)})
-		C.free(point)
+		legacyFree(point)
 		if nodes != nil {
-			C.free(nodes)
+			legacyFree(nodes)
 		}
 	}
 	return out

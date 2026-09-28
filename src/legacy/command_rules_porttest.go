@@ -164,7 +164,7 @@ func PortTestCommandRules(spec PortTestCommandRulesSpec) (out PortTestCommandRul
 		out.Result = commandRulesPath(path)
 	case "map":
 		p := C.CString(spec.Map)
-		defer C.free(unsafe.Pointer(p))
+		defer legacyFree(unsafe.Pointer(p))
 		out.Result = int(portTestInvoke_sub_57A950(p))
 	case "wrapper":
 		Sub_4D0550(spec.Path)

@@ -49,7 +49,7 @@ func PortTestWorldGridAllocate(failAt int) (r PortTestWorldGridAllocation) {
 		r.OuterRetained = C.worldGridAllocContains(outer) != 0
 		r.OuterRetained = r.OuterRetained && unsafe.Pointer(worldTileGrid) == outer
 		r.Remaining = before - r.RowsFreed
-		C.free(outer)
+		legacyFree(outer)
 	}
 	count := int(C.worldGridAllocStat(-1))
 	r.FinalRemaining = count - int(C.worldGridAllocStat(-2))

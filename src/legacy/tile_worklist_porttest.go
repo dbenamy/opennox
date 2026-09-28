@@ -150,7 +150,7 @@ func PortTestTileWorklist(initialCount, initialOverflow uint32, initialQueue []u
 	wantLeft, wantRight := append([]byte(nil), left...), append([]byte(nil), right...)
 
 	for _, s := range specs {
-		mem := C.calloc(5, C.size_t(unsafe.Sizeof(uint32(0))))
+		mem := legacyCalloc(5, uintptr(unsafe.Sizeof(uint32(0))))
 		if mem == nil {
 			panic("calloc outputs failed")
 		}
@@ -183,10 +183,10 @@ func PortTestTileWorklist(initialCount, initialOverflow uint32, initialQueue []u
 			v2, ok2 := portTestWorklistOutValue(s.PopZ, words, count, overflow, queue)
 			snap.Results = append(snap.Results, PortTestTileWorklistResult{Return: int(ret), Count: *count, Overflow: *overflow, Outputs: [3]uint32{v0, v1, v2}, OutputReadable: [3]bool{ok0, ok1, ok2}, Queue: append([]uint32(nil), queue...), GridUnchanged: C.portTestWorklistGridEqual(grid, expected) != 0, GridPointerUnchanged: unsafe.Pointer(worldTileGrid) == unsafe.Pointer(grid), QueueGuardsUnchanged: string(left) == string(wantLeft) && string(right) == string(wantRight), OutputGuardsOK: words[0] == 0xa0a0a0a0 && words[4] == 0xb0b0b0b0})
 		} else {
-			C.free(mem)
+			legacyFree(mem)
 			panic("invalid worklist operation")
 		}
-		C.free(mem)
+		legacyFree(mem)
 	}
 	return snap
 }

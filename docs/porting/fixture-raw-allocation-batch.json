@@ -108,7 +108,7 @@
     ]
   },
   "production": {
-    "description": "Consolidate fixture calloc/free calls through the existing untracked libc allocator, preserving ownership, failure behavior and observer scope.",
+    "description": "Consolidate fixture allocation through existing build-aware adapters, preserving normal libc behavior and safe allocation tracking.",
     "assets": "build/assets/extracted/drive_c/Nox",
     "known_suite": "docs/porting/internal-callback-expected-suite.jsonl",
     "scenario_runner": "tools/porting/run_scenario.py",

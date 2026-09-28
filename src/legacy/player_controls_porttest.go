@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include <stdlib.h>
-*/
-import "C"
-
 import (
 	"bytes"
 	"context"
@@ -203,7 +198,7 @@ func (p *portTestShopPools) controlsPrepare() func() {
 		restoreMods()
 		restoreTypes()
 		for _, ptr := range st.freshBots {
-			C.free(ptr)
+			legacyFree(ptr)
 		}
 		p.proxy.core.Players.Stats = oldStats
 		copy(abilityTable, oldAbility)

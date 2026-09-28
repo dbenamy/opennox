@@ -3119,3 +3119,13 @@ casts, vector layout, pointer bits and real C observer/allocator boundaries.
 Use target-compiler ABI probes and audited entrypoint consumers. Recheck an affected
 previously excluded contract on the original path: edge thresholds passed and were
 included in all three profiles. See [FIXTURE_NATIVE_TYPES.md](FIXTURE_NATIVE_TYPES.md).
+
+## Consolidate fixture raw allocation calls
+
+Use the existing build-aware legacyCalloc/legacyFree for fixture allocations and
+releases before replacing their implementation. Preserve normal libc behavior and
+safe tracking/invalid-free checks, observer scope and cleanup order. The initial raw
+draft missed package-wide safe compiler macros; safe contracts caught the mismatch.
+Audit methods and typed fixture specifications when selecting owner contracts;
+shared pool types alone over-select unrelated cases. See
+[FIXTURE_RAW_ALLOCATION.md](FIXTURE_RAW_ALLOCATION.md).

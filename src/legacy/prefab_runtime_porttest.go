@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include <stdlib.h>
-#include "GAME1.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/internal/cryptfile"
 	"unsafe"
@@ -43,7 +37,7 @@ func PortTestPrefabCacheNode(kind int) unsafe.Pointer {
 }
 
 // These payloads still have C allocation ownership during the C baseline.
-func PortTestPrefabReleasePayload(p unsafe.Pointer) { C.free(p) }
+func PortTestPrefabReleasePayload(p unsafe.Pointer) { legacyFree(p) }
 
 func PortTestPrefabRawAllocation(size int) unsafe.Pointer { return mapRoomCalloc(1, uintptr(size)) }
 func PortTestPrefabClearSecrets()                         { worldSecretClear() }

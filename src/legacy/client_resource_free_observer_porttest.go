@@ -16,8 +16,8 @@ import (
 )
 
 // Sprite data uses raw libc allocations rather than the tracked alloc package.
-func PortTestResourceAllocate(size uintptr) unsafe.Pointer { return C.calloc(1, C.size_t(size)) }
-func PortTestResourceRelease(ptr unsafe.Pointer)           { C.free(ptr) }
+func PortTestResourceAllocate(size uintptr) unsafe.Pointer { return legacyCalloc(1, uintptr(size)) }
+func PortTestResourceRelease(ptr unsafe.Pointer)           { legacyFree(ptr) }
 
 // Observe only the current thread, with no Go callbacks inside the free wrapper.
 // Normalize recorded addresses after stopping observation; the addresses are never
@@ -31,11 +31,11 @@ func PortTestObserveResourceFrees(pointers []unsafe.Pointer, free func()) []uint
 		ids[uintptr(p)] = uint32(i + 1)
 	}
 	capacity := len(pointers) + 16
-	events := C.calloc(C.size_t(capacity), C.size_t(unsafe.Sizeof(uintptr(0))))
+	events := legacyCalloc(uintptr(capacity), uintptr(unsafe.Sizeof(uintptr(0))))
 	if events == nil {
 		panic("resource observer allocation")
 	}
-	defer C.free(events)
+	defer legacyFree(events)
 	runtime.LockOSThread()
 	defer runtime.UnlockOSThread()
 	C.resourceFreeObserve((*C.uintptr_t)(events), C.int(capacity))

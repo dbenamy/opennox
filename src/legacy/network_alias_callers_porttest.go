@@ -2,13 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include <stdlib.h>
-#include "GAME2_3.h"
-*/
-import "C"
-
 import (
 	"image"
 	"unsafe"
@@ -36,7 +29,7 @@ type portTestAliasClient struct {
 }
 
 func (c *portTestAliasClient) Nox_xxx_spriteCreate_48E970(typeID int, code uint16, x, y int) *client.Drawable {
-	p := C.calloc(1, C.size_t(unsafe.Sizeof(client.Drawable{})))
+	p := legacyCalloc(1, uintptr(unsafe.Sizeof(client.Drawable{})))
 	if p == nil {
 		panic("fixture drawable allocation failed")
 	}
@@ -51,7 +44,7 @@ func (c *portTestAliasClient) Nox_xxx_spriteCreate_48E970(typeID int, code uint1
 
 func (c *portTestAliasClient) free() {
 	for _, p := range c.alloc {
-		C.free(p)
+		legacyFree(p)
 	}
 	c.alloc, c.last = nil, nil
 }

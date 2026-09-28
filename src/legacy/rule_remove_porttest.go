@@ -102,8 +102,8 @@ func PortTestRuleRemove(spec PortTestRuleRemoveSpec) (out PortTestRuleRemoveResu
 	}()
 	mapName := C.CString(spec.Map)
 	fileName := C.CString(spec.File)
-	defer C.free(unsafe.Pointer(mapName))
-	defer C.free(unsafe.Pointer(fileName))
+	defer legacyFree(unsafe.Pointer(mapName))
+	defer legacyFree(unsafe.Pointer(fileName))
 	out.Result = int(portTestInvoke_sub_57A9F0(mapName, fileName))
 	out.After, err = snapshot()
 	return out, err

@@ -37,7 +37,7 @@ func PortTestRemove(values [][2]uint32, key, sum uint32, count uint16, ids []uin
 	*counter = count
 	records := make([]*[4]uint32, len(values))
 	for i, v := range values {
-		r := (*[4]uint32)(C.calloc(1, 16))
+		r := (*[4]uint32)(legacyCalloc(1, 16))
 		if r == nil {
 			panic("fixture allocation failed")
 		}

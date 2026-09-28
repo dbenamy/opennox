@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include <stdlib.h>
-#include "GAME1.h"
-#include "GAME2_2.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/noxrender"
 	"image"
@@ -28,7 +22,7 @@ func PortTestTileCompositionGrid() (*[128]*[128][11]uint32, *uint32, func()) {
 	rows := (*[128]*[128][11]uint32)(unsafe.Pointer(worldTileGrid))
 	return rows, (*uint32)(unsafe.Pointer(&nox_xxx_waypointCounterMB_587000_154948)), func() {
 		worldGridFreeRows()
-		C.free(unsafe.Pointer(worldTileGrid))
+		legacyFree(unsafe.Pointer(worldTileGrid))
 		worldTileGrid = old
 		nox_xxx_waypointCounterMB_587000_154948 = counter
 	}

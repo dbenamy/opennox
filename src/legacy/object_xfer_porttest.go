@@ -2,19 +2,13 @@
 
 package legacy
 
-/*
-#include <stdlib.h>
-#include "defs.h"
-#include "GAME4_1.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
 
 // The C object reader allocates names with libc calloc, outside alloc's tracker.
-func PortTestObjectXferFreeName(p unsafe.Pointer) { C.free(p) }
+func PortTestObjectXferFreeName(p unsafe.Pointer) { legacyFree(p) }
 
 // Preserve globals while using the actual pending-ownership allocator/list.
 func PortTestObjectXferPendingOwners() (func() [][2]uint32, func()) {
@@ -44,7 +38,7 @@ func PortTestObjectXferEditorList() (func() []*server.Object, func()) {
 	return read, func() {
 		for p := Get_dword_5d4594_1599540(); p != nil; {
 			next := *(*unsafe.Pointer)(unsafe.Add(p, 4))
-			C.free(p)
+			legacyFree(p)
 			p = next
 		}
 		Set_dword_5d4594_1599540(old)
