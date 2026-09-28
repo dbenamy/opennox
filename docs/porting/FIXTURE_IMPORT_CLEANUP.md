@@ -68,3 +68,8 @@ python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/ru
 ```
 
 Original assets, scenario outputs and restoration manifests remain.
+
+The seven root/safe/production binaries for this batch were later removed after
+qualified replacements and committed source were verified. Rebuild 6b51667b;
+[fixture constants cleanup](FIXTURE_CONSTANTS.md#artifact-cleanup-and-recovery)
+records the checks. Reports and test logs remain.

@@ -2,13 +2,6 @@
 
 package legacy
 
-/*
-#include <stdlib.h>
-#include "GAME1_1.h"
-#include "GAME5_2.h"
-*/
-import "C"
-
 import (
 	"bytes"
 	"fmt"
@@ -89,7 +82,7 @@ func PortTestRuleHeaders(values []uint16) []int {
 	defer restore()
 	out := make([]int, 0, len(values))
 	for _, v := range values {
-		p := unsafe.Pointer(portTestInvoke_sub_57A1B0(C.short(v)))
+		p := unsafe.Pointer(portTestInvoke_sub_57A1B0(int16(v)))
 		index := -1
 		if p != nil {
 			index = -2
@@ -215,24 +208,24 @@ func PortTestRules(spec PortTestRulesSpec) (out PortTestRulesResult, err error) 
 		if spec.Wrapper {
 			Sub_57AAA0(spec.User, settings, unsafe.Pointer(head))
 		} else {
-			result = uint8(portTestInvoke_sub_57AAA0((*C.char)(unsafe.Pointer(name)), (*C.char)(unsafe.Pointer(settings)), (*C.int)(unsafe.Pointer(head))))
+			result = uint8(portTestInvoke_sub_57AAA0((*int8)(unsafe.Pointer(name)), (*int8)(unsafe.Pointer(settings)), (*int32)(unsafe.Pointer(head))))
 		}
 		free()
 		out.Steps = append(out.Steps, snapshot(result))
 		data, e := os.ReadFile(filepath.Join(spec.Dir, filepath.FromSlash(spec.Path)))
 		out.Written, out.WriteExists = string(data), e == nil
 	case "load":
-		var user *C.char
+		var user *int8
 		if !spec.UserNil {
 			p, free := alloc.CString(spec.User)
 			defer free()
-			user = (*C.char)(unsafe.Pointer(p))
+			user = (*int8)(unsafe.Pointer(p))
 		}
 		var result uint8
 		if spec.Wrapper {
 			Sub_57A1E0(settings, spec.User, unsafe.Pointer(head), int(spec.Selection), noxflags.GameFlag(spec.Flags))
 		} else {
-			result = uint8(portTestInvoke_sub_57A1E0((*C.int)(unsafe.Pointer(settings)), user, (*C.int)(unsafe.Pointer(head)), C.char(spec.Selection), C.short(spec.Flags)))
+			result = uint8(portTestInvoke_sub_57A1E0((*int32)(unsafe.Pointer(settings)), user, (*int32)(unsafe.Pointer(head)), int8(spec.Selection), int16(spec.Flags)))
 		}
 		out.Steps = append(out.Steps, snapshot(result))
 	case "file":
@@ -275,17 +268,17 @@ func ruleTestPath(s string) string {
 }
 
 // Fixture-native copies preserve the original wrapper ABI conversions.
-func portTestInvoke_sub_57A1B0(a1 C.short) *C.char { return (*C.char)(ruleHeader(uint16(a1))) }
+func portTestInvoke_sub_57A1B0(a1 int16) *int8 { return (*int8)(ruleHeader(uint16(a1))) }
 
-func portTestInvoke_sub_57A1E0(a1 *C.int, a2 *C.char, a3 *C.int, a4 C.char, a5 C.short) C.char {
+func portTestInvoke_sub_57A1E0(a1 *int32, a2 *int8, a3 *int32, a4 int8, a5 int16) int8 {
 	st := (*server.Settings2)(unsafe.Pointer(a1))
 	name := "user.rul"
 	if a2 != nil {
 		name = GoStringP(unsafe.Pointer(a2))
 	}
-	return C.char(ruleLoad(st, name, (*legacyListNode)(unsafe.Pointer(a3)), byte(a4), uint16(a5)))
+	return int8(ruleLoad(st, name, (*legacyListNode)(unsafe.Pointer(a3)), byte(a4), uint16(a5)))
 }
 
-func portTestInvoke_sub_57AAA0(name *C.char, settings *C.char, list *C.int) C.char {
-	return C.char(ruleWrite(GoStringP(unsafe.Pointer(name)), (*server.Settings2)(unsafe.Pointer(settings)), (*legacyListNode)(unsafe.Pointer(list))))
+func portTestInvoke_sub_57AAA0(name *int8, settings *int8, list *int32) int8 {
+	return int8(ruleWrite(GoStringP(unsafe.Pointer(name)), (*server.Settings2)(unsafe.Pointer(settings)), (*legacyListNode)(unsafe.Pointer(list))))
 }

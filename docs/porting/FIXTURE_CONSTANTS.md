@@ -30,11 +30,39 @@ owner selections in all profiles, focused repeats, static checks, safe build,
 production builds/ABI, exact known-suite outcomes and fresh save/load. All target
 test binaries compile every root; runtime scope follows affected fixture callers.
 
-## Status
+## Qualified result
 
-Original baseline accepted: 369/366/369 owners, 14 focused repeats per profile
-and six safe contracts passed without skips. Draft not installed. Expected fixture C imports: 20→14.
-Production remains 4 client/highres and 5 server, with zero embedded production C
-bodies, legacy exports and standalone C. Headers remain 157 /2,731 physical lines.
-Luna quota remains unavailable; primary handles review and qualification.
+Original and native owner sets passed 369/366/369 roots without skips, with 14
+focused repeats per profile and six safe contracts. Safe contracts ran first on
+the converted source. All test binaries compiled every root. Static checks, safe
+build, production builds/ABI, exact known-suite outcomes and fresh save/load passed.
+No source corrections, changes to root test assertions or regenerated captures
+were needed.
+Original assets retained all recorded hashes.
+
+Fixture C imports fell 20→14. Production remains 4 client/highres and 5 server;
+embedded production bodies, legacy exports and standalone C remain zero. Headers
+remain 157 files /2,731 physical lines. Numeric-state observers and allocation
+implementations are unchanged.
+
+Evidence: [baseline](fixture-constants-baseline.json),
+[qualification](fixture-constants-qualification.json),
+[inventory](fixture-constants-inventory-after.json).
+Luna quota remained unavailable; primary handled review and qualification.
 Artifacts: `build/port-fixture-constants/`.
+
+## Artifact cleanup and recovery
+
+After all jobs finished, verified asset-copy deduplication reclaimed 559,968,256
+bytes from the completed scenario. Restore using:
+
+```sh
+python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/fixture-constants-save/deduplicated-assets.json
+```
+
+Seven superseded fixture-import-cleanup binaries reclaimed 386,830,336 bytes.
+Source hashes matched committed 6b51667b; qualified replacements matched d2df2eb6
+under port-fixture-raw-allocation/corrected. Host process, open-file and mapping
+checks passed. Rebuild 6b51667b if those older binaries are needed. Original assets,
+current binaries and recorded test results remain intact. See
+[cleanup record](fixture-constants-cleanup.json).

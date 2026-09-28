@@ -1,0 +1,103 @@
+{
+  "scenario": {
+    "files": 1654,
+    "logical_bytes": 556358986,
+    "allocated_bytes": 559968256,
+    "host_process_and_fd_checks": true,
+    "hardlinks_created": false,
+    "originals_preserved": true,
+    "restore_manifests": [
+      "build/baseline/runs/fixture-constants-save/deduplicated-assets.json"
+    ]
+  },
+  "obsolete_binaries": {
+    "source_revision": "6b51667b",
+    "replacement_revision": "d2df2eb6",
+    "source_files_verified": {
+      "6b51667b": 3083,
+      "d2df2eb6": 3083
+    },
+    "host_use_checks_passed": true,
+    "files": 7,
+    "allocated_bytes": 386830336,
+    "candidates": [
+      {
+        "path": "build/port-fixture-import-cleanup/contracts/profiles/default.test",
+        "replacement": "build/port-fixture-raw-allocation/corrected/contracts/profiles/default.test",
+        "sha256": "dc33cb5ee63c44338fcb983ad38734abdce3a93ece846c8ea2c22d61a67ca9a3",
+        "replacement_sha256": "b217e685ee84d0230edffe02638f96535cbc4588d3dcbcb16a0c0f05bacbfe90",
+        "device": 2049,
+        "inode": 4673024,
+        "size": 67117940,
+        "mtime_ns": 1790563011169855410,
+        "allocated_bytes": 67125248
+      },
+      {
+        "path": "build/port-fixture-import-cleanup/contracts/profiles/server.test",
+        "replacement": "build/port-fixture-raw-allocation/corrected/contracts/profiles/server.test",
+        "sha256": "9dada9cc3064da5a1cc63d4db8c4a92210eac83326f0a556c2d5954a9b8be554",
+        "replacement_sha256": "5179e4f195418fdcc9dfa3faf4bcd3b0614b535155095839f73a639fd15bc177",
+        "device": 2049,
+        "inode": 4673018,
+        "size": 65744772,
+        "mtime_ns": 1790562965867025486,
+        "allocated_bytes": 65748992
+      },
+      {
+        "path": "build/port-fixture-import-cleanup/contracts/profiles/highres.test",
+        "replacement": "build/port-fixture-raw-allocation/corrected/contracts/profiles/highres.test",
+        "sha256": "04389206141db9cc14b8433b3f33df0a5cde032f7e5c3a5116dbec09e4809078",
+        "replacement_sha256": "e3f4bf236cfa2c014f122352e18afe11f0aebe3d909f93b942557747a360582d",
+        "device": 2049,
+        "inode": 4673021,
+        "size": 67302400,
+        "mtime_ns": 1790563005359877222,
+        "allocated_bytes": 67309568
+      },
+      {
+        "path": "build/port-fixture-import-cleanup/safe/opennox-safe",
+        "replacement": "build/port-fixture-raw-allocation/corrected/safe/opennox-safe",
+        "sha256": "835e91bc441a460b28d9e85a973eca0358e14ab0b316f0db8346312da650f76c",
+        "replacement_sha256": "e6bf39ad6fc6e1f1a0fa9a90b948f31b706634d065c9104d78e2e00da773d59c",
+        "device": 2049,
+        "inode": 4673129,
+        "size": 47338240,
+        "mtime_ns": 1790564025283048213,
+        "allocated_bytes": 47345664
+      },
+      {
+        "path": "build/port-fixture-import-cleanup/production/production/bin/opennox",
+        "replacement": "build/port-fixture-raw-allocation/corrected/production/production/bin/opennox",
+        "sha256": "d61fadb01725183d4e583a5560946fe26d405dfd44012546068d59a0f621f01d",
+        "replacement_sha256": "d5d0750c62970bb7771afd08aeb23f11ffa31844ba9f59c30d761bc704bc819d",
+        "device": 2049,
+        "inode": 4673140,
+        "size": 47310380,
+        "mtime_ns": 1790564030736027742,
+        "allocated_bytes": 47316992
+      },
+      {
+        "path": "build/port-fixture-import-cleanup/production/production/bin/opennox-hd",
+        "replacement": "build/port-fixture-raw-allocation/corrected/production/production/bin/opennox-hd",
+        "sha256": "e24f980daa8516e5d972dde5d29cf6b47c004292d56255bf6b60041567e7731b",
+        "replacement_sha256": "e983bac8d9f9cb84e135a6a76e8025042aab145f597e3ae027c0d77d01a654b5",
+        "device": 2049,
+        "inode": 4673143,
+        "size": 47454340,
+        "mtime_ns": 1790564034868012230,
+        "allocated_bytes": 47460352
+      },
+      {
+        "path": "build/port-fixture-import-cleanup/production/production/bin/opennox-server",
+        "replacement": "build/port-fixture-raw-allocation/corrected/production/production/bin/opennox-server",
+        "sha256": "6e9a2d40e37700d2e685a3a71e1992723420a541e154c8ed31fddcd771deffd7",
+        "replacement_sha256": "80b9654e33a7c4ff284bcf13c3c786b88d43c9e92d8b1fef4d4144ef390be828",
+        "device": 2049,
+        "inode": 4673145,
+        "size": 44518068,
+        "mtime_ns": 1790564038619998144,
+        "allocated_bytes": 44523520
+      }
+    ]
+  }
+}

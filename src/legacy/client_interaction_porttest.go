@@ -2,12 +2,8 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "client__gui__guicon.h"
-#include <stdint.h>
-*/
-import "C"
+import "github.com/opennox/libs/console"
+
 import "unsafe"
 
 func PortTestClientInteractionCall(op string, args ...uintptr) uint64 {
@@ -351,5 +347,5 @@ func PortTestClientInteractionCall(op string, args ...uintptr) uint64 {
 }
 
 func PortTestClientInteractionConsole(format, wide *uint16, narrow *byte, number int32) int {
-	return textFormatConsole(byte(C.NOX_CONSOLE_RED), format, textFormatPointer(unsafe.Pointer(wide)), textFormatPointer(unsafe.Pointer(narrow)), textFormatWord(uint32(number)))
+	return textFormatConsole(byte(console.ColorRed), format, textFormatPointer(unsafe.Pointer(wide)), textFormatPointer(unsafe.Pointer(narrow)), textFormatWord(uint32(number)))
 }

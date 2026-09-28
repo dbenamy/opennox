@@ -2,13 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include <stdlib.h>
-#include "GAME1.h"
-*/
-import "C"
-
 import (
 	"bytes"
 	"unsafe"
@@ -80,56 +73,56 @@ func PortTestSubtileLookup(specs []PortTestSubtileLookupSpec) (out PortTestSubti
 			table[off+52], table[off+53] = row.Width, row.Height
 		}
 		beforeTable := append([]byte(nil), table...)
-		point := legacyCalloc(4, uintptr(unsafe.Sizeof(C.int(0))))
+		point := legacyCalloc(4, uintptr(unsafe.Sizeof(int32(0))))
 		if point == nil {
 			panic("calloc point")
 		}
-		pw := unsafe.Slice((*C.int)(point), 4)
-		pw[0], pw[1], pw[2], pw[3] = 0x12345678, C.int(s.X), C.int(s.Y), 0x76543210
-		beforePoint := append([]C.int(nil), pw...)
+		pw := unsafe.Slice((*int32)(point), 4)
+		pw[0], pw[1], pw[2], pw[3] = 0x12345678, int32(s.X), int32(s.Y), 0x76543210
+		beforePoint := append([]int32(nil), pw...)
 		var nodes unsafe.Pointer
-		var nw []C.int
+		var nw []int32
 		if !s.NilList {
-			nodes = legacyCalloc(uintptr(len(s.Nodes)+2), 5*uintptr(unsafe.Sizeof(C.int(0))))
+			nodes = legacyCalloc(uintptr(len(s.Nodes)+2), 5*uintptr(unsafe.Sizeof(int32(0))))
 			if nodes == nil {
 				panic("calloc nodes")
 			}
-			nw = unsafe.Slice((*C.int)(nodes), (len(s.Nodes)+2)*5)
+			nw = unsafe.Slice((*int32)(nodes), (len(s.Nodes)+2)*5)
 			for i := range nw {
-				nw[i] = C.int(0x5a5a5a5a)
+				nw[i] = int32(0x5a5a5a5a)
 			}
 			for i, n := range s.Nodes {
 				if n.Row < 0 || n.Row >= 64 {
 					panic("invalid node row")
 				}
 				off := (i + 1) * 5
-				nw[off], nw[off+1], nw[off+2], nw[off+3] = C.int(n.Value), C.int(0x11110000+i), C.int(n.Row), C.int(n.Edge)
+				nw[off], nw[off+1], nw[off+2], nw[off+3] = int32(n.Value), int32(0x11110000+i), int32(n.Row), int32(n.Edge)
 				nw[off+4] = 0
 				if i+1 < len(s.Nodes) {
-					nw[off+4] = C.int(uintptr(unsafe.Pointer(&nw[off+5])))
+					nw[off+4] = int32(uintptr(unsafe.Pointer(&nw[off+5])))
 				}
 			}
 		}
-		beforeNodes := append([]C.int(nil), nw...)
-		var ret C.int
+		beforeNodes := append([]int32(nil), nw...)
+		var ret int32
 		if s.Mode == 0 {
-			ret = C.int(bool2int(subtileContains((*[2]int32)(unsafe.Pointer(&pw[1])), s.Category)))
+			ret = int32(bool2int(subtileContains((*[2]int32)(unsafe.Pointer(&pw[1])), s.Category)))
 		} else if s.Mode == 1 {
 			if s.NilPoint && !s.NilList {
 				panic("nonnull C list with nil point faults")
 			}
-			var head, p *C.int
+			var head, p *int32
 			if !s.NilList && len(s.Nodes) > 0 {
 				head = &nw[5]
 			}
 			if !s.NilPoint {
 				p = &pw[1]
 			}
-			ret = C.int(findSubtileAt((*[5]uint32)(unsafe.Pointer(head)), (*[2]int32)(unsafe.Pointer(p)), int32(s.Fallback)))
+			ret = int32(findSubtileAt((*[5]uint32)(unsafe.Pointer(head)), (*[2]int32)(unsafe.Pointer(p)), int32(s.Fallback)))
 		} else {
 			panic("invalid subtile mode")
 		}
-		out.Results = append(out.Results, PortTestSubtileLookupResult{Return: int32(ret), TableUnchanged: bytes.Equal(table, beforeTable), PointUnchanged: bytes.Equal(unsafe.Slice((*byte)(point), 4*int(unsafe.Sizeof(C.int(0)))), unsafe.Slice((*byte)(unsafe.Pointer(unsafe.SliceData(beforePoint))), len(beforePoint)*int(unsafe.Sizeof(C.int(0))))), NodesUnchanged: bytes.Equal(unsafe.Slice((*byte)(nodes), len(nw)*int(unsafe.Sizeof(C.int(0)))), unsafe.Slice((*byte)(unsafe.Pointer(unsafe.SliceData(beforeNodes))), len(beforeNodes)*int(unsafe.Sizeof(C.int(0))))), GuardsUnchanged: bytes.Equal(left, wantLeft) && bytes.Equal(right, wantRight)})
+		out.Results = append(out.Results, PortTestSubtileLookupResult{Return: int32(ret), TableUnchanged: bytes.Equal(table, beforeTable), PointUnchanged: bytes.Equal(unsafe.Slice((*byte)(point), 4*int(unsafe.Sizeof(int32(0)))), unsafe.Slice((*byte)(unsafe.Pointer(unsafe.SliceData(beforePoint))), len(beforePoint)*int(unsafe.Sizeof(int32(0))))), NodesUnchanged: bytes.Equal(unsafe.Slice((*byte)(nodes), len(nw)*int(unsafe.Sizeof(int32(0)))), unsafe.Slice((*byte)(unsafe.Pointer(unsafe.SliceData(beforeNodes))), len(beforeNodes)*int(unsafe.Sizeof(int32(0))))), GuardsUnchanged: bytes.Equal(left, wantLeft) && bytes.Equal(right, wantRight)})
 		legacyFree(point)
 		if nodes != nil {
 			legacyFree(nodes)

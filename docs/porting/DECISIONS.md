@@ -3129,3 +3129,10 @@ draft missed package-wide safe compiler macros; safe contracts caught the mismat
 Audit methods and typed fixture specifications when selecting owner contracts;
 shared pool types alone over-select unrelated cases. See
 [FIXTURE_RAW_ALLOCATION.md](FIXTURE_RAW_ALLOCATION.md).
+
+## Fixture constants and local scalar types
+
+Use verified explicit-width types and native owner layout checks. Preserve protocol
+0x000F039A in every qualified profile: the legacy high-resolution compiler define
+is unconditional, despite the profile names. Keep FPU control-word observation for
+separate qualification. See [FIXTURE_CONSTANTS.md](FIXTURE_CONSTANTS.md).

@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2_2.h"
-*/
-import "C"
-
 import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -16,7 +10,7 @@ import (
 	"unsafe"
 )
 
-func PortTestSessionFilterVersion() uint32 { return uint32(C.NOX_CLIENT_VERS_CODE) }
+func PortTestSessionFilterVersion() uint32 { return uint32(0x000F039A) }
 func PortTestSessionFilter(mode uint32, filters [11]uint32, record [169]byte) (int, bool) {
 	modePtr := memmap.PtrUint32(0x5D4594, 1193372)
 	savedMode := *modePtr

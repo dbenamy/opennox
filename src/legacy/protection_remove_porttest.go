@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include <stdlib.h>
-#include "GAME5_2.h"
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -81,7 +76,7 @@ func PortTestRemove(values [][2]uint32, key, sum uint32, count uint16, ids []uin
 	}
 	var out []PortTestRemovalSnapshot
 	for _, id := range ids {
-		handle := C.int(id)
+		handle := int32(id)
 		result := int(portTestInvoke_sub_56F4F0(&handle))
 		s := snapshot()
 		s.Result = result
@@ -94,7 +89,7 @@ func PortTestRemove(values [][2]uint32, key, sum uint32, count uint16, ids []uin
 }
 
 // Fixture-native copies preserve the original wrapper ABI conversions.
-func portTestInvoke_sub_56F4F0(id *C.int) C.int {
+func portTestInvoke_sub_56F4F0(id *int32) int32 {
 	if deleteProtectionRecord(uint32(*id)) {
 		*id = 0
 		return 1
