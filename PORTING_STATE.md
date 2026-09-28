@@ -56,12 +56,17 @@ Last complete default corpus: `6e9681f2`, 2,489 passes plus diagnostic skip.
 
 ## Next work and review items
 
-Next: qualify the uninstalled tile-grid fixture helper draft; its caller audit
-includes worklist, AI and movement owners. Then retire numeric-state helpers and
-C allocation observers, reachable abort/compiler flags and the centralized internal
-C allocator implementation. Preserve normal/safe allocation domains, layout and
-failure behavior. External native libraries remain preserved dependencies.
-No next conversion is installed.
+Next: install and qualify the native tile-grid fixture helpers after committing
+the accepted original baseline. The new allocation contract passed normal/safe
+preflight against C, checking all 129 failure positions plus two success cases.
+The 564-owner baseline, nine focused repeats per profile and six safe contracts
+passed without skips. See [FIXTURE_TILE_GRID.md](docs/porting/FIXTURE_TILE_GRID.md).
+Then retire numeric-state helpers and C allocation observers, reachable abort/
+compiler flags and the centralized internal allocator. Preserve normal/safe
+allocation domains, layout and failure behavior; external native libraries remain.
+Only the original-path fixture extension is installed, not the conversion.
+Baseline completion reclaimed 4.42 GB of verified, reproducible build-cache
+archives; see the batch report for checks and recovery.
 
 The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
 removal. Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md).

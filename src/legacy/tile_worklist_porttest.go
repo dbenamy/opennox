@@ -33,6 +33,8 @@ static int portTestWorklistGridEqual(obj_5D4594_2650668_t** a, obj_5D4594_265066
 import "C"
 
 import (
+	"github.com/opennox/opennox/v1/legacy/common/alloc"
+	"runtime"
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -252,4 +254,51 @@ func PortTestWorldMotionTileGrid() (func(int32), func() bool, func()) {
 			C.portTestWorklistGridFree(grid)
 			C.portTestWorklistGridFree(want)
 		}
+}
+
+// PortTestWorklistAllocation observes fixture-grid allocation and partial cleanup.
+type PortTestWorklistAllocationResult struct {
+	Success, Zero, ValidFrees, NilTracked                        bool
+	Sizes                                                        []int
+	Freed, Remaining, TrackedBefore, TrackedDuring, TrackedAfter int
+}
+
+func PortTestWorklistAllocation(failAt int) (out PortTestWorklistAllocationResult) {
+	runtime.LockOSThread()
+	defer runtime.UnlockOSThread()
+	if alloc.PortTestAllocationLive(nil) {
+		panic("preexisting nil allocation marker")
+	}
+	out.TrackedBefore = alloc.PortTestAllocationCount()
+	portTestGridAllocationObserve(failAt)
+	defer portTestGridAllocationStop()
+	p := C.portTestWorklistGridNew()
+	out.Success = p != nil
+	out.Zero = true
+	if p != nil {
+		for _, row := range unsafe.Slice((**worldTileCell)(unsafe.Pointer(p)), 128) {
+			for _, cell := range unsafe.Slice(row, 128) {
+				for _, word := range cell {
+					out.Zero = out.Zero && word == 0
+				}
+			}
+		}
+	}
+	out.TrackedDuring = alloc.PortTestAllocationCount()
+	C.portTestWorklistGridFree(p)
+	out.NilTracked = alloc.PortTestAllocationLive(nil)
+	// Safe calloc records nil on failure. Preserve that observation, then remove
+	// only this fixture's marker so subsequent cases begin with clean ownership.
+	if out.NilTracked {
+		alloc.FreePtr(nil)
+	}
+	out.TrackedAfter = alloc.PortTestAllocationCount()
+	n := portTestGridAllocationStat(-1)
+	out.Freed = portTestGridAllocationStat(-2)
+	out.Remaining = n - out.Freed
+	out.ValidFrees = portTestGridAllocationStat(-3) != 0
+	for i := 0; i < n; i++ {
+		out.Sizes = append(out.Sizes, portTestGridAllocationStat(i))
+	}
+	return
 }
