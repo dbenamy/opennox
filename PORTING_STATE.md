@@ -57,12 +57,14 @@ Last complete default corpus: `6e9681f2`, 2,489 passes plus diagnostic skip.
 
 ## Next work and review items
 
-Next: consolidate fixture libc allocations through the existing raw allocator,
-with explicit matching of ownership, failure behavior and allocation observers.
-Then retire remaining fixture constants/types/observers, reachable abort and
-compiler flags, and replace the centralized internal C heap implementation.
-Production still uses libc allocation; external native libraries remain in scope
-only as preserved dependencies. No next conversion is installed.
+Next: install and qualify the 25-file fixture raw-allocation draft under
+`build/port-fixture-raw-allocation/`. Its original baseline passed 622 roots and
+24 focused repeats per profile, plus six safe contracts. Fourteen fixture imports
+are expected to retire; production allocator implementation remains unchanged.
+See [FIXTURE_RAW_ALLOCATION.md](docs/porting/FIXTURE_RAW_ALLOCATION.md).
+Then retire remaining fixture constants/types/observers, reachable abort/compiler
+flags, and replace the centralized internal C heap implementation. No next
+conversion is installed.
 
 The [immediate goal](PORT.md#goal-and-target) remains internal engine C-glue
 removal. Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md).
