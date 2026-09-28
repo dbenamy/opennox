@@ -3,25 +3,14 @@
 package legacy
 
 /*
-#include <stdint.h>
 #include <stdlib.h>
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME1_2.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_2.h"
-#include "GAME4_3.h"
-static unsigned short paintCW(){unsigned short cw;__asm__ __volatile__("fnstcw %0":"=m"(cw));return cw;}
-static void paintSetCW(unsigned short cw){__asm__ __volatile__("fldcw %0"::"m"(cw));}
 */
 import "C"
 import (
 	"bytes"
 	"crypto/sha256"
 	"fmt"
+	"github.com/opennox/opennox/v1/legacy/common/fpenv"
 	"runtime"
 	"sort"
 	"unsafe"
@@ -407,10 +396,10 @@ func PortTestMapPainting(cases []PortTestPaintSpec, owner func(*server.Server) (
 func portTestMapPainting(cases []PortTestPaintSpec, owner func(*server.Server) (Server, func()), extra *paintTestExtension) []PortTestPaintResult {
 	runtime.LockOSThread()
 	defer runtime.UnlockOSThread()
-	cw := C.paintCW()
-	defer C.paintSetCW(cw)
+	cw := fpenv.Control()
+	defer fpenv.SetControl(cw)
 	wantCW := (cw &^ 0x0f00) | 0x0200
-	C.paintSetCW(wantCW)
+	fpenv.SetControl(wantCW)
 	oldPlatform := platform.Get()
 	platform.Set(platform.New())
 	defer platform.Set(oldPlatform)
@@ -484,7 +473,7 @@ func portTestMapPainting(cases []PortTestPaintSpec, owner func(*server.Server) (
 	}
 	return out
 }
-func paintTestCase(sp PortTestPaintSpec, owners *server.PortTestPaintOwners, globs map[string]*uint32, cw C.ushort, extra *paintTestExtension) (out PortTestPaintResult) {
+func paintTestCase(sp PortTestPaintSpec, owners *server.PortTestPaintOwners, globs map[string]*uint32, cw uint16, extra *paintTestExtension) (out PortTestPaintResult) {
 	f := &paintTestFixture{xfers: [2]uint32{mapRoomRaw(xferIdentityKey(xferIDDoor)), mapRoomRaw(xferIdentityKey(xferIDSpellReward))}, extra: extra, mapRoomTestFixture: &mapRoomTestFixture{slots: map[int]*mapRoomTestRegion{}, intact: true}, owners: owners, owned: map[*mapRoomTestRegion]bool{}, objectRecords: map[*mapRoomTestRegion]*server.Object{}, globs: globs, secret: map[*mapRoomTestRegion]bool{}}
 	defer func() {
 		if extra != nil && extra.finish != nil {
@@ -631,7 +620,7 @@ func paintTestCase(sp PortTestPaintSpec, owners *server.PortTestPaintOwners, glo
 		out.Steps = append(out.Steps, f.snapshot(ret))
 	}
 	out.Intact = f.intact
-	out.ControlOK = C.paintCW() == cw
+	out.ControlOK = fpenv.Control() == cw
 	out.RandomTail = platform.RandInt()
 	out.LogicTail = owners.S.Rand.Logic.IntClamp(0, 10000)
 	return out

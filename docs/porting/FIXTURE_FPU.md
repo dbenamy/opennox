@@ -8,7 +8,7 @@ world-numeric setup/restoration, numeric inputs and frozen assertions/captures.
 Room and painting fixtures retain their aligned allocation/abort calls for a
 later ownership batch. Production implementation and external backends are unchanged.
 
-The proposed conversion reduces fixture C imports from 10 to 7. Production stays
+The qualified conversion reduces fixture C imports from 10 to 7. Production stays
 at 4 client/highres files, 5 server files, 2 direct project cgo packages, zero
 embedded C bodies and zero C exports in those profiles. Eleven safe-only
 allocator/memory exports also remain and need retirement in the ownership phase.
@@ -69,19 +69,38 @@ reviewed separately.
 
 ## Qualification and recovery
 
-The corrected original baseline passed 214 owners and 14 focused repeats in each
-profile, plus eight safe roots. No numeric conversion is installed.
-The preceding tile-grid production qualification is reusable for the original
-baseline because only fixture cleanup changed; all production gates will rerun
-after conversion. Acceptance requires exact discovered/run/pass name sets,
-unchanged source fingerprints (including assembly), safe ownership checks, original
-asset hashes and unchanged frozen expectations.
+Original and native selections passed 214 roots per profile without skips, plus
+14 focused repeats per profile and eight safe roots. The actual new leaf compiled
+with cgo disabled and passed assembly declaration checks. Static memory checks,
+safe build, three production builds/ABI, exact known-suite outcomes and fresh
+save/load passed. Original asset hashes and frozen root assertions/captures are
+unchanged. Source identity checks include the new Go assembly.
+
+The original baseline reuses preceding tile-grid production evidence because its
+corrections affect fixtures only. Native qualification reran every production gate.
+Rejected pre-correction safe runs remain diagnostic evidence; the accepted baseline
+uses `original-corrected` and `original-safe-corrected`.
+
+Evidence: [baseline](fixture-fpu-baseline.json),
+[qualification](fixture-fpu-qualification.json),
+[inventory](fixture-fpu-inventory-after.json).
 
 Ignored working evidence: `build/port-fixture-fpu/`, including processor/library
 hashes, disassembly, probe records, rejected probe diagnostics, ownership failure
-and correction results, original-source copies and the uninstalled draft.
+and correction results, original-source copies and the installed draft.
 Committed expectations and the original baseline revision recover behavior if
 those local artifacts are lost. Completed scripts are single-use.
 
 Primary performed the work; Luna remains unavailable because its quota is exhausted.
 No substitute helper was used.
+
+## Scenario cleanup
+
+Verified deduplication reclaimed 560,005,120 bytes from 1,654 completed
+scenario asset copies after host process/open-file checks. Original assets and
+current binaries remain intact. See [cleanup](fixture-fpu-scenario-cleanup.json).
+Restore with:
+
+```sh
+python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/fixture-fpu-save/deduplicated-assets.json
+```

@@ -2,22 +2,8 @@
 
 package legacy
 
-/*
-#include <fenv.h>
-#include <stdint.h>
-#include "GAME1_1.h"
-static void world_numeric_env(fenv_t *saved) {
- fegetenv(saved);
- fesetround(FE_TONEAREST);
- unsigned short cw;
- __asm__ volatile("fnstcw %0" : "=m"(cw));
- cw = (cw & ~0x0f00) | 0x0200;
- __asm__ volatile("fldcw %0" : : "m"(cw));
-}
-*/
-import "C"
-
 import (
+	"github.com/opennox/opennox/v1/legacy/common/fpenv"
 	"math"
 	"runtime"
 	"unsafe"
@@ -79,7 +65,6 @@ func PortTestWorldNumeric(inputs []uint32) (out []PortTestWorldNumericResult) {
 
 func portTestWorldNumericEnv() func() {
 	runtime.LockOSThread()
-	var saved C.fenv_t
-	C.world_numeric_env(&saved)
-	return func() { C.fesetenv(&saved); runtime.UnlockOSThread() }
+	saved := fpenv.Begin()
+	return func() { fpenv.Restore(saved); runtime.UnlockOSThread() }
 }

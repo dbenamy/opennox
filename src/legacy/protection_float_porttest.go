@@ -2,13 +2,11 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-static unsigned short portTestFloatCW(void) { unsigned short cw; __asm__("fnstcw %0":"=m"(cw)); return cw; }
-*/
-import "C"
+import (
+	"math"
 
-import "math"
+	"github.com/opennox/opennox/v1/legacy/common/fpenv"
+)
 
 func PortTestProtectionFloat(initial [][2]uint32, key, sum, sequence, swapCount, rekeyCount, frame, floatSeed uint32, seed int, mode int, id, value uint32) PortTestRekeySnapshot {
 	return portTestRekeyOperation(initial, key, sum, sequence, swapCount, rekeyCount, frame, floatSeed, seed, func() uint32 {
@@ -22,7 +20,7 @@ func PortTestProtectionFloat(initial [][2]uint32, key, sum, sequence, swapCount,
 	})
 }
 
-func PortTestProtectionFloatCW() uint16 { return uint16(C.portTestFloatCW()) }
+func PortTestProtectionFloatCW() uint16 { return uint16(fpenv.Control()) }
 
 // Fixture-native copies preserve the original wrapper ABI conversions.
 func portTestInvoke_sub_56F8C0(id int32, value float32) uint32 {

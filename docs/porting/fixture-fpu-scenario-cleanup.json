@@ -1,0 +1,11 @@
+{
+  "files": 1654,
+  "logical_bytes": 556358986,
+  "allocated_bytes": 560005120,
+  "host_process_and_fd_checks": true,
+  "hardlinks_created": false,
+  "originals_preserved": true,
+  "restore_manifests": [
+    "build/baseline/runs/fixture-fpu-save/deduplicated-assets.json"
+  ]
+}

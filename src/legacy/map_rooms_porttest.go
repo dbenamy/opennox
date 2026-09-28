@@ -3,13 +3,7 @@
 package legacy
 
 /*
-#include <stdint.h>
-#include <string.h>
 #include <stdlib.h>
-#include "GAME4_2.h"
-
-static unsigned short mapRoomCW(void){unsigned short cw;__asm__ volatile("fnstcw %0":"=m"(cw));return cw;}
-static void mapRoomSetCW(unsigned short cw){__asm__ volatile("fldcw %0"::"m"(cw));}
 */
 import "C"
 
@@ -19,6 +13,7 @@ import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
+	"github.com/opennox/opennox/v1/legacy/common/fpenv"
 	"math"
 	"runtime"
 	"sort"
@@ -318,10 +313,10 @@ func (f *mapRoomTestFixture) snapshot(ret uint64, op int) PortTestMapRoomStep {
 func PortTestMapRooms(cases []PortTestMapRoomSpec) []PortTestMapRoomResult {
 	runtime.LockOSThread()
 	defer runtime.UnlockOSThread()
-	priorCW := C.mapRoomCW()
-	defer C.mapRoomSetCW(priorCW)
+	priorCW := fpenv.Control()
+	defer fpenv.SetControl(priorCW)
 	cw := (priorCW &^ 0x0f00) | 0x0200
-	C.mapRoomSetCW(cw)
+	fpenv.SetControl(cw)
 	// Actual startup blob data: epsilon 0.1 and opposite directions 1,0,3,2.
 	ptrs := mapRoomConstantPointers()
 	values := [6]uint32{2576980378, 1069128089, 1, 0, 3, 2}
@@ -353,7 +348,7 @@ func PortTestMapRooms(cases []PortTestMapRoomSpec) []PortTestMapRoomResult {
 	}
 	return out
 }
-func portTestMapRoomCase(sp PortTestMapRoomSpec, cw C.ushort) (out PortTestMapRoomResult) {
+func portTestMapRoomCase(sp PortTestMapRoomSpec, cw uint16) (out PortTestMapRoomResult) {
 	f := &mapRoomTestFixture{slots: map[int]*mapRoomTestRegion{}, intact: true}
 	defer func() {
 		f.guards()
@@ -423,7 +418,7 @@ func portTestMapRoomCase(sp PortTestMapRoomSpec, cw C.ushort) (out PortTestMapRo
 	}
 	f.guards()
 	out.Intact = f.intact
-	out.ControlOK = C.mapRoomCW() == cw
+	out.ControlOK = fpenv.Control() == cw
 	out.RandomTail = platform.RandInt()
 	for i, ptr := range mapRoomConstantPointers() {
 		out.Constants[i] = *ptr

@@ -386,6 +386,7 @@ target build selection and linker evidence.
 | Fixture constants/local scalar types; fixture C imports 20→14, production cgo 4/5 unchanged | 0 | 0 | 0 | 0 |
 | Fixture string/byte copies; fixture C imports 14→11, production cgo 4/5 unchanged | 0 | 0 | 0 | 0 |
 | Owned fixture tile grid; four fixture C bodies retired, fixture imports 11→10 | 0 | 0 | 0 | 0 |
+| Native numeric fixture state; eight fixture C helpers retired, fixture imports 10→7 | 0 | 0 | 0 | 0 |
 
 The 33 checksum test-reference lines were retired after differential validation;
 their original source remains recoverable at `66fa7bd4`.

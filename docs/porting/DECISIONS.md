@@ -3174,7 +3174,7 @@ the extraction registry, but no engine user remains. Preserve exact address/byte
 and restore it without disabling runtime checks. Run original safe checks before
 the broad baseline to catch ownership/fixture access issues earlier.
 
-The planned native processor-state leaf matches the qualified i386 libc's partial
+The qualified native processor-state leaf matches the qualified i386 libc's partial
 environment restoration, including preservation of current TOP/tags. Keep its
 artificial-state comparison probe contained within a single call. Use a documented
 two-byte FLDENV encoding for the Go 1.26 assembler operand mismatch; no toolchain
