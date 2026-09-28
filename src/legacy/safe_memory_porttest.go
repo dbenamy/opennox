@@ -2,15 +2,6 @@
 
 package legacy
 
-/*
-void* nox_memcpy(void* dst, const void* src, unsigned int size);
-int nox_memcmp(const void* a, const void* b, unsigned int size);
-unsigned int nox_strlen(const char* s);
-char* nox_strcpy(char* dst, const char* src);
-char* nox_strcat(char* dst, const char* src);
-int nox_strcmp(const char* a, const char* b);
-*/
-import "C"
 import (
 	"bytes"
 	"unsafe"
@@ -30,7 +21,7 @@ type PortTestSafeMemoryResult struct {
 	ReturnedDest bool
 }
 
-// PortTestSafeMemory invokes the actual safe-profile C entrypoints. Both buffers
+// PortTestSafeMemory invokes the native safe-profile memory helpers. Both buffers
 // are foreign allocations; pointer returns are normalized only by exact equality.
 func PortTestSafeMemory(s PortTestSafeMemorySpec) PortTestSafeMemoryResult {
 	const payload, guard = 64, 16
@@ -64,29 +55,29 @@ func PortTestSafeMemory(s PortTestSafeMemorySpec) PortTestSafeMemoryResult {
 			panic("invalid safe-memory fixture span")
 		}
 		if s.Op == "memcpy" {
-			out.ReturnedDest = C.nox_memcpy(lp, rp, C.uint(s.Size)) == lp
+			out.ReturnedDest = alloc.Memcpy(lp, rp, uintptr(s.Size)) == lp
 		} else {
-			out.Return = int32(C.nox_memcmp(lp, rp, C.uint(s.Size)))
+			out.Return = int32(alloc.Memcmp(lp, rp, uintptr(s.Size)))
 		}
 	case "strlen":
 		stringLen(left[l : guard+payload])
-		out.Return = int32(C.nox_strlen((*C.char)(lp)))
+		out.Return = int32(alloc.Strlen(lp))
 	case "strcpy":
 		n := stringLen(right[r : guard+payload])
 		if n+1 > payload-s.LeftOff {
 			panic("insufficient safe-memory fixture copy capacity")
 		}
-		out.ReturnedDest = unsafe.Pointer(C.nox_strcpy((*C.char)(lp), (*C.char)(rp))) == lp
+		out.ReturnedDest = alloc.Strcpy(lp, rp) == lp
 	case "strcat":
 		nl, nr := stringLen(left[l:guard+payload]), stringLen(right[r:guard+payload])
 		if nl+nr+1 > payload-s.LeftOff {
 			panic("insufficient safe-memory fixture append capacity")
 		}
-		out.ReturnedDest = unsafe.Pointer(C.nox_strcat((*C.char)(lp), (*C.char)(rp))) == lp
+		out.ReturnedDest = alloc.Strcat(lp, rp) == lp
 	case "strcmp":
 		stringLen(left[l : guard+payload])
 		stringLen(right[r : guard+payload])
-		out.Return = int32(C.nox_strcmp((*C.char)(lp), (*C.char)(rp)))
+		out.Return = int32(alloc.Strcmp(lp, rp))
 	default:
 		panic("unknown safe-memory fixture operation")
 	}

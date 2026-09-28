@@ -20,7 +20,7 @@ On the qualified 386 target, the fixture's bounded sizes preserve the former
 unsigned-int conversions; returned lengths/comparison values keep their int32
 conversion. Destination pointers are compared directly. The AST review finds one
 changed fixture function, eleven removed wrappers and unchanged safe initialization.
-The proposed result is zero safe-only exports and six fixture C-import files,
+The qualified result is zero safe-only exports and six fixture C-import files,
 with normal-profile production cgo still 4 client/highres and 5 server.
 The safe flags file still imports C intentionally. Standalone C stays zero;
 headers remain 157 files / 2,731 physical lines.
@@ -48,5 +48,36 @@ allocation/reallocation ownership, failure cleanup and observer thread scope.
 Do not expand this chunk into allocator redesign.
 
 Evidence: [original baseline](safe-bridge-retirement-baseline.json).
-Working evidence and the uninstalled draft: `build/port-safe-bridges/`.
+Working evidence and installed draft: `build/port-safe-bridges/`.
 Primary handles this batch; Luna quota is unavailable and no substitute is used.
+
+## Native result
+
+All native gates passed: nine safe roots; eight owners and three focused repeats
+per normal profile; five allocator and five private string/clock contracts in both
+normal and safe. Static checks, safe build, three production builds/ABI, exact
+known-suite outcomes, fresh save/load and all original asset hashes passed.
+Frozen root assertions/captures are unchanged. No conversion corrections were needed.
+
+All eleven exports are absent from the safe binary; its AddressSanitizer initializer
+remains present. The safe flags file still imports C deliberately. Fixture C imports
+are 7→6, and two fixture-only allocation callbacks remain. Production imports remain
+4 client/highres, 5 server; production export bridges are zero in both normal and
+safe configurations. Standalone C remains zero; headers remain 157/2,731 lines.
+
+Evidence: [qualification](safe-bridge-retirement-qualification.json),
+[inventory](safe-bridge-retirement-inventory-after.json).
+
+## Disk headroom and recovery
+
+Verified scenario-copy cleanup reclaimed 560,107,520 bytes;
+23 reproducible Linux 386 cache archives untouched for two hours reclaimed
+1,495,650,304 bytes. All qualification jobs were joined; host
+compiler/open-file/mapping checks and file hashes passed. Current binaries, module
+sources and original assets remain intact. Cache entries rebuild automatically.
+See [scenario cleanup](safe-bridge-retirement-scenario-cleanup.json) and
+[cache cleanup](safe-bridge-retirement-cache-cleanup.json). Restore scenario data with:
+
+```sh
+python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/safe-bridge-retirement-save/deduplicated-assets.json
+```
